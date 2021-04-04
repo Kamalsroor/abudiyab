@@ -1,0 +1,71 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap'); */
+
+.inb,
+input[type="button"],
+button,
+input[type="submit"] {
+    background: linear-gradient(91deg, #0d157b 15%, #0095ff 25%) !important;
+    border-radius: 45px !important;
+    color: #fff !important;
+    border: none !important;
+    /*font-size: 16px !important;*/
+    font-weight: 600 !important;
+    /*width: 130px;*/
+    /*height: 40px;*/
+    transition: .4s !important;
+    background-size: 400% 400% !important;
+    animation: bganimations 15s infinite !important;
+    box-shadow: -6px -6px 20px 1px #5a5555;
+}
+
+.inb:hover,
+input[type="button"]:hover,
+button:hover,
+input[type="submit"]:hover {
+    background: linear-gradient(91deg, #0d157b 15%, #0095ff 25%) !important;
+    border-radius: 45px !important;
+    color: #fff !important;
+    border: none !important;
+    /*font-size: 16px !important;*/
+    font-weight: 600 !important;
+    /*width: 130px;*/
+    /*height: 40px;*/
+    transition: .4s !important;
+    background-size: 400% 400% !important;
+    animation: bganimations 15s infinite !important;
+    box-shadow: -2px -1px 9px 1px #5a5555;
+}
+
+.favbutton {
+    background: #bf1313 !important;
+}
+
+@keyframes bganimations {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.carss {
+    background: radial-gradient(#0095ff, #000000) !important;
+    background-size: 400% 400% !important;
+    animation: cars 15s infinite !important;
+}
+
+@keyframes cars {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}

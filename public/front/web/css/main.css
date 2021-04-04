@@ -1,0 +1,496 @@
+* {
+    direction: rtl;
+    margin: 0;
+    color: white;
+    font-family: 'Cairo', sans-serif;
+}
+
+.loader {
+    margin: 0 !important;
+    position: absolute !important;
+    top: 42.5% !important;
+    right: 50% !important;
+    left: inherit !important;
+    transform: translate(-50%, -50%) !important;
+    width: fit-content !important;
+    transform: scale(1) !important;
+}
+
+.loader .circle:after {
+    background: #022841 !important;
+}
+
+.mynav {
+    background: no-repeat linear-gradient( 359deg, #001338 25%, #0081de 100%);
+}
+
+.small-screen-nav {
+    display: none;
+}
+
+.mynav a {
+    text-decoration: none;
+    color: white;
+    margin: 10px;
+}
+
+.mynav a:hover {
+    text-decoration: none;
+    color: #0056b3;
+}
+a:not([href]):not([tabindex]):hover{
+    color: #0056b3!important;
+}
+
+#hamburger-bars {
+    font-size: 34px;
+    cursor: pointer;
+}
+
+#menu {
+    background-color: #000000c7;
+    width: 90vw;
+    height: 32vw;
+    position: absolute;
+    top: 14vh;
+    z-index: 100;
+    left: 5vw;
+    color: white;
+    font-size: 30px;
+}
+
+.hidden {
+    display: none;
+}
+
+#menu a {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 500;
+}
+
+#menu .col-3:hover {
+    background-color: #007bff;
+}
+
+.hidden-part * {
+    display: none;
+}
+
+.mynav h1 {
+    color: white;
+}
+
+.abs {
+    position: absolute;
+}
+
+.carousel-inner h1 {
+    color: white;
+    background-color: #00000052;
+}
+
+.doubleline {
+    border-bottom: 10px double red;
+    font-weight: bold;
+    border-radius: 30px;
+    text-align: center;
+}
+
+.categories-home button {
+    font-size: 25px;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    line-height: 1.5;
+    box-shadow: 20px 19px 20px 5px #757575;
+    background-color: #002352;
+    transition: 0.4s;
+    border-radius: 0 67px;
+}
+
+.categories-home button:hover {
+    background-color: #0081eb;
+    transform: scale(1.075);
+}
+
+.more button {
+    font-size: 25px;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    line-height: 1.5;
+    box-shadow: 20px 19px 20px 5px #757575;
+    background-color: #002352;
+    transition: 0.4s;
+    border-radius: 30px;
+}
+
+footer {
+    color: white;
+    background-image: url('../../img/ffooter-web.jpg');
+    background-size: cover;
+}
+
+.bottomline {
+    border: none;
+    border-bottom: solid 1px black;
+}
+
+.bottomline:focus {
+    pointer-events: none;
+}
+
+.bg-block {
+    background-color: #d2d2d2;
+}
+
+.top-container p {
+    color: black;
+    font-weight: 700;
+}
+
+.color-black {
+    color: black;
+}
+
+.align-right {
+    text-align: right;
+    padding-right: 25px;
+    border-bottom: 2px solid #ccc;
+    margin: 2px 0;
+    padding: 6px 0;
+    cursor: pointer;
+}
+
+.dollar {
+    color: #ff0039;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.logo-footer {
+    width: 20%;
+}
+
+.heart {
+    color: red;
+    font-size: 40px;
+    transform: translateY(30%);
+    margin-left: 10px;
+}
+
+label.color-black {
+    font-size: 25px;
+    margin-right: 10px;
+}
+
+.my-check {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: none;
+}
+
+.more .show-less {
+    display: none;
+    justify-self: center;
+}
+
+.brands {
+    min-height: 200px;
+}
+
+.carousel-indicators li {
+    width: 15px !important;
+    height: 15px !important;
+    border-radius: 50%;
+    background-color: #d1d1d1;
+}
+
+.linking-image {
+    height: 60vh;
+    background-image: url('../../img/mercedes4.jpg');
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: white;
+}
+
+.linking-image-inner {
+    background-color: #007bff8a;
+    width: 100%;
+    height: 100%;
+}
+
+.before-price {
+    color: #d62d2e;
+    font-size: 50px;
+    font-weight: 500;
+}
+
+.after-price {
+    color: #d62d2e;
+    font-size: 80px;
+    font-weight: 900;
+}
+
+.range-slider * {
+    color: #444;
+}
+
+.profile-bg {
+    background-image: url('../../img/BackgroundH45635.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.face-book:hover {
+    color: #007bff;
+}
+
+.twitter:hover {
+    color: #1da1f2;
+}
+
+.whatsapp:hover {
+    color: #00e676;
+}
+
+.youtube:hover {
+    color: #ff0000;
+}
+
+.likedin:hover {
+    color: #0077b5;
+}
+
+.instagram:hover {
+    color: #d13d8c;
+}
+
+.slider-track .slider-selection {
+    background: #007bff;
+}
+
+.my-check:checked~label .align-right {
+    background-color: #337ab7;
+    box-shadow: 2px 2px 3px #555454;
+}
+
+.my-check:checked~label .align-right label {
+    color: #fff;
+}
+
+.container-fluid .form-control {
+    height: auto;
+    font-weight: 600;
+    border: 3px solid #ced4da;
+}
+
+.fleet-car-button {
+    width: 140px;
+    height: 40px;
+}
+
+
+/* *******************************************   pop over */
+
+
+/* ************************pop over********************** */
+
+
+/* ***************************************************** */
+
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+
+.open-button {
+    background-color: rgba(85, 85, 85, 0);
+    color: white;
+    padding: 16px 5px;
+    border: none;
+    cursor: pointer;
+    opacity: 1;
+    bottom: 23px;
+    right: 28px;
+}
+
+
+/* The popup form - hidden by default */
+
+.form-popup {
+    display: none;
+    position: absolute;
+    top: 80px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+}
+
+
+/* Add styles to the form container */
+
+.form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+}
+
+
+/* Full-width input fields */
+
+.form-container input[type=text],
+.form-container input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+}
+
+
+/* When the inputs get focus, do something */
+
+.form-container input[type=text]:focus,
+.form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+
+/* Set a style for the submit/login button */
+
+.form-container .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+
+/* Add a red background color to the cancel button */
+
+.form-container .cancel {
+    background-color: red;
+}
+
+
+/* Add some hover effects to buttons */
+
+.form-container,
+.btn:hover {
+    opacity: 1;
+}
+
+.open-button:hover {
+    color: #0056b3;
+}
+
+
+/* pop over ends****************** */
+
+
+/* pop over ends****************** */
+
+
+/* pop over ends****************** */
+
+i.fas.fa-bookmark {
+    display: none;
+}
+
+.ii i.fas.fa-bookmark {
+    display: inline-flex;
+}
+
+.ii i.far.fa-bookmark {
+    display: none;
+}
+
+.ii.color-black {
+    color: red;
+    font-weight: 700;
+}
+
+.fleet-car-img:hover {
+    transform: scale(2);
+    z-index: 10;
+}
+
+.slider.slider-horizontal .slider-track {
+    height: 4px !important;
+}
+.register-background{
+    background-image: url(../../img/Untitled-5.jpg);
+    background-position: center;
+    background-size: cover;
+
+}
+
+@media only screen and (max-width: 600px) {
+    label.color-black {
+        font-size: 12px;
+    }
+    h3 {
+        font-size: 14px;
+        font-weight: 700;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    p {
+        font-size: 12px;
+    }
+    option {
+        font-size: 10px;
+    }
+    select {
+        font-size: 12px;
+    }
+    .logo-footer {
+        width: 40%;
+    }
+    a {
+        font-size: 10px;
+    }
+    .categories-home button {
+        font-size: 14px;
+        padding: 5px;
+        text-align: center;
+        color: white;
+        box-shadow: 20px 19px 20px 5px #757575;
+        background-color: #002352;
+        transition: 0.4s;
+        border-radius: 0 67px;
+    }
+    .more button {
+        font-size: 14px;
+        padding: 5px;
+        text-align: center;
+        color: white;
+        box-shadow: 20px 19px 20px 5px #757575;
+        background-color: #002352;
+        transition: 0.4s;
+        border-radius: 30px;
+    }
+    .before-price {
+        color: #d62d2e;
+        font-size: 20px;
+        font-weight: 500;
+    }
+    .after-price {
+        color: #d62d2e;
+        font-size: 30px;
+        font-weight: 900;
+    }
+    .small-screen-nav {
+        display: block;
+    }
+}

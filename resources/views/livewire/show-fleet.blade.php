@@ -1,0 +1,224 @@
+    <div>
+    <!-- top container -->
+
+     <div class="container-fluid bg-block py-2 my-2 top-container" style="width:80%; background-color:white;">
+         <!-- top row -->
+         <div class="row py-4">
+
+             <div class="col-lg-2 col-md-6">
+                 <div class="form-group">
+                    <p class="text-right">أختار السياره</p>
+                    <select class="form-control" id="select2-dropdown" wire:model='searchTerm'>
+                       @foreach ($carArraySelect as $carSelect)
+                       <option class="color-black" value="{{$carSelect->id}}">{{$carSelect->name}}</option>
+                       @endforeach
+                    </select> 
+                    {{-- <br>
+                     <input type="search" class="form-control mt-3" wire:model.lazy='searchTerm' placeholder="أبحث باسم السيارة"> --}}
+                 </div>
+             </div>
+             <div class="col-lg-3 col-md-6">
+                 <div class="form-group">
+                     <p class="text-right">أختار المنطقة</p>
+                     <select class="form-control" id="exampleFormControlSelect1" wire:model='region'>
+                        @foreach ($regionSelect as $key => $value)
+                        <option class="color-black" value="{{$key}}">{{$value}}</option>
+                        @endforeach
+                     </select>
+                 </div>
+             </div>
+             <div class="col-lg-3 col-md-6 mr-auto">
+                 <a href="#" class="btn" style="background: red; color: #fff;">المفضلة</a>
+             </div>
+
+         </div>
+         <div class="row ">
+             <div class="col-lg-3 col-md-6">
+                 <div class="form-group">
+                     <p class="text-right">فرع الاستلام</p>
+                     <select  class="form-control" id="receivingBrancheInput" wire:model="receiving_branch_id" name="receivingBrancheInput">
+                        <option class="color-black" value="0" selected>اختار الفرع</option>
+
+                         @foreach($dervery_branches as $branche)
+                             <option class="color-black" value="{{$branche->id}}" >{{$branche->name}} </option>
+                         @endforeach
+                     </select>
+                 </div>
+             </div>
+
+
+
+             <div class="col-lg-3 col-md-6">
+                 <div class="form-group">
+                     <p class="text-right">فرع التسليم</p>
+                     <select  class="form-control" id="deliveryBrancheInput" wire:model="dervery_branch_id" name="deliveryBrancheInput">
+                         <option class="color-black" value="0" selected>اختار الفرع</option>
+                         @foreach($branches as $branche)
+                         <option class="color-black" value="{{$branche->id}}">{{$branche->name}} </option>
+                         @endforeach
+                     </select>
+                 </div>
+             </div>
+             <div class="col-lg-3 col-md-6">
+                 <div class="form-group">
+                     <p class="text-right">تاريخ الاستلام</p>
+                     <input type="date" class="form-control" id="myDate" wire:model='receivingDate'   name='receivingDateInput'>
+                 </div>
+             </div>
+             <div class="col-lg-3 col-md-6">
+                 <div class="form-group">
+                     <p class="text-right">تاريخ التسليم</p>
+                     <input type="date" class="form-control" id="" wire:model='deliveryDate' name='deliveryDateInput'>
+                 </div>
+             </div>
+         </div>
+         <div class="row py-2">
+             <div class="col-12 text-center">
+                 <button class="btn btn-primary btn-lg" wire:click='search'>ابحث الان </button>
+
+             </div>
+         </div>
+
+
+         <!-- top row ends-->
+     </div>
+     <!--top container ends here -->
+     <!-- second container composed of right column and left container -->
+     <div class="container-fluid" style="width:80%;">
+         <div class="row ">
+             <div class="col-lg-3 col-4 bg-block p-2 mb-2" style="background-color:white;">
+                <select class="form-control" id="exampleFormControlSelect1" wire:model='filterPriceCategory'>
+                         <option class="color-black" value='DESC'>السعر من الاكثر الى الأقل</option>
+                         <option class="color-black" value='ASC'>السعر من الأقل إلى الأعلى</option>
+                         <option class="color-black" value='modelasc'>الموديل من الأقدم إلى الأحدث</option>
+                         <option class="color-black" value='modeldes'>الموديل من الأحدث إلى الأقدم</option>
+                </select>
+                <div style="background: #0941a8;" class="py-2 text-center justify-content-center">
+                    <p class="m-0">أختر السعر المناسب</p>
+                </div>
+                    <div class="range-slider my-3 text-center">
+
+                        <b class="mx-3"><i class="icofont icofont-cur-riyal"></i> {{$priceRangeNewEnd}}</b>
+                        <span  wire:ignore >
+
+                            <input id="ex2" type="text" class="span2 ex2" value=""
+                            data-slider-min="10" 
+                            data-slider-max="3000"
+                            data-slider-step="5"
+                            wire:model="priceRange"
+                            data-slider-value="[{{$priceRange ?? "10,3000"}}]" />
+                        </span>
+                        <b class="ml-2"><i class="icofont icofont-cur-riyal"></i> {{$priceRangeNewStart}}</b>
+
+                    </div>
+                <div style="background: #0941a8;" class="py-2 text-center mb-2">
+                    <p class="m-0 ">نوع السيارة</p>
+                </div>
+
+
+
+                 @foreach( $categories as $category )
+
+                    <div>
+                    <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  class="my-check" id="i{{$category->id}}">
+                    <label for="i{{$category->id}}" style="display: contents;">
+                            <div class="align-right">
+                                <label style="margin-bottom: 0;" class="color-black" for="i{{$category->id}}">{{$category->name}}</label>
+                            </div>
+                        </label>
+                    </div>
+                 @endforeach
+             </div>
+             <div class="col-lg-9 col-8 pl-0">
+                 <!-- loop comes here -->
+
+
+                 @if(!isset($car))
+                 @foreach($cars as $formcar)
+                 <div class="container-fluid bg-block py-2 mb-2" style="background-color:white;">
+                     <div class="row mb-2">
+                         <div class="col-lg-4 fleet-car-img">
+                             <img class="w-100" src="{{$formcar->getFirstMediaUrl()}}" alt="car-image">
+                         </div>
+                         <div class="col-lg-8">
+                             <div class="container-fluid color-black ">
+                                 <div class="row ">
+                                     <div class="col-lg-9 col-12 text-right">
+                                         <h3 class="color-black" style="font-size: 25px;">{{$formcar->name}} <span style="font-weight: normal;line-height: 1;color: #777;font-size: 17px;" class=" color-black">أو مشابهة</span></h3>
+                                         <h3 style="color:red;">{{$formcar->model}}</h3>
+                                         <p class="color-black" style="font-size: 1.2rem;">5 مقاعد | 4 أبواب | 2 الأمتعة </p>
+                                         <p style="font-weight: normal;line-height: 1;color: #777;" class=" color-black">مكيف | ناقل حركة أوتوماتيكي{{-- trans('cars.features.' . $formcar->features) --}}</p>
+                                         <p style="color:red; font-weight: 700;"> {{$formcar->category?$formcar->category->name:'-'}}</p>
+                                     </div>
+                                     <div class="col-lg-3 col-12 text-right">
+                                         <i class="fas fa-exclamation-circle dollar" data-container="body" data-toggle="popover" data-placement="right" data-content="عرض خصم (5%)"></i>
+                                         <p class="color-black">السعر لليوم الواحد</p>
+                                         <div style="font-size: 35px;">
+                                            <span class="color-black" style="text-decoration: line-through;font-size: 25px;color: #777;"><i class="icofont icofont-cur-riyal color-black"></i>{{$formcar->price2}}</span><span class="color-black" style="display: block;"><i class="icofont icofont-cur-riyal color-black"></i>{{$formcar->price1}}</span>
+                                         </div>
+
+                                     </div>
+
+                                 </div>
+                                 <div class="row" style="border-top: #777 solid 1px;">
+
+                                     <div class="col-12">
+                                        <span onclick="favorite(this)" class="color-black" style="float: right; user-select: none; cursor: pointer;"><i class="far fa-bookmark heart"></i><i class="fas fa-bookmark heart"></i> حفظ في المفضله</span>
+                                        <button class="btn btn-primary mt-3 ml-3 fleet-car-button" wire:click="booking({{$formcar->id}});">احجز الأن</button>
+                                    </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             @endforeach
+             @endif
+             </div>
+
+         </div>
+     </div>
+     </div>
+
+
+@push('js')
+
+<script>
+    window.addEventListener('changeRender', event => {
+        $('#select2-dropdown').select2();
+        // $(".ex2").slider({ });
+        $('#select2-dropdown').on('change', function (e) {
+            var data = $('#select2-dropdown').select2("val");
+            @this.set('searchTerm', data);
+        });
+    });
+
+    window.addEventListener('sweetalert', event => {
+        Swal.fire({
+            title: event.detail.title,
+            text: event.detail.text,
+            icon: event.detail.type,
+            confirmButtonText: 'Cool'
+        })
+    });
+
+
+
+    $(document).ready(function () {
+        $(".ex2").slider({});
+
+        $('.ex2').on('change', function(event, ui) {
+            // console.log($(this).val());
+            @this.set('priceRange', $(this).val());
+
+        });
+
+
+        $('#select2-dropdown').select2();
+        $('#select2-dropdown').on('change', function (e) {
+            var data = $('#select2-dropdown').select2("val");
+            @this.set('searchTerm', data);
+        });
+    });
+
+</script>
+@endpush
