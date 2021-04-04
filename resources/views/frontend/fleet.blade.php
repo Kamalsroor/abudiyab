@@ -2,7 +2,7 @@
 
     @section('styles')
 
-        <link rel="stylesheet" type="text/css" href="{{ asset('front/admin/files') }}/bower_components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('front') }}/bootstrap-slider.min.css">
         <link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/assets/icon/icofont/css/icofont.css')}}">
         <link rel="stylesheet" type="text/css" href="{{ asset('front/lnkse/botton_style.css') }}">
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -24,7 +24,7 @@
 @section('js')
 
 <!-- range slider js -->
-<script type="text/javascript"src="{{ asset('front/admin/files') }}/bower_components/seiyria-bootstrap-slider/dist/bootstrap-slider.js"></script>
+<script type="text/javascript"src="{{ asset('front/') }}/bootstrap-slider.js"></script>
 <!-- Custom js -->
 <script type="text/javascript" src="{{ asset('front/admin/files') }}/assets/pages/range-slider.js"></script>
 
