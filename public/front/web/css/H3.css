@@ -112,6 +112,42 @@ body {
 .H3-TST-D3-2 .H3-TST-D5-1,
 .H3-TST-D3-2 .H3-TST-D5-1 p {
     color: #000;
+    direction: rtl;
+}
+
+.H3-TST-D5-1 p {
+    position: relative;
+    font-size: 25px;
+}
+
+.H3-TST-D5-1 p span {
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    font-size: 15px;
+}
+
+.H3-TST-D3-2 #additions .H3-TST-D4-1 {
+    background: #9dc6da;
+}
+
+.H3-TST-D3-2 #additions .H3-TST-D4-1 .H3-TST-D5-1 span {
+    display: block;
+}
+
+.H3-TST-D3-2 #additions .H3-TST-D4-1 .H3-TST-D5-1 span span {
+    display: inline-flex;
+}
+
+.fa-info-circle {
+    position: absolute;
+    color: red;
+    top: 50%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    cursor: pointer;
 }
 
 .H3-TST-D4-1.H3-P {

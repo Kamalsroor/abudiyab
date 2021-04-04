@@ -23,24 +23,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     {{-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> --}}
 </head>
-<body style="overflow: hidden;" class="pr-0">
+<body style="overflow: hidden;">
 <!-- ------------START------HTML------LOAD------------ -->
-<style type="text/css">
-    .loader{
-        margin: 0 !important;
-        position: absolute !important;
-        top: 42.5% !important;
-        right: 50% !important;
-        left: inherit !important;
-        transform: translate(-50%, -50%) !important;
-        width: fit-content !important;
-        transform: scale(1) !important;
-    }
-    .loader .circle:after{
-        background: #022841 !important;
-    }
-</style>
-<div class="background-loader" style="position: absolute;height: 100%;width: 100%; color: #fff;background: #fff;z-index: 1000000;">1 </div>
+<div class="background-loader" style="position: absolute;height: 100vh;width: 100%; color: #fff;background: #fff;z-index: 1000000;">1 </div>
 
 <div class="loader animation-start" style="z-index: 10000000;">
 <span class="circle delay-1 size-2"></span>
