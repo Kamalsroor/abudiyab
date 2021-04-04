@@ -85,8 +85,10 @@ class BookingSteps extends Component
             $this->paymentType = $this->order->payment_type;
 
             $orderID =  $this->order->id;
-            $merchantID = "TEST3000000721";
-            $merchantPassword = "0c7fb828291074dc52486465bbf18e69";
+            // $merchantID = "TEST3000000721";
+            // $merchantPassword = "0c7fb828291074dc52486465bbf18e69";
+            $merchantID = "3000000721";
+            $merchantPassword = "8c9e1db3899b93bd92348bc176cc109c";
             $getOrderDetailsSandBox = MasterCardPayment::getOrderDetailsSandBox($orderID, $merchantID, $merchantPassword);
             if ($getOrderDetailsSandBox['result'] == "SUCCESS"  &&  $getOrderDetailsSandBox['status'] == "CAPTURED") {
                 $this->order->update([
