@@ -204,6 +204,14 @@ class BookingSteps extends Component
         }else{
             $this->currentStep = 3;
         }
+        if(Auth()->user()== null)
+        {
+            $current_url=url()->previous().'&order_id='.$this->order->id;
+            session()->push('redircitURl', $current_url);
+            $this->dispatchBrowserEvent('notLogin');
+            $this->currentStep = 2;
+            return 0;
+        }
     }
 
     public function addedFeature(){
