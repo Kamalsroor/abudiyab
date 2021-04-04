@@ -28,7 +28,7 @@ class FrontendController extends Controller
         $allCategories  = Category::all();
         $showCategoriesCars = Car::where('category_id' , $showCategories->first()->id)->get();
         $firstcar=Car::where('category_id' , $showCategories->first()->id)->first();
-        return view('Frontend.main', compact('showCategories','showCategoriesCars','allCategories','firstcar'));
+        return view('frontend.main', compact('showCategories','showCategoriesCars','allCategories','firstcar'));
     }
 
 
@@ -83,7 +83,7 @@ class FrontendController extends Controller
     {
 
         $data = $request->all() ;
-        return view('Frontend.booking-steps',compact('data'));
+        return view('frontend.booking-steps',compact('data'));
     }
 
 
