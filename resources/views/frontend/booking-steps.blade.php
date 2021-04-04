@@ -178,7 +178,7 @@
 
         <script>
             window.addEventListener('say-goodbye', event => {
-                console.log('testttt');
+                console.log(event.detail);
                 Checkout.configure({
                     merchant: event.detail.merchant,
                     order: {
@@ -195,12 +195,12 @@
                     interaction: {
                         merchant: {
                             name: event.detail.merchant_name,
-                            address: {
-                                line1: 'tetst'
-                            },
-                            email  : 'kamal.s.sroor@gmail.com',
-                            phone  : '01012316954',
-                            logo   : 'https://abudiyab.test/'
+                            // address: {
+                            //     line1: 'tetst'
+                            // },
+                            // email  : 'kamal.s.sroor@gmail.com',
+                            // phone  : '01012316954',
+                            // logo   : 'https://abudiyab.test/'
                         },
                         locale : 'en_US',
                         theme : 'default',
