@@ -85,8 +85,10 @@ class BookingSteps extends Component
             $this->paymentType = $this->order->payment_type;
 
             $orderID =  $this->order->id;
-            $merchantID = "TEST3000000721";
-            $merchantPassword = "0c7fb828291074dc52486465bbf18e69";
+            // $merchantID = "TEST3000000721";
+            // $merchantPassword = "0c7fb828291074dc52486465bbf18e69";
+            $merchantID = "3000000721";
+            $merchantPassword = "8c9e1db3899b93bd92348bc176cc109c";
             $getOrderDetailsSandBox = MasterCardPayment::getOrderDetailsSandBox($orderID, $merchantID, $merchantPassword);
             if ($getOrderDetailsSandBox['result'] == "SUCCESS"  &&  $getOrderDetailsSandBox['status'] == "CAPTURED") {
                 $this->order->update([
@@ -112,7 +114,6 @@ class BookingSteps extends Component
                         'merchant_name' => $siteName,
                     ];
                     $this->dispatchBrowserEvent('say-goodbye', $paymentData);
-
                     $this->currentStep = 4 ;
                 }elseif($this->paymentType == "cash"   || $this->paymentType == "points"){
                     $this->order->update([
@@ -202,6 +203,14 @@ class BookingSteps extends Component
         }else{
             $this->currentStep = 3;
         }
+        if(Auth()->user()== null)
+        {
+            $current_url=url()->previous().'&order_id='.$this->order->id;
+            session()->push('redircitURl', $current_url);
+            $this->dispatchBrowserEvent('notLogin');
+            $this->currentStep = 2;
+            return 0;
+        }
     }
 
     public function addedFeature(){
@@ -234,9 +243,12 @@ class BookingSteps extends Component
 
         if ($this->paymentType == "visa" || $this->paymentType == "mada") {
             $orderID =  $this->order->id;
-            $merchantID = "TEST3000000721";
-            $merchantPassword = "0c7fb828291074dc52486465bbf18e69";
+            $merchantID = "3000000721";
+            $merchantPassword = "8c9e1db3899b93bd92348bc176cc109c";
+            // $merchantID = "TEST3000000721";
+            // $merchantPassword = "0c7fb828291074dc52486465bbf18e69";
             $sessionID = MasterCardPayment::createSessionSandBox($orderID, $merchantID, $merchantPassword);
+
             $successURL = "completeCallback";
             $failURL = "errorCallback";
             $totalPrice = $this->price;
@@ -253,6 +265,7 @@ class BookingSteps extends Component
                 'session_id' => $sessionID,
                 'merchant_name' => $siteName,
             ];
+
             $this->dispatchBrowserEvent('say-goodbye', $paymentData);
         }
 
@@ -276,8 +289,10 @@ class BookingSteps extends Component
     {
 
         $orderID =  $this->order->id;
-        $merchantID = "TEST3000000721";
-        $merchantPassword = "0c7fb828291074dc52486465bbf18e69";
+        // $merchantID = "TEST3000000721";
+        // $merchantPassword = "0c7fb828291074dc52486465bbf18e69";
+        $merchantID = "3000000721";
+        $merchantPassword = "8c9e1db3899b93bd92348bc176cc109c";
         $getOrderDetailsSandBox = MasterCardPayment::getOrderDetailsSandBox($orderID, $merchantID, $merchantPassword);
         if ($getOrderDetailsSandBox['result'] == "SUCCESS"  &&  $getOrderDetailsSandBox['status'] == "CAPTURED") {
             $this->order->update([

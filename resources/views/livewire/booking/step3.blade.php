@@ -16,7 +16,7 @@
             <div>
                 <div class="imm">
                     <label for="by1">
-                        <img class="logo" src="{{asset('front/cars/h/visa_master.jpg')}}" alt="">
+                        <img class="logo" src="{{asset('front/visa_master.jpg')}}" alt="">
                     </label>
                 </div>
                 <input type="radio" value="visa" name="paymentType" wire:model="paymentType">
@@ -25,7 +25,7 @@
             <div>
                 <div class="imm">
                     <label for="by2">
-                        <img class="logo1" src="{{asset('front/cars/h/mada-logo.png')}}" alt="">
+                        <img class="logo1" src="{{asset('front/mada-logo.png')}}" alt="">
                     </label>
                 </div>
                 <input  type="radio" value="mada" name="paymentType" wire:model="paymentType">
@@ -34,7 +34,7 @@
             <div>
                 <div class="imm">
                     <label for="by3">
-                        <img class="logo2" src="{{asset('front/cars/h/cash-logo.png')}}" alt="">
+                        <img class="logo2" src="{{asset('front/cash-logo.png')}}" alt="">
                     </label>
                 </div>
                 <input  type="radio" value="cash" name="paymentType" wire:model="paymentType">
@@ -44,7 +44,7 @@
             <div class="imm">
                 <div>
                     <label for="by4">
-                        <img class="logo3" src="{{asset('front/cars/h/points.png')}}" alt="">
+                        <img class="logo3" src="{{asset('front/points.png')}}" alt="">
                     </label>
                 </div>
 

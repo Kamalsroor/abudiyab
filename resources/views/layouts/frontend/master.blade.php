@@ -71,6 +71,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
     <script src="{{asset('front/lnkse/bootstrap.bundle.js')}}"></script>
+    <script src="{{asset('front/lnkse/bootstrap.js')}}"></script>
 
     <script src="{{asset('front/lnkse/main.js')}}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>

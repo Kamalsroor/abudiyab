@@ -158,7 +158,8 @@
 
     @section('js')
 
-        <script src="https://test-gateway.mastercard.com/checkout/version/59/checkout.js" data-error="errorCallback" data-cancel="cancelCallback" data-complete="completeCallback"></script>
+        {{-- <script src="https://test-gateway.mastercard.com/checkout/version/59/checkout.js" data-error="errorCallback" data-cancel="cancelCallback" data-complete="completeCallback"></script> --}}
+        <script src="https://ap-gateway.mastercard.com/checkout/version/58/checkout.js" data-error="errorCallback" data-cancel="cancelCallback" data-complete="completeCallback"></script>
 
 
         <script type="text/javascript" src="{{asset('front/admin/files/bower_components/switchery/dist/switchery.min.js')}}"></script>
@@ -178,7 +179,7 @@
 
         <script>
             window.addEventListener('say-goodbye', event => {
-                console.log('testttt');
+                console.log(event.detail);
                 Checkout.configure({
                     merchant: event.detail.merchant,
                     order: {
@@ -195,12 +196,12 @@
                     interaction: {
                         merchant: {
                             name: event.detail.merchant_name,
-                            address: {
-                                line1: 'tetst'
-                            },
-                            email  : 'kamal.s.sroor@gmail.com',
-                            phone  : '01012316954',
-                            logo   : 'https://abudiyab.test/'
+                            // address: {
+                            //     line1: 'tetst'
+                            // },
+                            // email  : 'kamal.s.sroor@gmail.com',
+                            // phone  : '01012316954',
+                            // logo   : 'https://abudiyab.test/'
                         },
                         locale : 'en_US',
                         theme : 'default',
