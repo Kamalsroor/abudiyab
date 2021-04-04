@@ -122,7 +122,7 @@ class BookingSteps extends Component
                 }
             }
         }
-        
+
 
         $features_price = 0 ;
         foreach ($this->features_added as $key => $value) {
@@ -145,9 +145,12 @@ class BookingSteps extends Component
         {
             $this->visa_buy=$this->visa_buy*$this->car->price1*$this->diff;
         }
+
+        // $mandate = 3 ;
+        $mandate = 0 ;
         $this->car_price=($this->car->price1 * $this->diff);
         $this->features_price=$features_price;
-        $this->price = (($this->car->price1 * $this->diff)+3-$this->visa_buy) + $features_price;
+        $this->price = (($this->car->price1 * $this->diff)+$mandate-$this->visa_buy) + $features_price;
         return view('livewire.booking-steps');
     }
 
@@ -228,7 +231,7 @@ class BookingSteps extends Component
 
 
 
-        
+
         if ($this->paymentType == "visa" || $this->paymentType == "mada") {
             $orderID =  $this->order->id;
             $merchantID = "TEST3000000721";
@@ -321,9 +324,9 @@ class BookingSteps extends Component
                     $car_in_stock->count --;
                     $car_in_stock->save();
                 }
-    
 
-                
+
+
                 $this->currentStep = 5 ;
             }
         }
