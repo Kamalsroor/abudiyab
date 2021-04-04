@@ -3,21 +3,35 @@
 <div class="container-fluid p-0 m-0 profile-bg" >
 <div class="container py-4 ">
         <div class="row align-items-start py-2" style="background-color: #cccccce6;">
-            <div class="col-lg-5 col-md-12 text-center justify-content-center">
+            <div class="col-lg-5 col-md-12  text-center justify-content-center" >
                 <div >
                     <img  src="{{asset('front/img/5.png')}}" style="width: 200px;border-radius: 50%;" alt="profile-img">
                 </div>
-                <div style="font-size: 20px;" class="my-3 d-flex justify-content-start align-items-start">
-                    <img src="{{asset('front/img/riyal.png')}}" alt="coins">
-                    <div style="width: 100%;">
-                        <div class="d-flex justify-content-between" style="width: 100%;">
-                            <p class="color-black"> رصيد النقاط</p>
-                            <p class="color-black " >125</p>
-                        </div>
-                        <div class="d-flex justify-content-between" style="width: 100%;">
-                            <p class="color-black " >ريال</p>
-                            <p class="color-black">100</p>
-                        </div>
+                <div style="font-size: 20px;width:85%;" class="mx-auto my-3 justify-content-start align-items-start row">
+                    <div class="col-2">
+                        <img src="{{asset('front/img/riyal.png')}}" alt="coins">
+                    </div>
+                    <div class="col">
+                        <table class="table table-striped color-black ">
+                        <tbody>
+                            <tr>
+                                <td class="color-black">
+                                125
+                                </td>
+                                <th class="color-black">
+                                    رصيد النقاط
+                                </th>
+                            </tr>
+                            <tr>
+                                <td class="color-black">
+                                100
+                                </td>
+                                <th class="color-black">
+                                   ريال
+                                </th>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <div class="d-flex justify-content-center align-items-end">
