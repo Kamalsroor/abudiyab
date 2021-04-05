@@ -16,6 +16,20 @@
     transform: scale(1) !important;
 }
 
+#Favorite {
+    background: #c6c6c6 !important;
+    color: #999 !important;
+}
+
+#Favorite.active {
+    background: #ff0039 !important;
+    color: #fff !important;
+}
+
+#Favorite.active:hover {
+    background: #e20031 !important;
+}
+
 .loader .circle:after {
     background: #022841 !important;
 }
@@ -38,7 +52,8 @@
     text-decoration: none;
     color: #0056b3;
 }
-a:not([href]):not([tabindex]):hover{
+
+a:not([href]):not([tabindex]):hover {
     color: #0056b3!important;
 }
 
@@ -427,11 +442,11 @@ i.fas.fa-bookmark {
 .slider.slider-horizontal .slider-track {
     height: 4px !important;
 }
-.register-background{
+
+.register-background {
     background-image: url(../../img/Untitled-5.jpg);
     background-position: center;
     background-size: cover;
-
 }
 
 @media only screen and (max-width: 600px) {

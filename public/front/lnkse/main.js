@@ -18,6 +18,10 @@ function hide() {
     $('.show-less').css('display', 'none');
     $('.show-more').css('display', 'inline');
 };
+window.addEventListener("notLogin", function() {
+    console.log("i'm here");
+    $('#exampleModal').modal('toggle');
+})
 
 
 

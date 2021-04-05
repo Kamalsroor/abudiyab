@@ -1,6 +1,6 @@
 <footer class="footer d-lg-block " style="background: no-repeat linear-gradient( 359deg, #0081de 5%, #001338 100%);;">
     <div class="container-fluid px-0">
-       
+
         <div class="row py-2  mx-0 px-0">
 
 
@@ -42,7 +42,7 @@
                     <a style="font-size: 35px;margin-right:3px;" href="https://www.youtube.com/channel/UC3gtVL9XMxqGPXNB6B6s6NA?reload=9"><i class="fab fa-youtube youtube"></i></a>
                     <a style="font-size: 35px;margin-right:3px;" href="https://www.instagram.com/abudiyabsa/"><i class="fab fa-instagram instagram"></i></a>
                     <a style="font-size: 35px;margin-right:3px;" href="https://www.linkedin.com/company/abu-diyab-rent-a-car/"><i class="fab fa-linkedin-in likedin"></i></a>
-                    
+
                     </div>
                 <div style="width: fit-content;height: fit-content;">
                 <div class="my-2">
@@ -59,22 +59,22 @@
                     </div>
                 </div>
                 </div>
-                
-                
+
+
 
             </div>
-           
-                
-            
-            
+
+
+
+
         </div>
         <div class="row m-0 px-0" style="background-color: #8c8c8c36;">
-                <div class="col-12">
+                <div class="col-12 text-center">
                     <p class="text-center mb-0 py-3">جميع الحقوق محفوظة لشركة <span href="index.php">أبو ذياب لتأجير
                             السيارات</span> © 2021</p>
                 </div>
         </div>
-        
+
 
     </div>
 </footer>

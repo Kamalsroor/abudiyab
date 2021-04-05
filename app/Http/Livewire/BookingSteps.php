@@ -114,7 +114,6 @@ class BookingSteps extends Component
                         'merchant_name' => $siteName,
                     ];
                     $this->dispatchBrowserEvent('say-goodbye', $paymentData);
-
                     $this->currentStep = 4 ;
                 }elseif($this->paymentType == "cash"   || $this->paymentType == "points"){
                     $this->order->update([
@@ -203,6 +202,14 @@ class BookingSteps extends Component
              $this->thirdStepSubmit();
         }else{
             $this->currentStep = 3;
+        }
+        if(Auth()->user()== null)
+        {
+            $current_url=url()->previous().'&order_id='.$this->order->id;
+            session()->push('redircitURl', $current_url);
+            $this->dispatchBrowserEvent('notLogin');
+            $this->currentStep = 2;
+            return 0;
         }
     }
 

@@ -10,6 +10,13 @@
             <link rel="stylesheet" href="{{asset('front/lnkse/botton_style.css')}}" />
             <link rel="stylesheet" href="{{asset('front/web/css/H3.css')}}" />
             <link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/assets/icon/icofont/css/icofont.css')}}">
+            <script>
+                $('#additions').toggle(0);
+                $('#additions').toggle(0);
+                $('.fa-info-circle').click(function (){
+                    $('#additions').toggle(1000);
+                });
+            </script>
         @elseif ($currentStep == 3 || $currentStep == 4)
             <link rel="stylesheet" href="{{asset('front/web/css/H4.css')}}" />
             <link rel="stylesheet" href="{{asset('front/lnkse/botton_style.css')}}" />
@@ -65,9 +72,9 @@
                                         <button class="inb YH-a" wire:click="back({{$currentStep - 1}})" style="margin-right: 0;background-color: #002366 !important;
                                         color: white !important;float: right;"> عوده </button>
                                     </div>
-                                  
+
                                     <div class="col-6 mx-0 booking-car-notes float-normal {{ $currentStep != 2 ? 'display-none' : '' }}" style="text-align: center;">
-                                       
+
                                         <label class="orange-checkbox-value">
                                             يرجى قراءة
                                             <input type="checkbox" name="" id="termsCheck">
@@ -92,7 +99,6 @@
     </div>
 
 </div>
-
 
 
 

@@ -3,57 +3,87 @@
         <div class="H3-TST-D1">
             <div class="H3-TST-D2 H3-TST-D2-1">
                 <div class="H3-TST-D3">
-                    <h3>السعر</h3>
-                    <h4>و الاضافات</h4>
+                    <h3>تفاصيل الفاتورة</h3>
+                    {{-- <h4>و الاضافات</h4> --}}
                 </div>
 
-                <div class="H3-TST-D3">
-                    @foreach ($features_added as $key => $value)
-                        <div class="H3-TST-D4-1 H3-TST-D4-1-hover">
-                            <div class="H3-TST-D5-1">
-                                <span><span>{{$featureArray[$key]}}</span><i class="fas fa-car"></i></span>
-                            </div>
-                            <div class="H3-TST-D5-1">
-                                <p>{{$value}} ريال سعودي في اليوم</p>
-                            </div>
-                        </div>
-                    @endforeach
-
-                </div>
                 <div class="H3-TST-D3 H3-TST-D3-2">
                     <div class="H3-TST-D4-1">
                         <div class="H3-TST-D5-1">
-                            <span>إجمالي الإيجار لمدة {{$diff}} يوم</span>
+                            <span> الإيجار لمدة {{$diff}} يوم</span>
                         </div>
                         <div class="H3-TST-D5-1">
-                            <p><span>ريال سعودي</span> {{$car_price}}</p>
+                            <p>{{$car_price}} <span>ريال سعودي</span></p>
                         </div>
                     </div>
-                    <div class="H3-TST-D4-1">
+                    <div class="H3-TST-D4-1" style="position: relative;">
                         <div class="H3-TST-D5-1">
                             <span>إجمالي الإضافات {{$diff}} يوم</span>
                         </div>
                         <div class="H3-TST-D5-1">
-                            <p><span>ريال سعودي</span> {{$features_price}}</p>
+                            <p>{{$features_price}} <span>ريال سعودي</span></p>
                         </div>
+                        <i class="fas fa-info-circle"></i>
                     </div>
+
+                    <div class="H3-TST-D3" id="additions" style="display: none;">
+                        @foreach ($features_added as $key => $value)
+                            <div class="H3-TST-D4-1 H3-TST-D4-1-hover">
+                                <div class="H3-TST-D5-1">
+                                    <span><span>{{$featureArray[$key]}}</span><i class="fas fa-car"></i></span>
+                                </div>
+                                <div class="H3-TST-D5-1">
+                                    <p>{{$value}}<span> ريال سعودي في اليوم</span></p>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
                     <div class="H3-TST-D4-1">
                         <div class="H3-TST-D5-1">
                             <span>رسوم تفويض (تم)</span>
                         </div>
                         <div class="H3-TST-D5-1">
-                            <p><span>ريال سعودي</span> 3</p>
+                            <p>3 <span>ريال سعودي</span></p>
                         </div>
                     </div>
 
                     <div class="H3-TST-D4-1 H3-P">
                         <div class="H3-TST-D5-1">
-                            <span>المبلغ الإجمالي</span>
+                            <span> الإجمالي</span>
                         </div>
                         <div class="H3-TST-D5-1">
-                            <p><span>ريال سعودي</span> {{$price}}</p>
+                            <p>{{$price}} <span>ريال سعودي</span></p>
                         </div>
                     </div>
+
+                    <div class="H3-TST-D4-1">
+                        <div class="H3-TST-D5-1">
+                            <span> خصم العضويه</span>
+                        </div>
+                        <div class="H3-TST-D5-1">
+                            <p>5 <span>ريال سعودي</span></p>
+                        </div>
+                    </div>
+
+                    <div class="H3-TST-D4-1">
+                        <div class="H3-TST-D5-1">
+                            <span> خصم ترويجي</span>
+                        </div>
+                        <div class="H3-TST-D5-1">
+                            <p>10 <span>ريال سعودي</span></p>
+                        </div>
+                    </div>
+
+                    <div class="H3-TST-D4-1 H3-P">
+                        <div class="H3-TST-D5-1">
+                            <span> الصافي</span>
+                        </div>
+                        <div class="H3-TST-D5-1">
+                            <p>100 <span>ريال سعودي</span></p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <div class="H3-TST-D2 H3-TST-D2-2">
