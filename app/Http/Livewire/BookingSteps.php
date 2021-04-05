@@ -114,7 +114,6 @@ class BookingSteps extends Component
                         'merchant_name' => $siteName,
                     ];
                     $this->dispatchBrowserEvent('say-goodbye', $paymentData);
-
                     $this->currentStep = 4 ;
                 }elseif($this->paymentType == "cash"   || $this->paymentType == "points"){
                     $this->order->update([

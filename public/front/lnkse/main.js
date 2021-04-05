@@ -5,6 +5,7 @@ function show() {
 
 }
 
+
 // var myDate = document.querySelector('#myDate');
 // var today = new Date();
 // myDate.value = today.toISOString().substr(0, 10);
@@ -21,6 +22,8 @@ window.addEventListener("notLogin", function() {
     console.log("i'm here");
     $('#exampleModal').modal('toggle');
 })
+
+
 
 function x() {
     $('[data-toggle="popover"]').popover();

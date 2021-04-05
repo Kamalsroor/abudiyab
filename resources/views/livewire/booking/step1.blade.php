@@ -84,12 +84,17 @@
     </div>
 
     <div class="min-boody col-lg-8 col-md-7">
-        <div class="contract-additions" style="height: 10% !important;margin-bottom: 5px;overflow: hidden;background-color: rgb(178 178 178 / 80%) !important;">
+        <div class="contract-additions" style="height: 10% !important;
+        margin-bottom: 5px;
+        overflow: hidden;
+        background-color: #ffd34e !important;
+        border: 4px solid #ffffff;
+        border-radius: 20px;">
             <div class="row addition">
                 <div class="col-lg-8 col-md-8 col-sm-8">
                     <legend class="AdditionsTitle AdditionsTitleYH" style="border-bottom: none;font-size: 30px;padding: 22px 0px 0; color: #002366;"> أحصل على خصم السداد بالفيزا .</legend>
                 </div>
-                <div class="col-sm-4 col-xl-4 m-b-30" style="padding: 32px 0 0;transform: rotateY(180deg);">
+                <div class="col-sm-4 col-xl-4 m-b-30" style="padding: 32px 0 0 130px;">
                         <!-- <h4 class="sub-title">Single Switche</h4> -->
                         <input type="checkbox" class="js-single" name="V" wire:model="visa_buy" value='0.15'>
                 </div>

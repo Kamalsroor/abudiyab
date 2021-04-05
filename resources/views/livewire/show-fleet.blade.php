@@ -7,12 +7,12 @@
 
              <div class="col-lg-2 col-md-6">
                  <div class="form-group">
-                    <p class="text-right">أختار السياره</p>
+                    <p class="text-right">أختار المنطقة</p>
                     <select class="form-control" id="select2-dropdown" wire:model='searchTerm'>
                        @foreach ($carArraySelect as $carSelect)
                        <option class="color-black" value="{{$carSelect->id}}">{{$carSelect->name}}</option>
                        @endforeach
-                    </select> 
+                    </select>
                     {{-- <br>
                      <input type="search" class="form-control mt-3" wire:model.lazy='searchTerm' placeholder="أبحث باسم السيارة"> --}}
                  </div>
@@ -28,9 +28,8 @@
                  </div>
              </div>
              <div class="col-lg-3 col-md-6 mr-auto">
-                 <a href="#" class="btn" style="background: red; color: #fff;">المفضلة</a>
+                 <a href="#" class="btn" id="Favorite">المفضلة</a>
              </div>
-
          </div>
          <div class="row ">
              <div class="col-lg-3 col-md-6">
@@ -62,13 +61,13 @@
              <div class="col-lg-3 col-md-6">
                  <div class="form-group">
                      <p class="text-right">تاريخ الاستلام</p>
-                     <input type="date" class="form-control" id="myDate" wire:model='receivingDate'   name='receivingDateInput'>
+                     <input class="form-control" id="receivingDateInput" wire:model='receivingDate' type="date" name='receivingDateInput'>
                  </div>
              </div>
              <div class="col-lg-3 col-md-6">
                  <div class="form-group">
                      <p class="text-right">تاريخ التسليم</p>
-                     <input type="date" class="form-control" id="" wire:model='deliveryDate' name='deliveryDateInput'>
+                     <input class="form-control" id="deliveryDateInput" wire:model='deliveryDate'  type="date" name='deliveryDateInput'>
                  </div>
              </div>
          </div>
@@ -102,7 +101,7 @@
                         <span  wire:ignore >
 
                             <input id="ex2" type="text" class="span2 ex2" value=""
-                            data-slider-min="10" 
+                            data-slider-min="10"
                             data-slider-max="3000"
                             data-slider-step="5"
                             wire:model="priceRange"
@@ -218,6 +217,10 @@
             var data = $('#select2-dropdown').select2("val");
             @this.set('searchTerm', data);
         });
+    });
+
+    $('#Favorite').click(function (){
+        $('#Favorite').toggleClass('active');
     });
 
 </script>

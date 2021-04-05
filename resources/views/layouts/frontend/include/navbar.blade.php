@@ -108,6 +108,9 @@
                                 <button class="btn btn-primary" type="submit">تسجيل</button>
                                 </form>
                             </div>
+                            <button class="btn btn-primary" type="submit">تسجيل</button>
+                            <a href="{{ route('register') }}" class="btn btn-warning" type="submit">إنشاء حساب جديد</a>
+                            </form>
                         </div>
                     </div>
                     </div>
