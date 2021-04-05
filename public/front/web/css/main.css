@@ -464,6 +464,24 @@ i.fas.fa-bookmark {
     100% {transform: rotate(0deg);}
   }
 
+  .price1{
+      display: block;
+  }
+
+  .toggeling-menue{
+    
+      z-index:1000;
+      background-color: #002452d7;
+      position: fixed;
+      top: 0;
+  }
+  #filter-toggele{
+      font-size: 30px;
+      cursor: pointer;
+  }
+
+
+
 
 @media only screen and (max-width: 600px) {
     label.color-black {
@@ -524,4 +542,9 @@ i.fas.fa-bookmark {
     .small-screen-nav {
         display: block;
     }
+    .price1{
+        display: inline;
+        margin-left: 10px;
+    }
+
 }

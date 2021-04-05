@@ -30,6 +30,13 @@ window.addEventListener("notLogin", function() {
     $('#exampleModal').modal('toggle');
 })
 
+$('#filter-toggele').click(function(){
+    $('.toggeling-menue').toggleClass('d-none');
+})
+$('.cancel-toggle-menue').click(function(){
+    $('.toggeling-menue').toggleClass('d-none');
+})
+
 
 
 function x() {
