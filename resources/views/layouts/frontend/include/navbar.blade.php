@@ -83,8 +83,7 @@
                 <!-- ---------------------------------- -->
                 <!-- Modal ------------------------------->
                 <!-- ---------------------------------- -->
-                <form action="{{ route('login') }}"  method="post" class="form-container">
-                    @csrf
+                
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -95,8 +94,9 @@
                                 </a>
                             </div>
                             <div class="modal-body">
-                                <form>
-                                    <div class="form-group">
+                                <form action="{{ route('login') }}"  method="post" class="form-container">
+                                    @csrf
+                                        <div class="form-group">
                                         <label for="user" class="col-form-label color-black">البريد الالكترونى</label>
                                         <input type="text" class="form-control" id="user" placeholder="Enter Email"  name="email" value="{{ old('email') }}">
                                         <input type="hidden" name='redirect' value='url'>
@@ -111,7 +111,6 @@
                         </div>
                     </div>
                     </div>
-                </form>
 
               <!--  ------------------------------------>
               <!-- Modal ends here------------------- -->
