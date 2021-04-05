@@ -89,7 +89,7 @@
      <div class=" container-fluid mx-0 px-0 toggeling-menue d-none" style="height: 100vh;">
             <div class="d-flex">
                 
-            <div style="width: 50%;">
+            <div style="width: 70%;height:100%;overflow-y:scroll;">
              <div style="background-color:white;">
                 <select class="form-control" id="exampleFormControlSelect1" wire:model='filterPriceCategory'>
                          <option class="color-black" value='DESC'>السعر من الاكثر الى الأقل</option>
@@ -105,7 +105,7 @@
                         <b class="mx-3"><i class="icofont icofont-cur-riyal"></i> {{$priceRangeNewEnd}}</b>
                         <span  wire:ignore >
 
-                            <input id="ex2" type="text" class="span2 ex2" value=""
+                            <input style="width: 40%;" id="ex2" type="text" class="span2 ex2" value=""
                             data-slider-min="10"
                             data-slider-max="3000"
                             data-slider-step="5"
@@ -120,7 +120,7 @@
                 </div>
 
 
-
+                        <div style="overflow-y:scroll;">
                  @foreach( $categories as $category )
 
                     <div>
@@ -134,7 +134,8 @@
                  @endforeach
                  </div>
                  </div>
-                 <div class="cancel-toggle-menue" style="width: 50%;">
+                 </div>
+                 <div class="cancel-toggle-menue" style="width: 30%;">
 
                  </div>
                  

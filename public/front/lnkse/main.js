@@ -18,12 +18,15 @@ function hide() {
     $('.show-less').css('display', 'none');
     $('.show-more').css('display', 'inline');
 };
+
 function carousel(){
     $('.carousel').carousel({
-        interval: 2000
+        interval: 7000
+        
     })
 }
-carousel();
+carousel()
+
 
 window.addEventListener("notLogin", function() {
     console.log("i'm here");

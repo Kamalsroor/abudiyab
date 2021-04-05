@@ -474,6 +474,7 @@ i.fas.fa-bookmark {
       background-color: #002452d7;
       position: fixed;
       top: 0;
+      right: 0;
   }
   #filter-toggele{
       font-size: 30px;
@@ -481,7 +482,11 @@ i.fas.fa-bookmark {
   }
 
 
-
+  .carousel-inner>.carousel-item {
+    -webkit-transition: -webkit-transform 1.2s ease-in-out !important;
+    -o-transition: -o-transform 1.2s ease-in-out !important;
+    transition: transform 1.2s ease-in-out !important;
+}
 
 @media only screen and (max-width: 600px) {
     label.color-black {
