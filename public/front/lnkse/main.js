@@ -18,6 +18,13 @@ function hide() {
     $('.show-less').css('display', 'none');
     $('.show-more').css('display', 'inline');
 };
+function carousel(){
+    $('.carousel').carousel({
+        interval: 2000
+    })
+}
+carousel();
+
 window.addEventListener("notLogin", function() {
     console.log("i'm here");
     $('#exampleModal').modal('toggle');
@@ -71,9 +78,7 @@ window.addEventListener("load", function() {
     $("#hamburger-bars").click(function() {
         $('#menu').toggleClass("hidden")
     })
-    $('.carousel').carousel({
-        interval: 1500
-    })
+   
     $('.allcategory').click(function() {
         $.ajax({
             type: 'get',
