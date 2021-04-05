@@ -31,7 +31,7 @@ function x() {
 };
 
 x();
-
+// $('.carNames').click(function())
 $('#toggel-profile').click(function() {
     $('#update-profile').toggleClass('d-none');
     $('#profile').toggleClass('d-none');

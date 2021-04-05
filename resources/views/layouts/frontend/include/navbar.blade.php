@@ -93,20 +93,19 @@
                                     <span aria-hidden="true" style="color: red;cursor: pointer;">&times;</span>
                                 </a>
                             </div>
+                            <form action="{{ route('login') }}"  method="post" class="form-container">
+                                @csrf
                             <div class="modal-body">
-                                <form action="{{ route('login') }}"  method="post" class="form-container">
-                                    @csrf
-                                        <div class="form-group">
-                                        <label for="user" class="col-form-label color-black">البريد الالكترونى</label>
-                                        <input type="text" class="form-control" id="user" placeholder="Enter Email"  name="email" value="{{ old('email') }}">
-                                        <input type="hidden" name='redirect' value='url'>
+                                <div class="form-group">
+                                    <label for="user" class="col-form-label color-black">البريد الالكترونى</label>
+                                    <input type="text" class="form-control" id="user" placeholder="Enter Email"  name="email" value="{{ old('email') }}">
+                                    <input type="hidden" name='redirect' value='url'>
                                 </div>
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label color-black">كلمة السر</label>
                                     <input type="password" class="form-control" id="user" placeholder="Enter Password"  name="password">
                                 </div>
-                                <button class="btn btn-primary" type="submit">تسجيل</button>
-                                </form>
+                                {{-- <button class="btn btn-primary" type="submit">تسجيل</button> --}}
                             </div>
                             <button class="btn btn-primary" type="submit">تسجيل</button>
                             <a href="{{ route('register') }}" class="btn btn-warning" type="submit">إنشاء حساب جديد</a>

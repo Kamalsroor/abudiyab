@@ -16,7 +16,6 @@
                 <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="8"></li>
-
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active ">
@@ -152,7 +151,7 @@
             <div>
                 <div class="row justify-content-center pt-4 ModelName" >
                     @foreach($showCategoriesCars as $cars)
-                        <div class="col-2 pt-2" style="font-size: 20px;background-color: #8080805c;cursor: pointer;">
+                        <div class="col-2 pt-2 {{(($loop->iteration == 1) ? 'bg-primary' : '')}}" style="font-size: 20px;background-color: {{(($loop->iteration == 1) ? '' : '#505151')}} ;cursor: pointer;">
                             <p class=" text-center">{{$cars['name']}}</p>
                         </div>
                     @endforeach
