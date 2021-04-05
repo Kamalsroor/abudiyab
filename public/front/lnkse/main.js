@@ -5,6 +5,7 @@ function show() {
 
 }
 
+
 // var myDate = document.querySelector('#myDate');
 // var today = new Date();
 // myDate.value = today.toISOString().substr(0, 10);
@@ -17,6 +18,8 @@ function hide() {
     $('.show-less').css('display', 'none');
     $('.show-more').css('display', 'inline');
 };
+
+
 
 function x() {
     $('[data-toggle="popover"]').popover();
