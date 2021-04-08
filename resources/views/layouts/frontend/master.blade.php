@@ -42,7 +42,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!--================
             main Navbar
         =================-->
-        @include('layouts.frontend.include.navbar')
+        {{-- <!-- @include('layouts.frontend.include.navbar') --> --}}
 
         <div class="container-fluid px-0">
 
@@ -57,7 +57,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         - Footer -
         ===========-->
 
-        @include('layouts.frontend.include.footer')
+        <!-- @include('layouts.frontend.include.footer') -->
 
 
         <!-- General Components -->

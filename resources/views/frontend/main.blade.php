@@ -115,7 +115,7 @@
             <div class="row categories-home justify-content-center">
                 @foreach($showCategories as $category)
                 <div class='col-sm-3 col-lg-3 col-md-3 my-2 ' id='{{$category->id}}'>
-                    <button type="button" id='{{$category->id}}' class="btn btn-primary btn-lg btn-block allcategory">{{$category->name}}</button>
+                    <button type="button" id='{{$category->id}}' class="btn btn-primary btn-lg btn-block allcategory primary-btn">{{$category->name}}</button>
                 </div>
                 @endforeach
             </div>
@@ -123,21 +123,21 @@
                 @foreach($allCategories as $category)
                 @if($loop->index>3)
                 <div class='col-sm-3 col-lg-3 col-md-3 my-2 ' >
-                    <button  type="button" id='{{$category->id}}' class="btn btn-primary btn-lg btn-block allcategory">{{$category->name}}</button>
+                    <button  type="button" id='{{$category->id}}' class="btn btn-primary btn-lg btn-block allcategory primary-btn">{{$category->name}}</button>
                 </div>
                 @endif
                 @endforeach
                 <div class="col-sm-3 col-lg-3 col-md-3 my-2">
                     <form action="">
-                        <button type="button" class="btn btn-primary btn-lg btn-block" ><a href="{{route('front.fleet')}}"> الأسطول</a></button>
+                        <a class="btn btn-primary btn-lg btn-block allcategory secondary-btn" href="{{route('front.fleet')}}"> الأسطول</a>
                     </form>
                 </div>
             </div>
             <div class="container-fluid">
                 <div class="row justify-content-center">
-                    <div class="more col-sm-3 my-2 text-center">
-                        <button type="button" onclick="show()" class="btn btn-primary btn-lg hide-button show-more">المزيد</button>
-                        <button type="button" onclick="hide()" class="btn btn-primary btn-lg hide-button show-less">القليل</button>
+                    <div class="more col-sm-3 my-2 text-center d-flex justify-content-center">
+                        <button type="button" onclick="show()" class="mx-2 btn btn-primary btn-lg hide-button show-more primary-btn">المزيد</button>
+                        <button type="button" onclick="hide()" class="mx-2 btn btn-primary btn-lg hide-button show-less primary-btn">القليل</button>
 
                     </div>
                 </div>
