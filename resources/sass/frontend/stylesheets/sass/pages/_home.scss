@@ -213,9 +213,12 @@
         margin: auto;
         .slick-slider {
             padding: 0 5px;
-            img {
+            div {
                 width: 100%;
-                margin: auto;
+                img {
+                    width: 100%;
+                    margin: auto;
+                }
             }
         }
     }

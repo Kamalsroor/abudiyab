@@ -37,9 +37,17 @@
     &_section-2 {
         padding: 20px 10px 0;
         &_text {
-            p {
-                margin-bottom: 2px;
-                font-size: 1.3em;
+            div {
+                margin: auto;
+                width: fit-content;
+                p {
+                    margin-bottom: 2px;
+                    font-size: 1.3em;
+                }
+                a {
+                    font-size: 30px;
+                    font-weight: 600;
+                }
             }
         }
         &_btn {
@@ -64,10 +72,13 @@
             }
         }
         &_app-img {
-            img {
-                border: 0px solid get-color(light);
-                border-radius: 10px;
-                height: 40px;
+            a {
+                padding: 0 2px;
+                img {
+                    border: 0px solid get-color(light);
+                    border-radius: 10px;
+                    width: 100%;
+                }
             }
         }
         &_text {
