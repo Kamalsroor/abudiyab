@@ -13,9 +13,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <title>{{ $title ? $title .' | '. app_name() : app_name() }}</title>
 
-    <meta name="title" content="ايجار سيارة - ابو ذياب ">
-    <meta name="description" content="إبحث عن سيارة للإيجار في أسطول سيارات ابو ذياب والكثير من الخيارات لكل فئات السيارات التي تتناسب مع غرضك أياً كان ">
-    <meta name="keywords" content="تأجير سيارات,ايجار سيارات ,ايجار سيارات حديثة ,ابو ذياب ,مكتب تاجير سيارات ,مكاتب تاجير سيارات ,تطبيق تأجير سيارات ,تأجير سيارات الرياض ,تأجير سيارات جدة ,تأجير سيارات الدمام ,تأجير سيارات أبها " />
+
+    <meta name="title" content="أبو دياب-لتأجير-السيارات ">
+    <meta name="description" content="ابحث عن سيارتك المفضلة بأحدث وافخم اسطول سيارات أبو ذياب 2021  ">
+    <meta name="keywords" content="تأجير سيارات,ايجار سيارات ,ايجار سيارات حديثة ,أبوذياب ,مكتب تاجير سيارات ,مكاتب تاجير سيارات ,تطبيق تأجير سيارات ,تأجير سيارات الرياض ,تأجير سيارات جدة ,تأجير سيارات الدمام ,تأجير سيارات أبها ,تأجير سيارات خميس مشيط" />
     @include('layouts.frontend.include.links')
 
     @yield('styles')
