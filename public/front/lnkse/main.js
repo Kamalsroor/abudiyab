@@ -18,9 +18,26 @@ function hide() {
     $('.show-less').css('display', 'none');
     $('.show-more').css('display', 'inline');
 };
+
+function carousel() {
+    $('.carousel').carousel({
+        interval: 7000
+
+    })
+}
+carousel()
+
+
 window.addEventListener("notLogin", function() {
     console.log("i'm here");
     $('#exampleModal').modal('toggle');
+})
+
+$('#filter-toggele').click(function() {
+    $('.toggeling-menue').toggleClass('d-none');
+})
+$('.cancel-toggle-menue').click(function() {
+    $('.toggeling-menue').toggleClass('d-none');
 })
 
 
@@ -31,7 +48,7 @@ function x() {
 };
 
 x();
-
+// $('.carNames').click(function())
 $('#toggel-profile').click(function() {
     $('#update-profile').toggleClass('d-none');
     $('#profile').toggleClass('d-none');
@@ -69,11 +86,9 @@ window.addEventListener("load", function() {
         })
     })
     $("#hamburger-bars").click(function() {
-        $('#menu').toggleClass("hidden")
+        $('#menu').toggleClass('d-none');
     })
-    $('.carousel').carousel({
-        interval: 1500
-    })
+
     $('.allcategory').click(function() {
         $.ajax({
             type: 'get',

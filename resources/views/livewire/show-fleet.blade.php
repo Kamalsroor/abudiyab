@@ -5,7 +5,7 @@
          <!-- top row -->
          <div class="row py-4">
 
-             <div class="col-lg-2 col-md-6">
+             <div class="col-lg-3 col-md-6">
                  <div class="form-group">
                     <p class="text-right">أختار المنطقة</p>
                     <select class="form-control" id="select2-dropdown" wire:model='searchTerm'>
@@ -72,8 +72,10 @@
              </div>
          </div>
          <div class="row py-2">
-             <div class="col-12 text-center">
-                 <button class="btn btn-primary btn-lg" wire:click='search'>ابحث الان </button>
+             <div class="col-12 d-flex align-items-center justify-content-between justify-content-lg-center">
+
+                 <i class="fas fa-filter color-black d-lg-none "  id="filter-toggele"></i>
+                 <button class="btn btn-primary btn-lg" wire:click='search' >ابحث الان </button>
 
              </div>
          </div>
@@ -82,10 +84,72 @@
          <!-- top row ends-->
      </div>
      <!--top container ends here -->
+
+     <!-- --------------------------toggeling menue starts here -->
+     <div class=" container-fluid mx-0 px-0 toggeling-menue d-none" style="height: 100vh;">
+            <div class="d-flex">
+                
+            <div style="width: 70%;height:100%;overflow-y:scroll;">
+             <div style="background-color:white;">
+                <select class="form-control" id="exampleFormControlSelect1" wire:model='filterPriceCategory'>
+                         <option class="color-black" value='DESC'>السعر من الاكثر الى الأقل</option>
+                         <option class="color-black" value='ASC'>السعر من الأقل إلى الأعلى</option>
+                         <option class="color-black" value='modelasc'>الموديل من الأقدم إلى الأحدث</option>
+                         <option class="color-black" value='modeldes'>الموديل من الأحدث إلى الأقدم</option>
+                </select>
+                <div style="background: #0941a8;" class="py-2 text-center justify-content-center">
+                    <p class="m-0">أختر السعر المناسب</p>
+                </div>
+                    <div class="range-slider my-3 text-center">
+
+                        <b class="mx-3"><i class="icofont icofont-cur-riyal"></i> {{$priceRangeNewEnd}}</b>
+                        <span  wire:ignore >
+
+                            <input style="width: 40%;" id="ex2" type="text" class="span2 ex2" value=""
+                            data-slider-min="10"
+                            data-slider-max="3000"
+                            data-slider-step="5"
+                            wire:model="priceRange"
+                            data-slider-value="[{{$priceRange ?? "10,3000"}}]" />
+                        </span>
+                        <b class="ml-2"><i class="icofont icofont-cur-riyal"></i> {{$priceRangeNewStart}}</b>
+
+                    </div>
+                <div style="background: #0941a8;" class="py-2 text-center mb-2">
+                    <p class="m-0 ">نوع السيارة</p>
+                </div>
+
+
+                        <div style="overflow-y:scroll;">
+                 @foreach( $categories as $category )
+
+                    <div>
+                    <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  class="my-check" id="i{{$category->id}}">
+                    <label for="i{{$category->id}}" style="display: contents;">
+                            <div class="align-right">
+                                <label style="margin-bottom: 0;" class="color-black" for="i{{$category->id}}">{{$category->name}}</label>
+                            </div>
+                        </label>
+                    </div>
+                 @endforeach
+                 </div>
+                 </div>
+                 </div>
+                 <div class="cancel-toggle-menue" style="width: 30%;">
+
+                 </div>
+                 
+             </div>
+               
+             </div>
+                            <!-- --------------------------toggeling menue ends here -->
      <!-- second container composed of right column and left container -->
      <div class="container-fluid" style="width:80%;">
+    
          <div class="row ">
-             <div class="col-lg-3 col-4 bg-block p-2 mb-2" style="background-color:white;">
+         
+             <div class="col-lg-3 d-none d-lg-block col-4 pr-0  mb-2" >
+             <div style="background-color:white;">
                 <select class="form-control" id="exampleFormControlSelect1" wire:model='filterPriceCategory'>
                          <option class="color-black" value='DESC'>السعر من الاكثر الى الأقل</option>
                          <option class="color-black" value='ASC'>السعر من الأقل إلى الأعلى</option>
@@ -127,8 +191,9 @@
                         </label>
                     </div>
                  @endforeach
+                 </div>
              </div>
-             <div class="col-lg-9 col-8 pl-0">
+             <div class="col-lg-9  col-md-12 px-0">
                  <!-- loop comes here -->
 
 
@@ -150,10 +215,11 @@
                                          <p style="color:red; font-weight: 700;"> {{$formcar->category?$formcar->category->name:'-'}}</p>
                                      </div>
                                      <div class="col-lg-3 col-12 text-right">
-                                         <i class="fas fa-exclamation-circle dollar" data-container="body" data-toggle="popover" data-placement="right" data-content="عرض خصم (5%)"></i>
+                                         <i class="fas fa-exclamation-circle dollar d-none d-lg-block" data-container="body" data-toggle="popover" data-placement="right" data-content="عرض خصم (5%)"></i>
                                          <p class="color-black">السعر لليوم الواحد</p>
                                          <div style="font-size: 35px;">
-                                            <span class="color-black" style="text-decoration: line-through;font-size: 25px;color: #777;"><i class="icofont icofont-cur-riyal color-black"></i>{{$formcar->price2}}</span><span class="color-black" style="display: block;"><i class="icofont icofont-cur-riyal color-black"></i>{{$formcar->price1}}</span>
+                                            <span class="color-black" style="text-decoration: line-through;font-size: 25px;color: #777;"><i class="icofont icofont-cur-riyal color-black"></i>{{$formcar->price2}}</span>
+                                            <span class="color-black price1" ><i class="icofont icofont-cur-riyal color-black"></i>{{$formcar->price1}}</span>
                                          </div>
 
                                      </div>

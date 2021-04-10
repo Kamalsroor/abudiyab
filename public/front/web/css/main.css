@@ -449,6 +449,45 @@ i.fas.fa-bookmark {
     background-size: cover;
 }
 
+
+.information-card{
+    animation: mymove 0.8s ease-in-out ;
+    animation-iteration-count: 3;   
+     position: relative;
+ 
+}
+@keyframes mymove {
+    0%   {transform:rotate(3deg);}
+    25%  {transform: rotate(-3deg);}
+    50%  {transform: rotate(3deg);}
+    75%  {transform: rotate(-3deg);}
+    100% {transform: rotate(0deg);}
+  }
+
+  .price1{
+      display: block;
+  }
+
+  .toggeling-menue{
+    
+      z-index:1000;
+      background-color: #002452d7;
+      position: fixed;
+      top: 0;
+      right: 0;
+  }
+  #filter-toggele{
+      font-size: 30px;
+      cursor: pointer;
+  }
+
+
+  .carousel-inner>.carousel-item {
+    -webkit-transition: -webkit-transform 1.2s ease-in-out !important;
+    -o-transition: -o-transform 1.2s ease-in-out !important;
+    transition: transform 1.2s ease-in-out !important;
+}
+
 @media only screen and (max-width: 600px) {
     label.color-black {
         font-size: 12px;
@@ -508,4 +547,9 @@ i.fas.fa-bookmark {
     .small-screen-nav {
         display: block;
     }
+    .price1{
+        display: inline;
+        margin-left: 10px;
+    }
+
 }

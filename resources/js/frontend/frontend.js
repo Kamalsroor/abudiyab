@@ -1,6 +1,168 @@
 require('./bootstrap');
 
 
+
+
+
+$(document).ready(function() {
+    /* general variables */
+
+    // html
+    const html = document.querySelector('html');
+
+
+    $("#hamburger-bars").click(function() {
+        $('#menu').toggleClass('d-none');
+    })
+
+
+    // const homeCarousel = $('.home-carousel');
+    // if (homeCarousel.length) {
+    //     $('.home-slider').carousel({
+    //         interval: 7000
+    //     })
+    // }
+
+
+
+    const homeCategory = $('.home-category');
+    if (homeCategory.length) {
+        const togellerBtn = $('#home-category__togeller');
+
+
+        togellerBtn.on('click', function() {
+            const categoryItem = $(this).parents('.home-category__conent').find('.home-category__item.not-active');
+            const categoryItemActive = $(this).parents('.home-category__conent').find('.home-category__item.active');
+            if (categoryItem.length) {
+                categoryItem.removeClass('not-active').addClass('active')
+                $(this).text($(this).data('less'));
+            } else if (categoryItemActive.length) {
+                categoryItemActive.addClass('not-active').removeClass('active')
+                $(this).text($(this).data('more'));
+            }
+        });
+
+
+
+    }
+
+
+
+
+    $('.car-model__heading').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        centerMode: true,
+        dots: false,
+        arrows: false,
+        rtl: html.dir === 'rtl',
+        autoplay: true,
+        autoplaySpeed: 6000,
+        responsive: [{
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 2,
+                    centerMode: false,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                }
+            },
+        ]
+    });
+
+
+    $('.car-details__heading').slick({
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        centerMode: false,
+        dots: false,
+        arrows: false,
+        rtl: html.dir === 'rtl',
+        autoplay: true,
+        autoplaySpeed: 1500,
+        responsive: [{
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 1,
+                    centerMode: true,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 2,
+                    centerMode: true,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 3,
+                    centerMode: true,
+                    slidesToScroll: 1,
+                }
+            },
+        ]
+    });
+
+    $('.home-our-partners__content').slick({
+        slidesToShow: 6,
+        slidesToScroll: 1,
+        centerMode: false,
+        dots: false,
+        arrows: false,
+        rtl: html.dir === 'rtl',
+        autoplay: true,
+        autoplaySpeed: 1500,
+        responsive: [{
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 3,
+                    centerMode: false,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 4,
+                    centerMode: false,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 4,
+                    centerMode: false,
+                    slidesToScroll: 1,
+                }
+            },
+        ]
+    });
+
+
+
+
+
+
+
+});
 // $(document).ready(function() {
 //     /*================
 //      / General Functions /
@@ -711,4 +873,3 @@ require('./bootstrap');
 
 
 // });
-
