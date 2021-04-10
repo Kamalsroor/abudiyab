@@ -1,6 +1,7 @@
 /*=============
     fixed navbar
 ==============*/
+
 @keyframes fixed-navbar {
     from {
         top: -60px;
@@ -10,9 +11,27 @@
     }
 }
 
+
+/*=============
+    show-category
+==============*/
+
+@keyframes show-category {
+    from {
+        height: 66px;
+        max-height: 66px;
+    }
+    to {
+        height: 66px * 4;
+        max-height: 66px * 4;
+    }
+}
+
+
 /*=============
     show sidebar
 ==============*/
+
 @keyframes show-sidebar {
     from {
         #{$end}: -100%;
@@ -22,9 +41,11 @@
     }
 }
 
+
 /*=============
     hide sidebar
 ==============*/
+
 @keyframes hide-sidebar {
     from {
         #{$end}: 0;
@@ -34,9 +55,11 @@
     }
 }
 
+
 /*=============
     show theme-box
 ==============*/
+
 @keyframes show-theme-box {
     from {
         #{$end}: -120px;
@@ -46,9 +69,11 @@
     }
 }
 
+
 /*=============
     hide theme-box
 ==============*/
+
 @keyframes hide-theme-box {
     from {
         #{$end}: 0;
@@ -58,9 +83,11 @@
     }
 }
 
+
 /*=============
     infinity rotate
 ==============*/
+
 @keyframes infinite-rotate {
     from {
         transform: rotate(0deg);
@@ -70,19 +97,20 @@
     }
 }
 
-@keyframes loader{
-	0%{
-		transform:rotate(0deg);
-	}
-	100%{
-		transform:rotate(360deg);
-	}
+@keyframes loader {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 
 /*=============
     video shadow
 ==============*/
+
 @keyframes video-shadow {
     0% {
         box-shadow: none;
@@ -96,6 +124,7 @@
 /*=============
     workflow shadow
 ==============*/
+
 @keyframes workflow-shadow {
     0% {
         box-shadow: none;
@@ -106,10 +135,10 @@
 }
 
 
-
 /*=============
    floating element
 ==============*/
+
 @keyframes floating {
     0% {
         transform: translateY(-20px);
@@ -117,7 +146,6 @@
     25% {
         transform: translateX(20px);
     }
-
     50% {
         transform: translateY(20px);
     }

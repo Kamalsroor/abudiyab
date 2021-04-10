@@ -41,7 +41,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!--================
             main Navbar
         =================-->
-        {{-- <!-- @include('layouts.frontend.include.navbar') --> --}}
+      @include('layouts.frontend.include.navbar')
+        <!--================
+            main Navbar
+        =================-->
+        
 
         <div class="container-fluid px-0">
 
@@ -56,7 +60,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         - Footer -
         ===========-->
 
-        <!-- @include('layouts.frontend.include.footer') -->
+        @include('layouts.frontend.include.footer')
 
 
         <!-- General Components -->
@@ -73,8 +77,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="{{asset('front/lnkse/bootstrap.bundle.js')}}"></script>
     <script src="{{asset('front/lnkse/bootstrap.js')}}"></script>
 
-    <script src="{{asset('front/lnkse/main.js')}}"></script>
+    {{-- <script src="{{asset('front/lnkse/main.js')}}"></script> --}}
+    
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <script src="{{ asset(mix('/js/frontend.js')) }}"></script>
 
     <!-- ------------START-----SCRIPT-------LOAD------------ -->
     <script type="text/javascript">
@@ -85,7 +92,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </script>
     <!-- ------------END------SCRIPT------LOAD------------ -->
 
-{{-- <script src="{{ asset(mix('/js/frontend.js')) }}"></script> --}}
 
 @stack('scripts')
 

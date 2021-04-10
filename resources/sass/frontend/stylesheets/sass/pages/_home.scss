@@ -1,6 +1,7 @@
 /*==========
     Home Header
 ==========*/
+
 .header {
     background-size: cover;
     &__item {
@@ -17,23 +18,12 @@
                 @include padding($left: 4rem);
             }
             span.head-subtitle {
-                @include font(
-                    $size: .9rem,
-                    $family: 'Sitka Small',
-                    $weight: bold,
-                    $transform: uppercase,
-                );
+                @include font( $size: .9rem, $family: 'Sitka Small', $weight: bold, $transform: uppercase, );
                 color: get-color(secondary);
-                
             }
             h1 {
                 padding-top: .5rem;
-                @include font(
-                    $size: 3rem,
-                    $family: 'Segoe UI',
-                    $weight: bold,
-                    $transform: capitalize,
-                );
+                @include font( $size: 3rem, $family: 'Segoe UI', $weight: bold, $transform: capitalize, );
                 line-height: 1.2;
                 color: get-color(light);
                 padding-bottom: 1rem;
@@ -55,9 +45,187 @@
     }
 }
 
+.home-category {
+    padding: 20px 0 40px 0;
+    @include margin($top: 22px);
+    &__heading {
+        text-align: center;
+        @include largeScreen {
+            margin: 0px auto;
+        }
+    }
+    &__conent {
+        .row:nth-of-type(1) {
+            overflow: hidden;
+            transition: all ease-in-out 0.8s;
+            @include mediumScreen {
+                transition: all ease-in-out 1.8s;
+            }
+        }
+        .active {
+            height: 66px *4;
+            @include largeScreen {
+                height: 66px * 5 + 5px;
+            }
+            @include smallScreen {
+                height: 66px * 14 + 5px;
+            }
+        }
+        .not-active {
+            height: 66px+3px;
+            @include smallScreen {
+                height: 66px * 4 + 5px;
+            }
+        }
+    }
+}
+
+.car-model {
+    background-color: get-color(gray);
+    padding: 40px 0;
+    .slick-slide {
+        padding-left: 3px;
+        padding-right: 3px;
+        margin-right: 5px;
+        margin-left: 5px;
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: "Segoe UI";
+        text-transform: capitalize;
+        font-weight: bold;
+        letter-spacing: 1px;
+        .car-model__item {
+            color: get-color(primary);
+            border: 1px transparent solid;
+            border-radius: 20px;
+            p {
+                margin-bottom: 0px;
+            }
+        }
+        &.slick-active {
+            .car-model__item {
+                border: 1px get-color(secondary-light) solid;
+            }
+            &.slick-current {
+                .car-model__item {
+                    background-color: get-color(primary);
+                    color: get-color(light);
+                    border: 1px get-color(secondary-light) solid;
+                }
+            }
+        }
+    }
+    .car-price-section {
+        flex-direction: column;
+        color: get-color(error);
+        font-size: 25px;
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: "Segoe UI";
+        text-transform: capitalize;
+        font-weight: bold;
+        letter-spacing: 1px;
+        .after-price {
+            font-size: 70px;
+            @include smallScreen {
+                font-size: 60px;
+            }
+            font-weight: 700;
+            margin-bottom: 0;
+        }
+        @include smallScreen {
+            .primary-btn {
+                text-align: center;
+                font-size: 20px;
+                font-weight: bold;
+                font-family: "Segoe UI";
+                text-transform: capitalize;
+                font-weight: bold;
+                letter-spacing: 1px;
+            }
+        }
+    }
+    .car-details__heading {
+        // style for all slick slides
+        color: get-color(light);
+        .slick-slide {
+            margin: 0;
+            div {
+                border-radius: 5px;
+                background-color: get-color(primary);
+                text-align: center;
+                font-size: 1.25rem;
+                line-height: 1.5;
+                display: flex;
+            }
+        }
+    }
+}
+
+.carousel-inner {
+    color: get-color(light);
+    h1 {
+        padding-right: 15px;
+        @include smallScreen {
+            font-size: 16px;
+        }
+    }
+}
+
+.home-linking-section {
+    background-image: url('../../../imgs/mercedes4.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 500px;
+    div {
+        background-color: #19287aad;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        h2 {
+            position: absolute;
+            font-size: 60px;
+            font-weight: 500;
+            color: get-color(light);
+            @include smallScreen {
+                font-size: 30px;
+            }
+        }
+    }
+}
+
+.home-our-partners {
+    .home-our-partners__heading {
+        padding: 10px 0;
+        span {
+            text-align: center;
+        }
+    }
+    .home-our-partners__content {
+        width: 70%;
+        margin: auto;
+        .slick-slider {
+            padding: 0 5px;
+            img {
+                width: 100%;
+                margin: auto;
+            }
+        }
+    }
+}
+
+
 /*==========
     About us
 ==========*/
+
 .about-home {
     padding: 3rem 0;
     &__content {
@@ -99,9 +267,7 @@
                 color: get-color(light);
             }
         }
-        
     }
-
     &__img {
         padding-bottom: 3rem;
         img {
@@ -110,14 +276,15 @@
             @include largeScreen {
                 height: 400px;
             }
-
         }
     }
 }
 
+
 /*==========
     get business
 ==========*/
+
 .get-online-business {
     padding: 3rem 0;
     @include largeScreen {
@@ -131,10 +298,8 @@
             @include largeScreen {
                 height: 600px;
             }
-
         }
     }
-
     &__content {
         padding-top: 3rem;
         &__item {
@@ -150,23 +315,18 @@
                 }
                 &:nth-of-type(2) {
                     color: get-color(secondary);
-                    @include font(
-                        $size: 1rem,
-                        $family: 'Sitka Small',
-                        $transform: capitalize,
-                    )
+                    @include font( $size: 1rem, $family: 'Sitka Small', $transform: capitalize, )
                 }
             }
         }
-
     }
-
-
 }
+
 
 /*==========
     Work flow
 ==========*/
+
 .work-flow {
     background-size: cover;
     padding: 3rem 0;
@@ -174,23 +334,13 @@
         text-align: center;
         padding-bottom: 1rem;
         color: get-color(secondary);
-        @include font(
-            $size: 1.2rem,
-            $transform: uppercase,
-            $family: 'Sitka Small',
-        )
+        @include font( $size: 1.2rem, $transform: uppercase, $family: 'Sitka Small', )
     }
-
     &__title {
         text-align: center;
         color: get-color(light);
-        @include font(
-            $size: 2rem,
-            $transform: uppercase,
-            $family: 'Times New Roman',
-        )
+        @include font( $size: 2rem, $transform: uppercase, $family: 'Times New Roman', )
     }
-
     $self: &;
     .slick-current {
         #{$self}__process {
@@ -210,13 +360,11 @@
                                 animation: workflow-shadow 5s infinite linear forwards;
                             }
                         }
-                        
                     }
                 }
             }
         }
     }
-
     &__process {
         padding: 2.5rem 0 3.5rem;
         &__item {
@@ -253,18 +401,12 @@
                     }
                     &:nth-of-type(2) {
                         color: get-color(light);
-                        @include font(
-                            $size: 1.1rem,
-                            $family: 'Segoe UI',
-                            $transform: capitalize,
-                            $weight: bold,
-                        )
+                        @include font( $size: 1.1rem, $family: 'Segoe UI', $transform: capitalize, $weight: bold, )
                     }
                 }
             }
         }
     }
-
     &__btn {
         button {
             span {
@@ -278,18 +420,19 @@
     }
 }
 
+
 /*==========
     services
 ==========*/
+
 .services-home {
     padding: 3rem 0;
-    &__heading  {
+    &__heading {
         text-align: center;
         @include largeScreen {
             width: 75%;
             margin: 0px auto;
         }
-
         .g-subtitle {
             font-size: 1.5rem;
         }
@@ -310,7 +453,6 @@
                 width: calc(100% / 3);
                 padding: 1rem 1rem;
             }
-            
             &__box {
                 text-align: center;
                 transition: .5s;
@@ -324,25 +466,15 @@
                     span {
                         display: block;
                         padding: 1rem 0;
-                        @include font(
-                            $transform: capitalize,
-                            $family: 'Sitka Small',
-                            $weight: bold,
-                            $size: 1.2rem,
-                        );
+                        @include font( $transform: capitalize, $family: 'Sitka Small', $weight: bold, $size: 1.2rem, );
                         color: get-color(dark);
                     }
                     p {
                         padding-bottom: .5rem;
-                        @include font(
-                            $family: 'Segoe UI',
-                            $size: .9rem,
-                            $weight: bold,
-                        );
+                        @include font( $family: 'Segoe UI', $size: .9rem, $weight: bold, );
                         color: get-color(text);
                     }
                 }
-
                 &:hover {
                     transition: .5s;
                     box-shadow: 0px 10px 10px #00000029;
@@ -352,9 +484,11 @@
     }
 }
 
+
 /*==========
     testmonials
 ==========*/
+
 .testmonials {
     background: transparent linear-gradient(180deg, #4C0ACC 0%, #260566 100%) 0% 0% no-repeat padding-box;
     padding: 4rem 0;
@@ -362,21 +496,12 @@
         text-align: center;
         padding-bottom: 1rem;
         color: get-color(secondary);
-        @include font(
-            $size: 1.2rem,
-            $transform: uppercase,
-            $family: 'Sitka Small',
-        )
+        @include font( $size: 1.2rem, $transform: uppercase, $family: 'Sitka Small', )
     }
-
     &__title {
         text-align: center;
         color: get-color(light);
-        @include font(
-            $size: 2rem,
-            $transform: uppercase,
-            $family: 'Times New Roman',
-        )
+        @include font( $size: 2rem, $transform: uppercase, $family: 'Times New Roman', )
     }
     &__text {
         &__item {
@@ -384,30 +509,27 @@
             margin: 2rem auto;
             line-height: 1.6;
             padding: 0 1rem;
-            @include font(
-                $size: .95rem,
-                $family: 'Segoe UI',
-                $weight: bold,
-            );
+            @include font( $size: .95rem, $family: 'Segoe UI', $weight: bold, );
             @include largeScreen {
                 width: 70%;
                 margin: 4rem auto 3rem;
             }
             &::before {
-                @include fontAwesome('\f10d', 'solid');
+                @include fontAwesome('\f10d',
+                'solid');
                 position: relative;
                 #{$start}: -1rem;
                 bottom: .5rem;
                 color: get-color(secondary);
             }
             &::after {
-                @include fontAwesome('\f10e', 'solid');
+                @include fontAwesome('\f10e',
+                'solid');
                 position: relative;
                 #{$end}: -1rem;
                 top: .5rem;
                 color: get-color(secondary);
             }
-
         }
     }
     &__clients {
@@ -434,18 +556,16 @@
     }
 }
 
+
 /*==========
     plans
 ==========*/
+
 .plans {
     padding: 4rem 0;
     &__heading {
         .g-subtitle {
-            @include font(
-                $size: 1.2rem,
-                $weight: bold,
-                $transform: uppercase,
-            )
+            @include font( $size: 1.2rem, $weight: bold, $transform: uppercase, )
         }
         &__control {
             width: 280px;
@@ -483,12 +603,7 @@
                 color: get-color(light);
                 position: relative;
                 z-index: 2;
-                @include font(
-                    $size: 1rem,
-                    $weight: bold,
-                    $transform: capitalize,
-                    $family: 'Sitak Small',
-                );
+                @include font( $size: 1rem, $weight: bold, $transform: capitalize, $family: 'Sitak Small', );
                 &.active {
                     color: get-color(light-error);
                 }
@@ -506,7 +621,6 @@
                     &__head {
                         color: get-color(light);
                     }
-                    
                     &__price {
                         color: get-color(light);
                     }
@@ -523,20 +637,13 @@
                     }
                 }
             }
-            
             &__box {
                 background: get-color(light);
                 box-shadow: 0px 10px 10px #00000029;
                 padding: 2rem 1rem;
                 text-align: center;
-                
                 &__head {
-                    @include font(
-                        $transform: uppercase,
-                        $family: 'Sitka Small',
-                        $weight: bold,
-                        $size: 1.3rem,
-                    );
+                    @include font( $transform: uppercase, $family: 'Sitka Small', $weight: bold, $size: 1.3rem, );
                     color: get-color(light-error);
                     padding-bottom: 1rem;
                 }
@@ -547,12 +654,7 @@
                     }
                 }
                 &__price {
-                    @include font(
-                        $transform: uppercase,
-                        $family: 'Times New Roman',
-                        $weight: bold,
-                        $size: 1.3rem,
-                    );
+                    @include font( $transform: uppercase, $family: 'Times New Roman', $weight: bold, $size: 1.3rem, );
                     color: get-color(primary);
                     padding: 1rem 0;
                     span {
@@ -581,13 +683,7 @@
                     a {
                         background: transparent linear-gradient(90deg, #A40DCA 0%, #15146D 100%) 0% 0% no-repeat padding-box;
                         color: get-color(light);
-                        @include font(
-                            $size: 1.1rem,
-                            $transform: uppercase,
-                            $weight: bold,
-                            $family: 'Segoe UI',
-
-                        );
+                        @include font( $size: 1.1rem, $transform: uppercase, $weight: bold, $family: 'Segoe UI', );
                         padding: .4rem 1.3rem;
                         border-radius: 25px;
                     }
@@ -597,15 +693,16 @@
     }
 }
 
+
 /*==========
     contact
 ==========*/
+
 .contact {
     background: transparent linear-gradient(100deg, #00CCEB 0%, #4B13B6 100%) 0% 0% no-repeat padding-box;
     .container {
         padding: 3rem 0;
         position: relative;
-        
     }
     &__shape1 {
         position: absolute;
@@ -632,26 +729,15 @@
         }
         h5 {
             color: get-color(light);
-            @include font(
-                $size: 2.5rem,
-                $transform: capitalize,
-                $weight: bold,
-                $family: 'Times New Roman',
-
-            )
+            @include font( $size: 2.5rem, $transform: capitalize, $weight: bold, $family: 'Times New Roman', )
         }
         p {
             color: #ddd;
-            @include font(
-                $size: .9rem,
-                $transform: capitalize,
-                $family: 'Segoe UI',
-            );
+            @include font( $size: .9rem, $transform: capitalize, $family: 'Segoe UI', );
         }
     }
     &__btn {
         padding-top: 2rem;
-        
         .btn-hover {
             border: 2px solid get-color(light);
             color: get-color(light);
@@ -667,19 +753,17 @@
     }
 }
 
+
 /*==========
     blog
 ==========*/
+
 .blog {
     padding: 6rem 0;
     &__heading {
         text-align: center;
         .g-subtitle {
-            @include font(
-                $size: 1.2rem,
-                $weight: bold,
-                $transform: uppercase,
-            )
+            @include font( $size: 1.2rem, $weight: bold, $transform: uppercase, )
         }
     }
     &__cards {
@@ -708,37 +792,21 @@
                     transition: .5s;
                     &__time {
                         padding: .5rem .7rem;
-                        @include font(
-                            $transform: capitalize,
-                            $family: 'Segoe UI',
-                            $weight: bold,
-                            $size: .9rem,
-                        );
+                        @include font( $transform: capitalize, $family: 'Segoe UI', $weight: bold, $size: .9rem, );
                         color: get-color(light);
                         background: get-color(light-error);
                     }
                     &__detail {
                         margin: 1rem 0 .5rem;
-                        @include font(
-                            $transform: capitalize,
-                            $family: 'Times New Roman',
-                            $weight: bold,
-                            $size: 1.1rem,
-                        );
+                        @include font( $transform: capitalize, $family: 'Times New Roman', $weight: bold, $size: 1.1rem, );
                         color: get-color(primary-light);
                     }
                     &__btn {
                         color: get-color(secondary);
-                        @include font(
-                            $size: .8rem,
-                            $family: 'Sitka Small',
-                            $weight: bold,
-                            $transform: uppercase,
-                        )
+                        @include font( $size: .8rem, $family: 'Sitka Small', $weight: bold, $transform: uppercase, )
                     }
                 }
             }
-
             $slef: &;
             &:hover {
                 #{$slef}__box__content {
@@ -754,11 +822,11 @@
 /*==========
     brand
 ==========*/
+
 .brand {
-    padding: 1rem 0 ;
+    padding: 1rem 0;
     @include largeScreen {
         padding: 2rem 0 5rem;
-
     }
     &__cards {
         &__item {

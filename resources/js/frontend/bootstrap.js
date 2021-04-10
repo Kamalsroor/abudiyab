@@ -12,7 +12,7 @@ try {
 
     window.toastr = require('toastr');
     // require('jquery.nicescroll');
-    // require('slick-carousel');
+    require('slick-carousel');
     // require('jquery-validation');
 
 

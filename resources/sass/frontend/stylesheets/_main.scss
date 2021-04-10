@@ -21,6 +21,7 @@
 ==========*/
 
 @import 'sass/components/buttons';
+@import 'sass/components/head';
 // @import 'sass/components/dropdown';
 // @import 'sass/components/sidebar';
 // @import 'sass/components/slick-dots';
@@ -30,15 +31,14 @@
 // @import 'sass/components/search-box';
 // @import 'sass/components/social-media';
 // @import 'sass/components/add-comment';
-// @import 'sass/components/head';
 // @import 'sass/components/custom-header';
-
 
 /*==========
     Import layout files
 ==========*/
 
 @import 'sass/layout/navbar';
+@import 'sass/layout/master';
 @import 'sass/layout/footer';
 
 /*==========
@@ -53,4 +53,3 @@
 // @import 'sass/pages/contact';
 // @import 'sass/pages/search';
 // @import 'sass/pages/profile';
-
