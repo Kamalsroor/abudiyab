@@ -181,6 +181,7 @@
         </div>
     </section>
 
+    
     <section class="home-our-partners">
 
         <div class="home-our-partners__heading"> 

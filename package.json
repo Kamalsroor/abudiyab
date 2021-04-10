@@ -32,5 +32,8 @@
         "vue-loader": "^15.9.6",
         "vue-template-compiler": "^2.6.12",
         "webpack-rtl-plugin": "^2.0.0"
+    },
+    "dependencies": {
+        "slick-carousel": "^1.8.1"
     }
 }

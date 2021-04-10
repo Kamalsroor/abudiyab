@@ -1,0 +1,18 @@
+.fleet-top-container {
+    width: 80%;
+    background-color: white;
+    margin: auto;
+    #Favorite {
+        background-color: get-color(gray);
+        &.active {
+            background-color: get-color(error);
+            color: get-color(light);
+        }
+    }
+}
+
+.fleet-filter-menu {
+    .toggeling-menue {
+        height: 100vh;
+    }
+}
