@@ -224,6 +224,19 @@
     }
 }
 
+.small-screen-navbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    background-image: linear-gradient( 91deg, #0d157b 15%, #0095ff 121%);
+    color: get-color(light);
+    font-size: 16px;
+    a {
+        color: get-color(light);
+    }
+}
+
 #menu {
     position: absolute;
     width: 100%;

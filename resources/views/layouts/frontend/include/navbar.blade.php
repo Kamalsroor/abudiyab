@@ -1,4 +1,5 @@
 
+
 <div class="main-navbar container-fluid d-md-block d-lg-block">
     <div class="container-fluid mx-0">
         <div class="row ">
@@ -126,6 +127,19 @@
                 <a href="#" class="mx-0 px-0 col-3 d-flex justify-content-center align-items-center" ><i class="far fa-newspaper"></i>المركز الأعلامى</a>
             </div>
         </div>
+
+
+</div>
+
+<div class="small-screen-navbar container-fluid mx-0 px-0">
+    <div class="row" >
+
+        <div class="col-3 py-3 text-center"><a class="mx-3" href="{{route('front.main')}}">الرئيسية</a></div>
+        <div class="col-3 py-3 text-center"><i class="fas fa-car"></i></div>
+        <div class="col-3 py-3 text-center"><i class="fas fa-bars" id="hamburger-bars" ></i></div>
+        <div class="col-3 py-3 text-center"><i class="fas fa-sign-in-alt"></i></div>
+
+    </div>
 
 
 </div>
