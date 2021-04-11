@@ -1256,8 +1256,13 @@ textarea {
   text-align: center;
 }
 .home-our-partners .home-our-partners__content {
-  width: 70%;
+  width: 50%;
   margin: auto;
+}
+@media (max-width: 767px) {
+  .home-our-partners .home-our-partners__content {
+    width: 70%;
+  }
 }
 .home-our-partners .home-our-partners__content .slick-slider {
   padding: 0 5px;
