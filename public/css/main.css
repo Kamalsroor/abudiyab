@@ -802,6 +802,10 @@ input, textarea {
 }
 .small-screen-navbar a {
   color: #ffffff;
+  cursor: pointer;
+}
+.small-screen-navbar i {
+  cursor: pointer;
 }
 
 #menu {
@@ -819,6 +823,7 @@ input, textarea {
   height: 16vw;
   border: solid white 1px;
   flex-direction: column;
+  text-align: center;
 }
 @media (max-width: 576px) {
   #menu a {
@@ -828,6 +833,13 @@ input, textarea {
 #menu a:hover {
   background-color: #19287a;
   color: #ffffff;
+}
+@media (max-width: 767px) {
+  #menu {
+    position: fixed;
+    left: 0;
+    bottom: 50px;
+  }
 }
 
 /*==========
@@ -904,6 +916,12 @@ input, textarea {
   background: linear-gradient(91deg, #0d157b 15%, #056cd5 121%);
   color: #ffffff;
   text-align: center;
+  padding-bottom: 50px;
+}
+@media (max-width: 576px) {
+  .footer {
+    padding-bottom: 50px;
+  }
 }
 .footer .container {
   max-width: 100%;
@@ -1088,6 +1106,12 @@ input, textarea {
   .home-category__conent .not-active {
     height: 269px;
   }
+}
+.home-category #home-category__togeller:hover .fa-angle-double-down {
+  transform: translateY(3px);
+}
+.home-category #home-category__togeller:hover .fa-angle-double-up {
+  transform: translateY(-3px);
 }
 
 .car-model {

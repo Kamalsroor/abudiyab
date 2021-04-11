@@ -120,7 +120,7 @@
                         </div>
                 </div>
                 <div class="row px-0 mx-0 justify-content-center mt-4" >
-                    <button type="button" id="home-category__togeller" class="col-12 col-sm-6 col-md-3  btn-lg primary-btn btn-hover btn-curved" data-more="المزيد"  data-less="القليل" >المزيد</button>
+                    <button type="button" id="home-category__togeller" class=" px-4 py-2  primary-btn btn-hover btn-curved" data-more="<i class='fas fa-angle-double-down'></i>"  data-less="<i class='fas fa-angle-double-up'></i>" ><i class='fas fa-angle-double-down'></i> </button>
                 </div>
             </div>
         </div>
