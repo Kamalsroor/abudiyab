@@ -36,6 +36,8 @@
               <x-check-all></x-check-all>
             </th>
             <th>@lang('sliders.attributes.name')</th>
+            <th>@lang('sliders.attributes.first_header')</th>
+            <th>@lang('sliders.attributes.second_header')</th>
             <th>@lang('sliders.attributes.created_at')</th>
             <th style="width: 160px">...</th>
         </tr>
@@ -56,6 +58,8 @@
                         {{ $slider->name }}
                     </a>
                 </td>
+                <td>{{ $slider->first_header }}</td>
+                <td>{{ $slider->second_header }}</td>
                 <td>{{ $slider->created_at->format('Y-m-d') }}</td>
 
                 <td style="width: 160px">

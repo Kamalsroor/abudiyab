@@ -11,7 +11,7 @@ class SliderTranslation extends Model
      *
      * @var array
      */
-    protected $fillable = ['name'];
+    protected $fillable = ['name','first_header','second_header'];
 
     /**
      * Indicates if the model should be timestamped.

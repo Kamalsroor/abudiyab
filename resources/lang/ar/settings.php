@@ -64,6 +64,8 @@ return [
         'pusher_app_scheme' => 'Pusher App Scheme',
         'home_links_backgraund' => 'قسم الربط : الصوره الخلفيه',
         'home_links_title' => 'قسم الربط : العنوان الرئيسي',
+        'first_header' => 'اول عنوان',
+        'second_header' => 'ثاني عنوان',
 
 
         'about_home_title' => 'قسم حولنا : العنوان الرئيسي',

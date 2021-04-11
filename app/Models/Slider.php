@@ -29,7 +29,7 @@ class Slider extends Model implements HasMedia, TranslatableContract
      *
      * @var array
      */
-    public $translatedAttributes = ['name'];
+    public $translatedAttributes = ['name','first_header','second_header'];
 
     /**
      * The attributes that are mass assignable.
@@ -38,6 +38,8 @@ class Slider extends Model implements HasMedia, TranslatableContract
      */
     protected $fillable = [
         'name',
+        'first_header',
+        'second_header',
     ];
 
     /**

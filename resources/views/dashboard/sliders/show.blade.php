@@ -1,6 +1,6 @@
 <x-layout :title="$slider->name" :breadcrumbs="['dashboard.sliders.show', $slider]">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             @component('dashboard::components.box')
                 @slot('class', 'p-0')
                 @slot('bodyClass', 'p-0')
@@ -10,6 +10,17 @@
                     <tr>
                         <th width="200">@lang('sliders.attributes.name')</th>
                         <td>{{ $slider->name }}</td>
+                    </tr>
+
+
+                    <tr>
+                        <th width="200">@lang('sliders.attributes.first_header')</th>
+                        <td>{{ $slider->first_header}}</td>
+                    </tr>
+
+                    <tr>
+                        <th width="200">@lang('sliders.attributes.second_header')</th>
+                        <td>{{ $slider->second_header}}</td>
                     </tr>
                     @if($slider->getFirstMedia())
                         <tr>

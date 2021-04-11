@@ -17,87 +17,17 @@
                 <li data-target="#carouselExampleIndicators" data-slide-to="8"></li>
             </ol>
             <div class="carousel-inner">
-                <div class="carousel-item active ">
+                @foreach ($sliders as $slider )
+                <div class='carousel-item {{ $loop->first ? "active" : " " }}' >
                     <div class="d-flex align-items-center">
-                        <img src="{{asset('front/img/finalsliders/slide_new222.jpg')}}" class="d-block w-100" alt="carousel image">
+                        <img src="{{$slider->getFirstMediaUrl()}}" class="d-block w-100" alt="carousel image">
                         <div class="abs">
-                            <h1>عملائنا الأعزاء..</h1>
-                            <h1>سلامتك تهمنا</h1>
+                            <h1>{{ $slider->first_header }}</h1>
+                            <h1>{{ $slider->second_header }}</h1>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <div class="d-flex align-items-center">
-                        <img src="{{asset('front/img/finalsliders/slide_new_1.jpg')}}" class="d-block w-100" alt="carousel image">
-                        <div class="abs">
-                            <h1>عملائنا الأعزاء..</h1>
-                            <h1>سلامتك تهمنا</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="d-flex align-items-center">
-                        <img src="{{asset('front/img/finalsliders/slide_new_2.jpg')}}" class="d-block w-100" alt="carousel image">
-                        <div class="abs">
-                            <h1>عملائنا الأعزاء..</h1>
-                            <h1>سلامتك تهمنا</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="d-flex align-items-center">
-                        <img src="{{asset('front/img/finalsliders/slide_5.jpg')}}" class="d-block w-100" alt="carousel image">
-                        <div class="abs">
-                            <h1>عملائنا الأعزاء..</h1>
-                            <h1>سلامتك تهمنا</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="d-flex align-items-center">
-                        <img src="{{asset('front/img/finalsliders/slide_new_6.jpg')}}" class="d-block w-100" alt="carousel image">
-                        <div class="abs">
-                            <h1>عملائنا الأعزاء..</h1>
-                            <h1>سلامتك تهمنا</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="d-flex align-items-center">
-                        <img src="{{asset('front/img/finalsliders/1.jpg')}}" class="d-block w-100" alt="carousel image">
-                        <div class="abs">
-                            <h1>عملائنا الأعزاء..</h1>
-                            <h1>سلامتك تهمنا</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="d-flex align-items-center">
-                        <img src="{{asset('front/img/finalsliders/2.jpg')}}" class="d-block w-100" alt="carousel image">
-                        <div class="abs">
-                            <h1>عملائنا الأعزاء..</h1>
-                            <h1>سلامتك تهمنا</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="d-flex align-items-center">
-                        <img src="{{asset('front/img/finalsliders/3.jpg')}}" class="d-block w-100" alt="carousel image">
-                        <div class="abs">
-                            <h1>عملائنا الأعزاء..</h1>
-                            <h1>سلامتك تهمنا</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="d-flex align-items-center">
-                        <img src="{{asset('front/img/finalsliders/4.jpg')}}" class="d-block w-100" alt="carousel image">
-                        <div class="abs">
-                            <h1>عملائنا الأعزاء..</h1>
-                            <h1>سلامتك تهمنا</h1>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
 
         </div>

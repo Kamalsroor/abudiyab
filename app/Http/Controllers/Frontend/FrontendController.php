@@ -9,6 +9,7 @@ use Auth;
 use App\Models\Branch;
 use App\Models\Car;
 use App\Models\Partner;
+use App\Models\Slider;
 use App\Models\Category;
 use Illuminate\Support\Facades\Http;
 use App\Payment\MasterCardPayment;
@@ -29,8 +30,9 @@ class FrontendController extends Controller
         $allCategories  = Category::all();
         $showCategoriesCars = Car::where('category_id' , $showCategories->first()->id)->get();
         $partners=Partner::all();
+        $sliders=Slider::all();
         $firstcar=Car::where('category_id' , $showCategories->first()->id)->first();
-        return view('frontend.main2', compact('showCategories','showCategoriesCars','allCategories','firstcar','partners'));
+        return view('frontend.main2', compact('sliders','showCategories','showCategoriesCars','allCategories','firstcar','partners'));
     }
 
 

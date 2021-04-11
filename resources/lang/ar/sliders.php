@@ -33,6 +33,8 @@ return [
         'image' => 'صورة السليدر',
         'created_at' => 'اضافة في',
         'deleted_at' => 'حذف في',
+        'first_header' => 'اول عنوان',
+        'second_header' => 'ثاني عنوان',
     ],
     'dialogs' => [
         'delete' => [
