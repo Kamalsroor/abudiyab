@@ -212,6 +212,10 @@
 }
 
 .home-our-partners {
+    img {
+        width: 100%;
+        margin: auto;
+    }
     .home-our-partners__heading {
         padding: 10px 0;
         span {
@@ -219,8 +223,11 @@
         }
     }
     .home-our-partners__content {
-        width: 70%;
+        width: 50%;
         margin: auto;
+        @include mediumScreen() {
+            width: 70%;
+        }
         .slick-slider {
             padding: 0 5px;
             img {

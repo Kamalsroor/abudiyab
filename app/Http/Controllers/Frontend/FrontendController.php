@@ -38,6 +38,32 @@ class FrontendController extends Controller
     {
         return view('frontend.branches');
     }
+
+
+
+    public function MediaCenter()
+    {
+        return view('frontend.media_center');
+    }
+
+
+    public function CarSales()
+    {
+        return view('frontend.car_sales');
+    }
+
+    public function services()
+    {
+        return view('frontend.services');
+    }
+
+    public function PointsProgram()
+    {
+        return view('frontend.points_program');
+    }
+
+
+
     function getUserIP()
     {
         // Get real visitor IP behind CloudFlare network
