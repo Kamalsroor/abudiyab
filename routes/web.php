@@ -33,6 +33,10 @@ Route::as('front.')->group(function () {
     Route::get('/fleet', 'Frontend\FrontendController@fleet')->name('fleet');
     Route::get('/booking', 'Frontend\FrontendController@booking')->name('booking');
     Route::get('/branches', 'Frontend\FrontendController@branches')->name('branches');
+    Route::get('/media_center', 'Frontend\FrontendController@MediaCenter')->name('media_center');
+    Route::get('/car_sales', 'Frontend\FrontendController@CarSales')->name('car_sales');
+    Route::get('/services', 'Frontend\FrontendController@services')->name('services');
+    Route::get('/points_program', 'Frontend\FrontendController@PointsProgram')->name('points_program');
     Route::get('/contactus', 'Frontend\FrontendController@contactus')->name('contactus');
     Route::get('/employment', 'Frontend\FrontendController@employment')->name('employment');
     Route::get('/profile', function(){
