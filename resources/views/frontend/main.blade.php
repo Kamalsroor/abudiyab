@@ -16,7 +16,6 @@
                 <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="8"></li>
-
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active ">
@@ -107,7 +106,7 @@
 
     <div class="row text-center py-4 m-0">
         <div class="col-lg-4 col-md-6 col-sm-10 text-center m-auto">
-            <h1 class="doubleline color-black">فئات الأسطول</h1>
+            <h2 class="doubleline color-black">فئات الأسطول</h2>
         </div>
     </div>
 
@@ -115,30 +114,28 @@
         <div class="container-fluid" style="background-color: white">
             <div class="row categories-home justify-content-center">
                 @foreach($showCategories as $category)
-                <div class='col-sm-3 col-lg-3 col-md-3 my-2 ' id='{{$category->id}}'>
-                    <button type="button" id='{{$category->id}}' class="btn btn-primary btn-lg btn-block allcategory">{{$category->name}}</button>
+                <div class='col-sm-3 col-lg-3 col-md-4 my-2 ' id='{{$category->id}}'>
+                    <button type="button" id='{{$category->id}}' class=" btn-lg btn-block primary-btn btn-hover btn-curved">{{$category->name}}</button>
                 </div>
                 @endforeach
             </div>
             <div class="row categories-home justify-content-center hidden-part">
                 @foreach($allCategories as $category)
                 @if($loop->index>3)
-                <div class='col-sm-3 col-lg-3 col-md-3 my-2 ' >
-                    <button  type="button" id='{{$category->id}}' class="btn btn-primary btn-lg btn-block allcategory">{{$category->name}}</button>
+                <div class='col-sm-3 col-lg-3 col-md-4 my-2 ' >
+                    <button  type="button" id='{{$category->id}}' class=" btn-lg btn-block primary-btn btn-hover btn-curved">{{$category->name}}</button>
                 </div>
                 @endif
                 @endforeach
-                <div class="col-sm-3 col-lg-3 col-md-3 my-2">
-                    <form action="">
-                        <button type="button" class="btn btn-primary btn-lg btn-block" ><a href="{{route('front.fleet')}}"> الأسطول</a></button>
-                    </form>
+                <div class="col-sm-3 col-lg-3 col-md-4 my-2">
+                    <a class="btn-lg btn-block secondary-btn btn-hover btn-curved" href="{{route('front.fleet')}}"> الأسطول</a>
                 </div>
             </div>
             <div class="container-fluid">
                 <div class="row justify-content-center">
-                    <div class="more col-sm-3 my-2 text-center">
-                        <button type="button" onclick="show()" class="btn btn-primary btn-lg hide-button show-more">المزيد</button>
-                        <button type="button" onclick="hide()" class="btn btn-primary btn-lg hide-button show-less">القليل</button>
+                    <div class="my-2 text-center d-flex justify-content-center col-md-6">
+
+                        <button type="button" id="categories-home-togeller" class="primary-btn btn-hover btn-curved">المزيد</button>
 
                     </div>
                 </div>
@@ -152,7 +149,16 @@
             <div>
                 <div class="row justify-content-center pt-4 ModelName" >
                     @foreach($showCategoriesCars as $cars)
-                        <div class="col-2 pt-2" style="font-size: 20px;background-color: #8080805c;cursor: pointer;">
+                        <div class="col-lg-2 col-md-3 col-sm-6 col-6 pt-2 {{(($loop->iteration == 1) ? 'bg-primary' : '')}}" style="font-size: 20px;background-color: {{(($loop->iteration == 1) ? '' : '#505151')}} ;cursor: pointer;">
+                            <p class=" text-center">{{$cars['name']}}</p>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-6 col-6 pt-2" style="font-size: 20px;background-color: {{(($loop->iteration == 1) ? '' : '#505151')}} ;cursor: pointer;">
+                            <p class=" text-center">{{$cars['name']}}</p>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-6 col-6 pt-2" style="font-size: 20px;background-color: {{(($loop->iteration == 1) ? '' : '#505151')}} ;cursor: pointer;">
+                            <p class=" text-center">{{$cars['name']}}</p>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-6 col-6 pt-2" style="font-size: 20px;background-color: {{(($loop->iteration == 1) ? '' : '#505151')}} ;cursor: pointer;">
                             <p class=" text-center">{{$cars['name']}}</p>
                         </div>
                     @endforeach
@@ -164,17 +170,13 @@
                 <div class="row py-3" >
                     <div class="col-4 d-flex align-items-center justify-content-center">
 
-                            <div class="text-center">
+                            <div class="text-center price">
                             <p class="before-price m-0" style=" text-decoration: line-through;" ><i class="icofont icofont-cur-riyal"></i>{{$firstcar->price2}}</p>
                             <h2 class="after-price"  ><i class="icofont icofont-cur-riyal"></i>{{$firstcar->price1}}</h2>
                             <p style="transform: translateY(-20px);" class="m-0 before-price">يومى</p>
-                            <a  href="#" class="btn-block" style="background: linear-gradient(
-                                91deg
-                                , #0d157b 15%, #0095ff 121%);
-                                    color: #fff;
-                                    font-size: 16px;
-                                    border-radius: 50px;
-                                    padding: 10px 45px;">احجز الان</a>
+                            <a  href="#" class="btn-block primary-btn p-2" 
+                            {{-- style="background: linear-gradient(91deg, #0d157b 15%, #0095ff 121%);color: #fff;font-size: 16px; border-radius: 50px;padding: 10px 45px;" --}}
+                            >احجز الان</a>
                             </div>
                     </div>
                     <div class="col-8 d-flex align-items-end justify-content-center">

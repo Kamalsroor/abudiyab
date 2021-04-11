@@ -3,9 +3,7 @@
     top: 30%;
     #{$start}: 0;
     z-index: 3;
-    @include font(
-        $size: 1.5rem,
-    );
+    @include font( $size: 1.5rem, );
     padding: 5px 10px;
     cursor: pointer;
     background: get-color(primary);
@@ -15,24 +13,17 @@
     }
 }
 
-
-
 .primary-btn {
-    background: get-color(light);
-    padding: .5rem 1.3rem;
-    border-radius: 25px;
-    color: get-color(primary-light);
-    @include font(
-        $weight: bold,
-        $transform: capitalize,
-        $family: 'Segoe UI',
-    );
+    background-image: get-color(primary-light-gradient);
+    color: get-color(light);
+    box-shadow: 1px 1px 10px get-color(primary);
+    @include font( $weight: bold, $transform: capitalize, $family: 'Segoe UI', );
     letter-spacing: 1px;
     position: relative;
     cursor: pointer;
     display: flex;
     align-items: center;
-
+    justify-content: center;
     span {
         position: relative;
         z-index: 1;
@@ -40,46 +31,52 @@
     svg {
         transition: .5s;
     }
-    &:hover {
-        svg {
-            transform: translateX(5px);
-            transition: .5s;
-        }
+    &.btn-hover {
+        background-image: none;
+        background-color: get-color(light);
     }
 }
 
-
-
+.btn-curved {
+    border-radius: 25px 0px 25px 0px;
+}
 
 .secondary-btn {
     text-decoration: none;
     padding: 7px 25px;
     text-align: center;
-    background-color: get-color('primary-dark');
-
-    @include font (
-        $color: get-color('secondary'),
-        $size: 1.3rem,
-        $weight: bold,
-        $transform: capitalize
-    );
-
-    border-radius: 1px;
+    background-color: get-color(secondary);
+    box-shadow: 1px 1px 10px get-color(secondary);
+    @include font ( $color: get-color(light), $size: 1.3rem, $weight: bold, $transform: capitalize);
     text-transform: capitalize;
-
-    &:hover, &:active {
-        color: get-color('secondary');
+    &:hover,
+    &:active {
+        color: get-color(light);
         text-decoration: none;
+    }
+    &.btn-hover {
+        background: get-color(light);
+        color: get-color(light);
+        height: 50px;
+        margin-top: 5px;
+        border: 2px solid get-color(secondary);
+        &::before {
+            background: get-color(secondary);
+        }
+        &:hover {
+            color: get-color(secondary);
+            border: 2px solid get-color(secondary);
+        }
     }
 }
 
-
 .btn-hover {
     position: relative;
-    background-color: transparent;
+    background-color: get-color(light);
     transform: perspective(1px) translateZ(0);
     overflow: hidden;
-    border: 2px solid get-color(light);
+    transition: .2s;
+    border: 2px solid transparent;
     &::before {
         content: "";
         position: absolute;
@@ -89,15 +86,30 @@
         height: 200%;
         border-top-left-radius: 50%;
         border-top-right-radius: 50%;
-        background-color: get-color(light);
+        background-image: get-color(primary-light-gradient);
         z-index: -1;
         transition: height 0.5s ease;
     }
-
     &:hover {
-        color: get-color(light);
+        color: get-color(primary-light);
+        border: 2px solid get-color(primary-light);
         &::before {
             height: 0;
         }
+    }
+}
+
+.calltoaction-btn {
+    text-decoration: none;
+    padding: 7px 25px;
+    text-align: center;
+    background-color: get-color(primary-light);
+    border-radius: 25px 0px 25px 0px;
+    @include font ( $color: get-color('secondary'), $size: 1.3rem, $weight: bold, $transform: capitalize);
+    text-transform: capitalize;
+    &:hover,
+    &:active {
+        color: get-color('secondary');
+        text-decoration: none;
     }
 }

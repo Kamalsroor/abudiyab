@@ -34,7 +34,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="d-flex justify-content-center align-items-end">
+                <div class="d-flex justify-content-center align-items-end information-card">
                     <img src="{{asset('front/img/smallgoldencard.png')}}" alt="client-type" style="width: 90%;">
                     <div class="pb-2" style="width: 70%;position:absolute;font-weight: 700;text-shadow: 1px 1px black;">
                         <p class="mb-0">client Name</p>

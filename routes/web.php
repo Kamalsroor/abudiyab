@@ -38,6 +38,9 @@ Route::as('front.')->group(function () {
     Route::get('/profile', function(){
         return view('frontend.profile');
     })->name('profile');
+    Route::get('/points', function(){
+        return view('frontend.points');
+    })->name('points');
     // Route::get('/register', function(){
     //     return view('frontend.register');
     // })->name('register.index');

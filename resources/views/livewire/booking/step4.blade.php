@@ -4,7 +4,7 @@
             <div class="container1 m-0" style="position: relative;padding: 0;">
                 <div class="back">
                     <div class="title red">
-                        <h1>تأكيد الحجز</h1>
+                        <h1 class="color-black">تأكيد الحجز</h1>
                     </div>
                     <button style="    position: absolute;
                     top: 14px;
@@ -14,30 +14,30 @@
                     color: #fff;
                     border: 3px solid #1a03ea;cursor: pointer; outline: none;"><i class="icofont icofont-print"></i></button>
                     <div class="detel">
-                        <div class="code red">
-                            <p> رقم الحجز : <span style="font-size: 50px;font-weight: 600;margin: 0 5px;"></span>80702687</p>
-                            <p>تاريخ الحجز :{{$start_date}} الساعه :17:37</p>
+                        <div class="dis red">
+                            <p style="font-size: 25px;" class="color-black"> رقم الحجز :80702687</p>
+                            <p style="font-size: 21px;" class="color-black">تاريخ الحجز :{{$start_date}} الساعه :17:37</p>
                         </div>
                         <div class="dis red">
-                            <p style="font-size: 25px;">الحاله : تحت الدراسه</p>
-                            <p style="font-size: 25px;">نوع السداد : نقدا</p>
+                            <p style="font-size: 25px;" class="color-black">الحاله : تحت الدراسه</p>
+                            <p style="font-size: 25px;" class="color-black">نوع السداد : نقدا</p>
                         </div>
                     </div>
                     <div class="date red">
-                        <div>
-                            <p>فرع الاستلام</p>
-                            <p>{{$receiving_branch->name}}</p>
-                            <p>{{$start_date}}</p>
+                        <div class="red">
+                            <p class="color-black">فرع الاستلام</p>
+                            <p class="color-black">{{$receiving_branch->name}}</p>
+                            <p class="color-black">{{$start_date}}</p>
                         </div>
                         <div class="red">
-                            <p>فرع التسليم</p>
-                            <p>{{$delivery_branch->name}}</p>
-                            <p>{{$end_date}}</p>
+                            <p class="color-black">فرع التسليم</p>
+                            <p class="color-black">{{$delivery_branch->name}}</p>
+                            <p class="color-black">{{$end_date}}</p>
                         </div>
                     </div>
                     <div class="price">
                         <h1 style="color: #030172;font-weight: bold;">
-                            مجموع الايجار : <i class="icofont icofont-cur-riyal"></i>{{$price}}
+                            مجموع الايجار : <i class="icofont icofont-cur-riyal" style="color: #030172;font-weight: bold;"></i>{{$price}}
                         </h1>
                     </div>
                     <div class="complet">

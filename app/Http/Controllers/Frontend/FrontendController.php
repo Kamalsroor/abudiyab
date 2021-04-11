@@ -28,7 +28,7 @@ class FrontendController extends Controller
         $allCategories  = Category::all();
         $showCategoriesCars = Car::where('category_id' , $showCategories->first()->id)->get();
         $firstcar=Car::where('category_id' , $showCategories->first()->id)->first();
-        return view('frontend.main', compact('showCategories','showCategoriesCars','allCategories','firstcar'));
+        return view('frontend.main2', compact('showCategories','showCategoriesCars','allCategories','firstcar'));
     }
 
 
