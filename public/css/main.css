@@ -939,6 +939,7 @@ textarea {
   }
 }
 .footer_section-1_text {
+  margin-bottom: 30px;
   color: #FFA602;
   font-size: 20px;
 }
@@ -949,6 +950,9 @@ textarea {
 }
 .footer_section-1 input {
   text-align: right;
+}
+.footer_section-1_icons {
+  margin-bottom: 30px;
 }
 .footer_section-1_icons a {
   color: #ffffff;
@@ -965,10 +969,11 @@ textarea {
   width: fit-content;
 }
 .footer_section-2_text div p {
-  margin-bottom: 2px;
+  margin-bottom: 10px;
   font-size: 1.3em;
 }
 .footer_section-2_text div a {
+  margin-top: 30px;
   font-size: 30px;
   font-weight: 600;
 }
