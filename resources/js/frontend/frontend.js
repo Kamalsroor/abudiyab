@@ -136,7 +136,7 @@ $(document).ready(function() {
         responsive: [{
                 breakpoint: 767,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 1,
                     centerMode: false,
                     slidesToScroll: 1,
                 }

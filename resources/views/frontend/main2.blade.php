@@ -190,46 +190,46 @@
         
         <div class="home-our-partners__content"> 
             <div class="text-center home-our-partners__item">
-                <img src="{{asset('front/img/brands/BMW.png')}}" class="d-block "  alt="car brand">
+                <img src="{{asset('front/img/brands/BMW.png')}}" class="d-block wd-100"  alt="car brand">
             </div>
             <div class="text-center home-our-partners__item">
-                <img src="{{asset('front/img/brands/changan.png')}}" class="d-block "  alt="car brand">
+                <img src="{{asset('front/img/brands/changan.png')}}" class="d-block wd-100"  alt="car brand">
             </div>
             <div class="text-center home-our-partners__item">
-                <img src="{{asset('front/img/brands/Citroen.png')}}" class="d-block "  alt="car brand">
+                <img src="{{asset('front/img/brands/Citroen.png')}}" class="d-block wd-100"  alt="car brand">
             </div>
             <div class="text-center home-our-partners__item">
-                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block "  alt="car brand">
+                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block wd-100"  alt="car brand">
             </div>
             <div class="text-center home-our-partners__item">
-                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block "  alt="car brand">
+                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block wd-100"  alt="car brand">
             </div>
             <div class="text-center home-our-partners__item">
-                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block "  alt="car brand">
+                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block wd-100"  alt="car brand">
             </div>
             <div class="text-center home-our-partners__item">
-                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block "  alt="car brand">
+                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block wd-100"  alt="car brand">
             </div>
             <div class="text-center home-our-partners__item">
-                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block "  alt="car brand">
+                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block wd-100"  alt="car brand">
             </div>
             <div class="text-center home-our-partners__item">
-                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block "  alt="car brand">
+                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block wd-100"  alt="car brand">
             </div>
             <div class="text-center home-our-partners__item">
-                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block "  alt="car brand">
+                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block wd-100"  alt="car brand">
             </div>
             <div class="text-center home-our-partners__item">
-                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block "  alt="car brand">
+                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block wd-100"  alt="car brand">
             </div>
             <div class="text-center home-our-partners__item">
-                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block "  alt="car brand">
+                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block wd-100"  alt="car brand">
             </div>
             <div class="text-center home-our-partners__item">
-                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block "  alt="car brand">
+                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block wd-100"  alt="car brand">
             </div>
             <div class="text-center home-our-partners__item">
-                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block "  alt="car brand">
+                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block wd-100"  alt="car brand">
             </div>
         </div>
 

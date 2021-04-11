@@ -1249,10 +1249,7 @@ input, textarea {
 .home-our-partners .home-our-partners__content .slick-slider {
   padding: 0 5px;
 }
-.home-our-partners .home-our-partners__content .slick-slider div {
-  width: 100%;
-}
-.home-our-partners .home-our-partners__content .slick-slider div img {
+.home-our-partners .home-our-partners__content .slick-slider img {
   width: 100%;
   margin: auto;
 }
