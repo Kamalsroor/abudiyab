@@ -13,10 +13,6 @@ mix.js('resources/js/vali/vali.js', 'public/js').vue();
 mix.sass('resources/sass/vali/vali.scss', 'public/css');
 
 
-// frontend Template
-mix.js('resources/js/frontend/frontend.js', 'public/js');
-mix.sass('resources/sass/frontend/stylesheets/main.scss', 'public/css');
-
 
 
 
