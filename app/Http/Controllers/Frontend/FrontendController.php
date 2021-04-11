@@ -8,6 +8,7 @@ use App\Http\Requests\Frontend\ContactRequest;
 use Auth;
 use App\Models\Branch;
 use App\Models\Car;
+use App\Models\Partner;
 use App\Models\Category;
 use Illuminate\Support\Facades\Http;
 use App\Payment\MasterCardPayment;
@@ -27,8 +28,9 @@ class FrontendController extends Controller
         $showCategories = Category::orderBy('id', 'ASC')->take(4)->get();
         $allCategories  = Category::all();
         $showCategoriesCars = Car::where('category_id' , $showCategories->first()->id)->get();
+        $partners=Partner::all();
         $firstcar=Car::where('category_id' , $showCategories->first()->id)->first();
-        return view('frontend.main2', compact('showCategories','showCategoriesCars','allCategories','firstcar'));
+        return view('frontend.main2', compact('showCategories','showCategoriesCars','allCategories','firstcar','partners'));
     }
 
 
