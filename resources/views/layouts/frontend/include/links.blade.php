@@ -10,6 +10,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap'">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Katibeh&display=swap">
 
+
+
+
 <!-- <link rel="stylesheet" href="{{asset('front/web/css/main.css')}}"> -->
 
 <!-- <link rel="stylesheet" href="{{asset('front/web/css/bootstrap.css')}}"> -->
@@ -18,6 +21,6 @@
 <!-- <link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/assets/css/style.css')}}"> -->
 <!-- ------------END------LINK------LOAD------------ -->
 
-<link rel="stylesheet" href="{{ asset(mix('/css/main.rtl.css')) }}">
+<link rel="stylesheet" href="{{ asset(mix('/css/main.css')) }}">
 
 @show

@@ -231,8 +231,8 @@ $('.region').click(function() {
 })
 
 function displayBranches(region) {
-    $('.cart-con').css('background', regionImage[region]);
-    let branchesContainer = document.getElementsByClassName('darkn')[0];
+    $('.branch-page_center_dranches').css('background', regionImage[region]);
+    let branchesContainer = document.getElementsByClassName('branch-page_center_dranches')[0];
     let branches = '';
     for (let i = 0; i < branchesArray[region].length; i++) {
         branches += ` <div class="wrapper">

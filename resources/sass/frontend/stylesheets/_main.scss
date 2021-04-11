@@ -21,6 +21,7 @@
 ==========*/
 
 @import 'sass/components/buttons';
+@import 'sass/components/head';
 // @import 'sass/components/dropdown';
 // @import 'sass/components/sidebar';
 // @import 'sass/components/slick-dots';
@@ -30,15 +31,14 @@
 // @import 'sass/components/search-box';
 // @import 'sass/components/social-media';
 // @import 'sass/components/add-comment';
-// @import 'sass/components/head';
 // @import 'sass/components/custom-header';
-
 
 /*==========
     Import layout files
 ==========*/
 
 @import 'sass/layout/navbar';
+@import 'sass/layout/master';
 @import 'sass/layout/footer';
 
 /*==========
@@ -46,11 +46,15 @@
 ==========*/
 
 @import 'sass/pages/home';
+@import 'sass/pages/fleet';
+@import 'sass/pages/branch';
+@import 'sass/pages/media_center';
+@import 'sass/pages/car_sales';
+@import 'sass/pages/services';
+@import 'sass/pages/points_program';
 // @import 'sass/pages/register-login';
-// @import 'sass/pages/about';
 // @import 'sass/pages/services';
 // @import 'sass/pages/portfolio';
 // @import 'sass/pages/contact';
 // @import 'sass/pages/search';
 // @import 'sass/pages/profile';
-

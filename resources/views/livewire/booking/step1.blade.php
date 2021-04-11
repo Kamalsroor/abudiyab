@@ -1,4 +1,4 @@
-<div id="step1" class="row  {{ $currentStep != 1 ? 'display-none' : '' }}" style="direction: ltr;" >
+<div id="step1" class="row  {{ $currentStep != 1 ? 'display-none' : '' }}">
     <div class="crcr col-lg-12" style="padding: 0;overflow: hidden;">
         <!-- <div class="dd">
             <p class="type">{{$car->name}}</p>
@@ -7,96 +7,15 @@
         <img src="{{ asset('front/img/payment_visa.jpg') }}" alt=".." class="d-block w-100">
     </div>
 
-    <div class="min-boody2 col-lg-4 col-md-5">
-        <div class="info in">
-
-            <div class="hn"><h3>ملخص الحجز</h3></div>
-
-            <div class="momo">
-                <div>
-                    <p class="red">نوع السيارة</p>
-                    <p>{{$car->name}}</p>
-                </div>
-                <div>
-                    <p class="red">الموديل</p>
-                    <p>{{$car->model}}</p>
-                </div>
-                <div>
-                    <p class="red">الفئه</p>
-                    <p>{{$car->category?$car->category->name:'-'}}</p>
-                </div>
-            </div>
-
-        </div>
-        <div class="info ta">
-            <div class="hn"><h3>فرع الاستلام</h3></div>
-            <div>
-                <p class="red">اسم الفرع</p>
-                <br>
-                <p>{{$receiving_branch->name}}</p>
-            </div>
-            <div class="momo">
-                <div>
-                    <p class="red">تاريخ</p>
-                    <p class="YH-p">{{$data['receiving_date']}}</p>
-                </div>
-                <div>
-                    <p class="red">الوقت</p>
-                    <p>15:22</p>
-                </div>
-            </div>
-        </div>
-        <div class="info ge">
-            <div class="hn"><h3>فرع التسلم</h3></div>
-
-            <div>
-                <p class="red">اسم الفرع</p>
-                <br>
-                <p>{{$delivery_branch->name}}</p>
-            </div>
-            <div class="momo">
-                <div>
-                    <p class="red">تاريخ</p>
-                    <p class="YH-p">{{$data['delivery_date']}}</p>
-                </div>
-                <div>
-                    <p class="red">الوقت</p>
-                    <p>18:22</p>
-                </div>
-            </div>
-        </div>
-        <div class="info pr">
-            <div class="hn"><h3>السعر</h3></div>
-            <div class="momo">
-                <div>
-                    <p>مدة الايجار</p>
-                    <p>
-                        {{$diff}}
-                        ايام
-                    </p>
-                </div>
-            </div>
-            <h2>
-                <i class="icofont icofont-cur-riyal"></i>
-                {{$price}}
-            </h2>
-        </div>
-    </div>
 
     <div class="min-boody col-lg-8 col-md-7">
-        <div class="contract-additions" style="height: 10% !important;
-        margin-bottom: 5px;
-        overflow: hidden;
-        background-color: #ffd34e !important;
-        border: 4px solid #ffffff;
-        border-radius: 20px;">
+        <div class="contract-additions visa">
             <div class="row addition">
-                <div class="col-lg-8 col-md-8 col-sm-8">
-                    <legend class="AdditionsTitle AdditionsTitleYH" style="border-bottom: none;font-size: 30px;padding: 22px 0px 0; color: #002366;"> أحصل على خصم السداد بالفيزا .</legend>
+                <div class="col-8">
+                    <legend class="visa_text"> أحصل على خصم السداد بالفيزا .</legend>
                 </div>
-                <div class="col-sm-4 col-xl-4 m-b-30" style="padding: 32px 0 0 130px;">
-                        <!-- <h4 class="sub-title">Single Switche</h4> -->
-                        <input type="checkbox" class="js-single" name="V" wire:model="visa_buy" value='0.15'>
+                <div class="col-4 m-b-30" id="visa_input">
+                    <input type="checkbox" class="js-single" name="V" wire:model="visa_buy" value='0.15'>
                 </div>
             </div>
         </div>
@@ -114,7 +33,7 @@
                             <p>طفلك يهمنا</p>
                         </div>
                         <div class="price">
-                            <h2><i class="icofont icofont-cur-riyal"></i>{{$car->baby_seat_price}}</h2>
+                            <h2><i class="icofont icofont-cur-riyal"></i>{{$car->baby_seat_price}}</h2> <span style="font-size: 12px; color: #555;">يومي</span>
                         </div>
                         <div class="check">
                             <div class="form-check ">
@@ -126,7 +45,7 @@
                 </div>
 
                 <div class="row addition moreDetails add1">
-                    <div class="min ">
+                    <div class="min min-r">
                         <div class="img details">
                             <div class="price">
                                 <div class="check">
@@ -203,16 +122,14 @@
 
 
                 <div class="row addition  moreDetails add2" >
-                    <div class="min ">
+                    <div class="min min-r">
                         <div class="img details">
-
                             <div class="price">
-
                                 <div class="check" >
-                                    <div >
-                                        <h1 >درع أبو ذياب شروط الاستخدام</h1>
+                                    <div>
+                                        <h2>درع أبو ذياب شروط الاستخدام</h2>
                                         <ul>
-                                            <p >
+                                            <p>
                                                 درع أبو ذياب يعفي المستاجر من مبلغ التحمل للحادث
                                                 عند حدوث حادث للمستاجر والتلفيات الناتجة عن سوء
                                                 الأحوال الجوية لا سمح الله حسب الشروط التالية::
@@ -221,11 +138,11 @@
                                                 أن يطلب المستأجر باضافة درع أبو ذياب عند انشاء
                                                 الحجز أو فتح العقد فقط.
                                             </li>
-                                            <li >
+                                            <li>
                                                 أن تنطبق شروط شركات التأمين حسب قوانين المملكة
                                                 العربية السعودية على المستأجر.
                                             </li>
-                                            <li >
+                                            <li>
                                                 أن تنطبق جميع الشروط الخاصة بالتأمين الشامل على
                                                 المستأجر وهي : - أن لا يقل عمر المستأجر عن 21 عام
                                                 و أن لا يزيد على 70 عام. - أن تنطبق شروط شركات
@@ -236,34 +153,27 @@
                                                 تزويدهم بكافة المعلومات التي يطلبونها و الحصول على
                                                 تقرير مرور من مراكز الشرطة المختصة.
                                             </li>
-                                            <li >
+                                            <li>
                                                 لا يحق للمستأجر طلب أستعادة مبلغ درع أبو ذياب
                                                 المدفوع في حال لم يتم حدوت حادث.
                                             </li>
-                                            <li >
+                                            <li>
                                                 في حال الاصطدام بجسم ثابت ، أو كان العميل ضحية
                                                 حادث و كان هناك هروب للطرف الاخر، وتم اعادة
                                                 السيارة من غير توفر معلومات الطرف المتسبب بالحادث،
                                                 واضاف العميل درع أبو ذياب بالعقد فعليه دفع قيمة
                                                 التحمل وقدرها 3500<i class="icofont icofont-cur-riyal"></i>.
                                             </li>
-                                            <li >
+                                            <li>
                                                 لمدة المسموح بها لدرع أبو ذياب 24 ساعة فقط ولا
                                                 يشمل الساعات المجانية .
                                             </li>
-                                            <li >في حال الحوادث إحضار تقرير نجم او مرور</li>
-                                            <li >
+                                            <li>في حال الحوادث إحضار تقرير نجم او مرور</li>
+                                            <li>
                                                 في حال الكوارث الطبيعية إحضار تقرير من الدفاع
                                                 المدني
                                             </li>
                                         </ul>
-                                        <div class='clear'></div>
-                                        <div class="btns">
-                                            <label class="inb agree" for="hhii2"> موافق </label>
-                                        </div>
-                                        <div class='btns cancelBtns'>
-                                            <a  class="cancelDetails"><label class="cancel" for="hhii1"> الغاء </label></a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -281,7 +191,7 @@
                         </div>
                         <div class="price">
                             <h2>
-                                <i class="icofont icofont-cur-riyal"></i>{{$car->insurance_price}}
+                                <i class="icofont icofont-cur-riyal"></i>{{$car->insurance_price}} <span style="font-size: 12px; color: #555;">يومي</span>
                             </h2>
                         </div>
                         <div class="check">
@@ -305,32 +215,32 @@
 
 
                 <div class="row addition  moreDetails add3" >
-                    <div class="min ">
+                    <div class="min min-r">
                         <div class="img details">
 
                             <div class="price">
 
-                                <div class="check" style='float:right;'>
+                                <div class="check">
                                     <div >
-                                        <h1 style='float:right;'>درع أبو ذياب شروط الاستخدام</h1>
+                                        <h2>درع أبو ذياب شروط الاستخدام</h2>
                                         <div class='clear'>
 
                                         </div>
                                         <ul>
-                                            <p style='float:right;'>
+                                            <p>
                                                 درع أبو ذياب يعفي المستاجر من مبلغ التحمل للحادث
                                                 عند حدوث حادث للمستاجر والتلفيات الناتجة عن سوء
                                                 الأحوال الجوية لا سمح الله حسب الشروط التالية::
                                             </p>
-                                            <li style='float:right;'>
+                                            <li>
                                                 أن يطلب المستأجر باضافة درع أبو ذياب عند انشاء
                                                 الحجز أو فتح العقد فقط.
                                             </li>
-                                            <li style='float:right;'>
+                                            <li>
                                                 أن تنطبق شروط شركات التأمين حسب قوانين المملكة
                                                 العربية السعودية على المستأجر.
                                             </li>
-                                            <li style='float:right;'>
+                                            <li>
                                                 أن تنطبق جميع الشروط الخاصة بالتأمين الشامل على
                                                 المستأجر وهي : - أن لا يقل عمر المستأجر عن 21 عام
                                                 و أن لا يزيد على 70 عام. - أن تنطبق شروط شركات
@@ -341,34 +251,27 @@
                                                 تزويدهم بكافة المعلومات التي يطلبونها و الحصول على
                                                 تقرير مرور من مراكز الشرطة المختصة.
                                             </li>
-                                            <li style='float:right;'>
+                                            <li>
                                                 لا يحق للمستأجر طلب أستعادة مبلغ درع أبو ذياب
                                                 المدفوع في حال لم يتم حدوت حادث.
                                             </li>
-                                            <li style='float:right;'>
+                                            <li>
                                                 في حال الاصطدام بجسم ثابت ، أو كان العميل ضحية
                                                 حادث و كان هناك هروب للطرف الاخر، وتم اعادة
                                                 السيارة من غير توفر معلومات الطرف المتسبب بالحادث،
                                                 واضاف العميل درع أبو ذياب بالعقد فعليه دفع قيمة
                                                 التحمل وقدرها 3500<i class="icofont icofont-cur-riyal"></i>.
                                             </li>
-                                            <li style='float:right;'>
+                                            <li>
                                                 لمدة المسموح بها لدرع أبو ذياب 24 ساعة فقط ولا
                                                 يشمل الساعات المجانية .
                                             </li>
-                                            <li style='float:right;'>في حال الحوادث إحضار تقرير نجم او مرور</li>
-                                            <li style='float:right;'>
+                                            <li>في حال الحوادث إحضار تقرير نجم او مرور</li>
+                                            <li>
                                                 في حال الكوارث الطبيعية إحضار تقرير من الدفاع
                                                 المدني
                                             </li>
                                         </ul>
-                                        <div class='clear'></div>
-                                        <div class="btns">
-                                            <label class="inb agree" for="hhii2"> موافق </label>
-                                        </div>
-                                        <div class='btns cancelBtns'>
-                                            <a  class="cancelDetails"><label class="cancel" for="hhii1"> الغاء </label></a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -414,7 +317,7 @@
 
 
                 <div class="row addition moreDetails add4" >
-                    <div class="min ">
+                    <div class="min min-r">
                         <div class="img details">
 
                             <div class="price">
@@ -487,7 +390,7 @@
 
 
                 <div class="row addition moreDetails add5" >
-                    <div class="min ">
+                    <div class="min min-r">
                         <div class="img details">
 
                             <div class="price">
@@ -562,106 +465,181 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-
-            <div class="row addition moreDetails add6" >
-                <div class="min ">
-                    <div class="img details">
-                        <div class="price">
-                            <div class="check">
-                                <div>
-                                    <h2>خدمه التوصيل للمنزل</h2>
-                                    <ul>
-                                        <li>بلا بلا بلا</li>
-                                        <li>بلا بلا بلا</li>
-                                        <li>بلا بلا بلا</li>
-                                        <li>بلا بلا بلا</li>
-                                        <li>بلا بلا بلا</li>
-                                        <li>بلا بلا بلا</li>
-                                        <li>بلا بلا بلا</li>
-                                        <li>بلا بلا بلا</li>
-                                        <div class="btns">
-                                            <label class="inb agree" for="hhii7"> موافق </label>
-                                        </div>
-                                        <div class='btns cancelBtns'>
-                                            <a  class="cancelDetails"><label class="cancel" for="hhii1"> الغاء </label></a>
-                                        </div>
-                                    </ul>
+                <div class="row addition moreDetails add6" >
+                    <div class="min min-r">
+                        <div class="img details">
+                            <div class="price">
+                                <div class="check">
+                                    <div>
+                                        <h2>خدمه التوصيل للمنزل</h2>
+                                        <ul>
+                                            <li>بلا بلا بلا</li>
+                                            <li>بلا بلا بلا</li>
+                                            <li>بلا بلا بلا</li>
+                                            <li>بلا بلا بلا</li>
+                                            <li>بلا بلا بلا</li>
+                                            <li>بلا بلا بلا</li>
+                                            <li>بلا بلا بلا</li>
+                                            <li>بلا بلا بلا</li>
+                                            <div class="btns">
+                                                <label class="inb agree" for="hhii7"> موافق </label>
+                                            </div>
+                                            <div class='btns cancelBtns'>
+                                                <a  class="cancelDetails"><label class="cancel" for="hhii1"> الغاء </label></a>
+                                            </div>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            @endif
-            @if($car->is_intercity)
-            <div class="row addition" >
-                <div class="min">
-                    <div class="img">
-                        <i class="fas fa-shipping-fast"></i>
-                        <h1>شحن بين المدن</h1>
-                        <p>شحن بلا حدود</p>
-                    </div>
-                    <div class="price">
-                        <h2>
-                            <i class="icofont icofont-cur-riyal"></i>{{$car->intercity_price}}
-                        </h2>
-                    </div>
-                    <div class="check">
-                        <div class="form-check ">
-                            <input  class="form-check-input check1" type="checkbox" value="{{$car->intercity_price}}"   wire:model="features_added.intercity_price"  >
-                            {{--
-                            <input
-                                class="form-check-input check6"
-                                type="checkbox"
-                                id="intercity"
-                                onchange='addValueToCheckBoxs(event);'
-                            /> --}}
-                            <i title="more details" id='6' class="fas fa-info-circle" onclick="YHadd('.add7');"></i>
+                @endif
+                @if($car->is_intercity)
+                <div class="row addition" >
+                    <div class="min">
+                        <div class="img">
+                            <i class="fas fa-shipping-fast"></i>
+                            <h1>شحن بين المدن</h1>
+                            <p>شحن بلا حدود</p>
+                        </div>
+                        <div class="price">
+                            <h2>
+                                <i class="icofont icofont-cur-riyal"></i>{{$car->intercity_price}} <span style="font-size: 12px; color: #555;">يومي</span>
+                            </h2>
+                        </div>
+                        <div class="check">
+                            <div class="form-check ">
+                                <input  class="form-check-input check1" type="checkbox" value="{{$car->intercity_price}}"   wire:model="features_added.intercity_price"  >
+                                {{--
+                                <input
+                                    class="form-check-input check6"
+                                    type="checkbox"
+                                    id="intercity"
+                                    onchange='addValueToCheckBoxs(event);'
+                                /> --}}
+                                <i title="more details" id='6' class="fas fa-info-circle" onclick="YHadd('.add7');"></i>
 
 
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
 
-            <div class="row addition moreDetails add7" >
-                <div class="min ">
-                    <div class="img details">
+                <div class="row addition moreDetails add7" >
+                    <div class="min min-r">
+                        <div class="img details">
 
-                        <div class="price">
+                            <div class="price">
 
-                            <div class="check">
-                                <div>
-                                    <h2>خدمه التوصيل للمنزل</h2>
-                                    <ul>
-                                        <li>بلا بلا بلا</li>
-                                        <li>بلا بلا بلا</li>
-                                        <li>بلا بلا بلا</li>
-                                        <li>بلا بلا بلا</li>
-                                        <li>بلا بلا بلا</li>
-                                        <li>بلا بلا بلا</li>
-                                        <li>بلا بلا بلا</li>
-                                        <li>بلا بلا بلا</li>
-                                        <div class="btns">
-                                            <label class="inb agree" for="hhii7"> موافق </label>
-                                        </div>
-                                        <div class='btns cancelBtns'>
-                                            <a  class="cancelDetails"><label class="cancel" for="hhii1"> الغاء </label></a>
-                                        </div>
-                                    </ul>
+                                <div class="check">
+                                    <div>
+                                        <h2>خدمه التوصيل للمنزل</h2>
+                                        <ul>
+                                            <li>بلا بلا بلا</li>
+                                            <li>بلا بلا بلا</li>
+                                            <li>بلا بلا بلا</li>
+                                            <li>بلا بلا بلا</li>
+                                            <li>بلا بلا بلا</li>
+                                            <li>بلا بلا بلا</li>
+                                            <li>بلا بلا بلا</li>
+                                            <li>بلا بلا بلا</li>
+                                            <div class="btns">
+                                                <label class="inb agree" for="hhii7"> موافق </label>
+                                            </div>
+                                            <div class='btns cancelBtns'>
+                                                <a  class="cancelDetails"><label class="cancel" for="hhii1"> الغاء </label></a>
+                                            </div>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                @endif
+
             </div>
-            @endif
 
 
         </div>
     </div>
+
+    <div class="min-boody2 col-lg-4 col-md-5">
+        <div class="info in">
+
+            <div class="hn"><h3>ملخص الحجز</h3></div>
+
+            <div class="momo">
+                <div>
+                    <p class="red">نوع السيارة</p>
+                    <p>{{$car->name}}</p>
+                </div>
+                <div>
+                    <p class="red">الموديل</p>
+                    <p>{{$car->model}}</p>
+                </div>
+                <div>
+                    <p class="red">الفئه</p>
+                    <p>{{$car->category?$car->category->name:'-'}}</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="info ta">
+            <div class="hn"><h3>فرع الاستلام</h3></div>
+            <div>
+                <p class="red">اسم الفرع</p>
+                <p>{{$receiving_branch->name}}</p>
+            </div>
+            <div class="momo">
+                <div>
+                    <p class="red">تاريخ</p>
+                    <p class="YH-p">{{$data['receiving_date']}}</p>
+                </div>
+                <div>
+                    <p class="red">الوقت</p>
+                    <p>15:22</p>
+                </div>
+            </div>
+        </div>
+        <div class="info ge">
+            <div class="hn"><h3>فرع التسلم</h3></div>
+
+            <div>
+                <p class="red">اسم الفرع</p>
+                <p>{{$delivery_branch->name}}</p>
+            </div>
+            <div class="momo">
+                <div>
+                    <p class="red">تاريخ</p>
+                    <p class="YH-p">{{$data['delivery_date']}}</p>
+                </div>
+                <div>
+                    <p class="red">الوقت</p>
+                    <p>18:22</p>
+                </div>
+            </div>
+        </div>
+        <div class="info pr">
+            <div class="hn"><h3>السعر</h3></div>
+            <div class="momo">
+                <div>
+                    <p>مدة الايجار</p>
+                    <p>
+                        {{$diff}}
+                        ايام
+                    </p>
+                </div>
+            </div>
+            <h2>
+                <i class="icofont icofont-cur-riyal"></i>
+                {{$price}}
+            </h2>
+        </div>
+    </div>
+
 </div>
 </div>

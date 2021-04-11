@@ -19,10 +19,10 @@ function hide() {
     $('.show-more').css('display', 'inline');
 };
 
-function carousel(){
+function carousel() {
     $('.carousel').carousel({
         interval: 7000
-        
+
     })
 }
 carousel()
@@ -33,10 +33,10 @@ window.addEventListener("notLogin", function() {
     $('#exampleModal').modal('toggle');
 })
 
-$('#filter-toggele').click(function(){
+$('#filter-toggele').click(function() {
     $('.toggeling-menue').toggleClass('d-none');
 })
-$('.cancel-toggle-menue').click(function(){
+$('.cancel-toggle-menue').click(function() {
     $('.toggeling-menue').toggleClass('d-none');
 })
 
@@ -86,9 +86,9 @@ window.addEventListener("load", function() {
         })
     })
     $("#hamburger-bars").click(function() {
-        $('#menu').toggleClass("hidden")
+        $('#menu').toggleClass('d-none');
     })
-   
+
     $('.allcategory').click(function() {
         $.ajax({
             type: 'get',

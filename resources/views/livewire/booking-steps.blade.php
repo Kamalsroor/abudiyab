@@ -1,15 +1,7 @@
     <div>
-
-
         @if ($currentStep == 1)
-            <link rel="stylesheet" href="{{asset('front/web/css/H2.css')}}" />
-            <link rel="stylesheet" href="{{asset('front/lnkse/botton_style.css')}}" />
-            <link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/assets/icon/icofont/css/icofont.css')}}">
             <link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/bower_components/switchery/dist/switchery.min.css')}}">
         @elseif ($currentStep == 2)
-            <link rel="stylesheet" href="{{asset('front/lnkse/botton_style.css')}}" />
-            <link rel="stylesheet" href="{{asset('front/web/css/H3.css')}}" />
-            <link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/assets/icon/icofont/css/icofont.css')}}">
             <script>
                 $('#additions').toggle(0);
                 $('#additions').toggle(0);
@@ -17,15 +9,10 @@
                     $('#additions').toggle(1000);
                 });
             </script>
-        @elseif ($currentStep == 3 || $currentStep == 4)
-            <link rel="stylesheet" href="{{asset('front/web/css/H4.css')}}" />
-            <link rel="stylesheet" href="{{asset('front/lnkse/botton_style.css')}}" />
-            <link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/assets/icon/icofont/css/icofont.css')}}">
-        @elseif ($currentStep == 5)
-        <link rel="stylesheet" href="{{asset('front/web/css/H5.css')}}" />
-        <link rel="stylesheet" href="{{asset('front/lnkse/botton_style.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/assets/icon/icofont/css/icofont.css')}}">
         @endif
+        <link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/assets/icon/icofont/css/icofont.css')}}">
+        <link rel="stylesheet" href="{{asset('front/lnkse/botton_style.css')}}"  />
+        <link rel="stylesheet" href="{{asset('front/web/css/booking.css')}}" />
 
     <div class='insertLoginForm'></div>
     <div class='bodycontainer'>
@@ -83,8 +70,8 @@
                                             عليها قبل الاستمرار
                                         </label>
                                     </div>
-                                    <div class="col-3 mx-0">
-                                        <button class="inb YH-b" name="GO"   wire:click="{{ $currentStep == 1 ? 'firstStepSubmit' : '' }}{{ $currentStep == 2 ? 'secondStepSubmit' : '' }}{{ $currentStep == 3 ? 'thirdStepSubmit' : '' }}"  style="margin-left: 0;background-color: #002366 !important;
+                                    <div class="col-6 mx-0">
+                                        <button class="inb YH-b" name="GO" wire:click="{{ $currentStep == 1 ? 'firstStepSubmit' : '' }}{{ $currentStep == 2 ? 'secondStepSubmit' : '' }}{{ $currentStep == 3 ? 'thirdStepSubmit' : '' }}"  style="margin-left: 0;background-color: #002366 !important;
                                         color: white !important;">استمرار</button>
                                     </div>
                             </div>

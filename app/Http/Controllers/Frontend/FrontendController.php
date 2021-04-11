@@ -28,7 +28,7 @@ class FrontendController extends Controller
         $allCategories  = Category::all();
         $showCategoriesCars = Car::where('category_id' , $showCategories->first()->id)->get();
         $firstcar=Car::where('category_id' , $showCategories->first()->id)->first();
-        return view('frontend.main', compact('showCategories','showCategoriesCars','allCategories','firstcar'));
+        return view('frontend.main2', compact('showCategories','showCategoriesCars','allCategories','firstcar'));
     }
 
 
@@ -36,6 +36,32 @@ class FrontendController extends Controller
     {
         return view('frontend.branches');
     }
+
+
+
+    public function MediaCenter()
+    {
+        return view('frontend.media_center');
+    }
+
+
+    public function CarSales()
+    {
+        return view('frontend.car_sales');
+    }
+
+    public function services()
+    {
+        return view('frontend.services');
+    }
+
+    public function PointsProgram()
+    {
+        return view('frontend.points_program');
+    }
+
+
+
     function getUserIP()
     {
         // Get real visitor IP behind CloudFlare network

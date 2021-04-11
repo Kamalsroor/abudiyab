@@ -1,143 +1,95 @@
 .footer {
-    background: url('../../../imgs/footer-bg.png') no-repeat top left;
-    background-size: cover;
-    padding-top: 60px;
-    .footer__left {
-        h1 {
-            color: get-color(light);
-            @include font(
-                $size: 1.5rem,
-                $transform: capitalize,
-                $family: 'Times New Roman',
-            )
-        }
-        p {
-            color: #ddd;
-            font-size: 13px;
-            @include padding($top: 20px, $right: 20px);
-        }
+    overflow: hidden;
+    max-width: 100%;
+    background: get-color(primary-light-gradient);
+    color: get-color(light);
+    text-align: center;
+    @include smallScreen() {
+        padding-bottom: 50px;
     }
-    .footer__right {
-        h1 {
-            color: #ddd;
-            margin: 10px 0 20px 0;
-            font-size: 1.2rem;
-            font-weight: 300;
-            text-transform: capitalize;
-            font-family: 'Times New Roman';
-            font-weight: bold;
+    .container {
+        max-width: 100%;
+    }
+    &_section-1 {
+        padding: 20px 10px 0;
+        &_form {
+            .btn {
+                @include xLargeScreen() {
+                    font-size: 0.8rem;
+                }
+            }
         }
-        p {
-            font-size: 13px;
-            color: get-color(light);
-            font-weight: 300;
-            text-transform: capitalize;
+        &_text {
+            color: get-color(secondary);
+            font-size: 20px;
+            @media (max-width: 1492px) {
+                font-size: 15px;
+            }
+        }
+        input {
+            text-align: right;
+        }
+        &_icons {
             a {
                 color: get-color(light);
-                transition: .5s;
-                font-weight: bold;
-                font-family: 'Segoe UI';
-                &:hover {
-                    color: get-color(light-error);
-                    transition: .5s;
-                }
-            }
-        }
-        .footer__right__menu {
-            ul {
-                li {
-                    padding: 2px 0;
-                    a {
-                        color: get-color(light);
-                        font-size: 14px;
-                        font-weight: bold;
-                        text-transform: capitalize;
-                        color: get-color(light);
-                        transition: .5s;
-                        &:hover {
-                            color: get-color(light-error);
-                            transition: .5s;
-                        }
-                    }
-                }
-            }
-
-        }
-        .contact-us-block {
-            &__item {
-                &__icon {
-                    svg {
-
-                        color: get-color(light-error);
-                    }
-                    i {
-
-                        color: get-color(light-error);
-                    }
-                }
-                &__details {
-                    a {
-                        color: get-color(light);
-                        @include font(
-                            $size: .8rem,
-                        );
-                        &:hover {
-                            color: get-color(light-error);
-                        }
-                    }
-                    color: get-color(light);
-                }
+                font-size: 35px;
+                margin: 0 5px;
             }
         }
     }
-
-    .to-up {
-        display: flex;
-        a {
-            cursor: pointer;
-            width: 40px;
-            height:40px;
-            border: 1px solid get-color(light);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 5px;
-            border-radius: 50%;
-            color : get-color(secondary);
-            font-size: 1.3rem;
+    &_section-2 {
+        padding: 20px 10px 0;
+        &_text {
+            div {
+                margin: auto;
+                width: fit-content;
+                p {
+                    margin-bottom: 2px;
+                    font-size: 1.3em;
+                }
+                a {
+                    font-size: 30px;
+                    font-weight: 600;
+                }
+            }
         }
-        &::after {
-            @include margin($top: 22px, $right: 0, $bottom: 0, $left: 2%);
-            content :'';
-            display: block;
-            width: calc(100% - 2% - 40px);
-            height: 1px;
-            background: get-color(light);
-        }
-        &::before {
-            @include margin($top: 22px, $right: 2%, $bottom: 0, $left: 0);
-            content :'';
-            display: block;
-            width: calc(100% - 2% - 40px);
-            height: 1px;
-            background: get-color(light);
+        &_btn {
+            text-align: center;
+            max-width: 50%;
+            margin: 0 auto;
+            margin-top: 10px;
+            .btn {
+                font-size: 2em;
+            }
         }
     }
-    .footer__text {
-        color: get-color(light);
-        p {
-            text-transform: capitalize;
-            font-size: 14px;
-            font-weight: 300;
+    &_section-3 {
+        padding: 20px 10px;
+        &_img {
+            height: 100px;
+            text-align: center;
+            margin: 0 auto;
+            margin-bottom: 10px;
+            img {
+                height: 100%;
+            }
+        }
+        &_app-img {
             a {
-                color: get-color(secondary);
-                transition: .5s;
-                text-transform: uppercase;
-                &:hover {
-                    color: get-color(light-error);
-                    transition: .5s;
+                padding: 0 2px;
+                img {
+                    border: 0px solid get-color(light);
+                    border-radius: 10px;
+                    width: 100%;
                 }
             }
         }
+        &_text {
+            color: get-color(secondary);
+        }
+    }
+    &_section-4 {
+        padding: 0 0 10px;
+        font-size: 16px;
     }
 }

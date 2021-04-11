@@ -28,7 +28,7 @@
                         <img class="logo1" src="{{asset('front/mada-logo.png')}}" alt="">
                     </label>
                 </div>
-                <input  type="radio" value="mada" name="paymentType" wire:model="paymentType">
+                <input type="radio" value="mada" name="paymentType" wire:model="paymentType">
                 <label for="by2">بطاقه مدي البنكيه</label>
             </div>
             <div>
@@ -37,8 +37,8 @@
                         <img class="logo2" src="{{asset('front/cash-logo.png')}}" alt="">
                     </label>
                 </div>
-                <input  type="radio" value="cash" name="paymentType" wire:model="paymentType">
-                <label  for="by3">نقدا</label>
+                <input type="radio" value="cash" name="paymentType" wire:model="paymentType">
+                <label for="by3">نقدا</label>
             </div>
 
             <div class="imm">
@@ -48,8 +48,8 @@
                     </label>
                 </div>
 
-                <input  type="radio" value="points" name="paymentType" wire:model="paymentType">
-                <label  for="by4">النقاط</label>
+                <input type="radio" value="points" name="paymentType" wire:model="paymentType">
+                <label for="by4">النقاط</label>
             </div>
         </div>
         <div id="bg" class="display-none {{ $paymentType != "visa" ? 'display-none' : '' }} bay-g ">
