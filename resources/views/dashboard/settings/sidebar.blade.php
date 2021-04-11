@@ -16,6 +16,11 @@
             'active' => request()->routeIs('*settings*') && request('tab') == 'contacts',
         ],
         [
+            'name' => trans('settings.tabs.home'),
+            'url' => route('dashboard.settings.index', ['tab' => 'home']),
+            'active' => request()->routeIs('*settings*') && request('tab') == 'home',
+        ],
+        [
             'name' => trans('settings.tabs.about'),
             'url' => route('dashboard.settings.index', ['tab' => 'about']),
             'active' => request()->routeIs('*settings*') && request('tab') == 'about',

@@ -21,6 +21,7 @@ class SettingController extends Controller
     protected $files = [
         'logo',
         'favicon',
+        'home_links_backgraund',
     ];
 
     /**
@@ -36,11 +37,9 @@ class SettingController extends Controller
         }
 
         $this->authorize('manage', Setting::class);
-
         if (! view()->exists($view = "dashboard.settings.tabs.$tab")) {
             abort(404);
         }
-
         return view($view);
     }
 
