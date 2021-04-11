@@ -9,5 +9,6 @@
     "manage.cars",
     "manage.manufactories",
     "manage.sliders",
-    "manage.orders"
+    "manage.orders",
+    "manage.partners"
 ]

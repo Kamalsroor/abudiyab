@@ -108,7 +108,14 @@ Route::resource('feedback', 'FeedbackController')->only('index', 'show', 'destro
         Route::post('orders/{trashed_order}/restore', 'OrderController@restore')->name('orders.restore');
         Route::delete('orders/{trashed_order}/forceDelete', 'OrderController@forceDelete')->name('orders.forceDelete');
         Route::resource('orders', 'OrderController');
+
+        Route::get('trashed/partners', 'PartnerController@trashed')->name('partners.trashed');
+        Route::get('trashed/partners/{trashed_partner}', 'PartnerController@showTrashed')->name('partners.trashed.show');
+        Route::post('partners/{trashed_partner}/restore', 'PartnerController@restore')->name('partners.restore');
+        Route::delete('partners/{trashed_partner}/forceDelete', 'PartnerController@forceDelete')->name('partners.forceDelete');
+        Route::resource('partners', 'PartnerController');
 /*  The routes of generated crud will set here: Don't remove this line  */
+        
         
         
         

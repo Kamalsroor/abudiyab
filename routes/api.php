@@ -53,4 +53,6 @@ Route::apiResource('sliders', 'SliderController');
 Route::get('/select/sliders', 'SliderController@select')->name('sliders.select');
 Route::apiResource('orders', 'OrderController');
 Route::get('/select/orders', 'OrderController@select')->name('orders.select');
+Route::apiResource('partners', 'PartnerController');
+Route::get('/select/partners', 'PartnerController@select')->name('partners.select');
 /*  The routes of generated crud will set here: Don't remove this line  */
