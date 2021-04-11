@@ -88,53 +88,50 @@
         <!-- --------------------------toggeling menue starts here -->
         <section class="fleet-filter-menu">
             <div class=" container-fluid mx-0 px-0 toggeling-menue d-none" >
-                <div class="d-flex">
-                        <div style="background-color:white;">
+                    <div class="d-flex" >
+                        <div class="white-section">
                             <select class="form-control" id="exampleFormControlSelect1" wire:model='filterPriceCategory'>
                                     <option class="color-black" value='DESC'>السعر من الاكثر الى الأقل</option>
                                     <option class="color-black" value='ASC'>السعر من الأقل إلى الأعلى</option>
                                     <option class="color-black" value='modelasc'>الموديل من الأقدم إلى الأحدث</option>
                                     <option class="color-black" value='modeldes'>الموديل من الأحدث إلى الأقدم</option>
                             </select>
-                            <div style="background: #0941a8;" class="py-2 text-center justify-content-center">
+                            <div  class="py-2 text-center justify-content-center filter-menu-heading">
                                 <p class="m-0">أختر السعر المناسب</p>
                             </div>
-                                <div class="range-slider my-3 text-center">
+                            <div class="range-slider my-3 text-center">
 
-                                    <b class="mx-3"><i class="icofont icofont-cur-riyal"></i> {{$priceRangeNewEnd}}</b>
-                                    <span  wire:ignore >
+                                <b class="mr-2"><i class="icofont icofont-cur-riyal"></i> {{$priceRangeNewEnd}}</b>
+                                <span   wire:ignore >
 
-                                        <input style="width: 40%;" id="ex2" type="text" class="span2 ex2" value=""
-                                        data-slider-min="10"
-                                        data-slider-max="3000"
-                                        data-slider-step="5"
-                                        wire:model="priceRange"
-                                        data-slider-value="[{{$priceRange ?? "10,3000"}}]" />
-                                    </span>
-                                    <b class="ml-2"><i class="icofont icofont-cur-riyal"></i> {{$priceRangeNewStart}}</b>
+                                    <input  id="ex2" type="text" class="span2 ex2" value=""
+                                    data-slider-min="10"
+                                    data-slider-max="3000"
+                                    data-slider-step="5"
+                                    wire:model="priceRange"
+                                    data-slider-value="[{{$priceRange ?? "10,3000"}}]" />
+                                </span>
+                                <b class="ml-2"><i class="icofont icofont-cur-riyal"></i> {{$priceRangeNewStart}}</b>
 
-                                </div>
-                            <div style="background: #0941a8;" class="py-2 text-center mb-2">
+                            </div>
+
+                            <div  class="py-2 text-center mb-2 filter-menu-heading">
                                 <p class="m-0 ">نوع السيارة</p>
                             </div>
 
 
-                                    <div style="overflow-y:scroll;">
-                            @foreach( $categories as $category )
-
-                                <div>
-                                <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  class="my-check" id="i{{$category->id}}">
-                                <label for="i{{$category->id}}" style="display: contents;">
-                                        <div class="align-right">
-                                            <label style="margin-bottom: 0;" class="color-black" for="i{{$category->id}}">{{$category->name}}</label>
-                                        </div>
-                                    </label>
-                                </div>
-                            @endforeach
+                            <div class="fleet-category">
+                                @foreach( $categories as $category )
+                                    <div class="text-right">
+                                        <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  class="my-check" id="category-{{$category->id}}">
+                                        <label for="category-{{$category->id}}">{{$category->name}}</label>
+                                    </div>
+                                @endforeach
                             </div>
-                            </div>
-                            </div>
-                        <div class="cancel-toggle-menue" style="width: 30%;">
+                            
+                        </div>
+                        <div class="cancel-toggle-menue" >
+                            
                         </div>
                 </div>
             </div>
@@ -147,50 +144,46 @@
             
                 <div class="row ">
                 
-                    <div class="col-lg-3 d-none d-lg-block col-4 pr-0  mb-2" >
-                        <div style="background-color:white;">
+                    <div class="col-lg-3 d-none d-lg-block col-4 pr-0  mb-2 " >
+                        <div class="white-section">
                             <select class="form-control" id="exampleFormControlSelect1" wire:model='filterPriceCategory'>
-                                    <option class="color-black" value='DESC'>السعر من الاكثر الى الأقل</option>
-                                    <option class="color-black" value='ASC'>السعر من الأقل إلى الأعلى</option>
-                                    <option class="color-black" value='modelasc'>الموديل من الأقدم إلى الأحدث</option>
-                                    <option class="color-black" value='modeldes'>الموديل من الأحدث إلى الأقدم</option>
+                                    <option  value='DESC'>السعر من الاكثر الى الأقل</option>
+                                    <option  value='ASC'>السعر من الأقل إلى الأعلى</option>
+                                    <option  value='modelasc'>الموديل من الأقدم إلى الأحدث</option>
+                                    <option  value='modeldes'>الموديل من الأحدث إلى الأقدم</option>
                             </select>
-                            <div style="background: #0941a8;" class="py-2 text-center justify-content-center">
+                            <div  class="py-2 text-center justify-content-center category-menu-heading">
                                 <p class="m-0">أختر السعر المناسب</p>
                             </div>
-                                <div class="range-slider my-3 text-center">
+                            <div class="range-slider my-3 text-center">
 
-                                    <b class="mx-3"><i class="icofont icofont-cur-riyal"></i> {{$priceRangeNewEnd}}</b>
-                                    <span  wire:ignore >
+                                <b class="mx-3"><i class="icofont icofont-cur-riyal"></i> {{$priceRangeNewEnd}}</b>
+                                <span  wire:ignore >
 
-                                        <input id="ex2" type="text" class="span2 ex2" value=""
-                                        data-slider-min="10"
-                                        data-slider-max="3000"
-                                        data-slider-step="5"
-                                        wire:model="priceRange"
-                                        data-slider-value="[{{$priceRange ?? "10,3000"}}]" />
-                                    </span>
-                                    <b class="ml-2"><i class="icofont icofont-cur-riyal"></i> {{$priceRangeNewStart}}</b>
+                                    <input id="ex2" type="text" class="span2 ex2" value=""
+                                    data-slider-min="10"
+                                    data-slider-max="3000"
+                                    data-slider-step="5"
+                                    wire:model="priceRange"
+                                    data-slider-value="[{{$priceRange ?? "10,3000"}}]" />
+                                </span>
+                                <b class="ml-2"><i class="icofont icofont-cur-riyal"></i> {{$priceRangeNewStart}}</b>
 
-                                </div>
-                            <div style="background: #0941a8;" class="py-2 text-center mb-2">
+                            </div>
+                            <div  class="py-2 text-center mb-2 category-menu-heading">
                                 <p class="m-0 ">نوع السيارة</p>
                             </div>
 
 
 
-                            @foreach( $categories as $category )
+                                @foreach( $categories as $category )
 
-                                <div>
-                                <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  class="my-check" id="i{{$category->id}}">
-                                <label for="i{{$category->id}}" style="display: contents;">
-                                        <div class="align-right">
-                                            <label style="margin-bottom: 0;" class="color-black" for="i{{$category->id}}">{{$category->name}}</label>
-                                        </div>
-                                    </label>
-                                </div>
-                            @endforeach
-                            </div>
+                                    <div class="text-right">
+                                        <input class="mx-2" type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  class="my-check" id="category-{{$category->id}}">
+                                        <label for="category-{{$category->id}}">{{$category->name}}</label>
+                                    </div>
+                                @endforeach
+                        </div>
                     </div>
                     <div class="col-lg-9  col-md-12 px-0">
                         <!-- loop comes here -->
@@ -226,9 +219,9 @@
                                         </div>
                                         <div class="row" style="border-top: #777 solid 1px;">
 
-                                            <div class="col-12">
-                                                <span onclick="favorite(this)" class="color-black" style="float: right; user-select: none; cursor: pointer;"><i class="far fa-bookmark heart"></i><i class="fas fa-bookmark heart"></i> حفظ في المفضله</span>
-                                                <button class="btn btn-primary mt-3 ml-3 fleet-car-button" wire:click="booking({{$formcar->id}});">احجز الأن</button>
+                                            <div class="col-12 d-flex px-0 mx-0 justify-content-between align-items-center">
+                                                <span onclick="favorite(this)" class="color-black text-right" style="float: right; user-select: none; cursor: pointer;"><i class="far fa-bookmark heart"></i><i class="fas fa-bookmark heart"></i> حفظ في المفضله</span>
+                                                <button class="primary-btn btn-hover btn-curved mt-3 ml-3 p-2 fleet-car-button" wire:click="booking({{$formcar->id}});">احجز الأن</button>
                                             </div>
                                         </div>
                                     </div>
