@@ -916,7 +916,6 @@ input, textarea {
   background: linear-gradient(91deg, #0d157b 15%, #056cd5 121%);
   color: #ffffff;
   text-align: center;
-  padding-bottom: 50px;
 }
 @media (max-width: 576px) {
   .footer {
@@ -1236,6 +1235,10 @@ input, textarea {
   }
 }
 
+.home-our-partners img {
+  width: 100%;
+  margin: auto;
+}
 .home-our-partners .home-our-partners__heading {
   padding: 10px 0;
 }
