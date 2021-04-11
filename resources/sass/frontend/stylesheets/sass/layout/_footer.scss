@@ -4,6 +4,10 @@
     background: get-color(primary-light-gradient);
     color: get-color(light);
     text-align: center;
+    @include smallScreen() {
+        padding-bottom: 50px;
+    }
+    padding-bottom: 50px;
     .container {
         max-width: 100%;
     }

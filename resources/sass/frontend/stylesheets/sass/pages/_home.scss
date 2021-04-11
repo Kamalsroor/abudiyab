@@ -78,6 +78,16 @@
             }
         }
     }
+    #home-category__togeller {
+        &:hover {
+            .fa-angle-double-down {
+                transform: translateY(3px);
+            }
+            .fa-angle-double-up {
+                transform: translateY(-3px);
+            }
+        }
+    }
 }
 
 .car-model {
@@ -213,12 +223,9 @@
         margin: auto;
         .slick-slider {
             padding: 0 5px;
-            div {
+            img {
                 width: 100%;
-                img {
-                    width: 100%;
-                    margin: auto;
-                }
+                margin: auto;
             }
         }
     }

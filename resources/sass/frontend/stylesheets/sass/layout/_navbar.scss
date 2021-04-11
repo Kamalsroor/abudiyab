@@ -234,6 +234,10 @@
     font-size: 16px;
     a {
         color: get-color(light);
+        cursor: pointer;
+    }
+    i {
+        cursor: pointer;
     }
 }
 
@@ -251,6 +255,7 @@
         height: 16vw;
         border: solid white 1px;
         flex-direction: column;
+        text-align: center;
         @include smallScreen {
             height: 30vw;
         }
@@ -258,6 +263,11 @@
             background-color: get-color(primary);
             color: get-color(light);
         }
+    }
+    @include mediumScreen {
+        position: fixed;
+        left: 0;
+        bottom: 50px;
     }
 }
 
