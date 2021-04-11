@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 
 class MasterCardPayment extends Controller
 {
@@ -285,5 +286,32 @@ class MasterCardPayment extends Controller
 		$js .= "Lightbox.Checkout.configure = {OrderId: '',paymentMethodFromLightBox: 2,MID: ".self::$mID.",TID: ".self::$tID.",AmountTrxn: ".self::$totalPrice.",MerchantReference: '".self::$orderID."',completeCallback: function (data) {console.log(data);var sendData = 'orderId=' + data.MerchantReference + '&Amount=' + data.Amount + '&Currency=' + data.Currency + '&PayerAccount=' + data.PayerAccount + '&PayerName=' + data.PayerName + '&PaidThrough=' + data.PaidThrough + '&SystemReference=' + data.SystemReference + '&NetworkReference=' + data.NetworkReference;$.ajax({type: 'POST',url : '".self::$successURL."',data: sendData,success: function(da) {alert('success Payment and Date Send To Success URL with Ajax POST Request');}});},errorCallback: function () {window.location = '".self::$failURL."';},cancelCallback:function () {window.location = ".self::$failURL.";}};Lightbox.Checkout.showLightbox(); });});</script>";
 
 		return $js;
+	}
+
+
+   	/*
+	*	Refund Order By Transaction
+	*/
+	public static function RefundOrderByTransaction($orderID, $merchantID, $merchantPassword , $orderAmount)
+	{
+		self::$orderID = $orderID;
+		self::$merchantID = $merchantID;
+		self::$merchantPassword = $merchantPassword;
+        $transaction = Str::random(30);
+        $data = [
+			'apiOperation' => "REFUND",
+            'transaction' => [
+                'amount' => $orderAmount,
+				'currency' => config('BankPayment.currency')
+            ]
+		];
+
+
+        $response = Http::contentType("application/json")
+        ->withBasicAuth('merchant.'.self::$merchantID, self::$merchantPassword)
+        ->withHeaders([
+            'Accept' => 'application/json'
+        ])->put(config('BankPayment.ApiUrl'). '/merchant/'.self::$merchantID.'/order/'.self::$orderID.'/transaction/'.$transaction, $data)->json();
+        return $response;
 	}
 }

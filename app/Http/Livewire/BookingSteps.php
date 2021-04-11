@@ -97,6 +97,10 @@ class BookingSteps extends Component
                 ]);
                 $this->currentStep = 5;
             }
+            // $orderAmount =
+            // $RefundOrderByTransaction = MasterCardPayment::RefundOrderByTransaction($orderID, $merchantID, $merchantPassword , $this->order->price);
+            dd($getOrderDetailsSandBox );
+
             if ($this->order->payment_status == "SUCCESS") {
                 $this->currentStep = 5 ;
             }else{
