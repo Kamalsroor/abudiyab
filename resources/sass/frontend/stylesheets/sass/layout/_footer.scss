@@ -35,6 +35,14 @@
                 color: get-color(light);
                 font-size: 35px;
                 margin: 0 5px;
+                i {
+                    transition: .2s;
+                    &:hover {
+                        color: get-color(secondary);
+                        transform: scale(1.1);
+                        transition: .2s;
+                    }
+                }
             }
             margin-bottom: 30px;
         }

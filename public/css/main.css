@@ -959,6 +959,14 @@ textarea {
   font-size: 35px;
   margin: 0 5px;
 }
+.footer_section-1_icons a i {
+  transition: 0.2s;
+}
+.footer_section-1_icons a i:hover {
+  color: #FFA602;
+  transform: scale(1.1);
+  transition: 0.2s;
+}
 .footer_section-2 {
   padding: 20px 10px 0;
 }
@@ -2057,9 +2065,9 @@ textarea {
 }
 .branch-page_center_dranches_branch .branch-hidden-list .detail {
   position: absolute;
-  top: 80%;
-  left: 15%;
-  transform: translate(-15%, -80%);
+  top: 79%;
+  left: 20%;
+  transform: translate(-20%, -79%);
   color: #ffffff;
 }
 .branch-page_center_dranches_branch .branch-hidden-list .section-detail {
@@ -2162,6 +2170,19 @@ textarea {
   position: relative;
 }
 .points-program-page_head h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.membership-cards-page_head {
+  color: #ffffff;
+  height: 500px;
+  width: 100%;
+  position: relative;
+}
+.membership-cards-page_head h1 {
   position: absolute;
   top: 50%;
   left: 50%;
