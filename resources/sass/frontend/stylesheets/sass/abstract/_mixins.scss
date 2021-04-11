@@ -73,7 +73,7 @@
     }
 }
 
-// Font Mixin 
+// Font Mixin
 @mixin font ( $size: null, $style: null, $varient: null, $family: null, $transform: null, $weight: null, $line-height: null, $color: null) {
     font-size: $size;
     font-family: $family;
@@ -83,6 +83,14 @@
     font-style: $style;
     font-variant: $varient;
     color: $color;
+}
+
+// Determine the location of the item
+@mixin location ($top, $left) {
+    position: absolute;
+    top: $top;
+    left: $left;
+    transform: translate(-$left, -$top);
 }
 
 // Drop font awesome with css
