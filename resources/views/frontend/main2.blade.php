@@ -175,9 +175,13 @@
 
     </section>
 
-    <section class="home-linking-section">
+    <section class="home-linking-section" style="    background-image: url({{optional(Settings::instance('home_links_backgraund'))->getFirstMediaUrl('home_links_backgraund')}});
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;">
         <div>
-        <h2 >لأنك تستاهل الأحدث</h2>
+        <h2 >{{Settings::locale(app()->getLocale())->get('home_links_title')}}</h2>
         </div>
     </section>
 

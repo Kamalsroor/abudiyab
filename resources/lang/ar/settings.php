@@ -62,6 +62,8 @@ return [
         'pusher_app_port' => 'Pusher App Port',
         'pusher_app_encrypted' => 'Pusher App Encrypted',
         'pusher_app_scheme' => 'Pusher App Scheme',
+        'home_links_backgraund' => 'قسم الربط : الصوره الخلفيه',
+        'home_links_title' => 'قسم الربط : العنوان الرئيسي',
 
 
         'about_home_title' => 'قسم حولنا : العنوان الرئيسي',
