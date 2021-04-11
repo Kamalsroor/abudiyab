@@ -1,0 +1,98 @@
+.footer {
+    overflow: hidden;
+    max-width: 100%;
+    background: get-color(primary-light-gradient);
+    color: get-color(light);
+    text-align: center;
+    @include smallScreen() {
+        padding-bottom: 50px;
+    }
+    .container {
+        max-width: 100%;
+    }
+    &_section-1 {
+        padding: 20px 10px 0;
+        &_form {
+            .btn {
+                @include xLargeScreen() {
+                    font-size: 0.8rem;
+                }
+            }
+        }
+        &_text {
+            margin-bottom: 30px;
+            color: get-color(secondary);
+            font-size: 20px;
+            @media (max-width: 1492px) {
+                font-size: 15px;
+            }
+        }
+        input {
+            text-align: right;
+        }
+        &_icons {
+            a {
+                color: get-color(light);
+                font-size: 35px;
+                margin: 0 5px;
+            }
+            margin-bottom: 30px;
+        }
+    }
+    &_section-2 {
+        padding: 20px 10px 0;
+        &_text {
+            div {
+                margin: auto;
+                width: fit-content;
+                p {
+                    margin-bottom: 10px;
+                    font-size: 1.3em;
+                }
+                a {
+                    margin-top: 30px;
+                    font-size: 30px;
+                    font-weight: 600;
+                }
+            }
+        }
+        &_btn {
+            text-align: center;
+            max-width: 50%;
+            margin: 0 auto;
+            margin-top: 10px;
+            .btn {
+                font-size: 2em;
+            }
+        }
+    }
+    &_section-3 {
+        padding: 20px 10px;
+        &_img {
+            height: 100px;
+            text-align: center;
+            margin: 0 auto;
+            margin-bottom: 10px;
+            img {
+                height: 100%;
+            }
+        }
+        &_app-img {
+            a {
+                padding: 0 2px;
+                img {
+                    border: 0px solid get-color(light);
+                    border-radius: 10px;
+                    width: 100%;
+                }
+            }
+        }
+        &_text {
+            color: get-color(secondary);
+        }
+    }
+    &_section-4 {
+        padding: 0 0 10px;
+        font-size: 16px;
+    }
+}
