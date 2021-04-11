@@ -23,6 +23,8 @@ class CreateSlidersTable extends Migration
             $table->id();
             $table->foreignId('slider_id');
             $table->string('name')->nullable();
+            $table->string('first_header')->nullable();
+            $table->string('second_header')->nullable();
             $table->string('locale')->index();
             $table->unique(['slider_id', 'locale']);
             $table->foreign('slider_id')->references('id')->on('sliders')->cascadeOnDelete();

@@ -8,5 +8,6 @@
     "trashed_car": "App\\Models\\Car",
     "trashed_manufactory": "App\\Models\\Manufactory",
     "trashed_slider": "App\\Models\\Slider",
-    "trashed_order": "App\\Models\\Order"
+    "trashed_order": "App\\Models\\Order",
+    "trashed_partner": "App\\Models\\Partner"
 }

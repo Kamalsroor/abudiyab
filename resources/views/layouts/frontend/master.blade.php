@@ -46,7 +46,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!--================
             main Navbar
         =================-->
-        
+
 
         <div class="container-fluid px-0">
 
@@ -72,14 +72,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- Scripts -->
 
 
-    <script src="{{asset('front/lnkse/jquery-3.5.1.min.js')}}"></script>
+    {{-- <script src="{{asset('front/lnkse/jquery-3.5.1.min.js')}}"></script> --}}
 
-
+{{--
     <script src="{{asset('front/lnkse/bootstrap.bundle.js')}}"></script>
-    <script src="{{asset('front/lnkse/bootstrap.js')}}"></script>
+    <script src="{{asset('front/lnkse/bootstrap.js')}}"></script> --}}
 
     {{-- <script src="{{asset('front/lnkse/main.js')}}"></script> --}}
-    
+
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script src="{{ asset(mix('/js/frontend.js')) }}"></script>

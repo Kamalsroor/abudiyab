@@ -100,10 +100,19 @@
                     <i class="fas fa-globe-americas" style="font-size: 25px;"></i>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                        <a class="dropdown-item mx-0"  href="#">english</a>
-                        <a class="dropdown-item mx-0"  href="#">Arabic</a>
+                        @foreach(Locales::get() as $locale)
+                        {{-- <li>
+                            <a href="{{ route('locale', $locale->code) }}"><img src="{{ $locale->flag }}" alt="{{ $locale->name }}" class="mr-2">{{trans('frontend.navbar.'.$locale->code)}}</a>
+                        </li> --}}
+                            <a class="dropdown-item mx-0"  href="{{ route('locale', $locale->code) }}">{{ $locale->name }}</a>
+                        @endforeach
+                        {{-- <a class="dropdown-item mx-0"  href="#">Arabic</a> --}}
                     </div>
                 </div>
+
+
+
+
             </div>
             <div class="col-lg-5 col-md-5 col-sm-12 py-2 d-flex justify-content-center">
 

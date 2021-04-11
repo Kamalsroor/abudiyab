@@ -509,6 +509,104 @@
                 }
             }
         },
+        "/partners": {
+            "get": {
+                "tags": [
+                    "Partners"
+                ],
+                "summary": "Get list of partners",
+                "description": "Returns list of partners",
+                "operationId": "getPartnersList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PartnerResource"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/partners/{id}": {
+            "get": {
+                "tags": [
+                    "Partners"
+                ],
+                "summary": "Get partner information",
+                "description": "Returns partner data",
+                "operationId": "getPartnerById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Partner id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Partner"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/select/partners": {
+            "get": {
+                "tags": [
+                    "Partners"
+                ],
+                "summary": "Get list of Select partners",
+                "description": "Returns list of Select partners",
+                "operationId": "getSelectPartnersList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PartnerResource"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
         "/roles": {
             "get": {
                 "tags": [
@@ -928,6 +1026,50 @@
                     "name": "Order"
                 }
             },
+            "Partner": {
+                "title": "Partner",
+                "description": "Partner model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "Name",
+                        "description": "Name of the new partner",
+                        "type": "string",
+                        "example": "A nice partner"
+                    },
+                    "created_at": {
+                        "title": "Created at",
+                        "description": "Created at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "updated_at": {
+                        "title": "Updated at",
+                        "description": "Updated at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "deleted_at": {
+                        "title": "Deleted at",
+                        "description": "Deleted at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Partner"
+                }
+            },
             "Role": {
                 "title": "Role",
                 "description": "Role model",
@@ -1084,6 +1226,20 @@
                 "type": "object",
                 "xml": {
                     "name": "OrderResource"
+                }
+            },
+            "PartnerResource": {
+                "title": "PartnerResource",
+                "description": "Partner resource",
+                "properties": {
+                    "data": {
+                        "title": "Data",
+                        "description": "Data wrapper"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "PartnerResource"
                 }
             },
             "RoleResource": {

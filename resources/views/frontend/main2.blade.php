@@ -1,6 +1,6 @@
 <x-front-layout :title="trans('dashboard.home')" :breadcrumbs="['dashboard.home']" >
 
-  
+
 
 <div class="container-fluid px-0" >
     <div class="container-fluid px-0">
@@ -17,87 +17,17 @@
                 <li data-target="#carouselExampleIndicators" data-slide-to="8"></li>
             </ol>
             <div class="carousel-inner">
-                <div class="carousel-item active ">
+                @foreach ($sliders as $slider )
+                <div class='carousel-item {{ $loop->first ? "active" : " " }}' >
                     <div class="d-flex align-items-center">
-                        <img src="{{asset('front/img/finalsliders/slide_new222.jpg')}}" class="d-block w-100" alt="carousel image">
+                        <img src="{{$slider->getFirstMediaUrl()}}" class="d-block w-100" alt="carousel image">
                         <div class="abs">
-                            <h1>عملائنا الأعزاء..</h1>
-                            <h1>سلامتك تهمنا</h1>
+                            <h1>{{ $slider->first_header }}</h1>
+                            <h1>{{ $slider->second_header }}</h1>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <div class="d-flex align-items-center">
-                        <img src="{{asset('front/img/finalsliders/slide_new_1.jpg')}}" class="d-block w-100" alt="carousel image">
-                        <div class="abs">
-                            <h1>عملائنا الأعزاء..</h1>
-                            <h1>سلامتك تهمنا</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="d-flex align-items-center">
-                        <img src="{{asset('front/img/finalsliders/slide_new_2.jpg')}}" class="d-block w-100" alt="carousel image">
-                        <div class="abs">
-                            <h1>عملائنا الأعزاء..</h1>
-                            <h1>سلامتك تهمنا</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="d-flex align-items-center">
-                        <img src="{{asset('front/img/finalsliders/slide_5.jpg')}}" class="d-block w-100" alt="carousel image">
-                        <div class="abs">
-                            <h1>عملائنا الأعزاء..</h1>
-                            <h1>سلامتك تهمنا</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="d-flex align-items-center">
-                        <img src="{{asset('front/img/finalsliders/slide_new_6.jpg')}}" class="d-block w-100" alt="carousel image">
-                        <div class="abs">
-                            <h1>عملائنا الأعزاء..</h1>
-                            <h1>سلامتك تهمنا</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="d-flex align-items-center">
-                        <img src="{{asset('front/img/finalsliders/1.jpg')}}" class="d-block w-100" alt="carousel image">
-                        <div class="abs">
-                            <h1>عملائنا الأعزاء..</h1>
-                            <h1>سلامتك تهمنا</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="d-flex align-items-center">
-                        <img src="{{asset('front/img/finalsliders/2.jpg')}}" class="d-block w-100" alt="carousel image">
-                        <div class="abs">
-                            <h1>عملائنا الأعزاء..</h1>
-                            <h1>سلامتك تهمنا</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="d-flex align-items-center">
-                        <img src="{{asset('front/img/finalsliders/3.jpg')}}" class="d-block w-100" alt="carousel image">
-                        <div class="abs">
-                            <h1>عملائنا الأعزاء..</h1>
-                            <h1>سلامتك تهمنا</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="d-flex align-items-center">
-                        <img src="{{asset('front/img/finalsliders/4.jpg')}}" class="d-block w-100" alt="carousel image">
-                        <div class="abs">
-                            <h1>عملائنا الأعزاء..</h1>
-                            <h1>سلامتك تهمنا</h1>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
 
         </div>
@@ -125,7 +55,7 @@
             </div>
         </div>
     </section>
-  
+
     <section class="car-model">
         <div class="container">
             <div class="row justify-content-center px-0 mx-0 car-model__heading" >
@@ -148,7 +78,7 @@
                     <div class="car-model__item py-2">
                         <p class=" text-center">{{$cars['name']}}</p>
                     </div>
-                    
+
                 @endforeach
             </div>
             <div class="row py-3" >
@@ -168,9 +98,9 @@
                 <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">عدد المقاعد 5</p></div>
             </div>
 
-                
-    
-            
+
+
+
         </div>
 
     </section>
@@ -185,59 +115,22 @@
         </div>
     </section>
 
-    
+
     <section class="home-our-partners">
 
-        <div class="home-our-partners__heading"> 
+        <div class="home-our-partners__heading">
             <span class="g-title">شركاؤنا في النجاح</span>
         </div>
-        
-        <div class="home-our-partners__content"> 
+
+        <div class="home-our-partners__content">
+            @foreach($partners as $partner)
             <div class="text-center home-our-partners__item">
-                <img src="{{asset('front/img/brands/BMW.png')}}" class="d-block wd-100"  alt="car brand">
+                <img src="{{$partner->getFirstMediaUrl()}}" class="d-block wd-100"  alt="car brand">
             </div>
-            <div class="text-center home-our-partners__item">
-                <img src="{{asset('front/img/brands/changan.png')}}" class="d-block wd-100"  alt="car brand">
-            </div>
-            <div class="text-center home-our-partners__item">
-                <img src="{{asset('front/img/brands/Citroen.png')}}" class="d-block wd-100"  alt="car brand">
-            </div>
-            <div class="text-center home-our-partners__item">
-                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block wd-100"  alt="car brand">
-            </div>
-            <div class="text-center home-our-partners__item">
-                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block wd-100"  alt="car brand">
-            </div>
-            <div class="text-center home-our-partners__item">
-                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block wd-100"  alt="car brand">
-            </div>
-            <div class="text-center home-our-partners__item">
-                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block wd-100"  alt="car brand">
-            </div>
-            <div class="text-center home-our-partners__item">
-                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block wd-100"  alt="car brand">
-            </div>
-            <div class="text-center home-our-partners__item">
-                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block wd-100"  alt="car brand">
-            </div>
-            <div class="text-center home-our-partners__item">
-                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block wd-100"  alt="car brand">
-            </div>
-            <div class="text-center home-our-partners__item">
-                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block wd-100"  alt="car brand">
-            </div>
-            <div class="text-center home-our-partners__item">
-                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block wd-100"  alt="car brand">
-            </div>
-            <div class="text-center home-our-partners__item">
-                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block wd-100"  alt="car brand">
-            </div>
-            <div class="text-center home-our-partners__item">
-                <img src="{{asset('front/img/brands/Honda.png')}}" class="d-block wd-100"  alt="car brand">
-            </div>
+            @endforeach
         </div>
 
-        
+
     </section>
 
 </div>

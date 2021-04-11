@@ -33,6 +33,8 @@ return [
         'image' => 'Slider image',
         'created_at' => 'Created At',
         'deleted_at' => 'Deleted At',
+        'first_header' => 'first header',
+        'second_header' => 'second header',
     ],
     'dialogs' => [
         'delete' => [
