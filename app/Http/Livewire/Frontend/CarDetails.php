@@ -25,7 +25,7 @@ class CarDetails extends Component
     public function render()
     {
   
-        $this->dispatchBrowserEvent('CarDetailSlick');
+        $this->dispatchBrowserEvent('CarDetailSlick' ,['car' => $this->car] );
         return view('livewire.frontend.car-details');
 
     }

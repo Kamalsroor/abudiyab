@@ -6,15 +6,9 @@
     <div class="container-fluid px-0">
         <div id="carouselExampleIndicators" class="carousel home-carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="8"></li>
+                @foreach ($sliders as $slider )
+                    <li data-target="#carouselExampleIndicators" data-slide-to="{{$loop->index}}" class="{{$loop->first  ? 'active' : "" }}" style="background-image: url({{$slider->getFirstMediaUrl()}})"></li>
+                @endforeach
             </ol>
             <div class="carousel-inner">
                 @foreach ($sliders as $slider )
@@ -58,8 +52,24 @@
 
     <section class="car-model">
         <livewire:frontend.car-model />
-        <livewire:frontend.car-details />
+        <div class="container">
+            <div class="row justify-content-center px-0 mx-0 car-model__heading" >
+                <div class="car-model__item py-2" data-id="{{$firstcar->id}}">
+                    <p class=" text-center">{{$firstcar->name}}</p>
+                </div> 
+          
+            </div>
+        </div>
 
+        <livewire:frontend.car-details />
+        <div class="container">
+            <div class="row car-details car-details__heading" >
+                <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">سنة {{isset($car) ? $car->model : ""}}</p></div>
+                <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">ناقل الحركة اوتوماتيك</p></div>
+                <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">عدد الأبواب {{isset($car) ? $car->door : ""}}</p></div>
+                <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">عدد المقاعد 5</p></div>
+            </div>
+        </div>
 
 
     </section>
