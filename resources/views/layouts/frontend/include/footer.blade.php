@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </div>
-           
+
             <div class="col-12 col-lg-4 footer_section-2">
                 <div class="row">
                     <div class="col-12 footer_section-2_text">
@@ -33,7 +33,7 @@
                         <a href="tel:996920026600" class="btn btn-danger btn-lg btn-block"><i class="fas fa-phone-volume"></i> 920026600</a>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
 
@@ -42,6 +42,7 @@
                     <div class="col-12 footer_section-1_icons">
                         <a href="#"><i class="fab fa-whatsapp"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>

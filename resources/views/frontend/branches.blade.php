@@ -18,7 +18,7 @@
                         <p id='3'>المنطقة الجنوبية</p>
                     </div>
                 </div>
-                <div class="branch-page_center_dranches" style="background: url({{asset('front/img/riyadh.jpg')}});background-repeat: no-repeat;background-size: 100% 100%;">
+                <div class="branch-page_center_dranches" style="background: url({{asset('front/img/riyadh.jpg')}});background-repeat: no-repeat;background-size: cover;background-attachment: fixed;">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-12 col-md-6 col-lg-3 mb-2">

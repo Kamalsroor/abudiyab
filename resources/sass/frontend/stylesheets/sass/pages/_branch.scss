@@ -79,7 +79,7 @@
                     border-radius: 0px 0px 200px 200px;
                     transition: .5s;
                     .detail {
-                        @include location(80%, 15%);
+                        @include location(79%, 20%);
                         color: get-color(light);
                     }
                     .section-detail {
