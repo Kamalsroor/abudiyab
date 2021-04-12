@@ -24,7 +24,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     {{-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> --}}
 </head>
-<body style="overflow: hidden;">
+<body >
 <!-- ------------START------HTML------LOAD------------ -->
 {{-- <div class="background-loader" style="position: absolute;height: 100vh;width: 100%; color: #fff;background: #fff;z-index: 1000000;">1 </div> --}}
 
