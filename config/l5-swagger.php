@@ -197,7 +197,7 @@ return [
          * Uncomment to add constants which can be used in annotations
          */
         'constants' => [
-        'L5_SWAGGER_CONST_HOST' => env('L5_SWAGGER_CONST_HOST', 'http://scaffoldingnew.test/api'),
+            'L5_SWAGGER_CONST_HOST' => env('L5_SWAGGER_CONST_HOST', 'https://abudiyab-soft.com/api'),
         ],
     ],
 ];
