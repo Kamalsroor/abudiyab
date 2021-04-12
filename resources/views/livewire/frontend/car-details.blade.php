@@ -9,12 +9,7 @@
             <img class="mx-lg-5 mx-md-2 ml-sm-2" style="width: 80%;" src="{{isset($car) ? $car->getFirstMediaUrl() : ""}}" alt="car image" >
         </div>
     </div>
-    <div class="row car-details car-details__heading" >
-        <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">سنة {{isset($car) ? $car->model : ""}}</p></div>
-        <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">ناقل الحركة اوتوماتيك</p></div>
-        <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">عدد الأبواب {{isset($car) ? $car->door : ""}}</p></div>
-        <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">عدد المقاعد 5</p></div>
-    </div>
+
 
 
 </div>
