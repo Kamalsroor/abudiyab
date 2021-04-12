@@ -42,7 +42,7 @@
                 <div class="row px-0 mx-0 justify-content-center home-category__item not-active " >
                     @foreach($allCategories as $category)
                         <div class='col-sm-3 col-lg-3 col-md-4 my-2 ' id='{{$category->id}}'>
-                            <button type="button" id='{{$category->id}}' class=" btn-lg btn-block primary-btn btn-hover btn-curved">{{$category->name}}</button>
+                            <button type="button" id='{{$category->id}}'  data-id="{{$category->id}}" class=" btn-lg btn-block primary-btn btn-hover btn-curved CarCategoryChange">{{$category->name}}</button>
                         </div>
                     @endforeach
                         <div class="col-sm-3 col-lg-3 col-md-4 my-2">
@@ -57,51 +57,10 @@
     </section>
 
     <section class="car-model">
-        <div class="container">
-            <div class="row justify-content-center px-0 mx-0 car-model__heading" >
-                @foreach($showCategoriesCars as $cars)
-                    <div class="car-model__item py-2">
-                        <p class=" text-center">{{$cars['name']}}</p>
-                    </div>
-                    <div class="car-model__item py-2">
-                        <p class=" text-center">{{$cars['name']}}</p>
-                    </div>
-                    <div class="car-model__item py-2">
-                        <p class=" text-center">{{$cars['name']}}</p>
-                    </div>
-                    <div class="car-model__item py-2">
-                        <p class=" text-center">{{$cars['name']}}</p>
-                    </div>
-                    <div class="car-model__item py-2">
-                        <p class=" text-center">{{$cars['name']}}</p>
-                    </div>
-                    <div class="car-model__item py-2">
-                        <p class=" text-center">{{$cars['name']}}</p>
-                    </div>
-
-                @endforeach
-            </div>
-            <div class="row py-3" >
-                <div class="col-4 d-flex align-items-center justify-content-center car-price-section"><p class="before-price m-0" style=" text-decoration: line-through;" ><i class="icofont icofont-cur-riyal"></i>{{$firstcar->price2}}</p>
-                            <h2 class="after-price"  ><i class="icofont icofont-cur-riyal"></i>{{$firstcar->price1}}</h2>
-                            <p class="m-0 before-price">يومى</p>
-                            <a  href="#" class="btn-block primary-btn  btn-hover btn-curved p-2 mt-2">احجز الان</a>
-                </div>
-                <div class="col-8 d-flex align-items-end justify-content-center">
-                    <img class="mx-lg-5 mx-md-2 ml-sm-2" style="width: 80%;" src="{{$firstcar->getFirstMediaUrl()}}" alt="car image" >
-                </div>
-            </div>
-            <div class="row car-details car-details__heading" >
-                <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">سنة {{$firstcar->model}}</p></div>
-                <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">ناقل الحركة اوتوماتيك</p></div>
-                <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">عدد الأبواب {{$firstcar->door}}</p></div>
-                <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">عدد المقاعد 5</p></div>
-            </div>
+        <livewire:frontend.car-model />
+        <livewire:frontend.car-details />
 
 
-
-
-        </div>
 
     </section>
 

@@ -222,6 +222,11 @@
     @include mediumScreen {
         display: none;
     }
+    img {
+        width: 100px;
+        position: absolute;
+        z-index: 2000;
+    }
 }
 
 .small-screen-navbar {
@@ -244,7 +249,7 @@
 #menu {
     position: absolute;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.719);
+    background-color: rgb(255 255 255 / 92%);
     z-index: 100;
     a {
         border: 1px solid rgb(255, 255, 255);

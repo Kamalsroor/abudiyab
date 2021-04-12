@@ -1,5 +1,5 @@
 const mix = require('laravel-mix');
-// const WebpackRTLPlugin = require('webpack-rtl-plugin');
+const WebpackRTLPlugin = require('webpack-rtl-plugin');
 
 // // Adminlte3 Template
 // mix.js([
@@ -15,17 +15,20 @@ const mix = require('laravel-mix');
 
 
 
+// frontend 
+mix.js('resources/js/frontend/frontend.js', 'public/js').vue();
+mix.sass('resources/sass/frontend/stylesheets/main.scss', 'public/css');
 
 
-// // Handle rtl
-// mix.webpackConfig({
-//     plugins: [
-//         new WebpackRTLPlugin({
-//             diffOnly: false,
-//             minify: true,
-//         }),
-//     ],
-// });
+// Handle rtl
+mix.webpackConfig({
+    plugins: [
+        new WebpackRTLPlugin({
+            diffOnly: false,
+            minify: true,
+        }),
+    ],
+});
 
 mix.version([
     'public/js/*',
