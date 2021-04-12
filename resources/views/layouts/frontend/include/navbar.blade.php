@@ -95,9 +95,9 @@
               <!--  ------------------------------------>
               <!-- Modal ends here------------------- -->
               <!--  ------------------------------------>
-                <div class="mx-3">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-globe-americas" style="font-size: 25px;"></i>
+                <div class="dropdown mx-3">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-globe-americas" style="font-size: 25px;"></i>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
                         @foreach(Locales::get() as $locale)
@@ -116,7 +116,7 @@
             </div>
             <div class="col-lg-5 col-md-5 col-sm-12 py-2 d-flex justify-content-center">
 
-                    <a  href="{{route('front.main')}}"><img class="ml-4" src="{{ asset('front/img/logo-edited-.png') }}" style="width: 64px;" ></a>
+                    <a  href="{{route('front.main')}}"><img class="ml-4" src="{{ asset('front/img/logo-edited-.png') }}"  ></a>
 
             </div>
 
