@@ -45,6 +45,21 @@
     }
 }
 
+.carousel-indicators {
+    li {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        @include mediumScreen() {
+            height: 20px;
+            width: 20px;
+        }
+    }
+}
+
 .home-category {
     padding: 20px 0 40px 0;
     @include margin($top: 22px);

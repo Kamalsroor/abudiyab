@@ -8,7 +8,7 @@
             <i class="fas fa-bars" id="hamburger-bars" ></i>
                 </a>
 
-            </div >
+            </div>
 
             <div class="text-right col-md-5 col-sm-12 d-flex align-items-center justify-content-center">
                 <a class="mx-3" href="{{route('front.main')}}">الرئيسية</a>
@@ -127,27 +127,23 @@
         <div class="container-fluid mx-0 px-0">
             <div class="row mx-0 px-0">
                 <a href="{{route('front.fleet')}}" class="mx-0 px-0 col-3 d-flex justify-content-center align-items-center" ><i class="fas fa-car"></i> الأسطول</a>
-                <a href="#" class="col-3 mx-0 px-0   d-flex justify-content-center align-items-center" ><i class="fas fa-id-card"></i>بطاقات العضوية</a>
+                <a href="#" class="col-3 mx-0 px-0 d-flex justify-content-center align-items-center" ><i class="fas fa-id-card"></i>بطاقات العضوية</a>
                 <a href="{{route('front.points_program')}}" class="col-3 mx-0 px-0  d-flex justify-content-center align-items-center" ><i class="fas fa-gift"></i>برنـامج نقـاطى</a>
                 <a href="{{route('front.services')}}" class="col-3 mx-0 px-0  d-flex justify-content-center align-items-center" ><i class="fas fa-cogs"></i>الخدمات و الصيانة</a>
-                <a href="{{route('front.branches')}}"  class="mx-0 px-0 col-3 d-flex justify-content-center align-items-center" ><i class="fas fa-map-marker-alt"></i>فروعنـا بالمملكة</a>
+                <a href="{{route('front.branches')}}" class="mx-0 px-0 col-3 d-flex justify-content-center align-items-center" ><i class="fas fa-map-marker-alt"></i>فروعنـا بالمملكة</a>
                 <a href="#" class="mx-0 px-0 col-3 d-flex justify-content-center align-items-center" ><i class="fas fa-users"></i>قســم التوظيف</a>
                 <a href="{{route('front.car_sales')}}" class="mx-0 px-0 col-3 d-flex justify-content-center align-items-center" ><i class="fas fa-car-side"></i>مبيعات السيارات</a>
                 <a href="{{route('front.media_center')}}" class="mx-0 px-0 col-3 d-flex justify-content-center align-items-center" ><i class="far fa-newspaper"></i>المركز الأعلامى</a>
             </div>
         </div>
-
-
 </div>
 
 <div class="small-screen-navbar container-fluid mx-0 px-0 d-block d-md-none d-lg-none">
-    <div class="row" >
-
+    <div class="row">
         <div class="col-3 py-3 text-center"><a class="mx-3" href="{{route('front.main')}}">الرئيسية</a></div>
         <div class="col-3 py-3 text-center"><a class="mx-3" href="{{route('front.fleet')}}"><i class="fas fa-car"></i></a></div>
         <div class="col-3 py-3 text-center"><i class="fas fa-bars" id="hamburger-bars2" ></i></div>
         <div class="col-3 py-3 text-center"><i class="fas fa-sign-in-alt"></i></div>
-
     </div>
 
 
