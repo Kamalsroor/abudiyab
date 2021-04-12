@@ -126,14 +126,14 @@
 <div id="menu" class="d-none">
         <div class="container-fluid mx-0 px-0">
             <div class="row mx-0 px-0">
-                <a href="{{route('front.fleet')}}" class="mx-0 px-0 col-3 d-flex justify-content-center align-items-center" ><i class="fas fa-car"></i> الأسطول</a>
-                <a href="#" class="col-3 mx-0 px-0 d-flex justify-content-center align-items-center" ><i class="fas fa-id-card"></i>بطاقات العضوية</a>
-                <a href="{{route('front.points_program')}}" class="col-3 mx-0 px-0  d-flex justify-content-center align-items-center" ><i class="fas fa-gift"></i>برنـامج نقـاطى</a>
-                <a href="{{route('front.services')}}" class="col-3 mx-0 px-0  d-flex justify-content-center align-items-center" ><i class="fas fa-cogs"></i>الخدمات و الصيانة</a>
-                <a href="{{route('front.branches')}}" class="mx-0 px-0 col-3 d-flex justify-content-center align-items-center" ><i class="fas fa-map-marker-alt"></i>فروعنـا بالمملكة</a>
-                <a href="#" class="mx-0 px-0 col-3 d-flex justify-content-center align-items-center" ><i class="fas fa-users"></i>قســم التوظيف</a>
-                <a href="{{route('front.car_sales')}}" class="mx-0 px-0 col-3 d-flex justify-content-center align-items-center" ><i class="fas fa-car-side"></i>مبيعات السيارات</a>
-                <a href="{{route('front.media_center')}}" class="mx-0 px-0 col-3 d-flex justify-content-center align-items-center" ><i class="far fa-newspaper"></i>المركز الأعلامى</a>
+                <a href="{{route('front.fleet')}}" class="mx-0 px-0 col-6 col-md-3 col-lg-3 d-flex justify-content-center align-items-center" ><i class="fas fa-car"></i> الأسطول</a>
+                <a href="#" class="col-6 col-md-3 col-lg-3 mx-0 px-0 d-flex justify-content-center align-items-center" ><i class="fas fa-id-card"></i>بطاقات العضوية</a>
+                <a href="{{route('front.points_program')}}" class="col-6 col-md-3 col-lg-3 mx-0 px-0  d-flex justify-content-center align-items-center" ><i class="fas fa-gift"></i>برنـامج نقـاطى</a>
+                <a href="{{route('front.services')}}" class="col-6 col-md-3 col-lg-3 mx-0 px-0  d-flex justify-content-center align-items-center" ><i class="fas fa-cogs"></i>الخدمات و الصيانة</a>
+                <a href="{{route('front.branches')}}" class="mx-0 px-0 col-6 col-md-3 col-lg-3 d-flex justify-content-center align-items-center" ><i class="fas fa-map-marker-alt"></i>فروعنـا بالمملكة</a>
+                <a href="#" class="mx-0 px-0 col-6 col-md-3 col-lg-3 d-flex justify-content-center align-items-center" ><i class="fas fa-users"></i>قســم التوظيف</a>
+                <a href="{{route('front.car_sales')}}" class="mx-0 px-0 col-6 col-md-3 col-lg-3 d-flex justify-content-center align-items-center" ><i class="fas fa-car-side"></i>مبيعات السيارات</a>
+                <a href="{{route('front.media_center')}}" class="mx-0 px-0 col-6 col-md-3 col-lg-3 d-flex justify-content-center align-items-center" ><i class="far fa-newspaper"></i>المركز الأعلامى</a>
             </div>
         </div>
 </div>

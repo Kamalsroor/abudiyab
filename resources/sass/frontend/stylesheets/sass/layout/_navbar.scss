@@ -262,7 +262,8 @@
         flex-direction: column;
         text-align: center;
         @include smallScreen {
-            height: 30vw;
+            height: 20vh;
+            border: solid white 13px;
         }
         &:hover {
             background-color: get-color(secondary);
