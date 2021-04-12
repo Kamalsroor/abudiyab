@@ -54,8 +54,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         </div>
 
-
-
+        <!--================
+            social media
+        =================-->
+        <div class="social-media-links">
+            <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="tel:996920026600"><i class="fas fa-phone-alt"></i></a>
+        </div>
 
         <!--=========
         - Footer -
