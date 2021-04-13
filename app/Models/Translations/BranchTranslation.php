@@ -11,7 +11,7 @@ class BranchTranslation extends Model
      *
      * @var array
      */
-    protected $fillable = ['name'];
+        protected $fillable = ['name','address'];
 
     /**
      * Indicates if the model should be timestamped.

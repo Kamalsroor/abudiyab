@@ -16,6 +16,7 @@ return [
         'service' => 'صفحة الخدمات',
         'terms' => 'صفحة الشروط والاحكام',
         'privacy' => 'صفحة سياسة الموقع',
+        'branches' => 'صفحه الفروع',
     ],
     'dashboard_templates' => [
         'adminlte3' => 'Adminlte 3',
@@ -67,6 +68,8 @@ return [
         'first_header' => 'اول عنوان',
         'second_header' => 'ثاني عنوان',
 
+        'branches_backgraund' => 'قسم فروعنا : الصوره الخلفيه',
+        'branches_title' => 'قسم فروعنا : العنوان الرئيسي',
 
         'about_home_title' => 'قسم حولنا : العنوان الرئيسي',
         'about_home_subtitle' => 'قسم حولنا : العنوان الفرعي',
