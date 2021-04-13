@@ -62,6 +62,12 @@
             'active' => request()->routeIs('*sliders.index')
             || request()->routeIs('*sliders.show'),
         ],
+        [
+            'name' => trans('settings.tabs.branches'),
+            'url' => route('dashboard.settings.index', ['tab' => 'branches']),
+            'can' => ['ability' => 'viewAny', 'model' => \App\Models\Branches::class],
+            'active' => request()->routeIs('*branches.index') || request()->routeIs('*branches.show'),
+        ],
     ])
 @endcomponent
 

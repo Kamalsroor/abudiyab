@@ -134,17 +134,52 @@ $(document).ready(function() {
 
     const branchPage = $('.branch-page');
     if (branchPage.length) {
-        const branchRegion = $('.branch-regoin')
+        const branchRegion = $('.branch-regoin');
+        const page_center_dranches_items = $('.branch-page_center_dranches_items');
+
         branchRegion.click(function() {
+            let branchesRegion = '';
+            console.log(page_center_dranches_items);
+            page_center_dranches_items.html("");
             $.ajax({
                 type: 'get',
                 url: BranchApisUrl,
+                headers: {
+                    "x-accept-language": "ar",
+                },
                 data: {
                     code: $(this).data('id'),
                     all: true
                 },
                 success: function(data) {
                     console.log(data.data);
+
+                    data.data.forEach(function(branch) {
+                        branchesRegion += `<div class="col-12 col-md-6 col-lg-3 mb-2">
+                        <div class="branch-page_center_dranches_branch">
+                            <div class="branch-hidden-list">
+                                <p class="detail">التفاصيل</p>
+                                <div class="section-detail">
+                                    <h4>العنوان</h4>
+                                    <p>${branch.name}</p>
+                                    <p>${branch.address}</p>
+                                    <h4>رقم الهاتف</h4>
+                                    <p>${branch.tele_number}</p>
+                                    <h4>موعدنا</h4>
+
+                                    <button>الموقع</button>
+                                </div>
+                            </div>
+                            <div class="branch-list-visible">
+                                <img src="${branchesLogo}" alt="logo">
+                                <h2>${branch.name}</h2>
+                            </div>
+                        </div>
+                    </div>`;
+
+
+                    });
+                    page_center_dranches_items.html(branchesRegion);
                 }
             });
             // $('#menu').toggleClass('d-none');

@@ -22,6 +22,7 @@ class SettingController extends Controller
         'logo',
         'favicon',
         'home_links_backgraund',
+        'branches_backgraund',
     ];
 
     /**
@@ -59,7 +60,6 @@ class SettingController extends Controller
         ) {
             Settings::set($key, $value);
         }
-
         foreach ($this->files as $file) {
             Settings::set($file)->addAllMediaFromTokens([], $file);
         }
