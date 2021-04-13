@@ -23,7 +23,7 @@
         [
             'name' => trans('settings.tabs.branches'),
             'url' => route('dashboard.settings.index', ['tab' => 'branches']),
-            'active' => request()->routeIs('*branches.index') || request()->routeIs('*branches.show'),
+            'active' => request()->routeIs('*settings*') && request('tab') == 'branches',
         ],
         [
             'name' => trans('settings.tabs.about'),
