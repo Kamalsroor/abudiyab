@@ -16,8 +16,8 @@
                 <!--  ---------------------------------------->
                 <!-- pop over------------------------------ -->
                 <!--  ---------------------------------------->
-                <a  class="mx-3 open-button" onclick="openForm()">تسجيل الدخول</a>
-                <div  class="form-popup" id="myForm">
+                <a  class="mx-3 open-button" id="myFormtoggeler" >تسجيل الدخول</a>
+                <div  class="form-popup d-none" id="myForm">
 
 
                     <form action="{{ route('login') }}"  method="post" class="form-container">
