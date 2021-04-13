@@ -12,6 +12,10 @@ $(document).ready(function() {
     const html = document.querySelector('html');
 
 
+    $('.fa-info-circle').click(function() {
+        $('#additions').toggle(1000);
+    });
+
     $("#hamburger-bars").click(function() {
         $('#menu').toggleClass('d-none');
     })
