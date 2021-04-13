@@ -11,6 +11,7 @@ class BranchFilter extends BaseFilters
      */
     protected $filters = [
         'name',
+        'code',
         'selected_id',
     ];
 
@@ -24,6 +25,21 @@ class BranchFilter extends BaseFilters
     {
         if ($value) {
             return $this->builder->whereTranslationLike('name', "%$value%");
+        }
+
+        return $this->builder;
+    }
+
+    /**
+     * Filter the query by a given code.
+     *
+     * @param string|int $value
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    protected function code($value)
+    {
+        if ($value) {
+            return $this->builder->where('code', $value);
         }
 
         return $this->builder;

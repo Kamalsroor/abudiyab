@@ -21,6 +21,16 @@
             'active' => request()->routeIs('*settings*') && request('tab') == 'home',
         ],
         [
+            'name' => trans('settings.tabs.branches'),
+            'url' => route('dashboard.settings.index', ['tab' => 'branches']),
+            'active' => request()->routeIs('*settings*') && request('tab') == 'branches',
+        ],
+        [
+            'name' => trans('settings.tabs.car_sales'),
+            'url' => route('dashboard.settings.index', ['tab' => 'car_sales']),
+            'active' => request()->routeIs('*settings*') && request('tab') == 'car_sales',
+        ],
+        [
             'name' => trans('settings.tabs.about'),
             'url' => route('dashboard.settings.index', ['tab' => 'about']),
             'active' => request()->routeIs('*settings*') && request('tab') == 'about',
@@ -62,6 +72,9 @@
             'active' => request()->routeIs('*sliders.index')
             || request()->routeIs('*sliders.show'),
         ],
+
+
+
     ])
 @endcomponent
 

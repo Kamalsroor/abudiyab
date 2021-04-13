@@ -192,7 +192,7 @@
                         @foreach($cars as $formcar)
                         <div class="container-fluid bg-block py-2 mb-2" style="background-color:white;">
                             <div class="row mb-2">
-                                <div class="col-lg-4 fleet-car-img">
+                                <div class="col-lg-4 fleet-car-img d-flex align-items-center">
                                     <img class="w-100" src="{{$formcar->getFirstMediaUrl()}}" alt="car-image">
                                 </div>
                                 <div class="col-lg-8">

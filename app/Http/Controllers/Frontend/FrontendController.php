@@ -9,6 +9,7 @@ use Auth;
 use App\Models\Branch;
 use App\Models\Car;
 use App\Models\Partner;
+use App\Models\Setting;
 use App\Models\Slider;
 use App\Models\Category;
 use Illuminate\Support\Facades\Http;
@@ -38,9 +39,10 @@ class FrontendController extends Controller
 
     public function branches()
     {
-        return view('frontend.branches');
+        $branches = Branch::all();
+        $background=Setting::all();
+        return view('frontend.branches', compact('branches'));
     }
-
 
 
     public function MediaCenter()

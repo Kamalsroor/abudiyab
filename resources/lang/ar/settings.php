@@ -13,9 +13,11 @@ return [
         'pusher' => 'بيانات ال Pusher',
         'home' => 'ألصفحه الرئيسية',
         'about' => 'صفحة من نحن',
+        'car_sales' => 'صفحة مبيعات السيارات',
         'service' => 'صفحة الخدمات',
         'terms' => 'صفحة الشروط والاحكام',
         'privacy' => 'صفحة سياسة الموقع',
+        'branches' => 'صفحه الفروع',
     ],
     'dashboard_templates' => [
         'adminlte3' => 'Adminlte 3',
@@ -34,10 +36,14 @@ return [
         'twitter' => 'رابط التويتر',
         'instagram' => 'رابط الانستجرام',
         'snapchat' => 'رابط السناب شات',
+        'youtube' => 'رابط اليوتيوب',
         'apple' => 'رابط تطبيق الايفون',
         'android' => 'رابط تطبيق الاندرويد',
         'phone' => 'رقم الهاتف للتواصل',
         'email' => 'البريد الالكتروني للتواصل',
+        'branch_name' => 'الفرع',
+        'huawei' => 'رابط تطبيف الهاواوي',
+
         'copyright' => 'حقوق النشر',
         '%copyright%' => 'حقوق النشر',
         'logo' => 'اللوجو',
@@ -53,6 +59,7 @@ return [
         'mail_encryption' => 'Mail Encryption',
         'mail_from_address' => 'Mail From Address',
         'mail_from_name' => 'Mail From Name',
+        'footer_subscripe_title' => ' نص الاشتراك',
         'broadcast_driver' => 'Broadcast Driver',
         'pusher_app_id' => 'Pusher App ID',
         'pusher_app_key' => 'Pusher App Key',
@@ -67,6 +74,12 @@ return [
         'first_header' => 'اول عنوان',
         'second_header' => 'ثاني عنوان',
 
+        'branches_backgraund' => 'صفحة فروعنا : الصوره الخلفيه',
+        'branches_title' => 'صفحة فروعنا : العنوان الرئيسي',
+
+        'car_sales_backgraund' => 'صفحة مبيعات السيارات : الصوره الخلفيه',
+        'car_sales_title' => 'صفحة مبيعات السيارات : العنوان الرئيسي',
+        'car_sales_content' => 'صفحة مبيعات السيارات : الوصف',
 
         'about_home_title' => 'قسم حولنا : العنوان الرئيسي',
         'about_home_subtitle' => 'قسم حولنا : العنوان الفرعي',
