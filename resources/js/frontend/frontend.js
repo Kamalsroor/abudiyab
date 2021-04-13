@@ -12,6 +12,12 @@ $(document).ready(function() {
     const html = document.querySelector('html');
 
 
+    $("#myFormtoggeler").click(function() {
+        $('#myForm').toggleClass('d-none');
+    })
+
+
+
     $("#hamburger-bars").click(function() {
         $('#menu').toggleClass('d-none');
     })

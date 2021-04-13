@@ -34,6 +34,7 @@ return [
         'twitter' => 'Twitter',
         'instagram' => 'Instagram',
         'snapchat' => 'Snapchat',
+        'youtube' => 'youtube',
         'apple' => 'Apple Link',
         'android' => 'Android Link',
         'phone' => 'Contact Phone',
@@ -83,16 +84,18 @@ return [
         'work_flow_step_img_4'  => 'Work Flow : Step Image 4',
         'countact_us_title'     => 'Countact Us : Title',
         'countact_us_des'   => 'Countact Us : Description',
-        'linkedin'  => 'LinkedIn',
-        'whatsapp'  => 'WhatsApp',
-        'address'   => 'Address',
-
+        'linkedin'  => 'LinkedIn Link:',
+        'whatsapp'  => 'WhatsApp Link:',
+        'address'   => 'Address Link:',
+        'branch_name'   => 'Branch',
+        'huawei' => 'huawei Link:',
 
 
         'car_sales_backgraund' => 'Car Sales Page : Backgraund',
         'car_sales_title' => 'Car Sales Page : Title',
         'car_sales_content' => 'Car Sales Page : Description',
 
+        'footer_subscripe_title' => 'footer: subscripe title',
         'service_title' => 'Home Service : Title',
         'service_subtitle' => 'Home Service : Sub Title',
         'service_des' => 'Home Service : Description',
