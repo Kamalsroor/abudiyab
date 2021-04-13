@@ -50,6 +50,26 @@ $(document).ready(function() {
 
     }
 
+    const branchPage = $('.branch-page');
+    if (branchPage.length) {
+        const branchRegion = $('.branch-regoin')
+        branchRegion.click(function() {
+            $.ajax({
+                type: 'get',
+                url: BranchApisUrl,
+                data: {
+                    code: $(this).data('id'),
+                    all: true
+                },
+                success: function(data) {
+                    console.log(data.data);
+                }
+            });
+            // $('#menu').toggleClass('d-none');
+        })
+    }
+
+
 
 
 
