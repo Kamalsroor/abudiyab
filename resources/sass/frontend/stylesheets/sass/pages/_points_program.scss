@@ -8,4 +8,16 @@
             @include location(50%, 50%);
         }
     }
+    &_center {
+        h4 {
+            border-bottom: 4px solid black;
+            color: get-color(primary);
+            line-height: 10px;
+            width: fit-content;
+            font-weight: 700;
+        }
+        ul {
+            list-style: disc;
+        }
+    }
 }
