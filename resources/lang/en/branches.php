@@ -32,6 +32,8 @@ return [
         '%name%' => 'Branch name',
         'code' => 'code',
         'p_coud' => 'p_coud',
+        'address' => 'Address',
+        'tele_number' => 'Phone Number',
         'image' => 'Branch image',
         'created_at' => 'Created At',
         'deleted_at' => 'Deleted At',
