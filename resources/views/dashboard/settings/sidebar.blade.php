@@ -68,6 +68,8 @@
             'can' => ['ability' => 'viewAny', 'model' => \App\Models\Branches::class],
             'active' => request()->routeIs('*branches.index') || request()->routeIs('*branches.show'),
         ],
+
+
     ])
 @endcomponent
 
