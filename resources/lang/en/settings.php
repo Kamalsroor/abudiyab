@@ -12,6 +12,7 @@ return [
         'mail' => 'Mail Credentials',
         'pusher' => 'Pusher Credentials',
         'about' => 'About Us',
+        'car_sales' => 'Car Sales Page',
         'service' => 'Service',
         'terms' => 'Terms & Conditions',
         'privacy' => 'Privacy Policy',
@@ -86,6 +87,11 @@ return [
         'whatsapp'  => 'WhatsApp',
         'address'   => 'Address',
 
+
+
+        'car_sales_backgraund' => 'Car Sales Page : Backgraund',
+        'car_sales_title' => 'Car Sales Page : Title',
+        'car_sales_content' => 'Car Sales Page : Description',
 
         'service_title' => 'Home Service : Title',
         'service_subtitle' => 'Home Service : Sub Title',

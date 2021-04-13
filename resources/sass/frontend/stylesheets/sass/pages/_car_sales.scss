@@ -8,4 +8,8 @@
             @include location(50%, 50%);
         }
     }
+    &_center {
+        margin: 30px 80px;
+
+    }
 }
