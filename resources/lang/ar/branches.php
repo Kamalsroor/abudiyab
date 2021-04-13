@@ -32,6 +32,8 @@ return [
         '%name%' => 'اسم الفرع',
         'code' => 'code',
         'p_coud' => 'p_coud',
+        'address' => 'العنوان',
+        'tele_number' => 'رقم الهاتف',
         'image' => 'صورة الفرع',
         'created_at' => 'اضافة في',
         'deleted_at' => 'حذف في',
