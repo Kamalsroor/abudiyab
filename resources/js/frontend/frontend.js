@@ -4,6 +4,7 @@ require('./bootstrap');
 
 
 
+
 $(document).ready(function() {
     /* general variables */
 
@@ -18,6 +19,87 @@ $(document).ready(function() {
     $("#hamburger-bars2").click(function() {
         $('#menu').toggleClass('d-none');
     })
+
+    $(".CarCategoryChange").click(function() {
+
+        // $('.car-model__heading').slick('unslick');
+        // $('.car-model__heading').removeClass('slick-initialized slick-slider');
+        // $('.car-model__heading').html("");
+        // setTimeout(() => {
+        window.livewire.emit('change:categories', $(this).data('id'));
+        window.livewire.emit('change:carsByCatgory', $(this).data('id'));
+        console.log('change:carsByCatgory', $(this).data('id'));
+        // }, 2000);
+
+    })
+
+
+    window.addEventListener('removeSlideCarModel', event => {
+
+        // $('.car-model__heading').slick('removeSlide', null, null, true);
+
+        // console.log('unslickunslick');
+    });
+
+
+    window.addEventListener('CarModelSlick', event => {
+        slick_function(event.detail);
+    });
+
+
+    async function slick_function(details) {
+
+        $('.car-model__heading').slick('removeSlide', null, null, true);
+
+        console.log('refreshing : ', details); // $('.car-model__heading').slick('unslick');
+        await details.forEach(function(entry) {
+            console.log(entry);
+            var div = `
+                    <div>
+                        <div class="car-model__item py-2" data-id="${entry.id}">
+                            <p class=" text-center">${entry.name}</p>
+                        </div>
+                    </div>
+                    `
+            $('.car-model__heading').slick('slickAdd', div);
+        });
+    }
+
+    $('.car-model__heading').on('afterChange', function(event, slick, currentSlide, nextSlide) {
+        console.log('change:cars', $(slick.$slides[currentSlide]).find('.car-model__item').data('id'));
+        if ($(slick.$slides[currentSlide]).find('.car-model__item').data('id') != undefined) {
+            window.livewire.emit('change:cars', $(slick.$slides[currentSlide]).find('.car-model__item').data('id'));
+        }
+    });
+
+
+    $('.car-model__heading').on('init', function(event, slick, currentSlide, nextSlide) {
+        console.log('change:cars', $(slick.$slides[currentSlide]).find('.car-model__item').data('id'));
+        if ($(slick.$slides[currentSlide]).find('.car-model__item').data('id') != undefined) {
+            window.livewire.emit('change:cars', $(slick.$slides[currentSlide]).find('.car-model__item').data('id'));
+        }
+    });
+    window.addEventListener('CarDetailSlick', event => {
+        CarDetailSlickIteams(event.detail);
+    });
+
+
+    async function CarDetailSlickIteams(details) {
+
+        $('.car-details__heading').slick('removeSlide', null, null, true);
+
+        console.log('refreshing : ', details.car.model); // $('.car-details__heading').slick('unslick');
+        var div = `
+        <div><div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">سنة ${details.car.model}</p></div></div>
+        <div><div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">ناقل الحركة اوتوماتيك</p></div></div>
+        <div><div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">عدد الأبواب ${details.car.door}</p></div></div>
+        <div><div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">عدد المقاعد 5</p></div></div>
+                `
+        $('.car-details__heading').slick('slickAdd', div);
+
+    }
+
+
 
 
     // const homeCarousel = $('.home-carousel');
@@ -74,38 +156,51 @@ $(document).ready(function() {
 
 
     $('.car-model__heading').slick({
-        slidesToShow: 3,
+        slidesToShow: 2,
         slidesToScroll: 1,
-        centerMode: true,
         dots: false,
         arrows: false,
         rtl: html.dir === 'rtl',
         autoplay: true,
-        autoplaySpeed: 6000,
-        responsive: [{
-                breakpoint: 767,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                }
-            },
-            {
-                breakpoint: 992,
-                settings: {
-                    slidesToShow: 2,
-                    centerMode: false,
-                    slidesToScroll: 1,
-                }
-            },
-            {
-                breakpoint: 1200,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                }
-            },
-        ]
+        autoplaySpeed: 8000,
+        // centerMode: true
+        // responsive: [{
+        //         breakpoint: 767,
+        //         settings: {
+        //             slidesToShow: 3,
+        //             slidesToScroll: 1,
+        //             dots: false,
+        //             arrows: false,
+        //             rtl: html.dir === 'rtl',
+        //             autoplay: true
+        //         }
+        //     },
+        //     {
+        //         breakpoint: 992,
+        //         settings: {
+        //             slidesToShow: 3,
+        //             slidesToScroll: 1,
+        //             dots: false,
+        //             arrows: false,
+        //             rtl: html.dir === 'rtl',
+        //             autoplay: true
+        //         }
+        //     },
+        //     {
+        //         breakpoint: 1200,
+        //         settings: {
+        //             slidesToShow: 3,
+        //             slidesToScroll: 1,
+        //             dots: false,
+        //             arrows: false,
+        //             rtl: html.dir === 'rtl',
+        //             autoplay: true
+        //         }
+        //     },
+        // ]
     });
+
+
 
 
     $('.car-details__heading').slick({
@@ -121,7 +216,7 @@ $(document).ready(function() {
                 breakpoint: 767,
                 settings: {
                     slidesToShow: 1,
-                    centerMode: true,
+                    centerMode: false,
                     slidesToScroll: 1,
                 }
             },
@@ -129,7 +224,7 @@ $(document).ready(function() {
                 breakpoint: 992,
                 settings: {
                     slidesToShow: 2,
-                    centerMode: true,
+                    centerMode: false,
                     slidesToScroll: 1,
                 }
             },
@@ -137,7 +232,7 @@ $(document).ready(function() {
                 breakpoint: 1200,
                 settings: {
                     slidesToShow: 3,
-                    centerMode: true,
+                    centerMode: false,
                     slidesToScroll: 1,
                 }
             },

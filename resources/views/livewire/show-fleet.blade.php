@@ -122,16 +122,16 @@
 
                             <div class="fleet-category">
                                 @foreach( $categories as $category )
-                                    <div class="text-right">
+                                    <div class="text-right categories">
                                         <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  class="my-check" id="category-{{$category->id}}">
                                         <label for="category-{{$category->id}}">{{$category->name}}</label>
                                     </div>
                                 @endforeach
                             </div>
-                            
+
                         </div>
                         <div class="cancel-toggle-menue" >
-                            
+
                         </div>
                 </div>
             </div>
@@ -140,11 +140,10 @@
         <!-- second container composed of right column and left container -->
         <section class="fleet-lower-container">
             <div class="container-fluid" style="width:80%;">
-            
-            
-                <div class="row ">
-                
-                    <div class="col-lg-3 d-none d-lg-block col-4 pr-0  mb-2 " >
+
+
+                <div class="row">
+                    <div class="col-lg-3 d-none d-lg-block col-4 pr-0  mb-2 ">
                         <div class="white-section">
                             <select class="form-control" id="exampleFormControlSelect1" wire:model='filterPriceCategory'>
                                     <option  value='DESC'>السعر من الاكثر الى الأقل</option>
@@ -171,14 +170,14 @@
 
                             </div>
                             <div  class="py-2 text-center mb-2 category-menu-heading">
-                                <p class="m-0 ">نوع السيارة</p>
+                                <p class="m-0">نوع السيارة</p>
                             </div>
 
 
 
                                 @foreach( $categories as $category )
 
-                                    <div class="text-right">
+                                    <div class="text-right categories">
                                         <input class="mx-2" type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  class="my-check" id="category-{{$category->id}}">
                                         <label for="category-{{$category->id}}">{{$category->name}}</label>
                                     </div>
@@ -193,7 +192,7 @@
                         @foreach($cars as $formcar)
                         <div class="container-fluid bg-block py-2 mb-2" style="background-color:white;">
                             <div class="row mb-2">
-                                <div class="col-lg-4 fleet-car-img">
+                                <div class="col-lg-4 fleet-car-img d-flex align-items-center">
                                     <img class="w-100" src="{{$formcar->getFirstMediaUrl()}}" alt="car-image">
                                 </div>
                                 <div class="col-lg-8">
@@ -235,9 +234,9 @@
                 </div>
             </div>
         </section>
-    
+
     </div>
-    
+
 
 
 @push('js')

@@ -30,9 +30,9 @@ class FrontendController extends Controller
         $showCategories = Category::orderBy('id', 'ASC')->take(4)->get();
         $allCategories  = Category::all();
         $showCategoriesCars = Car::where('category_id' , $showCategories->first()->id)->get();
-        $partners=Partner::all();
-        $sliders=Slider::all();
-        $firstcar=Car::where('category_id' , $showCategories->first()->id)->first();
+        $partners   =  Partner::all();
+        $sliders    =   Slider::all();
+        $firstcar   =  Car::where('category_id' , $showCategories->first()->id)->first();
         return view('frontend.main2', compact('sliders','showCategories','showCategoriesCars','allCategories','firstcar','partners'));
     }
 

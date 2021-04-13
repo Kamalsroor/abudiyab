@@ -147,6 +147,11 @@
     </style>
 
 
+ <style>
+    .display-none{
+        display: none !important;
+    }
+</style>
     @endsection
 
 

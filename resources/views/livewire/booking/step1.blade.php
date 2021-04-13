@@ -1,9 +1,5 @@
 <div id="step1" class="row  {{ $currentStep != 1 ? 'display-none' : '' }}">
     <div class="crcr col-lg-12" style="padding: 0;overflow: hidden;">
-        <!-- <div class="dd">
-            <p class="type">{{$car->name}}</p>
-            <p class="like">أو ماشابهه</p>
-        </div> -->
         <img src="{{ asset('front/img/payment_visa.jpg') }}" alt=".." class="d-block w-100">
     </div>
 
