@@ -13,7 +13,9 @@ return [
         'pusher' => 'بيانات ال Pusher',
         'home' => 'ألصفحه الرئيسية',
         'about' => 'صفحة من نحن',
+        'maintenance' => 'صفحة الصيانه',
         'car_sales' => 'صفحة مبيعات السيارات',
+        'media_center' => 'صفحة المركز الاعلامي',
         'service' => 'صفحة الخدمات',
         'terms' => 'صفحة الشروط والاحكام',
         'privacy' => 'صفحة سياسة الموقع',
@@ -80,6 +82,15 @@ return [
         'car_sales_backgraund' => 'صفحة مبيعات السيارات : الصوره الخلفيه',
         'car_sales_title' => 'صفحة مبيعات السيارات : العنوان الرئيسي',
         'car_sales_content' => 'صفحة مبيعات السيارات : الوصف',
+
+        'media_center_background' => 'صفحة المركز الاعلامي : الصوره الخلفيه',
+        'media_center_title' => 'صفحة المركز الاعلامي : العنوان الرئيسي',
+        'media_center_content' => 'صفحة المركز الاعلامي : المحتوي',
+
+
+        'maintenance_backgraund' => 'صفحه الصيانه : الخلفيه',
+        'maintenance_title' => 'صفحه الصيانه : العنوان',
+        'maintenance_content' => 'صفحه الصيانه : المحتوي',
 
         'about_home_title' => 'قسم حولنا : العنوان الرئيسي',
         'about_home_subtitle' => 'قسم حولنا : العنوان الفرعي',

@@ -10,7 +10,7 @@
                     <div class="container px-3 my-0" style="background-color: white;">
                         <img class="w-100 my-2" src="{{asset('front/img/نقاط---موقع.jpg')}}" alt="points-program">
                         <h4 class="color-black text-right py-3 my-5">شروط و أحكام برنامج نقاطى</h4>
-                        <ul class="my-0 pb-5 px-5">
+                        <ul class="my-0 pb-5 px-5 ">
                             <li class="text-right lead px-3">أن يكون العميل مسجلاً في عضوية ابو ذياب.</li>
                             <li class="text-right lead px-3">سداد كامل مستحقات العقد عند إغلاق العقد واستلام السيارة.</li>
                             <li class="text-right lead px-3">يتم احتساب 1/2 نقطة لكل 100 ريال لعملاء الأفراد من العضوية الفضية.</li>

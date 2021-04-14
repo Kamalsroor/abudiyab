@@ -24,6 +24,8 @@ class SettingController extends Controller
         'home_links_backgraund',
         'branches_backgraund',
         'car_sales_backgraund',
+        'maintenance_backgraund',
+        'media_center_background',
     ];
 
     /**
