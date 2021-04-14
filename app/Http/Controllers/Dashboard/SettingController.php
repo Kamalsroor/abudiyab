@@ -23,6 +23,7 @@ class SettingController extends Controller
         'favicon',
         'home_links_backgraund',
         'branches_backgraund',
+        'car_sales_backgraund',
     ];
 
     /**

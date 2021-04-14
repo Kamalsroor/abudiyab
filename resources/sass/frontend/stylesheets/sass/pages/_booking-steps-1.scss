@@ -669,7 +669,7 @@
                                         font-size: 1.2em;
                                         padding-top: 4vh;
                                     }
-                                    .connn {
+                                    .booking-steps {
                                         overflow: hidden;
                                         width: 100%;
                                     }
@@ -701,5 +701,14 @@
                 }
             }
         }
+    }
+}
+
+@media (max-width:500px) {
+    .booking-steps {
+        width: 99% !important;
+    }
+    .head {
+        width: 94% !important;
     }
 }
