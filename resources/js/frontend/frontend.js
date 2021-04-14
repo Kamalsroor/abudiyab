@@ -161,6 +161,21 @@ $(document).ready(function() {
                     console.log(data.data);
 
                     data.data.forEach(function(branch) {
+                        var timeText = "";
+
+                        if (branch.work_time != null) {
+                            // branch.work_time.forEach(function(time) {
+                            //     // timeText +=
+                            //     console.log(time);
+                            // });
+
+                            for (const [key, value] of Object.entries( branch.work_time)) {
+                                timeText += `<p>${ weekDays.[key] } ${ value.lock == 1 ?  "مغلق" : value.timeopen + ' : ' + value.timeclose  }</p>`;
+
+                                console.log(`${key}: ` ,  value);
+                            }
+                        }
+                        console.log(timeText);
                         branchesRegion += `<div class="col-12 col-md-6 col-lg-3 mb-2">
                         <div class="branch-page_center_dranches_branch">
                             <div class="branch-hidden-list">
@@ -173,6 +188,7 @@ $(document).ready(function() {
                                     <p>${branch.tele_number}</p>
                                     <h4>موعدنا</h4>
 
+                                    ${timeText}
                                     <button>الموقع</button>
                                 </div>
                             </div>
