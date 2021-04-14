@@ -75,6 +75,12 @@ class FrontendController extends Controller
     }
 
 
+    public function favorite()
+    {
+        return view('frontend.favorite');
+    }
+
+
 
     function getUserIP()
     {
