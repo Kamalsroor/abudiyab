@@ -95,6 +95,14 @@ return [
         'car_sales_title' => 'Car Sales Page : Title',
         'car_sales_content' => 'Car Sales Page : Description',
 
+        'media_center_background' => 'Media Center Page : Backgraund',
+        'media_center_title' => 'Media Center Page : Title',
+        'media_center_content' => 'Media Center Page : Description',
+
+        'maintenance_backgraund' => 'Maintenance Page : Backgraund',
+        'maintenance_title' => 'Maintenance Page : Title',
+        'maintenance_content' => 'Maintenance Page : Description',
+
         'footer_subscripe_title' => 'footer: subscripe title',
         'service_title' => 'Home Service : Title',
         'service_subtitle' => 'Home Service : Sub Title',
