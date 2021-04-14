@@ -1,25 +1,15 @@
     <div>
         @if ($currentStep == 1)
-            <link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/bower_components/switchery/dist/switchery.min.css')}}">
-        @elseif ($currentStep == 2)
-            <script>
-                $('#additions').toggle(0);
-                $('#additions').toggle(0);
-                $('.fa-info-circle').click(function (){
-                    $('#additions').toggle(1000);
-                });
-            </script>
+            <link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/bower_components/switchery/dist/switchery.min.css')}}">        
         @endif
-        <link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/assets/icon/icofont/css/icofont.css')}}">
-        <link rel="stylesheet" href="{{asset('front/lnkse/botton_style.css')}}"  />
-        <link rel="stylesheet" href="{{asset('front/web/css/booking.css')}}" />
+
 
     <div class='insertLoginForm'></div>
     <div class='bodycontainer'>
-        <div class="connn">
+        <div class="booking-steps">
 
-            <div class="head @if ($currentStep == 3) col-lg-8 @else col-lg-12 @endif" style="padding: 0;">
-                <div class="bnb" style="width: 100% !important;">.</div>
+            <div class="booking-steps_head @if ($currentStep == 3) col-lg-8 @else col-lg-12 @endif" style="padding: 0;">
+                <div class="booking-steps_head_background" style="width: 100% !important;">.</div>
                 <div>
                     <ul class="pro-bar">
                         <li style="width: 19%;margin-bottom: 15px;">البحث</li>
@@ -52,28 +42,29 @@
                 {{-- col-md-10 col-sm-10" --}}
 
                 @if ($currentStep != 5)
-                    <div class="ac-or-no @if ($currentStep == 3) col-lg-8 @else col-lg-12 @endif">
-                        <div class="container-fluid">
+                    <div class="booking-steps_footer @if ($currentStep == 3) col-lg-8 @else col-lg-12 @endif">
+                        <div class="container-fluid" style="@if ($currentStep == 2) padding-right: 0px;padding-left: 0px; @endif">
                             <div class="row d-flex justify-content-between">
-                                    <div class="col-3 mx-0 ">
-                                        <button class="inb YH-a" wire:click="back({{$currentStep - 1}})" style="margin-right: 0;background-color: #002366 !important;
-                                        color: white !important;float: right;"> عوده </button>
-                                    </div>
+                                <div class="col-3 mx-0 @if ($currentStep == 2) px-0 px-sm-4 @endif">
+                                    <button class="booking-btn" wire:click="back({{$currentStep - 1}})" style="margin-right: 0;background-color: #002366 !important;
+                                    color: white !important;float: right;"> عوده </button>
+                                </div>
 
-                                    <div class="col-6 mx-0 booking-car-notes float-normal {{ $currentStep != 2 ? 'display-none' : '' }}" style="text-align: center;">
+                                <div class="col-6 mx-0 booking-car-notes float-normal @if ($currentStep == 2) px-0 px-sm-4 @endif {{ $currentStep != 2 ? 'display-none' : '' }}" style="text-align: center;">
 
-                                        <label class="orange-checkbox-value">
-                                            يرجى قراءة
-                                            <input type="checkbox" name="" id="termsCheck">
-                                            <a id="Booking_termsandConditions" data-toggle="modal" class="terms-text-a"
-                                                onclick="$('#OrSimilarHidableModal').toggle();">اﻟﺸﺮوط واﻷﺣﻜﺎم</a> والموافقة
-                                            عليها قبل الاستمرار
-                                        </label>
-                                    </div>
-                                    <div class="col-6 mx-0">
-                                        <button class="inb YH-b" name="GO" wire:click="{{ $currentStep == 1 ? 'firstStepSubmit' : '' }}{{ $currentStep == 2 ? 'secondStepSubmit' : '' }}{{ $currentStep == 3 ? 'thirdStepSubmit' : '' }}"  style="margin-left: 0;background-color: #002366 !important;
-                                        color: white !important;">استمرار</button>
-                                    </div>
+                                    <label class="orange-checkbox-value" style="margin: 0;">
+                                        يرجى قراءة
+                                        <input type="checkbox" name="" id="termsCheck">
+                                        <a id="Booking_termsandConditions" style="padding: 0px 10px;" data-toggle="modal" class="terms-text-a"
+                                            onclick="$('#OrSimilarHidableModal').toggle();">اﻟﺸﺮوط واﻷﺣﻜﺎم</a> والموافقة
+                                        عليها قبل الاستمرار
+                                    </label>
+                                </div>
+
+                                <div class="@if ($currentStep == 2) col-3 px-0 px-sm-4 @else col-6 @endif mx-0">
+                                    <button class="booking-btn" name="GO" wire:click="{{ $currentStep == 1 ? 'firstStepSubmit' : '' }}{{ $currentStep == 2 ? 'secondStepSubmit' : '' }}{{ $currentStep == 3 ? 'thirdStepSubmit' : '' }}"  style="margin-left: 0;background-color: #002366 !important;
+                                    color: white !important;">استمرار</button>
+                                </div>
                             </div>
                         </div>
                     </div>

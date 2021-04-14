@@ -99,7 +99,7 @@ class BookingSteps extends Component
             }
             // $orderAmount =
             // $RefundOrderByTransaction = MasterCardPayment::RefundOrderByTransaction($orderID, $merchantID, $merchantPassword , $this->order->price);
-            dd($getOrderDetailsSandBox );
+            // dd($getOrderDetailsSandBox );
 
             if ($this->order->payment_status == "SUCCESS") {
                 $this->currentStep = 5 ;
@@ -184,10 +184,10 @@ class BookingSteps extends Component
         // $validatedData = $this->validate([
         //     'status' => 'required',
         // ]);
-        if(Auth()->user()== null)
-        {
-            $this->dispatchBrowserEvent('notLogin');
-        }
+        // if(Auth()->user()== null)
+        // {
+        //     $this->dispatchBrowserEvent('notLogin');
+        // }
         $this->order = Order::updateOrCreate([
             'id' => $this->order ? $this->order->id : 0
         ],[
@@ -207,14 +207,14 @@ class BookingSteps extends Component
         }else{
             $this->currentStep = 3;
         }
-        if(Auth()->user()== null)
-        {
-            $current_url=url()->previous().'&order_id='.$this->order->id;
-            session()->push('redircitURl', $current_url);
-            $this->dispatchBrowserEvent('notLogin');
-            $this->currentStep = 2;
-            return 0;
-        }
+        // if(Auth()->user()== null)
+        // {
+        //     $current_url=url()->previous().'&order_id='.$this->order->id;
+        //     session()->push('redircitURl', $current_url);
+        //     $this->dispatchBrowserEvent('notLogin');
+        //     $this->currentStep = 2;
+        //     return 0;
+        // }
     }
 
     public function addedFeature(){

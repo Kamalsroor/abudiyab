@@ -12,10 +12,12 @@ $(document).ready(function() {
     const html = document.querySelector('html');
 
 
+    $('.fa-info-circle').click(function() {
+        $('#additions').toggle(1000);
+    });
     $("#myFormtoggeler").click(function() {
         $('#myForm').toggleClass('d-none');
     })
-
 
 
     $("#hamburger-bars").click(function() {

@@ -31,6 +31,16 @@
             'active' => request()->routeIs('*settings*') && request('tab') == 'car_sales',
         ],
         [
+            'name' => trans('settings.tabs.maintenance'),
+            'url' => route('dashboard.settings.index', ['tab' => 'maintenance']),
+            'active' => request()->routeIs('*settings*') && request('tab') == 'maintenance',
+        ],
+        [
+            'name' => trans('settings.tabs.media_center'),
+            'url' => route('dashboard.settings.index', ['tab' => 'media_center']),
+            'active' => request()->routeIs('*settings*') && request('tab') == 'media_center',
+        ],
+        [
             'name' => trans('settings.tabs.about'),
             'url' => route('dashboard.settings.index', ['tab' => 'about']),
             'active' => request()->routeIs('*settings*') && request('tab') == 'about',
