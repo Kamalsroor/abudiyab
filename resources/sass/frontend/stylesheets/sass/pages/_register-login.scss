@@ -14,3 +14,19 @@
         }
     }
 }
+
+.login {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../../../imgs/BackgroundH45635.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    .container-50 {
+        border-radius: 50px;
+        width: 50%;
+        height: fit-content;
+        background-color: #19287ade;
+        color: get-color(light);
+    }
+}
