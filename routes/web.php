@@ -38,6 +38,7 @@ Route::as('front.')->group(function () {
     Route::get('/services', 'Frontend\FrontendController@services')->name('services');
     Route::get('/points_program', 'Frontend\FrontendController@PointsProgram')->name('points_program');
     Route::get('/membership_cards', 'Frontend\FrontendController@MembershipCards')->name('membership_cards');
+    Route::get('/favorite', 'Frontend\FrontendController@favorite')->name('favorite');
     Route::get('/contactus', 'Frontend\FrontendController@contactus')->name('contactus');
     Route::get('/employment', 'Frontend\FrontendController@employment')->name('employment');
     Route::get('/profile', function(){
