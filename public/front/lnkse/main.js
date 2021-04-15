@@ -28,9 +28,11 @@ function carousel() {
 carousel()
 
 
+
+
 window.addEventListener("notLogin", function() {
     console.log("i'm here");
-    $('#exampleModal').modal('toggle');
+    $('#loginModal').modal('toggle');
 })
 
 $('#filter-toggele').click(function() {
@@ -65,7 +67,7 @@ function closeForm() {
 }
 
 window.addEventListener("notLogin", function() {
-    $('#exampleModal').modal('toggle');
+    $('#loginModal').modal('toggle');
 })
 window.addEventListener("load", function() {
     var allcars = '';

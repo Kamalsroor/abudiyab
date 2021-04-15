@@ -87,8 +87,39 @@ scratch. This page gets rid of all links and provides the needed markup only.
     {{-- <script src="{{asset('front/lnkse/main.js')}}"></script> --}}
 
 
+    <div class="modal fade" id="BookingModel" tabindex="-1" aria-labelledby="BookingModelLabel" aria-hidden="true">
+    </div>
+
+
+
+
+    <script>
+        let BookingModelURl = "{{route('front.bookingModel')}}";
+        function openBookingModel(id) {
+            console.log(id);
+            console.log('openBookingModel');
+            $.ajax({
+                type: 'get',
+                url: BookingModelURl,
+                headers: {
+                    "x-accept-language": "ar",
+                },
+                dataType: "html",
+                data: {
+                    'car_id' : id
+                },
+                success: function(data) {
+                    console.log(data);
+                    $('#BookingModel').html(data).modal('show');
+
+                }
+            });
+        }
+
+    </script>
     <script src="{{ asset(mix('/js/frontend.js')) }}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
 
     <!-- ------------START-----SCRIPT-------LOAD------------ -->
     <script type="text/javascript">
@@ -125,6 +156,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 @yield('js')
 @stack('js')
+
+<!--Start of Zendesk Chat Script-->
+<script type="text/javascript">
+    window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+    d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+    _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+    $.src="https://v2.zopim.com/?4w6Wda0ZEFYjS7iS72Jru9QRa0ahJA0j";z.t=+new Date;$.
+    type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+    </script>
+    <!--End of Zendesk Chat Script-->
+
+
+
 
 
 
