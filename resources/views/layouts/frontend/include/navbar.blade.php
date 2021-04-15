@@ -62,11 +62,11 @@
                 <!-- Modal ------------------------------->
                 <!-- ---------------------------------- -->
 
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title color-black" id="exampleModalLabel">تسجيل الدخول</h5>
+                                <h5 class="modal-title color-black" id="loginModalLabel">تسجيل الدخول</h5>
                                 <a style="width: fit-content;" class="close mx-0" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true" style="color: red;cursor: pointer;">&times;</span>
                                 </a>

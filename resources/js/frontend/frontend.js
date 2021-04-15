@@ -110,6 +110,14 @@ $(document).ready(function() {
 
 
 
+
+
+    window.addEventListener("notLogin", function() {
+        console.log("i'm here");
+        $('#loginModal').modal('toggle');
+    })
+
+
     // const homeCarousel = $('.home-carousel');
     // if (homeCarousel.length) {
     //     $('.home-slider').carousel({
@@ -137,6 +145,18 @@ $(document).ready(function() {
         });
 
 
+
+    }
+
+
+    const favoriteIcon = $('.addToFavorite');
+    if (favoriteIcon.length) {
+        favoriteIcon.on('click', function() {
+            console.log($(this).data('id'));
+            window.livewire.emit('addToFavorite', $(this).data('id'));
+
+
+        });
 
     }
 

@@ -1,6 +1,6 @@
     <div>
         @if ($currentStep == 1)
-            <link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/bower_components/switchery/dist/switchery.min.css')}}">        
+            <link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/bower_components/switchery/dist/switchery.min.css')}}">
         @endif
 
 
@@ -76,14 +76,25 @@
 
     </div>
 
+
+
 </div>
 
+@push('scripts')
+    <script>
 
+        document.addEventListener('livewire:load', function () {
+            // Get the value of the "count" property
+            var openPayment = @this.openPayment
+            if (openPayment) {
+                window.livewire.emit('openPayment')
 
+                   // Call the increment component action
+            }
 
-
-
-
+        })
+    </script>
+@endpush
 
 
 

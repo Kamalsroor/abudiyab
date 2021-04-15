@@ -61,6 +61,7 @@
         <script>
             let BranchApisUrl = "{{ route('api.branches.index') }}";
             let branchesLogo="{{asset('front/img/logo-edited-.png')}}";
+            let weekDays=   @json(trans('branches.weekDays'));
         </script>
     @endsection
 </x-front-layout>
