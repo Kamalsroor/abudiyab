@@ -1,7 +1,7 @@
 <x-front-layout :title="trans('dashboard.home')" :breadcrumbs="['dashboard.home']" >
     <section class="branch-page">
 
-        <section class="branch-page_head" style="background: url({{optional(Settings::instance('branches_backgraund'))->getFirstMediaUrl('branches_backgraund')}});"><h1>{{Settings::locale(app()->getLocale())->get('branches_title')}}</h1></section>
+        <section class="branch-page_head" style="background: url({{optional(Settings::instance('branches_backgraund'))->getFirstMediaUrl('branches_backgraund')}});background-repeat: no-repeat; background-size: cover;"><h1>{{Settings::locale(app()->getLocale())->get('branches_title')}}</h1></section>
 
         <section class="branch-page_center">
                 <div class="branch-page_center_regions">

@@ -51,6 +51,9 @@ Route::as('front.')->group(function () {
     Route::get('/logintest', function(){
         return view('frontend.login');
     })->name('logintest');
+    Route::get('/car-interior', function(){
+        return view('frontend.car-interior');
+    })->name('car-interior');
     // Route::get('/register', function(){
     //     return view('frontend.register');
     // })->name('register.index');
