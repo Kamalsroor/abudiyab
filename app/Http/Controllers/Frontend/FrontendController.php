@@ -8,6 +8,7 @@ use App\Http\Requests\Frontend\ContactRequest;
 use Auth;
 use App\Models\Branch;
 use App\Models\Car;
+use App\Models\CarsInStock;
 use App\Models\Partner;
 use App\Models\Setting;
 use App\Models\Slider;
@@ -71,12 +72,21 @@ class FrontendController extends Controller
 
     public function MembershipCards()
     {
-        return view('frontend.membership-cards');
+        return view('frontend.membership_cards');
     }
-
+    public function bookingModal(Request $request)
+    {
+        $branches=Branch::all();
+        $car_id = $request->car_id;
+        return view('layouts.frontend.include.booking_modal',compact('branches','car_id'));
+    }
 
     public function favorite()
     {
+        // if(count(Auth()->user()->userFavorite)){
+
+        // }
+        // dd(Auth()->user()->userFavorite);
         return view('frontend.favorite');
     }
 
@@ -130,6 +140,47 @@ class FrontendController extends Controller
      */
     public function booking(Request $request)
     {
+
+        if ($request->receivingBrancheInput != null && $request->deliveryBrancheInput != 0 && $request->receivingDateInput != null && $request->deliveryDateInput != null )
+        {
+            $carInBranch =  CarsInStock::where('car_id',$request->car_id)->where('branch_id', $request->receivingBrancheInput)->get();
+            if ($carInBranch->count() > 0) {
+
+                if ($carInBranch->first()->count > 0) {
+                    $data = [
+                        'car_id' => $request->car_id ,
+                        'receiving_branch' => $request->receivingBrancheInput  ,
+                        'delivery_branch' => $request->deliveryBrancheInput  ,
+                        'receiving_date' => $request->receivingDateInput ,
+                        'delivery_date' => $request->deliveryDateInput ,
+                    ] ;
+
+                    return view('frontend.booking-steps',compact('data'));
+
+                }else{
+                    dd('error');
+                }
+            }
+
+
+        }
+       else if($this->dervery_branch_id != null && $this->dervery_branch_id != 0){
+           $errorData = [
+               'title' => 'يرجي اختيار وقت الاستلام والتسليم',
+               'text' => 'test',
+               'type' => 'error',
+           ];
+        //    $this->dispatchBrowserEvent('sweetalert', $errorData);
+       }
+       else{
+
+           $errorData = [
+               'title' => 'يرجي اختيار فرع الاستلام والتسليم',
+               'text' => 'test',
+               'type' => 'error',
+           ];
+        //    $this->dispatchBrowserEvent('sweetalert', $errorData);
+       }
 
         $data = $request->all() ;
         return view('frontend.booking-steps',compact('data'));

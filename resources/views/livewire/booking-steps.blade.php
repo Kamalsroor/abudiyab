@@ -82,14 +82,25 @@
 
     </div>
 
+
+
 </div>
 
+@push('scripts')
+    <script>
 
+        document.addEventListener('livewire:load', function () {
+            // Get the value of the "count" property
+            var openPayment = @this.openPayment
+            if (openPayment) {
+                window.livewire.emit('openPayment')
 
+                   // Call the increment component action
+            }
 
-
-
-
+        })
+    </script>
+@endpush
 
 
 

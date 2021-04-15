@@ -17,6 +17,8 @@ class BookingSteps extends Component
     public $car ;
     public $features_added = [];
     public $price;
+    public $openPayment = false;
+    public $paymentData;
     public $js;
     public $order;
     public $order_id;
@@ -44,13 +46,13 @@ class BookingSteps extends Component
 
     protected $listeners = [
         'payment:cancelled' => 'paymentCancelled',
-        'payment:complete' => 'paymentComplete'
+        'payment:complete' => 'paymentComplete',
+        'openPayment' => 'openPayment'
     ];
 
 
     public function mount()
     {
-
         $this->car = Car::find($this->data['car_id']);
         $reciving_date=$this->data['receiving_date'];
         $delivery_date=$this->data['delivery_date'];
@@ -109,7 +111,7 @@ class BookingSteps extends Component
                     $sessionID = MasterCardPayment::createSessionSandBox($orderID, $merchantID, $merchantPassword);
                     $totalPrice = $this->price;
                     $siteName = "test";
-                    $paymentData = [
+                    $this->paymentData = [
                         'merchant' => $merchantID,
                         'order_amount' => $totalPrice,
                         'order_currency' => config('BankPayment.currency'),
@@ -117,7 +119,8 @@ class BookingSteps extends Component
                         'session_id' => $sessionID,
                         'merchant_name' => $siteName,
                     ];
-                    $this->dispatchBrowserEvent('say-goodbye', $paymentData);
+                    $this->openPayment = true ;
+                    // $this->dispatchBrowserEvent('openPayment', $paymentData);
                     $this->currentStep = 4 ;
                 }elseif($this->paymentType == "cash"   || $this->paymentType == "points"){
                     $this->order->update([
@@ -161,6 +164,14 @@ class BookingSteps extends Component
 
 
 
+    public function openPayment()
+    {
+        if ($this->openPayment) {
+            $this->dispatchBrowserEvent('openPayment', $this->paymentData);
+        }
+    }
+
+
     /**
      * Write code on Method
      */
@@ -184,10 +195,6 @@ class BookingSteps extends Component
         // $validatedData = $this->validate([
         //     'status' => 'required',
         // ]);
-        // if(Auth()->user()== null)
-        // {
-        //     $this->dispatchBrowserEvent('notLogin');
-        // }
         $this->order = Order::updateOrCreate([
             'id' => $this->order ? $this->order->id : 0
         ],[
@@ -207,14 +214,13 @@ class BookingSteps extends Component
         }else{
             $this->currentStep = 3;
         }
-        // if(Auth()->user()== null)
-        // {
-        //     $current_url=url()->previous().'&order_id='.$this->order->id;
-        //     session()->push('redircitURl', $current_url);
-        //     $this->dispatchBrowserEvent('notLogin');
-        //     $this->currentStep = 2;
-        //     return 0;
-        // }
+        if(Auth()->user()== null)
+        {
+            $current_url=url()->previous().'&order_id='.$this->order->id;
+            session()->push('redircitURl', $current_url);
+            $this->dispatchBrowserEvent('notLogin');
+            $this->currentStep = 2;
+        }
     }
 
     public function addedFeature(){
@@ -261,7 +267,7 @@ class BookingSteps extends Component
             $siteEmail = "kamal.s.sroor@gmail.com";
             $sitePhone = "01012316954";
             $siteLogoURL = "https://abudiyab.test/";
-            $paymentData = [
+            $this->paymentData = [
                 'merchant' => $merchantID,
                 'order_amount' => $totalPrice,
                 'order_currency' => config('BankPayment.currency'),
@@ -270,7 +276,7 @@ class BookingSteps extends Component
                 'merchant_name' => $siteName,
             ];
 
-            $this->dispatchBrowserEvent('say-goodbye', $paymentData);
+            $this->dispatchBrowserEvent('openPayment', $this->paymentData);
         }
 
 
@@ -282,7 +288,7 @@ class BookingSteps extends Component
      */
     public function paymentCancelled()
     {
-        $this->currentStep = 3;
+        $this->currentStep = 1;
     }
 
 
@@ -321,7 +327,7 @@ class BookingSteps extends Component
                 $sessionID = MasterCardPayment::createSessionSandBox($orderID, $merchantID, $merchantPassword);
                 $totalPrice = $this->price;
                 $siteName = "test";
-                $paymentData = [
+                $this->paymentData = [
                     'merchant' => $merchantID,
                     'order_amount' => $totalPrice,
                     'order_currency' => config('BankPayment.currency'),
@@ -329,7 +335,7 @@ class BookingSteps extends Component
                     'session_id' => $sessionID,
                     'merchant_name' => $siteName,
                 ];
-                $this->dispatchBrowserEvent('say-goodbye', $paymentData);
+                $this->dispatchBrowserEvent('openPayment', $this->paymentData);
 
                 $this->currentStep = 4 ;
             }else{
