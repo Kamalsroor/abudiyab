@@ -3,8 +3,6 @@ require('./bootstrap');
 
 
 
-
-
 $(document).ready(function() {
     /* general variables */
 
@@ -53,6 +51,9 @@ $(document).ready(function() {
     window.addEventListener('CarModelSlick', event => {
         slick_function(event.detail);
     });
+
+
+
 
 
     async function slick_function(details) {
@@ -191,10 +192,10 @@ $(document).ready(function() {
                             //     console.log(time);
                             // });
 
-                            for (const [key, value] of Object.entries( branch.work_time)) {
+                            for (const [key, value] of Object.entries(branch.work_time)) {
                                 timeText += `<p>${ weekDays.[key] } ${ value.lock == 1 ?  "مغلق" : value.timeopen + ' : ' + value.timeclose  }</p>`;
 
-                                console.log(`${key}: ` ,  value);
+                                console.log(`${key}: `, value);
                             }
                         }
                         console.log(timeText);
