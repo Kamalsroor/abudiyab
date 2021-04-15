@@ -140,8 +140,8 @@
 
 <div class="small-screen-navbar container-fluid mx-0 px-0 d-block d-md-none d-lg-none">
     <div class="row">
+        <div class="col-3 py-3 text-center"></div>
         <div class="col-3 py-3 text-center"><a class="mx-3" href="{{route('front.main')}}">الرئيسية</a></div>
-        <div class="col-3 py-3 text-center"><a class="mx-3" href="{{route('front.fleet')}}"><i class="fas fa-car"></i></a></div>
         <div class="col-3 py-3 text-center"><i class="fas fa-bars" id="hamburger-bars2" ></i></div>
         <div class="col-3 py-3 text-center"><i class="fas fa-sign-in-alt"></i></div>
     </div>
