@@ -11,6 +11,13 @@
         .content {
             background-color: rgb(25 40 122 / 56%);
             color: get-color(light);
+            form {
+                width: 50%;
+                margin: auto;
+                @include mediumScreen() {
+                    width: 90%;
+                }
+            }
         }
     }
 }
