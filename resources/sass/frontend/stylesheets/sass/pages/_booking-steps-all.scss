@@ -97,6 +97,23 @@ body {
         width: 100%;
         margin: 10px auto;
         text-align: left;
+        .booking-car-notes {
+            @media (max-width: 530px) {
+                display: none;
+            }
+        }
+        .booking-car-notes-mo {
+            display: none;
+            @media (max-width: 530px) {
+                display: block;
+            }
+        }
+        .booking-btn-mo {
+            @media (max-width: 530px) {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+        }
         a,
         button {
             border-radius: 45px !important;

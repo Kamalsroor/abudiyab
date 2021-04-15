@@ -15,41 +15,41 @@
             </div>
             <div>
                 <div class="imm">
-                    <label for="by1">
+                    <label for="visa">
                         <img class="logo" src="{{asset('front/visa_master.jpg')}}" alt="">
                     </label>
                 </div>
-                <input type="radio" value="visa" name="paymentType" wire:model="paymentType">
-                <label for="by1">بطاقه اىْتمانيه</label>
+                <input type="radio" value="visa" id="visa" name="paymentType" wire:model="paymentType">
+                <label for="visa">بطاقه اىْتمانيه</label>
             </div>
             <div>
                 <div class="imm">
-                    <label for="by2">
+                    <label for="mada">
                         <img class="logo1" src="{{asset('front/mada-logo.png')}}" alt="">
                     </label>
                 </div>
-                <input type="radio" value="mada" name="paymentType" wire:model="paymentType">
-                <label for="by2">بطاقه مدي البنكيه</label>
+                <input type="radio" value="mada" id="mada" name="paymentType" wire:model="paymentType">
+                <label for="mada">بطاقه مدي البنكيه</label>
             </div>
             <div>
                 <div class="imm">
-                    <label for="by3">
+                    <label for="cash">
                         <img class="logo2" src="{{asset('front/cash-logo.png')}}" alt="">
                     </label>
                 </div>
-                <input type="radio" value="cash" name="paymentType" wire:model="paymentType">
-                <label for="by3">نقدا</label>
+                <input type="radio" value="cash" id="cash" name="paymentType" wire:model="paymentType">
+                <label for="cash">نقدا</label>
             </div>
 
             <div class="imm">
                 <div>
-                    <label for="by4">
+                    <label for="points">
                         <img class="logo3" src="{{asset('front/points.png')}}" alt="">
                     </label>
                 </div>
 
-                <input type="radio" value="points" name="paymentType" wire:model="paymentType">
-                <label for="by4">النقاط</label>
+                <input type="radio" value="points" id="points" name="paymentType" wire:model="paymentType">
+                <label for="points">النقاط</label>
             </div>
         </div>
         <div id="bg" class="display-none {{ $paymentType != "visa" ? 'display-none' : '' }} bay-g ">

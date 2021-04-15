@@ -1,4 +1,4 @@
-
+<link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/assets/icon/icofont/css/icofont.css')}}">
 <div id="step2" class="row mx-0 {{ $currentStep != 2 ? 'display-none' : '' }}" style="direction: ltr;" >
     <div class="H3-TST-D1">
         <div class="H3-TST-D2 H3-TST-D2-2">
@@ -45,7 +45,7 @@
                 </div>
                 <div class="H3-TST-D4-2">
                     <h5>الإيجار اليومي</h5>
-                    <p class="H3-TST-P-PR"><span>ريال سعودي</span> {{$car->price1}}</p>
+                    <p class="H3-TST-P-PR"><span><i class="icofont icofont-cur-riyal"></i></span>{{$car->price1}}</p>
                 </div>
             </div>
         </div>
@@ -60,7 +60,7 @@
                         <span> الإيجار لمدة {{$diff}} يوم</span>
                     </div>
                     <div class="H3-TST-D5-1">
-                        <p>{{$car_price}} <span>ريال سعودي</span></p>
+                        <p><span><i class="icofont icofont-cur-riyal"></i></span>{{$car_price}}</p>
                     </div>
                 </div>
                 <div class="H3-TST-D4-1" style="position: relative;">
@@ -68,7 +68,7 @@
                         <span>إجمالي الإضافات {{$diff}} يوم</span>
                     </div>
                     <div class="H3-TST-D5-1">
-                        <p>{{$features_price}} <span>ريال سعودي</span></p>
+                        <p><span><i class="icofont icofont-cur-riyal"></i></span>{{$features_price}}</p>
                     </div>
                     <i class="fas fa-info-circle"></i>
                 </div>
@@ -80,7 +80,7 @@
                                 <span><span>{{$featureArray[$key]}}</span><i class="fas fa-car"></i></span>
                             </div>
                             <div class="H3-TST-D5-1">
-                                <p>{{$value}}<span> ريال سعودي في اليوم</span></p>
+                                <p><span><i class="icofont icofont-cur-riyal"></i>{{$value}} في اليوم</span></p>
                             </div>
                         </div>
                     @endforeach
@@ -91,7 +91,7 @@
                         <span>رسوم تفويض (تم)</span>
                     </div>
                     <div class="H3-TST-D5-1">
-                        <p>3 <span>ريال سعودي</span></p>
+                        <p><span><i class="icofont icofont-cur-riyal"></i></span>3</p>
                     </div>
                 </div>
 
@@ -100,7 +100,7 @@
                         <span> الإجمالي</span>
                     </div>
                     <div class="H3-TST-D5-1">
-                        <p>{{$price}} <span>ريال سعودي</span></p>
+                        <p><span><i class="icofont icofont-cur-riyal"></i></span>{{$price}}</p>
                     </div>
                 </div>
 
@@ -109,7 +109,7 @@
                         <span> خصم العضويه</span>
                     </div>
                     <div class="H3-TST-D5-1">
-                        <p>5 <span>ريال سعودي</span></p>
+                        <p><span><i class="icofont icofont-cur-riyal"></i></span>5</p>
                     </div>
                 </div>
 
@@ -118,7 +118,7 @@
                         <span> خصم ترويجي</span>
                     </div>
                     <div class="H3-TST-D5-1">
-                        <p>10 <span>ريال سعودي</span></p>
+                        <p><span><i class="icofont icofont-cur-riyal"></i></span>10</p>
                     </div>
                 </div>
 
@@ -127,7 +127,7 @@
                         <span> الصافي</span>
                     </div>
                     <div class="H3-TST-D5-1">
-                        <p>100 <span>ريال سعودي</span></p>
+                        <p><span><i class="icofont icofont-cur-riyal"></i></span>100</p>
                     </div>
                 </div>
 

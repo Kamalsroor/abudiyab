@@ -45,13 +45,7 @@
                     <div class="booking-steps_footer @if ($currentStep == 3) col-lg-8 @else col-lg-12 @endif">
                         <div class="container-fluid" style="@if ($currentStep == 2) padding-right: 0px;padding-left: 0px; @endif">
                             <div class="row d-flex justify-content-between">
-                                <div class="col-3 mx-0 @if ($currentStep == 2) px-0 px-sm-4 @endif">
-                                    <button class="booking-btn" wire:click="back({{$currentStep - 1}})" style="margin-right: 0;background-color: #002366 !important;
-                                    color: white !important;float: right;"> عوده </button>
-                                </div>
-
-                                <div class="col-6 mx-0 booking-car-notes float-normal @if ($currentStep == 2) px-0 px-sm-4 @endif {{ $currentStep != 2 ? 'display-none' : '' }}" style="text-align: center;">
-
+                                <div class="col-12 mb-3 booking-car-notes booking-car-notes-mo float-normal @if ($currentStep == 2) px-0 px-sm-4 @endif {{ $currentStep != 2 ? 'display-none' : '' }}" style="text-align: center;">
                                     <label class="orange-checkbox-value" style="margin: 0;">
                                         يرجى قراءة
                                         <input type="checkbox" name="" id="termsCheck">
@@ -60,8 +54,20 @@
                                         عليها قبل الاستمرار
                                     </label>
                                 </div>
-
-                                <div class="@if ($currentStep == 2) col-3 px-0 px-sm-4 @else col-6 @endif mx-0">
+                                <div class="col-3 mx-0 @if ($currentStep == 2) px-0 pr-sm-4 booking-btn-mo @endif">
+                                    <button class="booking-btn" wire:click="back({{$currentStep - 1}})" style="margin-right: 0;background-color: #002366 !important;
+                                    color: white !important;float: right;"> عوده </button>
+                                </div>
+                                <div class="col-6 mb-0 booking-car-notes float-normal @if ($currentStep == 2) px-0 @endif {{ $currentStep != 2 ? 'display-none' : '' }}" style="text-align: center;">
+                                    <label class="orange-checkbox-value" style="margin: 0;">
+                                        يرجى قراءة
+                                        <input type="checkbox" name="" id="termsCheck">
+                                        <a id="Booking_termsandConditions" style="padding: 0px 10px;" data-toggle="modal" class="terms-text-a"
+                                            onclick="$('#OrSimilarHidableModal').toggle();">اﻟﺸﺮوط واﻷﺣﻜﺎم</a> والموافقة
+                                        عليها قبل الاستمرار
+                                    </label>
+                                </div>
+                                <div class="@if ($currentStep == 2) col-3 px-0 pl-sm-4 booking-btn-mo @else col-6 @endif mx-0">
                                     <button class="booking-btn" name="GO" wire:click="{{ $currentStep == 1 ? 'firstStepSubmit' : '' }}{{ $currentStep == 2 ? 'secondStepSubmit' : '' }}{{ $currentStep == 3 ? 'thirdStepSubmit' : '' }}"  style="margin-left: 0;background-color: #002366 !important;
                                     color: white !important;">استمرار</button>
                                 </div>
