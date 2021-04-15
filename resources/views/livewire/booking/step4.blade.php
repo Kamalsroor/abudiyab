@@ -6,13 +6,7 @@
                     <div class="title red">
                         <h1 class="color-black">تأكيد الحجز</h1>
                     </div>
-                    <button style="    position: absolute;
-                    top: 14px;
-                    left: 45px;
-                    font-size: 33px;
-                    background: #4038af;
-                    color: #fff;
-                    border: 3px solid #1a03ea;cursor: pointer; outline: none;"><i class="icofont icofont-print"></i></button>
+                    <button class="print"><i class="icofont icofont-print"></i></button>
                     <div class="detel">
                         <div class="dis red">
                             <p style="font-size: 25px;" class="color-black"> رقم الحجز :80702687</p>

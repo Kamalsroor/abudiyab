@@ -262,4 +262,23 @@
     footer {
         margin-top: 0vh !important;
     }
+    .print {
+        position: absolute;
+        top: 14px;
+        left: 25px;
+        font-size: 30px;
+        background: get-color(primary);
+        padding: 3px 10px;
+        color: #fff;
+        border-radius: 50%;
+        // border: 3px solid #1a03ea;
+        cursor: pointer;
+        outline: none;
+        @media (max-width: 492px) {
+            left: 15px;
+            @media (max-width: 328px) {
+                font-size: 25px;
+            }
+        }
+    }
 }

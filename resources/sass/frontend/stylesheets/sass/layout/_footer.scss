@@ -104,3 +104,13 @@
         font-size: 16px;
     }
 }
+#character {
+    width: 150px;
+    height: 170px;
+    position: fixed;
+    right: 1%;
+    bottom: 27px;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 9999;
+}

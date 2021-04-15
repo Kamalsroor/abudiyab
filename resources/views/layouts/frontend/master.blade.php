@@ -24,21 +24,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     {{-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> --}}
 </head>
-<body >
-<!-- ------------START------HTML------LOAD------------ -->
-<div class="background-loader" style="position: absolute;height: 100vh;width: 100%; color: #fff;background: #fff;z-index: 1000000;">1 </div>
-
- <div class="loader animation-start" style="z-index: 10000000;">
-<span class="circle delay-1 size-2"></span>
-<span class="circle delay-2 size-4"></span>
-<span class="circle delay-3 size-6"></span>
-<span class="circle delay-4 size-7"></span>
-<span class="circle delay-5 size-7"></span>
-<span class="circle delay-6 size-6"></span>
-<span class="circle delay-7 size-4"></span>
-<span class="circle delay-8 size-2"></span>
+<body style="overflow: hidden;">
+<!-- ------------START-----loader------------ -->
+<div class="loader">
+    <div class="loader_img">
+        <img src="{{ asset('front/img/loader.gif') }}" alt="Loader..">
+    </div>
 </div>
-<!-- ------------END------HTML------LOAD------------ -->
+<!-- ------------END-------loader------------ -->
         <!--================
             main Navbar
         =================-->
@@ -85,7 +78,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="{{asset('front/lnkse/bootstrap.js')}}"></script> --}}
 
     {{-- <script src="{{asset('front/lnkse/main.js')}}"></script> --}}
-
+    <img id="character" src="{{asset('images/character-1.png')}}" alt="our character">
 
     <div class="modal fade" id="BookingModel" tabindex="-1" aria-labelledby="BookingModelLabel" aria-hidden="true">
     </div>
@@ -119,12 +112,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </script>
     <script src="{{ asset(mix('/js/frontend.js')) }}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
 
     <!-- ------------START-----SCRIPT-------LOAD------------ -->
     <script type="text/javascript">
         $(document).ready(function() {
-            $('div.loader.animation-start, .background-loader').hide();
+            $(".loader").animate({opacity: "0"}, 2000, function() {
+                $(".loader").hide();
+            });
             $('body').css('overflow','auto');
         });
     </script>
