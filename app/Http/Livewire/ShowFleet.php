@@ -124,7 +124,6 @@ class ShowFleet extends Component
     }
     public function addToFavorite($id)
     {
-
         if (!Auth()->check()) {
             $current_url=url()->previous();
             session()->push('redircitURl', $current_url);
@@ -132,16 +131,27 @@ class ShowFleet extends Component
 
             $this->dispatchBrowserEvent('notLogin');
         }else{
-            $addToFavorite = addToFavorite::create([
-                'car_id' => $id ,
-                'user_id' =>  Auth()->id(),
-            ]);
-
-            $errorData = [
-                'title' => 'تم اضافة السياره للمفضله بنجاح',
-                'type' => 'success',
-            ];
-            $this->dispatchBrowserEvent('sweetalert', $errorData);
+            $isAdded=addToFavorite::where('user_id',Auth()->id())->where('car_id',$id)->get();
+            if(!count($isAdded))
+            {
+                $addToFavorite = addToFavorite::create([
+                    'car_id' => $id ,
+                    'user_id' =>  Auth()->id(),
+                ]);
+                $errorData = [
+                    'title' => 'تم اضافة السياره للمفضله بنجاح',
+                    'type' => 'success',
+                ];
+                $this->dispatchBrowserEvent('sweetalert', $errorData);
+            }
+            else
+            {
+                $errorData = [
+                    'title' => 'هذه السياره مضافه بلفعل في المفضله',
+                    'type' => 'error',
+                ];
+                $this->dispatchBrowserEvent('sweetalert', $errorData);
+            }
         }
     }
     public function showBrnaches()

@@ -87,6 +87,36 @@ scratch. This page gets rid of all links and provides the needed markup only.
     {{-- <script src="{{asset('front/lnkse/main.js')}}"></script> --}}
 
 
+    <div class="modal fade" id="BookingModel" tabindex="-1" aria-labelledby="BookingModelLabel" aria-hidden="true">
+    </div>
+
+
+
+
+    <script>
+        let BookingModelURl = "{{route('front.bookingModel')}}";
+        function openBookingModel(id) {
+            console.log(id);
+            console.log('openBookingModel');
+            $.ajax({
+                type: 'get',
+                url: BookingModelURl,
+                headers: {
+                    "x-accept-language": "ar",
+                },
+                dataType: "html",
+                data: {
+                    'car_id' : id
+                },
+                success: function(data) {
+                    console.log(data);
+                    $('#BookingModel').html(data).modal('show');
+
+                }
+            });
+        }
+
+    </script>
     <script src="{{ asset(mix('/js/frontend.js')) }}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 

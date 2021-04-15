@@ -53,7 +53,6 @@ class BookingSteps extends Component
 
     public function mount()
     {
-
         $this->car = Car::find($this->data['car_id']);
         $reciving_date=$this->data['receiving_date'];
         $delivery_date=$this->data['delivery_date'];
