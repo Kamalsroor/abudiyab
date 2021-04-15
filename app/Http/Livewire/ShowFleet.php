@@ -33,11 +33,10 @@ class ShowFleet extends Component
     protected $listeners = [
         'addToFavorite' => 'addToFavorite'
     ];
-
+    public $isAlert=false;
 
     public function render()
     {
-
 
         if ($car_id = session()->get('car_id') && Auth()->check()) {
             # code...
@@ -50,6 +49,7 @@ class ShowFleet extends Component
                 'title' => 'تم اضافة السياره للمفضله بنجاح',
                 'type' => 'success',
             ];
+            $this->isAlert=true;
             session()->forget('car_id');
             $this->dispatchBrowserEvent('sweetalert', $errorData);
         }
@@ -124,10 +124,12 @@ class ShowFleet extends Component
     }
     public function addToFavorite($id)
     {
+
         if (!Auth()->check()) {
             $current_url=url()->previous();
             session()->push('redircitURl', $current_url);
-            session(['car_id' , $id]);
+            session(['car_id' => $id]);
+
             $this->dispatchBrowserEvent('notLogin');
         }else{
             $addToFavorite = addToFavorite::create([

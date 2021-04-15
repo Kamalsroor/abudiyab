@@ -289,7 +289,7 @@ class BookingSteps extends Component
      */
     public function paymentCancelled()
     {
-        $this->currentStep = 3;
+        $this->currentStep = 1;
     }
 
 

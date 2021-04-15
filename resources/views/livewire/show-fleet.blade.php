@@ -285,3 +285,20 @@
 
 </script>
 @endpush
+@push('scripts')
+    <script>
+
+        document.addEventListener('livewire:load', function () {
+            var isAlert = @this.isAlert
+            if (isAlert) {
+                Swal.fire({
+                    title: "تم اضافة السياره للمفضله بنجاح",
+                    icon:"success",
+                    confirmButtonText: 'موافق'
+                })
+                   // Call the increment component action
+            }
+
+        })
+    </script>
+@endpush
