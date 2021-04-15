@@ -71,7 +71,7 @@ class FrontendController extends Controller
 
     public function MembershipCards()
     {
-        return view('frontend.membership-cards');
+        return view('frontend.membership_cards');
     }
 
 
