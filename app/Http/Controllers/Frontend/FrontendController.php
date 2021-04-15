@@ -80,7 +80,10 @@ class FrontendController extends Controller
         return view('frontend.favorite');
     }
 
-
+    public function recruitment()
+    {
+        return view('frontend.recruitment');
+    }
 
     function getUserIP()
     {

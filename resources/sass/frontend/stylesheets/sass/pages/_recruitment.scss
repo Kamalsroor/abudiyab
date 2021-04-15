@@ -1,0 +1,139 @@
+.recruitment {
+    width: 100%;
+    height: 870px;
+    position: relative;
+    @media (max-width: 767px) {
+        height: 814px;
+    }
+    &_center {
+        @include location(50%, 50%);
+        overflow: hidden;
+        max-width: 960px;
+        width: 100%;
+        max-height: 100%;
+        background-color: #fff;
+        border-radius: 8px;
+        @media (max-width: 951px) {
+            overflow: auto;
+            border-radius: 0;
+            @media (max-width: 767px) {
+                @include location(0%, 0%);
+            }
+        }
+        &_header {
+            width: 100%;
+            height: 250px;
+            &_content {
+                width: 100%;
+                height: 100%;
+                background-color: #22212d80;
+                text-align: center;
+                color: #fff;
+                position: relative;
+                div {
+                    max-width: 100%;
+                    width: fit-content;
+                    @include location(50%, 50%);
+                    h1 {
+                        font-weight: 400;
+                        margin-bottom: 30px;
+                    }
+                    h2 {
+                        font-size: 25px;
+                        font-weight: 100;
+                    }
+                }
+            }
+        }
+        &_content {
+            width: 100%;
+            padding: 30px 70px 10px;
+            &_form {
+                width: 100%;
+                form {
+                    width: 100%;
+                    .select {
+                        select {
+                            border: none;
+                            border-bottom: 1px solid #ccc;
+                            outline: none;
+                            &:hover {
+                                border-color: #999;
+                                transition: .4s;
+                            }
+                            &:valid {
+                                border-color: get-color(primary);
+                                transition: .8s;
+                            }
+                        }
+                    }
+                    div {
+                        display: flex;
+                        width: 100%;
+                        margin: 15px 0;
+                        label {
+                            text-align: right;
+                            width: 30%;
+                            color: #333;
+                            font-size: 20px;
+                            @media (max-width: 796px) {
+                                display: none;
+                            }
+                            span {
+                                color: red;
+                            }
+                        }
+                        input {
+                            width: 70%;
+                            height: 45px;
+                            border: none;
+                            border-bottom: 1px solid #ccc;
+                            @media (max-width: 796px) {
+                                width: 100%;
+                            }
+                            &:hover {
+                                border-color: #999;
+                                transition: .4s;
+                            }
+                            &:valid {
+                                border-color: get-color(primary);
+                                transition: .8s;
+                            }
+                        }
+                    }
+                    .textarea {
+                        display: block;
+                        margin-top: 30px;
+                        label {
+                            width: 100%;
+                        }
+                        textarea {
+                            width: 100%;
+                            height: 70px;
+                            border: none;
+                            border-bottom: 1px solid #ccc;
+                            &:hover {
+                                border-color: #999;
+                                transition: .4s;
+                            }
+                            &:valid {
+                                border-color: get-color(primary);
+                                transition: .8s;
+                            }
+                        }
+                    }
+                    .button {
+                        width: 100%;
+                        button {
+                            width: 140px;
+                            height: 40px;
+                            margin: 0 auto;
+                            color: #fff;
+                            border-radius: 4px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
