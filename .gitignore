@@ -1,9 +1,7 @@
 /.idea
 /node_modules
 /public/hot
-/public/mix-manifest.json
-/public/css/main.css
-/public/js/frontend.js
+
 /public/storage
 /storage/*.key
 /storage/settings.json
