@@ -155,8 +155,6 @@ $(document).ready(function() {
         favoriteIcon.on('click', function() {
             console.log($(this).data('id'));
             window.livewire.emit('addToFavorite', $(this).data('id'));
-
-
         });
 
     }
@@ -365,6 +363,7 @@ $(document).ready(function() {
 
     // gallery page----------------------------------------------------------------
     $(".oldImg").click(function() {
+        console.log('tasebgday');
         window.location.href = "#";
         $("#container").append($("<div class='opacity '><div class='container-fluid'><a id='close'>X</a><div class='row'> <img class='newImg '></div><div class='row justify-content-between mt-4'><button class='primary-btn btn-curved btn-hover mx-4' id='previous'>السابق</button><button id='next' class='primary-btn btn-curved btn-hover mx-4'>التالى</button></div></div></div>"));
 
