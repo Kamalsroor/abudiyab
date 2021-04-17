@@ -57,6 +57,7 @@
         height: 40px;
         width: 40px;
         border-radius: 50%;
+        border: 1px solid white;
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
@@ -881,6 +882,19 @@
                 height: 60px;
                 width: 120px;
                 object-fit: contain;
+            }
+        }
+    }
+}
+
+.social-media-links {
+    a {
+        p {
+            text-decoration: none;
+            transform: rotate(90deg);
+            transition: all ease-in-out 1s;
+            &:hover {
+                transform: rotate(0deg);
             }
         }
     }
