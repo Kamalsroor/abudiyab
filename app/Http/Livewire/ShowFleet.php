@@ -1,5 +1,5 @@
 <?php
- 
+
 namespace App\Http\Livewire;
 
 use Livewire\Component;
@@ -8,6 +8,8 @@ use App\Models\Branch;
 use App\Models\Car;
 use App\Models\Category;
 use App\Models\CarsInStock;
+use App\Models\addToFavorite;
+use Auth;
 
 class ShowFleet extends Component
 {
@@ -28,9 +30,30 @@ class ShowFleet extends Component
     public $filterPriceCategory='DESC';
     public $filterCategory= [];
     public $priceRangeNewStart , $priceRangeNewEnd ;
-    
+    protected $listeners = [
+        'addToFavorite' => 'addToFavorite'
+    ];
+    public $isAlert=false;
+
     public function render()
     {
+
+        if ($car_id = session()->get('car_id') && Auth()->check()) {
+            # code...
+            $addToFavorite = addToFavorite::create([
+                'car_id' => $car_id ,
+                'user_id' =>  Auth()->id(),
+            ]);
+
+            $errorData = [
+                'title' => 'تم اضافة السياره للمفضله بنجاح',
+                'type' => 'success',
+            ];
+            $this->isAlert=true;
+            session()->forget('car_id');
+            $this->dispatchBrowserEvent('sweetalert', $errorData);
+        }
+
         $priceRangeNew = null ;
         $this->priceRangeNewStart = $this->priceRangeNewStart == null ? 10  : $this->priceRangeNewStart;
         $this->priceRangeNewEnd = $this->priceRangeNewEnd == null ? 3000 : $this->priceRangeNewEnd;
@@ -67,7 +90,7 @@ class ShowFleet extends Component
             if ($priceRangeNew) {
                 $q->whereBetween('price1' ,$priceRangeNew);
             }
-           
+
         })->where(function($q) {
             if($this->filterCategory){
                 $q->whereIn('category_id' , $this->filterCategory);
@@ -99,12 +122,44 @@ class ShowFleet extends Component
     {
 
     }
+    public function addToFavorite($id)
+    {
+        if (!Auth()->check()) {
+            $current_url=url()->previous();
+            session()->push('redircitURl', $current_url);
+            session(['car_id' => $id]);
+
+            $this->dispatchBrowserEvent('notLogin');
+        }else{
+            $isAdded=addToFavorite::where('user_id',Auth()->id())->where('car_id',$id)->get();
+            if(!count($isAdded))
+            {
+                $addToFavorite = addToFavorite::create([
+                    'car_id' => $id ,
+                    'user_id' =>  Auth()->id(),
+                ]);
+                $errorData = [
+                    'title' => 'تم اضافة السياره للمفضله بنجاح',
+                    'type' => 'success',
+                ];
+                $this->dispatchBrowserEvent('sweetalert', $errorData);
+            }
+            else
+            {
+                $errorData = [
+                    'title' => 'هذه السياره مضافه بلفعل في المفضله',
+                    'type' => 'error',
+                ];
+                $this->dispatchBrowserEvent('sweetalert', $errorData);
+            }
+        }
+    }
     public function showBrnaches()
     {
     }
     public function booking($car_id)
     {
-     
+
 
         if ($this->dervery_branch_id != null && $this->dervery_branch_id != 0 && $this->receivingDate != null && $this->deliveryDate != null )
          {
@@ -124,10 +179,10 @@ class ShowFleet extends Component
                     foreach ($car_in_stock as $value) {
                         $branche_names .= " - " . $value->branch->name;
                     }
-                    $carNotFound['title'] = "هذه السياره متوفره فقط في فروع ". $branche_names ; 
+                    $carNotFound['title'] = "هذه السياره متوفره فقط في فروع ". $branche_names ;
                     if($car_in_stock->count() == 0)
                     {
-                        $carNotFound['title'] = "هذه السياره غير متوفره الان " ; 
+                        $carNotFound['title'] = "هذه السياره غير متوفره الان " ;
                     }
                     $this->dispatchBrowserEvent('sweetalert', $carNotFound);
                 }
@@ -136,24 +191,24 @@ class ShowFleet extends Component
                 foreach ($car_in_stock as $value) {
                     $branche_names .= " / " . $value->branch->name;
                 }
-                $carNotFound['title'] = "هذه السياره متوفره فقط في فروع ". $branche_names ; 
+                $carNotFound['title'] = "هذه السياره متوفره فقط في فروع ". $branche_names ;
                 if($car_in_stock->count() == 0)
                 {
-                    $carNotFound['title'] = "هذه السياره غير متوفره الان " ; 
-                   
+                    $carNotFound['title'] = "هذه السياره غير متوفره الان " ;
+
                 }
 
                 $this->dispatchBrowserEvent('sweetalert', $carNotFound);
             }
-       
+
         }
         else if($this->dervery_branch_id != null && $this->dervery_branch_id != 0){
             $errorData = [
                 'title' => 'يرجي اختيار وقت الاستلام والتسليم',
                 'text' => 'test',
-                'type' => 'error', 
+                'type' => 'error',
             ];
-            $this->dispatchBrowserEvent('sweetalert', $errorData);   
+            $this->dispatchBrowserEvent('sweetalert', $errorData);
         }
         else{
 

@@ -1,6 +1,29 @@
 <x-front-layout :title="trans('dashboard.home')" :breadcrumbs="['dashboard.home']" >
 
+@section('styles')
 
+@php
+    $home_category__conent_xl = 66 * ceil( (count($allCategories) + 1) / 4 ) + 5;
+    $home_category__conent_md = 66 * ceil( (count($allCategories) + 1) / 3 ) + 5;
+    $home_category__conent_sm = 66 *  (count($allCategories) + 1)   + 5;
+@endphp
+<style>
+    .home-category__conent .active{
+        height:{{$home_category__conent_xl}}px
+    }
+    @media (max-width:992px){
+        .home-category__conent .active{
+            height:{{ $home_category__conent_md}}px
+        }
+    }
+    @media (max-width:576px){
+        .home-category__conent .active{
+            height:{{$home_category__conent_sm}}px
+        }
+    }
+
+</style>
+@endsection
 
 <div class="container-fluid px-0" >
     <div class="container-fluid px-0">
@@ -56,17 +79,17 @@
             <div class="row justify-content-center px-0 mx-0 car-model__heading" >
                 <div class="car-model__item py-2" data-id="{{$firstcar->id}}">
                     <p class=" text-center">{{$firstcar->name}}</p>
-                </div> 
-          
+                </div>
+
             </div>
         </div>
 
         <livewire:frontend.car-details />
         <div class="container">
             <div class="row car-details car-details__heading" >
-                <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">سنة {{isset($car) ? $car->model : ""}}</p></div>
+                <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">سنة {{isset($firstcar) ? $firstcar->model : ""}}</p></div>
                 <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">ناقل الحركة اوتوماتيك</p></div>
-                <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">عدد الأبواب {{isset($car) ? $car->door : ""}}</p></div>
+                <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">عدد الأبواب {{isset($firstcar) ? $firstcar->door : ""}}</p></div>
                 <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">عدد المقاعد 5</p></div>
             </div>
         </div>

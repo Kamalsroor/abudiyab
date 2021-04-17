@@ -32,6 +32,8 @@ return [
         '%name%' => 'Branch name',
         'code' => 'code',
         'p_coud' => 'p_coud',
+        'address' => 'Address',
+        'tele_number' => 'Phone Number',
         'image' => 'Branch image',
         'created_at' => 'Created At',
         'deleted_at' => 'Deleted At',
@@ -56,4 +58,13 @@ return [
             'cancel' => 'Cancel',
         ],
     ],
+    'weekDays' => [
+        'sat' => "السبت",
+        'sun' => "الاحد",
+        'mon' => "الاثنين",
+        'tue' => "الثلاثاء",
+        'wed' => "الاربعاء",
+        'thu' => "الخميس",
+        'fri' => "الجمعه",
+    ]
 ];

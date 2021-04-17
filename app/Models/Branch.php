@@ -29,7 +29,7 @@ class Branch extends Model implements HasMedia, TranslatableContract
      *
      * @var array
      */
-    public $translatedAttributes = ['name'];
+    public $translatedAttributes = ['name','address'];
 
     /**
      * The attributes that are mass assignable.
@@ -40,6 +40,9 @@ class Branch extends Model implements HasMedia, TranslatableContract
         'name',
         'code',
         'p_coud',
+        'tele_number',
+        'work_time',
+        'address',
     ];
     const Region= [
         1 => "المنطقه الوسطي",
@@ -47,6 +50,8 @@ class Branch extends Model implements HasMedia, TranslatableContract
         3 => "المنطقه الشرقيه",
         4 => "المنطقه الجنوبيه",
     ];
+
+
 
     /**
      * The relations to eager load on every query.
@@ -57,7 +62,9 @@ class Branch extends Model implements HasMedia, TranslatableContract
         'translations',
         'media',
     ];
-
+    protected $casts = [
+        'work_time' => 'array'
+    ];
     /**
      * The query parameter's filter of the model.
      *

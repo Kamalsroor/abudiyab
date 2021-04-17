@@ -25,20 +25,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
     {{-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> --}}
 </head>
 <body style="overflow: hidden;">
-<!-- ------------START------HTML------LOAD------------ -->
-<div class="background-loader" style="position: absolute;height: 100vh;width: 100%; color: #fff;background: #fff;z-index: 1000000;">1 </div>
-
-<div class="loader animation-start" style="z-index: 10000000;">
-<span class="circle delay-1 size-2"></span>
-<span class="circle delay-2 size-4"></span>
-<span class="circle delay-3 size-6"></span>
-<span class="circle delay-4 size-7"></span>
-<span class="circle delay-5 size-7"></span>
-<span class="circle delay-6 size-6"></span>
-<span class="circle delay-7 size-4"></span>
-<span class="circle delay-8 size-2"></span>
+<!-- ------------START-----loader------------ -->
+<div class="loader">
+    <div class="loader_img">
+        <img src="{{ asset('front/img/loader.gif') }}" alt="Loader..">
+    </div>
 </div>
-<!-- ------------END------HTML------LOAD------------ -->
+<!-- ------------END-------loader------------ -->
         <!--================
             main Navbar
         =================-->
@@ -85,15 +78,47 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="{{asset('front/lnkse/bootstrap.js')}}"></script> --}}
 
     {{-- <script src="{{asset('front/lnkse/main.js')}}"></script> --}}
+    <img id="character" src="{{asset('images/character-1.png')}}" class="d-none d-md-block" alt="our character">
 
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <div class="modal fade" id="BookingModel" tabindex="-1" aria-labelledby="BookingModelLabel" aria-hidden="true">
+    </div>
 
+
+
+
+    <script>
+        let BookingModelURl = "{{route('front.bookingModel')}}";
+        function openBookingModel(id) {
+            console.log(id);
+            console.log('openBookingModel');
+            $.ajax({
+                type: 'get',
+                url: BookingModelURl,
+                headers: {
+                    "x-accept-language": "ar",
+                },
+                dataType: "html",
+                data: {
+                    'car_id' : id
+                },
+                success: function(data) {
+                    console.log(data);
+                    $('#BookingModel').html(data).modal('show');
+
+                }
+            });
+        }
+
+    </script>
     <script src="{{ asset(mix('/js/frontend.js')) }}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <!-- ------------START-----SCRIPT-------LOAD------------ -->
     <script type="text/javascript">
         $(document).ready(function() {
-            $('div.loader.animation-start, .background-loader').hide();
+            $(".loader").animate({opacity: "0"}, 2000, function() {
+                $(".loader").hide();
+            });
             $('body').css('overflow','auto');
         });
     </script>
@@ -125,6 +150,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 @yield('js')
 @stack('js')
+
+<!--Start of Zendesk Chat Script-->
+<script type="text/javascript">
+    window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+    d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+    _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+    $.src="https://v2.zopim.com/?4w6Wda0ZEFYjS7iS72Jru9QRa0ahJA0j";z.t=+new Date;$.
+    type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+    </script>
+    <!--End of Zendesk Chat Script-->
+
+
+
 
 
 

@@ -36,11 +36,10 @@
     }
     /* The popup form - hidden by default */
     .form-popup {
-        display: none;
         position: absolute;
-        top: 80px;
+        top: 50px;
         border: 3px solid #f1f1f1;
-        z-index: 9;
+        z-index: 500;
     }
     /* Add styles to the form container */
     .form-container {
@@ -249,24 +248,25 @@
 #menu {
     position: absolute;
     width: 100%;
-    background-color: rgb(255 255 255 / 92%);
+    background-color: get-color(primary);
     z-index: 100;
     a {
         border: 1px solid rgb(255, 255, 255);
-        color: get-color(primary);
+        color: get-color(light);
         font-size: 20px;
         font-weight: 600;
         font-size: 22px;
         height: 16vw;
-        border: solid white 1px;
+        border: solid white 28px;
         flex-direction: column;
         text-align: center;
         @include smallScreen {
-            height: 30vw;
+            height: 20vh;
+            border: solid white 13px;
         }
         &:hover {
-            background-color: get-color(primary);
-            color: get-color(light);
+            background-color: get-color(secondary);
+            color: get-color(primary);
         }
     }
     @include mediumScreen {

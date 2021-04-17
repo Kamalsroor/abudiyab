@@ -40,6 +40,7 @@
 @import 'sass/layout/navbar';
 @import 'sass/layout/master';
 @import 'sass/layout/footer';
+@import 'sass/layout/zopim';
 
 /*==========
     Import pages files
@@ -53,7 +54,17 @@
 @import 'sass/pages/services';
 @import 'sass/pages/points_program';
 @import 'sass/pages/membership_cards';
+@import 'sass/pages/booking-steps-all';
+@import 'sass/pages/booking-steps-1';
+@import 'sass/pages/booking-steps-2';
+@import 'sass/pages/booking-steps-3';
+@import 'sass/pages/booking-steps-4';
+@import 'sass/pages/favorite';
+@import 'sass/pages/loader';
+@import 'sass/pages/recruitment';
+@import 'sass/pages/car-interior';
 // @import 'sass/pages/register-login';
+@import 'sass/pages/register-login';
 // @import 'sass/pages/services';
 // @import 'sass/pages/portfolio';
 // @import 'sass/pages/contact';

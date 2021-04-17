@@ -8,6 +8,7 @@ use App\Http\Resources\SelectResource;
 use App\Http\Resources\BranchResource;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Http\Request;
 
 class BranchController extends Controller
 {
@@ -37,9 +38,14 @@ class BranchController extends Controller
      * )
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index()
+    public function index(Request $request)
     {
-        $branches = Branch::filter()->simplePaginate(3);
+        // dd();
+        if ($request->all) {
+            $branches = Branch::filter()->get();
+        }else{
+            $branches = Branch::filter()->simplePaginate(3);
+        }
         return BranchResource::collection($branches);
     }
 

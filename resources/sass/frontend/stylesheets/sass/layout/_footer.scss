@@ -4,7 +4,7 @@
     background: get-color(primary-light-gradient);
     color: get-color(light);
     text-align: center;
-    @include smallScreen() {
+    @include mediumScreen() {
         padding-bottom: 50px;
     }
     .container {
@@ -103,4 +103,14 @@
         padding: 0 0 10px;
         font-size: 16px;
     }
+}
+#character {
+    width: 150px;
+    height: 170px;
+    position: fixed;
+    right: 1%;
+    bottom: 27px;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 9999;
 }

@@ -13,12 +13,12 @@
 
 
 
-<!-- <link rel="stylesheet" href="{{asset('front/web/css/main.css')}}"> -->
+{{-- <!-- <link rel="stylesheet" href="{{asset('front/web/css/main.css')}}"> --> --}}
 
-<!-- <link rel="stylesheet" href="{{asset('front/web/css/bootstrap.css')}}"> -->
+{{-- <!-- <link rel="stylesheet" href="{{asset('front/web/css/bootstrap.css')}}"> --> --}}
 
 <!-- ------------START-----LINK-------LOAD------------ -->
-<!-- <link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/assets/css/style.css')}}"> -->
+{{-- <!-- <link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/assets/css/style.css')}}"> --> --}}
 <!-- ------------END------LINK------LOAD------------ -->
 
 <link rel="stylesheet" href="{{ asset(mix('/css/main.css')) }}">

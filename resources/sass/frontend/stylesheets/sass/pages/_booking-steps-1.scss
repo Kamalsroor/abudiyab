@@ -1,0 +1,714 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
+#step1 {
+    input[type='checkbox'] {
+        width: 30px;
+        height: 30px;
+        top: 20px;
+    }
+    .booking-dropoff-info {
+        width: 48%;
+    }
+    .booking-car-price-container {
+        background: #002366;
+    }
+    .booking-car-price-now {
+        color: white;
+    }
+    .bodycontainer {
+        width: 100%;
+        overflow: hidden;
+    }
+    button {
+        background: #002366;
+        color: white;
+    }
+    button a {
+        color: white;
+    }
+    .orange-checkbox input[type=checkbox]:checked+label {
+        background: #002366;
+    }
+    .details {
+        width: 100%;
+    }
+    .clear {
+        float: none;
+    }
+    .fa-info-circle {
+        font-size: 2em;
+        padding-top: 2vh;
+        transform: translateX(-5vw);
+        color: red;
+    }
+    .fa-info-circle:hover {
+        color: rgb(68, 1, 1);
+    }
+    .booking-content {
+        margin: auto;
+    }
+    .ddee {
+        width: 100%;
+        height: 100%;
+        z-index: 10000;
+        background: rgba(0, 0, 0, 0.568);
+        text-align: center;
+        top: 0;
+        right: 0;
+        display: none;
+    }
+    .ddee-con1 {
+        background-color: white;
+        color: black;
+        display: none;
+        text-align: center;
+        padding: 10px;
+        margin: 80px auto;
+        border-bottom: silver solid 1px;
+        border-top: silver solid 1px;
+    }
+    .ddee-con1 ul {
+        text-align: right;
+        padding: 20px;
+        font-size: 15px;
+    }
+    .ddee-con1 ul li {
+        padding-right: 5px;
+    }
+    .no {
+        background-color: #002366;
+        color: white;
+        text-decoration: none;
+        text-align: center;
+        height: 40px;
+        width: 100px;
+        font-size: 20px;
+        outline: none;
+        border: none;
+        margin: 0 5px;
+    }
+    .agr {
+        background-color: #002366;
+        color: white;
+        text-decoration: none;
+        text-align: center;
+        height: 40px;
+        width: 100px;
+        font-size: 20px;
+        outline: none;
+        border: none;
+        margin: 0 5px;
+    }
+    .hhh1 {
+        display: block;
+        margin: auto;
+        text-align: center;
+    }
+    .mela {
+        background-color: none;
+        font-size: 15px;
+        color: #002366;
+    }
+    .min {
+        width: 100%;
+        height: 100%;
+        padding: 5px;
+        display: grid;
+        grid-template-columns: 50% 25% 20%;
+        justify-items: right;
+        border-bottom: solid 1px white;
+        border-top: solid 1px white;
+        position: relative;
+    }
+    .img {
+        display: inline-block;
+    }
+    .img>img {
+        height: 50px;
+        width: 70px;
+    }
+    .img>h1 {
+        font-size: 21px;
+    }
+    .img>p {
+        margin: 10px 5px;
+        font-size: 18px;
+        color: gray;
+    }
+    .img img,
+    h1 {
+        display: inline-block;
+        margin: auto;
+    }
+    .price {
+        height: 100%;
+        width: 100%;
+        font-size: 20px;
+        margin-right: 0%;
+        text-align: center;
+        padding: 20px 0;
+    }
+    .price h2 {
+        font-size: 25px;
+        display: inline-block;
+    }
+    .price h2 i {
+        color: #000;
+        font-size: 30px;
+    }
+    .form-switch a {
+        display: block;
+    }
+    .form-switch .form-check-input {
+        height: 30px;
+        width: 60px;
+        display: block;
+        visibility: visible;
+        margin: 0;
+        margin-top: 20px;
+    }
+    .form-switch .form-check-input:focus {
+        outline: none;
+        border: none;
+    }
+    .check {
+        text-align: right;
+        height: 100%;
+        width: 100%;
+    }
+    .agree {
+        background: linear-gradient( 90deg, rgb(1 0 60 / 76%) 0%, #001838 0%, #0081eb 103%);
+        border-radius: 15px;
+        width: 100px;
+        height: 30px;
+    }
+    .cancel {
+        background: linear-gradient( 90deg, rgb(1 0 60 / 76%) 0%, #3d0101 0%, #e20505 103%);
+        border-radius: 15px;
+        text-align: center;
+        align-self: center;
+        height: 30px;
+        width: 100px;
+        color: #fff;
+    }
+    .cancel:hover {
+        background-color: transparent;
+        color: black;
+    }
+    .hide {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.445);
+        display: none;
+        z-index: 100000000000;
+    }
+    .hn h3 {
+        color: #fff;
+    }
+    .info div p,
+    .min h1,
+    .min h2 {
+        color: #000;
+    }
+    .det {
+        background-color: white;
+        padding: 20px;
+        width: 40%;
+        margin: 10px auto;
+        border-radius: 10px;
+        transition: .5s;
+    }
+    .det h2 {
+        font-size: 25px;
+        padding: 10px;
+        text-align: center;
+        border-bottom: solid 1px rgb(221, 221, 221);
+    }
+    .det ul {
+        padding: 15px;
+        text-align: right;
+        font-size: 15px;
+    }
+    .det ul li {
+        word-wrap: break-word;
+    }
+    .btns {
+        text-align: center;
+        padding: 10px;
+    }
+    .det button,
+    .det label {
+        margin: 10px 40px;
+        border: none;
+        outline: none;
+        color: white;
+        background-color: #002366;
+        padding: 10px 30px;
+    }
+    .check1:checked~.hide1 {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.445);
+        display: none;
+        z-index: 100000000000;
+        display: block;
+    }
+    .check2:checked~.hide2 {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.445);
+        display: none;
+        z-index: 100000000000;
+        display: block;
+    }
+    .check3:checked~.hide3 {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.445);
+        display: none;
+        z-index: 100000000000;
+        display: block;
+    }
+    .check4:checked~.hide4 {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.445);
+        display: none;
+        z-index: 100000000000;
+        display: block;
+    }
+    .check5:checked~.hide5 {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.445);
+        display: none;
+        z-index: 100000000000;
+        display: block;
+    }
+    .check6:checked~.hide6 {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.445);
+        display: none;
+        z-index: 100000000000;
+        display: block;
+    }
+    .check7:checked~.hide7 {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.445);
+        display: none;
+        z-index: 100000000000;
+        display: block;
+    }
+    .hhii {
+        position: absolute;
+    }
+    #hhii1:checked~.hide1 {
+        display: none;
+    }
+    #hhii2:checked~.hide2 {
+        display: none;
+    }
+    #hhii3:checked~.hide3 {
+        display: none;
+    }
+    #hhii4:checked~.hide4 {
+        display: none;
+    }
+    #hhii5:checked~.hide5 {
+        display: none;
+    }
+    #hhii6:checked~.hide6 {
+        display: none;
+    }
+    #hhii7:checked~.hide7 {
+        display: none;
+    }
+    .go-btn {
+        background-color: white;
+        text-align: center;
+        padding: 20px 0;
+    }
+    .go-btn a {
+        background-color: #002366;
+        color: white;
+        text-decoration: none;
+        text-align: center;
+        font-size: 20px;
+        outline: none;
+        border: none;
+        margin: 0 50px;
+        padding: 5px 20px;
+    }
+    .booking-step-indicator {
+        height: inherit;
+        padding: 10px;
+    }
+    .brdg {
+        width: 100%;
+        position: absolute;
+        z-index: -100000;
+        background: none;
+        height: 100%;
+        color: gray;
+    }
+    .spanz {
+        background: none;
+        width: 100%;
+        text-align: center;
+        padding: 15px;
+    }
+    .spanz span {
+        border-radius: 45px;
+        border: solid 2px gray;
+        background: #002366;
+        color: white;
+        width: 500px;
+        margin: 50px 7%;
+        padding: 10px 20px;
+    }
+    .hr:empty {
+        position: absolute;
+        margin: auto;
+        width: 100%;
+        z-index: -1798;
+        display: block;
+        background: red;
+    }
+    .float-normal {
+        float: inherit;
+    }
+    .hehed {
+        background-color: white;
+        margin: 10px 0;
+        padding: 10px;
+    }
+    .hide {
+        display: none;
+    }
+    .min-boody {
+        margin-top: 10px;
+        padding: 0;
+    }
+    .moreDetails {
+        display: none;
+    }
+    .crcr {
+        background: #f7f6f6b0;
+        margin: 0;
+        img {
+            transition: .5s;
+            margin: auto;
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+    }
+    .fa-chair,
+    .fa-shield-alt,
+    .fa-user-shield,
+    .fa-car,
+    .fa-map-marker-alt,
+    .fa-home,
+    .fa-shipping-fast {
+        margin: 10px;
+        margin-right: 20px;
+        font-size: 2em;
+        color: red;
+    }
+    .m-r-n {
+        margin-right: 15px;
+    }
+    .min-boody2 {
+        margin-top: 5px;
+        padding-left: 1px;
+        float: left;
+        height: 100%
+    }
+    .info {
+        margin-top: 5px;
+        padding: 10px 0;
+        background: rgb(255 255 255 / 80%);
+        font-weight: bold;
+    }
+    .momo {
+        width: 100%;
+        transition: .6s;
+    }
+    .momo>div {
+        font-size: 1.2em;
+        margin: 0px;
+        direction: rtl;
+    }
+    .momo>div>p {
+        display: inline-block;
+        width: 49%;
+    }
+    .info.pr .icofont.icofont-cur-riyal {
+        color: #0d1a80;
+    }
+    .pr h2 {
+        text-align: center;
+        width: 80%;
+        border: 2px #0d1a80 solid;
+        color: #0d1a80;
+        padding: 10px;
+        margin: 10px auto;
+        background: #c3c9ff;
+        font-size: 50px;
+        font-weight: bold;
+        border-radius: 10000px
+    }
+    .container {
+        background: none;
+    }
+    .contract-additions {
+        background-color: rgb(255 255 255 / 80%);
+        padding: 0 20px 20px 20px;
+        height: 100%;
+        .AdditionsTitle {
+            font-weight: bold;
+            color: #002366;
+            font-size: 40px;
+            display: inline-block;
+            border-bottom: solid 3px #002366;
+        }
+    }
+    .hn {
+        text-align: center;
+        width: 80%;
+        margin: 0 auto;
+        padding: 0;
+        background: #002366;
+        color: #000;
+        border-radius: 5px;
+        box-shadow: 1px 1px 5px 0px #002366;
+    }
+    .hn h3 {
+        padding: 10px;
+        margin: 5px 0;
+    }
+    .momo div p {
+        color: #000;
+    }
+    .red,
+    .momo div p.red {
+        color: #0d1a80;
+    }
+    .form-check-input:checked {
+        background-color: #002366;
+        border-color: #002366;
+    }
+    .form-check-input {
+        background-color: #85ade9;
+        border-color: #85ade9;
+    }
+    .inp1 {
+        margin: 0;
+        float: right;
+    }
+    .inp2 {
+        float: left;
+        margin: 0;
+    }
+    .YH-a,
+    .YH-b {
+        margin: 0;
+    }
+    .YH-a {
+        position: absolute;
+    }
+    .YH-b {
+        left: 15px;
+    }
+    .YH-a {
+        right: 15px;
+    }
+    fieldset {
+        min-width: fit-content;
+    }
+    .check div ul * {
+        color: #002366;
+    }
+    .pro-bar li:nth-child(1)::after {
+        height: 0;
+    }
+    .visa {
+        height: 10%;
+        margin-bottom: 5px;
+        overflow: hidden;
+        background-color: #ffd34e;
+        border: 4px solid #ffffff;
+        border-radius: 20px;
+        &_text {
+            border-bottom: none;
+            font-size: 30px;
+            padding: 22px 0px 0;
+            color: #002366;
+        }
+        #visa_input {
+            // padding: 32px 0 0 130px;
+            input {
+                margin: 33px;
+            }
+        }
+    }
+    .min.min-r {
+        display: block;
+    }
+    @media (max-width:1276px) {
+        .YH-p {
+            font-size: 15px;
+        }
+        .visa_text {
+            font-size: 25px;
+        }
+        @media (max-width:1100px) {
+            .YH-p {
+                font-size: 11px;
+            }
+            .min h1 {
+                font-size: 20px
+            }
+            .min p {
+                font-size: 18px
+            }
+            .price {
+                text-align: center;
+            }
+            .price h2 {
+                font-size: 16px;
+            }
+            .form-switch .form-check-input {
+                height: 23px;
+                width: 52px;
+            }
+            .momo>div {
+                font-size: 11px;
+            }
+            .pr h2 {
+                font-size: 30px;
+            }
+            @media (max-width:992px) {
+                .visa_text {
+                    font-size: 20px;
+                }
+                @media (max-width:799px) {
+                    .pro-bar li {
+                        font-size: 15px;
+                    }
+                    @media (max-width:767px) {
+                        .min-boody2 {
+                            padding-right: 0px;
+                        }
+                        .fa-info-circle {
+                            float: left;
+                        }
+                        .pro-bar li {
+                            font-size: 13px;
+                        }
+                        .momo>div {
+                            font-size: 16px;
+                        }
+                        .YH-p {
+                            font-size: 16px;
+                        }
+                    }
+                    @media (max-width:656px) {
+                        .pro-bar li {
+                            font-size: 11px;
+                        }
+                        @media (max-width: 600px) {
+                            p {
+                                font-size: 16px;
+                            }
+                            @media (max-width:561px) {
+                                .pro-bar li {
+                                    font-size: 8px;
+                                }
+                                @media (max-width:414px) {
+                                    .visa .col-4,
+                                    .visa .col-8 {
+                                        padding-right: 0;
+                                        padding-left: 0;
+                                    }
+                                    .visa_text {
+                                        font-size: 1.8rem;
+                                        padding: 0;
+                                        transform: scale(0.9);
+                                        margin-top: -4px;
+                                        font-weight: 600;
+                                    }
+                                    #visa_input input {
+                                        margin: 33px;
+                                    }
+                                    .price h2 {
+                                        font-size: 20px;
+                                    }
+                                    .price h2 i {
+                                        font-size: 20px;
+                                    }
+                                    .fa-info-circle {
+                                        font-size: 1.2em;
+                                        padding-top: 4vh;
+                                    }
+                                    .booking-steps {
+                                        overflow: hidden;
+                                        width: 100%;
+                                    }
+                                    .min h1 {
+                                        font-size: 14px;
+                                    }
+                                    .min {
+                                        grid-template-columns: 50% 25% 25%;
+                                    }
+                                    .check {
+                                        padding: 0 10px;
+                                    }
+                                    .pro-bar li::before {
+                                        font-size: 30px;
+                                        width: 45px;
+                                        padding-top: 5px;
+                                        height: 45px;
+                                    }
+                                    .pro-bar li {
+                                        font-size: 14px;
+                                    }
+                                    .head {
+                                        width: 97%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:500px) {
+    .booking-steps {
+        width: 99% !important;
+    }
+    .head {
+        width: 94% !important;
+    }
+}

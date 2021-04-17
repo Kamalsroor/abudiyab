@@ -3,13 +3,19 @@ require('./bootstrap');
 
 
 
-
-
 $(document).ready(function() {
     /* general variables */
 
     // html
     const html = document.querySelector('html');
+
+
+    $('.fa-info-circle').click(function() {
+        $('#additions').toggle(1000);
+    });
+    $("#myFormtoggeler").click(function() {
+        $('#myForm').toggleClass('d-none');
+    })
 
 
     $("#hamburger-bars").click(function() {
@@ -47,6 +53,9 @@ $(document).ready(function() {
     });
 
 
+
+
+
     async function slick_function(details) {
 
         $('.car-model__heading').slick('removeSlide', null, null, true);
@@ -58,7 +67,7 @@ $(document).ready(function() {
                     <div>
                         <div class="car-model__item py-2" data-id="${entry.id}">
                             <p class=" text-center">${entry.name}</p>
-                        </div> 
+                        </div>
                     </div>
                     `
             $('.car-model__heading').slick('slickAdd', div);
@@ -89,7 +98,7 @@ $(document).ready(function() {
         $('.car-details__heading').slick('removeSlide', null, null, true);
 
         console.log('refreshing : ', details.car.model); // $('.car-details__heading').slick('unslick');
-        var div = ` 
+        var div = `
         <div><div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">سنة ${details.car.model}</p></div></div>
         <div><div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">ناقل الحركة اوتوماتيك</p></div></div>
         <div><div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">عدد الأبواب ${details.car.door}</p></div></div>
@@ -100,6 +109,14 @@ $(document).ready(function() {
     }
 
 
+
+
+
+
+    window.addEventListener("notLogin", function() {
+        console.log("i'm here");
+        $('#loginModal').modal('toggle');
+    })
 
 
     // const homeCarousel = $('.home-carousel');
@@ -131,6 +148,89 @@ $(document).ready(function() {
 
 
     }
+
+
+    const favoriteIcon = $('.addToFavorite');
+    if (favoriteIcon.length) {
+        favoriteIcon.on('click', function() {
+            console.log($(this).data('id'));
+            window.livewire.emit('addToFavorite', $(this).data('id'));
+
+
+        });
+
+    }
+
+    const branchPage = $('.branch-page');
+    if (branchPage.length) {
+        const branchRegion = $('.branch-regoin');
+        const page_center_dranches_items = $('.branch-page_center_dranches_items');
+
+        branchRegion.click(function() {
+            let branchesRegion = '';
+            console.log(page_center_dranches_items);
+            page_center_dranches_items.html("");
+            $.ajax({
+                type: 'get',
+                url: BranchApisUrl,
+                headers: {
+                    "x-accept-language": "ar",
+                },
+                data: {
+                    code: $(this).data('id'),
+                    all: true
+                },
+                success: function(data) {
+                    console.log(data.data);
+
+                    data.data.forEach(function(branch) {
+                        var timeText = "";
+
+                        if (branch.work_time != null) {
+                            // branch.work_time.forEach(function(time) {
+                            //     // timeText +=
+                            //     console.log(time);
+                            // });
+
+                            for (const [key, value] of Object.entries(branch.work_time)) {
+                                timeText += `<p>${ weekDays.[key] } ${ value.lock == 1 ?  "مغلق" : value.timeopen + ' : ' + value.timeclose  }</p>`;
+
+                                console.log(`${key}: `, value);
+                            }
+                        }
+                        console.log(timeText);
+                        branchesRegion += `<div class="col-12 col-md-6 col-lg-3 mb-2">
+                        <div class="branch-page_center_dranches_branch">
+                            <div class="branch-hidden-list">
+                                <p class="detail">التفاصيل</p>
+                                <div class="section-detail">
+                                    <h4>العنوان</h4>
+                                    <p>${branch.name}</p>
+                                    <p>${branch.address}</p>
+                                    <h4>رقم الهاتف</h4>
+                                    <p>${branch.tele_number}</p>
+                                    <h4>موعدنا</h4>
+
+                                    ${timeText}
+                                    <button>الموقع</button>
+                                </div>
+                            </div>
+                            <div class="branch-list-visible">
+                                <img src="${branchesLogo}" alt="logo">
+                                <h2>${branch.name}</h2>
+                            </div>
+                        </div>
+                    </div>`;
+
+
+                    });
+                    page_center_dranches_items.html(branchesRegion);
+                }
+            });
+            // $('#menu').toggleClass('d-none');
+        })
+    }
+
 
 
 
@@ -179,6 +279,8 @@ $(document).ready(function() {
         //     },
         // ]
     });
+
+
 
 
     $('.car-details__heading').slick({
@@ -261,12 +363,72 @@ $(document).ready(function() {
     })
 
 
+    // gallery page----------------------------------------------------------------
+    $(".oldImg").click(function() {
+        window.location.href = "#";
+        $("#container").append($("<div class='opacity '><div class='container-fluid'><a id='close'>X</a><div class='row'> <img class='newImg '></div><div class='row justify-content-between mt-4'><button class='primary-btn btn-curved btn-hover mx-4' id='previous'>السابق</button><button id='next' class='primary-btn btn-curved btn-hover mx-4'>التالى</button></div></div></div>"));
 
+
+        $(".newImg").attr("src", this.src);
+        $("#previous").click(function() {
+            let source = $(".newImg").attr("src");
+
+            for (var i = 0; i < $('#container .row .oldImg').length; i++) {
+                if ($("#container .row").children('img')[i].src == source) {
+                    if (i > 0) {
+
+
+                        let newUrl = $("#container .row").children('img')[i - 1].src
+                        $(".newImg").fadeOut(300, function() {
+                            $(".newImg").attr("src", newUrl)
+                            $(".newImg").fadeIn(300);
+
+                        });
+
+
+                    }
+                }
+            };
+        });
+        $("#next").click(function() {
+            let source = $(".newImg").attr("src");
+
+            for (var i = 0; i < $('#container .row .oldImg').length; i++) {
+                if ($("#container .row").children('img')[i].src == source) {
+                    if (i < $('#container .oldImg').length - 1) {
+
+
+                        let newUrl = $("#container .row").children('img')[i + 1].src
+                        $(".newImg").fadeOut(300, function() {
+                            $(".newImg").attr("src", newUrl)
+                            $(".newImg").fadeIn(300);
+
+                        });
+
+
+                    }
+                }
+            };
+
+        });
+        $('#close').click(function() {
+            $(".opacity").remove()
+        });
+
+    });
+
+
+
+    // gallery page ends here---------------------------------------------------------------------
 
 
 
 
 });
+
+
+
+
 // $(document).ready(function() {
 //     /*================
 //      / General Functions /

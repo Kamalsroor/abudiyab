@@ -4,8 +4,14 @@
         height: 500px;
         width: 100%;
         position: relative;
-        h1 {
-            @include location(50%, 50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &center {
+        padding: 10px 0;
+        .card {
+            width: 100%;
         }
     }
 }

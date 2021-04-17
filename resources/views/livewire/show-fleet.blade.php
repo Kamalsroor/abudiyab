@@ -192,7 +192,7 @@
                         @foreach($cars as $formcar)
                         <div class="container-fluid bg-block py-2 mb-2" style="background-color:white;">
                             <div class="row mb-2">
-                                <div class="col-lg-4 fleet-car-img">
+                                <div class="col-lg-4 fleet-car-img d-flex align-items-center">
                                     <img class="w-100" src="{{$formcar->getFirstMediaUrl()}}" alt="car-image">
                                 </div>
                                 <div class="col-lg-8">
@@ -219,7 +219,7 @@
                                         <div class="row" style="border-top: #777 solid 1px;">
 
                                             <div class="col-12 d-flex px-0 mx-0 justify-content-between align-items-center">
-                                                <span onclick="favorite(this)" class="color-black text-right" style="float: right; user-select: none; cursor: pointer;"><i class="far fa-bookmark heart"></i><i class="fas fa-bookmark heart"></i> حفظ في المفضله</span>
+                                                <span class="color-black text-right addToFavorite " style="float: right; user-select: none; cursor: pointer;" data-id="{{$formcar->id}}"><i class="far fa-bookmark heart"></i><i class="fas fa-bookmark heart"></i> حفظ في المفضله</span>
                                                 <button class="primary-btn btn-hover btn-curved mt-3 ml-3 p-2 fleet-car-button" wire:click="booking({{$formcar->id}});">احجز الأن</button>
                                             </div>
                                         </div>
@@ -256,7 +256,7 @@
             title: event.detail.title,
             text: event.detail.text,
             icon: event.detail.type,
-            confirmButtonText: 'Cool'
+            confirmButtonText: 'موافق'
         })
     });
 
@@ -284,4 +284,21 @@
     });
 
 </script>
+@endpush
+@push('scripts')
+    <script>
+
+        document.addEventListener('livewire:load', function () {
+            var isAlert = @this.isAlert
+            if (isAlert) {
+                Swal.fire({
+                    title: "تم اضافة السياره للمفضله بنجاح",
+                    icon:"success",
+                    confirmButtonText: 'موافق'
+                })
+                   // Call the increment component action
+            }
+
+        })
+    </script>
 @endpush
