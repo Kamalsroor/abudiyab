@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 mr-auto">
-                        <a href="#" class="btn" id="Favorite">المفضلة</a>
+                        <a href="/favorite" class="btn" id="Favorite">المفضلة</a>
                     </div>
                 </div>
                 <div class="row ">
