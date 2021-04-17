@@ -18,6 +18,7 @@ use App\Payment\MasterCardPayment;
 use Illuminate\Http\Request;
 use Livewire\WithPagination;
 use Livewire\Component;
+use Redirect;
 
 class FrontendController extends Controller
 {
@@ -140,13 +141,10 @@ class FrontendController extends Controller
      */
     public function booking(Request $request)
     {
-
-        if ($request->receivingBrancheInput != null && $request->deliveryBrancheInput != 0 && $request->receivingDateInput != null && $request->deliveryDateInput != null )
+        if ($request->receivingBrancheInput != null && $request->deliveryBrancheInput != null && $request->receivingDateInput != null && $request->deliveryDateInput != null )
         {
             $carInBranch =  CarsInStock::where('car_id',$request->car_id)->where('branch_id', $request->receivingBrancheInput)->get();
             if ($carInBranch->count() > 0) {
-
-                if ($carInBranch->first()->count > 0) {
                     $data = [
                         'car_id' => $request->car_id ,
                         'receiving_branch' => $request->receivingBrancheInput  ,
@@ -154,35 +152,28 @@ class FrontendController extends Controller
                         'receiving_date' => $request->receivingDateInput ,
                         'delivery_date' => $request->deliveryDateInput ,
                     ] ;
-
                     return view('frontend.booking-steps',compact('data'));
-
-                }else{
-                    dd('error');
-                }
             }
-
-
+            else{
+                $errorData = [
+                    'title' => 'يرجي اختيار فرع الاستلام والتسليم',
+                    'text' => 'test',
+                    'type' => 'error',
+                ];
+                // $this->dispatchBrowserEvent('sweetalert', $errorData);
+                return redirect()->back()->with('success', 'your message,here');
+            }
         }
-       else if($this->dervery_branch_id != null && $this->dervery_branch_id != 0){
-           $errorData = [
-               'title' => 'يرجي اختيار وقت الاستلام والتسليم',
-               'text' => 'test',
-               'type' => 'error',
-           ];
-        //    $this->dispatchBrowserEvent('sweetalert', $errorData);
-       }
        else{
-
            $errorData = [
                'title' => 'يرجي اختيار فرع الاستلام والتسليم',
                'text' => 'test',
                'type' => 'error',
            ];
-        //    $this->dispatchBrowserEvent('sweetalert', $errorData);
        }
 
         $data = $request->all() ;
+       dd($data);
         return view('frontend.booking-steps',compact('data'));
     }
 

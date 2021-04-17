@@ -61,13 +61,13 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="form-group">
                             <p class="text-right">تاريخ الاستلام</p>
-                            <input class="form-control" id="receivingDateInput" wire:model='receivingDate' type="date" name='receivingDateInput'>
+                            <input class="form-control" value='{{$rec_date}}' id="receivingDateInput" wire:model='receivingDate' type="date" name='receivingDateInput'>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="form-group">
                             <p class="text-right">تاريخ التسليم</p>
-                            <input class="form-control" id="deliveryDateInput" wire:model='deliveryDate'  type="date" name='deliveryDateInput'>
+                            <input class="form-control" value='{{$del_date}}' id="deliveryDateInput" wire:model='deliveryDate'  type="date" name='deliveryDateInput'>
                         </div>
                     </div>
                 </div>

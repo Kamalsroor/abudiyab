@@ -24,7 +24,7 @@ class CarDetails extends Component
 
     public function render()
     {
-  
+
         $this->dispatchBrowserEvent('CarDetailSlick' ,['car' => $this->car] );
         return view('livewire.frontend.car-details');
 
@@ -34,5 +34,8 @@ class CarDetails extends Component
     }
     public function getCarsByCatgory($id){
         $this->car = Car::where('category_id',$id)->first();
+    }
+    public function checkbooking(){
+        dd('ssssssss');
     }
 }
