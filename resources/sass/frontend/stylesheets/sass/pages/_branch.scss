@@ -24,15 +24,17 @@
                 transition: .4s;
                 margin: 0 1px;
                 @include mediumScreen() {
-                    padding: 10px;
+                    padding: 10px 0;
                     font-size: 16px;
                 }
                 &:nth-child(1) {
                     clip-path: polygon(0 0, 73% 0, 100% 100%, 0% 100%);
                     background-color: get-color(primary);
+                    padding-right: 10px;
                 }
                 &:last-child {
                     clip-path: polygon(28% 0, 100% 0, 100% 100%, 0% 100%);
+                    padding-left: 10px;
                 }
                 p {
                     cursor: pointer;
