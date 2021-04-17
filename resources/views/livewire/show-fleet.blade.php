@@ -90,6 +90,9 @@
             <div class=" container-fluid mx-0 px-0 toggeling-menue d-none" >
                     <div class="d-flex" >
                         <div class="white-section">
+                            <div  class="py-2 text-center justify-content-center filter-menu-heading">
+                                <p class="m-0">الترتيب حسب</p>
+                            </div>
                             <select class="form-control" id="exampleFormControlSelect1" wire:model='filterPriceCategory'>
                                     <option class="color-black" value='DESC'>السعر من الاكثر الى الأقل</option>
                                     <option class="color-black" value='ASC'>السعر من الأقل إلى الأعلى</option>
@@ -145,6 +148,9 @@
                 <div class="row">
                     <div class="col-lg-3 d-none d-lg-block col-4 pr-0  mb-2 ">
                         <div class="white-section">
+                            <div  class="py-2 text-center justify-content-center category-menu-heading">
+                                <p class="m-0">الترتيب حسب</p>
+                            </div>
                             <select class="form-control" id="exampleFormControlSelect1" wire:model='filterPriceCategory'>
                                     <option  value='DESC'>السعر من الاكثر الى الأقل</option>
                                     <option  value='ASC'>السعر من الأقل إلى الأعلى</option>
