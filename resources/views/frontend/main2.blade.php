@@ -30,7 +30,7 @@
         <div id="carouselExampleIndicators" class="carousel home-carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 @foreach ($sliders as $slider )
-                    <li data-target="#carouselExampleIndicators" data-slide-to="{{$loop->index}}" class="{{$loop->first  ? 'active' : "" }}" style="background-image: url({{$slider->getFirstMediaUrl()}})"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="{{$loop->index}}" class="{{$loop->first  ? 'active' : "" }}" style="background-image: url({{$slider->getFirstMediaUrl()}});"></li>
                 @endforeach
             </ol>
             <div class="carousel-inner">

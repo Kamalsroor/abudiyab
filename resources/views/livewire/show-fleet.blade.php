@@ -7,7 +7,7 @@
 
                     <div class="col-lg-3 col-md-6">
                         <div class="form-group">
-                            <p class="text-right">أختار المنطقة</p>
+                            <p class="text-right">أختار السيارة</p>
                             <select class="form-control" id="select2-dropdown" wire:model='searchTerm'>
                             @foreach ($carArraySelect as $carSelect)
                             <option class="color-black" value="{{$carSelect->id}}">{{$carSelect->name}}</option>
@@ -72,10 +72,10 @@
                     </div>
                 </div>
                 <div class="row py-2">
-                    <div class="col-12 d-flex align-items-center justify-content-between justify-content-lg-center">
+                    <div class="col-12 d-flex align-items-center justify-content-start">
 
                         <i class="fas fa-filter color-black d-lg-none "  id="filter-toggele"></i>
-                        <button class="primary-btn px-3 py-2 btn-curved btn-hover" wire:click='search' >ابحث الان </button>
+                        
 
                     </div>
                 </div>
@@ -90,6 +90,9 @@
             <div class=" container-fluid mx-0 px-0 toggeling-menue d-none" >
                     <div class="d-flex" >
                         <div class="white-section">
+                            <div  class="py-2 text-center justify-content-center filter-menu-heading">
+                                <p class="m-0">الترتيب حسب</p>
+                            </div>
                             <select class="form-control" id="exampleFormControlSelect1" wire:model='filterPriceCategory'>
                                     <option class="color-black" value='DESC'>السعر من الاكثر الى الأقل</option>
                                     <option class="color-black" value='ASC'>السعر من الأقل إلى الأعلى</option>
@@ -145,6 +148,9 @@
                 <div class="row">
                     <div class="col-lg-3 d-none d-lg-block col-4 pr-0  mb-2 ">
                         <div class="white-section">
+                            <div  class="py-2 text-center justify-content-center category-menu-heading">
+                                <p class="m-0">الترتيب حسب</p>
+                            </div>
                             <select class="form-control" id="exampleFormControlSelect1" wire:model='filterPriceCategory'>
                                     <option  value='DESC'>السعر من الاكثر الى الأقل</option>
                                     <option  value='ASC'>السعر من الأقل إلى الأعلى</option>
