@@ -139,7 +139,7 @@
         <!-- --------------------------toggeling menue ends here -->
         <!-- second container composed of right column and left container -->
         <section class="fleet-lower-container">
-            <div class="container-fluid" style="width:80%;">
+            <div class="container-fluid second-main-container" >
 
 
                 <div class="row">
@@ -190,7 +190,7 @@
 
                         @if(!isset($car))
                         @foreach($cars as $formcar)
-                        <div class="container-fluid bg-block py-2 mb-2" style="background-color:white;">
+                        <div class="container-fluid bg-block py-2 mb-2 fleet-car-details" >
                             <div class="row mb-2">
                                 <div class="col-lg-4 fleet-car-img d-flex align-items-center">
                                     <img class="w-100" src="{{$formcar->getFirstMediaUrl()}}" alt="car-image">
@@ -199,27 +199,27 @@
                                     <div class="container-fluid color-black ">
                                         <div class="row ">
                                             <div class="col-lg-9 col-12 text-right">
-                                                <h3 class="color-black" style="font-size: 25px;">{{$formcar->name}} <span style="font-weight: normal;line-height: 1;color: #777;font-size: 17px;" class=" color-black">أو مشابهة</span></h3>
-                                                <h3 style="color:red;">{{$formcar->model}}</h3>
-                                                <p class="color-black" style="font-size: 1.2rem;">5 مقاعد | 4 أبواب | 2 الأمتعة </p>
-                                                <p style="font-weight: normal;line-height: 1;color: #777;" class=" color-black">مكيف | ناقل حركة أوتوماتيكي{{-- trans('cars.features.' . $formcar->features) --}}</p>
-                                                <p style="color:red; font-weight: 700;"> {{$formcar->category?$formcar->category->name:'-'}}</p>
+                                                <h3 class="color-black fleet-car-name" >{{$formcar->name}} <span  class=" color-black">أو مشابهة</span></h3>
+                                                <h3 class="fleet-car-model" >{{$formcar->model}}</h3>
+                                                <p class="color-black fleet-doors-seats" >5 مقاعد | 4 أبواب | 2 الأمتعة </p>
+                                                <p class=" color-black fleet-transmission-ac">مكيف | ناقل حركة أوتوماتيكي{{-- trans('cars.features.' . $formcar->features) --}}</p>
+                                                <p class="fleet-category" > {{$formcar->category?$formcar->category->name:'-'}}</p>
                                             </div>
                                             <div class="col-lg-3 col-12 text-right">
                                                 <i class="fas fa-exclamation-circle dollar d-none d-lg-block" data-container="body" data-toggle="popover" data-placement="right" data-content="عرض خصم (5%)"></i>
                                                 <p class="color-black">السعر لليوم الواحد</p>
-                                                <div style="font-size: 35px;">
-                                                    <span class="color-black" style="text-decoration: line-through;font-size: 25px;color: #777;"><i class="icofont icofont-cur-riyal color-black"></i>{{$formcar->price2}}</span>
+                                                <div class="fleet-pricing-section" >
+                                                    <span class="color-black price2" ><i class="icofont icofont-cur-riyal color-black"></i>{{$formcar->price2}}</span>
                                                     <span class="color-black price1" ><i class="icofont icofont-cur-riyal color-black"></i>{{$formcar->price1}}</span>
                                                 </div>
 
                                             </div>
 
                                         </div>
-                                        <div class="row" style="border-top: #777 solid 1px;">
+                                        <div class="row fleet-reservation-section" >
 
                                             <div class="col-12 d-flex px-0 mx-0 justify-content-between align-items-center">
-                                                <span class="color-black text-right addToFavorite " style="float: right; user-select: none; cursor: pointer;" data-id="{{$formcar->id}}"><i class="far fa-bookmark heart"></i><i class="fas fa-bookmark heart"></i> حفظ في المفضله</span>
+                                                <span class="color-black text-right addToFavorite "  data-id="{{$formcar->id}}"><i class="far fa-bookmark heart"></i><i class="fas fa-bookmark heart"></i> حفظ في المفضله</span>
                                                 <button class="primary-btn btn-hover btn-curved mt-3 ml-3 p-2 fleet-car-button" wire:click="booking({{$formcar->id}});">احجز الأن</button>
                                             </div>
                                         </div>
