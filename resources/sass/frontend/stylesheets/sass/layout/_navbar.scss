@@ -34,6 +34,11 @@
             color: get-color(secondary);
         }
     }
+    #hamburger-bars {
+        i {
+            font-size: 2rem;
+        }
+    }
     /* The popup form - hidden by default */
     .form-popup {
         position: absolute;
