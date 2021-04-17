@@ -22,7 +22,7 @@ class RedirectIfAuthenticated
             if(isset(session()->get('redircitURl')[0])){
                 return redirect(session()->get('redircitURl')[0]);
             }else{
-                return redirect('http://abudiyab.test');
+                return redirect(url()->previous());
 
             }
             if (Auth()->user()->canAccessDashboard()) {

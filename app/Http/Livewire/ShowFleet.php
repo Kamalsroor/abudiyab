@@ -10,6 +10,8 @@ use App\Models\Category;
 use App\Models\CarsInStock;
 use App\Models\addToFavorite;
 use Auth;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Date;
 
 class ShowFleet extends Component
 {
@@ -33,8 +35,17 @@ class ShowFleet extends Component
     protected $listeners = [
         'addToFavorite' => 'addToFavorite'
     ];
+    public $rec_date;
+    public $del_date;
     public $isAlert=false;
-
+    public function mount()
+    {
+        $this->rec_date='2021-04-22';
+        // $this->rec_date = $rec_date->add(1, 'day')->toDateTimeString();
+        $this->del_date='2021-04-22';
+        // $this->del_date = $del_date->add(2, 'day')->toDateTimeString();
+        // dd($this->del_date,$this->rec_date);
+    }
     public function render()
     {
 
@@ -159,7 +170,6 @@ class ShowFleet extends Component
     }
     public function booking($car_id)
     {
-
 
         if ($this->dervery_branch_id != null && $this->dervery_branch_id != 0 && $this->receivingDate != null && $this->deliveryDate != null )
          {

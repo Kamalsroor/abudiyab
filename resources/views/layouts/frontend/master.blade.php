@@ -89,8 +89,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script>
         let BookingModelURl = "{{route('front.bookingModel')}}";
         function openBookingModel(id) {
-            console.log(id);
-            console.log('openBookingModel');
             $.ajax({
                 type: 'get',
                 url: BookingModelURl,
@@ -104,7 +102,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 success: function(data) {
                     console.log(data);
                     $('#BookingModel').html(data).modal('show');
-
                 }
             });
         }

@@ -51,7 +51,7 @@
                     </div>
                 {{-- <button class="btn btn-primary" type="submit">تسجيل</button> --}}
                 </div>
-                <button class="btn-lg btn-block primary-btn btn-hover btn-curved " type="submit">حجز</button>
+                <button wire:click='checkbooking' class="btn-lg btn-block primary-btn btn-hover btn-curved " type="submit">حجز</button>
             </div>
         </form>
     </div>
