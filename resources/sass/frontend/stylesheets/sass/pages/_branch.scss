@@ -4,13 +4,12 @@
         height: 500px;
         width: 100%;
         position: relative;
-        h1 {
-            @include location(50%, 50%);
-        }
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     &_center {
-        width: 90%;
-        margin: 50px auto;
+        width: 100%;
         &_regions {
             text-align: center;
             div {
@@ -18,12 +17,16 @@
                 background-color: get-color(primary);
                 padding: 10px;
                 /* height: 40px; */
-                width: 24%;
+                width: 23%;
                 font-size: 20px;
                 color: get-color(light);
                 margin: 0;
                 transition: .4s;
                 margin: 0 1px;
+                @include mediumScreen() {
+                    padding: 10px;
+                    font-size: 16px;
+                }
                 &:nth-child(1) {
                     clip-path: polygon(0 0, 73% 0, 100% 100%, 0% 100%);
                     background-color: get-color(primary);
