@@ -7,7 +7,7 @@
 
                     <div class="col-lg-3 col-md-6">
                         <div class="form-group">
-                            <p class="text-right">أختار المنطقة</p>
+                            <p class="text-right">أختار السيارة</p>
                             <select class="form-control" id="select2-dropdown" wire:model='searchTerm'>
                             @foreach ($carArraySelect as $carSelect)
                             <option class="color-black" value="{{$carSelect->id}}">{{$carSelect->name}}</option>
@@ -72,10 +72,10 @@
                     </div>
                 </div>
                 <div class="row py-2">
-                    <div class="col-12 d-flex align-items-center justify-content-between justify-content-lg-center">
+                    <div class="col-12 d-flex align-items-center justify-content-start">
 
                         <i class="fas fa-filter color-black d-lg-none "  id="filter-toggele"></i>
-                        <button class="primary-btn px-3 py-2 btn-curved btn-hover" wire:click='search' >ابحث الان </button>
+                        
 
                     </div>
                 </div>

@@ -8,6 +8,10 @@
         align-items: center;
         h1 {
             position: absolute;
+            text-align: center;
+            @include smallScreen() {
+                font-size: 20px;
+            }
         }
     }
     &_center {
