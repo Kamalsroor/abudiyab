@@ -873,3 +873,16 @@
         }
     }
 }
+
+.social-media-links {
+    a {
+        p {
+            text-decoration: none;
+            transform: rotate(90deg);
+            transition: all ease-in-out 1s;
+            &:hover {
+                transform: rotate(0deg);
+            }
+        }
+    }
+}
