@@ -55,6 +55,9 @@ Route::as('front.')->group(function () {
     Route::get('/car-interior', function(){
         return view('frontend.car-interior');
     })->name('car-interior');
+    Route::get('/aboutus', function(){
+        return view('frontend.aboutus');
+    })->name('aboutus');
     // Route::get('/register', function(){
     //     return view('frontend.register');
     // })->name('register.index');
