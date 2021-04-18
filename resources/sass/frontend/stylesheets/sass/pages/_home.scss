@@ -1,7 +1,14 @@
 /*==========
     Home Header
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Cairo', sans-serif;
+}
 ==========*/
 
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap');
 .header {
     background-size: cover;
     &__item {
@@ -65,6 +72,7 @@
     padding: 20px 0 40px 0;
     @include margin($top: 22px);
     &__heading {
+        font-family: 'Cairo', sans-serif;
         text-align: center;
         @include largeScreen {
             margin: 0px auto;
@@ -174,6 +182,7 @@
         }
     }
     .car-details__heading {
+        font-family: 'Cairo', sans-serif;
         // style for all slick slides
         color: get-color(light);
         .slick-slide {
@@ -234,6 +243,7 @@
         padding: 25px;
     }
     .home-our-partners__heading {
+        font-family: 'Cairo', sans-serif;
         padding: 10px 0;
         span {
             text-align: center;
@@ -462,6 +472,7 @@
 .services-home {
     padding: 3rem 0;
     &__heading {
+        font-family: 'Cairo', sans-serif;
         text-align: center;
         @include largeScreen {
             width: 75%;
@@ -598,6 +609,7 @@
 .plans {
     padding: 4rem 0;
     &__heading {
+        font-family: 'Cairo', sans-serif;
         .g-subtitle {
             @include font( $size: 1.2rem, $weight: bold, $transform: uppercase, )
         }
@@ -795,6 +807,7 @@
 .blog {
     padding: 6rem 0;
     &__heading {
+        font-family: 'Cairo', sans-serif;
         text-align: center;
         .g-subtitle {
             @include font( $size: 1.2rem, $weight: bold, $transform: uppercase, )
@@ -869,6 +882,19 @@
                 height: 60px;
                 width: 120px;
                 object-fit: contain;
+            }
+        }
+    }
+}
+
+.social-media-links {
+    a {
+        p {
+            text-decoration: none;
+            transform: rotate(90deg);
+            transition: all ease-in-out 1s;
+            &:hover {
+                transform: rotate(0deg);
             }
         }
     }

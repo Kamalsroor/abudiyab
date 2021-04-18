@@ -34,6 +34,11 @@
             color: get-color(secondary);
         }
     }
+    #hamburger-bars {
+        i {
+            font-size: 2rem;
+        }
+    }
     /* The popup form - hidden by default */
     .form-popup {
         position: absolute;
@@ -243,17 +248,22 @@
     i {
         cursor: pointer;
     }
+    #hamburger-bars2 {
+        font-size: 1.5rem;
+    }
 }
 
 #menu {
     position: absolute;
     width: 100%;
     z-index: 100;
-    div {
+    .col-6 {
         background-color: white;
         height: 16vw;
+        @include smallScreen {
+            height: 20vh;
+        }
         a {
-            border: 1px solid rgb(255, 255, 255);
             color: get-color(light);
             font-size: 20px;
             font-weight: 600;
@@ -268,10 +278,6 @@
             justify-content: center;
             align-items: center;
             box-shadow: 10px 10px 10px gray;
-            @include smallScreen {
-                height: 20vh;
-                border: solid white 13px;
-            }
             &:hover {
                 background-color: get-color(secondary);
                 color: get-color(primary);
