@@ -257,10 +257,12 @@
     position: absolute;
     width: 100%;
     z-index: 100;
+    background-color: white;
+    padding: 30px 0;
     .col-6 {
         background-color: white;
-        height: 16vw;
-        @include smallScreen {
+        height: 10vw;
+        @include mediumScreen {
             height: 20vh;
         }
         a {
@@ -269,7 +271,7 @@
             font-weight: 600;
             font-size: 22px;
             background-color: get-color(primary);
-            border-radius: 20px;
+            border-radius: 5px;
             flex-direction: column;
             text-align: center;
             width: 80%;
@@ -277,7 +279,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 10px 10px 10px gray;
+            box-shadow: 2px 2px 10px get-color(primary);
             &:hover {
                 background-color: get-color(secondary);
                 color: get-color(primary);

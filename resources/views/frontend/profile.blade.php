@@ -54,8 +54,8 @@
                     
                 </div>
 
-                <div class="mt-4">
-                    <a class="btn btn-primary" id="toggel-profile" style="cursor: pointer;">تعديل البيانات</a>
+                <div class="mt-4 modify-data">
+                    <a class="primary-btn btn-hover btn-curved p-3" id="toggel-profile" style="cursor: pointer;">تعديل البيانات</a>
                 </div>
             </div>
             <div class="col-lg-7">
