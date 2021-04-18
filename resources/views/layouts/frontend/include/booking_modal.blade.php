@@ -40,13 +40,13 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                             <p class="text-right">تاريخ الاستلام</p>
-                            <input class="form-control" id="receivingDateInput"  type="date" name='receivingDateInput'>
+                            <input class="form-control" id="receivingDateInput"  type="datetime-local" name='receivingDateInput'>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                             <p class="text-right">تاريخ التسليم</p>
-                            <input class="form-control" id="deliveryDateInput"   type="date" name='deliveryDateInput'>
+                            <input class="form-control" id="deliveryDateInput"   type="datetime-local" name='deliveryDateInput'>
                         </div>
                     </div>
                 {{-- <button class="btn btn-primary" type="submit">تسجيل</button> --}}
