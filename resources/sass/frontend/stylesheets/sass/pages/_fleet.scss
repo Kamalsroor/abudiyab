@@ -1,5 +1,8 @@
 .fleet-top-container {
     width: 80%;
+    @include mediumScreen() {
+        width: 100%;
+    }
     background-color: white;
     margin: auto;
     #Favorite {
@@ -73,6 +76,9 @@
 .fleet-lower-container {
     .second-main-container {
         width: 80%;
+        @include mediumScreen() {
+            width: 100%;
+        }
         .white-section {
             background-color: white;
             .category-menu-heading {
