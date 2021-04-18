@@ -81,6 +81,12 @@
     width: 85%;
 }
 
+.slick-next:before,
+.slick-prev:before {
+    font-size: 30px;
+    color: get-color(primary);
+}
+
 .home-category {
     padding: 20px 0 40px 0;
     @include margin($top: 22px);
