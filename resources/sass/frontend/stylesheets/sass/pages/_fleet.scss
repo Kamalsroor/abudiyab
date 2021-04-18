@@ -17,7 +17,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 500;
+    z-index: 100000000;
     .toggeling-menue {
         height: 100vh;
         .d-flex {
@@ -26,6 +26,8 @@
         .white-section {
             background-color: white;
             width: 70%;
+            height: 100vh;
+            overflow: scroll;
             .filter-menu-heading {
                 background-color: get-color(primary);
                 color: get-color(light);
@@ -183,8 +185,8 @@
 }
 
 .addToFavorite.active {
-    font-weight: 900;
-    color: red;
+    font-weight: 700;
+    color: #ff4934;
     .fas {
         display: block;
     }

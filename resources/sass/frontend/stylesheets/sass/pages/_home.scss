@@ -68,6 +68,19 @@
     }
 }
 
+.home-category__heading {
+    .g-title {
+        border-bottom: double 4px red;
+        width: fit-content;
+        padding: 0 20px;
+        border-radius: 10px;
+    }
+}
+
+.slick-section {
+    width: 85%;
+}
+
 .home-category {
     padding: 20px 0 40px 0;
     @include margin($top: 22px);
