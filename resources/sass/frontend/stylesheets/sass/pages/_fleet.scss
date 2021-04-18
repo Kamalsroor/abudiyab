@@ -167,3 +167,28 @@
 .select2-container--default .select2-selection--single {
     border: none !important;
 }
+
+.addToFavorite {
+    font-size: 20px;
+    padding-right: 30px;
+    color: #222;
+    .fas {
+        display: none;
+    }
+    i {
+        font-size: 30px;
+        position: absolute;
+        right: 0;
+    }
+}
+
+.addToFavorite.active {
+    font-weight: 900;
+    color: red;
+    .fas {
+        display: block;
+    }
+    .far {
+        display: none;
+    }
+}

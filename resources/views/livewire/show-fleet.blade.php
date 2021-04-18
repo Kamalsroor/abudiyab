@@ -75,7 +75,7 @@
                     <div class="col-12 d-flex align-items-center justify-content-start">
 
                         <i class="fas fa-filter color-black d-lg-none "  id="filter-toggele"></i>
-                        
+
 
                     </div>
                 </div>
@@ -225,7 +225,7 @@
                                         <div class="row fleet-reservation-section" >
 
                                             <div class="col-12 d-flex px-0 mx-0 justify-content-between align-items-center">
-                                                <span class="color-black text-right addToFavorite "  data-id="{{$formcar->id}}"><i class="far fa-bookmark heart"></i><i class="fas fa-bookmark heart"></i> حفظ في المفضله</span>
+                                                <span class="color-black text-right addToFavorite" data-id="{{$formcar->id}}"><i class="far fa-bookmark heart"></i><i class="fas fa-bookmark heart"></i> حفظ في المفضله</span>
                                                 <button class="primary-btn btn-hover btn-curved mt-3 ml-3 p-2 fleet-car-button" wire:click="booking({{$formcar->id}});">احجز الأن</button>
                                             </div>
                                         </div>
