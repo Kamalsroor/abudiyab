@@ -15,6 +15,7 @@
                                         <div>
                                             <p>في اليوم</p>
                                             <h1><i class="icofont icofont-cur-riyal"></i>{{$car->price1}}</h1>
+                                            <s><i class="icofont icofont-cur-riyal"></i>{{$car->price2}}</s>
                                         </div>
                                     </div>
                                     <div class="favorite-page_center_cars_car_content_bottom">
@@ -24,7 +25,7 @@
                                         </div>
                                         <div>
                                             <button onclick="openBookingModel({{$car->id}})" class="primary-btn booking">حجز</button>
-                                            <button wire:click='deleteFromFavorite({{$car->id}})' class="removal">ازاله</button>
+                                            <button wire:click='deleteFromFavorite({{$car->id}})' class="removal">حذف</button>
                                         </div>
                                     </div>
                                 </div>

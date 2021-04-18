@@ -3,8 +3,8 @@
     background-color: white;
     margin: auto;
     #Favorite {
-        background-color: get-color(error);
-        color: get-color(light);
+        background-color: #ccc;
+        color: #999;
         &.active {
             background-color: get-color(error);
             color: get-color(light);
@@ -168,4 +168,29 @@
 
 .select2-container--default .select2-selection--single {
     border: none !important;
+}
+
+.addToFavorite {
+    font-size: 20px;
+    padding-right: 30px;
+    color: #222;
+    .fas {
+        display: none;
+    }
+    i {
+        font-size: 30px;
+        position: absolute;
+        right: 0;
+    }
+}
+
+.addToFavorite.active {
+    font-weight: 700;
+    color: #ff4934;
+    .fas {
+        display: block;
+    }
+    .far {
+        display: none;
+    }
 }

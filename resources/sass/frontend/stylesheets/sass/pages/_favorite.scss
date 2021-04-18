@@ -11,6 +11,9 @@
             background-color: #00000080;
             h1 {
                 @include location(50%, 50%);
+                span {
+                    color: get-color(red);
+                }
             }
         }
     }
@@ -55,8 +58,13 @@
                 padding: 0 20px;
                 padding-bottom: 10px;
                 border-radius: 6px;
-                transition: .2s;
                 margin-bottom: 20px;
+                border: 1px solid #ccc;
+                transition: .4s;
+                &:hover {
+                    border-color: get-color(primary);
+                    transform: scale(1.05);
+                }
                 @media (max-width: 836px) {
                     width: 49%;
                     @media (max-width: 580px) {
@@ -100,6 +108,13 @@
                                 text-align: left;
                                 font-size: 20px;
                                 font-weight: 600;
+                                margin-bottom: 0;
+                            }
+                            s {
+                                color: #999;
+                                text-align: left;
+                                font-size: 13px;
+                                display: block;
                             }
                         }
                     }

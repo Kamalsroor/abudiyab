@@ -30,8 +30,8 @@ return [
     'attributes' => [
         'name' => 'اسم الفرع',
         '%name%' => 'اسم الفرع',
-        'code' => 'code',
-        'p_coud' => 'p_coud',
+        'code' => 'المنطقه/الشركة',
+        'p_coud' => 'كود الفرع في السيستم',
         'address' => 'العنوان',
         'tele_number' => 'رقم الهاتف',
         'image' => 'صورة الفرع',

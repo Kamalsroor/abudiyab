@@ -2,9 +2,14 @@
 @bsMultilangualFormTabs
 {{ BsForm::text('name') }}
 @endBsMultilangualFormTabs
-
-{{ BsForm::number('orderBy_numper') }}
-{{ BsForm::number('vat') }}
+<div class="row">
+    <div class="col-md-6">
+        {{ BsForm::number('orderBy_numper') }}
+    </div>
+    <div class="col-md-6">
+        {{ BsForm::number('vat') }}
+    </div>
+</div>
 
 
 {{-- @isset($category)
