@@ -34,6 +34,11 @@
             color: get-color(secondary);
         }
     }
+    #hamburger-bars {
+        i {
+            font-size: 2rem;
+        }
+    }
     /* The popup form - hidden by default */
     .form-popup {
         position: absolute;
@@ -248,25 +253,34 @@
 #menu {
     position: absolute;
     width: 100%;
-    background-color: get-color(primary);
     z-index: 100;
-    a {
-        border: 1px solid rgb(255, 255, 255);
-        color: get-color(light);
-        font-size: 20px;
-        font-weight: 600;
-        font-size: 22px;
+    div {
+        background-color: white;
         height: 16vw;
-        border: solid white 28px;
-        flex-direction: column;
-        text-align: center;
-        @include smallScreen {
-            height: 20vh;
-            border: solid white 13px;
-        }
-        &:hover {
-            background-color: get-color(secondary);
-            color: get-color(primary);
+        a {
+            border: 1px solid rgb(255, 255, 255);
+            color: get-color(light);
+            font-size: 20px;
+            font-weight: 600;
+            font-size: 22px;
+            background-color: get-color(primary);
+            border-radius: 20px;
+            flex-direction: column;
+            text-align: center;
+            width: 80%;
+            height: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 10px 10px 10px gray;
+            @include smallScreen {
+                height: 20vh;
+                border: solid white 13px;
+            }
+            &:hover {
+                background-color: get-color(secondary);
+                color: get-color(primary);
+            }
         }
     }
     @include mediumScreen {
