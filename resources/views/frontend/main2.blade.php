@@ -52,7 +52,7 @@
 
     <section class="container-90">
         <div class="home-category">
-            <div class="home-category__heading">
+            <div class="home-category__heading d-flex justify-content-center py-3">
                 <span class="g-title">فئات الاسطول</span>
             </div>
             <div class="home-category__conent">
@@ -75,7 +75,7 @@
 
     <section class="car-model">
         <livewire:frontend.car-model />
-        <div class="container">
+        <div class="container slick-section">
             <div class="row justify-content-center px-0 mx-0 car-model__heading" >
                 <div class="car-model__item py-2" data-id="{{$firstcar->id}}">
                     <p class=" text-center">{{$firstcar->name}}</p>
@@ -85,7 +85,7 @@
         </div>
 
         <livewire:frontend.car-details />
-        <div class="container">
+        <div class="container slick-section">
             <div class="row car-details car-details__heading" >
                 <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">سنة {{isset($firstcar) ? $firstcar->model : ""}}</p></div>
                 <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">ناقل الحركة اوتوماتيك</p></div>
