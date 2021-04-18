@@ -24,8 +24,8 @@
                                             <p>مكيف | ناقل حركة أوتوماتيكي</p>
                                         </div>
                                         <div>
-                                            <button onclick="openBookingModel({{$car->id}})" class="primary-btn booking">حجز</button>
-                                            <button wire:click='deleteFromFavorite({{$car->id}})' class="removal">حذف</button>
+                                            <button onclick="openBookingModel({{$car->id}})" class="primary-btn btn-hover btn-curved booking">حجز</button>
+                                            <button wire:click='deleteFromFavorite({{$car->id}})' class="btn-curved removal">حذف</button>
                                         </div>
                                     </div>
                                 </div>

@@ -40,7 +40,7 @@
         &_cars {
             position: relative;
             display: flex;
-            width: 55%;
+            width: 80%;
             @media (max-width: 1367px) {
                 width: 70%;
                 @media (max-width: 1077px) {
@@ -138,13 +138,9 @@
                                 border: none;
                                 color: get-color(light);
                                 cursor: pointer;
-                                border-radius: 2px;
                             }
                             .booking {
-                                background-color: get-color(dark);
                                 float: right;
-                                align-items: inherit;
-                                font-weight: 500;
                             }
                             .removal {
                                 background-color: get-color(red);
