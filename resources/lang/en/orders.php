@@ -36,6 +36,7 @@ return [
         'recieving_date' => 'recieving date',
         'delivery_branch' => 'delivery branch',
         'payment_type' => 'payment type',
+        'payment_status' => 'payment Status',
         'features_added' => 'features added',
     ],
     'dialogs' => [

@@ -55,6 +55,33 @@
 
 
 
+
+          <div class="modal fade" id="OrSimilarHidableModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+            <div class="modal-dialog  modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a style="width: fit-content;" class="close mx-0" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" style="color: red;cursor: pointer;">&times;</span>
+                        </a>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row m-4">
+                                {!! Settings::locale(app()->getLocale())->get('terms')!!}
+                                {{-- <h4>
+                                    يلتزم أبوذياب بتوفير نفس الموديل وسنة الصنع التي قمت باختيارها وقت الحجز و في حال عدم توفر السيارة المختارة عند تنفيذ الحجز يلتزم أبوذياب بتوفير سيارة من نفس الفئة ونفس سنة الصنع او سنة صنع أعلى ، وفي حال عدم توفر سيارة من نفس الفئة يتم الترقية لفئة أعلى بدون أى تكاليف أضافية .
+                                </h4> --}}
+                            {{-- <button class="btn btn-primary" type="submit">تسجيل</button> --}}
+                            </div>
+                            <button  class="btn-lg btn-block primary-btn btn-hover btn-curved "data-dismiss="modal" aria-label="Close">فهمت</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     @section('js')
 
         {{-- <script src="https://test-gateway.mastercard.com/checkout/version/59/checkout.js" data-error="errorCallback" data-cancel="cancelCallback" data-complete="completeCallback"></script> --}}

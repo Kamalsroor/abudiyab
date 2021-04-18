@@ -3,8 +3,8 @@
     background-color: white;
     margin: auto;
     #Favorite {
-        background-color: get-color(error);
-        color: get-color(light);
+        background-color: #ccc;
+        color: #999;
         &.active {
             background-color: get-color(error);
             color: get-color(light);

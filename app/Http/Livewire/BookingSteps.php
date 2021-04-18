@@ -18,6 +18,7 @@ class BookingSteps extends Component
     public $features_added = [];
     public $price;
     public $openPayment = false;
+    public $isTermsandConditions = false;
     public $paymentData;
     public $js;
     public $order;

@@ -149,14 +149,11 @@ $(document).ready(function() {
 
     }
 
-
     const favoriteIcon = $('.addToFavorite');
     if (favoriteIcon.length) {
         favoriteIcon.on('click', function() {
-            console.log($(this).data('id'));
             window.livewire.emit('addToFavorite', $(this).data('id'));
         });
-
     }
 
     const branchPage = $('.branch-page');

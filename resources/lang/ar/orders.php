@@ -37,6 +37,7 @@ return [
         'recieving_date' => 'وقت الاستلام',
         'delivery_branch' => 'فرع التسليم',
         'payment_type' => 'طريقه الدفع',
+        'payment_status' => 'حالة الدفع',
         'features_added' => 'الاضافات',
     ],
     'dialogs' => [

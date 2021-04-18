@@ -40,6 +40,9 @@ class ShowFleet extends Component
     public $isAlert=false;
     public $dayOneFormated='';
     public $dayTwoFormated='';
+    public $addedItems=[];
+    public $addCarId=false;
+    public $carAdded=[];
     public function mount()
     {
         $dayPlusOne=Carbon::today()->add(1, 'day');
@@ -48,10 +51,10 @@ class ShowFleet extends Component
         $this->dayTwoFormated=$dayPlusTwo->format('Y-m-d');
         $this->receivingDate=$this->dayOneFormated;
         $this->deliveryDate=$this->dayTwoFormated;
+
     }
     public function render()
     {
-
         if($this->receivingDate < $this->dayOneFormated)
         {
             $this->receivingDate= $this->dayOneFormated;
@@ -67,17 +70,10 @@ class ShowFleet extends Component
         if ($car_id = session()->get('car_id') && Auth()->check()) {
             # code...
             $addToFavorite = addToFavorite::create([
-                'car_id' => $car_id ,
+                'car_id' => session()->get('car_id') ,
                 'user_id' =>  Auth()->id(),
             ]);
-
-            $errorData = [
-                'title' => 'تم اضافة السياره للمفضله بنجاح',
-                'type' => 'success',
-            ];
-            $this->isAlert=true;
             session()->forget('car_id');
-            $this->dispatchBrowserEvent('sweetalert', $errorData);
         }
 
         $priceRangeNew = null ;
@@ -160,23 +156,16 @@ class ShowFleet extends Component
             $isAdded=addToFavorite::where('user_id',Auth()->id())->where('car_id',$id)->get();
             if(!count($isAdded))
             {
+
                 $addToFavorite = addToFavorite::create([
                     'car_id' => $id ,
                     'user_id' =>  Auth()->id(),
                 ]);
-                $errorData = [
-                    'title' => 'تم اضافة السياره للمفضله بنجاح',
-                    'type' => 'success',
-                ];
-                $this->dispatchBrowserEvent('sweetalert', $errorData);
+                // $this->carAdded[$id]=true;
             }
             else
             {
-                $errorData = [
-                    'title' => 'هذه السياره مضافه بلفعل في المفضله',
-                    'type' => 'error',
-                ];
-                $this->dispatchBrowserEvent('sweetalert', $errorData);
+                    $isAdded->each->delete();
             }
         }
     }
