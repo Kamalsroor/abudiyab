@@ -24,15 +24,17 @@
                 transition: .4s;
                 margin: 0 1px;
                 @include mediumScreen() {
-                    padding: 10px;
+                    padding: 10px 0;
                     font-size: 16px;
                 }
                 &:nth-child(1) {
                     clip-path: polygon(0 0, 73% 0, 100% 100%, 0% 100%);
                     background-color: get-color(primary);
+                    padding-right: 10px;
                 }
                 &:last-child {
                     clip-path: polygon(28% 0, 100% 0, 100% 100%, 0% 100%);
+                    padding-left: 10px;
                 }
                 p {
                     cursor: pointer;
@@ -46,9 +48,15 @@
             margin: 0;
             grid-gap: 10px;
             padding: 50px;
+            @media (max-width: 412px) {
+                padding: 50px 0;
+            }
             text-align: center;
             .container-fluid {
                 width: 85%;
+                @media (max-width: 494px) {
+                    width: 100%;
+                }
                 .col-3 {
                     margin: 10px 0;
                 }
@@ -71,6 +79,11 @@
                         width: 120px;
                         height: 120px;
                         margin-bottom: 50px;
+                    }
+                    h2 {
+                        @media (max-width: 367px) {
+                            font-size: 25px;
+                        }
                     }
                 }
                 .branch-hidden-list {

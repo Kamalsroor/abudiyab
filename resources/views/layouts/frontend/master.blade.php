@@ -51,7 +51,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             social media
         =================-->
         <div class="social-media-links">
-            <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="/aboutus" target="_blank"><p>حولنا</p></a>
             <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
             <a href="tel:996920026600"><i class="fas fa-phone-alt"></i></a>
         </div>
@@ -89,8 +89,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script>
         let BookingModelURl = "{{route('front.bookingModel')}}";
         function openBookingModel(id) {
-            console.log(id);
-            console.log('openBookingModel');
             $.ajax({
                 type: 'get',
                 url: BookingModelURl,
@@ -104,7 +102,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 success: function(data) {
                     console.log(data);
                     $('#BookingModel').html(data).modal('show');
-
                 }
             });
         }

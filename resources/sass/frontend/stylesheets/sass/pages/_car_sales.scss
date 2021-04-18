@@ -1,15 +1,20 @@
 .car-sales-page {
     &_head {
         color: get-color(light);
-        height: 500px;
         width: 100%;
         position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         h1 {
-            @include location(50%, 50%);
+            position: absolute;
+            text-align: center;
+            @include smallScreen() {
+                font-size: 20px;
+            }
         }
     }
     &_center {
         margin: 30px 80px;
-
     }
 }

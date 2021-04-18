@@ -19,8 +19,11 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            if(session()->get('redircitURl')[0]){
+            if(isset(session()->get('redircitURl')[0])){
                 return redirect(session()->get('redircitURl')[0]);
+            }else{
+                return redirect(url()->previous());
+
             }
             if (Auth()->user()->canAccessDashboard()) {
                 return redirect(RouteServiceProvider::ADMIN);

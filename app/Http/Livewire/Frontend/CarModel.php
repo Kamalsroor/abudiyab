@@ -17,14 +17,14 @@ class CarModel extends Component
 
         $showCategories = Category::orderBy('id', 'ASC')->take(4)->get();
         $this->cars = Car::where('category_id' , $showCategories->first()->id)->get();
-   
+
     }
 
 
     public function render()
     {
-  
-        
+
+
         // return $this->cars
         $this->dispatchBrowserEvent('CarModelSlick' ,CarResource::collection($this->cars) );
         return view('livewire.frontend.car-model');
@@ -37,10 +37,11 @@ class CarModel extends Component
     //     $this->dispatchBrowserEvent('CarModelSlick');
     // }
 
-    
+
     public function getCarsByCategory($id){
         // $this->dispatchBrowserEvent('removeSlideCarModel');
 
         $this->cars = Car::where('category_id',$id)->get();
     }
+
 }
