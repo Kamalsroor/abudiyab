@@ -173,7 +173,6 @@ class FrontendController extends Controller
        }
 
         $data = $request->all() ;
-       dd($data);
         return view('frontend.booking-steps',compact('data'));
     }
 

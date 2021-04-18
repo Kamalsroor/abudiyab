@@ -38,17 +38,32 @@ class ShowFleet extends Component
     public $rec_date;
     public $del_date;
     public $isAlert=false;
+    public $dayOneFormated='';
+    public $dayTwoFormated='';
     public function mount()
     {
-        $this->rec_date='2021-04-22';
-        // $this->rec_date = $rec_date->add(1, 'day')->toDateTimeString();
-        $this->del_date='2021-04-22';
-        // $this->del_date = $del_date->add(2, 'day')->toDateTimeString();
-        // dd($this->del_date,$this->rec_date);
+        $dayPlusOne=Carbon::today()->add(1, 'day');
+        $dayPlusTwo=Carbon::today()->add(2, 'day');
+        $this->dayOneFormated=$dayPlusOne->format('Y-m-d');
+        $this->dayTwoFormated=$dayPlusTwo->format('Y-m-d');
+        $this->receivingDate=$this->dayOneFormated;
+        $this->deliveryDate=$this->dayTwoFormated;
     }
     public function render()
     {
 
+        if($this->receivingDate < $this->dayOneFormated)
+        {
+            $this->receivingDate= $this->dayOneFormated;
+        }
+        if($this->deliveryDate < $this->dayTwoFormated)
+        {
+            $this->deliveryDate= $this->dayTwoFormated;
+        }
+        if($this->receivingDate > $this->deliveryDate)
+        {
+            $this->deliveryDate= date('Y-m-d', strtotime($this->receivingDate. ' + 1 days'));
+        }
         if ($car_id = session()->get('car_id') && Auth()->check()) {
             # code...
             $addToFavorite = addToFavorite::create([
