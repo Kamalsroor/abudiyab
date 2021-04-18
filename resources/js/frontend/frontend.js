@@ -234,7 +234,7 @@ $(document).ready(function() {
         slidesToShow: 2,
         slidesToScroll: 1,
         dots: false,
-        arrows: false,
+        arrows: true,
         rtl: html.dir === 'rtl',
         autoplay: true,
         autoplaySpeed: 8000,
