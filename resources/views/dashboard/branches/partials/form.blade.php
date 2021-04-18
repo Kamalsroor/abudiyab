@@ -1,11 +1,25 @@
 @include('dashboard.errors')
 @bsMultilangualFormTabs
-{{ BsForm::text('name') }}
-{{ BsForm::text('address') }}
+
+<div class="row">
+    <div class="col-md-6">
+        {{ BsForm::text('name') }}
+    </div>
+    <div class="col-md-6">
+        {{ BsForm::text('address') }}
+    </div>
+</div>
 @endBsMultilangualFormTabs
-{{ BsForm::number('code') }}
-{{ BsForm::number('p_coud') }}
-{{ BsForm::text('tele_number') }}
+{{-- {{ BsForm::number('code') }} --}}
+{{ BsForm::select('code')->options($regions) }}
+<div class="row">
+    <div class="col-md-6">
+        {{ BsForm::number('p_coud') }}
+    </div>
+    <div class="col-md-6">
+        {{ BsForm::text('tele_number') }}
+    </div>
+</div>
 
 
 

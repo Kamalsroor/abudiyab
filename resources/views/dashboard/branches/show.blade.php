@@ -13,7 +13,8 @@
                     </tr>
                     <tr>
                         <th width="200">@lang('branches.attributes.code')</th>
-                        <td>{{ $branch->code }}</td>
+                        <td>{{ $regions[$branch->code] }}</td>
+
                     </tr>
                     <tr>
                         <th width="200">@lang('branches.attributes.p_coud')</th>
