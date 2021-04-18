@@ -39,6 +39,7 @@
 
 
 
+
                 {{-- col-md-10 col-sm-10" --}}
 
                 @if ($currentStep != 5)
@@ -49,8 +50,8 @@
                                     <label class="orange-checkbox-value" style="margin: 0;">
                                         يرجى قراءة
                                         <input type="checkbox" name="" id="termsCheck">
-                                        <a id="Booking_termsandConditions" style="padding: 0px 10px;" data-toggle="modal" class="terms-text-a"
-                                            onclick="$('#OrSimilarHidableModal').toggle();">اﻟﺸﺮوط واﻷﺣﻜﺎم</a> والموافقة
+                                        <a id="Booking_termsandConditions" style="padding: 0px 10px;" data-toggle="modal" class="terms-text-a" data-toggle="modal" data-target="#OrSimilarHidableModal"
+                                           >اﻟﺸﺮوط واﻷﺣﻜﺎم</a> والموافقة
                                         عليها قبل الاستمرار
                                     </label>
                                 </div>
@@ -61,15 +62,14 @@
                                 <div class="col-6 mb-0 booking-car-notes float-normal @if ($currentStep == 2) px-0 @endif {{ $currentStep != 2 ? 'display-none' : '' }}" style="text-align: center;">
                                     <label class="orange-checkbox-value" style="margin: 0;">
                                         يرجى قراءة
-                                        <input type="checkbox" name="" id="termsCheck">
-                                        <a id="Booking_termsandConditions" style="padding: 0px 10px;" data-toggle="modal" class="terms-text-a"
-                                            onclick="$('#OrSimilarHidableModal').toggle();">اﻟﺸﺮوط واﻷﺣﻜﺎم</a> والموافقة
+                                        <input type="checkbox" name="" value="1" id="termsCheck" wire:model="isTermsandConditions">
+                                        <a id="Booking_termsandConditions" style="padding: 0px 10px;" data-toggle="modal" class="terms-text-a" data-toggle="modal" data-target="#OrSimilarHidableModal"
+                                           >اﻟﺸﺮوط واﻷﺣﻜﺎم</a> والموافقة
                                         عليها قبل الاستمرار
                                     </label>
                                 </div>
                                 <div class="@if ($currentStep == 2) col-3 px-0 pl-sm-4 booking-btn-mo @else col-6 @endif mx-0">
-                                    <button class="booking-btn" name="GO" wire:click="{{ $currentStep == 1 ? 'firstStepSubmit' : '' }}{{ $currentStep == 2 ? 'secondStepSubmit' : '' }}{{ $currentStep == 3 ? 'thirdStepSubmit' : '' }}"  style="margin-left: 0;background-color: #002366 !important;
-                                    color: white !important;">استمرار</button>
+                                    <button class="booking-btn @if ($currentStep == 2 && $isTermsandConditions == false ) btn-disabled @endif" name="GO" wire:click="{{ $currentStep == 1 ? 'firstStepSubmit' : '' }}{{ $currentStep == 2 ? 'secondStepSubmit' : '' }}{{ $currentStep == 3 ? 'thirdStepSubmit' : '' }}"  style="margin-left: 0;" @if ($currentStep == 2 && $isTermsandConditions == false ) disabled @endif >استمرار</button>
                                 </div>
                             </div>
                         </div>

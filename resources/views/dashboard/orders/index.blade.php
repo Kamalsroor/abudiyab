@@ -41,12 +41,13 @@
             <th>@lang('orders.attributes.recieving_branch')</th>
             <th>@lang('orders.attributes.delivery_branch')</th>
             <th>@lang('orders.attributes.payment_type')</th>
+            <th>@lang('orders.attributes.payment_status')</th>
             <th>@lang('orders.attributes.created_at')</th>
             <th style="width: 160px">...</th>
 
 
 
-        
+
             {{-- <th>@lang('orders.attributes.name')</th> --}}
 
             {{-- 'features_added' => 'features added', --}}
@@ -66,13 +67,16 @@
                 </td>
                 <td>{{ $order->reciving_date->format('Y-m-d') }}</td>
                 <td>{{ $order->days}}</td>
-                <td>{{ $order->receiving_branch_id}}</td>
-                <td>{{ $order->delivery_branch }}</td>
+                <td>{{ $order->receivingBranch->name}}</td>
+                <td>{{ $order->deliveryBranch->name }}</td>
                 <td>{{ $order->payment_type }}</td>
+                <td>{{ $order->payment_status == "SUCCESS" ? "تم الدفع" : "لم يتم تأكيد الدفع"  }}</td>
                 <td>{{ $order->created_at->format('Y-m-d') }}</td>
-                
 
-            
+
+
+
+
                 {{-- <td>{{ $order-> }}</td> --}}
 
                 <td style="width: 160px">

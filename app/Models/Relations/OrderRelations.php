@@ -21,4 +21,32 @@ trait OrderRelations
     }
 
 
+
+
+    /**
+     * Get the branch that car belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function receivingBranch()
+    {
+        return $this->belongsTo(Branch::class, 'receiving_branch_id');
+    }
+
+
+
+    /**
+     * Get the branch that car belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function deliveryBranch()
+    {
+        return $this->belongsTo(Branch::class, 'delivery_branch');
+    }
+
+
+
+
+
 }
