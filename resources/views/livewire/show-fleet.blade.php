@@ -3,6 +3,10 @@
          @php
              $favCars= App\Models\addToFavorite::where('user_id',Auth()->id())->pluck('car_id')->toArray();
          @endphp
+    @else
+         @php
+             $favCars= [];
+         @endphp
 
      @endif
 

@@ -70,18 +70,10 @@ class ShowFleet extends Component
         if ($car_id = session()->get('car_id') && Auth()->check()) {
             # code...
             $addToFavorite = addToFavorite::create([
-                'car_id' => $car_id ,
+                'car_id' => session()->get('car_id') ,
                 'user_id' =>  Auth()->id(),
             ]);
-
-            // $errorData = [
-            //     'title' => 'تم اضافة السياره للمفضله بنجاح',
-            //     'type' => 'success',
-            // ];
-
-            $this->isAlert=true;
             session()->forget('car_id');
-            // $this->dispatchBrowserEvent('sweetalert', $errorData);
         }
 
         $priceRangeNew = null ;
