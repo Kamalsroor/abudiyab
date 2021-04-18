@@ -85,8 +85,6 @@ class ShowFleet extends Component
                 $this->priceRangeNewEnd = $priceRangeNew[1];
             }
 
-
-
         $car_in_stock = [];
         if ($this->searchTerm) {
             $car_in_stock = CarsInStock::where('car_id',$this->searchTerm)->where('count','>',0)->pluck('branch_id')->toArray();
@@ -219,7 +217,6 @@ class ShowFleet extends Component
         else if($this->dervery_branch_id != null && $this->dervery_branch_id != 0){
             $errorData = [
                 'title' => 'يرجي اختيار وقت الاستلام والتسليم',
-                'text' => 'test',
                 'type' => 'error',
             ];
             $this->dispatchBrowserEvent('sweetalert', $errorData);
@@ -228,7 +225,6 @@ class ShowFleet extends Component
 
             $errorData = [
                 'title' => 'يرجي اختيار فرع الاستلام والتسليم',
-                'text' => 'test',
                 'type' => 'error',
             ];
             $this->dispatchBrowserEvent('sweetalert', $errorData);
