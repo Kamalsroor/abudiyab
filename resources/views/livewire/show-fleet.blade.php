@@ -1,4 +1,12 @@
-    <div>
+
+    @if(Auth()->check())
+         @php
+             $favCars= App\Models\addToFavorite::where('user_id',Auth()->id())->pluck('car_id')->toArray();
+         @endphp
+
+     @endif
+
+  <div>
         <!-- top container -->
         <section class="fleet-top-container">
             <div class="container-fluid bg-block py-2 my-2 top-container" >
@@ -28,7 +36,7 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 mr-auto">
-                        <a href="/favorite" class="btn" id="Favorite">المفضلة</a>
+                        <a href="/favorite" class="btn {{count($favCars) ? 'active' : ''}}" id="Favorite">المفضلة</a>
                     </div>
                 </div>
                 <div class="row ">
@@ -225,7 +233,9 @@
                                         <div class="row fleet-reservation-section" >
 
                                             <div class="col-12 d-flex px-0 mx-0 justify-content-between align-items-center">
-                                                <span class="color-black text-right addToFavorite" data-id="{{$formcar->id}}"><i class="far fa-bookmark heart"></i><i class="fas fa-bookmark heart"></i> حفظ في المفضله</span>
+
+
+                                                <span class="color-black text-right addToFavorite {{in_array($formcar->id,$favCars) ? 'active' : ''}}" data-id="{{$formcar->id}}"><i class="far fa-bookmark heart"></i><i class="fas fa-bookmark heart"></i> حفظ في المفضله</span>
                                                 <button class="primary-btn btn-hover btn-curved mt-3 ml-3 p-2 fleet-car-button" wire:click="booking({{$formcar->id}});">احجز الأن</button>
                                             </div>
                                         </div>
@@ -285,9 +295,9 @@
         });
     });
 
-    $('#Favorite').click(function (){
-        $('#Favorite').toggleClass('active');
-    });
+    // $('#Favorite').click(function (){
+    //     $('#Favorite').toggleClass('active');
+    // });
 
 </script>
 @endpush
@@ -295,6 +305,24 @@
     <script>
 
         document.addEventListener('livewire:load', function () {
+            if(@this.addedItems.length !=0)
+            {
+                console.log(@this.addedItems);
+                @this.addedItems.forEach(element => {
+                    $(`.addToFavorite[data-id=${element}]`).addClass('active');
+                });
+                $('#Favorite').addClass('active');
+            }
+            // if(@this.addCarId)
+            // {
+            //     let car_id=@this.addCarId;
+            //     $(`.addToFavorite[data-id=${car_id}]`).addClass('active');
+
+            // }
+            // else{
+            //     $('#Favorite').removeClass('active');
+
+            // }
             var isAlert = @this.isAlert
             if (isAlert) {
                 Swal.fire({
