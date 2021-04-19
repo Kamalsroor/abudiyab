@@ -98,6 +98,11 @@ body {
         margin: 10px auto;
         text-align: left;
         .booking-car-notes {
+            .orange-checkbox-value {
+                a {
+                    color: #222;
+                }
+            }
             @media (max-width: 530px) {
                 display: none;
             }

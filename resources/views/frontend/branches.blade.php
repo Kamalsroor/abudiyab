@@ -68,6 +68,8 @@
             let weekDays=   @json(trans('branches.weekDays'));
             $('.fa-bars-branch').click(function() {
                 $('.branch-page_center_head_regions').slideToggle();
+                $(this).toggleClass('fa-bars');
+                $(this).toggleClass('fa-times');
             });
         </script>
     @endsection

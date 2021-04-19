@@ -12,6 +12,9 @@
     }
     &_section-1 {
         padding: 20px 10px 0;
+        @media (max-width: 677px) {
+            padding: 10px 10px 0;
+        }
         &_form {
             .btn {
                 @include xLargeScreen() {
@@ -64,6 +67,9 @@
                 width: fit-content;
                 p {
                     margin-bottom: 10px;
+                    @media (max-width: 677px) {
+                        margin-bottom: 2px;
+                    }
                     font-size: 1.3em;
                 }
                 a {
@@ -85,6 +91,9 @@
     }
     &_section-3 {
         padding: 20px 10px;
+        @media (max-width: 677px) {
+            padding: 20px 10px 10px;
+        }
         &_img {
             height: 100px;
             text-align: center;
