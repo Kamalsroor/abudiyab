@@ -174,7 +174,7 @@
                             <p class="before-price m-0" style=" text-decoration: line-through;" ><i class="icofont icofont-cur-riyal"></i>{{$firstcar->price2}}</p>
                             <h2 class="after-price"  ><i class="icofont icofont-cur-riyal"></i>{{$firstcar->price1}}</h2>
                             <p style="transform: translateY(-20px);" class="m-0 before-price">يومى</p>
-                            <a  href="#" class="btn-block primary-btn p-2" 
+                            <a  href="#" class="btn-block primary-btn p-2"
                             {{-- style="background: linear-gradient(91deg, #0d157b 15%, #0095ff 121%);color: #fff;font-size: 16px; border-radius: 50px;padding: 10px 45px;" --}}
                             >احجز الان</a>
                             </div>
@@ -187,7 +187,7 @@
 
                 </div>
                 <div class="row " style="background-color:#505151 ;">
-                    <div class="py-2 col-3 px-1 mx-0 text-center" style="border-left: white solid 1px;"><p class="my-0">سنة {{$firstcar->model}}</p></div>
+                    <div class="py-2 col-3 px-1 mx-0 text-center" style="border-left: white solid 1px;"><p class="my-0">موديل {{$firstcar->model}}</p></div>
                     <div class="py-2 col-3 px-1 mx-0 text-center" style="border-left: white solid 1px;"><p class="my-0">ناقل الحركة اوتوماتيك</p></div>
                     <div class="py-2 col-3 px-1 mx-0 text-center" style="border-left: white solid 1px;"><p class="my-0">عدد الأبواب {{$firstcar->door}}</p></div>
                     <div class="py-2 col-3 px-1 mx-0 text-center"><p class="my-0">عدد المقاعد 5</p></div>
