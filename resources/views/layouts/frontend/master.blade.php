@@ -86,8 +86,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     {{-- <script src="{{asset('front/lnkse/main.js')}}"></script> --}}
     <img id="character" src="{{asset('images/character-1.png')}}" class="d-none d-md-block" alt="our character">
 
-    <div class="modal fade" id="BookingModel" tabindex="-1" aria-labelledby="BookingModelLabel" aria-hidden="true">
-    </div>
 
 
 
@@ -95,21 +93,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script>
         let BookingModelURl = "{{route('front.bookingModel')}}";
         function openBookingModel(id) {
-            $.ajax({
-                type: 'get',
-                url: BookingModelURl,
-                headers: {
-                    "x-accept-language": "ar",
-                },
-                dataType: "html",
-                data: {
-                    'car_id' : id
-                },
-                success: function(data) {
-                    console.log(data);
-                    $('#BookingModel').html(data).modal('show');
-                }
-            });
+            window.livewire.emit('setCarId',id);
+
+            $('#BookingModel').modal('show');
         }
 
     </script>
