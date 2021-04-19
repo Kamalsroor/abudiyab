@@ -10,34 +10,78 @@
     }
     &_center {
         width: 100%;
-        &_regions {
+        // background-color: rgb(235, 232, 232);
+        margin-top: 20px;
+        &_head {
+            position: relative;
             text-align: center;
-            div {
-                display: inline-block;
-                background-color: get-color(primary);
-                padding: 10px;
-                /* height: 40px; */
-                width: 23%;
+            h2 {
+                color: #fff;
+                background: get-color(primary-light-gradient);
+                width: 100%;
+                text-align: right;
                 font-size: 20px;
-                color: get-color(light);
-                margin: 0;
-                transition: .4s;
-                margin: 0 1px;
-                @include mediumScreen() {
-                    padding: 10px 0;
-                    font-size: 16px;
+                padding: 15px 15px;
+                margin-bottom: 0;
+                display: none;
+                i {
+                    float: left;
+                    font-size: 22px;
                 }
-                &:nth-child(1) {
-                    clip-path: polygon(0 0, 73% 0, 100% 100%, 0% 100%);
+            }
+            &_regions {
+                display: block;
+                div {
+                    display: inline-block;
+                    background-color: #999;
+                    padding: 10px;
+                    width: 23%;
+                    font-size: 20px;
+                    color: get-color(light);
+                    margin: 0;
+                    transition: .4s;
+                    margin: 0 1px;
+                    // @include mediumScreen() {
+                    //     padding: 10px 0;
+                    //     font-size: 16px;
+                    // }
+                    &:nth-child(1) {
+                        clip-path: polygon(0 0, 73% 0, 100% 100%, 0% 100%);
+                        padding-right: 10px;
+                    }
+                    &:last-child {
+                        clip-path: polygon(28% 0, 100% 0, 100% 100%, 0% 100%);
+                        padding-left: 10px;
+                    }
+                    p {
+                        cursor: pointer;
+                    }
+                }
+                div.active {
                     background-color: get-color(primary);
-                    padding-right: 10px;
                 }
-                &:last-child {
-                    clip-path: polygon(28% 0, 100% 0, 100% 100%, 0% 100%);
-                    padding-left: 10px;
+            }
+            @media (max-width: 991px) {
+                h2 {
+                    display: block;
                 }
-                p {
-                    cursor: pointer;
+                &_regions {
+                    z-index: 5;
+                    position: absolute;
+                    width: 100%;
+                    background-color: #fff;
+                    div {
+                        padding: 10px 15px 0;
+                        width: 100%;
+                        font-size: 20px;
+                        margin: 0;
+                        text-align: right;
+                        &:last-child,
+                        &:nth-child(1) {
+                            clip-path: inherit;
+                        }
+                    }
+                    display: none;
                 }
             }
         }
@@ -81,8 +125,30 @@
                         margin-bottom: 50px;
                     }
                     h2 {
-                        @media (max-width: 367px) {
-                            font-size: 25px;
+                        font-size: 25px;
+                        @media (max-width: 1736px) {
+                            font-size: 20px;
+                            @media (max-width: 1434px) {
+                                font-size: 18px;
+                                @media (max-width: 1315px) {
+                                    font-size: 15px;
+                                    @media (max-width: 991px) {
+                                        font-size: 25px;
+                                        @media (max-width: 916px) {
+                                            font-size: 20px;
+                                            @media (max-width: 767px) {
+                                                font-size: 25px;
+                                                @media (max-width: 447px) {
+                                                    font-size: 20px;
+                                                    @media (max-width: 284px) {
+                                                        font-size: 18px;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
