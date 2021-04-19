@@ -1,3 +1,21 @@
+@keyframes fatimes {
+    0% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes fabars {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
 .branch-page {
     &_head {
         color: get-color(light);
@@ -27,6 +45,12 @@
                 i {
                     float: left;
                     font-size: 22px;
+                }
+                i.fa-times {
+                    animation: fatimes 0.5s alternate;
+                }
+                i.fa-bars {
+                    animation: fabars 0.5s alternate;
                 }
             }
             &_regions {
