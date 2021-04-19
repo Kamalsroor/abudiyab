@@ -17,7 +17,7 @@
     background-image: get-color(primary-light-gradient);
     color: get-color(light);
     box-shadow: 1px 1px 10px get-color(primary);
-    @include font( $weight: bold, $transform: capitalize, $family: 'Segoe UI', );
+    @include font( $weight: bold, $transform: capitalize, $family: 'Cairo', );
     letter-spacing: 1px;
     position: relative;
     cursor: pointer;
@@ -128,11 +128,11 @@
         box-shadow: -2px -1px 9px 1px #5a5555;
     }
 }
-.btn-disabled{
-    background:none;
+
+.btn-disabled {
+    background: none;
     background-color: #ccc !important;
     color: #999 !important;
     border: none !important;
     box-shadow: none !important;
 }
-
