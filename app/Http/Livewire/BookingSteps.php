@@ -365,7 +365,13 @@ class BookingSteps extends Component
      */
     public function back($step)
     {
-        $this->currentStep = $step;
+        if($step != 0)
+        {
+            $this->currentStep = $step;
+        }
+        else{
+            redirect(route('front.fleet'));
+        }
     }
 
     /**

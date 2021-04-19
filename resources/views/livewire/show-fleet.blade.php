@@ -47,7 +47,7 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="form-group">
                             <p class="text-right">فرع الاستلام</p>
-                            <select  class="form-control" id="receivingBrancheInput" wire:model="receiving_branch_id" name="receivingBrancheInput">
+                            <select  class="form-control" id="receivingBrancheInput"  wire:model="receiving_branch_id" name="receivingBrancheInput">
                                 <option class="color-black" value="0" selected>اختار الفرع</option>
 
                                 @foreach($dervery_branches as $branche)
@@ -73,13 +73,14 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="form-group">
                             <p class="text-right">تاريخ الاستلام</p>
-                            <input class="form-control"  id="receivingDateInput" wire:model='receivingDate' type="date" name='receivingDateInput'>
+                            <input class="form-control"  id="receivingDateInput"  wire:model='receivingDate' type="datetime-local" name='receivingDateInput' min="{{$dayOneFormated}}">
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="form-group">
                             <p class="text-right">تاريخ التسليم</p>
-                            <input class="form-control"  id="deliveryDateInput" wire:model='deliveryDate'  type="date" name='deliveryDateInput'>
+
+                            <input class="form-control"  id="deliveryDateInput" wire:model='deliveryDate'  type="datetime-local" min="{{$dayTwoFormated}}" name='deliveryDateInput'>
                         </div>
                     </div>
                 </div>
@@ -297,6 +298,11 @@
             var data = $('#select2-dropdown').select2("val");
             @this.set('searchTerm', data);
         });
+
+        $('#receivingBrancheInput').on('change', function (e) {
+            var data = $(this).val();
+            @this.set('dervery_branch_id', data);
+        });
     });
 
     // $('#Favorite').click(function (){
@@ -309,6 +315,7 @@
     <script>
 
         document.addEventListener('livewire:load', function () {
+
             if(@this.addedItems.length !=0)
             {
                 console.log(@this.addedItems);
