@@ -50,7 +50,7 @@ return [
         'branch_id' => 'branch_id',
         'manufactory_id' => 'manufactory_id',
         'code' => 'الكود',
-        'desc' => 'خصم 1',
+        'desc' => 'خصم السعر الاساسي',
         'discount_2' => 'خصم 2',
         'discount_3' => 'خصم 3',
         'price2' => 'السعر الاساسي',
