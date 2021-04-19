@@ -48,7 +48,7 @@
                                     <div class="branch-list-visible">
                                         <img src="{{asset('front/img/logo-edited-.png')}}" alt="logo">
                                         <h2>{{$branch->name}}</h2>
-                                        <a href="tel:01146635939" class="btn btn-danger btn-lg btn-block"><i class="fas fa-phone-volume"></i> 01146635939</a>
+                                        <a href="tel:{{$branch->tele_number}}" class="btn btn-danger btn-lg btn-block"><i class="fas fa-phone-volume"></i> {{$branch->tele_number}}</a>
                                     </div>
                                 </div>
                             </div>

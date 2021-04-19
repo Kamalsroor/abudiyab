@@ -213,6 +213,7 @@ $(document).ready(function() {
                             <div class="branch-list-visible">
                                 <img src="${branchesLogo}" alt="logo">
                                 <h2>${branch.name}</h2>
+                                <a href="tel:${branch.tele_number}" class="btn btn-danger btn-lg btn-block"><i class="fas fa-phone-volume"></i> ${branch.tele_number}</a>
                             </div>
                         </div>
                     </div>`;
