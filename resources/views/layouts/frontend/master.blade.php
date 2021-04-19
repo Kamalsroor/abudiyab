@@ -51,8 +51,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             social media
         =================-->
         
-        
-        <div class="social-media-links">
+        <i class="fas fa-phone-alt d-md-none" id="social-media-links-toggeler" style="cursor: pointer;position: fixed;top:20%;right:10px;color:white;padding:5px;border-radius: 50%;background-color: #ffa602;"></i>
+        <div class="social-media-links d-none d-md-block">
             <a href="/aboutus" target="_blank"><p>حولنا</p></a>
             <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
             <a href="tel:996920026600"><i class="fas fa-phone-alt"></i></a>
