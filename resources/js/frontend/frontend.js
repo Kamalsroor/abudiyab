@@ -358,6 +358,11 @@ $(document).ready(function() {
     })
 
 
+    $('#social-media-links-toggeler').click(function() {
+        $('.social-media-links').toggleClass('d-none');
+    })
+
+
     // gallery page----------------------------------------------------------------
     $(".oldImg").click(function() {
         console.log('tasebgday');
