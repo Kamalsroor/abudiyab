@@ -28,8 +28,9 @@ class BranchController extends Controller
     public function index()
     {
         $branches = Branch::filter()->paginate();
+        $regions = Branch::Region;
 
-        return view('dashboard.branches.index', compact('branches'));
+        return view('dashboard.branches.index', compact('branches','regions'));
     }
 
     /**
@@ -39,7 +40,9 @@ class BranchController extends Controller
      */
     public function create()
     {
-        return view('dashboard.branches.create');
+        $regions = Branch::Region;
+
+        return view('dashboard.branches.create', compact('regions'));
     }
 
     /**
@@ -67,7 +70,9 @@ class BranchController extends Controller
      */
     public function show(Branch $branch)
     {
-        return view('dashboard.branches.show', compact('branch'));
+        $regions = Branch::Region;
+
+        return view('dashboard.branches.show', compact('branch','regions'));
     }
 
     /**
@@ -78,7 +83,9 @@ class BranchController extends Controller
      */
     public function edit(Branch $branch)
     {
-        return view('dashboard.branches.edit', compact('branch'));
+        $regions = Branch::Region;
+
+        return view('dashboard.branches.edit', compact('branch','regions'));
     }
 
     /**
