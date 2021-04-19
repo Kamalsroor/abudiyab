@@ -42,7 +42,7 @@
                             سيصلكم بريدا الكترونيا يحتوي علي رقم الحجز الخاص بكم يرجي استخدامه عند تواصلك مع شركة ابو ذياب
                         </p>
                     </div>
-                    <div style="margin-bottom: 50px;border: none;">
+                    {{-- <div style="margin-bottom: 50px;border: none;">
                         <h1 class="od-tit red">تعرف علي المزيد عن عضويات ابو ذياب من خلال زيارة الصفحه الرئسيه</h1>
                         <div class="mem-card">
 
@@ -69,7 +69,7 @@
                             </div>
 
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

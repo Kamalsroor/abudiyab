@@ -74,7 +74,7 @@
                                 </h4> --}}
                             {{-- <button class="btn btn-primary" type="submit">تسجيل</button> --}}
                             </div>
-                            <button  class="btn-lg btn-block primary-btn btn-hover btn-curved "data-dismiss="modal" aria-label="Close">فهمت</button>
+                            <button  class="btn-lg btn-block primary-btn btn-hover btn-curved "data-dismiss="modal" aria-label="Close">موافق</button>
                         </div>
                     </div>
                 </div>
