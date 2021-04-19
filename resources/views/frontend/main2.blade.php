@@ -87,10 +87,10 @@
         <livewire:frontend.car-details />
         <div class="container slick-section">
             <div class="row car-details car-details__heading" >
-                <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">سنة {{isset($firstcar) ? $firstcar->model : ""}}</p></div>
-                <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">ناقل الحركة اوتوماتيك</p></div>
-                <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">عدد الأبواب {{isset($firstcar) ? $firstcar->door : ""}}</p></div>
-                <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">عدد المقاعد 5</p></div>
+                <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">موديل : {{isset($firstcar) ? $firstcar->model : ""}}</p></div>
+                <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">ناقل الحركة : اوتوماتيك</p></div>
+                <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">عدد الأبواب : {{isset($firstcar) ? $firstcar->door : ""}}</p></div>
+                <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">عدد المقاعد : 5</p></div>
             </div>
         </div>
 
@@ -126,6 +126,8 @@
     </section>
 
 </div>
-
+<div class="modal fade" id="BookingModel" tabindex="-1" aria-labelledby="BookingModelLabel" aria-hidden="true">
+    <livewire:booking-model/>
+</div>
 
 </x-front-layout>

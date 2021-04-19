@@ -65,7 +65,7 @@
                 <div class="dd">
                     <p>*تاريخ الانتهاء</p>
                     <input maxlength="2"  onkeyup="yea()" id="ye" placeholder="الشهر" type="text">
-                    <input maxlength="2" onkeyup="mon()" id="mo" placeholder="السنه" type="text">
+                    <input maxlength="2" onkeyup="mon()" id="mo" placeholder="الموديل" type="text">
                 </div>
                 <div >
                     <p>*رقم CCV</p>

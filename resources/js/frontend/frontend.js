@@ -99,10 +99,10 @@ $(document).ready(function() {
 
         console.log('refreshing : ', details.car.model); // $('.car-details__heading').slick('unslick');
         var div = `
-        <div><div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">سنة ${details.car.model}</p></div></div>
-        <div><div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">ناقل الحركة اوتوماتيك</p></div></div>
-        <div><div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">عدد الأبواب ${details.car.door}</p></div></div>
-        <div><div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">عدد المقاعد 5</p></div></div>
+        <div><div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">موديل : ${details.car.model}</p></div></div>
+        <div><div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">ناقل الحركة : اوتوماتيك</p></div></div>
+        <div><div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">عدد الأبواب : ${details.car.door}</p></div></div>
+        <div><div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">عدد المقاعد : 5</p></div></div>
                 `
         $('.car-details__heading').slick('slickAdd', div);
 
@@ -213,6 +213,7 @@ $(document).ready(function() {
                             <div class="branch-list-visible">
                                 <img src="${branchesLogo}" alt="logo">
                                 <h2>${branch.name}</h2>
+                                <a href="tel:${branch.tele_number}" class="btn btn-danger btn-lg btn-block"><i class="fas fa-phone-volume"></i> ${branch.tele_number}</a>
                             </div>
                         </div>
                     </div>`;

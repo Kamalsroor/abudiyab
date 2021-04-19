@@ -114,7 +114,7 @@
 
 
             </div>
-            <div class="col-lg-5 col-md-5 col-sm-12 py-2 d-flex justify-content-end">
+            <div class="col-md-5 col-sm-12 py-2 d-flex justify-content-end">
 
                     <a  href="{{route('front.main')}}"><img class="ml-4" src="{{ asset('front/img/logo-edited-.png') }}"  ></a>
 
