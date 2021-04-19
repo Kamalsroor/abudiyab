@@ -61,6 +61,7 @@
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
+        margin-bottom: 15px;
         @include mediumScreen() {
             height: 20px;
             width: 20px;
@@ -78,7 +79,17 @@
 }
 
 .slick-section {
-    width: 85%;
+    width: 81%;
+}
+
+a:not([href]):not([tabindex]) {
+    color: get-color(light);
+}
+
+.slick-next:before,
+.slick-prev:before {
+    font-size: 30px;
+    color: get-color(primary);
 }
 
 .home-category {
@@ -170,14 +181,14 @@
         text-align: center;
         font-size: 20px;
         font-weight: bold;
-        font-family: "Segoe UI";
+        font-family: "Cairo";
         text-transform: capitalize;
         font-weight: bold;
         letter-spacing: 1px;
         .after-price {
             font-size: 70px;
             @include smallScreen {
-                font-size: 60px;
+                font-size: 30px;
             }
             font-weight: 700;
             margin-bottom: 0;
@@ -187,7 +198,7 @@
                 text-align: center;
                 font-size: 20px;
                 font-weight: bold;
-                font-family: "Segoe UI";
+                font-family: "Cairo";
                 text-transform: capitalize;
                 font-weight: bold;
                 letter-spacing: 1px;

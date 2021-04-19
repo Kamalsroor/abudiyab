@@ -5,6 +5,10 @@
     font-family: 'Cairo', sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 ul,
 ol {
     list-style: none;
@@ -27,6 +31,8 @@ button {
     &:focus {
         outline: none;
     }
+    font-family: 'Cairo',
+    sans-serif !important;
 }
 
 .slick-dotted.slick-slider {

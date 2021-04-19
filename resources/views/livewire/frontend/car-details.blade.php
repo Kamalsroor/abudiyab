@@ -5,8 +5,8 @@
                     <p class="m-0 before-price">يومى</p>
                     <a onclick="openBookingModel({{$car->id}})"  class="btn-block primary-btn  btn-hover btn-curved p-2 mt-2">احجز الان</a>
         </div>
-        <div class="col-8 d-flex align-items-end justify-content-center">
-            <img class="mx-lg-5 mx-md-2 ml-sm-2" style="width: 80%;" src="{{isset($car) ? $car->getFirstMediaUrl() : ""}}" alt="car image" >
+        <div class="col-8 d-flex align-items-center justify-content-center">
+            <img class="mx-lg-5 mx-md-2 ml-sm-2" style="width: 90%;" src="{{isset($car) ? $car->getFirstMediaUrl() : ""}}" alt="car image" >
         </div>
     </div>
 

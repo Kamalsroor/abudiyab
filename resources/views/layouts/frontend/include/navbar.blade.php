@@ -5,12 +5,12 @@
         <div class="row ">
             <div class="col-2 d-flex justify-content-center align-items-center">
                 <a class="btn " data-toggle="tooltip" data-placement="bottom" title="القائمة الرئيسية" id="hamburger-bars">
-            <i class="fas fa-bars"  ></i>
+                    <i class="fas fa-bars"  ></i>
                 </a>
 
             </div>
 
-            <div class="text-right col-md-5 col-sm-12 d-flex align-items-center justify-content-center">
+            <div class="text-right col-md-5 col-sm-12 d-flex align-items-center justify-content-start">
                 <a class="mx-3" href="{{route('front.main')}}">الرئيسية</a>
                 @guest
                 <!--  ---------------------------------------->
@@ -114,7 +114,7 @@
 
 
             </div>
-            <div class="col-lg-5 col-md-5 col-sm-12 py-2 d-flex justify-content-center">
+            <div class="col-lg-5 col-md-5 col-sm-12 py-2 d-flex justify-content-end">
 
                     <a  href="{{route('front.main')}}"><img class="ml-4" src="{{ asset('front/img/logo-edited-.png') }}"  ></a>
 
