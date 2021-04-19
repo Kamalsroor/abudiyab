@@ -126,6 +126,8 @@
     </section>
 
 </div>
-
+<div class="modal fade" id="BookingModel" tabindex="-1" aria-labelledby="BookingModelLabel" aria-hidden="true">
+    <livewire:booking-model/>
+</div>
 
 </x-front-layout>

@@ -21,6 +21,7 @@
                         <div class="form-group">
                             <p class="text-right">أختار السيارة</p>
                             <select class="form-control" id="select2-dropdown" wire:model='searchTerm'>
+                                <option class="color-black" selected disabled>أختار السيارة</option>
                             @foreach ($carArraySelect as $carSelect)
                             <option class="color-black" value="{{$carSelect->id}}">{{$carSelect->name}}</option>
                             @endforeach
@@ -298,7 +299,10 @@
             var data = $('#select2-dropdown').select2("val");
             @this.set('searchTerm', data);
         });
-
+        $('#receivingBrancheInput').on('change', function (e) {
+            var data = $(this).val();
+            @this.set('dervery_branch_id', data);
+        });
 
     });
 
