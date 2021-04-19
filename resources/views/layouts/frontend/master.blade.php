@@ -106,7 +106,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script type="text/javascript">
         $(document).ready(function() {
             $(".loader").animate({opacity: "0"}, 2000, function() {
-                $(".loader").hide();
+                $(".loader").remove();
             });
             $('body').css('overflow','auto');
         });
