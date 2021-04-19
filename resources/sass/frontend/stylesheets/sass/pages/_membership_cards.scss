@@ -8,10 +8,15 @@
         justify-content: center;
         align-items: center;
     }
-    &center {
-        padding: 10px 0;
-        .card {
-            width: 100%;
+    &_center {
+        .container {
+            max-width: 90% !important;
+            padding: 10px 0;
+            .card {
+                width: 100%;
+                background-color: #e5e5e554;
+                border-radius: 10px;
+            }
         }
     }
 }

@@ -3,14 +3,14 @@
 <div class="main-navbar container-fluid d-md-block d-lg-block">
     <div class="container-fluid mx-0">
         <div class="row ">
-            <div class="col-2 d-flex justify-content-center align-items-center">
+            <div class="col-1 d-flex justify-content-center align-items-center">
                 <a class="btn " data-toggle="tooltip" data-placement="bottom" title="القائمة الرئيسية" id="hamburger-bars">
                     <i class="fas fa-bars"  ></i>
                 </a>
 
             </div>
 
-            <div class="text-right col-md-5 col-sm-12 d-flex align-items-center justify-content-start">
+            <div class="text-right col-md-6 col-sm-12 d-flex align-items-center justify-content-start">
                 <a class="mx-3" href="{{route('front.main')}}">الرئيسية</a>
                 @guest
                 <!--  ---------------------------------------->
