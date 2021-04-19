@@ -50,9 +50,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!--================
             social media
         =================-->
-        
-        
+
+
         <div class="social-media-links">
+            {{-- <span><i class="fas fa-less-than"></i></span> --}}
             <a href="/aboutus" target="_blank"><p>حولنا</p></a>
             <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
             <a href="tel:996920026600"><i class="fas fa-phone-alt"></i></a>

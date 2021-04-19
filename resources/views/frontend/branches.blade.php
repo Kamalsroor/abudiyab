@@ -48,7 +48,7 @@
                                     <div class="branch-list-visible">
                                         <img src="{{asset('front/img/logo-edited-.png')}}" alt="logo">
                                         <h2>{{$branch->name}}</h2>
-                                        <h3>01146635939</h3>
+                                        <a href="tel:01146635939" class="btn btn-danger btn-lg btn-block"><i class="fas fa-phone-volume"></i> 01146635939</a>
                                     </div>
                                 </div>
                             </div>
@@ -70,6 +70,10 @@
                 $('.branch-page_center_head_regions').slideToggle();
                 $(this).toggleClass('fa-bars');
                 $(this).toggleClass('fa-times');
+            });
+            $('.branch-regoin').click(function() {
+                $('.branch-regoin').removeClass('active');
+                $(this).addClass('active');
             });
         </script>
     @endsection

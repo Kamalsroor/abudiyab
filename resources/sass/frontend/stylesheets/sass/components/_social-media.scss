@@ -1,8 +1,27 @@
+@keyframes social_links {
+    0% {
+        transform: translate(100%, 0);
+    }
+    100% {
+        transform: translate(0%, 0);
+    }
+}
+
 .social-media-links {
     position: fixed;
     top: 30vh;
     #{$start}: 0;
     z-index: 5;
+    span {
+        @include location(50%, 0%);
+        color: #555;
+        background-color: #fff;
+        padding: 10px 32px 10px 13px;
+        border-radius: 50% 0 0 50%;
+        font-size: 21px;
+        border: 1px solid #222;
+        cursor: pointer;
+    }
     a {
         box-shadow: 10px 10px 10px #00000029;
         background: get-color(light);
@@ -34,5 +53,9 @@
             border-bottom-#{$start}-radius: 10px;
             border-bottom: none;
         }
+    }
+    div.active {
+        animation: social_links 0.5s alternate;
+        transform: translate(0%, 0);
     }
 }
