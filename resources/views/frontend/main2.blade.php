@@ -59,7 +59,7 @@
                 <div class="row px-0 mx-0 justify-content-center home-category__item not-active " >
                     @foreach($allCategories as $category)
                         <div class='col-sm-3 col-lg-3 col-md-4 my-2 ' id='{{$category->id}}'>
-                            <button type="button" id='{{$category->id}}'  data-id="{{$category->id}}" class=" btn-lg btn-block primary-btn btn-hover btn-curved CarCategoryChange">{{$category->name}}</button>
+                            <a type="button" id='{{$category->id}}'   data-id="{{$category->id}}" href="#home-category__togeller" class=" btn-lg btn-block primary-btn btn-hover btn-curved CarCategoryChange">{{$category->name}}</a>
                         </div>
                     @endforeach
                         <div class="col-sm-3 col-lg-3 col-md-4 my-2">
@@ -73,7 +73,7 @@
         </div>
     </section>
 
-    <section class="car-model">
+    <section class="car-model" id="car-model-section">
         <livewire:frontend.car-model />
         <div class="container slick-section">
             <div class="row justify-content-center px-0 mx-0 car-model__heading" >
