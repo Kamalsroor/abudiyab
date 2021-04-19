@@ -65,6 +65,7 @@
         @include mediumScreen() {
             height: 20px;
             width: 20px;
+            margin-bottom: 5px;
         }
     }
 }
@@ -760,6 +761,12 @@ a:not([href]):not([tabindex]) {
                 }
             }
         }
+    }
+}
+
+.abs {
+    h1 {
+        text-align: right;
     }
 }
 

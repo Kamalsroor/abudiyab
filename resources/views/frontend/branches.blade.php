@@ -4,18 +4,21 @@
         <section class="branch-page_head" style="background: url({{optional(Settings::instance('branches_backgraund'))->getFirstMediaUrl('branches_backgraund')}});background-repeat: no-repeat; background-size: cover;"><h1>{{Settings::locale(app()->getLocale())->get('branches_title')}}</h1></section>
 
         <section class="branch-page_center">
-                <div class="branch-page_center_regions">
-                    <div class="branch branch-regoin " data-id="1">
-                        <p >المنطقة الوسطي</p>
-                    </div>
-                    <div class="branch branch-regoin" data-id="2">
-                        <p >المنطقة الغربية</p>
-                    </div>
-                    <div class="branch branch-regoin" data-id="3">
-                        <p >المنطقة الشرقية</p>
-                    </div>
-                    <div class="branch branch-regoin " data-id="4">
-                        <p >المنطقة الجنوبية</p>
+                <div class="branch-page_center_head">
+                    <h2>الوصول الي فروعنه <i class="fas fa-bars fa-bars-branch"></i></h2>
+                    <div class="branch-page_center_head_regions">
+                        <div class="branch branch-regoin active" data-id="1">
+                            <p >المنطقة الوسطي</p>
+                        </div>
+                        <div class="branch branch-regoin" data-id="2">
+                            <p >المنطقة الغربية</p>
+                        </div>
+                        <div class="branch branch-regoin" data-id="3">
+                            <p >المنطقة الشرقية</p>
+                        </div>
+                        <div class="branch branch-regoin" data-id="4">
+                            <p >المنطقة الجنوبية</p>
+                        </div>
                     </div>
                 </div>
                 <div class="branch-page_center_dranches" style="background: url({{asset('front/img/riyadh.jpg')}});background-repeat: no-repeat;background-size: cover;background-attachment: fixed;">
@@ -45,6 +48,7 @@
                                     <div class="branch-list-visible">
                                         <img src="{{asset('front/img/logo-edited-.png')}}" alt="logo">
                                         <h2>{{$branch->name}}</h2>
+                                        <h3>01146635939</h3>
                                     </div>
                                 </div>
                             </div>
@@ -62,6 +66,9 @@
             let BranchApisUrl = "{{ route('api.branches.index') }}";
             let branchesLogo="{{asset('front/img/logo-edited-.png')}}";
             let weekDays=   @json(trans('branches.weekDays'));
+            $('.fa-bars-branch').click(function() {
+                $('.branch-page_center_head_regions').slideToggle();
+            });
         </script>
     @endsection
 </x-front-layout>
