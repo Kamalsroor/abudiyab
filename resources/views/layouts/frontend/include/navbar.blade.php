@@ -3,14 +3,14 @@
 <div class="main-navbar container-fluid d-md-block d-lg-block">
     <div class="container-fluid mx-0">
         <div class="row ">
-            <div class="col-2 d-flex justify-content-center align-items-center">
+            <div class="col-1 d-flex justify-content-center align-items-center">
                 <a class="btn " data-toggle="tooltip" data-placement="bottom" title="القائمة الرئيسية" id="hamburger-bars">
                     <i class="fas fa-bars"  ></i>
                 </a>
 
             </div>
 
-            <div class="text-right col-md-5 col-sm-12 d-flex align-items-center justify-content-start py-2">
+            <div class="text-right col-md-6 col-sm-12 d-flex align-items-center justify-content-start">
                 <a class="mx-3" href="{{route('front.main')}}">الرئيسية</a>
                 @guest
                 <!--  ---------------------------------------->
@@ -114,7 +114,7 @@
 
 
             </div>
-            <div class="col-lg-4 col-md-5 col-sm-12 py-2 d-flex justify-content-end">
+            <div class="col-md-5 col-sm-12 py-2 d-flex justify-content-end">
 
                     <a  href="{{route('front.main')}}"><img class="ml-4" src="{{ asset('front/img/logo-edited-.png') }}"  ></a>
 
