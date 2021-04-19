@@ -5,6 +5,10 @@
     font-family: 'Cairo', sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 ul,
 ol {
     list-style: none;

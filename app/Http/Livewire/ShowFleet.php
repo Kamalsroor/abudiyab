@@ -11,6 +11,8 @@ use App\Models\CarsInStock;
 use App\Models\addToFavorite;
 use Auth;
 use Carbon\Carbon;
+use DateInterval;
+use DateTime;
 use Illuminate\Support\Facades\Date;
 
 class ShowFleet extends Component
@@ -45,27 +47,23 @@ class ShowFleet extends Component
     public $carAdded=[];
     public function mount()
     {
-        $dayPlusOne=Carbon::today()->add(1, 'day');
-        $dayPlusTwo=Carbon::today()->add(2, 'day');
-        $this->dayOneFormated=$dayPlusOne->format('Y-m-d');
-        $this->dayTwoFormated=$dayPlusTwo->format('Y-m-d');
+        $date = new DateTime();
+        $recievingInterval = new DateInterval('P1D');
+        $this->dayOneFormated=$date->add($recievingInterval)->format('Y-m-d\TH:i:s');
+        $deliveryInterval = new DateInterval('P1D');
+        $this->dayTwoFormated=$date->add($deliveryInterval)->format('Y-m-d\TH:i:s');
+
         $this->receivingDate=$this->dayOneFormated;
         $this->deliveryDate=$this->dayTwoFormated;
 
+        // 2021-04-19T06:47:54
     }
     public function render()
     {
-        if($this->receivingDate < $this->dayOneFormated)
+        if($this->receivingDate >= $this->deliveryDate)
         {
-            $this->receivingDate= $this->dayOneFormated;
-        }
-        if($this->deliveryDate < $this->dayTwoFormated)
-        {
-            $this->deliveryDate= $this->dayTwoFormated;
-        }
-        if($this->receivingDate > $this->deliveryDate)
-        {
-            $this->deliveryDate= date('Y-m-d', strtotime($this->receivingDate. ' + 1 days'));
+            $this->dayTwoFormated= date('Y-m-d\TH:i:s', strtotime($this->receivingDate. ' + 1 days'));
+            $this->deliveryDate= date('Y-m-d\TH:i:s', strtotime($this->receivingDate. ' + 1 days'));
         }
         if ($car_id = session()->get('car_id') && Auth()->check()) {
             # code...
@@ -172,8 +170,7 @@ class ShowFleet extends Component
     }
     public function booking($car_id)
     {
-
-        if ($this->dervery_branch_id != null && $this->dervery_branch_id != 0 && $this->receivingDate != null && $this->deliveryDate != null )
+        if ($this->dervery_branch_id != null && $this->receiving_branch_id != 0 && $this->receivingDate != null && $this->deliveryDate != null )
          {
             $carInBranch =  CarsInStock::where('car_id',$car_id)->where('branch_id', $this->receiving_branch_id)->get();
             $car_in_stock = CarsInStock::where('car_id',$car_id)->where('count','>',0)->whereHas('branch', function($q){
