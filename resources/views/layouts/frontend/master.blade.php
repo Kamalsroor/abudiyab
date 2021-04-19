@@ -50,6 +50,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!--================
             social media
         =================-->
+        
+        
         <div class="social-media-links">
             <a href="/aboutus" target="_blank"><p>حولنا</p></a>
             <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
