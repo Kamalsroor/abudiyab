@@ -299,10 +299,7 @@
             @this.set('searchTerm', data);
         });
 
-        $('#receivingBrancheInput').on('change', function (e) {
-            var data = $(this).val();
-            @this.set('dervery_branch_id', data);
-        });
+
     });
 
     // $('#Favorite').click(function (){

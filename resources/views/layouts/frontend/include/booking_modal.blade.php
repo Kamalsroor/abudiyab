@@ -56,6 +56,14 @@
         </form>
     </div>
 </div>
+@push('scripts')
+    <script>
+        $('#receivingBrancheInput').on('change', function (e) {
+            var data = $(this).val();
+            @this.set('dervery_branch_id', data);
+        });
+    </script>
+@endpush
 
 <!--  ------------------------------------>
 <!-- Modal ends here------------------- -->
