@@ -71,7 +71,7 @@
                 <td>{{ $order->deliveryBranch->name }}</td>
                 <td>{{ $order->payment_type }}</td>
                 <td>{{ $order->payment_status == "SUCCESS" ? "تم الدفع" : "لم يتم تأكيد الدفع"  }}</td>
-                <td>{{ $order->created_at->format('Y-m-d') }}</td>
+                <td>{{ $order->created_at->diffForHumans() }}</td>
 
 
 
