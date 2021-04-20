@@ -1,5 +1,5 @@
 <x-front-layout :title="trans('dashboard.home')" :breadcrumbs="['dashboard.home']" >
-
+<link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/assets/icon/icofont/css/icofont.css')}}">
 @section('styles')
 
 @php
