@@ -1,10 +1,10 @@
 <x-front-layout :title="trans('dashboard.home')" :breadcrumbs="['dashboard.home']" >
     <section class="branch-page">
 
-        <section class="branch-page_head" style="background: url({{asset('front/img/branch.jpg')}});background-repeat: no-repeat; background-size: cover;">
+        <section class="branch-page_head" style="background: url( {{optional(Settings::instance('branches_backgraund'))->getFirstMediaUrl('branches_backgraund')}} );background-repeat: no-repeat; background-size: cover;">
             <div class="branch-page_head_overlay-black">
                 <div>
-                    <h1>فروعنا</h1>
+                    <h1>{{Settings::locale(app()->getLocale())->get('branches_title')}}</h1>
                     <p>مرحباً بكم في فروع شركة أبو ذياب لتأجير السيارات</p>
                 </div>
             </div>
