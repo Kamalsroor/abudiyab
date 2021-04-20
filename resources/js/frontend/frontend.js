@@ -58,20 +58,124 @@ $(document).ready(function() {
 
     async function slick_function(details) {
 
-        $('.car-model__heading').slick('removeSlide', null, null, true);
+        // $('.car-model__heading').slick('removeSlide', null, null, true);
 
+        $('.car-model__heading').slick('unslick');
+
+
+        $('.car-model__heading').removeClass('slick-initialized slick-slider');
+        $('.car-model__heading').html('');
         console.log('refreshing : ', details); // $('.car-model__heading').slick('unslick');
         await details.forEach(function(entry) {
             console.log(entry);
             var div = `
-                    <div>
                         <div class="car-model__item py-2" data-id="${entry.id}">
                             <p class=" text-center">${entry.name}</p>
                         </div>
-                    </div>
                     `
-            $('.car-model__heading').slick('slickAdd', div);
+
+            $('.car-model__heading').append(div);
+
+            // $('.car-model__heading').slick('slickAdd', div);
         });
+
+        let model__item_length = $('.car-model__item');
+        console.log(model__item_length.length);
+        if (model__item_length.length > 5) {
+            $('.car-model__heading').slick({
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                dots: false,
+                arrows: true,
+                rtl: html.dir === 'rtl',
+                autoplay: true,
+                autoplaySpeed: 8000,
+
+                // centerMode: true
+                responsive: [{
+                        breakpoint: 767,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            dots: false,
+                            arrows: false,
+                            rtl: html.dir === 'rtl',
+                            autoplay: true
+                        }
+                    },
+                    {
+                        breakpoint: 992,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 1,
+                            dots: false,
+                            arrows: false,
+                            rtl: html.dir === 'rtl',
+                            autoplay: true
+                        }
+                    },
+                    {
+                        breakpoint: 1200,
+                        settings: {
+                            slidesToShow: 4,
+                            slidesToScroll: 1,
+                            dots: false,
+                            arrows: false,
+                            rtl: html.dir === 'rtl',
+                            autoplay: true
+                        }
+                    },
+                ]
+            });
+
+        } else {
+            $('.car-model__heading').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: false,
+                arrows: true,
+                rtl: html.dir === 'rtl',
+                autoplay: true,
+                autoplaySpeed: 8000,
+
+                // centerMode: true
+                responsive: [{
+                        breakpoint: 767,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            dots: false,
+                            arrows: false,
+                            rtl: html.dir === 'rtl',
+                            autoplay: true
+                        }
+                    },
+                    {
+                        breakpoint: 992,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 1,
+                            dots: false,
+                            arrows: false,
+                            rtl: html.dir === 'rtl',
+                            autoplay: true
+                        }
+                    },
+                    {
+                        breakpoint: 1200,
+                        settings: {
+                            slidesToShow: 4,
+                            slidesToScroll: 1,
+                            dots: false,
+                            arrows: false,
+                            rtl: html.dir === 'rtl',
+                            autoplay: true
+                        }
+                    },
+                ]
+            });
+        }
+
     }
 
     $('.car-model__heading').on('afterChange', function(event, slick, currentSlide, nextSlide) {
@@ -230,51 +334,147 @@ $(document).ready(function() {
 
 
 
+    let model__item_length = $('.car-model__item');
+    console.log(model__item_length.length);
+    if (model__item_length.length > 5) {
+        $('.car-model__heading').slick({
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            dots: false,
+            arrows: true,
+            rtl: html.dir === 'rtl',
+            autoplay: true,
+            autoplaySpeed: 8000,
 
-    $('.car-model__heading').slick({
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        dots: false,
-        arrows: true,
-        rtl: html.dir === 'rtl',
-        autoplay: true,
-        autoplaySpeed: 8000,
-        // centerMode: true
-        // responsive: [{
-        //         breakpoint: 767,
-        //         settings: {
-        //             slidesToShow: 3,
-        //             slidesToScroll: 1,
-        //             dots: false,
-        //             arrows: false,
-        //             rtl: html.dir === 'rtl',
-        //             autoplay: true
-        //         }
-        //     },
-        //     {
-        //         breakpoint: 992,
-        //         settings: {
-        //             slidesToShow: 3,
-        //             slidesToScroll: 1,
-        //             dots: false,
-        //             arrows: false,
-        //             rtl: html.dir === 'rtl',
-        //             autoplay: true
-        //         }
-        //     },
-        //     {
-        //         breakpoint: 1200,
-        //         settings: {
-        //             slidesToShow: 3,
-        //             slidesToScroll: 1,
-        //             dots: false,
-        //             arrows: false,
-        //             rtl: html.dir === 'rtl',
-        //             autoplay: true
-        //         }
-        //     },
-        // ]
-    });
+            // centerMode: true
+            responsive: [{
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        dots: false,
+                        arrows: false,
+                        rtl: html.dir === 'rtl',
+                        autoplay: true
+                    }
+                },
+                {
+                    breakpoint: 992,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        dots: false,
+                        arrows: false,
+                        rtl: html.dir === 'rtl',
+                        autoplay: true
+                    }
+                },
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 1,
+                        dots: false,
+                        arrows: false,
+                        rtl: html.dir === 'rtl',
+                        autoplay: true
+                    }
+                },
+            ]
+        });
+
+    } else {
+        $('.car-model__heading').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            dots: false,
+            arrows: true,
+            rtl: html.dir === 'rtl',
+            autoplay: true,
+            autoplaySpeed: 8000,
+
+            // centerMode: true
+            responsive: [{
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        dots: false,
+                        arrows: false,
+                        rtl: html.dir === 'rtl',
+                        autoplay: true
+                    }
+                },
+                {
+                    breakpoint: 992,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        dots: false,
+                        arrows: false,
+                        rtl: html.dir === 'rtl',
+                        autoplay: true
+                    }
+                },
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 1,
+                        dots: false,
+                        arrows: false,
+                        rtl: html.dir === 'rtl',
+                        autoplay: true
+                    }
+                },
+            ]
+        });
+    }
+    // $('.car-model__heading').slick({
+    //     slidesToShow: 4,
+    //     slidesToScroll: 1,
+    //     dots: false,
+    //     arrows: true,
+    //     rtl: html.dir === 'rtl',
+    //     autoplay: true,
+    //     autoplaySpeed: 8000,
+
+    //     // centerMode: true
+    //     responsive: [{
+    //             breakpoint: 767,
+    //             settings: {
+    //                 slidesToShow: 1,
+    //                 slidesToScroll: 1,
+    //                 dots: false,
+    //                 arrows: false,
+    //                 rtl: html.dir === 'rtl',
+    //                 autoplay: true
+    //             }
+    //         },
+    //         {
+    //             breakpoint: 992,
+    //             settings: {
+    //                 slidesToShow: 3,
+    //                 slidesToScroll: 1,
+    //                 dots: false,
+    //                 arrows: false,
+    //                 rtl: html.dir === 'rtl',
+    //                 autoplay: true
+    //             }
+    //         },
+    //         {
+    //             breakpoint: 1200,
+    //             settings: {
+    //                 slidesToShow: 3,
+    //                 slidesToScroll: 1,
+    //                 dots: false,
+    //                 arrows: false,
+    //                 rtl: html.dir === 'rtl',
+    //                 autoplay: true
+    //             }
+    //         },
+    //     ]
+    // });
 
 
 
