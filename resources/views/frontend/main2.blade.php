@@ -77,9 +77,13 @@
         <livewire:frontend.car-model />
         <div class="container slick-section">
             <div class="row justify-content-center px-0 mx-0 car-model__heading" >
-                <div class="car-model__item py-2" data-id="{{$firstcar->id}}">
-                    <p class=" text-center">{{$firstcar->name}}</p>
-                </div>
+                @foreach($showFirstCatInCatgories as $showFirstCatInCatgory)
+                    <div class="car-model__item py-2" data-id="{{$showFirstCatInCatgory->id}}">
+                        <p class=" text-center">{{$showFirstCatInCatgory->name}}</p>
+                    </div>
+                @endforeach
+
+
 
             </div>
         </div>
