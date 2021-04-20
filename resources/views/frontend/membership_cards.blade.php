@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-12 col-md-3 p-3">
                         <div class="card" >
-                            <img src="{{asset('front/img/31-gold-frontpsd.png')}}" class="card-img-top" alt="gold-card">
+                            <img src="{{asset('front/img/rosegold.png')}}" class="card-img-top" alt="gold-card">
                             <div class="card-body">
                                 <h5 class="card-title text-right">العضوية البرونزية</h5>
                                 <ul>
@@ -44,7 +44,7 @@
                     </div>
                     <div class="col-12 col-md-3 p-3">
                         <div class="card" >
-                            <img src="{{asset('front/img/CARD-FINALrosegold.png')}}" class="card-img-top" alt="bronze-card">
+                            <img src="{{asset('front/img/31-gold-psd.png')}}" class="card-img-top" alt="bronze-card">
                             <div class="card-body">
                                 <h5 class="card-title text-right">العضوية الذهبية</h5>
                                 <ul>
@@ -62,7 +62,7 @@
                     </div>
                     <div class="col-12 col-md-3 p-3">
                         <div class="card" >
-                            <img src="{{asset('front/img/CARD-FINALrosegold.png')}}" class="card-img-top" alt="bronze-card">
+                            <img src="{{asset('front/img/33-platinum-frontpsd.png')}}" class="card-img-top" alt="bronze-card">
                             <div class="card-body">
                                 <h5 class="card-title text-right">العضوية البلاتنيوم</h5>
                                 <ul>

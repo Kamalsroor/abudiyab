@@ -39,6 +39,7 @@
               <x-check-all></x-check-all>
             </th>
             <th>@lang('cars.attributes.name')</th>
+            <th>@lang('cars.attributes.model')</th>
             <th>@lang('cars.attributes.code')</th>
             <th>@lang('categories.singular')</th>
             {{-- <th>@lang('branches.singular')</th> --}}
@@ -65,6 +66,7 @@
                         {{ $car->name }}
                     </a>
                 </td>
+                    <td>{{ $car->model }}</td>
                     <td>{{ $car->code }}</td>
                     <td>{{ $car->category ? $car->category->name : "" }}</td>
                     {{-- <td>{{ $car->branch->name }}</td> --}}
