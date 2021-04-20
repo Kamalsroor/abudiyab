@@ -10,7 +10,7 @@
 
             </div>
 
-            <div class="text-right col-md-6 col-sm-12 d-flex align-items-center justify-content-start">
+            <div class="text-right col-md-6 col-sm-12 d-flex align-items-center justify-content-start py-2">
                 <a class="mx-3" href="{{route('front.main')}}">الرئيسية</a>
                 @guest
                 <!--  ---------------------------------------->
