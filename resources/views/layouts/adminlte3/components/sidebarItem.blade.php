@@ -10,13 +10,13 @@
             <p>
                 {{ $name }}
 
+
+                @if(isset($tree) && is_array($tree))
+                <i class="right fas fa-angle-right"></i>
+                @endif
                 @isset($badge)
                     <span class="right badge badge-{{ $badgeLevel ?? 'danger' }}">{{ $badge }}</span>
                 @endisset
-
-                @if(isset($tree) && is_array($tree))
-                    <i class="right fas fa-angle-right"></i>
-                @endif
             </p>
         </a>
         @if(isset($tree) && is_array($tree) && count($tree))
