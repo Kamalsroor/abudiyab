@@ -8,18 +8,22 @@ use App\Http\Requests\Frontend\ContactRequest;
 use Auth;
 use App\Models\Branch;
 use App\Models\Car;
+use App\Models\Work;
 use App\Models\CarsInStock;
 use App\Models\Partner;
+use App\Models\WorkCandidates;
 use App\Models\Setting;
 use App\Models\Slider;
 use App\Models\Category;
+use App\Models\Work as ModelsWork;
 use Illuminate\Support\Facades\Http;
 use App\Payment\MasterCardPayment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Livewire\WithPagination;
 use Livewire\Component;
 use Redirect;
-
+use Illuminate\Support\MessageBag;
 class FrontendController extends Controller
 {
     /**
@@ -94,7 +98,8 @@ class FrontendController extends Controller
 
     public function recruitment()
     {
-        return view('frontend.recruitment');
+        $works=Work::all();
+        return view('frontend.recruitment',compact('works'));
     }
 
     function getUserIP()
@@ -194,6 +199,62 @@ class FrontendController extends Controller
         flash()->overlay(" ", trans('feedback.messages.sent'));
 
         return redirect()->back();
+    }
+    public function getCandidates()
+    {
+
+
+        return redirect()->back();
+    }
+    public function addCandidates(Request $request)
+    {
+        $extension=['pdf','doc','docx','jpg','png'];
+        $request->validate([
+            'cv' => 'required|mimes:pdf,doc,docx,jpg,png',
+            'name' => 'required|max:255',
+            'email' => 'required|email',
+            'phone' => 'required|max:11',
+            'expected_salary' => 'required',
+            'jobname' => 'required',
+          ]);
+        // $exist=WorkCandidates::where(function($q) use($request) {
+        //     $q->where('email' , $request->email)->orWhere('phone' , $request->phone);
+        // })->first();
+        // if($exist)
+        // {
+        //     dd('email Exist');
+        // }
+        // else{
+            if($request->file('cv') !=null)
+            {
+                if(in_array($request->file('cv')->extension(),$extension))
+                {
+                    $WorkCandidates = WorkCandidates::create([
+                        'name'=>$request->name,
+                        'email'=>$request->email,
+                        'phone'=>$request->phone,
+                        'expected_salaray'=>$request->expected_salary,
+                        'cv'=>$request->file('cv')->getClientOriginalName(),
+                        'work_id'=>$request->jobname,
+                    ]);
+
+                    $WorkCandidates->addMediaFromRequest('cv')->toMediaCollection('cv');
+
+                    // $uploadedFile = $request->file('cv');
+                    // $filename = time().$uploadedFile->getClientOriginalName();
+                    // Storage::disk('local')->putFileAs(
+                    //     'public/cv/'.$filename,
+                    //     $uploadedFile,
+                    //     $filename
+                    // );
+                }
+                else{
+                    dd('this exetension is not allowed');
+                }
+            }
+        flash()->overlay(" ", trans('works.messages.send'));
+        return redirect()->back();
+
     }
 
 

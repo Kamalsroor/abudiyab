@@ -58,6 +58,11 @@ Route::patch('feedback/unread', 'FeedbackController@unread')->name('feedback.unr
 Route::resource('feedback', 'FeedbackController')->only('index', 'show', 'destroy');
 
 
+Route::patch('applications/read', 'WorkCandidatesController@read')->name('applications.read');
+Route::patch('applications/unread', 'WorkCandidatesController@unread')->name('applications.unread');
+Route::resource('applications', 'WorkCandidatesController')->only('index', 'show', 'destroy');
+
+
         Route::get('trashed/categories', 'CategoryController@trashed')->name('categories.trashed');
         Route::get('trashed/categories/{trashed_category}', 'CategoryController@showTrashed')->name('categories.trashed.show');
         Route::post('categories/{trashed_category}/restore', 'CategoryController@restore')->name('categories.restore');
@@ -114,14 +119,21 @@ Route::resource('feedback', 'FeedbackController')->only('index', 'show', 'destro
         Route::post('partners/{trashed_partner}/restore', 'PartnerController@restore')->name('partners.restore');
         Route::delete('partners/{trashed_partner}/forceDelete', 'PartnerController@forceDelete')->name('partners.forceDelete');
         Route::resource('partners', 'PartnerController');
+
+        Route::get('trashed/works', 'WorkController@trashed')->name('works.trashed');
+        Route::get('trashed/works/{trashed_work}', 'WorkController@showTrashed')->name('works.trashed.show');
+        Route::post('works/{trashed_work}/restore', 'WorkController@restore')->name('works.restore');
+        Route::delete('works/{trashed_work}/forceDelete', 'WorkController@forceDelete')->name('works.forceDelete');
+        Route::resource('works', 'WorkController');
 /*  The routes of generated crud will set here: Don't remove this line  */
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
 
 
 

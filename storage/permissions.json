@@ -10,5 +10,7 @@
     "manage.manufactories",
     "manage.sliders",
     "manage.orders",
-    "manage.partners"
+    "manage.partners",
+    "manage.jobs",
+    "manage.works"
 ]
