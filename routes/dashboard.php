@@ -107,6 +107,8 @@ Route::resource('feedback', 'FeedbackController')->only('index', 'show', 'destro
         Route::get('trashed/orders/{trashed_order}', 'OrderController@showTrashed')->name('orders.trashed.show');
         Route::post('orders/{trashed_order}/restore', 'OrderController@restore')->name('orders.restore');
         Route::delete('orders/{trashed_order}/forceDelete', 'OrderController@forceDelete')->name('orders.forceDelete');
+        Route::patch('orders/read', 'OrderController@read')->name('orders.read');
+        Route::patch('orders/unread', 'OrderController@unread')->name('orders.unread');
         Route::resource('orders', 'OrderController');
 
         Route::get('trashed/partners', 'PartnerController@trashed')->name('partners.trashed');
@@ -114,14 +116,21 @@ Route::resource('feedback', 'FeedbackController')->only('index', 'show', 'destro
         Route::post('partners/{trashed_partner}/restore', 'PartnerController@restore')->name('partners.restore');
         Route::delete('partners/{trashed_partner}/forceDelete', 'PartnerController@forceDelete')->name('partners.forceDelete');
         Route::resource('partners', 'PartnerController');
+
+        Route::get('trashed/offers', 'OfferController@trashed')->name('offers.trashed');
+        Route::get('trashed/offers/{trashed_offer}', 'OfferController@showTrashed')->name('offers.trashed.show');
+        Route::post('offers/{trashed_offer}/restore', 'OfferController@restore')->name('offers.restore');
+        Route::delete('offers/{trashed_offer}/forceDelete', 'OfferController@forceDelete')->name('offers.forceDelete');
+        Route::resource('offers', 'OfferController');
 /*  The routes of generated crud will set here: Don't remove this line  */
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
 
 
 
