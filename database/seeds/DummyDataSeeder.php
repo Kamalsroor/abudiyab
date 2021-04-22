@@ -23,6 +23,7 @@ $this->call(ManufactorySeeder::class);
 $this->call(SliderSeeder::class);
 $this->call(OrderSeeder::class);
 $this->call(PartnerSeeder::class);
+$this->call(OfferSeeder::class);
 /*  The seeders of generated crud will set here: Don't remove this line  */
 
     }
