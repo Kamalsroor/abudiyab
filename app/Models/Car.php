@@ -113,8 +113,34 @@ class Car extends Model implements HasMedia, TranslatableContract
     {
         $this
             ->addMediaCollection('default');
+
+        $this
+            ->addMediaCollection('photos');
+
         //->useFallbackUrl('/url/to/default')
         //->singleFile()
 
     }
+
+    /**
+     * The car main image url.
+     *
+     * @return bool
+     */
+    public function getPhoto()
+    {
+        return $this->getFirstMediaUrl('default');
+    }
+
+    /**
+     * The car main image url.
+     *
+     * @return bool
+     */
+    public function getPhotos()
+    {
+        return $this->getMediaResource('photos');
+    }
+
+
 }

@@ -15,7 +15,7 @@
 
 
 
-{{-- 
+{{--
 <select2
     placeholder="@lang('branches.singular')"
     name="branch_id"
@@ -108,7 +108,7 @@
     </div>
     <div class="col-md-3">
         {{ BsForm::select('features')->options(trans('cars.features')) }}
-    </div>        
+    </div>
 </div>
 {{-- {{ trans('') }} --}}
 
@@ -145,7 +145,7 @@
                     <th width="25%">{{ BsForm::checkbox('is_home_delivery')->value(1)->default('0')->checked(isset($car) ? $car->is_home_delivery : false) }}  {{ BsForm::price('home_delivery_price') }}</th>
                     <th width="25%">{{ BsForm::checkbox('is_intercity')->value(1)->default('0')->checked(isset($car) ? $car->is_intercity : false) }}  {{ BsForm::price('intercity_price') }}</th>
                 </tr>
-       
+
 
                 </tbody>
             </table>
@@ -159,6 +159,12 @@
     {{ BsForm::image('image')->files($car->getMediaResource()) }}
 @else
     {{ BsForm::image('image') }}
+@endisset
+
+@isset($car)
+{{ BsForm::image('photos')->collection('photos')->unlimited()->files($car->getMediaResource('photos')) }}
+@else
+{{ BsForm::image('photos')->collection('photos')->unlimited() }}
 @endisset
 
 

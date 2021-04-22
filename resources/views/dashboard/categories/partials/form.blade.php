@@ -12,9 +12,9 @@
 </div>
 
 
-{{-- @isset($category)
+@isset($category)
     {{ BsForm::image('image')->files($category->getMediaResource()) }}
 @else
     {{ BsForm::image('image') }}
-@endisset --}}
+@endisset
 
