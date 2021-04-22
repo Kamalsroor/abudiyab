@@ -14,7 +14,7 @@
     },
     "servers": [
         {
-            "url": "http://scaffoldingnew.test/api",
+            "url": "https://abudiyab-soft.com/api",
             "description": "Demo API Server"
         }
     ],
@@ -398,6 +398,104 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/ManufactoryResource"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/offers": {
+            "get": {
+                "tags": [
+                    "Offers"
+                ],
+                "summary": "Get list of offers",
+                "description": "Returns list of offers",
+                "operationId": "getOffersList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OfferResource"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/offers/{id}": {
+            "get": {
+                "tags": [
+                    "Offers"
+                ],
+                "summary": "Get offer information",
+                "description": "Returns offer data",
+                "operationId": "getOfferById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Offer id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Offer"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/select/offers": {
+            "get": {
+                "tags": [
+                    "Offers"
+                ],
+                "summary": "Get list of Select offers",
+                "description": "Returns list of Select offers",
+                "operationId": "getSelectOffersList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OfferResource"
                                 }
                             }
                         }
@@ -982,6 +1080,50 @@
                     "name": "Manufactory"
                 }
             },
+            "Offer": {
+                "title": "Offer",
+                "description": "Offer model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "Name",
+                        "description": "Name of the new offer",
+                        "type": "string",
+                        "example": "A nice offer"
+                    },
+                    "created_at": {
+                        "title": "Created at",
+                        "description": "Created at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "updated_at": {
+                        "title": "Updated at",
+                        "description": "Updated at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "deleted_at": {
+                        "title": "Deleted at",
+                        "description": "Deleted at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Offer"
+                }
+            },
             "Order": {
                 "title": "Order",
                 "description": "Order model",
@@ -1212,6 +1354,20 @@
                 "type": "object",
                 "xml": {
                     "name": "ManufactoryResource"
+                }
+            },
+            "OfferResource": {
+                "title": "OfferResource",
+                "description": "Offer resource",
+                "properties": {
+                    "data": {
+                        "title": "Data",
+                        "description": "Data wrapper"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "OfferResource"
                 }
             },
             "OrderResource": {

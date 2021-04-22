@@ -72,4 +72,25 @@ class Category extends Model implements HasMedia, TranslatableContract
         //->singleFile()
 
     }
+
+
+    /**
+     * The user profile image url.
+     *
+     * @return bool
+     */
+    public function getIcon()
+    {
+        return $this->getFirstMediaUrl('default');
+    }
+
+
+    /**
+     * Get the cars for the blog post.
+     */
+    public function cars()
+    {
+        return $this->hasMany(Car::class);
+    }
+
 }

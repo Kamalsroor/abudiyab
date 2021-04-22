@@ -12,6 +12,7 @@ class CarFilter extends BaseFilters
     protected $filters = [
         'name',
         'selected_id',
+        'category_id',
     ];
 
     /**
@@ -24,6 +25,22 @@ class CarFilter extends BaseFilters
     {
         if ($value) {
             return $this->builder->whereTranslationLike('name', "%$value%");
+        }
+
+        return $this->builder;
+    }
+
+
+    /**
+     * Filter the query by a given category_id.
+     *
+     * @param string|int $value
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    protected function categoryId($value)
+    {
+        if ($value) {
+            return $this->builder->where('category_id', $value);
         }
 
         return $this->builder;

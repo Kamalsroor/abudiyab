@@ -146,5 +146,12 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'cv' => 'السيره الذاتيه',
+        'name' => 'الاسم',
+        'email' => 'الايميل',
+        'phone' => 'الجوال',
+        'expected_salaray' => 'الراتب المتوقع',
+        'jobname' => 'الوظيفه',
+    ],
 ];

@@ -40,6 +40,8 @@ Route::as('front.')->group(function () {
     Route::get('/points_program', 'Frontend\FrontendController@PointsProgram')->name('points_program');
     Route::get('/membership_cards', 'Frontend\FrontendController@MembershipCards')->name('membership_cards');
     Route::get('/recruitment', 'Frontend\FrontendController@recruitment')->name('recruitment');
+    Route::get('/candidates', 'Frontend\FrontendController@getCandidates')->name('getCandidates');
+    Route::post('/candidates', 'Frontend\FrontendController@addCandidates')->name('addCandidates');
     Route::get('/favorite', 'Frontend\FrontendController@favorite')->name('favorite');
     Route::get('/contactus', 'Frontend\FrontendController@contactus')->name('contactus');
     Route::get('/employment', 'Frontend\FrontendController@employment')->name('employment');
