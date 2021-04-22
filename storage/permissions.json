@@ -11,5 +11,7 @@
     "manage.sliders",
     "manage.orders",
     "manage.partners",
-    "manage.offers"
+    "manage.offers",
+    "manage.jobs",
+    "manage.works"
 ]
