@@ -1,28 +1,7 @@
 <x-front-layout :title="trans('dashboard.home')" :breadcrumbs="['dashboard.home']" >
 <link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/assets/icon/icofont/css/icofont.css')}}">
 @section('styles')
-
-@php
-    $home_category__conent_xl = 66 * ceil( (count($allCategories) + 1) / 4 ) + 5;
-    $home_category__conent_md = 66 * ceil( (count($allCategories) + 1) / 3 ) + 5;
-    $home_category__conent_sm = 66 *  (count($allCategories) + 1)   + 5;
-@endphp
-<style>
-    .home-category__conent .active{
-        height:{{$home_category__conent_xl}}px
-    }
-    @media (max-width:992px){
-        .home-category__conent .active{
-            height:{{ $home_category__conent_md}}px
-        }
-    }
-    @media (max-width:576px){
-        .home-category__conent .active{
-            height:{{$home_category__conent_sm}}px
-        }
-    }
-
-</style>
+    @include('frontend.css.main_cartogray')
 @endsection
 
 <div class="container-fluid px-0" >
@@ -50,13 +29,77 @@
         </div>
     </div>
 
+        {{-- <section class="home-offers content whitebg">
+            <div class="home-offers_head">
+                <span class="g-title">عروضنا</span>
+            </div>
+            <div class="container-fluid offers" style="padding-top:0">
+              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pod" url="#" number="1">
+                <div class="hover-offer ehover1"><img class="img-responsive" src="https://saudiauto.com.sa/uploads/Untitled-1_109.jpg" alt="Barcelona" />
+                  <div class="offer-content">
+                    <div class="ribbon orange">خصم 5%</div>
+                    <figcaption> <span class="flights-icon">(</span>
+                      <h4>S 320 مرسيدس</h4>
+                      <p class="detail">5 مقاعد | 4 أبواب | 2 الأمتعة</p>
+                      <p class="detail">فخمة كبيرة</p>
+                      <p class="price-offer"><span><i class="icofont icofont-cur-riyal"></i></span>900</p>
+                      <div class="button2">احجز الان</div>
+                    </figcaption>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pod" url="#" number="2">
+                <div class="hover-offer ehover1"><img class="img-responsive" src="https://1.bp.blogspot.com/-F5cZ10DJ68A/Xukz4ACNbgI/AAAAAAAABAs/ndkQ6DAwv-k7MdS2_0ldSZFI3cJVUbYLwCK4BGAYYCw/s1600/3864%2Bcopy.jpg" alt="París" />
+                  <div class="offer-content">
+                    <div class="ribbon orange">خصم 20%</div>
+                    <figcaption> <span class="flights-icon">Q</span>
+                      <h4>S 320 مرسيدس</h4>
+                      <p class="detail">5 مقاعد | 4 أبواب | 2 الأمتعة</p>
+                      <p class="detail">فخمة كبيرة</p>
+                      <p class="price-offer"><span><i class="icofont icofont-cur-riyal"></i></span>1309</p>
+                      <div class="button2">احجز الان</div>
+                    </figcaption>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pod" url="#" number="3">
+                <div class="hover-offer ehover1"><img class="img-responsive" src="https://meaningg.cc/wp-content/uploads/2018/08/618.jpg" alt="Roma" />
+                  <div class="offer-content">
+                    <div class="ribbon orange">خصم 5%</div>
+                    <figcaption> <span class="flights-icon">U</span>
+                      <h4>S 320 مرسيدس</h4>
+                      <p class="detail">5 مقاعد | 4 أبواب | 2 الأمتعة</p>
+                      <p class="detail">فخمة كبيرة</p>
+                      <p class="price-offer"><span><i class="icofont icofont-cur-riyal"></i></span>260</p>
+                      <div class="button2">احجز الان</div>
+                    </figcaption>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pod" url="#" number="4">
+                <div class="hover-offer ehover1"><img class="img-responsive" src="https://i.ytimg.com/vi/Ew5Lwb9fI1I/hqdefault.jpg" alt="Londres" />
+                  <div class="offer-content">
+                    <div class="ribbon orange">خصم 5%</div>
+                    <figcaption> <span class="flights-icon">(</span>
+                      <h4>S 320 مرسيدس</h4>
+                      <p class="detail">5 مقاعد | 4 أبواب | 2 الأمتعة</p>
+                      <p class="detail">فخمة كبيرة</p>
+                      <p class="price-offer"><span><i class="icofont icofont-cur-riyal"></i></span>150</p>
+                      <div class="button2">احجز الان</div>
+                    </figcaption>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section> --}}
+
     <section class="container-90">
         <div class="home-category">
             <div class="home-category__heading d-flex justify-content-center py-3">
                 <span class="g-title">فئات الاسطول</span>
             </div>
             <div class="home-category__conent">
-                <div class="row px-0 mx-0 justify-content-center home-category__item not-active " >
+                <div class="row px-0 mx-0 justify-content-center home-category__item not-active">
                     @foreach($allCategories as $category)
                         <div class='col-sm-3 col-lg-3 col-md-4 my-2 ' id='{{$category->id}}'>
                             <a type="button" id='{{$category->id}}'   data-id="{{$category->id}}" href="#home-category__togeller" class=" btn-lg btn-block primary-btn btn-hover btn-curved CarCategoryChange">{{$category->name}}</a>
