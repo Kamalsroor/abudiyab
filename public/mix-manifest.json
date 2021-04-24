@@ -1,7 +1,12 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "/js/frontend.js": "/js/frontend.js?id=fa1ba64f9e182adfacea",
     "/css/main.css": "/css/main.css?id=eae20243c40bc741a426",
+=======
+    "/js/frontend.js": "/js/frontend.js?id=c70de8fd6431b6372fa4",
+    "/css/main.css": "/css/main.css?id=aa59a7af1d2412b1ddd1",
+>>>>>>> 194a360e9e190484624c757c0a82616fb2059be4
 =======
     "/js/frontend.js": "/js/frontend.js?id=c70de8fd6431b6372fa4",
     "/css/main.css": "/css/main.css?id=aa59a7af1d2412b1ddd1",
