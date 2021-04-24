@@ -7,41 +7,43 @@
             </div>
             <div class="H3-TST-D3 H3-TST-D3-1">
                 <h2>{{$car->name}} {{$car->model}} <span>أو ما شابه ذلك</span></h2>
-                <span>{{$car->category?$car->category->name:'-'}}</span>
+                <span>{{$car->category? $car->category->name : '-'}}</span>
             </div>
             <div class="H3-TST-D3 H3-TST-D3-2">
                 <div class="H3-TST-D4-2">
                     <h5>الاستلام</h5>
                     <p>{{$receiving_branch->name}} <i class="fas fa-map-marker-alt"></i></p>
-                    <p> {{$data['receiving_date']}} <i class="fas fa-calendar-alt"></i></p>
-                    <p>06:00 <i class="far fa-clock"></i></p>
+                    <p>{{$reciving_date->format('d-m-Y')}} <i class="fas fa-calendar-alt"></i></p>
+                    <p>{{$reciving_date->format('h:i A')}} <i class="far fa-clock"></i></p>
                 </div>
                 <div class="H3-TST-D4-2">
                     <h5>التسليم</h5>
                     <p>{{$delivery_branch->name}} <i class="fas fa-map-marker-alt"></i></p>
-                    <p> {{$data['delivery_date']}} <i class="fas fa-calendar-alt"></i></p>
-                    <p>06:00 <i class="far fa-clock"></i></p>
+                    <p>{{$delivery_date->format('d-m-Y')}} <i class="fas fa-calendar-alt"></i></p>
+                    <p>{{$delivery_date->format('h:i A')}} <i class="far fa-clock"></i></p>
                 </div>
+
+
                 <div class="H3-TST-D4-2">
                     <h5>المواصفات</h5>
                     <div class="H3-icons">
                         <div><i class="fas fa-user-tie"></i></i>
-                            <p>5</p>
+                            <p>{{$car->door}}</p>
                         </div>
                         <div><i class="fas fa-cogs"></i></i>
-                            <p>اوتماتك</p>
+                            <p>{{ trans('cars.features.' . $car->features) }}</p>
                         </div>
                         <div><i class="fas fa-suitcase-rolling"></i></i>
-                            <p>2</p>
+                            <p>{{$car->luggage}}</p>
                         </div>
                         <div><i class="fas fa-door-closed"></i></i>
-                            <p>4</p>
+                            <p>{{$car->door}}</p>
                         </div>
                     </div>
                 </div>
                 <div class="H3-TST-D4-2">
                     <h5>مدة الايجار</h5>
-                    <p>{{$diff}} يوم</p>
+                    <p>يوم {{$diff}}</p>
                 </div>
                 <div class="H3-TST-D4-2">
                     <h5>الإيجار اليومي</h5>
@@ -91,7 +93,7 @@
                         <span>رسوم تفويض (تم)</span>
                     </div>
                     <div class="H3-TST-D5-1">
-                        <p><span><i class="icofont icofont-cur-riyal"></i></span>3</p>
+                        <p><span><i class="icofont icofont-cur-riyal"></i></span>{{$authorization_fee}}</p>
                     </div>
                 </div>
 
@@ -127,7 +129,7 @@
                         <span> الصافي</span>
                     </div>
                     <div class="H3-TST-D5-1">
-                        <p><span><i class="icofont icofont-cur-riyal"></i></span>100</p>
+                        <p><span><i class="icofont icofont-cur-riyal"></i></span>{{$total}}</p>
                     </div>
                 </div>
 
