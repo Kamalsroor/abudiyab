@@ -50,3 +50,7 @@ textarea {
     border: none;
     background: none;
 }
+
+.modal-backdrop.show {
+    z-index: 1;
+}
