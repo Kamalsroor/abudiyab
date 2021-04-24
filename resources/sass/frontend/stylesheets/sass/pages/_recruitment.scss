@@ -109,6 +109,9 @@
                     }
                     .valiadtion-error {
                         margin: -16px 0 5px;
+                        @media (max-width: 796px) {
+                            margin: 0px 0 5px;
+                        }
                     }
                     .textarea {
                         display: block;
