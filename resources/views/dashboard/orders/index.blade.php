@@ -24,6 +24,7 @@
                             resource="{{ App\Http\Resources\OrderResource::class }}"
                             fileName="Orders"
                             ></x-export-excel>
+                @include('dashboard.orders.partials.actions.read')
                 <div class="ml-2 d-flex justify-content-between flex-grow-1">
                     @include('dashboard.orders.partials.actions.create')
                     @include('dashboard.orders.partials.actions.trashed')
@@ -35,10 +36,12 @@
             <th style="width: 30px;" class="text-center">
               <x-check-all></x-check-all>
             </th>
+            <th>@lang('orders.attributes.id')</th>
             <th>@lang('orders.attributes.name')</th>
-            <th>@lang('orders.attributes.recieving_date')</th>
             <th>@lang('orders.attributes.booking_days')</th>
+            <th>@lang('orders.attributes.recieving_date')</th>
             <th>@lang('orders.attributes.recieving_branch')</th>
+            <th>@lang('orders.attributes.delivery_date')</th>
             <th>@lang('orders.attributes.delivery_branch')</th>
             <th>@lang('orders.attributes.payment_type')</th>
             <th>@lang('orders.attributes.payment_status')</th>
@@ -55,9 +58,15 @@
         </thead>
         <tbody>
         @forelse($orders as $order)
-            <tr>
+            <tr class="{{ $order->read() ? 'tw-bg-gray-300' : 'font-weight-bold tw-bg-gray-100' }}">
                 <td class="text-center">
                   <x-check-all-item :model="$order"></x-check-all-item>
+                </td>
+                <td>
+                    <a href="{{ route('dashboard.orders.show', $order) }}"
+                       class="text-decoration-none text-ellipsis">
+                        {{ $order->id }}
+                    </a>
                 </td>
                 <td>
                     <a href="{{ route('dashboard.orders.show', $order) }}"
@@ -65,9 +74,10 @@
                         {{ $order->car->name }}
                     </a>
                 </td>
-                <td>{{ $order->reciving_date->format('Y-m-d') }}</td>
                 <td>{{ $order->days}}</td>
+                <td>{{ $order->reciving_date->format('Y-m-d h:i A') }}</td>
                 <td>{{ $order->receivingBranch->name}}</td>
+                <td>{{ $order->delivery_date->format('Y-m-d h:i A') }}</td>
                 <td>{{ $order->deliveryBranch->name }}</td>
                 <td>{{ $order->payment_type }}</td>
                 <td>{{ $order->payment_status == "SUCCESS" ? "تم الدفع" : "لم يتم تأكيد الدفع"  }}</td>

@@ -9,5 +9,8 @@
     "trashed_manufactory": "App\\Models\\Manufactory",
     "trashed_slider": "App\\Models\\Slider",
     "trashed_order": "App\\Models\\Order",
-    "trashed_partner": "App\\Models\\Partner"
+    "trashed_partner": "App\\Models\\Partner",
+    "trashed_offer": "App\\Models\\Offer",
+    "trashed_job": "App\\Models\\Job",
+    "trashed_work": "App\\Models\\Work"
 }

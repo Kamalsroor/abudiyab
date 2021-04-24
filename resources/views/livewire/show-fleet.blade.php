@@ -105,7 +105,7 @@
                     <div class="d-flex" >
                         <div class="white-section">
                             <div  class="py-2 text-center justify-content-center filter-menu-heading">
-                                <p class="m-0">الترتيب حسب</p>
+                                <p class="m-0">الترتــيــب حـــســـب</p>
                             </div>
                             <select class="form-control" id="exampleFormControlSelect1" wire:model='filterPriceCategory'>
                                     <option class="color-black" value='DESC'>السعر من الاكثر الى الأقل</option>
@@ -133,7 +133,7 @@
                             </div>
 
                             <div  class="py-2 text-center mb-2 filter-menu-heading">
-                                <p class="m-0 ">نوع السيارة</p>
+                                <p class="m-0 ">نــوع الـســيــــارة</p>
                             </div>
 
 
@@ -163,7 +163,7 @@
                     <div class="col-lg-3 d-none d-lg-block col-4 pr-0  mb-2 ">
                         <div class="white-section">
                             <div  class="py-2 text-center justify-content-center category-menu-heading">
-                                <p class="m-0">الترتيب حسب</p>
+                                <p class="m-0">الترتــيــب حـــســـب</p>
                             </div>
                             <select class="form-control" id="exampleFormControlSelect1" wire:model='filterPriceCategory'>
                                     <option  value='DESC'>السعر من الاكثر الى الأقل</option>
@@ -189,8 +189,9 @@
                                 <b class="ml-2"><i class="icofont icofont-cur-riyal"></i> {{$priceRangeNewStart}}</b>
 
                             </div>
+                            
                             <div  class="py-2 text-center mb-2 category-menu-heading">
-                                <p class="m-0">نوع السيارة</p>
+                                <p class="m-0">نــوع الـســيــــارة</p>
                             </div>
 
 
@@ -219,7 +220,9 @@
                                     <div class="container-fluid color-black ">
                                         <div class="row ">
                                             <div class="col-lg-9 col-12 text-right">
-                                                <h3 class="color-black fleet-car-name" >{{$formcar->name}} <span  class=" color-black">أو مشابهة</span></h3>
+                                                <h3 class="color-black fleet-car-name" style="display: inline">{{$formcar->name}} <span  class=" color-black">أو مشابهة</span></h3>
+                                                <span class="color-black text-right addToFavorite {{in_array($formcar->id,$favCars) ? 'active' : ''}}" data-id="{{$formcar->id}}"><i class="far fa-heart heart"></i><i class="fas fa-heart heart"></i></span>
+
                                                 <h3 class="fleet-car-model" >{{$formcar->model}}</h3>
                                                 <p class="color-black fleet-doors-seats" >5 مقاعد | 4 أبواب | 2 الأمتعة </p>
                                                 <p class=" color-black fleet-transmission-ac">مكيف | ناقل حركة أوتوماتيكي{{-- trans('cars.features.' . $formcar->features) --}}</p>
@@ -238,11 +241,10 @@
                                         </div>
                                         <div class="row fleet-reservation-section" >
 
-                                            <div class="col-12 d-flex px-0 mx-0 justify-content-between align-items-center">
+                                            <div class="col-12 d-flex px-0 mx-0 justify-content-center align-items-center">
 
 
-                                                <span class="color-black text-right addToFavorite {{in_array($formcar->id,$favCars) ? 'active' : ''}}" data-id="{{$formcar->id}}"><i class="far fa-bookmark heart"></i><i class="fas fa-bookmark heart"></i> حفظ في المفضله</span>
-                                                <button class="primary-btn btn-hover btn-curved mt-3 ml-3 p-2 fleet-car-button" wire:click="booking({{$formcar->id}});">احجز الأن</button>
+                                                <button class="primary-btn btn-hover btn-curved mb-3 p-2 fleet-car-button" style="width:55%;" wire:click="booking({{$formcar->id}});">احــجــز الأن</button>
                                             </div>
                                         </div>
                                     </div>

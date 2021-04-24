@@ -10,7 +10,7 @@
 
             </div>
 
-            <div class="text-right col-md-6 col-sm-12 d-flex align-items-center justify-content-start">
+            <div class="text-right col-md-6 col-sm-12 d-flex align-items-center justify-content-start py-2">
                 <a class="mx-3" href="{{route('front.main')}}">الرئيسية</a>
                 @guest
                 <!--  ---------------------------------------->
@@ -64,29 +64,29 @@
 
                     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
-                        <div class="modal-content">
+                        <div class="modal-content ">
                             <div class="modal-header">
                                 <h5 class="modal-title color-black" id="loginModalLabel">تسجيل الدخول</h5>
                                 <a style="width: fit-content;" class="close mx-0" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true" style="color: red;cursor: pointer;">&times;</span>
                                 </a>
                             </div>
-                            <form action="{{ route('login') }}"  method="post" class="form-container">
+                            <form action="{{ route('login') }}"  method="post" class="form-container " style="width: 100%">
                                 @csrf
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label for="user" class="col-form-label color-black">البريد الالكترونى</label>
-                                    <input type="text" class="form-control" id="user" placeholder="Enter Email"  name="email" value="{{ old('email') }}">
-                                    <input type="hidden" name='redirect' value='url'>
+                                <div class="modal-body" style="margin: auto">
+                                    <div class="form-group">
+                                        <label for="user" class="col-form-label color-black">البريد الالكترونى</label>
+                                        <input type="text" class="form-control" id="user" placeholder="Enter Email"  name="email" value="{{ old('email') }}">
+                                        <input type="hidden" name='redirect' value='url'>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="col-form-label color-black">كلمة السر</label>
+                                        <input type="password" class="form-control" id="user" placeholder="Enter Password"  name="password">
+                                    </div>
+                                    {{-- <button class="btn btn-primary" type="submit">تسجيل</button> --}}
                                 </div>
-                                <div class="form-group">
-                                    <label for="message-text" class="col-form-label color-black">كلمة السر</label>
-                                    <input type="password" class="form-control" id="user" placeholder="Enter Password"  name="password">
-                                </div>
-                                {{-- <button class="btn btn-primary" type="submit">تسجيل</button> --}}
-                            </div>
-                            <button class="btn btn-primary" type="submit">تسجيل</button>
-                            <a href="{{ route('register') }}" class="btn btn-warning" type="submit">إنشاء حساب جديد</a>
+                                <button class="btn btn-primary" type="submit">تسجيل</button>
+                                <a href="{{ route('register') }}" class="btn btn-warning" type="submit">إنشاء حساب جديد</a>
                             </form>
                         </div>
                     </div>

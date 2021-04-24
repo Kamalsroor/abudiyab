@@ -14,9 +14,10 @@
 }
 
 .primary-btn {
-    background-image: get-color(primary-light-gradient);
+    background-image: linear-gradient(91deg, #3f4a86 15%, rgb(127 137 192) 50%, #3f4a86 85%);
+    text-shadow: 1px 1px 10px #162368;
     color: get-color(light);
-    box-shadow: 1px 1px 10px get-color(primary);
+    box-shadow: 1px 1px 6px #16236861;
     @include font( $weight: bold, $transform: capitalize, $family: 'Cairo', );
     letter-spacing: 1px;
     position: relative;
@@ -24,6 +25,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: Noto Kufi Arabic !important;
     span {
         position: relative;
         z-index: 1;
@@ -34,6 +36,7 @@
     &.btn-hover {
         background-image: none;
         background-color: get-color(light);
+        // text-shadow: 1px 1px 10px get-color(secondary);
     }
 }
 
@@ -91,8 +94,9 @@
         transition: height 0.5s ease;
     }
     &:hover {
-        color: get-color(primary-light);
-        border: 2px solid get-color(primary-light);
+        color: get-color(primary);
+        border: 2px solid get-color(primary);
+        text-shadow: none;
         &::before {
             height: 0;
         }

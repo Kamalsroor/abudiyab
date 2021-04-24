@@ -11,7 +11,7 @@
                     <legend class="visa_text"> أحصل على خصم السداد بالفيزا .</legend>
                 </div>
                 <div class="col-4 m-b-30" id="visa_input">
-                    <input type="checkbox" class="js-single" name="V" wire:model="visa_buy" value='0.15'>
+                    <input type="checkbox" class="js-single" name="V" wire:model="visa_buy" value='1'>
                 </div>
             </div>
         </div>
@@ -300,7 +300,7 @@
 
                             value="{{$car->open_kilometers_price}}"
                             wire:model="name"
-                            {{-- onchange='addValueToCheckBoxs(event);' --}}
+                             onchange='addValueToCheckBoxs(event);'
                             /> --}}
                             <i title="more details" id='3' class="fas fa-info-circle" onclick="YHadd('.add4');"></i>
 
@@ -593,11 +593,14 @@
             <div class="momo">
                 <div>
                     <p class="red">تاريخ</p>
-                    <p class="YH-p">{{$data['receiving_date']}}</p>
+                    <p class="YH-p"> {{$reciving_date->format('d-m-Y')}}</p>
                 </div>
+
+
+
                 <div>
                     <p class="red">الوقت</p>
-                    <p>15:22</p>
+                    <p>{{$reciving_date->format('h:i A')}}</p>
                 </div>
             </div>
         </div>
@@ -611,11 +614,11 @@
             <div class="momo">
                 <div>
                     <p class="red">تاريخ</p>
-                    <p class="YH-p">{{$data['delivery_date']}}</p>
+                    <p class="YH-p">{{$delivery_date->format('d-m-Y')}}</p>
                 </div>
                 <div>
                     <p class="red">الوقت</p>
-                    <p>18:22</p>
+                    <p>{{$delivery_date->format('h:i A')}}</p>
                 </div>
             </div>
         </div>

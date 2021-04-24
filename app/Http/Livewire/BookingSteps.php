@@ -8,6 +8,7 @@ use App\Models\Branch;
 use App\Models\Order;
 use App\Models\CarsInStock;
 use Carbon\Carbon;
+use GuzzleHttp\Client;
 use App\Payment\MasterCardPayment;
 class BookingSteps extends Component
 {
@@ -22,6 +23,8 @@ class BookingSteps extends Component
     public $paymentData;
     public $js;
     public $order;
+    public $delivery_date;
+    public $reciving_date;
     public $order_id;
     public $receiving_branch;
     protected $queryString = ['order_id'];
@@ -30,8 +33,11 @@ class BookingSteps extends Component
     public $successMsg = '';
     public $selectedtypes;
     public $visa_buy=0;
+    public $authorization_fee=3;
     public $start_date=0;
     public $end_date=0;
+    public $membership_discount=5;
+    public $promotional_discount=10;
     public $featureArray=[
         'baby_seat_price'=>'مقعد اطفال',
         'shield_price'=>'درع أبو ذياب',
@@ -44,6 +50,7 @@ class BookingSteps extends Component
     public $addedFeatureArray=[];
     public $features_price=0;
     public $car_price=0;
+    public $total=0;
 
     protected $listeners = [
         'payment:cancelled' => 'paymentCancelled',
@@ -54,15 +61,15 @@ class BookingSteps extends Component
 
     public function mount()
     {
-        $this->car = Car::find($this->data['car_id']);
-        $reciving_date=$this->data['receiving_date'];
-        $delivery_date=$this->data['delivery_date'];
-        $this->start_date=$reciving_date;
-        $this->end_date=$delivery_date;
 
-        $delivery_date = Carbon::parse($delivery_date);
-        $reciving_date = Carbon::parse($reciving_date);
-        $this->diff = $delivery_date->diffInDays($reciving_date);
+        $this->car = Car::find($this->data['car_id']);
+        $this->reciving_date=$this->data['receiving_date'];
+        $this->delivery_date=$this->data['delivery_date'];
+        $this->start_date=$this->reciving_date;
+        $this->end_date=$this->delivery_date;
+        $this->delivery_date = Carbon::parse($this->delivery_date);
+        $this->reciving_date = Carbon::parse($this->reciving_date);
+        $this->diff = $this->delivery_date->diffInDays($this->reciving_date);
         $this->price = ($this->car->price1 * $this->diff) ;
         $this->receiving_branch = Branch::find($this->data['receiving_branch']);
         $this->delivery_branch = Branch::find($this->data['delivery_branch']);
@@ -83,7 +90,7 @@ class BookingSteps extends Component
             $this->features_added = $this->order->features_added;
             $this->start_date = $this->order->delivery_date;
             $this->end_date = $this->order->reciving_date;
-            $this->visa_buy =  $this->order->visa_buy ? 0.15 : 0;
+            $this->visa_buy =  $this->order->visa_buy ? 1 : 0;
             $this->car = $this->order->car;
             $this->paymentType = $this->order->payment_type;
 
@@ -110,7 +117,7 @@ class BookingSteps extends Component
                 if ($this->paymentType == "visa"   || $this->paymentType == "mada") {
 
                     $sessionID = MasterCardPayment::createSessionSandBox($orderID, $merchantID, $merchantPassword);
-                    $totalPrice = $this->price;
+                    $totalPrice = $this->total;
                     $siteName = "test";
                     $this->paymentData = [
                         'merchant' => $merchantID,
@@ -133,6 +140,8 @@ class BookingSteps extends Component
         }
 
 
+
+
         $features_price = 0 ;
         foreach ($this->features_added as $key => $value) {
             if ($key == "home_delivery_price" ||$key == "intercity_price" ) {
@@ -150,16 +159,18 @@ class BookingSteps extends Component
                 array_push($this->addedFeatureArray,$key);
             }
         }
-        if($this->visa_buy==0.15)
-        {
-            $this->visa_buy=$this->visa_buy*$this->car->price1*$this->diff;
-        }
 
         // $mandate = 3 ;
         $mandate = 0 ;
-        $this->car_price=($this->car->price1 * $this->diff);
-        $this->features_price=$features_price;
-        $this->price = (($this->car->price1 * $this->diff)+$mandate-$this->visa_buy) + $features_price;
+        $this->car_price = ($this->car->price1 * $this->diff);
+        $this->features_price = $features_price;
+        $visa_buy = 0;
+        if ($this->visa_buy) {
+            $visa_buy = $this->car_price * 0.15 ; //visa discount amount
+        }
+
+        $this->price = ($this->car_price - $visa_buy ) + $features_price + $this->authorization_fee ;
+        $this->total = $this->price - $this->membership_discount - $this->promotional_discount;
         return view('livewire.booking-steps');
     }
 
@@ -196,18 +207,24 @@ class BookingSteps extends Component
         // $validatedData = $this->validate([
         //     'status' => 'required',
         // ]);
+
         $this->order = Order::updateOrCreate([
             'id' => $this->order ? $this->order->id : 0
         ],[
-            'delivery_date' => $this->start_date,
-            'reciving_date' => $this->end_date,
-            'price' => $this->price,
+            'user_id' => Auth()->id(),
+            'delivery_date' => $this->end_date,
+            'reciving_date' => $this->start_date,
+            'price' => $this->total,
             'days' => $this->diff,
             'features_added' => $this->features_added,
             'receiving_branch_id' => $this->receiving_branch->id,
             'delivery_branch' => $this->delivery_branch->id,
             'visa_buy' => $this->visa_buy ? 1 : 0,
             'car_id' => $this->car->id,
+            'car_price' => $this->car_price,
+            'membership_discount' => $this->membership_discount ,
+            'promotional_discount' => $this->promotional_discount ,
+            'authorization_fee' =>  $this->authorization_fee ,
         ]);
         if($this->visa_buy != 0 || $this->visa_buy != false ){
              $this->paymentType = "visa";
@@ -237,9 +254,10 @@ class BookingSteps extends Component
         $this->order = $this->order->updateOrCreate([
             'id' => $this->order ? $this->order->id : 0
         ],[
-            'delivery_date' => $this->start_date,
-            'reciving_date' => $this->end_date,
-            'price' => $this->price,
+            'user_id' => Auth()->id(),
+            'delivery_date' => $this->end_date,
+            'reciving_date' => $this->start_date,
+            'price' => $this->total,
             'payment_type' => $this->paymentType,
             'days' => $this->diff,
             'features_added' => $this->features_added,
@@ -247,8 +265,11 @@ class BookingSteps extends Component
             'delivery_branch' => $this->delivery_branch->id,
             'visa_buy' => $this->visa_buy ? 1 : 0,
             'car_id' => $this->car->id,
+            'car_price' => $this->car_price,
+            'membership_discount' => $this->membership_discount ,
+            'promotional_discount' => $this->promotional_discount ,
+            'authorization_fee' =>  $this->authorization_fee ,
         ]);
-
 
 
 
@@ -262,7 +283,7 @@ class BookingSteps extends Component
 
             $successURL = "completeCallback";
             $failURL = "errorCallback";
-            $totalPrice = $this->price;
+            $totalPrice = $this->total;
             $siteName = "test";
             $siteAddress = "tetst";
             $siteEmail = "kamal.s.sroor@gmail.com";
@@ -278,8 +299,21 @@ class BookingSteps extends Component
             ];
 
             $this->dispatchBrowserEvent('openPayment', $this->paymentData);
-        }
+        }else{
 
+            // 'عميلنا العزيز شكرا لتعاملك مع أبو ذياب طلبك قيد التنفيذ،رقم الحجز هو 14913,  للاستعلام عن الحجز فضلاً الاتصال بالرقم المجاني 920026600'
+            $this->order->update([
+                'payment_status' => "SUCCESS"
+                // 'payment_data' => $getOrderDetailsSandBox['result']
+            ]);
+
+            $smsText = " تم حجز سيارة " . $this->car->name . " من خلال موقع ابو ذياب لتأجير السيارت رقم العمليه " . $this->order->id ;
+            $smsPhone = "+966554001171";
+            // $smsPhone = "+201012316954";
+
+            $client = new Client();
+            $res = $client->get('http://sms.netpowers.net/http/api.php?id=abudiyab&password=abudiyab1171&to='.$smsPhone.'&sender=ABUDIYAB&msg='.$smsText);
+        }
 
         $this->currentStep = $this->paymentType == "visa"   || $this->paymentType == "mada" ? 4 : 5;
     }
@@ -321,12 +355,19 @@ class BookingSteps extends Component
                 $car_in_stock->save();
             }
 
+            $smsText = " تم حجز سيارة " . $this->car->name . " من خلال موقع ابو ذياب لتأجير السيارت رقم العمليه " . $this->order->id ;
+            $smsPhone = "+966554001171";
+            // $smsPhone = "+201012316954";
+
+            $client = new Client();
+            $res = $client->get('http://sms.netpowers.net/http/api.php?id=abudiyab&password=abudiyab1171&to='.$smsPhone.'&sender=ABUDIYAB&msg='.$smsText);
+
             $this->currentStep = 5 ;
         }else{
             if ($this->paymentType == "visa"   || $this->paymentType == "mada") {
 
                 $sessionID = MasterCardPayment::createSessionSandBox($orderID, $merchantID, $merchantPassword);
-                $totalPrice = $this->price;
+                $totalPrice = $this->total;
                 $siteName = "test";
                 $this->paymentData = [
                     'merchant' => $merchantID,
@@ -352,6 +393,12 @@ class BookingSteps extends Component
                 }
 
 
+                $smsText = " تم حجز سيارة " . $this->car->name . " من خلال موقع ابو ذياب لتأجير السيارت رقم العمليه " . $this->order->id ;
+                $smsPhone = "+966554001171";
+                // $smsPhone = "+201012316954";
+
+                $client = new Client();
+                $res = $client->get('http://sms.netpowers.net/http/api.php?id=abudiyab&password=abudiyab1171&to='.$smsPhone.'&sender=ABUDIYAB&msg='.$smsText);
 
                 $this->currentStep = 5 ;
             }

@@ -11,43 +11,66 @@
             </header>
             <div class="recruitment_center_content">
                 <div class="recruitment_center_content_form">
-                    <form action="#">
+                {{-- {{ BsForm::resource('works')->post(route('front.addCandidates')) }} --}}
+                <form action="{{route('front.addCandidates')}}" method="post" enctype="multipart/form-data">
+                    @csrf
                         <div class="select">
                             <label for="">اختر الوظيفه المناسبه <span>*</span></label>
-                            <select id="" required>
+                            <select id="" name='jobname' >
                                 <option value="" hidden>وظيفتي هيا</option>
-                                <option value="">مبرمج ويب</option>
-                                <option value="">مهندس شبكات</option>
-                                <option value="">مصم جرافك</option>
-                              </select>
+                                @foreach ($works as $work)
+                                    @if ($work->available)
+                                        <option value="{{$work->id}}">{{$work->title}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
                         </div>
+                        @if($errors->has('jobname'))
+                            <div class="valiadtion-error">{{ $errors->first('jobname') }}</div>
+                        @endif
                         <div class="input">
                             <label for="">الاسم <span>*</span></label>
-                            <input required type="text" id="" placeholder="الاسم">
+                            <input  type="text" id="" name='name' placeholder="الاسم">
                         </div>
+                        @if($errors->has('name'))
+                            <div class="valiadtion-error">{{ $errors->first('name') }}</div>
+                        @endif
                         <div class="input">
                             <label for="">رقم الجوال <span>*</span></label>
-                            <input required type="number" id="" placeholder="رقم الجوال">
+                            <input  type="number" id="" name='phone' placeholder="رقم الجوال">
                         </div>
+                        @if($errors->has('phone'))
+                            <div class="valiadtion-error">{{ $errors->first('phone') }}</div>
+                        @endif
                         <div class="input">
                             <label for="">البريد الالكتروني <span>*</span></label>
-                            <input required type="email" id="" placeholder="البريد الالكتروني">
+                            <input  type="email" id="" name='email' placeholder="البريد الالكتروني">
                         </div>
+                        @if($errors->has('email'))
+                            <div class="valiadtion-error">{{ $errors->first('email') }}</div>
+                        @endif
                         <div class="input">
                             <label for="">الراتب المتوقع <span>*</span></label>
-                            <input required type="number" id="" placeholder="الراتب المتوقع">
+                            <input  type="number" id="" name='expected_salary' placeholder="الراتب المتوقع">
                         </div>
+                        @if($errors->has('expected_salaray'))
+                            <div class="valiadtion-error">{{ $errors->first('expected_salaray') }}</div>
+                        @endif
                         <div class="input">
                             <label for="">السيرة الذاتية <span>*</span></label>
-                            <input required type="file" id="" placeholder="السيرة الذاتية">
+                            <input  type="file" id="" name='cv' placeholder="السيرة الذاتية">
                         </div>
+                        @if($errors->has('cv'))
+                            <div class="valiadtion-error">{{ $errors->first('cv') }}</div>
+                        @endif
                         <div class="textarea">
                             {{-- <label for="">ملاحظات <span>*</span></label> --}}
-                            <textarea required  id="" placeholder="رسالتك"></textarea>
+                            <textarea   id="" name='message' placeholder="رسالتك"></textarea>
                         </div>
                         <div class="button">
-                            <button class="primary-btn">ارسال</button>
+                            <button class="primary-btn" type="submit">ارسال</button>
                         </div>
+                        {{-- {{ BsForm::close() }} --}}
                     </form>
                 </div>
             </div>

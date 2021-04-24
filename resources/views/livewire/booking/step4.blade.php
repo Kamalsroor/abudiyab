@@ -9,29 +9,31 @@
                     <button class="print"><i class="icofont icofont-print"></i></button>
                     <div class="detel">
                         <div class="dis red">
-                            <p style="font-size: 25px;" class="color-black"> رقم الحجز :80702687</p>
+                            <p style="font-size: 25px;" class="color-black"> رقم الحجز :{{$order ? $order->id : 0}}</p>
                             <p style="font-size: 21px;" class="color-black">تاريخ الحجز :{{$start_date}} الساعه :17:37</p>
                         </div>
                         <div class="dis red">
                             <p style="font-size: 25px;" class="color-black">الحاله : تحت الدراسه</p>
-                            <p style="font-size: 25px;" class="color-black">نوع السداد : نقدا</p>
+                            <p style="font-size: 25px;" class="color-black">نوع السداد : {{ $order ? trans('orders.payment_type.'.$order->payment_type) : "" }}</p>
                         </div>
                     </div>
                     <div class="date red">
                         <div class="red">
                             <p class="color-black">فرع الاستلام</p>
                             <p class="color-black">{{$receiving_branch->name}}</p>
-                            <p class="color-black">{{$start_date}}</p>
+                            <p class="color-black">{{$reciving_date->format('d-m-Y')}}</p>
+                            <p class="color-black">{{$reciving_date->format('h:i A')}}</p>
                         </div>
                         <div class="red">
                             <p class="color-black">فرع التسليم</p>
                             <p class="color-black">{{$delivery_branch->name}}</p>
-                            <p class="color-black">{{$end_date}}</p>
+                            <p class="color-black">{{$delivery_date->format('d-m-Y')}}</p>
+                            <p class="color-black">{{$delivery_date->format('h:i A')}}</p>
                         </div>
                     </div>
                     <div class="price">
                         <h1 style="color: #030172;font-weight: bold;">
-                            مجموع الايجار : <i class="icofont icofont-cur-riyal" style="color: #030172;font-weight: bold;"></i>{{$price}}
+                            مجموع الايجار : <i class="icofont icofont-cur-riyal" style="color: #030172;font-weight: bold;"></i>{{$total}}
                         </h1>
                     </div>
                     <div class="complet">
