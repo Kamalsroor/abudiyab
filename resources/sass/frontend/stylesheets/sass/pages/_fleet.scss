@@ -38,6 +38,11 @@
             .slider-horizontal {
                 width: 40%;
             }
+            .slider-handle {
+                color: get-color(primary);
+                background-color: #4a5696 !important;
+                background-image: none;
+            }
             .fleet-category {
                 .categories {
                     input {
@@ -87,6 +92,7 @@
             }
             .slider-horizontal {
                 width: 40%;
+                color: get-color(primary);
             }
             .categories {
                 input {
@@ -147,9 +153,8 @@
             }
         }
         .fleet-reservation-section {
-            border-top: #777 solid 1px;
+            // border-bottom: #777 solid 1px;
             .addToFavorite {
-                float: right;
                 user-select: none;
                 cursor: pointer;
             }
@@ -184,9 +189,7 @@
         display: none;
     }
     i {
-        font-size: 30px;
-        position: absolute;
-        right: 0;
+        cursor: pointer;
     }
 }
 
@@ -207,4 +210,9 @@
             transform: scale(1.3);
         }
     }
+}
+
+div.slider-handle.max-slider-handle.round {
+    background-image: none !important;
+    background: red !important;
 }

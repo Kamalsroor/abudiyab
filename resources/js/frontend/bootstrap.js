@@ -12,6 +12,7 @@ try {
     // require('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js');
     // require('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js');
 
+    require('nouislider');
 
     window.toastr = require('toastr');
     // require('jquery.nicescroll');

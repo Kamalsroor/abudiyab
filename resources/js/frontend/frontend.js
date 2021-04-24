@@ -98,7 +98,7 @@ $(document).ready(function() {
                             slidesToShow: 1,
                             slidesToScroll: 1,
                             dots: false,
-                            arrows: false,
+                            arrows: true,
                             rtl: html.dir === 'rtl',
                             autoplay: true
                         }
@@ -109,7 +109,7 @@ $(document).ready(function() {
                             slidesToShow: 3,
                             slidesToScroll: 1,
                             dots: false,
-                            arrows: false,
+                            arrows: true,
                             rtl: html.dir === 'rtl',
                             autoplay: true
                         }
@@ -120,7 +120,7 @@ $(document).ready(function() {
                             slidesToShow: 4,
                             slidesToScroll: 1,
                             dots: false,
-                            arrows: false,
+                            arrows: true,
                             rtl: html.dir === 'rtl',
                             autoplay: true
                         }
@@ -145,7 +145,7 @@ $(document).ready(function() {
                             slidesToShow: 1,
                             slidesToScroll: 1,
                             dots: false,
-                            arrows: false,
+                            arrows: true,
                             rtl: html.dir === 'rtl',
                             autoplay: true
                         }
@@ -153,10 +153,10 @@ $(document).ready(function() {
                     {
                         breakpoint: 992,
                         settings: {
-                            slidesToShow: 3,
+                            slidesToShow: 1,
                             slidesToScroll: 1,
                             dots: false,
-                            arrows: false,
+                            arrows: true,
                             rtl: html.dir === 'rtl',
                             autoplay: true
                         }
@@ -164,10 +164,10 @@ $(document).ready(function() {
                     {
                         breakpoint: 1200,
                         settings: {
-                            slidesToShow: 4,
+                            slidesToShow: 1,
                             slidesToScroll: 1,
                             dots: false,
-                            arrows: false,
+                            arrows: true,
                             rtl: html.dir === 'rtl',
                             autoplay: true
                         }
@@ -353,7 +353,7 @@ $(document).ready(function() {
                         slidesToShow: 1,
                         slidesToScroll: 1,
                         dots: false,
-                        arrows: false,
+                        arrows: true,
                         rtl: html.dir === 'rtl',
                         autoplay: true
                     }
@@ -364,7 +364,7 @@ $(document).ready(function() {
                         slidesToShow: 3,
                         slidesToScroll: 1,
                         dots: false,
-                        arrows: false,
+                        arrows: true,
                         rtl: html.dir === 'rtl',
                         autoplay: true
                     }
@@ -375,7 +375,7 @@ $(document).ready(function() {
                         slidesToShow: 4,
                         slidesToScroll: 1,
                         dots: false,
-                        arrows: false,
+                        arrows: true,
                         rtl: html.dir === 'rtl',
                         autoplay: true
                     }
@@ -400,7 +400,7 @@ $(document).ready(function() {
                         slidesToShow: 1,
                         slidesToScroll: 1,
                         dots: false,
-                        arrows: false,
+                        arrows: true,
                         rtl: html.dir === 'rtl',
                         autoplay: true
                     }
@@ -408,10 +408,10 @@ $(document).ready(function() {
                 {
                     breakpoint: 992,
                     settings: {
-                        slidesToShow: 3,
+                        slidesToShow: 1,
                         slidesToScroll: 1,
                         dots: false,
-                        arrows: false,
+                        arrows: true,
                         rtl: html.dir === 'rtl',
                         autoplay: true
                     }
@@ -419,10 +419,10 @@ $(document).ready(function() {
                 {
                     breakpoint: 1200,
                     settings: {
-                        slidesToShow: 4,
+                        slidesToShow: 1,
                         slidesToScroll: 1,
                         dots: false,
-                        arrows: false,
+                        arrows: true,
                         rtl: html.dir === 'rtl',
                         autoplay: true
                     }
@@ -430,6 +430,18 @@ $(document).ready(function() {
             ]
         });
     }
+
+    window.onscroll = function() { navbarScroll() };
+
+    function navbarScroll() {
+        if (document.documentElement.scrollTop > 50) {
+            document.getElementsByClassName('main-navbar')[0].style.backgroundImage = "linear-gradient( 91deg, #3f4a86 15%, #7f89c0ba 50%, #3f4a86 85%)";
+        } else {
+            document.getElementsByClassName('main-navbar')[0].style.backgroundImage = "none";
+
+        }
+    }
+
     // $('.car-model__heading').slick({
     //     slidesToShow: 4,
     //     slidesToScroll: 1,
@@ -553,6 +565,7 @@ $(document).ready(function() {
 
     $('#filter-toggele').click(function() {
         $('.toggeling-menue').toggleClass('d-none');
+        $(body).css('position', 'fixed');
     })
     $('.cancel-toggle-menue').click(function() {
         $('.toggeling-menue').toggleClass('d-none');

@@ -231,8 +231,19 @@ a:not([href]):not([tabindex]) {
 
 .carousel-inner {
     color: get-color(light);
+    .carousel-img {
+        width: 100%;
+    }
+    .carousel-item {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+    }
     h1 {
-        padding-right: 60px;
+        font-size: 3.5rem;
+        font-weight: 700;
+        text-shadow: 1px 1px 10px black;
         @include smallScreen {
             font-size: 16px;
         }
@@ -938,6 +949,7 @@ a:not([href]):not([tabindex]) {
 
 .home-offers {
     margin-top: 20px;
+    margin-bottom: 40px;
     .offers {
         display: flex;
         flex-wrap: wrap;
@@ -995,7 +1007,7 @@ a:not([href]):not([tabindex]) {
         color: #FFF;
         background-image: linear-gradient(145deg, rgba(0, 0, 0, 0.3) 30%, rgba(0, 0, 0, 0.1) 80%);
         background-image: -moz-linear-gradient(-45deg, rgba(0, 0, 0, 0.3) 30%, rgba(0, 0, 0, 0.1) 80%);
-        background-image: -webkit-linear-gradient(-45deg, rgba(0, 0, 0, 0.3) 30%, rgba(0, 0, 0, 0.1) 80%);
+        background-image: -webkit-linear-gradient(-45deg, rgb(0 0 0 / 24%) 30%, rgb(0 0 0 / 94%) 80%);
         // filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#000', endColorstr='transparent', GradientType=1);
         -moz-transition: all .3s ease-out 0s;
         -o-transition: all .3s ease-out 0s;
@@ -1049,10 +1061,12 @@ a:not([href]):not([tabindex]) {
         line-height: 38px !important;
         text-align: center;
         width: 38px;
+        opacity: 0;
     }
     p.detail {
         font-size: 118%;
         line-height: 38px;
+        margin-bottom: 1rem;
     }
     p.price-offer {
         font-size: 16px;
@@ -1085,7 +1099,7 @@ a:not([href]):not([tabindex]) {
         height: 32px;
     }
     .orange {
-        background: #FF9600;
+        background: get-color(primary-light-gradient);
     }
     .blue {
         background: #3398d9
@@ -1104,7 +1118,7 @@ a:not([href]):not([tabindex]) {
         right: 0;
     }
     .orange:after {
-        border-color: transparent #DC5F0B;
+        border-color: transparent #0e167c;
     }
     .blue:after {
         border-color: transparent #1e5b82;
@@ -1118,16 +1132,17 @@ a:not([href]):not([tabindex]) {
         z-index: 2000;
     }
     .button2 {
+        background: rgba(0, 0, 0, 0.5);
+        border: 1px solid white;
+        transition: 0.4;
         margin: 0 auto;
         height: 40px;
-        background: rgba(0, 0, 0, 0.5);
         overflow: hidden;
         text-align: center;
         transition: .2s;
         cursor: pointer;
         border-radius: 4px !important;
         float: left;
-        border: 1px solid white;
         font-size: 17px;
         margin-top: 20px;
         font-weight: 400;
@@ -1136,6 +1151,11 @@ a:not([href]):not([tabindex]) {
         position: absolute;
         right: 7%;
         bottom: 7%;
+        &:hover {
+            border-color: none;
+            color: #000;
+            background: white;
+        }
     }
     @media (min-width: 992px) {
         .container {
@@ -1205,5 +1225,8 @@ a:not([href]):not([tabindex]) {
         .offer-content:hover figcaption {
             background-image: none;
         }
+    }
+    figcaption {
+        text-align: right;
     }
 }

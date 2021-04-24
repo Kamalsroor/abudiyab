@@ -7,6 +7,7 @@ use Illuminate\Routing\Controller;
 use App\Http\Requests\Dashboard\OrderRequest;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
@@ -65,6 +66,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
+        $order->markAsRead();
         return view('dashboard.orders.show', compact('order'));
     }
 
@@ -170,4 +172,35 @@ class OrderController extends Controller
 
         return redirect()->route('dashboard.orders.trashed');
     }
+
+       /**
+     * Mark the selected messages as read.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function read(Request $request)
+    {
+        Order::query()
+            ->whereIn('id', $request->input('items', []))
+            ->update(['read_at' => now()]);
+
+        return redirect()->route('dashboard.orders.index');
+    }
+
+    /**
+     * Mark the selected messages as unread.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function unread(Request $request)
+    {
+        Order::query()
+            ->whereIn('id', $request->input('items', []))
+            ->update(['read_at' => null]);
+
+        return redirect()->route('dashboard.orders.index');
+    }
+
 }

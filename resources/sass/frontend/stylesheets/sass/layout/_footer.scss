@@ -4,6 +4,7 @@
     background: get-color(primary-light-gradient);
     color: get-color(light);
     text-align: center;
+    text-shadow: 1px 1px 10px get-color(primary);
     @include mediumScreen() {
         padding-bottom: 50px;
     }
@@ -27,7 +28,7 @@
             @media (max-width: 677px) {
                 margin-bottom: 0px;
             }
-            color: get-color(secondary);
+            color: get-color(light);
             font-size: 20px;
             @media (max-width: 1492px) {
                 font-size: 15px;
@@ -114,7 +115,7 @@
             }
         }
         &_text {
-            color: get-color(secondary);
+            color: get-color(white);
         }
     }
     &_section-4 {

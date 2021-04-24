@@ -3,7 +3,8 @@
     @slot('url', route('dashboard.orders.index'))
     @slot('name', trans('orders.plural'))
     @slot('active', request()->routeIs('*orders*'))
-    @slot('icon', 'fas fa-th')
+    @slot('icon', 'fas fa-envelope')
+    @slot('badge', count_formatted(\App\Models\Order::unread()->count()) ?: null)
     @slot('tree', [
         [
             'name' => trans('orders.actions.list'),

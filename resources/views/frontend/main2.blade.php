@@ -1,54 +1,149 @@
 <x-front-layout :title="trans('dashboard.home')" :breadcrumbs="['dashboard.home']" >
 <link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/assets/icon/icofont/css/icofont.css')}}">
 @section('styles')
-
-@php
-    $home_category__conent_xl = 66 * ceil( (count($allCategories) + 1) / 4 ) + 5;
-    $home_category__conent_md = 66 * ceil( (count($allCategories) + 1) / 3 ) + 5;
-    $home_category__conent_sm = 66 *  (count($allCategories) + 1)   + 5;
-@endphp
-<style>
-    .home-category__conent .active{
-        height:{{$home_category__conent_xl}}px
-    }
-    @media (max-width:992px){
-        .home-category__conent .active{
-            height:{{ $home_category__conent_md}}px
-        }
-    }
-    @media (max-width:576px){
-        .home-category__conent .active{
-            height:{{$home_category__conent_sm}}px
-        }
-    }
-
-</style>
+    @include('frontend.css.main_cartogray')
 @endsection
 
 <div class="container-fluid px-0" >
-    <div class="container-fluid px-0">
+    <div class="container-fluid px-0 d-none d-md-block">
+
         <div id="carouselExampleIndicators" class="carousel home-carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
+            <ol class="carousel-indicators" >
                 @foreach ($sliders as $slider )
                     <li data-target="#carouselExampleIndicators" data-slide-to="{{$loop->index}}" class="{{$loop->first  ? 'active' : "" }}" style="background-image: url({{$slider->getFirstMediaUrl()}});"></li>
                 @endforeach
             </ol>
             <div class="carousel-inner">
                 @foreach ($sliders as $slider )
-                <div class='carousel-item {{ $loop->first ? "active" : " " }}' >
-                    <div class="d-flex align-items-center">
-                        <img src="{{$slider->getFirstMediaUrl()}}" class="d-block w-100" alt="carousel image">
-                        <div class="abs">
-                            <h1>{{ $slider->first_header }}</h1>
-                            <h1>{{ $slider->second_header }}</h1>
-                        </div>
+                <div class='carousel-item {{ $loop->first ? "active" : " " }}' style="background-image: url({{$slider->getFirstMediaUrl()}});">
+                    <div class="d-flex align-items-start justify-content-center" style="height: 100%;flex-direction: column;padding-right: 60px;        background-image: linear-gradient(90deg, #00000063 15%, #00000063 50%, #00000063 85%); ">
+
+                        <h1>{{ $slider->first_header }}</h1>
+                        <h1>{{ $slider->second_header }}</h1>
+                        <a href="#more" class="primary-btn btn-hover btn-curved m-5 p-3" style="width: 10%;">المزيــد <i class='fas fa-angle-double-down'  style="margin-right:5px; "></i></a>
+                       
+                       
                     </div>
                 </div>
                 @endforeach
             </div>
 
         </div>
+
     </div>
+    <div id="carouselExampleIndicators2" class="carousel home-carousel slide d-block d-md-none" data-ride="carousel">
+        <ol class="carousel-indicators">
+            
+                <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active" ></li>
+                <li data-target="#carouselExampleIndicators2" data-slide-to="1" ></li>
+                <li data-target="#carouselExampleIndicators2" data-slide-to="2" ></li>
+                <li data-target="#carouselExampleIndicators2" data-slide-to="3" ></li>
+                <li data-target="#carouselExampleIndicators2" data-slide-to="4" ></li>
+            
+        </ol>
+        <div class="carousel-inner">
+            
+            <div class='carousel-item active' >
+                <div class="d-flex align-items-center justify-content-center">
+                    <img src="{{asset('front/img/mobile sliders shebl/car.jpg')}}" class="d-block w-100" alt="carousel image">
+                    <div class="abs p-0 m-0 text-center " style="transform: translateY(45px);">
+                        <h1 class="m-0 p-0" style="font-size: 30px;">حلمك يصير حقيقة</h1>
+                        <p>مع أبو ذياب<p>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            <div class='carousel-item ' >
+                <div class="d-flex align-items-center justify-content-center">
+                    <img src="{{asset('front/img/mobile sliders shebl/car2.jpg')}}" class="d-block w-100" alt="carousel image">
+                    <div class="abs p-0 m-0 text-center " style="transform: translateY(45px);">
+                        <h1 class="m-0 p-0" style="font-size: 30px;">حلمك يصير حقيقة</h1>
+                        <p>مع أبو ذياب<p>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            <div class='carousel-item ' >
+                <div class="d-flex align-items-center justify-content-center">
+                    <img src="{{asset('front/img/حلمك-يصير-حقيقةfront/img/mobile sliders shebl/حلمك-يصير-حقيقة.jpg-2.jpg')}}" class="d-block w-100" alt="carousel image">
+                    <div class="abs p-0 m-0 text-center " style="transform: translateY(45px);">
+                        <h1 class="m-0 p-0" style="font-size: 30px;">حلمك يصير حقيقة</h1>
+                        <p>مع أبو ذياب<p>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+
+        {{-- <section class="home-offers content whitebg">
+            <div class="home-offers_head">
+                <span class="g-title">عروضنا</span>
+            </div>
+            <div class="container-fluid offers" style="padding-top:0">
+              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pod" url="#" number="1">
+                <div class="hover-offer ehover1"><img class="img-responsive" src="https://saudiauto.com.sa/uploads/Untitled-1_109.jpg" alt="Barcelona" />
+                  <div class="offer-content">
+                    <div class="ribbon orange">خصم 5%</div>
+                    <figcaption> <span class="flights-icon">(</span>
+                      <h4>S 320 مرسيدس</h4>
+                      <p class="detail">5 مقاعد | 4 أبواب | 2 الأمتعة</p>
+                      <p class="detail">فخمة كبيرة</p>
+                      <p class="price-offer"><span><i class="icofont icofont-cur-riyal"></i></span>900</p>
+                      <div class="button2">احجز الان</div>
+                    </figcaption>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pod" url="#" number="2">
+                <div class="hover-offer ehover1"><img class="img-responsive" src="https://1.bp.blogspot.com/-F5cZ10DJ68A/Xukz4ACNbgI/AAAAAAAABAs/ndkQ6DAwv-k7MdS2_0ldSZFI3cJVUbYLwCK4BGAYYCw/s1600/3864%2Bcopy.jpg" alt="París" />
+                  <div class="offer-content">
+                    <div class="ribbon orange">خصم 20%</div>
+                    <figcaption> <span class="flights-icon">Q</span>
+                      <h4>S 320 مرسيدس</h4>
+                      <p class="detail">5 مقاعد | 4 أبواب | 2 الأمتعة</p>
+                      <p class="detail">فخمة كبيرة</p>
+                      <p class="price-offer"><span><i class="icofont icofont-cur-riyal"></i></span>1309</p>
+                      <div class="button2">احجز الان</div>
+                    </figcaption>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pod" url="#" number="3">
+                <div class="hover-offer ehover1"><img class="img-responsive" src="https://meaningg.cc/wp-content/uploads/2018/08/618.jpg" alt="Roma" />
+                  <div class="offer-content">
+                    <div class="ribbon orange">خصم 5%</div>
+                    <figcaption> <span class="flights-icon">U</span>
+                      <h4>S 320 مرسيدس</h4>
+                      <p class="detail">5 مقاعد | 4 أبواب | 2 الأمتعة</p>
+                      <p class="detail">فخمة كبيرة</p>
+                      <p class="price-offer"><span><i class="icofont icofont-cur-riyal"></i></span>260</p>
+                      <div class="button2">احجز الان</div>
+                    </figcaption>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pod" url="#" number="4">
+                <div class="hover-offer ehover1"><img class="img-responsive" src="https://i.ytimg.com/vi/Ew5Lwb9fI1I/hqdefault.jpg" alt="Londres" />
+                  <div class="offer-content">
+                    <div class="ribbon orange">خصم 5%</div>
+                    <figcaption> <span class="flights-icon">(</span>
+                      <h4>S 320 مرسيدس</h4>
+                      <p class="detail">5 مقاعد | 4 أبواب | 2 الأمتعة</p>
+                      <p class="detail">فخمة كبيرة</p>
+                      <p class="price-offer"><span><i class="icofont icofont-cur-riyal"></i></span>150</p>
+                      <div class="button2">احجز الان</div>
+                    </figcaption>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section> --}}
 
     <section class="container-90">
         <div class="home-category">
@@ -56,7 +151,7 @@
                 <span class="g-title">فئات الاسطول</span>
             </div>
             <div class="home-category__conent">
-                <div class="row px-0 mx-0 justify-content-center home-category__item not-active " >
+                <div class="row px-0 mx-0 justify-content-center home-category__item not-active">
                     @foreach($allCategories as $category)
                         <div class='col-sm-3 col-lg-3 col-md-4 my-2 ' id='{{$category->id}}'>
                             <a type="button" id='{{$category->id}}'   data-id="{{$category->id}}" href="#home-category__togeller" class=" btn-lg btn-block primary-btn btn-hover btn-curved CarCategoryChange">{{$category->name}}</a>
@@ -90,7 +185,7 @@
 
         <livewire:frontend.car-details />
         <div class="container slick-section">
-            <div class="row car-details car-details__heading" >
+            <div class="row car-details car-details__heading" id="more">
                 <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">موديل : {{isset($firstcar) ? $firstcar->model : ""}}</p></div>
                 <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">ناقل الحركة : اوتوماتيك</p></div>
                 <div class="py-2 px-1 mx-0 text-center car-details__item" ><p class="my-0">عدد الأبواب : {{isset($firstcar) ? $firstcar->door : ""}}</p></div>
