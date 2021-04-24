@@ -200,11 +200,10 @@ class FrontendController extends Controller
 
         return redirect()->back();
     }
-    public function getCandidates()
+    public function profile()
     {
 
-
-        return redirect()->back();
+        return view('frontend.profile');
     }
     public function addCandidates(Request $request)
     {

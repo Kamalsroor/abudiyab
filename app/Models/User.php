@@ -84,6 +84,8 @@ class User extends Authenticatable implements HasMedia
         'gender',
         'address',
         'post_box',
+        'identity',
+        'licence',
     ];
 
     /**
@@ -208,6 +210,12 @@ class User extends Authenticatable implements HasMedia
                     ->width(320)
                     ->format('png');
             });
+            $this
+            ->addMediaCollection('identity')
+            ->singleFile();
+            $this
+            ->addMediaCollection('licence')
+            ->singleFile();
     }
 
     /**
