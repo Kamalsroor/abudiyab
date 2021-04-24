@@ -197,7 +197,7 @@
     font-weight: 700;
     color: #ff4934;
     .fas {
-        display: block;
+        display: inline;
     }
     .far {
         display: none;
@@ -214,5 +214,12 @@
 
 div.slider-handle.max-slider-handle.round {
     background-image: none !important;
-    background: red !important;
+    background: rgb(25 40 122 / 79%) !important;
+    cursor: pointer;
+}
+
+div.slider-handle.min-slider-handle.round {
+    background-image: none !important;
+    background: rgb(25 40 122 / 79%) !important;
+    cursor: pointer;
 }
