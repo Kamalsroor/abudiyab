@@ -20,7 +20,5 @@
 <!-- ------------START-----LINK-------LOAD------------ -->
 {{-- <!-- <link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/assets/css/style.css')}}"> --> --}}
 <!-- ------------END------LINK------LOAD------------ -->
-
 <link rel="stylesheet" href="{{ asset(mix('/css/main.css')) }}">
-
 @show

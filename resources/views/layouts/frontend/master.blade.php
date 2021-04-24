@@ -54,7 +54,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
         {{-- <span><i class="fas fa-less-than"></i></span> --}}
-        <i class="fas fa-phone-alt d-md-none" id="social-media-links-toggeler" style="cursor: pointer;position: fixed;top:20%;right:10px;color:white;padding:5px;border-radius: 50%;background-color: #ffa602;"></i>
+        <i class="fas fa-phone-alt d-md-none" id="social-media-links-toggeler" style="cursor: pointer;position: fixed;top: 86%;right: 10px;color: white;border-radius: 50%;background-color: #ff0202;font-size: 21px;padding: 12px;"></i>
 
         <div class="social-media-links d-none d-md-block">
             <a href="/aboutus" target="_blank"><p>حولنا</p></a>
@@ -85,9 +85,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     {{-- <script src="{{asset('front/lnkse/main.js')}}"></script> --}}
     <img id="character" src="{{asset('images/character-1.png')}}" class="d-none d-md-block" alt="our character">
-
-
-
 
 
     <script>
@@ -149,11 +146,5 @@ scratch. This page gets rid of all links and provides the needed markup only.
     type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
     </script>
     <!--End of Zendesk Chat Script-->
-
-
-
-
-
-
 </body>
 </html>
