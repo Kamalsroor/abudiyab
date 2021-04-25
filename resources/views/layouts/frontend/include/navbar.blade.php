@@ -119,13 +119,13 @@
                             <input class="form-control my-2" type="text" placeholder="أدخل رقم الهوية">
                             <input class="form-control my-2" type="text" placeholder="أدخل الكود هنا">
                                 <div class="alert alert-success my-2" role="alert">
-                                    A simple primary alert—check it out!
+                                    عميلنا العزيز تم تأكيد الحجز الخاص بك
                                 </div>
                                 <div class="alert alert-warning my-2" role="alert">
-                                    A simple primary alert—check it out!
+                                    عميلنا العزيز جارى العمل على الحجز الخاص بك
                                 </div>
                                 <div class="alert alert-danger my-2" role="alert">
-                                    A simple primary alert—check it out!
+                                    عميلنا العزيز تم رفض طلب الحجز 
                                 </div>
                         </div>
                         <div class="modal-footer">
