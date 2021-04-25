@@ -10,7 +10,7 @@
     {{-- cover picture ends --}}
     <div class="container-fluid p-0 m-0 profile-bg profile-page" >
         <div class="container py-md-4">
-            <div class="row align-items-end py-2" style="background-color: hsl(0deg 0% 94% / 53%);border-radius:30px;">
+            <div class="row align-items-end py-2" style="background-color: hsl(0deg 0% 94% / 53%);border-radius:30px;box-shadow: 1px 1px 5px black;">
                 <div class="col-lg-5 col-md-12  text-center justify-content-center" style="align-self: start">
                     <div >
                         <img  src="{{asset('front/img/5.png')}}" style="width: 200px;border-radius: 50%;" alt="profile-img">
