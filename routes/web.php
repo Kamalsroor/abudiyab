@@ -46,9 +46,7 @@ Route::as('front.')->group(function () {
     Route::get('/contactus', 'Frontend\FrontendController@contactus')->name('contactus');
     Route::get('/employment', 'Frontend\FrontendController@employment')->name('employment');
     Route:: get('/bookingmodel', 'Frontend\FrontendController@bookingModal')->name('bookingModel');
-    Route::get('/profile', function(){
-        return view('frontend.profile');
-    })->name('profile');
+    Route::get('/profile', 'Frontend\FrontendController@profile')->name('profile');
     Route::get('/points', function(){
         return view('frontend.points');
     })->name('points');
@@ -61,6 +59,9 @@ Route::as('front.')->group(function () {
     Route::get('/aboutus', function(){
         return view('frontend.aboutus');
     })->name('aboutus');
+    Route::get('/contracts', function(){
+        return view('frontend.contracts');
+    })->name('contracts');
     // Route::get('/register', function(){
     //     return view('frontend.register');
     // })->name('register.index');

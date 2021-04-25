@@ -8,9 +8,14 @@ use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use AhmedAliraqi\LaravelMediaUploader\Entities\Concerns\HasUploader;
 
-class RegisterController extends Controller
+class RegisterController extends Controller implements HasMedia
 {
+    use InteractsWithMedia;
+    use HasUploader;
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -50,9 +55,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'name ' => ['required', 'string', 'max:255'],
+            'password' => ['required','confirmed', 'max:255'],
+            'id_number' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255', 'unique:users'],
+            'phone' => ['required', 'string', 'min:8','unique:users']
         ], [], trans('dashboard.auth.register'));
     }
 
@@ -64,7 +71,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $newUser=User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'phone' => $data['phone'],
@@ -72,5 +79,9 @@ class RegisterController extends Controller
             'type' => User::CUSTOMER_TYPE,
             'password' => Hash::make($data['password']),
         ]);
+        $newUser->addMediaFromRequest('identity')->toMediaCollection('identity');
+        $newUser->addMediaFromRequest('licence')->toMediaCollection('licence');
+        return $newUser;
+
     }
 }

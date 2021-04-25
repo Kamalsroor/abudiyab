@@ -37,21 +37,21 @@
                 <div class="d-flex justify-content-center align-items-end information-card">
                     <img src="{{asset('front/img/smallgoldencard.png')}}" alt="client-type" style="width: 90%;">
                     <div class="pb-2" style="width: 70%;position:absolute;font-weight: 700;text-shadow: 1px 1px black;">
-                        <p class="mb-0">client Name</p>
+                        <p class="mb-0">{{Auth::user()->name}}</p>
                         <div class="d-flex justify-content-between" >
                             <p class="mb-0" >DATE</p>
                             <p class="mb-0" >1234567890</p>
                         </div>
-                     
+
                         <div class="d-flex justify-content-between" >
                             <p class="mb-0" >ذهبى</p>
                             <p class="mb-0" >gold</p>
                         </div>
 
                     </div>
-                    
-                        
-                    
+
+
+
                 </div>
 
                 <div class="mt-4 modify-data">
@@ -66,67 +66,61 @@
                     <tbody>
                         <tr>
                             <th class="color-black text-center" scope="row">الأسم</th>
-                            <td class="color-black text-center">احمد خالد السيد</td>
-
+                            <td class="color-black text-center">{{Auth::user()->name}}</td>
                         </tr>
                         <tr>
                             <th class="color-black text-center" scope="row">رقم الهوية</th>
-                            <td class="color-black text-center">12555847</td>
+                            <td class="color-black text-center">{{Auth::user()->id_number}}</td>
 
                         </tr>
                         <tr>
                             <th class="color-black text-center" scope="row">تاريخ انتهاء الهوية</th>
-                            <td class="color-black text-center">12555847</td>
+                            <td class="color-black text-center">{{Auth::user()->id_expiry_date}}</td>
 
                         </tr>
                         <tr>
                             <th class="color-black text-center" scope="row">تاريخ انتهاء رخصة القيادة</th>
-                            <td class="color-black text-center">01/06/2023</td>
+                            <td class="color-black text-center">{{Auth::user()->driver_id_expiry_date}}/td>
 
                         </tr>
                         <tr>
                             <th class="color-black text-center" scope="row">تاريخ الميلاد</th>
-                            <td class="color-black text-center">01/04/1992</td>
+                            <td class="color-black text-center">{{Auth::user()->date_of_birth}}</td>
 
                         </tr>
                         <tr>
                             <th class="color-black text-center" scope="row">الجنسية</th>
-                            <td class="color-black text-center">مصرى</td>
+                            <td class="color-black text-center">{{Auth::user()->nationality}}</td>
 
                         </tr>
                         <tr>
                             <th class="color-black text-center" scope="row">رقم الجوال</th>
-                            <td class="color-black text-center">05015477730</td>
+                            <td class="color-black text-center">{{Auth::user()->phone}}</td>
 
                         </tr>
                         <tr>
                             <th class="color-black text-center" scope="row">البريد الالكترونى</th>
-                            <td class="color-black text-center">ahmedkhaled@gmail.com</td>
+                            <td class="color-black text-center">{{Auth::user()->email}}</td>
 
                         </tr>
-                        
-                        
-                    
+
+
+
                         <tr>
                             <th class="color-black text-center" scope="row">النوع</th>
-                            <td class="color-black text-center">ذكر</td>
+                            <td class="color-black text-center">{{Auth::user()->gender}}</td>
 
                         </tr>
 
                         <tr>
                             <th class="color-black text-center" scope="row">العنوان</th>
-                            <td class="color-black text-center">25 street 485 gamal abd el naser</td>
+                            <td class="color-black text-center">{{Auth::user()->address}}</td>
 
                         </tr>
                         <tr>
                             <th class="color-black text-center" scope="row">صندوق البريد</th>
-                            <td class="color-black text-center">24 street 502 shatby </td>
-
+                            <td class="color-black text-center">{{Auth::user()->post_box}} </td>
                         </tr>
-
-                       
-                        
-                       
                     </tbody>
                 </table>
                 </div>
