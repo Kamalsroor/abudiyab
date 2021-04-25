@@ -49,7 +49,8 @@
                 اهلا بك {{ Auth()->user()->name}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item mx-0" style="color: black;" href="/profile">الحساب الشخصى</a>
+                    <a class="dropdown-item mx-0 text-right" style="color: black;padding:6px 12px;" href="/profile">الحساب الشخصى</a>
+                    <a class="dropdown-item mx-0 text-right" style="color: black;padding:6px 12px;" href="/contracts">العقود</a>
                     <a href="#"onclick="event.preventDefault();document.getElementById('logoutForm').submit()"
                            class="btn btn-default btn-flat float-right color-black" style="color: black;">@lang('dashboard.auth.logout')</a>
                         <form class="d-none" action="{{ route('logout') }}" method="post" id="logoutForm">
@@ -94,6 +95,39 @@
 
               <!--  ------------------------------------>
               <!-- Modal ends here------------------- -->
+              <!--  ------------------------------------>
+
+              <!--  ------------------------------------>
+              <!-- Modal2 starts here------------------- -->
+              <!--  ------------------------------------>
+              <!-- Button trigger modal -->
+                <a  style="cursor: pointer;"  data-toggle="modal" data-target="#staticBackdrop">
+                    الأستعلام عن الحجز
+                </a>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header" class="d-flex justify-content-between">
+                            <h5 class="modal-title" id="staticBackdropLabel">أدخل الكود و رقم الهوية للأستعلام</h5>
+                            <button type="button" class="close p-0 m-0" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input class="form-control my-2" type="text" placeholder="أدخل رقم الهوية">
+                            <input class="form-control my-2" type="text" placeholder="أدخل الكود هنا">
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">إغلاق</button>
+                        <button type="button" class="btn btn-primary">الاستعلام</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+              <!--  ------------------------------------>
+              <!-- Modal2 ends here------------------- -->
               <!--  ------------------------------------>
                 <div class="dropdown mx-3">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

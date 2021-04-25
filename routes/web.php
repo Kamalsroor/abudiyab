@@ -59,6 +59,9 @@ Route::as('front.')->group(function () {
     Route::get('/aboutus', function(){
         return view('frontend.aboutus');
     })->name('aboutus');
+    Route::get('/contracts', function(){
+        return view('frontend.contracts');
+    })->name('contracts');
     // Route::get('/register', function(){
     //     return view('frontend.register');
     // })->name('register.index');
