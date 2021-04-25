@@ -66,11 +66,14 @@
                                 transition: .8s;
                             }
                         }
+                        select.error {
+                            border-color: get-color(red);
+                        }
                     }
                     div {
                         display: flex;
                         width: 100%;
-                        margin: 15px 0;
+                        margin: 15px 0 0;
                         label {
                             text-align: right;
                             width: 30%;
@@ -100,6 +103,15 @@
                                 transition: .8s;
                             }
                         }
+                        input.error {
+                            border-color: get-color(red);
+                        }
+                    }
+                    .valiadtion-error {
+                        margin: -16px 0 5px;
+                        @media (max-width: 796px) {
+                            margin: 0px 0 5px;
+                        }
                     }
                     .textarea {
                         display: block;
@@ -120,6 +132,9 @@
                                 border-color: get-color(primary);
                                 transition: .8s;
                             }
+                        }
+                        textarea.error {
+                            border-color: get-color(red);
                         }
                     }
                     .button {
