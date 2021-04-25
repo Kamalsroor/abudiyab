@@ -66,8 +66,16 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
+        $TotalFeatures = 0;
+
+        foreach ($order->features_added as $key => $value) {
+            $TotalFeatures += $value * $order->days;
+        }
+
         $order->markAsRead();
-        return view('dashboard.orders.show', compact('order'));
+
+
+        return view('dashboard.orders.show', compact('order','TotalFeatures'));
     }
 
     /**
@@ -202,5 +210,39 @@ class OrderController extends Controller
 
         return redirect()->route('dashboard.orders.index');
     }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param \App\Models\Order $order
+     * @throws \Exception
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function confirmation(Order $order)
+    {
+        $order->markAsConfirmed();
+
+        flash(trans('orders.messages.confirmed'));
+
+        return redirect()->route('dashboard.orders.show',$order);
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param \App\Models\Order $order
+     * @throws \Exception
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function rejected(Request $request , Order $order)
+    {
+        $order->markAsRejected($request->status ?? null);
+        flash(trans('orders.messages.rejected'));
+
+        return redirect()->route('dashboard.orders.show',$order);
+    }
+
 
 }

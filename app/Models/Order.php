@@ -48,6 +48,8 @@ class Order extends Model
         'membership_discount',
         'promotional_discount',
         'authorization_fee',
+        'status',
+        'reason',
 
     ];
 
@@ -80,6 +82,40 @@ class Order extends Model
         return ! ! $this->read_at;
     }
 
+
+
+    /**
+     * Determine whither the message was read.
+     *
+     * @return bool
+     */
+    public function confirmed()
+    {
+        return $this->status == "confirmed";
+    }
+
+    /**
+     * Determine whither the message was read.
+     *
+     * @return bool
+     */
+    public function pending()
+    {
+        return $this->status == "pending";
+    }
+
+
+    /**
+     * Determine whither the message was read.
+     *
+     * @return bool
+     */
+    public function rejected()
+    {
+        return $this->status == "rejected";
+    }
+
+
     /**
      * Mark the message as read.
      *
@@ -89,6 +125,34 @@ class Order extends Model
     {
         if (! $this->read()) {
             $this->forceFill(['read_at' => now()])->save();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Mark the message as read.
+     *
+     * @return $this
+     */
+    public function markAsRejected($reason)
+    {
+        if (! $this->confirmed()) {
+            $this->forceFill(['status' => "rejected",'reason' => $reason])->save();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Mark the message as read.
+     *
+     * @return $this
+     */
+    public function markAsConfirmed()
+    {
+        if (! $this->rejected()) {
+            $this->forceFill(['status' => "confirmed"])->save();
         }
 
         return $this;

@@ -114,6 +114,8 @@ Route::resource('applications', 'WorkCandidatesController')->only('index', 'show
         Route::delete('orders/{trashed_order}/forceDelete', 'OrderController@forceDelete')->name('orders.forceDelete');
         Route::patch('orders/read', 'OrderController@read')->name('orders.read');
         Route::patch('orders/unread', 'OrderController@unread')->name('orders.unread');
+        Route::patch('orders/confirmation/{order}', 'OrderController@confirmation')->name('orders.confirmation');
+        Route::patch('orders/rejected/{order}', 'OrderController@rejected')->name('orders.rejected');
         Route::resource('orders', 'OrderController');
 
         Route::get('trashed/partners', 'PartnerController@trashed')->name('partners.trashed');

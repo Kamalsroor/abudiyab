@@ -22,6 +22,8 @@ return [
         'unread' => 'تحديد كغير مقروء',
         'options' => 'خيارات',
         'save' => 'حفظ',
+        'confirmation' => 'تأكيد الحجز',
+        'rejected' => 'رفض الحجز',
         'filter' => 'بحث',
     ],
     'messages' => [
@@ -29,6 +31,13 @@ return [
         'updated' => 'تم تعديل الطلب بنجاح.',
         'deleted' => 'تم حذف الطلب بنجاح.',
         'restored' => 'تم استعادة الطلب بنجاح.',
+        'confirmed' => 'تم تأكيد الطلب بنجاح',
+        'rejected' => 'تم رفض الطلب بنجاح',
+    ],
+    'status' => [
+        'pending' => 'في الانتظار',
+        'confirmed' => 'مؤاكد',
+        'rejected' => 'مرفوض',
     ],
     'payment_type' => [
         'visa' => 'فيزا',
@@ -40,6 +49,7 @@ return [
         'id' => 'رقم العملية',
         'name' => 'اسم السياره',
         'created_at' => 'اضافة في',
+        'status' => 'الحالة',
         'deleted_at' => 'حذف في',
         'recieving_branch' => 'فرع الاستلام',
         'booking_days' => 'عدد ايام الحجز',
@@ -55,6 +65,19 @@ return [
             'title' => 'تحذير !',
             'info' => 'هل انت متأكد انك تريد حذف الطلب',
             'confirm' => 'حذف',
+            'cancel' => 'الغاء',
+        ],
+        'confirmation' => [
+            'title' => 'تحذير !',
+            'info' => 'هل انت متأكد انك تريد تأكيد الطلب',
+            'confirm' => 'تأكيد',
+            'cancel' => 'الغاء',
+        ],
+        'rejected' => [
+            'title' => 'تحذير !',
+            'info' => 'هل انت متأكد انك تريد رفض الطلب',
+            'confirm' => 'رفض الطلب',
+            'status' => 'سبب الرفض',
             'cancel' => 'الغاء',
         ],
         'restore' => [
