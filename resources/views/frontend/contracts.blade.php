@@ -50,7 +50,7 @@
                                 </table>
                                 <div class="d-flex justify-content-around align-items-center" style="width: 100%;">
                                     <p >السعر :  180  <i class="icofont icofont-cur-riyal"></i></p>
-                                    <p >طريقة الدفع : كاش</p>
+                                    <p > كاش</p>
     
                                 </div>
                                                             

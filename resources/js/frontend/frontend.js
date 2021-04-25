@@ -590,60 +590,67 @@ $(document).ready(function() {
     })
 
 
+    $('#toggel-profile').click(function() {
+        $('#update-profile').toggleClass('d-none');
+        $('#profile').toggleClass('d-none');
+        $('#toggel-profile').toggleClass('d-none');
+
+    })
+
     // gallery page----------------------------------------------------------------
-    $(".oldImg").click(function() {
-        console.log('tasebgday');
-        window.location.href = "#";
-        $("#container").append($("<div class='opacity '><div class='container-fluid'><a id='close'>X</a><div class='row'> <img class='newImg '></div><div class='row justify-content-between mt-4'><button class='primary-btn btn-curved btn-hover mx-4' id='previous'>السابق</button><button id='next' class='primary-btn btn-curved btn-hover mx-4'>التالى</button></div></div></div>"));
+    // $(".oldImg").click(function() {
+    //     console.log('tasebgday');
+    //     window.location.href = "#";
+    //     $("#container").append($("<div class='opacity '><div class='container-fluid'><a id='close'>X</a><div class='row'> <img class='newImg '></div><div class='row justify-content-between mt-4'><button class='primary-btn btn-curved btn-hover mx-4' id='previous'>السابق</button><button id='next' class='primary-btn btn-curved btn-hover mx-4'>التالى</button></div></div></div>"));
 
 
-        $(".newImg").attr("src", this.src);
-        $("#previous").click(function() {
-            let source = $(".newImg").attr("src");
+    //     $(".newImg").attr("src", this.src);
+    //     $("#previous").click(function() {
+    //         let source = $(".newImg").attr("src");
 
-            for (var i = 0; i < $('#container .row .oldImg').length; i++) {
-                if ($("#container .row").children('img')[i].src == source) {
-                    if (i > 0) {
-
-
-                        let newUrl = $("#container .row").children('img')[i - 1].src
-                        $(".newImg").fadeOut(300, function() {
-                            $(".newImg").attr("src", newUrl)
-                            $(".newImg").fadeIn(300);
-
-                        });
+    //         for (var i = 0; i < $('#container .row .oldImg').length; i++) {
+    //             if ($("#container .row").children('img')[i].src == source) {
+    //                 if (i > 0) {
 
 
-                    }
-                }
-            };
-        });
-        $("#next").click(function() {
-            let source = $(".newImg").attr("src");
+    //                     let newUrl = $("#container .row").children('img')[i - 1].src
+    //                     $(".newImg").fadeOut(300, function() {
+    //                         $(".newImg").attr("src", newUrl)
+    //                         $(".newImg").fadeIn(300);
 
-            for (var i = 0; i < $('#container .row .oldImg').length; i++) {
-                if ($("#container .row").children('img')[i].src == source) {
-                    if (i < $('#container .oldImg').length - 1) {
+    //                     });
 
 
-                        let newUrl = $("#container .row").children('img')[i + 1].src
-                        $(".newImg").fadeOut(300, function() {
-                            $(".newImg").attr("src", newUrl)
-                            $(".newImg").fadeIn(300);
+    //                 }
+    //             }
+    //         };
+    //     });
+    //     $("#next").click(function() {
+    //         let source = $(".newImg").attr("src");
 
-                        });
+    //         for (var i = 0; i < $('#container .row .oldImg').length; i++) {
+    //             if ($("#container .row").children('img')[i].src == source) {
+    //                 if (i < $('#container .oldImg').length - 1) {
 
 
-                    }
-                }
-            };
+    //                     let newUrl = $("#container .row").children('img')[i + 1].src
+    //                     $(".newImg").fadeOut(300, function() {
+    //                         $(".newImg").attr("src", newUrl)
+    //                         $(".newImg").fadeIn(300);
 
-        });
-        $('#close').click(function() {
-            $(".opacity").remove()
-        });
+    //                     });
 
-    });
+
+    //                 }
+    //             }
+    //         };
+
+    //     });
+    //     $('#close').click(function() {
+    //         $(".opacity").remove()
+    //     });
+
+    // });
 
 
 

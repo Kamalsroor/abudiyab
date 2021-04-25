@@ -1,58 +1,114 @@
 
 <x-front-layout :title="trans('dashboard.home')" :breadcrumbs="['dashboard.home']">
-<div class="container-fluid p-0 m-0 profile-bg" >
-<div class="container py-4 ">
-        <div class="row align-items-start py-2" style="background-color: #cccccce6;">
-            <div class="col-lg-5 col-md-12  text-center justify-content-center" >
-                <div >
-                    <img  src="{{asset('front/img/5.png')}}" style="width: 200px;border-radius: 50%;" alt="profile-img">
-                </div>
-                <div style="font-size: 20px;width:85%;" class="mx-auto my-3 justify-content-start align-items-start row">
-                    <div class="col-2">
-                        <img src="{{asset('front/img/riyal.png')}}" alt="coins">
+    {{-- cover picture starts --}}
+    <div style="background-image: url({{asset('front/img/contract.jpg')}});height:340px;background-position: center;background-size: cover;background-repeat: no-repeat">
+        {{-- <img class="w-100" src="{{asset('front/img/Webp.net-compress-image.jpg')}}" alt="hero image"> --}}
+        <div class="d-flex justify-content-center align-items-center" style="background-color: #000000c7;width:100%;height: 100%;">
+            <h1 style="font-size: 50px; padding-bottom:10px; font-weight:600;color:white;border-bottom:2px red solid;text-align: right;">البيانات الشخصية</h1>
+        </div>
+    </div>
+    {{-- cover picture ends --}}
+    <div class="container-fluid p-0 m-0 profile-bg profile-page" >
+        <div class="container py-md-4">
+            <div class="row align-items-end py-2" style="background-color: hsl(0deg 0% 94% / 53%);border-radius:30px;box-shadow: 1px 1px 5px black;">
+                <div class="col-lg-5 col-md-12  text-center justify-content-center" style="align-self: start">
+                    <div >
+                        <img  src="{{asset('front/img/5.png')}}" style="width: 200px;border-radius: 50%;" alt="profile-img">
                     </div>
-                    <div class="col">
-                        <table class="table table-striped color-black ">
+                    <div style="font-size: 20px;width:85%;" class="mx-auto my-3 justify-content-start align-items-start row">
+                        <div class="col-2">
+                            <img src="{{asset('front/img/riyal.png')}}" alt="coins">
+                        </div>
+                        <div class="col">
+                            <table class="table table-striped color-black ">
+                            <tbody>
+                                <tr>
+                                    <td class="color-black">
+                                    125
+                                    </td>
+                                    <th class="color-black">
+                                        رصيد النقاط
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td class="color-black">
+                                    100
+                                    </td>
+                                    <th class="color-black">
+                                    ريال
+                                    </th>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-end information-card">
+                        <img src="{{asset('front/img/smallgoldencard.png')}}" alt="client-type" style="width: 90%;">
+                        <div class="pb-2" style="width: 70%;position:absolute;font-weight: 700;text-shadow: 1px 1px 2px black;color:white;">
+                            <p class="mb-0">{{Auth::user()->name}}</p>
+                            <div class="d-flex justify-content-between" >
+                                <p class="mb-0" >DATE</p>
+                                <p class="mb-0" >1234567890</p>
+                            </div>
+
+                            <div class="d-flex justify-content-between" >
+                                <p class="mb-0" >ذهبى</p>
+                                <p class="mb-0" >gold</p>
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="mt-4 modify-data">
+                        <a class="primary-btn btn-hover btn-curved p-3 mb-2 mb-md-0" id="toggel-profile" style="cursor: pointer;">تعديل البيانات</a>
+                    </div>
+                </div>
+                <div class="col-lg-7 px-0 px-md-2">
+                    <div id="profile">
+                    <table class="table table-striped color-black">
                         <tbody>
                             <tr>
-                                <td class="color-black">
-                                125
-                                </td>
-                                <th class="color-black">
-                                    رصيد النقاط
-                                </th>
+                                <th class="color-black text-center" scope="row">الأسم</th>
+                                <td class="color-black text-center">{{Auth::user()->name}}</td>
                             </tr>
                             <tr>
-                                <td class="color-black">
-                                100
-                                </td>
-                                <th class="color-black">
-                                   ريال
-                                </th>
+                                <th class="color-black text-center" scope="row">رقم الهوية</th>
+                                <td class="color-black text-center">{{Auth::user()->id_number}}</td>
+
                             </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center align-items-end information-card">
-                    <img src="{{asset('front/img/smallgoldencard.png')}}" alt="client-type" style="width: 90%;">
-                    <div class="pb-2" style="width: 70%;position:absolute;font-weight: 700;text-shadow: 1px 1px black;">
-                        <p class="mb-0">{{Auth::user()->name}}</p>
-                        <div class="d-flex justify-content-between" >
-                            <p class="mb-0" >DATE</p>
-                            <p class="mb-0" >1234567890</p>
-                        </div>
+                            <tr>
+                                <th class="color-black text-center" scope="row">تاريخ انتهاء الهوية</th>
+                                <td class="color-black text-center">{{Auth::user()->id_expiry_date}}</td>
 
-                        <div class="d-flex justify-content-between" >
-                            <p class="mb-0" >ذهبى</p>
-                            <p class="mb-0" >gold</p>
-                        </div>
+                            </tr>
+                            <tr>
+                                <th class="color-black text-center" scope="row">تاريخ انتهاء رخصة القيادة</th>
+                                <td class="color-black text-center">{{Auth::user()->driver_id_expiry_date}}/td>
 
-                    </div>
+                            </tr>
+                            <tr>
+                                <th class="color-black text-center" scope="row">تاريخ الميلاد</th>
+                                <td class="color-black text-center">{{Auth::user()->date_of_birth}}</td>
 
+                            </tr>
+                            <tr>
+                                <th class="color-black text-center" scope="row">الجنسية</th>
+                                <td class="color-black text-center">{{Auth::user()->nationality}}</td>
 
+                            </tr>
+                            <tr>
+                                <th class="color-black text-center" scope="row">رقم الجوال</th>
+                                <td class="color-black text-center">{{Auth::user()->phone}}</td>
 
-                </div>
+                            </tr>
+                            <tr>
+                                <th class="color-black text-center" scope="row">البريد الالكترونى</th>
+                                <td class="color-black text-center">{{Auth::user()->email}}</td>
+
+                            </tr>
 
                 <div class="mt-4 modify-data">
                     <a class="primary-btn btn-hover btn-curved p-3" id="toggel-profile" style="cursor: pointer;">تعديل البيانات</a>
@@ -130,15 +186,35 @@
                 </table>
                 </div>
 
-                <div id="update-profile" class="d-none">
-                @include('frontend.profile.form')
+
+                            <tr>
+                                <th class="color-black text-center" scope="row">النوع</th>
+                                <td class="color-black text-center">{{Auth::user()->gender}}</td>
+
+                            </tr>
+
+                            <tr>
+                                <th class="color-black text-center" scope="row">العنوان</th>
+                                <td class="color-black text-center">{{Auth::user()->address}}</td>
+
+                            </tr>
+                            <tr>
+                                <th class="color-black text-center" scope="row">صندوق البريد</th>
+                                <td class="color-black text-center">{{Auth::user()->post_box}} </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+
+                    <div id="update-profile" class="d-none">
+                    @include('frontend.profile.form')
+                    </div>
+
+
                 </div>
-
-
             </div>
+
+
         </div>
-
-
-    </div>
     </div>
 </x-front-layout>
