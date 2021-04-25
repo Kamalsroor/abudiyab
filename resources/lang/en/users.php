@@ -15,4 +15,8 @@ return [
         'go' => 'Go To Dashboard',
         'leave' => 'Back To Previous Account',
     ],
+    'gender' => [
+        'male' => 'male',
+        'female' => 'female',
+    ],
 ];

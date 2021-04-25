@@ -34,6 +34,18 @@ return [
         'password_confirmation' => 'تأكيد كلمة المرور',
         'type' => 'نوع المستخدم',
         'avatar' => 'الصورة الشخصية',
+
+
+        'id_number' => 'رقم البطاقه الشخصيه',
+        'id_expiry_date' => 'تاريخ انتهاء البطاقه الشخصيه',
+        'driver_id_expiry_date' => 'تاريخ انتهاء رخصه القياده',
+        'date_of_birth' => 'تاريخ الميلاد',
+        'nationality' => 'الجنسيه',
+        'gender' => 'النوع',
+        'address' => 'العنوان',
+        'driver_number' => 'رقم رخصه القياده',
+        'user_data_confirmed' => 'تاكيد بيانات العميل',
+
     ],
     'dialogs' => [
         'delete' => [

@@ -79,8 +79,13 @@
 
                         </tr>
                         <tr>
+                            <th class="color-black text-center" scope="row">رقم رخصة القيادة</th>
+                            <td class="color-black text-center">{{Auth::user()->driver_number}}</td>
+
+                        </tr>
+                        <tr>
                             <th class="color-black text-center" scope="row">تاريخ انتهاء رخصة القيادة</th>
-                            <td class="color-black text-center">{{Auth::user()->driver_id_expiry_date}}/td>
+                            <td class="color-black text-center">{{Auth::user()->driver_id_expiry_date}}</td>
 
                         </tr>
                         <tr>

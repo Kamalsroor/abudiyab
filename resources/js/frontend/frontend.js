@@ -39,7 +39,20 @@ $(document).ready(function() {
 
     })
 
+    $('#toggel-profile').click(function() {
+        $('#update-profile').toggleClass('d-none');
+        $('#profile').toggleClass('d-none');
+        $('#toggel-profile').toggleClass('d-none');
 
+    })
+
+    function openForm() {
+        document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
     window.addEventListener('removeSlideCarModel', event => {
 
         // $('.car-model__heading').slick('removeSlide', null, null, true);

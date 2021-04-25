@@ -29,8 +29,8 @@ class ProfileController extends Controller
      */
     public function update(ProfileRequest $request)
     {
-        $user = auth()->user();
 
+        $user = auth()->user();
         $user->update($request->allWithHashedPassword());
 
         if ($request->hasFile('avatar')) {
