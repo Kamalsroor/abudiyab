@@ -118,10 +118,19 @@
                         <div class="modal-body">
                             <input class="form-control my-2" type="text" placeholder="أدخل رقم الهوية">
                             <input class="form-control my-2" type="text" placeholder="أدخل الكود هنا">
+                                <div class="alert alert-success my-2" role="alert">
+                                    A simple primary alert—check it out!
+                                </div>
+                                <div class="alert alert-warning my-2" role="alert">
+                                    A simple primary alert—check it out!
+                                </div>
+                                <div class="alert alert-danger my-2" role="alert">
+                                    A simple primary alert—check it out!
+                                </div>
                         </div>
                         <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">إغلاق</button>
-                        <button type="button" class="btn btn-primary">الاستعلام</button>
+                            <button type="button" class="btn btn-primary mx-1">الاستعلام</button>
+                            <button type="button" class="btn btn-secondary mx-1" data-dismiss="modal">إغلاق</button>
                         </div>
                     </div>
                     </div>
