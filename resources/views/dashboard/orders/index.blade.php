@@ -38,6 +38,7 @@
             </th>
             <th>@lang('orders.attributes.id')</th>
             <th>@lang('orders.attributes.name')</th>
+            <th>@lang('customers.attributes.name')</th>
             <th>@lang('orders.attributes.booking_days')</th>
             <th>@lang('orders.attributes.recieving_date')</th>
             <th>@lang('orders.attributes.recieving_branch')</th>
@@ -45,6 +46,7 @@
             <th>@lang('orders.attributes.delivery_branch')</th>
             <th>@lang('orders.attributes.payment_type')</th>
             <th>@lang('orders.attributes.payment_status')</th>
+            <th>@lang('orders.attributes.status')</th>
             <th>@lang('orders.attributes.created_at')</th>
             <th style="width: 160px">...</th>
 
@@ -58,7 +60,10 @@
         </thead>
         <tbody>
         @forelse($orders as $order)
-            <tr class="{{ $order->read() ? 'tw-bg-gray-300' : 'font-weight-bold tw-bg-gray-100' }}">
+            <tr class="{{ $order->read() ? 'tw-bg-gray-300' : 'font-weight-bold tw-bg-gray-100' }} {{  $order->pending() ? 'table-info' : ''}} {{  $order->rejected() ? 'table-danger' : ''}}">
+
+
+
                 <td class="text-center">
                   <x-check-all-item :model="$order"></x-check-all-item>
                 </td>
@@ -69,9 +74,27 @@
                     </a>
                 </td>
                 <td>
-                    <a href="{{ route('dashboard.orders.show', $order) }}"
+                    <a href="{{ route('dashboard.cars.show', $order->car) }}"
                        class="text-decoration-none text-ellipsis">
+
+                        <img src="{{ $order->car->getFirstMediaUrl() }}"
+                             alt="Product 1"
+                             class="img-circle img-size-32 mr-2" style="height: 32px;">
                         {{ $order->car->name }}
+                    </a>
+                </td>
+
+                <td>
+                    <a href="{{ route('dashboard.customers.show', $order->customer) }}"
+                        target="_blank"
+                       class="text-decoration-none text-ellipsis">
+                            <span class="index-flag">
+                            @include('dashboard.accounts.customers.partials.flags.svg')
+                            </span>
+                        <img src="{{ $order->customer->getAvatar() }}"
+                             alt="Product 1"
+                             class="img-circle img-size-32 mr-2">
+                        {{ $order->customer->name }}
                     </a>
                 </td>
                 <td>{{ $order->days}}</td>
@@ -81,18 +104,14 @@
                 <td>{{ $order->deliveryBranch->name }}</td>
                 <td>{{ $order->payment_type }}</td>
                 <td>{{ $order->payment_status == "SUCCESS" ? "تم الدفع" : "لم يتم تأكيد الدفع"  }}</td>
+                <td>{{ trans('orders.status.'.$order->status)  }}</td>
                 <td>{{ $order->created_at->diffForHumans() }}</td>
 
-
-
-
-
                 {{-- <td>{{ $order-> }}</td> --}}
-
                 <td style="width: 160px">
                     @include('dashboard.orders.partials.actions.show')
-                    @include('dashboard.orders.partials.actions.edit')
-                    @include('dashboard.orders.partials.actions.delete')
+                    {{-- @include('dashboard.orders.partials.actions.edit') --}}
+                    {{-- @include('dashboard.orders.partials.actions.delete') --}}
                 </td>
             </tr>
         @empty

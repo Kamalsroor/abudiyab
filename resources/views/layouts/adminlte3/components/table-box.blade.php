@@ -10,7 +10,7 @@
     @endif
 
     <div class="card-body table-responsive p-0">
-        <table class="table table-hover table-striped table-valign-middle">
+        <table class="table table-hover table-striped table-valign-middle table-sm">
             {{ $slot }}
         </table>
     </div>
