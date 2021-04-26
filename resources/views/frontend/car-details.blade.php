@@ -28,7 +28,7 @@
                                     <a href="#" class="btn btn-dark">احجز الان</a>
                                 </div>
                                 <div class="b-car-details__header-r">
-                                    <h2 class="b-car-details__title">S 320 مرسيدس</h2>
+                                    <h2 class="b-car-details__title">{{$car->name}}</h2>
                                     <div class="b-car-details__subtitle">فخمة كبيرة</div>
                                     <div class="b-car-details__address"></div>
                                 </div>

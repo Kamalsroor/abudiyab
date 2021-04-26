@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Frontend;
 use App\Events\FeedbackSent;
 use Illuminate\Routing\Controller;
 use App\Http\Requests\Frontend\ContactRequest;
-use Auth;
 use App\Models\Branch;
 use App\Models\Car;
 use App\Models\Work;
@@ -15,15 +14,10 @@ use App\Models\WorkCandidates;
 use App\Models\Setting;
 use App\Models\Slider;
 use App\Models\Category;
-use App\Models\Work as ModelsWork;
-use Illuminate\Support\Facades\Http;
-use App\Payment\MasterCardPayment;
+use App\Models\Membership;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Livewire\WithPagination;
-use Livewire\Component;
-use Redirect;
-use Illuminate\Support\MessageBag;
+
+
 class FrontendController extends Controller
 {
     /**
@@ -64,10 +58,7 @@ class FrontendController extends Controller
         return view('frontend.car_sales');
     }
 
-    public function CarDetails()
-    {
-        return view('frontend.car-details');
-    }
+
 
     public function services()
     {
@@ -83,7 +74,10 @@ class FrontendController extends Controller
 
     public function MembershipCards()
     {
-        return view('frontend.membership_cards');
+        $Memberships  = Membership::all();
+
+
+        return view('frontend.membership_cards',compact('Memberships'));
     }
     public function bookingModal(Request $request)
     {

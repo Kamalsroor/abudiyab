@@ -180,8 +180,19 @@ class Order extends Model
      */
     public function scopeUnread($query)
     {
+
         return $query->whereNull('read_at');
     }
 
+    /**
+     * Scope the query to include only unread messages.
+     *
+     * @param $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeIsConfirmed($query)
+    {
+        return $query->where('status' , 'confirmed');
+    }
 
 }

@@ -13,5 +13,6 @@
     "manage.partners",
     "manage.offers",
     "manage.jobs",
-    "manage.works"
+    "manage.works",
+    "manage.memberships"
 ]

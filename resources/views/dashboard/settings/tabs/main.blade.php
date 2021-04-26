@@ -10,6 +10,15 @@
 
         @endBsMultilangualFormTabs
 
+        <select2
+            placeholder="@lang('memberships.singular')"
+            name="membership_default"
+            id="memberships"
+            value="{{Settings::get('membership_default')}}"
+            label="@lang('memberships.default')"
+            remote-url="{{ route('api.memberships.select') }}"
+        ></select2>
+
         @if(is_array(trans('settings.dashboard_templates')) && ! empty(trans('settings.dashboard_templates')))
             {{ BsForm::select('dashboard_template')
                     ->options(trans('settings.dashboard_templates'))
