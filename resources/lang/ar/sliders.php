@@ -30,6 +30,7 @@ return [
     'attributes' => [
         'name' => 'اسم السليدر',
         '%name%' => 'اسم السليدر',
+        'is_mobile' => 'اظهار في الهاتف',
         'image' => 'صورة السليدر',
         'created_at' => 'اضافة في',
         'deleted_at' => 'حذف في',

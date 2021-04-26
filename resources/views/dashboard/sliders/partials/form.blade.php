@@ -4,7 +4,9 @@
 {{ BsForm::text('first_header') }}
 {{ BsForm::text('second_header') }}
 @endBsMultilangualFormTabs
-
+<div class="col-md-12">
+    {{ BsForm::checkbox('is_mobile')->value(1)->withoutDefault()->checked(false) }}
+</div>
 @isset($slider)
     {{ BsForm::image('image')->files($slider->getMediaResource()) }}
 @else
