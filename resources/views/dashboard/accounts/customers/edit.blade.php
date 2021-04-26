@@ -6,7 +6,8 @@
         @include('dashboard.accounts.customers.partials.form')
 
         @slot('footer')
-            {{ BsForm::submit()->label(trans('customers.actions.save')) }}
+            {{ BsForm::submit()->label(trans('customers.actions.confirme')) }}
+            {{ BsForm::submit()->label(trans('customers.actions.reject')) }}
         @endslot
     @endcomponent
     {{ BsForm::close() }}

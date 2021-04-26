@@ -11,6 +11,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use AhmedAliraqi\LaravelMediaUploader\Entities\Concerns\HasUploader;
+use App\Models\CustmerRequest;
 
 class RegisterController extends Controller implements HasMedia
 {
@@ -55,11 +56,15 @@ class RegisterController extends Controller implements HasMedia
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name ' => ['required', 'string', 'max:255'],
+            'username' => ['required','string', 'max:255'],
             'password' => ['required','confirmed', 'max:255'],
             'id_number' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', 'unique:users'],
-            'phone' => ['required', 'string', 'min:8','unique:users']
+            'phone' => ['required', 'string', 'min:8','unique:users'],
+            'identityFace' => ['required'],
+            'identityBack' => ['required'],
+            'licenceFace' => ['required'],
+            'licenceBack' => ['required'],
         ], [], trans('dashboard.auth.register'));
     }
 
@@ -72,16 +77,19 @@ class RegisterController extends Controller implements HasMedia
     protected function create(array $data)
     {
         $newUser=User::create([
-            'name' => $data['name'],
+            'name' => $data['username'],
             'email' => $data['email'],
             'phone' => $data['phone'],
-            'id_number' => $data['id_number'],
             'type' => User::CUSTOMER_TYPE,
             'password' => Hash::make($data['password']),
         ]);
-        $newUser->addMediaFromRequest('identity')->toMediaCollection('identity');
-        $newUser->addMediaFromRequest('licence')->toMediaCollection('licence');
+        $CustmerRequest = CustmerRequest::create([
+            'user_id' => $newUser['id'],
+        ]);
+        $CustmerRequest->addMediaFromRequest('identityFace')->toMediaCollection('identityFace');
+        $CustmerRequest->addMediaFromRequest('identityBack')->toMediaCollection('identityBack');
+        $CustmerRequest->addMediaFromRequest('licenceFace')->toMediaCollection('licenceFace');
+        $CustmerRequest->addMediaFromRequest('licenceBack')->toMediaCollection('licenceBack');
         return $newUser;
-
     }
 }

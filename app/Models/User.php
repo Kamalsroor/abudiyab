@@ -79,6 +79,7 @@ class User extends Authenticatable implements HasMedia
         'id_number',
         'id_expiry_date',
         'driver_id_expiry_date',
+        'driver_number',
         'date_of_birth',
         'nationality',
         'gender',
@@ -211,10 +212,16 @@ class User extends Authenticatable implements HasMedia
                     ->format('png');
             });
             $this
-            ->addMediaCollection('identity')
+            ->addMediaCollection('identityFace')
             ->singleFile();
             $this
-            ->addMediaCollection('licence')
+            ->addMediaCollection('identityBack')
+            ->singleFile();
+            $this
+            ->addMediaCollection('licenceFace')
+            ->singleFile();
+            $this
+            ->addMediaCollection('licenceBack')
             ->singleFile();
     }
 

@@ -42,12 +42,14 @@
             <th class="d-none d-md-table-cell">@lang('customers.attributes.email')</th>
             <th>@lang('customers.attributes.phone')</th>
             <th>@lang('customers.attributes.created_at')</th>
+            <th style="width: 160px">البطاقه الشخصيه</th>
+            <th style="width: 160px">رخصه القياده</th>
             <th style="width: 160px">...</th>
         </tr>
         </thead>
         <tbody>
         @forelse($customers as $customer)
-            <tr>
+            <tr class="{{($customer->user_data_confirmed) ? 'table-primary':'table-danger'}}">
                 <td>
                     <x-check-all-item :model="$customer"></x-check-all-item>
                 </td>
@@ -71,6 +73,22 @@
                     @include('dashboard.accounts.customers.partials.flags.phone')
                 </td>
                 <td>{{ $customer->created_at->format('Y-m-d') }}</td>
+                <td>
+                    <a class="text-decoration-none text-ellipsis" target="__blank" href="{{ $customer->getFirstMediaUrl('identityFace') }}">
+                        الوجه الامامي
+                    </a>
+                    <a class="text-decoration-none text-ellipsis" target="__blank" href="{{ $customer->getFirstMediaUrl('identityBack') }}">
+                        الوجه الخلفي
+                    </a>
+                </td>
+                <td>
+                    <a class="text-decoration-none text-ellipsis" target="__blank" href="{{ $customer->getFirstMediaUrl('licenceFace') }}">
+                        الوجه الامامي
+                    </a>
+                    <a class="text-decoration-none text-ellipsis" target="__blank" href="{{ $customer->getFirstMediaUrl('licenceBack') }}">
+                        الوجه الخلفي
+                    </a>
+                </td>
 
                 <td style="width: 160px">
                     @include('dashboard.accounts.customers.partials.actions.show')
@@ -86,7 +104,7 @@
 
         @if($customers->hasPages())
             @slot('footer')
-                {{ $customers->links() }}
+            {{ $customers->links() }}
             @endslot
         @endif
     @endcomponent
