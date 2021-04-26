@@ -63,7 +63,7 @@ class Customer extends User
 
     public function confirmed()
     {
-        return ! ! $this->user_data_confirmed;
+        return true;
     }
 
     /**
@@ -102,7 +102,7 @@ class Customer extends User
      */
     public function scopeUnConfirmed($query)
     {
-        return $query->where('user_data_confirmed','0');
+        return $query;
     }
     /**
      * Scope the query to include only unread messages.
@@ -112,6 +112,6 @@ class Customer extends User
      */
     public function scopeConfirmed($query)
     {
-        return $query->where('user_data_confirmed','1');
+        return $query;
     }
 }
