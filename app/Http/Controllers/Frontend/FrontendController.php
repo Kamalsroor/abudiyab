@@ -37,8 +37,8 @@ class FrontendController extends Controller
         $allCategories  = Category::all();
         $showCategoriesCars = Car::where('category_id' , $showCategories->first()->id)->get();
         $partners   =  Partner::all();
-        $sliders    =   Slider::where('is_mobile',0)->all();
-        $miniSliders    =   Slider::where('is_mobile',1)->all();
+        $sliders    =   Slider::where('is_mobile',0)->get();
+        $miniSliders    =   Slider::where('is_mobile',1)->get();
         $showFirstCatInCatgories   =  Car::where('category_id' , $showCategories->first()->id)->get();
         $firstcar   = $showFirstCatInCatgories->first();
         return view('frontend.main2', compact('sliders','miniSliders','showFirstCatInCatgories','showCategories','showCategoriesCars','allCategories','firstcar','partners'));
