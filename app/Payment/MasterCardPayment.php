@@ -122,10 +122,73 @@ class MasterCardPayment extends Controller
         ])->post(config('BankPayment.ApiUrl'). '/merchant/'.self::$merchantID.'/session', $data)->json();
 
         self::$sessionID = $response;
+
         if (self::$sessionID['result'] == "SUCCESS") {
             # code...
             return self::$sessionID['session']['id'];
         }
+	}
+
+	/*
+	*	Create Session SandBox for Payment via MasterCard Or Visa
+	*/
+	public static function createTransactionAuthorize($orderID, $merchantID, $merchantPassword , $sessionID)
+	{
+
+
+		self::$orderID = $orderID;
+		self::$merchantID = $merchantID;
+		self::$merchantPassword = $merchantPassword;
+        // PAY
+        // 'apiOperation' => "VERIFY",
+        // 'apiOperation' => "AUTHORIZE",
+        // 'apiOperation' => "CAPTURE",
+        $data = [
+			'apiOperation' => "AUTHORIZE",
+			'order' => [
+				'amount' => 10,
+				'currency' => "SAR"
+            ],
+            'session' => [
+                'id' => $sessionID,
+            ],
+            'sourceOfFunds' => [
+                'type' => 'CARD',
+                'provided' => [
+                    'card' => [
+                        'number' => '5297411991746553',
+                        'expiry' => [
+                            'month' => '06',
+                            'year' => '23',
+                        ],
+                        'securityCode' => '578',
+                    ],
+
+                ],
+            ]
+		];
+
+        // 'number' => '5297411991746553',
+        // 'expiry' => [
+        //     'month' => '06',
+        //     'year' => '23',
+        // ],
+        // 'securityCode' => '578',
+
+        // https://ap-gateway.mastercard.com/api/rest/version/59/merchant/{merchantId}/order/{orderid}/transaction/{transactionid}
+        // $test = MasterCardPayment::createSessionSandBox();
+        $response = Http::contentType("application/json")
+        ->withBasicAuth('merchant.'.self::$merchantID, self::$merchantPassword)
+        ->withHeaders([
+            'Accept' => 'application/json'
+        ])->put(config('BankPayment.ApiUrl'). '/merchant/'.self::$merchantID.'/order/'.self::$orderID.'/transaction/1003', $data)->json();
+
+        self::$sessionID = $response;
+        return self::$sessionID ;
+        // if (self::$sessionID['result'] == "SUCCESS") {
+        //     # code...
+        //     return self::$sessionID['session']['id'];
+        // }
 	}
 
 	/*
@@ -305,7 +368,6 @@ class MasterCardPayment extends Controller
 				'currency' => config('BankPayment.currency')
             ]
 		];
-
 
         $response = Http::contentType("application/json")
         ->withBasicAuth('merchant.'.self::$merchantID, self::$merchantPassword)

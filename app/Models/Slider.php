@@ -40,6 +40,7 @@ class Slider extends Model implements HasMedia, TranslatableContract
         'name',
         'first_header',
         'second_header',
+        'is_mobile',
     ];
 
     /**

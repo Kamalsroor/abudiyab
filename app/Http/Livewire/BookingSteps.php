@@ -281,11 +281,16 @@ class BookingSteps extends Component
             $merchantPassword = "8c9e1db3899b93bd92348bc176cc109c";
             // $merchantID = "TEST3000000721";
             // $merchantPassword = "0c7fb828291074dc52486465bbf18e69";
+
             $sessionID = MasterCardPayment::createSessionSandBox($orderID, $merchantID, $merchantPassword);
+            // dd($sessionID);
+            // $createTransactionAuthorize = MasterCardPayment::createTransactionAuthorize($orderID, $merchantID, $merchantPassword,$sessionID);
+            // dd($createTransactionAuthorize);
 
             $successURL = "completeCallback";
             $failURL = "errorCallback";
             $totalPrice = $this->total;
+            // $totalPrice = 5;
             $siteName = "test";
             $siteAddress = "tetst";
             $siteEmail = "kamal.s.sroor@gmail.com";
@@ -299,7 +304,7 @@ class BookingSteps extends Component
                 'session_id' => $sessionID,
                 'merchant_name' => $siteName,
             ];
-
+            // dd($this->paymentData );
             $this->dispatchBrowserEvent('openPayment', $this->paymentData);
         }else{
 
