@@ -6,6 +6,7 @@
         @slot('name', trans('users.plural'))
         @slot('active', request()->routeIs('*admins*') || request()->routeIs('*customers*'))
         @slot('icon', 'fas fa-users')
+        @slot('badge', count_formatted(\App\Models\Customer::UnConfirmed()->count()) ?: null)
         @slot('tree', [
             [
                 'name' => trans('admins.plural'),
@@ -25,7 +26,7 @@
                 'can' => ['ability' => 'viewAny', 'model' => \App\Models\Customer::class],
                 'active' => request()->routeIs('*customers*'),
             ],
-    
+
         ])
     @endcomponent
 @endif

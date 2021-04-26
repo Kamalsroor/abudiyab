@@ -34,6 +34,17 @@ return [
         'password_confirmation' => 'Password Confirmation',
         'type' => 'User Type',
         'avatar' => 'Avatar',
+
+        'id_number' => 'identity number',
+        'id_expiry_date' => 'identity expire date',
+        'driver_id_expiry_date' => 'licence expire date',
+        'date_of_birth' => 'date of nirth',
+        'nationality' => 'nationality',
+        'gender' => 'gender',
+        'address' => 'address',
+        'driver_number' => 'licence number',
+        'user_data_confirmed' => 'confirme user data',
+
     ],
     'dialogs' => [
         'delete' => [

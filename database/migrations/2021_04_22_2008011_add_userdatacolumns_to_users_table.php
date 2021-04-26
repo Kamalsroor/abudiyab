@@ -14,13 +14,6 @@ class AddUserDataColumnsToUsersTable extends Migration
     public function up()
     {
 
-
-
-
-
-
-
-
         Schema::table('users', function (Blueprint $table) {
             $table->string('driver_number')->nullable();
             $table->boolean('user_data_confirmed')->default(0);

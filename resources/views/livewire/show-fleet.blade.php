@@ -189,7 +189,7 @@
                                 <b class="ml-2"><i class="icofont icofont-cur-riyal"></i> {{$priceRangeNewStart}}</b>
 
                             </div>
-                            
+
                             <div  class="py-2 text-center mb-2 category-menu-heading">
                                 <p class="m-0">نــوع الـســيــــارة</p>
                             </div>
@@ -220,7 +220,8 @@
                                     <div class="container-fluid color-black ">
                                         <div class="row ">
                                             <div class="col-lg-9 col-12 text-right">
-                                                <h3 class="color-black fleet-car-name" style="display: inline">{{$formcar->name}} <span  class=" color-black">أو مشابهة</span></h3>
+
+                                                <a href="{{route('front.car.show',$formcar)}}"><h3 class="color-black fleet-car-name" style="display: inline">{{$formcar->name}} <span  class=" color-black">أو مشابهة</span></h3></a>
                                                 <span class="color-black text-right addToFavorite {{in_array($formcar->id,$favCars) ? 'active' : ''}}" data-id="{{$formcar->id}}"><i class="far fa-heart heart"></i><i class="fas fa-heart heart"></i></span>
 
                                                 <h3 class="fleet-car-model" >{{$formcar->model}}</h3>

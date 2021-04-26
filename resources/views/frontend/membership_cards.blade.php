@@ -6,81 +6,28 @@
         <section class="membership-cards-page_center">
             <div class="container">
                 <div class="row">
-                    <div class="col-12 col-md-3 p-3">
-                        <div class="card" >
-                            <img src="{{asset('front/img/rosegold.png')}}" class="card-img-top" alt="gold-card">
-                            <div class="card-body">
-                                <h5 class="card-title text-right">العضوية البرونزية</h5>
-                                <ul>
-                                    <li class="text-right">خصم التأخير : 20%</li>
-                                    <li class="text-right">الكيلو المسموح : 325</li>
-                                    <li class="text-right">الساعات الزائدة : 5</li>
-                                    <li class="text-right">خصم التسليم بين المناطق : 50%</li>
-                                    <li class="text-right">النقاط المكتسبة لكل 100 ريال مدفوع : 1</li>
-                                </ul>
-                                <div class="text-center py-2">
-                                 <a href="#"  class="primary-btn btn-hover btn-curved mt-2 p-2"><i class="fab fa-whatsapp"></i> أطلب العضوية</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-3 p-3">
-                        <div class="card" >
-                            <img src="{{asset('front/img/33-Silver.png')}}" class="card-img-top" alt="silver-card">
-                            <div class="card-body">
-                                <h5 class="card-title text-right">العضوية الفضية</h5>
-                                <ul>
-                                    <li class="text-right">خصم التأخير : 15%</li>
-                                    <li class="text-right">الكيلو المسموح : 300</li>
-                                    <li class="text-right">الساعات الزائدة : 5</li>
-                                    <li class="text-right">خصم التسليم بين المناطق : 50%</li>
-                                    <li class="text-right">النقاط المكتسبة لكل 100 ريال مدفوع : 1</li>
-                                </ul>
-                                <div class="text-center py-2">
+                    @foreach ($Memberships as $Membership)
+                        <div class="col-12 col-md-3 p-3">
+                            <div class="card" >
+                                <img src="{{$Membership->getFirstMediaUrl()}}" class="card-img-top" alt="{{$Membership->name}}">
+                                <div class="card-body">
+                                    <h5 class="card-title text-right">{{$Membership->name}}</h5>
+                                    <ul>
+                                        <li class="text-right">خصم التأخير : {{$Membership->rental_discount}}%</li>
+                                        <li class="text-right">الكيلو المسموح : {{$Membership->allowed_Kilos}}</li>
+                                        <li class="text-right">الساعات الزائدة : {{$Membership->extra_hours}}</li>
+                                        <li class="text-right">خصم التسليم بين المناطق : {{$Membership->delivery_discount_regions}}%</li>
+                                        <li class="text-right">النقاط المكتسبة لكل 100 ريال مدفوع : {{$Membership->ratio_points}}</li>
+                                    </ul>
+                                    <div class="text-center py-2">
                                     <a href="#"  class="primary-btn btn-hover btn-curved mt-2 p-2"><i class="fab fa-whatsapp"></i> أطلب العضوية</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-md-3 p-3">
-                        <div class="card" >
-                            <img src="{{asset('front/img/31-gold-psd.png')}}" class="card-img-top" alt="bronze-card">
-                            <div class="card-body">
-                                <h5 class="card-title text-right">العضوية الذهبية</h5>
-                                <ul>
-                                    <li class="text-right">خصم التأخير : 12%</li>
-                                    <li class="text-right">الكيلو المسموح : 250</li>
-                                    <li class="text-right">الساعات الزائدة : 3</li>
-                                    <li class="text-right">خصم التسليم بين المناطق : 50%</li>
-                                    <li class="text-right">النقاط المكتسبة لكل 100 ريال مدفوع : 1/2</li>
-                                </ul>
-                                <div class="text-center py-2">
-                                    <a href="#"  class="primary-btn btn-hover btn-curved mt-2 p-2"><i class="fab fa-whatsapp"></i> أطلب العضوية</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-3 p-3">
-                        <div class="card" >
-                            <img src="{{asset('front/img/33-platinum-frontpsd.png')}}" class="card-img-top" alt="bronze-card">
-                            <div class="card-body">
-                                <h5 class="card-title text-right">العضوية البلاتنيوم</h5>
-                                <ul>
-                                    <li class="text-right">خصم التأخير : 12%</li>
-                                    <li class="text-right">الكيلو المسموح : 250</li>
-                                    <li class="text-right">الساعات الزائدة : 3</li>
-                                    <li class="text-right">خصم التسليم بين المناطق : 50%</li>
-                                    <li class="text-right">النقاط المكتسبة لكل 100 ريال مدفوع : 1/2</li>
-                                </ul>
-                                <div class="text-center py-2">
-                                    <a href="#"  class="primary-btn btn-hover btn-curved mt-2 p-2"><i class="fab fa-whatsapp"></i> أطلب العضوية</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
-
     </section>
 </x-front-layout>

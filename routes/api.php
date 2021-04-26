@@ -61,4 +61,8 @@ Route::get('/select/offers', 'OfferController@select')->name('offers.select');
 
 Route::apiResource('works', 'WorkController');
 Route::get('/select/works', 'WorkController@select')->name('works.select');
+Route::apiResource('custmerrequests', 'CustmerrequestController');
+Route::get('/select/custmerrequests', 'CustmerrequestController@select')->name('custmerrequests.select');
+Route::apiResource('memberships', 'MembershipController');
+Route::get('/select/memberships', 'MembershipController@select')->name('memberships.select');
 /*  The routes of generated crud will set here: Don't remove this line  */

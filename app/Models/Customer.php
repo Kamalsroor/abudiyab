@@ -60,4 +60,58 @@ class Customer extends User
     {
         return route('dashboard.customers.show', $this);
     }
+
+    public function confirmed()
+    {
+        return true;
+    }
+
+    /**
+     * Mark the message as read.
+     *
+     * @return $this
+     */
+    public function markAsConfirmed()
+    {
+        if (! $this->confirmed()) {
+            $this->forceFill(['user_data_confirmed' => '1'])->save();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Mark the message as unread.
+     *
+     * @return $this
+     */
+    public function markAsUnConfirmed()
+    {
+        if ($this->confirmed()) {
+            $this->forceFill(['user_data_confirmed' => 0])->save();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Scope the query to include only unread messages.
+     *
+     * @param $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeUnConfirmed($query)
+    {
+        return $query;
+    }
+    /**
+     * Scope the query to include only unread messages.
+     *
+     * @param $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeConfirmed($query)
+    {
+        return $query;
+    }
 }

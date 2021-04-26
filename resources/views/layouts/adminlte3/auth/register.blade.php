@@ -12,7 +12,7 @@
                     <p class="color-black text-right text-md-center" >الاسم</p>
                     </div>
                     <div class="col px-0">
-                    <input type="text" class="form-control" name="name"
+                    <input type="text" class="form-control" name="username"
                     value="{{ old('name') }}"
                     autofocus>
                     @if($errors->has('name'))
@@ -77,21 +77,41 @@
                 </div>
                 <div class="row py-3 px-4 mx-0">
                     <div class="col-md-2 col-12">
-                    <p class="color-black text-right text-md-center">البطاقه الشخصيه</p>
+                    <p class="color-black text-right text-md-center">البطاقه الشخصيه الوجه الامامي</p>
                     </div>
                     <div class="col px-0">
-                    <input  type="file" class="form-control" id="" name='identity' placeholder="البطاقه الشخصيه">
+                    <input  type="file" class="form-control" id="" name='identityFace' placeholder="البطاقه الشخصيه">
                     @if($errors->has('identity'))
                         <div class="valiadtion-error">{{ $errors->first('identity') }}</div>
                     @endif
                     </div>
                     <div class="col-md-2 col-12">
-                    <p class="color-black text-right text-md-center">الرخصه</p>
+                    <p class="color-black text-right text-md-center">البطاقه الشخصيه الوجه الخلفي</p>
                     </div>
                     <div class="col px-0">
-                    <input  type="file" class="form-control" id="" name='licence' placeholder="البطاقه الشخصيه">
-                    @if($errors->has('licence'))
-                        <div class="valiadtion-error">{{ $errors->first('licence') }}</div>
+                    <input  type="file" class="form-control" id="" name='identityBack' placeholder="البطاقه الشخصيه">
+                    @if($errors->has('identityBack'))
+                        <div class="valiadtion-error">{{ $errors->first('identityBack') }}</div>
+                    @endif
+                    </div>
+                </div>
+                <div class="row py-3 px-4 mx-0">
+                    <div class="col-md-2 col-12">
+                    <p class="color-black text-right text-md-center">الرخصه الوجه الامامي</p>
+                    </div>
+                    <div class="col px-0">
+                    <input  type="file" class="form-control" id="" name='licenceFace' placeholder="البطاقه الشخصيه">
+                    @if($errors->has('licenceFace'))
+                        <div class="valiadtion-error">{{ $errors->first('licenceFace') }}</div>
+                    @endif
+                    </div>
+                    <div class="col-md-2 col-12">
+                    <p class="color-black text-right text-md-center">الرخصه الوجه الخلفي</p>
+                    </div>
+                    <div class="col px-0">
+                    <input  type="file" class="form-control" id="" name='licenceBack' placeholder="البطاقه الشخصيه">
+                    @if($errors->has('licenceBack'))
+                        <div class="valiadtion-error">{{ $errors->first('licenceBack') }}</div>
                     @endif
                     </div>
                 </div>
