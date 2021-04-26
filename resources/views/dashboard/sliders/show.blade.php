@@ -11,6 +11,10 @@
                         <th width="200">@lang('sliders.attributes.name')</th>
                         <td>{{ $slider->name }}</td>
                     </tr>
+                    <tr>
+                        <th width="200">@lang('sliders.attributes.name')</th>
+                        <td>{{ $slider->is_mobile ? 'اظهار في الهاتف'  : 'تظهر في الشاشه الكبيرة'}}</td>
+                    </tr>
 
 
                     <tr>
