@@ -35,7 +35,12 @@ Route::as('front.')->group(function () {
     Route::get('/branches', 'Frontend\FrontendController@branches')->name('branches');
     Route::get('/media_center', 'Frontend\FrontendController@MediaCenter')->name('media_center');
     Route::get('/car_sales', 'Frontend\FrontendController@CarSales')->name('car_sales');
-    Route::get('/car-details', 'Frontend\FrontendController@CarDetails')->name('car_details');
+
+    Route::as('car.')->group(function () {
+        Route::get('car/{car}', 'Frontend\CarsController@show')->name('show');
+    });
+
+
     Route::get('/services', 'Frontend\FrontendController@services')->name('services');
     Route::get('/points_program', 'Frontend\FrontendController@PointsProgram')->name('points_program');
     Route::get('/membership_cards', 'Frontend\FrontendController@MembershipCards')->name('membership_cards');

@@ -14,9 +14,11 @@
                     <x-check-all-delete
                             type="{{ \App\Models\Customer::class }}"
                             :resource="trans('customers.plural')"></x-check-all-delete>
+
                     <x-import-excel
                             model="{{ \App\Models\Customer::class }}"
                             import="{{ \App\Imports\CustomersImport::class }}"
+                            exportResource="{{ App\Http\Resources\AdminResource ::class }}"
                             :resource="trans('customers.plural')"></x-import-excel>
                     <x-export-excel
                             model="{{ \App\Models\Customer::class }}"
