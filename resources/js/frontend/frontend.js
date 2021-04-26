@@ -590,12 +590,6 @@ $(document).ready(function() {
     })
 
 
-    $('#toggel-profile').click(function() {
-        $('#update-profile').toggleClass('d-none');
-        $('#profile').toggleClass('d-none');
-        $('#toggel-profile').toggleClass('d-none');
-
-    })
 
     // gallery page----------------------------------------------------------------
     // $(".oldImg").click(function() {

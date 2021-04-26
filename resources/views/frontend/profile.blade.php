@@ -86,7 +86,7 @@
                             </tr>
                             <tr>
                                 <th class="color-black text-center" scope="row">تاريخ انتهاء رخصة القيادة</th>
-                                <td class="color-black text-center">{{Auth::user()->driver_id_expiry_date}}/td>
+                                <td class="color-black text-center">{{Auth::user()->driver_id_expiry_date}}</td>
 
                             </tr>
                             <tr>
@@ -109,82 +109,6 @@
                                 <td class="color-black text-center">{{Auth::user()->email}}</td>
 
                             </tr>
-
-                <div class="mt-4 modify-data">
-                    <a class="primary-btn btn-hover btn-curved p-3" id="toggel-profile" style="cursor: pointer;">تعديل البيانات</a>
-                </div>
-            </div>
-            <div class="col-lg-7">
-                <h4 class="text-right color-black" style="font-weight: 600;">البيانات الشخصية</h4>
-
-                <div id="profile">
-                <table class="table table-striped color-black">
-                    <tbody>
-                        <tr>
-                            <th class="color-black text-center" scope="row">الأسم</th>
-                            <td class="color-black text-center">{{Auth::user()->name}}</td>
-                        </tr>
-                        <tr>
-                            <th class="color-black text-center" scope="row">رقم الهوية</th>
-                            <td class="color-black text-center">{{Auth::user()->id_number}}</td>
-
-                        </tr>
-                        <tr>
-                            <th class="color-black text-center" scope="row">تاريخ انتهاء الهوية</th>
-                            <td class="color-black text-center">{{Auth::user()->id_expiry_date}}</td>
-
-                        </tr>
-                        <tr>
-                            <th class="color-black text-center" scope="row">رقم رخصة القيادة</th>
-                            <td class="color-black text-center">{{Auth::user()->driver_number}}</td>
-
-                        </tr>
-                        <tr>
-                            <th class="color-black text-center" scope="row">تاريخ انتهاء رخصة القيادة</th>
-                            <td class="color-black text-center">{{Auth::user()->driver_id_expiry_date}}</td>
-
-                        </tr>
-                        <tr>
-                            <th class="color-black text-center" scope="row">تاريخ الميلاد</th>
-                            <td class="color-black text-center">{{Auth::user()->date_of_birth}}</td>
-
-                        </tr>
-                        <tr>
-                            <th class="color-black text-center" scope="row">الجنسية</th>
-                            <td class="color-black text-center">{{Auth::user()->nationality}}</td>
-
-                        </tr>
-                        <tr>
-                            <th class="color-black text-center" scope="row">رقم الجوال</th>
-                            <td class="color-black text-center">{{Auth::user()->phone}}</td>
-
-                        </tr>
-                        <tr>
-                            <th class="color-black text-center" scope="row">البريد الالكترونى</th>
-                            <td class="color-black text-center">{{Auth::user()->email}}</td>
-
-                        </tr>
-
-
-
-                        <tr>
-                            <th class="color-black text-center" scope="row">النوع</th>
-                            <td class="color-black text-center">{{Auth::user()->gender}}</td>
-
-                        </tr>
-
-                        <tr>
-                            <th class="color-black text-center" scope="row">العنوان</th>
-                            <td class="color-black text-center">{{Auth::user()->address}}</td>
-
-                        </tr>
-                        <tr>
-                            <th class="color-black text-center" scope="row">صندوق البريد</th>
-                            <td class="color-black text-center">{{Auth::user()->post_box}} </td>
-                        </tr>
-                    </tbody>
-                </table>
-                </div>
 
 
                             <tr>
