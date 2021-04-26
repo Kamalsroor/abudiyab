@@ -284,8 +284,8 @@ class BookingSteps extends Component
 
             $sessionID = MasterCardPayment::createSessionSandBox($orderID, $merchantID, $merchantPassword);
             // dd($sessionID);
-            $createTransactionAuthorize = MasterCardPayment::createTransactionAuthorize($orderID, $merchantID, $merchantPassword,$sessionID);
-            dd($createTransactionAuthorize);
+            // $createTransactionAuthorize = MasterCardPayment::createTransactionAuthorize($orderID, $merchantID, $merchantPassword,$sessionID);
+            // dd($createTransactionAuthorize);
 
             $successURL = "completeCallback";
             $failURL = "errorCallback";
