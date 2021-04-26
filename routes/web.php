@@ -47,6 +47,10 @@ Route::as('front.')->group(function () {
     Route::get('/employment', 'Frontend\FrontendController@employment')->name('employment');
     Route:: get('/bookingmodel', 'Frontend\FrontendController@bookingModal')->name('bookingModel');
     Route::get('/profile', 'Frontend\FrontendController@profile')->name('profile');
+
+    Route::post('/custermRequest', 'Frontend\CustmerRequestController@createCustmerRequest')->name('custermRequest');
+
+    Route::post('/changePassword', 'Frontend\CustmerRequestController@changePassword')->name('changePassword');
     Route::get('/points', function(){
         return view('frontend.points');
     })->name('points');

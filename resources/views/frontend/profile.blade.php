@@ -19,7 +19,7 @@
                         <div class="col-2">
                             <img src="{{asset('front/img/riyal.png')}}" alt="coins">
                         </div>
-                        <div class="col">
+                        <div class="col text-center">
                             <table class="table table-striped color-black ">
                             <tbody>
                                 <tr>
@@ -40,6 +40,7 @@
                                 </tr>
                                 </tbody>
                             </table>
+
                         </div>
                     </div>
                     <div class="d-flex justify-content-center align-items-end information-card">
@@ -62,8 +63,10 @@
 
                     </div>
 
-                    <div class="mt-4 modify-data">
-                        <a class="primary-btn btn-hover btn-curved p-3 mb-2 mb-md-0" id="toggel-profile" style="cursor: pointer;">تعديل البيانات</a>
+                    <div class="mt-4 modify-data d-flex justify-content-around">
+                        <a class="primary-btn btn-hover btn-curved px-4 mb-2 mb-md-0" id="toggel-profile" style="cursor: pointer;">تعديل البيانات</a>
+                        <a class="secondary-btn btn-hover btn-curved  mb-2 mb-md-0" id="toggel-password" style="cursor: pointer;">تغيير كلمة السر</a>
+                        {{-- <button type="submit" class="btn btn-primary">تغيير كلمة السر</button> --}}
                     </div>
                 </div>
                 <div class="col-lg-7 px-0 px-md-2">
@@ -132,6 +135,9 @@
 
                     <div id="update-profile" class="d-none">
                     @include('frontend.profile.form')
+                    </div>
+                    <div id="update-password" class="d-none">
+                        @include('frontend.profile.change-password')
                     </div>
 
 

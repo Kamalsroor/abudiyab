@@ -1,40 +1,25 @@
 
-    <form action="#" class="text-center">
-    <table class="table table-striped color-black">
-
+    <form action="{{route('front.custermRequest')}}" method="post"  class="text-center">
+        @csrf
+        <table class="table table-striped color-black">
                     <tbody>
                         <tr>
-                            <th class="color-black text-center" scope="row">كلمة السر</th>
-                            <td class=" color-black text-center">
-                                <div class="form-group">
-                                    <label class="color-black" style="font-size: 16px;">ادخل كلمة السر القديمه</label>
-                                    <input type="password" class="color-black form-control" name="name" value="احمد خالد السيد">
-                                </div>
-                                <div class="form-group">
-                                    <label class="color-black" style="font-size: 16px;">ادخل كلمة السر الجديدة</label>
-                                    <input type="password" class="color-black form-control" name="name" value="احمد خالد السيد">
-                                </div>
-                                <div class="form-group">
-                                    <label class="color-black" style="font-size: 16px;">تأكيد كلمة السر</label>
-                                    <input type="password" class="color-black form-control" name="name" value="احمد خالد السيد">
-                                </div>
-                            </td>
+                            <th class="color-black text-center" scope="row">الأسم</th>
+                            <td class="color-black text-center"><input type="text" class="color-black form-control" name="name" value="{{Auth::user()->name}}"></td>
                         </tr>
                         <tr>
                             <th class="color-black text-center" scope="row">رقم الجوال</th>
-                            <td class="color-black text-center"><input type="text" class="color-black form-control" name="mobile-number" value="01558945898"></td>
+                            <td class="color-black text-center"><input type="text" class="color-black form-control" name="phone" value="{{Auth::user()->phone}}"></td>
 
                         </tr>
                         <tr>
                             <th class="color-black text-center" scope="row">البريد الالكترونى</th>
-                            <td class="color-black text-center"><input type="text" class="color-black form-control" name="email" value="ahmedkhaledelsayed@gmail.com"></td>
+                            <td class="color-black text-center"><input type="text" class="color-black form-control" name="email" value="{{Auth::user()->email}}"></td>
 
                         </tr>
-
-
                         <tr>
                             <th class="color-black text-center" scope="row">صندوق البريد</th>
-                            <td class="color-black text-center"><input type="text" class="color-black form-control" name="mail-box" value="24 street 503 shatby"></td>
+                            <td class="color-black text-center"><input type="text" class="color-black form-control" name="post_box" value="{{Auth::user()->post_box}}"></td>
                         </tr>
 
 
@@ -59,5 +44,5 @@
                         </tr>
                     </tbody>
                 </table>
-                <button type="submit" class="btn btn-primary">تأكيد البيانات</button>
+                <button type="submit" class="primary-btn btn-hover btn-curved p-2 m-auto">تأكيد البيانات</button>
     </form>

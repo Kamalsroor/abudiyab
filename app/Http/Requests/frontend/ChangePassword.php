@@ -1,11 +1,15 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\frontend;
+use App\Rules\PasswordRule;
+use App\Http\Requests\Concerns\WithHashedPassword;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class custmer_requests extends FormRequest
+class ChangePassword extends FormRequest
 {
+    use WithHashedPassword;
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -13,7 +17,7 @@ class custmer_requests extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +28,8 @@ class custmer_requests extends FormRequest
     public function rules()
     {
         return [
-            //
+            'old_password' => ['required_with:password', new PasswordRule(auth()->user()->password)],
+            'password' => ['required','confirmed'],
         ];
     }
 }

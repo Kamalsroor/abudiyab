@@ -11,6 +11,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use AhmedAliraqi\LaravelMediaUploader\Entities\Concerns\HasUploader;
+use App\Models\CustmerRequest;
 
 class RegisterController extends Controller implements HasMedia
 {
@@ -79,15 +80,16 @@ class RegisterController extends Controller implements HasMedia
             'name' => $data['username'],
             'email' => $data['email'],
             'phone' => $data['phone'],
-            'id_number' => $data['id_number'],
             'type' => User::CUSTOMER_TYPE,
             'password' => Hash::make($data['password']),
         ]);
-        $newUser->addMediaFromRequest('identityFace')->toMediaCollection('identityFace');
-        $newUser->addMediaFromRequest('identityBack')->toMediaCollection('identityBack');
-        $newUser->addMediaFromRequest('licenceFace')->toMediaCollection('licenceFace');
-        $newUser->addMediaFromRequest('licenceBack')->toMediaCollection('licenceBack');
+        $CustmerRequest = CustmerRequest::create([
+            'user_id' => $newUser['id'],
+        ]);
+        $CustmerRequest->addMediaFromRequest('identityFace')->toMediaCollection('identityFace');
+        $CustmerRequest->addMediaFromRequest('identityBack')->toMediaCollection('identityBack');
+        $CustmerRequest->addMediaFromRequest('licenceFace')->toMediaCollection('licenceFace');
+        $CustmerRequest->addMediaFromRequest('licenceBack')->toMediaCollection('licenceBack');
         return $newUser;
-
     }
 }
