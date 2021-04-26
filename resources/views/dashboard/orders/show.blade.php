@@ -14,6 +14,15 @@
                           <small class="float-right">تاريخ العملية: {{ $order->created_at->format('Y-m-d h:i A') }}</small>
                         </h4>
                       </div>
+                        <div class="col-12 text-center">
+                            <hr><h4 class="text-red">حالة الطلب : {{ trans('orders.status.'.$order->status)  }}</h4>
+                                @if ($order->status == "rejected" && $order->reason != null)
+                                <h4 class="text-red">سبب الرفض : {{ $order->reason  }}</h4>
+                                @endif
+                            <hr>
+
+
+                        </div>
                       <!-- /.col -->
                     </div>
                     <!-- info row -->
@@ -24,7 +33,7 @@
                         العميل
                         <address>
                           <strong>{{ $order->customer->name}}</strong><br>
-                          795 Folsom Ave, Suite 600<br>
+                          {{$order->customer->address}}<br>
                           San Francisco, CA 94107<br>
                           رقم الهاتف: {{ $order->customer->phone}}<br>
                           البريد الالكتروني: {{ $order->customer->email}}
@@ -67,16 +76,48 @@
                             <td>{{ $order->deliveryBranch->name}}</td>
                             <td>{{ $order->delivery_date->format('Y-m-d h:i A') }}</td>
                           </tr>
+
                           </tbody>
                         </table>
                       </div>
                       <!-- /.col -->
+                      <div class="col-12 text-center">
+                            <hr><h4 >الاضافات</h4><hr>
+                        </div>
+                      <div class="col-12 table-responsive">
+                        <table class="table table-striped">
+                          <thead>
+                          <tr>
+                            <th>أسم الاضافة</th>
+                            <th>عدد ايام الحجز</th>
+                            <th>سعر الاضافة</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            @foreach ($order->features_added as $key => $value)
+                                <tr>
+                                    <td>{{trans('cars.attributes.'.$key) }}</td>
+                                    <td>{{ $order->days }}</td>
+                                    <td>{{$value}}</td>
+                                </tr>
+                            @endforeach
+                          </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
                     <!-- /.row -->
 
+
+
+
                     <div class="row">
                       <!-- accepted payments column -->
-
+                      <div class="col-12 text-center">
+                        <hr><h4 >معلومات الدفع</h4><hr>
+                    </div>
 
                     <!-- /.col -->
                     <div class="col-6">
@@ -100,20 +141,28 @@
                         <div class="table-responsive">
                           <table class="table">
                             <tbody><tr>
-                              <th style="width:50%">Subtotal:</th>
-                              <td>$250.30</td>
+                              <th style="width:50%">سعر السيارة اليومي :</th>
+                              <td>{{$order->car_price}} ريال</td>
                             </tr>
                             <tr>
-                              <th>Tax (9.3%)</th>
-                              <td>$10.34</td>
+                              <th>اجمالي الاضافات</th>
+                              <td>{{$TotalFeatures}} ريال</td>
                             </tr>
                             <tr>
-                              <th>Shipping:</th>
-                              <td>$5.80</td>
+                              <th>رسوم تفويض</th>
+                              <td>{{$order->authorization_fee}} ريال</td>
                             </tr>
                             <tr>
-                              <th>Total:</th>
-                              <td>{{$order->price}}</td>
+                              <th>خصم العضوية:</th>
+                              <td>{{$order->membership_discount}} ريال</td>
+                            </tr>
+                            <tr>
+                              <th>خصم ترويجي:</th>
+                              <td>{{$order->promotional_discount}} ريال</td>
+                            </tr>
+                            <tr>
+                              <th>الاجمالي :</th>
+                              <td>{{$order->price}} ريال</td>
                             </tr>
                           </tbody></table>
                         </div>
@@ -125,18 +174,7 @@
 
 
 
-                    <!-- this row will not appear when printing -->
-                    {{-- <div class="row no-print">
-                      <div class="col-12">
-                        <a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
-                        <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
-                          Payment
-                        </button>
-                        <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                          <i class="fas fa-download"></i> Generate PDF
-                        </button>
-                      </div>
-                    </div> --}}
+
                   </div>
 
 
@@ -144,104 +182,21 @@
 
 
                 @slot('footer')
-                    @include('dashboard.orders.partials.actions.edit')
-                    @include('dashboard.orders.partials.actions.delete')
+
+
+                    <!-- this row will not appear when printing -->
+{{--
+                    <a href="{{ route('dashboard.orders.confirmation', $order) }}" class="btn btn-primary btn-sm">
+                        <i class="fas fa fa-fw fa-edit"></i>  @lang('orders.actions.confirmation')
+                    </a> --}}
+
+                    {{-- @include('dashboard.orders.partials.actions.edit') --}}
+                    {{-- @include('dashboard.orders.partials.actions.delete') --}}
+
+
+                    @include('dashboard.orders.partials.actions.confirmation')
+                    @include('dashboard.orders.partials.actions.rejected')
                 @endslot
-            @endcomponent
-        </div>
-
-
-        <div class="col-md-6">
-            @component('dashboard::components.box')
-                @slot('class', 'p-0')
-                @slot('bodyClass', 'p-0')
-
-                <table class="table table-striped table-middle">
-                    <tbody>
-                        <tr>
-                            <th width="200">@lang('orders.attributes.name')</th>
-                            <td>{{ $order->car->name }}</td>
-                        </tr>
-
-                        <tr>
-                            <th width="200">@lang('orders.attributes.recieving_date')</th>
-                            <td>{{ $order->reciving_date->format('Y-m-d') }}</td>
-                        </tr>
-
-
-                        <tr>
-                            <th width="200">@lang('orders.attributes.booking_days')</th>
-                            <td>{{ $order->days}}</td>
-                        </tr>
-
-                        <tr>
-                            <th width="200">@lang('orders.attributes.recieving_branch')</th>
-                            <td>{{ $order->receivingBranch->name}}</td>
-                        </tr>
-
-
-                        <tr>
-                            <th width="200">@lang('orders.attributes.customer')</th>
-                            <td>{{ $order->customer->name}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-                @slot('footer')
-                    @include('dashboard.orders.partials.actions.edit')
-                    @include('dashboard.orders.partials.actions.delete')
-                @endslot
-            @endcomponent
-        </div>
-        <div class="col-md-6">
-            @component('dashboard::components.box')
-                @slot('class', 'p-0')
-                @slot('bodyClass', 'p-0')
-
-                <table class="table table-striped table-middle">
-                    <tbody>
-
-
-                    <tr>
-                        <th width="200">@lang('orders.attributes.delivery_branch')</th>
-                        <td>{{ $order->deliveryBranch->name }}</td>
-                    </tr>
-
-                    <tr>
-                        <th width="200">@lang('orders.attributes.payment_type')</th>
-                        <td>{{ $order->payment_type }}</td>
-                    </tr>
-                    <tr>
-                        <th width="200">@lang('orders.attributes.payment_status')</th>
-                        <td>{{ $order->payment_status == "SUCCESS" ? "تم الدفع" : "لم يتم تأكيد الدفع"  }}</td>
-                    </tr>
-
-                    <tr>
-                        <th width="200">@lang('orders.attributes.created_at')</th>
-                        <td>{{ $order->created_at->format('Y-m-d') }}</td>
-                    </tr>
-
-                    </tbody>
-                </table>
-
-
-
-
-
-
-
             @endcomponent
         </div>
     </div>

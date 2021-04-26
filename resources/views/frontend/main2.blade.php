@@ -21,8 +21,8 @@
                         <h1>{{ $slider->first_header }}</h1>
                         <h1>{{ $slider->second_header }}</h1>
                         <a href="#more" class="primary-btn btn-hover btn-curved m-5 p-3" style="width: 10%;">المزيــد <i class='fas fa-angle-double-down'  style="margin-right:5px; "></i></a>
-                       
-                       
+
+
                     </div>
                 </div>
                 @endforeach
@@ -33,50 +33,24 @@
     </div>
     <div id="carouselExampleIndicators2" class="carousel home-carousel slide d-block d-md-none" data-ride="carousel">
         <ol class="carousel-indicators">
-            
-                <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active" ></li>
-                <li data-target="#carouselExampleIndicators2" data-slide-to="1" ></li>
-                <li data-target="#carouselExampleIndicators2" data-slide-to="2" ></li>
-                <li data-target="#carouselExampleIndicators2" data-slide-to="3" ></li>
-                <li data-target="#carouselExampleIndicators2" data-slide-to="4" ></li>
-            
+            @foreach ($miniSliders as $slider )
+                <li data-target="#carouselExampleIndicators2" data-slide-to="{{$loop->index}}" class="{{$loop->first  ? 'active' : "" }}" ></li>
+            @endforeach
         </ol>
         <div class="carousel-inner">
-            
-            <div class='carousel-item active' >
+            @foreach ($miniSliders as $slider )
+            <div class='carousel-item {{ $loop->first ? "active" : " " }}' >
                 <div class="d-flex align-items-center justify-content-center">
-                    <img src="{{asset('front/img/mobile sliders shebl/car.jpg')}}" class="d-block w-100" alt="carousel image">
+                    <img src="{{$slider->getFirstMediaUrl()}}" class="d-block w-100" alt="carousel image">
                     <div class="abs p-0 m-0 text-center " style="transform: translateY(45px);">
-                        <h1 class="m-0 p-0" style="font-size: 30px;">حلمك يصير حقيقة</h1>
-                        <p>مع أبو ذياب<p>
-                        
-                        
+                        <h1 class="m-0 p-0" style="font-size: 30px;">{{ $slider->first_header }}</h1>
+                        <p>{{ $slider->second_header }}<p>
                     </div>
                 </div>
             </div>
-            <div class='carousel-item ' >
-                <div class="d-flex align-items-center justify-content-center">
-                    <img src="{{asset('front/img/mobile sliders shebl/car2.jpg')}}" class="d-block w-100" alt="carousel image">
-                    <div class="abs p-0 m-0 text-center " style="transform: translateY(45px);">
-                        <h1 class="m-0 p-0" style="font-size: 30px;">حلمك يصير حقيقة</h1>
-                        <p>مع أبو ذياب<p>
-                        
-                        
-                    </div>
-                </div>
-            </div>
-            <div class='carousel-item ' >
-                <div class="d-flex align-items-center justify-content-center">
-                    <img src="{{asset('front/img/حلمك-يصير-حقيقةfront/img/mobile sliders shebl/حلمك-يصير-حقيقة.jpg-2.jpg')}}" class="d-block w-100" alt="carousel image">
-                    <div class="abs p-0 m-0 text-center " style="transform: translateY(45px);">
-                        <h1 class="m-0 p-0" style="font-size: 30px;">حلمك يصير حقيقة</h1>
-                        <p>مع أبو ذياب<p>
-                        
-                        
-                    </div>
-                </div>
-            </div>
-            
+            @endforeach
+
+
         </div>
 
     </div>
