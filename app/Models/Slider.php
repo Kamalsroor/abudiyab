@@ -29,7 +29,7 @@ class Slider extends Model implements HasMedia, TranslatableContract
      *
      * @var array
      */
-    public $translatedAttributes = ['name','first_header','second_header','is_mobile'];
+    public $translatedAttributes = ['name','first_header','second_header'];
 
     /**
      * The attributes that are mass assignable.
