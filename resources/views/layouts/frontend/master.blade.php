@@ -61,7 +61,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
         <div class="social-media-links d-none d-md-block">
-            <a href="/aboutus" target="_blank"><p>حولنا</p></a>
+            <a href="/aboutus" ><p>حولنا</p></a>
             <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
             <a href="tel:996920026600"><i class="fas fa-phone-alt"></i></a>
         </div>

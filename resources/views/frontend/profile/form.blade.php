@@ -1,5 +1,5 @@
     
-    <form action="#">
+    <form action="#" class="text-center">
     <table class="table table-striped color-black">
                     
                     <tbody>
