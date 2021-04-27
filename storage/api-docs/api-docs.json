@@ -313,6 +313,104 @@
                 }
             }
         },
+        "/custmerrequests": {
+            "get": {
+                "tags": [
+                    "Custmerrequests"
+                ],
+                "summary": "Get list of custmerrequests",
+                "description": "Returns list of custmerrequests",
+                "operationId": "getCustmerrequestsList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CustmerrequestResource"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/custmerrequests/{id}": {
+            "get": {
+                "tags": [
+                    "Custmerrequests"
+                ],
+                "summary": "Get custmerrequest information",
+                "description": "Returns custmerrequest data",
+                "operationId": "getCustmerrequestById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Custmerrequest id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Custmerrequest"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/select/custmerrequests": {
+            "get": {
+                "tags": [
+                    "Custmerrequests"
+                ],
+                "summary": "Get list of Select custmerrequests",
+                "description": "Returns list of Select custmerrequests",
+                "operationId": "getSelectCustmerrequestsList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CustmerrequestResource"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
         "/manufactories": {
             "get": {
                 "tags": [
@@ -411,21 +509,21 @@
                 }
             }
         },
-        "/offers": {
+        "/memberships": {
             "get": {
                 "tags": [
-                    "Offers"
+                    "Memberships"
                 ],
-                "summary": "Get list of offers",
-                "description": "Returns list of offers",
-                "operationId": "getOffersList",
+                "summary": "Get list of memberships",
+                "description": "Returns list of memberships",
+                "operationId": "getMembershipsList",
                 "responses": {
                     "200": {
                         "description": "Successful operation",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/OfferResource"
+                                    "$ref": "#/components/schemas/MembershipResource"
                                 }
                             }
                         }
@@ -439,19 +537,19 @@
                 }
             }
         },
-        "/offers/{id}": {
+        "/memberships/{id}": {
             "get": {
                 "tags": [
-                    "Offers"
+                    "Memberships"
                 ],
-                "summary": "Get offer information",
-                "description": "Returns offer data",
-                "operationId": "getOfferById",
+                "summary": "Get membership information",
+                "description": "Returns membership data",
+                "operationId": "getMembershipById",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "Offer id",
+                        "description": "Membership id",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -464,7 +562,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Offer"
+                                    "$ref": "#/components/schemas/Membership"
                                 }
                             }
                         }
@@ -481,21 +579,21 @@
                 }
             }
         },
-        "/select/offers": {
+        "/select/memberships": {
             "get": {
                 "tags": [
-                    "Offers"
+                    "Memberships"
                 ],
-                "summary": "Get list of Select offers",
-                "description": "Returns list of Select offers",
-                "operationId": "getSelectOffersList",
+                "summary": "Get list of Select memberships",
+                "description": "Returns list of Select memberships",
+                "operationId": "getSelectMembershipsList",
                 "responses": {
                     "200": {
                         "description": "Successful operation",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/OfferResource"
+                                    "$ref": "#/components/schemas/MembershipResource"
                                 }
                             }
                         }
@@ -900,6 +998,104 @@
                     }
                 }
             }
+        },
+        "/works": {
+            "get": {
+                "tags": [
+                    "Works"
+                ],
+                "summary": "Get list of works",
+                "description": "Returns list of works",
+                "operationId": "getWorksList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/WorkResource"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/works/{id}": {
+            "get": {
+                "tags": [
+                    "Works"
+                ],
+                "summary": "Get work information",
+                "description": "Returns work data",
+                "operationId": "getWorkById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Work id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Work"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/select/works": {
+            "get": {
+                "tags": [
+                    "Works"
+                ],
+                "summary": "Get list of Select works",
+                "description": "Returns list of Select works",
+                "operationId": "getSelectWorksList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/WorkResource"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -1036,6 +1232,50 @@
                     "name": "Category"
                 }
             },
+            "Custmerrequest": {
+                "title": "Custmerrequest",
+                "description": "Custmerrequest model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "Name",
+                        "description": "Name of the new custmerrequest",
+                        "type": "string",
+                        "example": "A nice custmerrequest"
+                    },
+                    "created_at": {
+                        "title": "Created at",
+                        "description": "Created at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "updated_at": {
+                        "title": "Updated at",
+                        "description": "Updated at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "deleted_at": {
+                        "title": "Deleted at",
+                        "description": "Deleted at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Custmerrequest"
+                }
+            },
             "Manufactory": {
                 "title": "Manufactory",
                 "description": "Manufactory model",
@@ -1080,9 +1320,9 @@
                     "name": "Manufactory"
                 }
             },
-            "Offer": {
-                "title": "Offer",
-                "description": "Offer model",
+            "Membership": {
+                "title": "Membership",
+                "description": "Membership model",
                 "properties": {
                     "id": {
                         "title": "ID",
@@ -1093,9 +1333,9 @@
                     },
                     "name": {
                         "title": "Name",
-                        "description": "Name of the new offer",
+                        "description": "Name of the new membership",
                         "type": "string",
-                        "example": "A nice offer"
+                        "example": "A nice membership"
                     },
                     "created_at": {
                         "title": "Created at",
@@ -1121,7 +1361,7 @@
                 },
                 "type": "object",
                 "xml": {
-                    "name": "Offer"
+                    "name": "Membership"
                 }
             },
             "Order": {
@@ -1300,6 +1540,50 @@
                     "name": "Slider"
                 }
             },
+            "Work": {
+                "title": "Work",
+                "description": "Work model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "Name",
+                        "description": "Name of the new work",
+                        "type": "string",
+                        "example": "A nice work"
+                    },
+                    "created_at": {
+                        "title": "Created at",
+                        "description": "Created at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "updated_at": {
+                        "title": "Updated at",
+                        "description": "Updated at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    },
+                    "deleted_at": {
+                        "title": "Deleted at",
+                        "description": "Deleted at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Work"
+                }
+            },
             "BranchResource": {
                 "title": "BranchResource",
                 "description": "Branch resource",
@@ -1342,6 +1626,20 @@
                     "name": "CategoryResource"
                 }
             },
+            "CustmerrequestResource": {
+                "title": "CustmerrequestResource",
+                "description": "Custmerrequest resource",
+                "properties": {
+                    "data": {
+                        "title": "Data",
+                        "description": "Data wrapper"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "CustmerrequestResource"
+                }
+            },
             "ManufactoryResource": {
                 "title": "ManufactoryResource",
                 "description": "Manufactory resource",
@@ -1356,9 +1654,9 @@
                     "name": "ManufactoryResource"
                 }
             },
-            "OfferResource": {
-                "title": "OfferResource",
-                "description": "Offer resource",
+            "MembershipResource": {
+                "title": "MembershipResource",
+                "description": "Membership resource",
                 "properties": {
                     "data": {
                         "title": "Data",
@@ -1367,7 +1665,7 @@
                 },
                 "type": "object",
                 "xml": {
-                    "name": "OfferResource"
+                    "name": "MembershipResource"
                 }
             },
             "OrderResource": {
@@ -1424,6 +1722,20 @@
                 "type": "object",
                 "xml": {
                     "name": "SliderResource"
+                }
+            },
+            "WorkResource": {
+                "title": "WorkResource",
+                "description": "Work resource",
+                "properties": {
+                    "data": {
+                        "title": "Data",
+                        "description": "Data wrapper"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "WorkResource"
                 }
             }
         }

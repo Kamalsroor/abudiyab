@@ -1,5 +1,5 @@
 
-    <form action="{{route('front.custermRequest')}}" method="post"  class="text-center">
+    <form action="{{route('front.custermRequest')}}" method="post" enctype="multipart/form-data" class="text-center">
         @csrf
         <table class="table table-striped color-black">
                     <tbody>
