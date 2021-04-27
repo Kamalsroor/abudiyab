@@ -19,29 +19,39 @@ class CustmerRequestController extends Controller
      */
     public function createCustmerRequest(CustmerRequests $request)
     {
-        $CustmerRequest = CustmerRequest::create([
-            'user_id' => auth()->id()
-        ]);
+
         $user = User::find(auth()->id());
-        $user->name=$request['name'];
-        $user->phone=$request['phone'];
-        $user->email=$request['email'];
-        $user->post_box=$request['post_box'];
+        $user->name=$request->name;
+        $user->phone=$request->phone;
+        $user->email=$request->email;
+        $user->post_box=$request->post_box;
         $user->save();
-        if($request['identityFace'])
+        if($request->hasFile('identityFace')||
+            $request->hasFile('identityBack')||
+            $request->hasFile('licenceFace')||
+            $request->hasFile('licenceBack')
+        )
+        {
+
+            $CustmerRequest = CustmerRequest::create([
+                'user_id' => auth()->id()
+            ]);
+        }
+
+        if($request->hasFile('identityFace'))
         {
             $CustmerRequest->addMediaFromRequest('identityFace')->toMediaCollection('identityFace');
         }
-        if($request['identityBack'])
+        if($request->hasFile('identityBack'))
         {
             $CustmerRequest->addMediaFromRequest('identityBack')->toMediaCollection('identityBack');
 
         }
-        if($request['licenceFace'])
+        if($request->hasFile('licenceFace'))
         {
             $CustmerRequest->addMediaFromRequest('licenceFace')->toMediaCollection('licenceFace');
         }
-        if($request['licenceBack'])
+        if($request->hasFile('licenceBack'))
         {
             $CustmerRequest->addMediaFromRequest('licenceBack')->toMediaCollection('licenceBack');
         }

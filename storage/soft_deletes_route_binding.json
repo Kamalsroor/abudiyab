@@ -13,5 +13,6 @@
     "trashed_offer": "App\\Models\\Offer",
     "trashed_job": "App\\Models\\Job",
     "trashed_work": "App\\Models\\Work",
-    "trashed_membership": "App\\Models\\Membership"
+    "trashed_membership": "App\\Models\\Membership",
+    "trashed_custmerrequest": "App\\Models\\Custmerrequest"
 }
