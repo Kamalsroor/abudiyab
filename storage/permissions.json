@@ -14,5 +14,6 @@
     "manage.offers",
     "manage.jobs",
     "manage.works",
-    "manage.memberships"
+    "manage.memberships",
+    "manage.regions"
 ]

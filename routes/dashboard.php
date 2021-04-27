@@ -155,7 +155,14 @@ Route::resource('applications', 'WorkCandidatesController')->only('index', 'show
         Route::post('memberships/{trashed_membership}/restore', 'MembershipController@restore')->name('memberships.restore');
         Route::delete('memberships/{trashed_membership}/forceDelete', 'MembershipController@forceDelete')->name('memberships.forceDelete');
         Route::resource('memberships', 'MembershipController');
+
+        Route::get('trashed/regions', 'RegionController@trashed')->name('regions.trashed');
+        Route::get('trashed/regions/{trashed_region}', 'RegionController@showTrashed')->name('regions.trashed.show');
+        Route::post('regions/{trashed_region}/restore', 'RegionController@restore')->name('regions.restore');
+        Route::delete('regions/{trashed_region}/forceDelete', 'RegionController@forceDelete')->name('regions.forceDelete');
+        Route::resource('regions', 'RegionController');
 /*  The routes of generated crud will set here: Don't remove this line  */
+        
 
 
 

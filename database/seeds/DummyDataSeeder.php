@@ -24,8 +24,9 @@ $this->call(SliderSeeder::class);
 $this->call(OrderSeeder::class);
 $this->call(PartnerSeeder::class);
 $this->call(OfferSeeder::class);
-$this->call(WorkSeeder::class);
-$this->call(MembershipSeeder::class);
+// $this->call(WorkSeeder::class);
+// $this->call(MembershipSeeder::class);
+// $this->call(RegionSeeder::class);
 /*  The seeders of generated crud will set here: Don't remove this line  */
 
     }
