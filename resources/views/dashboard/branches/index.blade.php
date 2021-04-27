@@ -53,7 +53,8 @@
                         {{ $branch->name }}
                     </a>
                 </td>
-                <td>{{ $regions[$branch->code] }}</td>
+                <td>{{ $branch->region->name }}</td>
+
                 <td>{{ $branch->created_at->format('Y-m-d') }}</td>
 
                 <td style="width: 160px">

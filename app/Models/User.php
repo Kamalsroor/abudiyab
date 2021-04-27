@@ -58,6 +58,13 @@ class User extends Authenticatable implements HasMedia
     const CUSTOMER_TYPE = 'customer';
 
     /**
+     * The code of employee type.
+     *
+     * @var string
+     */
+    const EMPLOYEE_TYPE = 'employee';
+
+    /**
      * The guard name of the user permissions.
      *
      * @var string
@@ -113,6 +120,7 @@ class User extends Authenticatable implements HasMedia
         self::ADMIN_TYPE => Admin::class,
         self::SUPERVISOR_TYPE => Supervisor::class,
         self::CUSTOMER_TYPE => Customer::class,
+        self::EMPLOYEE_TYPE => Employee::class,
     ];
 
     /**

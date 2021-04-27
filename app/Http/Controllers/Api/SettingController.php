@@ -9,6 +9,9 @@ class SettingController extends Controller
 {
     public function index()
     {
+
+
+
         return response()->json([
             'app' => [
                 'name' => app_name(),
@@ -22,10 +25,16 @@ class SettingController extends Controller
                 'twitter' => Settings::get('twitter'),
                 'phone' => Settings::get('phone'),
                 'email' => Settings::get('email'),
+                'branch_name' => Settings::get('branch_name'),
+                'address' => Settings::get('address'),
+                'whatsapp' => Settings::get('whatsapp'),
+                'youtube' => Settings::get('youtube'),
+                'linkedin' => Settings::get('linkedin'),
             ],
             'apps' => [
                 'apple' => Settings::get('apple'),
                 'android' => Settings::get('android'),
+                'huawei' => Settings::get('huawei'),
             ],
             'pages' => [
                 'about' => [

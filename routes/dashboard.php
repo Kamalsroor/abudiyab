@@ -40,6 +40,15 @@ Route::post('supervisors/{trashed_supervisor}/restore', 'SupervisorController@re
 Route::delete('supervisors/{trashed_supervisor}/forceDelete', 'SupervisorController@forceDelete')->name('supervisors.forceDelete');
 Route::resource('supervisors', 'SupervisorController');
 
+
+// Employees Routes.
+Route::get('trashed/employees', 'EmployeeController@trashed')->name('employees.trashed');
+Route::get('trashed/employees/{trashed_employee}', 'EmployeeController@show')->name('employees.trashed.show');
+Route::post('employees/{trashed_employee}/restore', 'EmployeeController@restore')->name('employees.restore');
+Route::delete('employees/{trashed_employee}/forceDelete', 'EmployeeController@forceDelete')->name('employees.forceDelete');
+Route::resource('employees', 'EmployeeController');
+
+
 // Admins Routes.
 Route::get('trashed/admins', 'AdminController@trashed')->name('admins.trashed');
 Route::get('trashed/admins/{trashed_admin}', 'AdminController@show')->name('admins.trashed.show');
@@ -141,12 +150,21 @@ Route::resource('applications', 'WorkCandidatesController')->only('index', 'show
         Route::post('custmerrequests/{trashed_custmerrequest}/restore', 'CustmerrequestController@restore')->name('custmerrequests.restore');
         Route::delete('custmerrequests/{trashed_custmerrequest}/forceDelete', 'CustmerrequestController@forceDelete')->name('custmerrequests.forceDelete');
         Route::resource('custmerrequests', 'CustmerrequestController');
+
+
         Route::get('trashed/memberships', 'MembershipController@trashed')->name('memberships.trashed');
         Route::get('trashed/memberships/{trashed_membership}', 'MembershipController@showTrashed')->name('memberships.trashed.show');
         Route::post('memberships/{trashed_membership}/restore', 'MembershipController@restore')->name('memberships.restore');
         Route::delete('memberships/{trashed_membership}/forceDelete', 'MembershipController@forceDelete')->name('memberships.forceDelete');
         Route::resource('memberships', 'MembershipController');
+
+        Route::get('trashed/regions', 'RegionController@trashed')->name('regions.trashed');
+        Route::get('trashed/regions/{trashed_region}', 'RegionController@showTrashed')->name('regions.trashed.show');
+        Route::post('regions/{trashed_region}/restore', 'RegionController@restore')->name('regions.restore');
+        Route::delete('regions/{trashed_region}/forceDelete', 'RegionController@forceDelete')->name('regions.forceDelete');
+        Route::resource('regions', 'RegionController');
 /*  The routes of generated crud will set here: Don't remove this line  */
+        
 
 
 

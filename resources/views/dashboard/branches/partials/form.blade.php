@@ -11,8 +11,20 @@
 </div>
 @endBsMultilangualFormTabs
 {{-- {{ BsForm::number('code') }} --}}
-{{ BsForm::select('code')->options($regions) }}
+{{-- {{ BsForm::select('code')->options($regions) }} --}}
+
+
+
 <div class="row">
+    <div class="col-md-6" id="regions_select" >
+        <select2
+            placeholder="@lang('branches.attributes.code')"
+            name="code"
+            value="{{optional($branch ?? "")->code}}"
+            label="@lang('branches.attributes.code')"
+            remote-url="{{ route('api.regions.select') }}"
+        ></select2>
+    </div>
     <div class="col-md-6">
         {{ BsForm::number('p_coud') }}
     </div>

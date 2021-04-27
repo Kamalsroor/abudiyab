@@ -29,57 +29,28 @@
                                 </div>
                                 <div class="b-car-details__header-r">
                                     <h2 class="b-car-details__title">{{$car->name}}</h2>
-                                    <div class="b-car-details__subtitle">فخمة كبيرة</div>
+                                    <div class="b-car-details__subtitle">{{$car->category?$car->category->name:'-'}}</div>
                                     <div class="b-car-details__address"></div>
                                 </div>
                                 <div class="b-car-details__links"><i class="icon fas fa-share-alt text-primary"></i>مشاركه</div>
                             </div>
                             <div class="slider-car-details slider-pro" id="slider-car-details">
                                 <div class="sp-slides">
-                                    <div class="sp-slide">
-                                        <img class="sp-image" src="https://pro-theme.com/html/motorland/assets/media/content/gallery/car-details/main/1.jpg" alt="img" />
-                                    </div>
-                                    <div class="sp-slide">
-                                        <img class="sp-image" src="https://pro-theme.com/html/motorland/assets/media/content/gallery/car-details/main/1.jpg" alt="img" />
-                                    </div>
-                                    <div class="sp-slide">
-                                        <img class="sp-image" src="https://pro-theme.com/html/motorland/assets/media/content/gallery/car-details/main/1.jpg" alt="img" />
-                                    </div>
-                                    <div class="sp-slide">
-                                        <iframe class="sp-video" src="https://www.youtube.com/embed/AAfLTYZKFTc" allowfullscreen="allowfullscreen"></iframe>
-                                    </div>
-                                    <div class="sp-slide">
-                                        <img class="sp-image" src="https://pro-theme.com/html/motorland/assets/media/content/gallery/car-details/main/1.jpg" alt="img" />
-                                    </div>
-                                    <div class="sp-slide">
-                                        <img class="sp-image" src="https://pro-theme.com/html/motorland/assets/media/content/gallery/car-details/main/1.jpg" alt="img" />
-                                    </div>
-                                    <div class="sp-slide">
-                                        <img class="sp-image" src="https://pro-theme.com/html/motorland/assets/media/content/gallery/car-details/main/1.jpg" alt="img" />
-                                    </div>
+                                    @foreach ($car->getPhotos() as $photo)
+                                        <div class="sp-slide">
+                                            <img class="sp-image" src="{{$photo['url']}}" alt="{{$photo['file_name']}}" />
+                                        </div>
+                                    @endforeach
+
                                 </div>
                                 <div class="sp-thumbnails">
-                                    <div class="sp-thumbnail">
-                                        <img class="img-responsive" src="https://pro-theme.com/html/motorland/assets/media/content/gallery/car-details/thumb/1.jpg" alt="img" />
-                                    </div>
-                                    <div class="sp-thumbnail">
-                                        <img class="img-responsive" src="https://pro-theme.com/html/motorland/assets/media/content/gallery/car-details/thumb/2.jpg" alt="img" />
-                                    </div>
-                                    <div class="sp-thumbnail">
-                                        <img class="img-responsive" src="https://pro-theme.com/html/motorland/assets/media/content/gallery/car-details/thumb/3.jpg" alt="img" />
-                                    </div>
-                                    <div class="sp-thumbnail sp-thumbnail_video">
-                                        <img class="img-responsive" src="https://pro-theme.com/html/motorland/assets/media/content/gallery/car-details/thumb/4.jpg" alt="img" />
-                                    </div>
-                                    <div class="sp-thumbnail">
-                                        <img class="img-responsive" src="https://pro-theme.com/html/motorland/assets/media/content/gallery/car-details/thumb/5.jpg" alt="img" />
-                                    </div>
-                                    <div class="sp-thumbnail">
-                                        <img class="img-responsive" src="https://pro-theme.com/html/motorland/assets/media/content/gallery/car-details/thumb/1.jpg" alt="img" />
-                                    </div>
-                                    <div class="sp-thumbnail">
-                                        <img class="img-responsive" src="https://pro-theme.com/html/motorland/assets/media/content/gallery/car-details/thumb/2.jpg" alt="img" />
-                                    </div>
+
+                                    @foreach ($car->getPhotos() as $photo)
+                                        <div class="sp-thumbnail">
+                                            <img class="img-responsive" src="{{$photo['url']}}" alt="{{$photo['file_name']}}" />
+                                        </div>
+
+                                    @endforeach
                                 </div>
                             </div>
                             <!-- end .b-thumb-slider-->
@@ -145,12 +116,12 @@
                     <div class="col-md-4">
                         <aside class="l-sidebar-2">
                             <div class="b-car-info">
-                                <div class="b-car-info__price"><i class="icofont icofont-cur-riyal"></i>1450<span class="b-car-info__price-msrp"> <i class="icofont icofont-cur-riyal"></i>1500</span>
+                                <div class="b-car-info__price"><i class="icofont icofont-cur-riyal"></i>{{$car->price1}}<span class="b-car-info__price-msrp"> <i class="icofont icofont-cur-riyal"></i>{{$car->price2}}</span>
                                 </div>
                                 <dl class="b-car-info__desc dl-horizontal bg-grey">
-                                    <dt class="b-car-info__desc-dt">سيدان</dt>
+                                    <dt class="b-car-info__desc-dt">{{$car->category?$car->category->name:'-'}}</dt>
                                     <dd class="b-car-info__desc-dd">الجسم</dd>
-                                    <dt class="b-car-info__desc-dt">2021</dt>
+                                    <dt class="b-car-info__desc-dt">{{$car->model}}</dt>
                                     <dd class="b-car-info__desc-dd">سنه</dd>
                                     <dt class="b-car-info__desc-dt">20,300mi</dt>
                                     <dd class="b-car-info__desc-dd">عدد الأميال</dd>

@@ -10,6 +10,7 @@ use App\Models\Car;
 use App\Models\Work;
 use App\Models\CarsInStock;
 use App\Models\Partner;
+use App\Models\Custmerrequest;
 use App\Models\WorkCandidates;
 use App\Models\Setting;
 use App\Models\Slider;
@@ -201,8 +202,11 @@ class FrontendController extends Controller
     }
     public function profile()
     {
+        $user = Custmerrequest::where('user_id',auth()->id())->where('is_confirmed','confirmed')->orderBy('created_at', 'DESC')->first();
+        // $lastpending=Custmerrequest::select('created_at')->where('user_id',auth()->id())->where('is_confirmed','pending')->orderBy('created_at', 'DESC')->first();
+        // $lastrejected=Custmerrequest::select('created_at')->where('user_id',auth()->id())->where('is_confirmed','rejected')->orderBy('created_at', 'DESC')->first();
 
-        return view('frontend.profile');
+        return view('frontend.profile',compact('user'));
     }
     public function addCandidates(Request $request)
     {
