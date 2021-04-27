@@ -9,7 +9,7 @@
         width: 48%;
     }
     .booking-car-price-container {
-        background: #002366;
+        background: get-color(primary);
     }
     .booking-car-price-now {
         color: white;
@@ -19,14 +19,14 @@
         overflow: hidden;
     }
     button {
-        background: #002366;
+        background: get-color(primary);
         color: white;
     }
     button a {
         color: white;
     }
     .orange-checkbox input[type=checkbox]:checked+label {
-        background: #002366;
+        background: get-color(primary);
     }
     .details {
         width: 100%;
@@ -38,7 +38,7 @@
         font-size: 2em;
         padding-top: 2vh;
         transform: translateX(-5vw);
-        color: red;
+        color: get-color(secondary);
     }
     .fa-info-circle:hover {
         color: rgb(68, 1, 1);
@@ -75,7 +75,7 @@
         padding-right: 5px;
     }
     .no {
-        background-color: #002366;
+        background-color: get-color(primary);
         color: white;
         text-decoration: none;
         text-align: center;
@@ -87,7 +87,7 @@
         margin: 0 5px;
     }
     .agr {
-        background-color: #002366;
+        background-color: get-color(primary);
         color: white;
         text-decoration: none;
         text-align: center;
@@ -106,7 +106,7 @@
     .mela {
         background-color: none;
         font-size: 15px;
-        color: #002366;
+        color: get-color(primary);
     }
     .min {
         width: 100%;
@@ -244,7 +244,7 @@
         border: none;
         outline: none;
         color: white;
-        background-color: #002366;
+        background-color: get-color(primary);
         padding: 10px 30px;
     }
     .check1:checked~.hide1 {
@@ -347,7 +347,7 @@
         padding: 20px 0;
     }
     .go-btn a {
-        background-color: #002366;
+        background-color: get-color(primary);
         color: white;
         text-decoration: none;
         text-align: center;
@@ -378,7 +378,7 @@
     .spanz span {
         border-radius: 45px;
         border: solid 2px gray;
-        background: #002366;
+        background: get-color(primary);
         color: white;
         width: 500px;
         margin: 50px 7%;
@@ -431,7 +431,7 @@
         margin: 10px;
         margin-right: 20px;
         font-size: 2em;
-        color: red;
+        color: get-color(secondary);
     }
     .m-r-n {
         margin-right: 15px;
@@ -462,19 +462,22 @@
         width: 49%;
     }
     .info.pr .icofont.icofont-cur-riyal {
-        color: #0d1a80;
+        color: get-color(secondary);
     }
     .pr h2 {
         text-align: center;
-        width: 80%;
-        border: 2px #0d1a80 solid;
-        color: #0d1a80;
-        padding: 10px;
-        margin: 10px auto;
+        width: fit-content;
+        border: 2px get-color(secondary) solid;
+        color: get-color(secondary);
         background: #c3c9ff;
         font-size: 50px;
         font-weight: bold;
-        border-radius: 10000px
+        padding: 0 44px;
+        margin: auto;
+        background: #eeeef3f2;
+        font-size: 50px;
+        font-weight: 700;
+        border-radius: 10000px;
     }
     .container {
         background: none;
@@ -485,10 +488,10 @@
         height: 100%;
         .AdditionsTitle {
             font-weight: bold;
-            color: #002366;
+            color: get-color(primary);
             font-size: 40px;
             display: inline-block;
-            border-bottom: solid 3px #002366;
+            border-bottom: solid 3px get-color(primary);
         }
     }
     .hn {
@@ -496,10 +499,10 @@
         width: 80%;
         margin: 0 auto;
         padding: 0;
-        background: #002366;
+        background: get-color(primary);
         color: #000;
         border-radius: 5px;
-        box-shadow: 1px 1px 5px 0px #002366;
+        box-shadow: 1px 1px 5px 0px get-color(primary);
     }
     .hn h3 {
         padding: 10px;
@@ -513,8 +516,8 @@
         color: #0d1a80;
     }
     .form-check-input:checked {
-        background-color: #002366;
-        border-color: #002366;
+        background-color: get-color(primary);
+        border-color: get-color(primary);
     }
     .form-check-input {
         background-color: #85ade9;
@@ -545,7 +548,7 @@
         min-width: fit-content;
     }
     .check div ul * {
-        color: #002366;
+        color: get-color(primary);
     }
     .pro-bar li:nth-child(1)::after {
         height: 0;
@@ -561,7 +564,7 @@
             border-bottom: none;
             font-size: 30px;
             padding: 22px 0px 0;
-            color: #002366;
+            color: get-color(primary);
         }
         #visa_input {
             // padding: 32px 0 0 130px;
@@ -573,12 +576,16 @@
     .min.min-r {
         display: block;
     }
+    .visa_text {
+        font-weight: 700;
+    }
     @media (max-width:1276px) {
         .YH-p {
             font-size: 15px;
         }
         .visa_text {
             font-size: 25px;
+            font-weight: 700;
         }
         @media (max-width:1100px) {
             .YH-p {

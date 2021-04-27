@@ -34,14 +34,14 @@
             margin: 20px 0;
         }
         .H3-TST-D3 h2 {
-            color: #0d1a80;
+            color: get-color(primary);
         }
         .H3-TST-D3 h2 span {
             color: #777;
             font-size: 15px;
         }
         .H3-TST-D3 h3 {
-            color: #0d1a80;
+            color: get-color(primary);
         }
         .H3-TST-D3 p {
             color: #777;
@@ -73,7 +73,7 @@
         .H3-TST-D4-1-hover:hover .H3-TST-D5-1 i,
         .H3-TST-D4-1-hover:hover .H3-TST-D5-1,
         .H3-TST-D4-1-hover:hover .H3-TST-D5-1 p {
-            color: #0d1a80;
+            color: get-color(primary);
         }
         .H3-TST-D3-2 .H3-TST-D4-1 {
             background-color: #b8b9b3;
@@ -105,7 +105,7 @@
         }
         #step2 .fa-info-circle {
             position: absolute;
-            color: red;
+            color: get-color(secondary);
             top: 50%;
             left: 10%;
             transform: translate(-50%, -50%);
@@ -128,11 +128,11 @@
             border-bottom: 1px solid #fff;
         }
         .H3-TST-D4-2 h5 {
-            color: #0d1a80;
+            color: get-color(primary);
             font-weight: 600;
         }
         .H3-TST-D4-2 p {
-            color: #0d1a80;
+            color: get-color(primary);
             font-weight: 500;
         }
         .H3-TST-D4-2 p i {
@@ -170,7 +170,7 @@
         }
         .fas.fa-info-circle {
             position: absolute;
-            color: red;
+            color: get-color(secondary);
             top: 50%;
             left: 10%;
             transform: translate(-50%, -50%);

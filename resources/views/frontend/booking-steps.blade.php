@@ -41,11 +41,11 @@
     </script>
 
     <link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/assets/icon/icofont/css/icofont.css')}}">
-    <style>
+    {{-- <style>
         body{
             background: url("{{asset('front/img/BackgroundH4.jpg')}}") fixed !important;
         }
-    </style>
+    </style> --}}
     @endsection
 
 
