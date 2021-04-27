@@ -58,3 +58,11 @@ textarea {
 body {
     padding: 0 !important;
 }
+
+select {
+    option {
+        &:hover {
+            box-shadow: 0 0 10px 100px #b80000 inset !important;
+        }
+    }
+}

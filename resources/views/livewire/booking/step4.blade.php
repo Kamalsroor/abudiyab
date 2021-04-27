@@ -32,8 +32,8 @@
                         </div>
                     </div>
                     <div class="price">
-                        <h1 style="color: #030172;font-weight: bold;">
-                            مجموع الايجار : <i class="icofont icofont-cur-riyal" style="color: #030172;font-weight: bold;"></i>{{$total}}
+                        <h1 style="color: #5f6796;font-weight: bold;">
+                            مجموع الايجار : <i class="icofont icofont-cur-riyal" style="color: #5f6796 ;font-weight: bold;"></i>{{$total}}
                         </h1>
                     </div>
                     <div class="complet">

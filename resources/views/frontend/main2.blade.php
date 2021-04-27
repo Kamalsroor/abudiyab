@@ -1,4 +1,9 @@
 <x-front-layout :title="trans('dashboard.home')" :breadcrumbs="['dashboard.home']" >
+    <style>
+        .footer{
+            padding-top: 100px;
+        }
+    </style>
 <link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/assets/icon/icofont/css/icofont.css')}}">
 @section('styles')
     @include('frontend.css.main_cartogray')
@@ -201,6 +206,15 @@
 </div>
 <div class="modal fade" id="BookingModel" tabindex="-1" aria-labelledby="BookingModelLabel" aria-hidden="true">
     <livewire:booking-model/>
+</div>
+<div class="mail-subscripe text-center">
+    <label for="mail-subscripe mb-5">أبق على تواصل معنا من خلال اشتراكك فى نشرتنا البريدية</label>
+    <div class="input-group">
+        <input type="text" id="mailsu" class="form-control" placeholder="أدخل بريدك الالكترونى" aria-label="" aria-describedby="basic-addon1">
+        <div class="input-group-prepend">
+        <button class="btn " type="button"><i class="fab fa-telegram-plane"></i></button>
+        </div>
+    </div>
 </div>
 
 </x-front-layout>
