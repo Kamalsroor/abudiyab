@@ -6,20 +6,26 @@
 
     <div class='insertLoginForm'></div>
     <div class='bodycontainer'>
+            
         <div class="booking-steps">
-
-            <div class="booking-steps_head @if ($currentStep == 3) col-lg-8 @else col-lg-12 @endif" style="padding: 0;">
-                <div class="booking-steps_head_background" style="width: 100% !important;">.</div>
-                <div>
-                    <ul class="pro-bar">
-                        <li style="width: 19%;margin-bottom: 15px;">البحث</li>
-                        <li style="width: 19%;margin-bottom: 15px;" class="">الإضافات</li>
-                        <li style="width: 19%;margin-bottom: 15px;" class="{{ $currentStep >= 2 ? 'active' : '' }}">شروط</li>
-                        <li style="width: 19%;margin-bottom: 15px;" class="{{ $currentStep >= 3 ? 'active' : '' }}">الدفع</li>
-                        <li style="width: 19%;margin-bottom: 15px;" class="">التأكيد</li>
-                    </ul>
+            <div  style="height:340px;background-position: center;background-size: cover;background-repeat: no-repeat">
+                {{-- <img class="w-100" src="{{asset('front/img/Webp.net-compress-image.jpg')}}" alt="hero image"> --}}
+                <div class="d-flex justify-content-center align-items-center" style="background-color: #000000c7;width:100%;height: 100%;">
+                    <div class="booking-steps_head @if ($currentStep == 3) col-lg-8 @else col-lg-12 @endif" style="padding: 0;">
+                        <div class="booking-steps_head_background" style="width: 100% !important;">.</div>
+                        <div>
+                            <ul class="pro-bar">
+                                <li style="width: 19%;margin-bottom: 15px;">البحث</li>
+                                <li style="width: 19%;margin-bottom: 15px;" class="">الإضافات</li>
+                                <li style="width: 19%;margin-bottom: 15px;" class="{{ $currentStep >= 2 ? 'active' : '' }}">شروط</li>
+                                <li style="width: 19%;margin-bottom: 15px;" class="{{ $currentStep >= 3 ? 'active' : '' }}">الدفع</li>
+                                <li style="width: 19%;margin-bottom: 15px;" class="">التأكيد</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
+                
             <div class='insertLogin' style='position: absolute;top:-10%;left:35%;z-index:99999;'>
 
             </div>
