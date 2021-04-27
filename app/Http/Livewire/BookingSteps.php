@@ -227,18 +227,20 @@ class BookingSteps extends Component
             'promotional_discount' => $this->promotional_discount ,
             'authorization_fee' =>  $this->authorization_fee ,
         ]);
-        if($this->visa_buy != 0 || $this->visa_buy != false ){
-             $this->paymentType = "visa";
-             $this->thirdStepSubmit();
-        }else{
-            $this->currentStep = 3;
-        }
-        if(Auth()->user()== null)
+
+        if(!Auth()->check())
         {
             $current_url=url()->previous().'&order_id='.$this->order->id;
             session()->push('redircitURl', $current_url);
             $this->dispatchBrowserEvent('notLogin');
             $this->currentStep = 2;
+        }else{
+            if($this->visa_buy != 0 || $this->visa_buy != false ){
+                $this->paymentType = "visa";
+                $this->thirdStepSubmit();
+           }else{
+               $this->currentStep = 3;
+           }
         }
     }
 
