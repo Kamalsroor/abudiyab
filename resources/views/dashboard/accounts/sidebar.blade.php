@@ -21,6 +21,12 @@
                 'active' => request()->routeIs('*supervisors*'),
             ],
             [
+                'name' => trans('employees.plural'),
+                'url' => route('dashboard.employees.index'),
+                'can' => ['ability' => 'viewAny', 'model' => \App\Models\Employee::class],
+                'active' => request()->routeIs('*employees*'),
+            ],
+            [
                 'name' => trans('customers.plural'),
                 'url' => route('dashboard.customers.index'),
                 'can' => ['ability' => 'viewAny', 'model' => \App\Models\Customer::class],

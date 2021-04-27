@@ -40,6 +40,15 @@ Route::post('supervisors/{trashed_supervisor}/restore', 'SupervisorController@re
 Route::delete('supervisors/{trashed_supervisor}/forceDelete', 'SupervisorController@forceDelete')->name('supervisors.forceDelete');
 Route::resource('supervisors', 'SupervisorController');
 
+
+// Employees Routes.
+Route::get('trashed/employees', 'EmployeeController@trashed')->name('employees.trashed');
+Route::get('trashed/employees/{trashed_employee}', 'EmployeeController@show')->name('employees.trashed.show');
+Route::post('employees/{trashed_employee}/restore', 'EmployeeController@restore')->name('employees.restore');
+Route::delete('employees/{trashed_employee}/forceDelete', 'EmployeeController@forceDelete')->name('employees.forceDelete');
+Route::resource('employees', 'EmployeeController');
+
+
 // Admins Routes.
 Route::get('trashed/admins', 'AdminController@trashed')->name('admins.trashed');
 Route::get('trashed/admins/{trashed_admin}', 'AdminController@show')->name('admins.trashed.show');
