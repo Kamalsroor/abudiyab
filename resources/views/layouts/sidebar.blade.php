@@ -17,6 +17,7 @@
 {{-- @include('dashboard.offers.partials.actions.sidebar') --}}
 @include('dashboard.works.partials.actions.sidebar')
 @include('dashboard.memberships.partials.actions.sidebar')
+@include('dashboard.regions.partials.actions.sidebar')
 {{-- The sidebar of generated crud will set here: Don't remove this line --}}
 @include('dashboard.feedback.partials.actions.sidebar')
 @include('dashboard.applications.partials.actions.sidebar')
