@@ -1,6 +1,6 @@
 <x-layout :title="$branch->name" :breadcrumbs="['dashboard.branches.show', $branch]">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             @component('dashboard::components.box')
                 @slot('class', 'p-0')
                 @slot('bodyClass', 'p-0')
@@ -13,7 +13,7 @@
                     </tr>
                     <tr>
                         <th width="200">@lang('branches.attributes.code')</th>
-                        <td>{{ $regions[$branch->code] }}</td>
+                        <td>{{ $branch->region->name }}</td>
 
                     </tr>
                     <tr>
@@ -37,7 +37,7 @@
                 @endslot
             @endcomponent
         </div>
-        <div class="col-md-6">
+        <div class="col-md-12">
             <livewire:cars-in-stock :branch="$branch->id" />
 
         </div>

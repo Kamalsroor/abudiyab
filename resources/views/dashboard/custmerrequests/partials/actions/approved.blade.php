@@ -25,16 +25,16 @@
 
             <div class="row">
                 <div class="col-6">
-                    <img src="{{$custmerrequest->getFirstMediaUrl('identityFace')}}" alt="">
+                    <img style="width: 100%;" src="{{$custmerrequest->getFirstMediaUrl('identityFace')}}" alt="">
                 </div>
                 <div class="col-6">
-                    <img src="{{$custmerrequest->getFirstMediaUrl('identityBack')}}" alt="">
+                    <img style="width: 100%;" src="{{$custmerrequest->getFirstMediaUrl('identityBack')}}" alt="">
                 </div>
                 <div class="col-6">
-                    <img src="{{$custmerrequest->getFirstMediaUrl('licenceFace')}}" alt="">
+                    <img style="width: 100%;" src="{{$custmerrequest->getFirstMediaUrl('licenceFace')}}" alt="">
                 </div>
                 <div class="col-6">
-                    <img src="{{$custmerrequest->getFirstMediaUrl('licenceBack')}}" alt="">
+                    <img style="width: 100%;" src="{{$custmerrequest->getFirstMediaUrl('licenceBack')}}" alt="">
                 </div>
                 <div class="col-4">
                     {{ BsForm::text('id_number') }}

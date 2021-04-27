@@ -79,27 +79,27 @@
                             </tr>
                             <tr>
                                 <th class="color-black text-center" scope="row">رقم الهوية</th>
-                                <td class="color-black text-center">{{$user->id_number}}</td>
+                                <td class="color-black text-center">{{isset($user) ? $user->id_number : ""}}</td>
 
                             </tr>
                             <tr>
                                 <th class="color-black text-center" scope="row">تاريخ انتهاء الهوية</th>
-                                <td class="color-black text-center">{{$user->id_expiry_date}}</td>
+                                <td class="color-black text-center">{{isset($user) ? $user->id_expiry_date : ""}}</td>
 
                             </tr>
                             <tr>
                                 <th class="color-black text-center" scope="row">تاريخ انتهاء رخصة القيادة</th>
-                                <td class="color-black text-center">{{$user->driver_id_expiry_date}}</td>
+                                <td class="color-black text-center">{{isset($user) ? $user->driver_id_expiry_date : ""}}</td>
 
                             </tr>
                             <tr>
                                 <th class="color-black text-center" scope="row">تاريخ الميلاد</th>
-                                <td class="color-black text-center">{{$user->date_of_birth}}</td>
+                                <td class="color-black text-center">{{isset($user) ? $user->date_of_birth : ""}}</td>
 
                             </tr>
                             <tr>
                                 <th class="color-black text-center" scope="row">الجنسية</th>
-                                <td class="color-black text-center">{{$user->nationality}}</td>
+                                <td class="color-black text-center">{{isset($user) ? $user->nationality : ""}}</td>
 
                             </tr>
                             <tr>
@@ -116,18 +116,18 @@
 
                             <tr>
                                 <th class="color-black text-center" scope="row">النوع</th>
-                                <td class="color-black text-center">{{$user->gender}}</td>
+                                <td class="color-black text-center">{{isset($user) ? $user->gender : ""}}</td>
 
                             </tr>
 
                             <tr>
                                 <th class="color-black text-center" scope="row">العنوان</th>
-                                <td class="color-black text-center">{{$user->address}}</td>
+                                <td class="color-black text-center">{{isset($user) ? $user->address : ""}}</td>
 
                             </tr>
                             <tr>
                                 <th class="color-black text-center" scope="row">صندوق البريد</th>
-                                <td class="color-black text-center">{{$user->post_box}} </td>
+                                <td class="color-black text-center">{{isset($user) ? $user->post_box : ""}} </td>
                             </tr>
                         </tbody>
                     </table>

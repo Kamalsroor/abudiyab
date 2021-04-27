@@ -45,6 +45,7 @@ Route::apiResource('branches', 'BranchController');
 Route::get('/select/branches', 'BranchController@select')->name('branches.select');
 Route::apiResource('categories', 'CategoryController');
 Route::get('/select/categories', 'CategoryController@select')->name('categories.select');
+Route::get('/cars/{car}/related', 'CarController@carRelated')->name('cars.related');
 Route::apiResource('cars', 'CarController');
 Route::get('/select/cars', 'CarController@select')->name('cars.select');
 Route::apiResource('manufactories', 'ManufactoryController');
@@ -65,4 +66,6 @@ Route::apiResource('custmerrequests', 'CustmerrequestController');
 Route::get('/select/custmerrequests', 'CustmerrequestController@select')->name('custmerrequests.select');
 Route::apiResource('memberships', 'MembershipController');
 Route::get('/select/memberships', 'MembershipController@select')->name('memberships.select');
+Route::apiResource('regions', 'RegionController');
+Route::get('/select/regions', 'RegionController@select')->name('regions.select');
 /*  The routes of generated crud will set here: Don't remove this line  */

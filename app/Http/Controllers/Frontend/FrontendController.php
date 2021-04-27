@@ -202,7 +202,7 @@ class FrontendController extends Controller
     }
     public function profile()
     {
-        $Custmerrequest = Custmerrequest::where('user_id',auth()->id())->where('is_confirmed','confirmed')->orderBy('created_at', 'DESC')->first();
+        $user = Custmerrequest::where('user_id',auth()->id())->where('is_confirmed','confirmed')->orderBy('created_at', 'DESC')->first();
         // $lastpending=Custmerrequest::select('created_at')->where('user_id',auth()->id())->where('is_confirmed','pending')->orderBy('created_at', 'DESC')->first();
         // $lastrejected=Custmerrequest::select('created_at')->where('user_id',auth()->id())->where('is_confirmed','rejected')->orderBy('created_at', 'DESC')->first();
 

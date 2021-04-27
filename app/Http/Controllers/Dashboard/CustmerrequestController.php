@@ -8,6 +8,7 @@ use App\Http\Requests\Dashboard\CustmerrequestRequest;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
+use App\Support\Sms;
 
 class CustmerrequestController extends Controller
 {
@@ -91,12 +92,15 @@ class CustmerrequestController extends Controller
      */
     public function update(CustmerrequestRequest $request, Custmerrequest $custmerrequest)
     {
+
         $custmerrequest->update(array_merge(
             $request->all(),
             ['is_confirmed' =>'confirmed']
         ));
-
         $custmerrequest->addAllMediaFromTokens();
+        $smsText = "تم الموافقه علي طلب تعديل البيانات لرقم {$custmerrequest->customer->phone} في موقع ابو ذياب لتأجير السيارات ";
+        $sms = Sms::SendSms($custmerrequest->customer->phone ,$smsText );
+
 
         flash(trans('custmerrequests.messages.updated'));
 

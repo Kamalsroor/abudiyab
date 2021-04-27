@@ -85,4 +85,17 @@ class Branch extends Model implements HasMedia, TranslatableContract
         //->singleFile()
 
     }
+
+
+    /**
+     * Get the region that car belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function region()
+    {
+        return $this->belongsTo(Region::class, 'code');
+    }
+
+
 }

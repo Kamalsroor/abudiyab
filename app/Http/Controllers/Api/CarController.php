@@ -39,7 +39,41 @@ class CarController extends Controller
      */
     public function index()
     {
+
         $cars = Car::filter()->simplePaginate();
+        return CarResource::collection($cars);
+    }
+
+
+
+     /**
+     * Display a listing of the cars.
+     * @OA\Get(
+     *      path="/cars",
+     *      operationId="getCarsList",
+     *      tags={"Cars"},
+     *      summary="Get list of cars",
+     *      description="Returns list of cars",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent(ref="#/components/schemas/CarResource")
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
+     * @param \App\Models\Car $car
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function carRelated(Car $car)
+    {
+        $cars = Car::where('category_id' , $car->category_id)->where('id', '!='  ,$car->id)->filter()->simplePaginate();
         return CarResource::collection($cars);
     }
 
