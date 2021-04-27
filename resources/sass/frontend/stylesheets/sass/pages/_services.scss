@@ -1,31 +1,21 @@
 .services-page {
-    &_head {
-        color: get-color(light);
-        height: 340px;
-        width: 100%;
-        position: relative;
-        h1 {
-            @include location(50%, 50%);
-        }
-    }
-    &_center {
-        .container {
-            width: 100%;
-            max-width: 80%;
-            @include smallScreen() {
-                max-width: 100%;
-                width: 100%;
+    background-color: #f2f2f2;
+    .container {
+        .row {
+            background-color: white;
+            webkit-box-shadow: 0 0 4px 0 rgb(0 0 0 / 20%);
+            box-shadow: 0 0 4px 0 rgb(0 0 0 / 20%);
+            padding: 35px 50px;
+            border-radius: 7px;
+            h2 {
+                color: get-color(primary);
             }
-        }
-        h4 {
-            border-bottom: 4px solid black;
-            color: get-color(primary);
-            line-height: 10px;
-            width: fit-content;
-            font-weight: 700;
-        }
-        ul {
-            list-style: disc;
+            ul {
+                li {
+                    font-size: 25px;
+                    color: get-color(primary);
+                }
+            }
         }
     }
 }
