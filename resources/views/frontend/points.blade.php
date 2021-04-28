@@ -1,7 +1,7 @@
 <x-front-layout :title="trans('dashboard.home')" :breadcrumbs="['dashboard.home']">
     <section class="points-program-page">
 
-        <section class="points-program-page_head" style="background: url({{asset('front/img/branches.jpg')}});background-repeat: no-repeat; background-size: cover;"><h1>برنامج النقاط</h1></section>
+        <section class="points-program-page_head" style="background: url({{asset('front/img/branches.jpg')}});background-repeat: no-repeat; background-size: cover;"><h1 class="main-page-title">برنامج النقاط</h1></section>
 
             <section class="points-program-page_center">
                 <div class="container-fluid px-0 mx-0 my-0" style="background-color: #ededed;">

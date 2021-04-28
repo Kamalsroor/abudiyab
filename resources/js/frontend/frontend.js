@@ -595,6 +595,12 @@ $(document).ready(function() {
         $('.social-media-links').toggleClass('d-none');
     })
 
+    $('.category-icons label').click(function() {
+        $(this).toggleClass('active');
+    })
+
+
+
 
 
     // gallery page----------------------------------------------------------------

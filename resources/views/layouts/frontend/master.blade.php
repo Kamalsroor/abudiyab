@@ -22,6 +22,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
     @yield('styles')
+    @stack('styles')
+
     <livewire:styles />
 
     {{-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> --}}

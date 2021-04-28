@@ -156,3 +156,17 @@
         transform: translateY(-20px);
     }
 }
+
+// ======================
+// sliding from the right
+// ======================
+@keyframes mymove {
+    from {
+        color: transparent;
+        transform: translateX(100px);
+    }
+    to {
+        top: white;
+        transform: translateX(0);
+    }
+}

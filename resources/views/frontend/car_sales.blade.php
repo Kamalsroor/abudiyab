@@ -7,7 +7,7 @@
             <img class="w-100" src="{{optional(Settings::instance('car_sales_backgraund'))->getFirstMediaUrl('car_sales_backgraund')}}" alt="back-ground">
 
 
-            <h1>{{Settings::locale(app()->getLocale())->get('car_sales_title')}}</h1>
+            <h1 class="main-page-title">{{Settings::locale(app()->getLocale())->get('car_sales_title')}}</h1>
 
         </section>
 
