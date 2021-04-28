@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 
 class Custmerrequest extends Model implements HasMedia
 {
+
+
     use HasFactory;
     use InteractsWithMedia;
     use HasUploader;
