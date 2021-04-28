@@ -195,4 +195,13 @@ class Order extends Model
         return $query->where('status' , 'confirmed');
     }
 
+    /**
+     * Get the branch that car belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function customer()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

@@ -6,8 +6,10 @@ use App\Models\Order;
 use Illuminate\Routing\Controller;
 use App\Http\Resources\SelectResource;
 use App\Http\Resources\OrderResource;
+use Auth;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Http\Request ;
 
 class OrderController extends Controller
 {
@@ -83,8 +85,20 @@ class OrderController extends Controller
      * @param \App\Models\Order $order
      * @return \App\Http\Resources\OrderResource
      */
-    public function show(Order $order)
+    public function show(Order $order,Request $request)
     {
+        $userorder=$order->customer->ConfirmedCustomerRequest();
+
+        if(Auth::check())
+        {
+            if ($order->user_id != auth()->id()) {
+                abort(404, 'order Repository not found');
+            }
+        }else{
+            if ($userorder->id_number != $request->identityNumber) {
+                abort(404, 'order Repository not found');
+            }
+        }
         return new OrderResource($order);
     }
 
@@ -118,4 +132,6 @@ class OrderController extends Controller
 
         return SelectResource::collection($orders);
     }
+
+
 }
