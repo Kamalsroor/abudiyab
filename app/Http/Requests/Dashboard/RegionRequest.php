@@ -24,13 +24,45 @@ class RegionRequest extends FormRequest
      */
     public function rules()
     {
+        if ($this->isMethod('POST')) {
+            return $this->createRules();
+        } else {
+            return $this->updateRules();
+        }
+
+    }
+
+
+
+    /**
+     * Get the create validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function createRules()
+    {
+        return RuleFactory::make([
+            '%name%' => ['required', 'string', 'max:255'],
+            'code' => ['required', 'string', 'max:255'],
+            'master_id' => ['required','unique:regions,master_id'],
+        ]);
+    }
+
+    /**
+     * Get the update validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function updateRules()
+    {
         return RuleFactory::make([
             '%name%' => ['required', 'string', 'max:255'],
             'code' => ['required', 'string', 'max:255'],
             'master_id' => ['required','unique:regions,master_id,' . $this->route('region')->id],
         ]);
-    }
 
+
+    }
     /**
      * Get custom attributes for validator errors.
      *
