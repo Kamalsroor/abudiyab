@@ -65,7 +65,7 @@
         </div>
         <div class="container-fluid">
             <div class="row footer_section-4 text-center">
-                <div class="col-12 text-center" style="background-color:#0000004d ">
+                <div class="col-12 text-center pb-0" style="background-color:#0000004d ">
                     جميع الحقوق محفوظة لشركة أبو ذياب لتأجير السيارات © 2021
                 </div>
             </div>

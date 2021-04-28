@@ -1,22 +1,32 @@
 .mail-subscripe {
-    width: 50%;
-    left: 50%;
-    transform: translate(-50%, 50%);
-    padding: 4% 10%;
-    background: get-color(secondary);
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    width: 32%;
+    margin: auto;
+    transform: translateY(93px);
+    background-color: rgba(181, 33, 34, .86);
     position: unset;
-    color: get-color(light);
+    color: #fff;
     text-align: center;
-    text-shadow: 1px 1px 10px get-color(primary);
+    text-shadow: 1px 1px 10px #5f6796;
     border-radius: 7px;
-    box-shadow: 1px 1px 5px black;
-    .input-group {
-        transform: translateX(-20px);
-    }
-    .input-group-prepend {
-        z-index: 20;
-        .btn {
-            transform: translateX(100%);
+    box-shadow: 1px 1px 5px #000;
+    .subscription-overlay {
+        width: 100%;
+        height: 200px;
+        background-color: rgb(181 33 34 / 86%);
+        padding: 4% 4%;
+        .input-group {
+            transform: translateX(-20px);
+        }
+        .input-group-prepend {
+            z-index: 20;
+            .btn {
+                transform: translateX(100%);
+            }
+        }
+        @include smallScreen() {
+            padding: 12% 4%;
         }
     }
     @include mediumScreen() {

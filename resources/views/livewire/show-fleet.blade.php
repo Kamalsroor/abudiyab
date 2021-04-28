@@ -11,6 +11,10 @@
      @endif
 
   <div>
+    @push('styles')
+     <link rel="stylesheet" href="{{asset('front/mycollection/font/flaticon.css')}}">  
+    @endpush
+  
         <!-- top container -->
         <section class="fleet-top-container">
             <div class="container-fluid bg-block py-2 my-2 top-container" >
@@ -203,7 +207,33 @@
                                         <label for="category-{{$category->id}}">{{$category->name}}</label>
                                     </div>
                                 @endforeach
+                                {{-- <div class="container-fluid" >
+                                    <div class="row category-icons justify-content-center">
+                                        <div class="col-6 text-center">
+                                            <label for="suv"><i class="flaticon-car"></i>اس يو فى</label>
+                                            <input type="checkbox" id="suv">
+                                        </div>
+                                        <div class="col-6 text-center">
+                                            <label for="sedan"><i class="flaticon-car-1"></i>سيدان</label>
+                                            <input type="checkbox" id="sedan">
+                                        </div>
+                                        <div class="col-6 text-center">
+                                            <label for="family-car"><i class="flaticon-family-car"></i>عائلية</label>
+                                            <input type="checkbox" id="family-car">
+                                        </div>
+                                        <div class="col-6 text-center">
+                                            <label for="echo-car"><i class="flaticon-car-2"></i>اقتصادية</label>
+                                            <input type="checkbox" id="echo-car">
+                                        </div>
+                                        <div class="col-6 text-center">
+                                            <label for="luxury-car"><i class="flaticon-supercar"></i>فخمة</label>
+                                            <input type="checkbox" id="luxury-car">
+                                        </div>
+                                        
+                                    </div>
+                                </div> --}}
                         </div>
+                            
                     </div>
                     <div class="col-lg-9  col-md-12 px-0">
                         <!-- loop comes here -->

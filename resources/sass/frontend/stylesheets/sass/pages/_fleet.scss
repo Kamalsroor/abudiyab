@@ -1,5 +1,5 @@
 .fleet-top-container {
-    width: 80%;
+    width: 75%;
     @include mediumScreen() {
         width: 100%;
     }
@@ -80,7 +80,7 @@
 
 .fleet-lower-container {
     .second-main-container {
-        width: 80%;
+        width: 75%;
         @include mediumScreen() {
             width: 100%;
         }
@@ -114,6 +114,24 @@
                     background-color: get-color(primary);
                     color: get-color(light);
                     box-shadow: 2px 2px 3px #555454;
+                }
+            }
+            .category-icons {
+                input {
+                    display: none;
+                }
+                label {
+                    display: flex;
+                    flex-direction: column;
+                    cursor: pointer;
+                    i {
+                        font-size: 64px;
+                        height: 64px;
+                    }
+                    &.active {
+                        color: get-color(secondary);
+                        font-weight: 900;
+                    }
                 }
             }
         }

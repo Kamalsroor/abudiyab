@@ -42,8 +42,8 @@
             <th>@lang('orders.attributes.booking_days')</th>
             <th>@lang('orders.attributes.recieving_date')</th>
             <th>@lang('orders.attributes.recieving_branch')</th>
-            <th>@lang('orders.attributes.delivery_date')</th>
-            <th>@lang('orders.attributes.delivery_branch')</th>
+            {{-- <th>@lang('orders.attributes.delivery_date')</th> --}}
+            {{-- <th>@lang('orders.attributes.delivery_branch')</th> --}}
             <th>@lang('orders.attributes.payment_type')</th>
             <th>@lang('orders.attributes.payment_status')</th>
             <th>@lang('orders.attributes.status')</th>
@@ -85,23 +85,29 @@
                 </td>
 
                 <td>
+
+                    @if ($order->customer)
                     <a href="{{ route('dashboard.customers.show', $order->customer) }}"
                         target="_blank"
                        class="text-decoration-none text-ellipsis">
                             <span class="index-flag">
                             @include('dashboard.accounts.customers.partials.flags.svg')
                             </span>
-                        <img src="{{ $order->customer->getAvatar() }}"
+                        <img src="{{ $order->customer ? $order->customer->getAvatar()  : ""}}"
                              alt="Product 1"
                              class="img-circle img-size-32 mr-2">
-                        {{ $order->customer->name }}
+                        {{ $order->customer ? $order->customer->name : "زائر" }}
                     </a>
+                    @else
+                       زائر
+                    @endif
+
                 </td>
                 <td>{{ $order->days}}</td>
                 <td>{{ $order->reciving_date->format('Y-m-d h:i A') }}</td>
                 <td>{{ $order->receivingBranch->name}}</td>
-                <td>{{ $order->delivery_date->format('Y-m-d h:i A') }}</td>
-                <td>{{ $order->deliveryBranch->name }}</td>
+                {{-- <td>{{ $order->delivery_date->format('Y-m-d h:i A') }}</td> --}}
+                {{-- <td>{{ $order->deliveryBranch->name }}</td> --}}
                 <td>{{ $order->payment_type }}</td>
                 <td>{{ $order->payment_status == "SUCCESS" ? "تم الدفع" : "لم يتم تأكيد الدفع"  }}</td>
                 <td>{{ trans('orders.status.'.$order->status)  }}</td>

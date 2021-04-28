@@ -32,11 +32,11 @@
                       <div class="col-sm-4 invoice-col">
                         العميل
                         <address>
-                          <strong>{{ $order->customer->name}}</strong><br>
-                          {{$order->customer->address}}<br>
+                          <strong>{{ $order->customer ? $order->customer->name : "زائر"}}</strong><br>
+                          {{$order->customer ? $order->customer->address : ""}}<br>
                           San Francisco, CA 94107<br>
-                          رقم الهاتف: {{ $order->customer->phone}}<br>
-                          البريد الالكتروني: {{ $order->customer->email}}
+                          رقم الهاتف: {{ $order->customer ? $order->customer->phone : ""}}<br>
+                          البريد الالكتروني: {{ $order->customer ? $order->customer->email : ""}}
                         </address>
                       </div>
                       <!-- /.col -->
@@ -193,9 +193,10 @@
                     {{-- @include('dashboard.orders.partials.actions.edit') --}}
                     {{-- @include('dashboard.orders.partials.actions.delete') --}}
 
-
-                    @include('dashboard.orders.partials.actions.confirmation')
-                    @include('dashboard.orders.partials.actions.rejected')
+                    @if ($order->customer)
+                        @include('dashboard.orders.partials.actions.confirmation')
+                        @include('dashboard.orders.partials.actions.rejected')
+                    @endif
                 @endslot
             @endcomponent
         </div>

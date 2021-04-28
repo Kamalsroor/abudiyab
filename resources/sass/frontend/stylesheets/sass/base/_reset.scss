@@ -66,3 +66,11 @@ select {
         }
     }
 }
+
+.main-page-title {
+    color: transparent;
+    animation-duration: 5s;
+    // animation-delay: 2s;
+    animation-name: mymove;
+    animation-iteration-count: 1;
+}

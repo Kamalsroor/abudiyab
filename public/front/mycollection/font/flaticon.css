@@ -1,0 +1,38 @@
+@font-face {
+    font-family: "flaticon";
+    src: url("./flaticon.ttf?42dee4595b68b1d0f11f0640baf49ba4") format("truetype"),
+url("./flaticon.woff?42dee4595b68b1d0f11f0640baf49ba4") format("woff"),
+url("./flaticon.woff2?42dee4595b68b1d0f11f0640baf49ba4") format("woff2"),
+url("./flaticon.eot?42dee4595b68b1d0f11f0640baf49ba4#iefix") format("embedded-opentype"),
+url("./flaticon.svg?42dee4595b68b1d0f11f0640baf49ba4#flaticon") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-car:before {
+    content: "\f101";
+}
+.flaticon-car-1:before {
+    content: "\f102";
+}
+.flaticon-pickup-truck:before {
+    content: "\f103";
+}
+.flaticon-family-car:before {
+    content: "\f104";
+}
+.flaticon-supercar:before {
+    content: "\f105";
+}
+.flaticon-car-2:before {
+    content: "\f106";
+}
