@@ -252,4 +252,17 @@ class User extends Authenticatable implements HasMedia
     {
         return $this->isSupervisor();
     }
+
+    public function customerRequest()
+    {
+        return $this->hasMany(Custmerrequest::class, 'user_id');
+    }
+
+
+
+    public function ConfirmedCustomerRequest()
+    {
+        return $this->customerRequest->where('is_confirmed' , 'confirmed')->last();
+    }
+
 }

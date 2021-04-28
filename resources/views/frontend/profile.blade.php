@@ -70,10 +70,24 @@
                     </div>
                 </div>
                 <div class="col-lg-7 px-0 px-md-2">
+                    @if ($newRequest->is_confirmed == "rejected")
+                        <p class="text-light bg-danger text-center" style="height: 40px;font-size: 20px">تم رفض طلب تسجيل البيانات بسبب : {{$newRequest->description}}</p>
+                    @endif
+                    @if ($newRequest->is_confirmed == "pending")
+                        <p class="text-light bg-danger text-center" style="height: 40px;font-size: 20px">يرجي انتظار مراجعه البيانات الشخصيه</p>
+                    @endif
+                    @if (isset($user) && $newRequest->is_confirmed == "confirmed" )
+                        @if (now()->gt($user->id_expiry_date))
+                        <p class="text-light bg-danger text-center" style="height: 40px;font-size: 20px">يرجي تحديث صوره البطاقه</p>
+                        @elseif (now()->gt($user->driver_id_expiry_date))
+                        <p class="text-light bg-danger text-center" style="height: 40px;font-size: 20px">يرجي تحديث صوره رخصه القياده</p>
+                        @endif
+                    @endif
                     <div id="profile">
                     <table class="table table-striped color-black">
                         <tbody>
                             <tr>
+
                                 <th class="color-black text-center" scope="row">الأسم</th>
                                 <td class="color-black text-center">{{Auth::user()->name}}</td>
                             </tr>

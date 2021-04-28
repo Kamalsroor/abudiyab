@@ -104,7 +104,7 @@
                 <a  style="cursor: pointer;"  data-toggle="modal" data-target="#staticBackdrop">
                     الأستعلام عن الحجز
                 </a>
-                
+
                 <!-- Modal -->
                 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -116,20 +116,27 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <input class="form-control my-2" type="text" placeholder="أدخل رقم الهوية">
-                            <input class="form-control my-2" type="text" placeholder="أدخل الكود هنا">
-                                <div class="alert alert-success my-2" role="alert">
+                            @if (Auth::check())
+                            <input class="form-control my-2" type="text" id='orderCode' placeholder="أدخل الكود هنا">
+                            @else
+                            <input class="form-control my-2 identityNumber" type="text" placeholder="أدخل رقم الهوية">
+                            <input class="form-control my-2"  type="text" id='orderCode' placeholder="أدخل الكود هنا">
+                            @endif
+                                <div class="alert alert-success  my-2 confirmed" style="display: none" role="alert">
                                     عميلنا العزيز تم تأكيد الحجز الخاص بك
                                 </div>
-                                <div class="alert alert-warning my-2" role="alert">
+                                <div class="alert alert-warning  my-2 pending" style="display: none" role="alert">
                                     عميلنا العزيز جارى العمل على الحجز الخاص بك
                                 </div>
-                                <div class="alert alert-danger my-2" role="alert">
-                                    عميلنا العزيز تم رفض طلب الحجز 
+                                <div class="alert alert-danger  my-2 rejected" style="display: none" role="alert">
+                                    عميلنا العزيز تم رفض طلب الحجز
+                                </div>
+                                <div class="alert alert-danger  my-2 notfound" style="display: none" role="alert">
+                                    عميلنا العزيز لا يوجد حجز بهذا الكود
                                 </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary mx-1">الاستعلام</button>
+                            <button type="button" class="btn btn-primary mx-1 check-reservation">الاستعلام</button>
                             <button type="button" class="btn btn-secondary mx-1" data-dismiss="modal">إغلاق</button>
                         </div>
                     </div>

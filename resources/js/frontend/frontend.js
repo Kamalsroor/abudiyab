@@ -249,8 +249,59 @@ $(document).ready(function() {
     //     })
     // }
 
-
-
+    const checkReservation = $('.check-reservation');
+    if (checkReservation.length) {
+        $('.check-reservation').on('click', function() {
+            let identityNumber = $('.identityNumber');
+            if (identityNumber.length) {
+                identityNumber = $('.identityNumber').val();
+            } else {
+                identityNumber = 0;
+            }
+            let orderCode = $('#orderCode').val();
+            console.log(orderCode, identityNumber);
+            $.ajax({
+                type: 'get',
+                url: showOrderURL + `/${orderCode}`,
+                headers: {
+                    "x-accept-language": "ar",
+                },
+                data: {
+                    'identityNumber': identityNumber
+                },
+                success: function(data, status) {
+                    console.log(data);
+                    switch (data['data']['status']) {
+                        case 'confirmed':
+                            $('.confirmed').show();
+                            $('.pending').hide();
+                            $('.rejected').hide();
+                            $('.notfound').hide();
+                            break;
+                        case 'pending':
+                            $('.pending').show();
+                            $('.confirmed').hide();
+                            $('.rejected').hide();
+                            $('.notfound').hide();
+                            break;
+                        case 'rejected':
+                            console.log('rejected');
+                            $('.rejected').show();
+                            $('.pending').hide();
+                            $('.confirmed').hide();
+                            $('.notfound').hide();
+                            break;
+                    }
+                },
+                error: function(xhr, status, error) {
+                    $('.notfound').show();
+                    $('.pending').hide();
+                    $('.confirmed').hide();
+                    $('.rejected').hide();
+                }
+            });
+        })
+    }
     const homeCategory = $('.home-category');
     if (homeCategory.length) {
         const togellerBtn = $('#home-category__togeller');
