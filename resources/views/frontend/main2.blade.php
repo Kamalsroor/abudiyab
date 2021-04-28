@@ -25,7 +25,7 @@
 
                         <h1>{{ $slider->first_header }}</h1>
                         <h1>{{ $slider->second_header }}</h1>
-                        <a href="#more" class="primary-btn btn-hover btn-curved m-5 p-3" style="width: 10%;">المزيــد <i class='fas fa-angle-double-down'  style="margin-right:5px; "></i></a>
+                        {{-- <a href="#more" class="primary-btn btn-hover btn-curved m-5 p-3" style="width: 10%;">المزيــد <i class='fas fa-angle-double-down'  style="margin-right:5px; "></i></a> --}}
 
 
                     </div>
@@ -39,7 +39,7 @@
     <div id="carouselExampleIndicators2" class="carousel home-carousel slide d-block d-md-none" data-ride="carousel">
         <ol class="carousel-indicators">
             @foreach ($miniSliders as $slider )
-                <li data-target="#carouselExampleIndicators2" data-slide-to="{{$loop->index}}" class="{{$loop->first  ? 'active' : "" }}" ></li>
+                <li data-target="#carouselExampleIndicators2" data-slide-to="{{$loop->index}}" class="{{$loop->first  ? 'active' : "" }}" style="background-image: url({{$slider->getFirstMediaUrl()}});"></li>
             @endforeach
         </ol>
         <div class="carousel-inner">
