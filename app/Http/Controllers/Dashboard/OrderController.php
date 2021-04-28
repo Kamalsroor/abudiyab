@@ -28,7 +28,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::filter()->paginate();
+        $orders = Order::filter()->latest()->paginate();
 
         return view('dashboard.orders.index', compact('orders'));
     }
