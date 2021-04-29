@@ -1,11 +1,89 @@
-.media-center-page {
+.media-center {
     &_head {
         color: get-color(light);
         height: 340px;
         width: 100%;
         position: relative;
-        h1 {
-            @include location(50%, 50%);
+        &_overlay-black {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-color: #00000080;
+            h1 {
+                @include location(50%, 50%);
+                text-align: center;
+                width: fit-content;
+                span {
+                    color: get-color(red);
+                }
+            }
+        }
+    }
+    &_center {
+        width: 100%;
+        background-color: rgb(245, 243, 243);
+        overflow: hidden;
+        &_content {
+            display: flex;
+            width: 85%;
+            @media (max-width: 774px) {
+                width: 95%;
+            }
+            @media (max-width: 400px) {
+                width: 100%;
+            }
+            margin: 40px auto;
+            background-color: #fff;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 1%;
+            &_news {
+                border: 1px solid #ccc;
+                width: 49%;
+                @media (max-width: 645px) {
+                    width: 100%;
+                }
+                border-radius: 4px;
+                margin-bottom: 20px;
+                &_img {
+                    width: 100%;
+                    height: 240px;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                &_title {
+                    width: 100%;
+                    padding: 5px 20px;
+                    background-color: rgb(221, 220, 220);
+                    h2 {
+                        width: 100%;
+                        text-align: right;
+                        font-size: 18px;
+                        color: #444;
+                    }
+                }
+                &_describe {
+                    width: 100%;
+                    padding: 5px 20px;
+                    p {
+                        width: 100%;
+                        text-align: right;
+                        font-size: 17px;
+                        color: #444;
+                    }
+                }
+                a {
+                    width: 120px;
+                    height: 35px;
+                    font-size: 16px;
+                    color: #fff;
+                    font-family: 'Cairo', sans-serif;
+                    margin: 20px 20px;
+                    float: right;
+                }
+            }
         }
     }
 }

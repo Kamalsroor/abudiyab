@@ -1,0 +1,122 @@
+.news-details {
+    width: 100%;
+    background-color: rgb(245, 243, 243);
+    overflow: hidden;
+    &_content {
+        background-color: #fff;
+        width: 85%;
+        margin: 10px auto 30px;
+        &_img {
+            width: 100%;
+            margin-bottom: 10px;
+            // height: 25rem;
+            img {
+                max-height: 60vh;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        &_title {
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 0 15px;
+            h2 {
+                padding: 5px 10px;
+                background-color: #efefef;
+                width: 100%;
+                text-align: right;
+                color: #222;
+                font-size: 18px;
+            }
+        }
+        &_describe {
+            width: 100%;
+            padding: 0 15px;
+            text-align: right;
+            div {
+                width: 100%;
+                font-size: 16px;
+                color: #a9a9a9;
+            }
+            p {
+                width: 100%;
+                font-size: 17px;
+            }
+        }
+        &_similar-news {
+            text-align: right;
+            margin-top: 60px;
+            width: 100%;
+            padding: 0 10px;
+            display: flex;
+            flex-wrap: wrap;
+            direction: rtl;
+            padding-bottom: 30px;
+            h1 {
+                width: 100%;
+                text-align: right;
+                margin-bottom: 3px;
+                padding: 0 3px;
+                div {
+                    width: 30%;
+                    @media (max-width: 625px) {
+                        width: fit-content;
+                    }
+                    padding: 5px 10px;
+                    background: #efefef;
+                    font-size: x-large;
+                    font-weight: 400;
+                    float: right;
+                }
+            }
+            &_news {
+                width: 33%;
+                margin: 0 0.1555%;
+                @media (max-width: 965px) {
+                    width: 49%;
+                    margin: 5px 0.5%;
+                    @media (max-width: 725px) {
+                        width: 100%;
+                        margin: 5px 0;
+                    }
+                }
+                border: 1px solid #ccc;
+                &_img {
+                    width: 100%;
+                    height: 17rem;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                &_title {
+                    width: 100%;
+                    background-color: #efefef;
+                    margin-bottom: 20px;
+                    h2 {
+                        text-align: right;
+                        width: 100%;
+                        padding: 6px;
+                        font-size: 18px;
+                        color: #222;
+                    }
+                }
+                &_describe {
+                    width: 100%;
+                    padding: 0 6px;
+                    p {
+                        text-align: right;
+                        width: 100%;
+                        font-size: 17px;
+                    }
+                }
+                a {
+                    float: right;
+                    margin: 20px 5px;
+                    width: 120px;
+                    height: 35px;
+                }
+            }
+        }
+    }
+}

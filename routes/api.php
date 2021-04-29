@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -39,8 +38,8 @@ Route::get('/settings/pages/{page}', 'SettingController@page')
 Route::post('feedback', 'FeedbackController@store')->name('feedback.send');
 Route::apiResource('categories', 'CategoryController');
 Route::get('/select/categories', 'CategoryController@select')->name('categories.select');
-Route::apiResource('cities', 'CityController');
-Route::get('/select/cities', 'CityController@select')->name('cities.select');
+// Route::apiResource('cities', 'CityController');
+// Route::get('/select/cities', 'CityController@select')->name('cities.select');
 Route::apiResource('roles', 'RoleController');
 Route::get('/select/roles', 'RoleController@select')->name('roles.select');
 
@@ -60,8 +59,8 @@ Route::get('/select/sliders', 'SliderController@select')->name('sliders.select')
 Route::apiResource('partners', 'PartnerController');
 Route::get('/select/partners', 'PartnerController@select')->name('partners.select');
 
-Route::apiResource('offers', 'OfferController');
-Route::get('/select/offers', 'OfferController@select')->name('offers.select');
+// Route::apiResource('offers', 'OfferController');
+// Route::get('/select/offers', 'OfferController@select')->name('offers.select');
 
 Route::apiResource('works', 'WorkController');
 Route::get('/select/works', 'WorkController@select')->name('works.select');
@@ -71,4 +70,6 @@ Route::apiResource('memberships', 'MembershipController');
 Route::get('/select/memberships', 'MembershipController@select')->name('memberships.select');
 Route::apiResource('regions', 'RegionController');
 Route::get('/select/regions', 'RegionController@select')->name('regions.select');
+
+Route::post('/subscribe', 'SubscribeController')->name('user.subscribe');
 /*  The routes of generated crud will set here: Don't remove this line  */

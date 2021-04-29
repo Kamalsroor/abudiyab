@@ -122,13 +122,14 @@
 
                     }
 
-
+            window.addEventListener('sweetalert',function(){
+                Swal.fire({
+                    title: "يرجي تحديث البيانات الشخصيه",
+                    icon:"error",
+                    confirmButtonText: 'موافق'
+                })
+            })
             </script>
-
-
-
-
-
 
     @endsection
 

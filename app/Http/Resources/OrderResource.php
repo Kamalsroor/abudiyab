@@ -28,8 +28,9 @@ class OrderResource extends JsonResource
             'delivery_date' => $this->delivery_date->format('Y-m-d h:i A'),
             'payment_type' => $this->payment_type,
             'price' => $this->price,
-            'status' => trans('orders.status.'.$this->status),
             'created_at' => $this->created_at->diffForHumans(),
+            'status' => $this->status,
+            'status_text' => trans('orders.status.'.$this->status),
         ];
     }
 }

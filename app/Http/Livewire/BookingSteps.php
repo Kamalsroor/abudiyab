@@ -7,6 +7,7 @@ use App\Models\Car;
 use App\Models\Branch;
 use App\Models\Order;
 use App\Models\CarsInStock;
+use App\Models\Custmerrequest;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 use App\Payment\MasterCardPayment;
@@ -207,7 +208,10 @@ class BookingSteps extends Component
         // $validatedData = $this->validate([
         //     'status' => 'required',
         // ]);
-
+        $Custmerrequest = Custmerrequest::where('user_id',auth()->id())->where('is_confirmed','confirmed')->orderBy('created_at', 'DESC')->first();
+        $currentDate= now();
+        $idExpireDate= $Custmerrequest->id_expiry_date;
+        $driverIdExpireDate= $Custmerrequest->driver_id_expiry_date;
         $this->order = Order::updateOrCreate([
             'id' => $this->order ? $this->order->id : 0
         ],[
@@ -235,12 +239,22 @@ class BookingSteps extends Component
             $this->dispatchBrowserEvent('notLogin');
             $this->currentStep = 2;
         }else{
-            if($this->visa_buy != 0 || $this->visa_buy != false ){
-                $this->paymentType = "visa";
-                $this->thirdStepSubmit();
-           }else{
-               $this->currentStep = 3;
-           }
+            if($currentDate->lt($idExpireDate) || $currentDate->lt($driverIdExpireDate))
+            {
+                if($this->visa_buy != 0 || $this->visa_buy != false ){
+                    $this->paymentType = "visa";
+                    $this->thirdStepSubmit();
+               }else{
+                   $this->currentStep = 3;
+               }
+            }
+            else{
+                $errorData = [
+                    'title' => 'يرجي تحديث البيانات الشخصيه',
+                    'type' => 'error',
+                ];
+                $this->dispatchBrowserEvent('sweetalert', $errorData);
+            }
         }
     }
 

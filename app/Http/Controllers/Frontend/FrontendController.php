@@ -66,7 +66,10 @@ class FrontendController extends Controller
         return view('frontend.car_sales');
     }
 
-
+    public function NewsDetails()
+    {
+        return view('frontend.news-details');
+    }
 
     public function services()
     {
@@ -209,11 +212,17 @@ class FrontendController extends Controller
     }
     public function profile()
     {
-        $user = Custmerrequest::where('user_id',auth()->id())->where('is_confirmed','confirmed')->orderBy('created_at', 'DESC')->first();
-        // $lastpending=Custmerrequest::select('created_at')->where('user_id',auth()->id())->where('is_confirmed','pending')->orderBy('created_at', 'DESC')->first();
-        // $lastrejected=Custmerrequest::select('created_at')->where('user_id',auth()->id())->where('is_confirmed','rejected')->orderBy('created_at', 'DESC')->first();
+        $is_confirmed = true ;
+        $user = Custmerrequest::where('user_id',auth()->id())->orderBy('created_at', 'DESC')->first();
+        if($user){
+            $newRequest = $user;
+           if($user->is_confirmed != "confirmed"){
+                $is_confirmed = false ;
+                $user = Custmerrequest::where('user_id',auth()->id())->where('is_confirmed' , 'confirmed')->orderBy('created_at', 'DESC')->first();
+           }
+        }
 
-        return view('frontend.profile',compact('user'));
+        return view('frontend.profile',compact('user','is_confirmed','newRequest'));
     }
     public function addCandidates(Request $request)
     {
