@@ -148,6 +148,31 @@
                                         <label for="category-{{$category->id}}">{{$category->name}}</label>
                                     </div>
                                 @endforeach
+                                {{-- <div class="container-fluid" >
+                                    <div class="row category-icons justify-content-center">
+                                        <div class="col-6 text-center">
+                                            <label for="suv"><i class="flaticon-car"></i>اس يو فى</label>
+                                            <input type="checkbox" id="suv">
+                                        </div>
+                                        <div class="col-6 text-center">
+                                            <label for="sedan"><i class="flaticon-car-1"></i>سيدان</label>
+                                            <input type="checkbox" id="sedan">
+                                        </div>
+                                        <div class="col-6 text-center">
+                                            <label for="family-car"><i class="flaticon-family-car"></i>عائلية</label>
+                                            <input type="checkbox" id="family-car">
+                                        </div>
+                                        <div class="col-6 text-center">
+                                            <label for="echo-car"><i class="flaticon-car-2"></i>اقتصادية</label>
+                                            <input type="checkbox" id="echo-car">
+                                        </div>
+                                        <div class="col-6 text-center">
+                                            <label for="luxury-car"><i class="flaticon-supercar"></i>فخمة</label>
+                                            <input type="checkbox" id="luxury-car">
+                                        </div>
+                                        
+                                    </div>
+                                </div> --}}
                             </div>
 
                         </div>
@@ -254,7 +279,7 @@
                                                 <a href="{{route('front.car.show',$formcar)}}"><h3 class="color-black fleet-car-name" style="display: inline">{{$formcar->name}} <span  class=" color-black">أو مشابهة</span></h3></a>
                                                 <span class="color-black text-right addToFavorite {{in_array($formcar->id,$favCars) ? 'active' : ''}}" data-id="{{$formcar->id}}"><i class="far fa-heart heart"></i><i class="fas fa-heart heart"></i></span>
 
-                                                <h3 class="fleet-car-model" >{{$formcar->model}}</h3>
+                                                <h5 class="fleet-car-model" > الموديل : {{$formcar->model}}</h5>
                                                 <p class="color-black fleet-doors-seats" >5 مقاعد | 4 أبواب | 2 الأمتعة </p>
                                                 <p class=" color-black fleet-transmission-ac">مكيف | ناقل حركة أوتوماتيكي{{-- trans('cars.features.' . $formcar->features) --}}</p>
                                                 <p class="fleet-category" > {{$formcar->category?$formcar->category->name:'-'}}</p>

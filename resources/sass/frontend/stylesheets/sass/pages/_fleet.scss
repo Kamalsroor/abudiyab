@@ -140,11 +140,17 @@
         background-color: white;
         .fleet-car-name {
             font-size: 25px;
+            @include smallScreen() {
+                font-size: 20px;
+            }
             span {
                 font-weight: normal;
                 line-height: 1;
                 color: #777;
                 font-size: 17px;
+                @include smallScreen() {
+                    font-size: 14px;
+                }
             }
         }
         .fleet-car-model {
@@ -201,7 +207,7 @@
 
 .addToFavorite {
     font-size: 20px;
-    padding-right: 30px;
+    padding-right: 10px;
     color: #222;
     .fas {
         display: none;
@@ -240,4 +246,9 @@ div.slider-handle.min-slider-handle.round {
     background-image: none !important;
     background: rgb(25 40 122 / 79%) !important;
     cursor: pointer;
+}
+
+.slider-selection {
+    background-image: none !important;
+    background-color: get-color(primary) !important;
 }
