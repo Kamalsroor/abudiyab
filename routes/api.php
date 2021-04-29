@@ -59,8 +59,8 @@ Route::get('/select/sliders', 'SliderController@select')->name('sliders.select')
 Route::apiResource('partners', 'PartnerController');
 Route::get('/select/partners', 'PartnerController@select')->name('partners.select');
 
-// Route::apiResource('offers', 'OfferController');
-// Route::get('/select/offers', 'OfferController@select')->name('offers.select');
+Route::apiResource('offers', 'OfferController');
+Route::get('/select/offers', 'OfferController@select')->name('offers.select');
 
 Route::apiResource('works', 'WorkController');
 Route::get('/select/works', 'WorkController@select')->name('works.select');
