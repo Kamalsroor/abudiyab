@@ -258,6 +258,19 @@ class User extends Authenticatable implements HasMedia
         return $this->hasMany(Custmerrequest::class, 'user_id');
     }
 
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'user_id');
+    }
+
+    public function contracts()
+    {
+        return $this->orders->where('status' , 'confirmed');
+    }
+    public function reservation()
+    {
+        return $this->orders;
+    }
 
 
     public function ConfirmedCustomerRequest()
