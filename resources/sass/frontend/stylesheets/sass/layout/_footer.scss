@@ -30,11 +30,11 @@
         }
     }
     @include mediumScreen() {
-        width: 100%;
+        width: 85%;
         position: relative;
     }
     @include smallScreen() {
-        width: 100%;
+        width: 85%;
     }
 }
 
