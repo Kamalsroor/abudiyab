@@ -59,7 +59,10 @@ class FrontendController extends Controller
         return view('frontend.car_sales');
     }
 
-
+    public function NewsDetails()
+    {
+        return view('frontend.news-details');
+    }
 
     public function services()
     {
