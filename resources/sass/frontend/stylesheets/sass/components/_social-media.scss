@@ -1,8 +1,9 @@
 .social-media-links {
     position: fixed;
     top: 30vh;
-    #{$start}: 0;
+    left: 0;
     z-index: 5;
+    direction: ltr;
     a {
         box-shadow: 10px 10px 10px #00000029;
         background: get-color(light);

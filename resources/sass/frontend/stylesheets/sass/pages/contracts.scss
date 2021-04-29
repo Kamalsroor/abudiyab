@@ -22,4 +22,21 @@
             font-size: 20px;
         }
     }
+    .nav-pills {
+        .nav-link {
+            color: get-color(primary);
+            cursor: pointer;
+            &.active {
+                background-color: get-color(primary);
+                color: get-color(light);
+            }
+            &:not(.active) {
+                &:hover {
+                    background-color: get-color(primary);
+                    color: get-color(light);
+                    opacity: 0.6;
+                }
+            }
+        }
+    }
 }
