@@ -184,7 +184,7 @@
     background-repeat: no-repeat;
     background-size: cover;">
         <div>
-        <h2 >{{Settings::locale(app()->getLocale())->get('home_links_title')}}</h2>
+        <h2 >{!!Settings::locale(app()->getLocale())->get('home_description')!!}</h2>
         </div>
     </section>
 

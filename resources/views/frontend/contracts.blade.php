@@ -42,8 +42,8 @@
                       </div>
                       <div class="row contract-content" >
                           <div class="col-12 col-md-5 d-flex justify-content-center align-items-center" style="flex-direction: column;">
-                              <img  class="w-100" src="{{asset('front/img/ford-figo-2018.png')}}" alt="car-img">
-                              <p >مرسيدس c180 <span class="badge badge-danger">2020</span></p>
+                              <img  class="w-100" src="{{$order->car->getFirstMediaUrl()}}" alt="car-img">
+                              <p >{{$order->car->name}} <span class="badge badge-danger">{{$order->car->model}}</span></p>
 
                           </div>
                           <div class="col-12 col-md-7 d-flex justify-content-end align-items-center" style="flex-direction:column;">
@@ -65,6 +65,12 @@
                                       <th scope="row">التاريخ</th>
                                       <td>{{$order->reciving_date->format('d-m-Y')}}</td>
                                       <td>{{$order->delivery_date->format('d-m-Y')}}</td>
+                                    </tr>
+                                    <tr>
+
+                                        <th scope="row"> الحاله</th>
+                                        <td style="color: {{$order->status =='confirmed' ? 'green' : (($order->status =='pending') ? 'rgb(112, 150, 37)' : 'red')}}">{{$order::orderStatus[$order->status]}}</td>
+
                                     </tr>
                                   </tbody>
                               </table>

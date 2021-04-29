@@ -53,6 +53,12 @@ class Order extends Model
 
     ];
 
+    const orderStatus=[
+        'pending' => 'جاري انتظار تاكيد الحجز',
+        'confirmed' => 'الحجز مؤاكد',
+        'rejected' => ' الحجز مرفوض',
+        'done' => ' الحجز تم',
+    ];
 
 
     protected $casts = [
