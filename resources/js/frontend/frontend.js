@@ -566,8 +566,8 @@ $(document).ready(function() {
         slidesToScroll: 1,
         centerMode: false,
         dots: false,
-        arrows: true,
-        rtl: html.dir === 'rtl',
+        arrows: false,
+        // rtl: html.dir === 'rtl',
         autoplay: true,
         autoplaySpeed: 1500,
         responsive: [{
