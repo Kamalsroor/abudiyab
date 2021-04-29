@@ -1,22 +1,21 @@
 /*==========
     About us
 ==========*/
+
 .about {
-  padding: 4rem 0 2rem;
-  &__content {
-      .g-title {
-        color: get-color(dark);
-          @include largeScreen {
-              @include padding($right: 5rem);
-          }
-      }
-      .g-par {
-          @include largeScreen {
-              @include padding($right: 3rem);
-          }
-      }
-
-
+    padding: 4rem 0 2rem;
+    &__content {
+        .g-title {
+            color: get-color(dark);
+            @include largeScreen {
+                @include padding($right: 5rem);
+            }
+        }
+        .g-par {
+            @include largeScreen {
+                @include padding($right: 3rem);
+            }
+        }
         &__read-more {
             background: get-color(light);
             color: get-color(light);
@@ -30,42 +29,40 @@
                 color: get-color(primary);
             }
         }
-      &__video {
-          width: 60px;
-          height: 60px;
-          background: #641AA5;
-          color: get-color(light);
-          border-radius: 50%;
-          @include font($size: 1.2rem);
-          animation: video-shadow 5s infinite linear forwards;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          &:hover {
-              color: get-color(light);
-          }
-      }
-  }
-
-  &__img {
-      padding-bottom: 3rem;
-      img {
-          height: 300px;
-          width: 100%;
-          @include largeScreen {
-              height: 400px;
-          }
-
-      }
-  }
+        &__video {
+            width: 60px;
+            height: 60px;
+            background: #641AA5;
+            color: get-color(light);
+            border-radius: 50%;
+            @include font($size: 1.2rem);
+            animation: video-shadow 5s infinite linear forwards;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            &:hover {
+                color: get-color(light);
+            }
+        }
+    }
+    &__img {
+        padding-bottom: 3rem;
+        img {
+            height: 300px;
+            width: 100%;
+            @include largeScreen {
+                height: 400px;
+            }
+        }
+    }
 }
 
 
 /*==========
     us the best
 ==========*/
+
 .us-the-best {
-    
     position: relative;
     background-size: cover;
     padding: 3rem 0 150px;
@@ -73,38 +70,23 @@
         text-align: center;
         padding-bottom: 1rem;
         color: get-color(secondary);
-        @include font(
-            $size: 1.2rem,
-            $transform: uppercase,
-            $family: 'Sitka Small',
-        )
+        @include font( $size: 1.2rem, $transform: uppercase, $family: 'Sitka Small', )
     }
-
     &__title {
         text-align: center;
         color: get-color(light);
-        @include font(
-            $size: 2rem,
-            $transform: uppercase,
-            $family: 'Times New Roman',
-        )
+        @include font( $size: 2rem, $transform: uppercase, $family: 'Times New Roman', )
     }
-
     &__par {
         padding: 1rem;
         text-align: center;
         color: get-color(light);
-        @include font(
-            $size: .9rem,
-            $transform: capitalize,
-            $family: 'Segoe UI',
-        );
+        @include font( $size: .9rem, $transform: capitalize, $family: 'Segoe UI', );
         @include largeScreen {
             width: 80%;
             margin: 0 auto;
         }
     }
-
 }
 
 .us-the-best__process {
@@ -126,24 +108,15 @@
                     img {
                         height: 85px;
                     }
-                   
                 }
                 &:nth-of-type(2) {
                     color: get-color(secondary);
-                    @include font(
-                        $size: 1.1rem,
-                        $family: 'Times New Roman',
-                        $transform: capitalize,
-                        $weight: bold,
-                    );
+                    @include font( $size: 1.1rem, $family: 'Times New Roman', $transform: capitalize, $weight: bold, );
                     padding: .5rem 0;
                 }
                 &:nth-of-type(3) {
                     color: get-color(dark);
-                    @include font(
-                        $size: 1rem,
-                        $family: 'Segoe UI',
-                    )
+                    @include font( $size: 1rem, $family: 'Segoe UI', )
                 }
             }
         }
@@ -154,6 +127,7 @@
 /*==========
     work together
 ==========*/
+
 .work-together {
     padding: 3rem 0;
     @include largeScreen {
@@ -185,17 +159,9 @@
                 }
                 &:nth-of-type(2) {
                     color: get-color(dark);
-                    @include font(
-                        $size: 1rem,
-                        $family: 'Sitka Small',
-                        $transform: capitalize,
-                        $weight: bold,
-                    )
+                    @include font( $size: 1rem, $family: 'Sitka Small', $transform: capitalize, $weight: bold, )
                 }
             }
         }
-
     }
-
-
 }

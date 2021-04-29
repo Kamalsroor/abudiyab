@@ -24,6 +24,12 @@ class MembershipResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'image' => $this->getFirstMediaUrl(),
+            'rental_discount' => $this->rental_discount,
+            'ratio_points' => $this->ratio_points,
+            'extra_hours' => $this->extra_hours,
+            'allowed_Kilos' => $this->allowed_Kilos,
+            'delivery_discount_regions' => $this->delivery_discount_regions,
         ];
     }
 }

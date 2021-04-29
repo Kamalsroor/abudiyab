@@ -4,6 +4,7 @@ namespace App\Models\Relations;
 
 use App\Models\Branch;
 use App\Models\Category;
+use App\Models\Offer;
 use App\Models\Manufactory;
 
 trait CarRelations
@@ -18,6 +19,25 @@ trait CarRelations
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
+
+
+    /**
+     * Get all of the offers that are assigned this car.
+     */
+    public function offers()
+    {
+        return $this->morphToMany(Offer::class, 'offarable');
+    }
+
+
+
+    // /**
+    //  * Get all of the offers that are assigned this car.
+    //  */
+    // public function CrruntOffers()
+    // {
+    //     return $this->offers();
+    // }
 
 
     // /**
