@@ -14,7 +14,7 @@
 {{-- @include('dashboard.sliders.partials.actions.sidebar') --}}
 @include('dashboard.orders.partials.actions.sidebar')
 @include('dashboard.partners.partials.actions.sidebar')
-{{-- @include('dashboard.offers.partials.actions.sidebar') --}}
+@include('dashboard.offers.partials.actions.sidebar')
 @include('dashboard.works.partials.actions.sidebar')
 @include('dashboard.memberships.partials.actions.sidebar')
 @include('dashboard.regions.partials.actions.sidebar')

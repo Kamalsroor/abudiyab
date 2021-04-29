@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use AhmedAliraqi\LaravelMediaUploader\Entities\Concerns\HasUploader;
 use App\Models\Relations\CarRelations;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+use Illuminate\Http\Request;
 
 class Car extends Model implements HasMedia, TranslatableContract
 {
@@ -122,6 +123,23 @@ class Car extends Model implements HasMedia, TranslatableContract
 
     }
 
+
+
+    /**
+     * Get the user's first name.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getIsFavoriteAttribute($value)
+    {
+        if (Request()->has('user_id')) {
+            return addToFavorite::where('user_id' , Request()->get('user_id'))->where('car_id' , $this->id)->count() > 0 ? true : false;
+        }
+        return false;
+    }
+
+
     /**
      * The car main image url.
      *
@@ -131,6 +149,7 @@ class Car extends Model implements HasMedia, TranslatableContract
     {
         return $this->getFirstMediaUrl('default');
     }
+
 
     /**
      * The car main image url.
