@@ -96,6 +96,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script>
         let showOrderURL="{{route('api.orders.index')}}"
         let BookingModelURl = "{{route('front.bookingModel')}}";
+        let csrf_token = "{{ csrf_token() }}";
         function openBookingModel(id) {
             window.livewire.emit('setCarId',id);
 
