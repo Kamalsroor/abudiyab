@@ -2,29 +2,29 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Order;
+use App\Models\Offer;
 use Illuminate\Routing\Controller;
 use App\Http\Resources\SelectResource;
-use App\Http\Resources\OrderResource;
+use App\Http\Resources\OfferResource;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-class OrderController extends Controller
+class OfferController extends Controller
 {
     use AuthorizesRequests, ValidatesRequests;
 
     /**
-     * Display a listing of the orders.
+     * Display a listing of the offers.
      * @OA\Get(
-     *      path="/orders",
-     *      operationId="getOrdersList",
-     *      tags={"Orders"},
-     *      summary="Get list of orders",
-     *      description="Returns list of orders",
+     *      path="/offers",
+     *      operationId="getOffersList",
+     *      tags={"Offers"},
+     *      summary="Get list of offers",
+     *      description="Returns list of offers",
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/OrderResource")
+     *          @OA\JsonContent(ref="#/components/schemas/OfferResource")
      *       ),
      *      @OA\Response(
      *          response=401,
@@ -39,22 +39,22 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::where('user_id' , auth()->user()->id)->with('car')->filter()->simplePaginate();
-        return OrderResource::collection($orders);
+        $offers = Offer::filter()->simplePaginate();
+        return OfferResource::collection($offers);
     }
 
     /**
-     * Display the specified order.
+     * Display the specified offer.
      *
      * @OA\Get(
-     *      path="/orders/{id}",
-     *      operationId="getOrderById",
-     *      tags={"Orders"},
-     *      summary="Get order information",
-     *      description="Returns order data",
+     *      path="/offers/{id}",
+     *      operationId="getOfferById",
+     *      tags={"Offers"},
+     *      summary="Get offer information",
+     *      description="Returns offer data",
      *      @OA\Parameter(
      *          name="id",
-     *          description="Order id",
+     *          description="Offer id",
      *          required=true,
      *          in="path",
      *          @OA\Schema(
@@ -64,7 +64,7 @@ class OrderController extends Controller
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *           @OA\JsonContent(ref="#/components/schemas/Order")
+     *           @OA\JsonContent(ref="#/components/schemas/Offer")
      *
      *       ),
      *      @OA\Response(
@@ -80,26 +80,26 @@ class OrderController extends Controller
      *          description="Not Found"
      *      )
      * )
-     * @param \App\Models\Order $order
-     * @return \App\Http\Resources\OrderResource
+     * @param \App\Models\Offer $offer
+     * @return \App\Http\Resources\OfferResource
      */
-    public function show(Order $order)
+    public function show(Offer $offer)
     {
-        return new OrderResource($order);
+        return new OfferResource($offer);
     }
 
     /**
      * Display a listing of the resource.
     * @OA\Get(
-     *      path="/select/orders",
-     *      operationId="getSelectOrdersList",
-     *      tags={"Orders"},
-     *      summary="Get list of Select orders",
-     *      description="Returns list of Select orders",
+     *      path="/select/offers",
+     *      operationId="getSelectOffersList",
+     *      tags={"Offers"},
+     *      summary="Get list of Select offers",
+     *      description="Returns list of Select offers",
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/OrderResource")
+     *          @OA\JsonContent(ref="#/components/schemas/OfferResource")
      *       ),
      *      @OA\Response(
      *          response=401,
@@ -114,8 +114,8 @@ class OrderController extends Controller
      */
     public function select()
     {
-        $orders = Order::filter()->simplePaginate();
+        $offers = Offer::filter()->simplePaginate();
 
-        return SelectResource::collection($orders);
+        return SelectResource::collection($offers);
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class MembershipResource extends JsonResource
+class OfferResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -25,11 +25,6 @@ class MembershipResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'image' => $this->getFirstMediaUrl(),
-            'rental_discount' => $this->rental_discount,
-            'ratio_points' => $this->ratio_points,
-            'extra_hours' => $this->extra_hours,
-            'allowed_Kilos' => $this->allowed_Kilos,
-            'delivery_discount_regions' => $this->delivery_discount_regions,
         ];
     }
 }
