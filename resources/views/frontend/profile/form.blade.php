@@ -67,4 +67,5 @@
                     </tbody>
                 </table>
                 <button type="submit" class="primary-btn btn-hover btn-curved p-2 m-auto">تأكيد البيانات</button>
+                <button  class="primary-btn btn-hover btn-curved p-2 m-auto">الرجوع</button>
     </form>
