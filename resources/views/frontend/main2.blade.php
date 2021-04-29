@@ -60,26 +60,29 @@
 
     </div>
 
-        {{-- <section class="home-offers content whitebg">
+        <section class="home-offers content whitebg">
             <div class="home-offers_head">
                 <span class="g-title">عروضنا</span>
             </div>
             <div class="container-fluid offers" style="padding-top:0">
-              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pod" url="#" number="1">
-                <div class="hover-offer ehover1"><img class="img-responsive" src="https://saudiauto.com.sa/uploads/Untitled-1_109.jpg" alt="Barcelona" />
-                  <div class="offer-content">
-                    <div class="ribbon orange">خصم 5%</div>
-                    <figcaption> <span class="flights-icon">(</span>
-                      <h4>S 320 مرسيدس</h4>
-                      <p class="detail">5 مقاعد | 4 أبواب | 2 الأمتعة</p>
-                      <p class="detail">فخمة كبيرة</p>
-                      <p class="price-offer"><span><i class="icofont icofont-cur-riyal"></i></span>900</p>
-                      <div class="button2">احجز الان</div>
-                    </figcaption>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pod" url="#" number="2">
+                @foreach ($offers as $offer)
+
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pod" url="#" number="1">
+                        <div class="hover-offer ehover1"><img class="img-responsive" src="https://saudiauto.com.sa/uploads/Untitled-1_109.jpg" alt="Barcelona" />
+                            <div class="offer-content">
+                            <div class="ribbon orange">خصم {{$offer->value}}%</div>
+                            <figcaption> <span class="flights-icon">(</span>
+                                <h4>{{$offer->name}} {{$offer->model}}</h4>
+                                <p class="detail">5 مقاعد | {{$offer->door}} أبواب | 2 الأمتعة</p>
+                                <p class="detail">{{$offer->category ? $offer->category->name : ""}}</p>
+                                <p class="price-offer"><span><i class="icofont icofont-cur-riyal"></i></span>{{$offer->price1}}</p>
+                                <div class="button2">احجز الان</div>
+                            </figcaption>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+              {{-- <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pod" url="#" number="2">
                 <div class="hover-offer ehover1"><img class="img-responsive" src="https://1.bp.blogspot.com/-F5cZ10DJ68A/Xukz4ACNbgI/AAAAAAAABAs/ndkQ6DAwv-k7MdS2_0ldSZFI3cJVUbYLwCK4BGAYYCw/s1600/3864%2Bcopy.jpg" alt="París" />
                   <div class="offer-content">
                     <div class="ribbon orange">خصم 20%</div>
@@ -120,9 +123,9 @@
                     </figcaption>
                   </div>
                 </div>
-              </div>
+              </div> --}}
             </div>
-          </section> --}}
+          </section>
 
     <section class="container-90">
         <div class="home-category">
