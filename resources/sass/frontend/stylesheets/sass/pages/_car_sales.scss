@@ -1,20 +1,196 @@
-.car-sales-page {
+.car-sales {
     &_head {
         color: get-color(light);
         width: 100%;
+        height: 340px;
         position: relative;
         display: flex;
         justify-content: center;
         align-items: center;
-        h1 {
-            position: absolute;
-            text-align: center;
-            @include smallScreen() {
-                font-size: 20px;
+        &_overlay-black {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-color: #00000080;
+            h1 {
+                @include location(50%, 50%);
+                text-align: center;
+                width: fit-content;
+                span {
+                    color: get-color(red);
+                }
             }
         }
     }
     &_center {
-        margin: 30px 80px;
+        width: 100%;
+        min-height: 100%;
+        height: fit-content;
+        overflow: hidden;
+        background-color: #ecf0f1;
+        direction: rtl;
+        &_content {
+            width: 80%;
+            @media (max-width: 1034px) {
+                width: 90%;
+            }
+            @media (max-width: 616px) {
+                width: 95%;
+            }
+            @media (max-width: 582px) {
+                width: 98.5%;
+            }
+            @media (max-width: 562px) {
+                width: 80%;
+            }
+            @media (max-width: 364px) {
+                width: 90%;
+            }
+            @media (max-width: 324px) {
+                width: 95%;
+            }
+            @media (max-width: 307px) {
+                width: 100%;
+            }
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 40px 20px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 3px #ccc;
+            &_filter {
+                width: 100%;
+                display: flex;
+                text-align: right;
+                justify-content: space-between;
+                margin-bottom: 20px;
+                &_select {
+                    width: 49%;
+                    select {
+                        width: 100%;
+                        height: 40px;
+                        background: #f7f6f6;
+                        border-color: #ccc;
+                        padding: 0 10px;
+                        border-radius: 2px;
+                    }
+                }
+            }
+            &_cars {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                &_car {
+                    width: 32%;
+                    @media (max-width: 918px) {
+                        width: 49%;
+                    }
+                    @media (max-width: 562px) {
+                        width: 100%;
+                    }
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    position: relative;
+                    margin-bottom: 10px;
+                    &_sold {
+                        background: get-color(red);
+                        position: absolute;
+                        z-index: 10;
+                        padding: 0px 7px;
+                        border-top-left-radius: 2px;
+                        border-bottom-left-radius: 2px;
+                        font-size: 15px;
+                        line-height: 32px;
+                        font-weight: bold;
+                        text-align: center;
+                        color: #fff;
+                        text-shadow: 0 1px 1px #00000033;
+                        -webkit-box-shadow: 0 1px 1px #00000033;
+                        -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+                        box-shadow: 0 1px 1px #00000033;
+                        zoom: 1;
+                        right: -11px;
+                        top: 1px;
+                        min-width: 40%;
+                        max-width: 50%;
+                        height: 32px;
+                        display: none;
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            z-index: -20;
+                            top: 100%;
+                            left: auto;
+                            border-style: solid;
+                            border-width: 0 0 10px 10px;
+                            right: 0;
+                            border-color: transparent #840000;
+                        }
+                    }
+                    &_img {
+                        width: 100%;
+                        padding: 5px 5px 0;
+                        img {
+                            width: 100%;
+                        }
+                    }
+                    &_name {
+                        width: 100%;
+                        h4 {
+                            font-size: 25px;
+                            padding-right: 10px;
+                            color: #007bff;
+                            text-align: right;
+                        }
+                    }
+                    &_detailing {
+                        width: 100%;
+                        &_top {
+                            display: flex;
+                            justify-content: space-between;
+                            padding: 5px 12px;
+                            font-size: 20px;
+                            color: #222;
+                            h4 {
+                                background-color: #007bff;
+                                color: #fff;
+                                font-size: 16px;
+                                border-radius: 4px;
+                                padding: 2px 10px;
+                            }
+                        }
+                        &_center {
+                            width: 100%;
+                            text-align: right;
+                            display: flex;
+                            justify-content: space-between;
+                            padding: 10px 12px;
+                            font-size: 18px;
+                        }
+                        &_bottom {
+                            width: 100%;
+                            padding: 0 12px;
+                            margin-bottom: 10px;
+                            font-size: 18px;
+                            color: #555;
+                            text-align: center;
+                        }
+                    }
+                    &_button {
+                        width: 100%;
+                        height: 40px;
+                        border-radius: 0px 0 4px 4px;
+                        &:hover {
+                            color: #fff !important;
+                        }
+                    }
+                }
+                &_car.sold {
+                    .car-sales_center_content_cars_car_sold {
+                        display: block;
+                    }
+                }
+            }
+        }
     }
 }
