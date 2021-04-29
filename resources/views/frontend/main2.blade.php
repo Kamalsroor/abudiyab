@@ -213,10 +213,14 @@
         <div class="input-group">
             <input type="text" id="mailsu" class="form-control" placeholder="أدخل بريدك الالكترونى" aria-label="" aria-describedby="basic-addon1">
             <div class="input-group-prepend">
-            <button class="btn " type="button"><i class="fab fa-telegram-plane"></i></button>
+            <button class="btn " id='subscribe' type="button"><i class="fab fa-telegram-plane"></i></button>
             </div>
         </div>
     </div>
 </div>
-
+@push('js')
+<script>
+    let subscribeURL="{{route('api.user.subscribe')}}";
+</script>
+@endpush
 </x-front-layout>

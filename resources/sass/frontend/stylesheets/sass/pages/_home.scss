@@ -215,6 +215,9 @@ a:not([href]):not([tabindex]) {
         font-family: 'Cairo', sans-serif;
         // style for all slick slides
         color: get-color(light);
+        .slick-track {
+            // transform: translateX(0) !important;
+        }
         .slick-slide {
             margin: 0;
             div {

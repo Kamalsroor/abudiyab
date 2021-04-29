@@ -234,7 +234,26 @@ $(document).ready(function() {
 
 
 
-
+    let subscribe = $('#subscribe');
+    if (subscribe.length) {
+        $('#subscribe').on('click', function() {
+            console.log($('#mailsu').val());
+            $.ajax({
+                type: 'post',
+                url: subscribeURL,
+                headers: {
+                    "x-accept-language": "ar",
+                    "X-CSRF-TOKEN": csrf_token,
+                },
+                data: {
+                    'subscribeEmail': $('#mailsu').val()
+                },
+                success: function(data, status) {
+                    console.log(data);
+                }
+            });
+        });
+    }
 
     window.addEventListener("notLogin", function() {
         console.log("i'm here");
@@ -566,8 +585,8 @@ $(document).ready(function() {
         slidesToScroll: 1,
         centerMode: false,
         dots: false,
-        arrows: true,
-        rtl: html.dir === 'rtl',
+        arrows: false,
+        // rtl: html.dir === 'rtl',
         autoplay: true,
         autoplaySpeed: 1500,
         responsive: [{
