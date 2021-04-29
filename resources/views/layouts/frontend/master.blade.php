@@ -59,12 +59,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         {{-- <span><i class="fas fa-less-than"></i></span> --}}
 
-        <i class="fas fa-phone-alt d-md-none" id="social-media-links-toggeler" style="cursor: pointer;position: fixed;top: 86%;right: 10px;color: white;border-radius: 50%;background-color: #ff0202;font-size: 21px;padding: 12px;"></i>
+        <i class="fas fa-phone-alt d-md-none" id="social-media-links-toggeler" style="cursor: pointer;position: fixed;top: 30px;z-index:200; left: 10px;color: white;border-radius: 50%;background-color: #ff0202;font-size: 21px;padding: 12px;"></i>
 
 
         <div class="social-media-links d-none d-md-block">
             <a href="/aboutus" ><p>حولنا</p></a>
-            <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://wa.me/996920026600" target="_blank"><i class="fab fa-whatsapp"></i></a>
             <a href="tel:996920026600"><i class="fas fa-phone-alt"></i></a>
         </div>
 

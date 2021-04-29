@@ -732,7 +732,19 @@ $(document).ready(function() {
 
     // gallery page ends here---------------------------------------------------------------------
 
+    $('.nav-link').click(function() {
+        $('.nav-link.active').removeClass('active');
+        $(this).addClass('active');
+    })
 
+    $('#oldcontracts-toggel').click(function() {
+        $('.contracts-section').addClass('d-none');
+        $('#oldcontracts').removeClass('d-none');
+    })
+    $('#newcontracts-toggel').click(function() {
+        $('.contracts-section').addClass('d-none');
+        $('#newcontracts').removeClass('d-none');
+    })
 
 
 });
