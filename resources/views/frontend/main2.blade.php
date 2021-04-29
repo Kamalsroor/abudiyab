@@ -210,13 +210,27 @@
 <div class="mail-subscripe text-center" style="background: url({{asset('front/img/subscription2.jpg')}});">
     <div class="subscription-overlay">
         <label for="mail-subscripe mb-5">أبق على تواصل معنا من خلال اشتراكك فى نشرتنا البريدية</label>
+
         <div class="input-group">
             <input type="text" id="mailsu" class="form-control" placeholder="أدخل بريدك الالكترونى" aria-label="" aria-describedby="basic-addon1">
             <div class="input-group-prepend">
             <button class="btn " id='subscribe' type="button"><i class="fab fa-telegram-plane"></i></button>
             </div>
         </div>
+        <div class="alert alert-success  my-2 confirmed" id='confirm' style="display: none" role="alert">
+            عميلنا العزيز تم الاشتراك في النشره الاخباريه بنجاح
+        </div>
+        <div class="alert alert-danger  my-2 rejected" id='reject' style="display: none" role="alert">
+            عميلنا العزيز ناسف لوجود مشكله في الوقت الحالي برجاء المحاوله في وقت اخر
+        </div>
+        <div class="alert alert-danger  my-2 rejected" id='exist' style="display: none" role="alert">
+            عميلنا العزيز هذا الايميل مشترك بلفعل في النشره الاخباريه
+        </div>
+        <div class="alert alert-danger  my-2 rejected" id='notvalide' style="display: none" role="alert">
+            يجب ادخال ايميل
+        </div>
     </div>
+
 </div>
 @push('js')
 <script>

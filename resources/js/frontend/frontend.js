@@ -237,21 +237,53 @@ $(document).ready(function() {
     let subscribe = $('#subscribe');
     if (subscribe.length) {
         $('#subscribe').on('click', function() {
-            console.log($('#mailsu').val());
-            $.ajax({
-                type: 'post',
-                url: subscribeURL,
-                headers: {
-                    "x-accept-language": "ar",
-                    "X-CSRF-TOKEN": csrf_token,
-                },
-                data: {
-                    'subscribeEmail': $('#mailsu').val()
-                },
-                success: function(data, status) {
-                    console.log(data);
-                }
-            });
+            let subscriptionEmail = $('#mailsu').val();
+            var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+            var validateEmail = subscriptionEmail.match(pattern);
+            if (validateEmail) {
+                $.ajax({
+                    type: 'post',
+                    url: subscribeURL,
+                    headers: {
+                        "x-accept-language": "ar",
+                        "X-CSRF-TOKEN": csrf_token,
+                    },
+                    data: {
+                        'subscribeEmail': $('#mailsu').val()
+                    },
+                    success: function(data, status) {
+
+                        console.log(data);
+                        if (data == true) {
+                            console.log('sssssss');
+                            $('#confirm').show();
+                            $('#reject').hide();
+                            $('#exist').hide();
+                            $('#notvalide').hide();
+
+
+                        } else if (data['error'] == 'exist') {
+                            $('#exist').show();
+                            $('#confirm').hide();
+                            $('#reject').hide();
+                            $('#notvalide').hide();
+
+
+                        } else {
+                            $('#reject').show();
+                            $('#confirm').hide();
+                            $('#reject').hide();
+                            $('#notvalide').hide();
+
+                        }
+                    }
+                });
+            } else {
+                $('#notvalide').show();
+                $('#confirm').hide();
+                $('#reject').hide();
+                $('#exist').hide();
+            }
         });
     }
 
