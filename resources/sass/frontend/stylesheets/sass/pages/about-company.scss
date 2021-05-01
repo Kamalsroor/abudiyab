@@ -29,6 +29,7 @@
             &_right {
                 width: 50%;
                 @media (max-width: 873px) {
+                    height: fit-content;
                     width: 100%;
                     margin-bottom: 20px;
                 }
@@ -36,7 +37,7 @@
                 &_text {
                     width: 100%;
                     position: relative;
-                    height: 50%;
+                    height: 40%;
                     @media (max-width: 440px) {
                         height: fit-content;
                         padding-bottom: 10px;
@@ -48,14 +49,14 @@
                     p {
                         text-align: right;
                         width: 100%;
-                        font-size: 13px;
+                        font-size: 22px;
                         color: #222;
                         padding: 0 20px;
                         margin: 0;
                     }
                 }
                 &_img {
-                    height: 50%;
+                    height: 60%;
                     width: 100%;
                     img {
                         width: 100%;
@@ -91,7 +92,7 @@
                             border-right: 1px solid;
                             padding: 5px 15px;
                             border: 1px solid #d1d0d0;
-                            font-size: 14px;
+                            font-size: 22px;
                             cursor: pointer;
                             text-align: right;
                             &:hover {
@@ -106,9 +107,9 @@
                             background-color: #ebebeb;
                             text-align: right;
                             padding: 5px 15px;
-                            font-size: 12px;
+                            font-size: 18px;
                             color: #555;
-                            display: none;
+                            display: block;
                         }
                     }
                     &_informations:nth-child(3) {

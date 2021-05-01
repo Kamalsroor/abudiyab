@@ -122,145 +122,139 @@
                 }
             }
         }
-        &_dranches {
-            height: 100%;
+        &_branches {
+            background-color: #ececec;
+            min-height: 100%;
             width: 100%;
-            background: get-color(primary);
-            margin: 0;
-            grid-gap: 10px;
-            padding: 50px;
-            @media (max-width: 412px) {
-                padding: 50px 0;
-            }
-            text-align: center;
-            .container-fluid {
-                width: 85%;
-                @media (max-width: 494px) {
-                    width: 100%;
+            height: fit-content;
+            direction: rtl;
+            overflow: hidden;
+            text-align: right;
+            &_content {
+                width: 80%;
+                @media (max-width: 1270px) {
+                    width: 90%;
                 }
-                .col-3 {
-                    margin: 10px 0;
+                @media (max-width: 1133px) {
+                    width: 95%;
                 }
-            }
-            &_branch {
-                overflow: hidden;
-                background-color: get-color(light);
-                height: 400px;
-                border-radius: 10px;
-                transition: .4s;
-                position: relative;
-                &:hover {
-                    transform: scale(1.02);
-                    transition: .4s;
+                @media (max-width: 1071px) {
+                    width: 70%;
                 }
-                .branch-list-visible {
-                    @include location(50%, 50%);
-                    width: 100%;
-                    img {
-                        width: 120px;
-                        height: 120px;
-                        margin-bottom: 50px;
+                @media (max-width: 950px) {
+                    width: 80%;
+                }
+                @media (max-width: 825px) {
+                    width: 90%;
+                }
+                @media (max-width: 740px) {
+                    width: 95%;
+                }
+                @media (max-width: 696px) {
+                    width: 55%;
+                }
+                @media (max-width: 596px) {
+                    width: 65%;
+                }
+                @media (max-width: 520px) {
+                    width: 70%;
+                }
+                @media (max-width: 470px) {
+                    width: 80%;
+                }
+                @media (max-width: 412px) {
+                    width: 90%;
+                }
+                @media (max-width: 364px) {
+                    width: 95%;
+                }
+                margin: 20px auto;
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                &_branch {
+                    width: 30%;
+                    @media (max-width: 1071px) {
+                        width: 49%;
                     }
-                    h2 {
+                    @media (max-width: 696px) {
+                        width: 100%;
+                    }
+                    background-color: #fff;
+                    border-radius: 8px;
+                    overflow: hidden;
+                    margin-bottom: 65px;
+                    box-shadow: 0px 20px 8px #ccc;
+                    h3 {
+                        width: 100%;
+                        color: #5f6796;
+                        text-align: right;
+                        padding: 5px 10px 0;
+                        margin-bottom: 0;
                         font-size: 25px;
-                        margin-bottom: 20px;
-                        @media (max-width: 1736px) {
-                            font-size: 20px;
-                            @media (max-width: 1434px) {
-                                font-size: 18px;
-                                @media (max-width: 1315px) {
-                                    font-size: 15px;
-                                    @media (max-width: 991px) {
-                                        font-size: 25px;
-                                        @media (max-width: 916px) {
-                                            font-size: 20px;
-                                            @media (max-width: 767px) {
-                                                font-size: 25px;
-                                                @media (max-width: 447px) {
-                                                    font-size: 20px;
-                                                    @media (max-width: 284px) {
-                                                        font-size: 18px;
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
+                    }
+                    p {
+                        width: 100%;
+                        color: #777;
+                        text-align: right;
+                        padding: 0px 10px;
+                        margin-top: -5px;
+                        margin-bottom: 5px;
+                    }
+                    .so {
+                        margin-top: 5px;
+                        color: #333;
+                    }
+                    h4 {
+                        width: 100%;
+                        text-align: right;
+                        padding: 0px 10px;
+                        font-size: 20px;
+                    }
+                    &_detailing {
+                        width: 100%;
+                        display: flex;
+                        text-align: right;
+                        justify-content: space-between;
+                        padding: 0px 10px;
+                        margin-bottom: 10px;
+                        p {
+                            width: fit-content;
+                            padding: 0;
+                            margin-top: 0;
+                            font-size: 13px;
+                            @media (max-width: 341px) {
+                                font-size: 11px;
                             }
                         }
                     }
-                    a {
-                        margin: auto;
-                        width: 180px;
-                        &:hover {
-                            color: #fff;
-                        }
-                    }
-                }
-                .branch-hidden-list {
-                    @include location(-60%, 145%);
-                    width: 50%;
-                    height: 50%;
-                    background-color: get-color(primary);
-                    z-index: 2;
-                    border-radius: 0px 0px 200px 200px;
-                    transition: .5s;
-                    .detail {
-                        @include location(79%, 20%);
-                        color: get-color(light);
-                    }
-                    .section-detail {
-                        color: get-color(light);
-                        text-align: right;
-                        padding: 5px 10px;
-                        margin-top: -300%;
-                        margin-right: -100%;
-                        h4 {
-                            font-size: 0.9em;
-                            font-weight: 900;
-                            margin-bottom: 1px;
-                            margin-top: 5px;
-                        }
-                        p {
-                            font-size: 0.9em;
-                            margin-bottom: 0;
-                        }
-                    }
-                    &:hover {
+                    &_buttons {
                         width: 100%;
-                        border-radius: 0;
-                        height: 100%;
-                        transition: .5s;
-                        .detail {
+                        display: flex;
+                        justify-content: space-between;
+                        a {
+                            color: #fff;
+                            font-weight: 700;
+                            padding: 6px 12px;
+                            text-align: center;
+                        }
+                        .location {
+                            background-color: red;
+                            border-radius: 5px 0 0 0;
+                        }
+                        .telephone-number {
+                            border-radius: 0px 5px 0 0;
+                            background-color: #5f6796;
+                        }
+                        .location-mobile {
+                            background-color: red;
+                            border-radius: 5px 0 0 0;
                             display: none;
                         }
-                        .section-detail {
-                            margin-top: 0%;
-                            margin-right: 0%;
-                            transition: .5s;
-                            button {
-                                background: get-color(secondary-light);
-                                color: get-color(light);
-                                padding: 4px 0;
-                                border-radius: 4px;
-                                font-size: 20px;
-                                border: 2px solid #42a0fd;
-                                box-shadow: 0px 5px 7px 5px #07182b;
-                                font-weight: 400 !important;
-                                text-decoration: none;
-                                width: 127px;
-                                height: 43px;
-                                display: block;
-                                cursor: pointer;
-                                transform: scale(1);
-                                margin: 25px auto;
-                                transition: .2s;
-                                &:hover {
-                                    background: #004fa0;
-                                    transform: scale(1.05);
-                                    transition: .2s;
-                                }
-                            }
+                        .telephone-number-mobile {
+                            border-radius: 0px 5px 0 0;
+                            background-color: #5f6796;
+                            display: none;
                         }
                     }
                 }
@@ -359,6 +353,7 @@
         }
         &_branches-map {
             width: 85%;
+            height: 650px;
             @media (max-width: 367px) {
                 width: 98%;
             }

@@ -20,17 +20,17 @@
                     </div>
                     <div class="about-company_center_content_left_text">
                         <div class="about-company_center_content_left_text_informations">
-                            <h5 onclick="DetailShow('.our-goals')">أهدافنا</h5>
+                            <h5 onclick="//DetailShow('.our-goals')">أهدافنا</h5>
                             <p class="our-goals">الحرصً على مواكبة أحدث التطورات والخدمات في سوق تأجير السيارات توفير تشكيلة متنوعة من أحدث السيارات والموديلات العالمية من جميع الأنواع والفئات وبأسعار مناسبة مع تقديم خدمات متميزة.
                                 إنشاء علاقات إستراتيجية بين شركة أبو ذياب لتأجير السيارات ووكلاء السيارات في المملكة، للدفع بأسطول متنوع من السيارات بالفروع.</p>
                         </div>
                         <div class="about-company_center_content_left_text_informations">
-                            <h5 onclick="DetailShow('.our-vision')">رؤيتنا</h5>
+                            <h5 onclick="//DetailShow('.our-vision')">رؤيتنا</h5>
                             <p class="our-vision">تسعى شركة أبو ذياب لتحديث أسطولها وتطويره استجابة لرغبات عملائها.
                                 توفير أعلى مستويات الرفاهية والأمان للعملاء من خلال ضم أحدث السيارات العالمية لتقديم خيارات من السيارات بالشكل الذي يلبي احتياجاتهم.</p>
                         </div>
                         <div class="about-company_center_content_left_text_informations">
-                            <h5 onclick="DetailShow('.our-services')">خدماتنا</h5>
+                            <h5 onclick="//DetailShow('.our-services')">خدماتنا</h5>
                             <p class="our-services">تأمين شامل على السيارات.
                                 التأجير طويل وقصير المدى.
                                 خدمة المساعدة على الطريق على مدار اليوم.
@@ -42,7 +42,7 @@
                                 إمكانية استلام السيارة المختارة من أي فرع وتسلميها في أي فرع آخر للشركة، برسوم مخفضة، مع تقديم هذه الخدمة مجاناً بين فروع المنطقة الواحدة.</p>
                         </div>
                         <div class="about-company_center_content_left_text_informations">
-                            <h5 onclick="DetailShow('.our-principles')">مبادئنا</h5>
+                            <h5 onclick="//DetailShow('.our-principles')">مبادئنا</h5>
                             <p class="our-principles">التميز:
                                 يعتبر التميز احد أهم مبادئ وقيم شركة أبو ذياب، إذ إنه يتم الالتزام بأقصى معايير الجودة، حيث تعتبر راحة العميل على رأس أولويات الشركة، وتحرص الشركة على تطبيق عنصر الاحترافية والمهنية من خلال تقديم خدمة على أعلى مستوى.
                                 العمل الجماعي:

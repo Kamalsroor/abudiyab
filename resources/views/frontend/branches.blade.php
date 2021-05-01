@@ -43,7 +43,7 @@
             </div>
 
             <div class="branch-page_map_branches-map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29001.000835556453!2d46.729496110777525!3d24.688225796719937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4c842f5512d0930a!2z2KfYqNmIINiw2YrYp9ioINin2YTYp9iv2KfYsdipINin2YTYudin2YXYqQ!5e0!3m2!1sar!2seg!4v1618906838084!5m2!1sar!2seg" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5126.320266708056!2d46.71794949593214!3d24.697482479312246!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4c842f5512d0930a!2sAbudiyab%20Head%20Office!5e0!3m2!1sen!2sus!4v1619855611423!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
 
         </section>
@@ -65,38 +65,483 @@
                         </div>
                     </div>
                 </div>
-                <div class="branch-page_center_dranches" style="background: url({{asset('front/img/riyadh.jpg')}});background-repeat: no-repeat;background-size: cover;background-attachment: fixed;">
-                    <div class="container-fluid">
-                        <div class="row branch-page_center_dranches_items">
-                            @foreach ($branches as $branch)
-
-                            <div class="col-12 col-md-6 col-lg-3 mb-2">
-                                <div class="branch-page_center_dranches_branch">
-                                    <div class="branch-hidden-list">
-                                        <p class="detail">التفاصيل</p>
-                                        <div class="section-detail">
-                                            <h4>العنوان</h4>
-                                            <p>{{$branch->name}}</p>
-                                            <p>{{$branch->address}}</p>
-                                            <h4>رقم الهاتف</h4>
-                                            <p>{{$branch->tele_number}}</p>
-                                            <h4>موعدنا</h4>
-                                            @if ($branch->work_time != null)
-                                                @foreach ($branch->work_time as $day => $time)
-                                                <p>{{ trans('branches.weekDays')[$day]}} {{$time['lock'] ? "مغلق" : $time['timeopen'] . ' : ' . $time['timeclose']  }}</p>
-                                                @endforeach
-                                            @endif
-                                            <button>الموقع</button>
-                                        </div>
-                                    </div>
-                                    <div class="branch-list-visible">
-                                        <img src="{{asset('front/img/logo-edited-.png')}}" alt="logo">
-                                        <h2>{{$branch->name}}</h2>
-                                        <a href="tel:{{$branch->tele_number}}" class="btn btn-danger btn-lg btn-block"><i class="fas fa-phone-volume"></i> {{$branch->tele_number}}</a>
-                                    </div>
-                                </div>
+                <div class="branch-page_center_branches">
+                    <div class="branch-page_center_branches_content">
+                        <div class="branch-page_center_branches_content_branch">
+                            <h3>المكتب الرئيسى</h3>
+                            <p>الرياض</p>
+                            <h4>شارع الدكتور احمد فهمي</h4>
+                            <p class="so">من السبت الي الخميس</p>
+                            <div class="branch-page_center_branches_content_branch_detailing">
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                                <p>|</p>
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
                             </div>
-                            @endforeach
+                            <div class="branch-page_center_branches_content_branch_buttons">
+                                <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
+                                <a href="" class="telephone-number-mobile"><i class="fa fa-phone"></i></a>
+                                <a href="" class="location">الموقع</a>
+                                <a href="" class="telephone-number">01146635939</a>
+                            </div>
+                        </div>
+                        <div class="branch-page_center_branches_content_branch">
+                            <h3>المكتب الرئيسى</h3>
+                            <p>الرياض</p>
+                            <h4>شارع الدكتور احمد فهمي</h4>
+                            <p class="so">من السبت الي الخميس</p>
+                            <div class="branch-page_center_branches_content_branch_detailing">
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                                <p>|</p>
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                            </div>
+                            <div class="branch-page_center_branches_content_branch_buttons">
+                                <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
+                                <a href="" class="telephone-number-mobile"><i class="fa fa-phone"></i></a>
+                                <a href="" class="location">الموقع</a>
+                                <a href="" class="telephone-number">01146635939</a>
+                            </div>
+                        </div>
+                        <div class="branch-page_center_branches_content_branch">
+                            <h3>المكتب الرئيسى</h3>
+                            <p>الرياض</p>
+                            <h4>شارع الدكتور احمد فهمي</h4>
+                            <p class="so">من السبت الي الخميس</p>
+                            <div class="branch-page_center_branches_content_branch_detailing">
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                                <p>|</p>
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                            </div>
+                            <div class="branch-page_center_branches_content_branch_buttons">
+                                <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
+                                <a href="" class="telephone-number-mobile"><i class="fa fa-phone"></i></a>
+                                <a href="" class="location">الموقع</a>
+                                <a href="" class="telephone-number">01146635939</a>
+                            </div>
+                        </div>
+                        <div class="branch-page_center_branches_content_branch">
+                            <h3>المكتب الرئيسى</h3>
+                            <p>الرياض</p>
+                            <h4>شارع الدكتور احمد فهمي</h4>
+                            <p class="so">من السبت الي الخميس</p>
+                            <div class="branch-page_center_branches_content_branch_detailing">
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                                <p>|</p>
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                            </div>
+                            <div class="branch-page_center_branches_content_branch_buttons">
+                                <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
+                                <a href="" class="telephone-number-mobile"><i class="fa fa-phone"></i></a>
+                                <a href="" class="location">الموقع</a>
+                                <a href="" class="telephone-number">01146635939</a>
+                            </div>
+                        </div>
+                        <div class="branch-page_center_branches_content_branch">
+                            <h3>المكتب الرئيسى</h3>
+                            <p>الرياض</p>
+                            <h4>شارع الدكتور احمد فهمي</h4>
+                            <p class="so">من السبت الي الخميس</p>
+                            <div class="branch-page_center_branches_content_branch_detailing">
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                                <p>|</p>
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                            </div>
+                            <div class="branch-page_center_branches_content_branch_buttons">
+                                <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
+                                <a href="" class="telephone-number-mobile"><i class="fa fa-phone"></i></a>
+                                <a href="" class="location">الموقع</a>
+                                <a href="" class="telephone-number">01146635939</a>
+                            </div>
+                        </div>
+                        <div class="branch-page_center_branches_content_branch">
+                            <h3>المكتب الرئيسى</h3>
+                            <p>الرياض</p>
+                            <h4>شارع الدكتور احمد فهمي</h4>
+                            <p class="so">من السبت الي الخميس</p>
+                            <div class="branch-page_center_branches_content_branch_detailing">
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                                <p>|</p>
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                            </div>
+                            <div class="branch-page_center_branches_content_branch_buttons">
+                                <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
+                                <a href="" class="telephone-number-mobile"><i class="fa fa-phone"></i></a>
+                                <a href="" class="location">الموقع</a>
+                                <a href="" class="telephone-number">01146635939</a>
+                            </div>
+                        </div>
+                        <div class="branch-page_center_branches_content_branch">
+                            <h3>المكتب الرئيسى</h3>
+                            <p>الرياض</p>
+                            <h4>شارع الدكتور احمد فهمي</h4>
+                            <p class="so">من السبت الي الخميس</p>
+                            <div class="branch-page_center_branches_content_branch_detailing">
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                                <p>|</p>
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                            </div>
+                            <div class="branch-page_center_branches_content_branch_buttons">
+                                <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
+                                <a href="" class="telephone-number-mobile"><i class="fa fa-phone"></i></a>
+                                <a href="" class="location">الموقع</a>
+                                <a href="" class="telephone-number">01146635939</a>
+                            </div>
+                        </div>
+                        <div class="branch-page_center_branches_content_branch">
+                            <h3>المكتب الرئيسى</h3>
+                            <p>الرياض</p>
+                            <h4>شارع الدكتور احمد فهمي</h4>
+                            <p class="so">من السبت الي الخميس</p>
+                            <div class="branch-page_center_branches_content_branch_detailing">
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                                <p>|</p>
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                            </div>
+                            <div class="branch-page_center_branches_content_branch_buttons">
+                                <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
+                                <a href="" class="telephone-number-mobile"><i class="fa fa-phone"></i></a>
+                                <a href="" class="location">الموقع</a>
+                                <a href="" class="telephone-number">01146635939</a>
+                            </div>
+                        </div>
+                        <div class="branch-page_center_branches_content_branch">
+                            <h3>المكتب الرئيسى</h3>
+                            <p>الرياض</p>
+                            <h4>شارع الدكتور احمد فهمي</h4>
+                            <p class="so">من السبت الي الخميس</p>
+                            <div class="branch-page_center_branches_content_branch_detailing">
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                                <p>|</p>
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                            </div>
+                            <div class="branch-page_center_branches_content_branch_buttons">
+                                <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
+                                <a href="" class="telephone-number-mobile"><i class="fa fa-phone"></i></a>
+                                <a href="" class="location">الموقع</a>
+                                <a href="" class="telephone-number">01146635939</a>
+                            </div>
+                        </div>
+                        <div class="branch-page_center_branches_content_branch">
+                            <h3>المكتب الرئيسى</h3>
+                            <p>الرياض</p>
+                            <h4>شارع الدكتور احمد فهمي</h4>
+                            <p class="so">من السبت الي الخميس</p>
+                            <div class="branch-page_center_branches_content_branch_detailing">
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                                <p>|</p>
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                            </div>
+                            <div class="branch-page_center_branches_content_branch_buttons">
+                                <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
+                                <a href="" class="telephone-number-mobile"><i class="fa fa-phone"></i></a>
+                                <a href="" class="location">الموقع</a>
+                                <a href="" class="telephone-number">01146635939</a>
+                            </div>
+                        </div>
+                        <div class="branch-page_center_branches_content_branch">
+                            <h3>المكتب الرئيسى</h3>
+                            <p>الرياض</p>
+                            <h4>شارع الدكتور احمد فهمي</h4>
+                            <p class="so">من السبت الي الخميس</p>
+                            <div class="branch-page_center_branches_content_branch_detailing">
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                                <p>|</p>
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                            </div>
+                            <div class="branch-page_center_branches_content_branch_buttons">
+                                <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
+                                <a href="" class="telephone-number-mobile"><i class="fa fa-phone"></i></a>
+                                <a href="" class="location">الموقع</a>
+                                <a href="" class="telephone-number">01146635939</a>
+                            </div>
+                        </div>
+                        <div class="branch-page_center_branches_content_branch">
+                            <h3>المكتب الرئيسى</h3>
+                            <p>الرياض</p>
+                            <h4>شارع الدكتور احمد فهمي</h4>
+                            <p class="so">من السبت الي الخميس</p>
+                            <div class="branch-page_center_branches_content_branch_detailing">
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                                <p>|</p>
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                            </div>
+                            <div class="branch-page_center_branches_content_branch_buttons">
+                                <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
+                                <a href="" class="telephone-number-mobile"><i class="fa fa-phone"></i></a>
+                                <a href="" class="location">الموقع</a>
+                                <a href="" class="telephone-number">01146635939</a>
+                            </div>
+                        </div>
+                        <div class="branch-page_center_branches_content_branch">
+                            <h3>المكتب الرئيسى</h3>
+                            <p>الرياض</p>
+                            <h4>شارع الدكتور احمد فهمي</h4>
+                            <p class="so">من السبت الي الخميس</p>
+                            <div class="branch-page_center_branches_content_branch_detailing">
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                                <p>|</p>
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                            </div>
+                            <div class="branch-page_center_branches_content_branch_buttons">
+                                <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
+                                <a href="" class="telephone-number-mobile"><i class="fa fa-phone"></i></a>
+                                <a href="" class="location">الموقع</a>
+                                <a href="" class="telephone-number">01146635939</a>
+                            </div>
+                        </div>
+                        <div class="branch-page_center_branches_content_branch">
+                            <h3>المكتب الرئيسى</h3>
+                            <p>الرياض</p>
+                            <h4>شارع الدكتور احمد فهمي</h4>
+                            <p class="so">من السبت الي الخميس</p>
+                            <div class="branch-page_center_branches_content_branch_detailing">
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                                <p>|</p>
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                            </div>
+                            <div class="branch-page_center_branches_content_branch_buttons">
+                                <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
+                                <a href="" class="telephone-number-mobile"><i class="fa fa-phone"></i></a>
+                                <a href="" class="location">الموقع</a>
+                                <a href="" class="telephone-number">01146635939</a>
+                            </div>
+                        </div>
+                        <div class="branch-page_center_branches_content_branch">
+                            <h3>المكتب الرئيسى</h3>
+                            <p>الرياض</p>
+                            <h4>شارع الدكتور احمد فهمي</h4>
+                            <p class="so">من السبت الي الخميس</p>
+                            <div class="branch-page_center_branches_content_branch_detailing">
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                                <p>|</p>
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                            </div>
+                            <div class="branch-page_center_branches_content_branch_buttons">
+                                <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
+                                <a href="" class="telephone-number-mobile"><i class="fa fa-phone"></i></a>
+                                <a href="" class="location">الموقع</a>
+                                <a href="" class="telephone-number">01146635939</a>
+                            </div>
+                        </div>
+                        <div class="branch-page_center_branches_content_branch">
+                            <h3>المكتب الرئيسى</h3>
+                            <p>الرياض</p>
+                            <h4>شارع الدكتور احمد فهمي</h4>
+                            <p class="so">من السبت الي الخميس</p>
+                            <div class="branch-page_center_branches_content_branch_detailing">
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                                <p>|</p>
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                            </div>
+                            <div class="branch-page_center_branches_content_branch_buttons">
+                                <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
+                                <a href="" class="telephone-number-mobile"><i class="fa fa-phone"></i></a>
+                                <a href="" class="location">الموقع</a>
+                                <a href="" class="telephone-number">01146635939</a>
+                            </div>
+                        </div>
+                        <div class="branch-page_center_branches_content_branch">
+                            <h3>المكتب الرئيسى</h3>
+                            <p>الرياض</p>
+                            <h4>شارع الدكتور احمد فهمي</h4>
+                            <p class="so">من السبت الي الخميس</p>
+                            <div class="branch-page_center_branches_content_branch_detailing">
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                                <p>|</p>
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                            </div>
+                            <div class="branch-page_center_branches_content_branch_buttons">
+                                <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
+                                <a href="" class="telephone-number-mobile"><i class="fa fa-phone"></i></a>
+                                <a href="" class="location">الموقع</a>
+                                <a href="" class="telephone-number">01146635939</a>
+                            </div>
+                        </div>
+                        <div class="branch-page_center_branches_content_branch">
+                            <h3>المكتب الرئيسى</h3>
+                            <p>الرياض</p>
+                            <h4>شارع الدكتور احمد فهمي</h4>
+                            <p class="so">من السبت الي الخميس</p>
+                            <div class="branch-page_center_branches_content_branch_detailing">
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                                <p>|</p>
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                            </div>
+                            <div class="branch-page_center_branches_content_branch_buttons">
+                                <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
+                                <a href="" class="telephone-number-mobile"><i class="fa fa-phone"></i></a>
+                                <a href="" class="location">الموقع</a>
+                                <a href="" class="telephone-number">01146635939</a>
+                            </div>
+                        </div>
+                        <div class="branch-page_center_branches_content_branch">
+                            <h3>المكتب الرئيسى</h3>
+                            <p>الرياض</p>
+                            <h4>شارع الدكتور احمد فهمي</h4>
+                            <p class="so">من السبت الي الخميس</p>
+                            <div class="branch-page_center_branches_content_branch_detailing">
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                                <p>|</p>
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                            </div>
+                            <div class="branch-page_center_branches_content_branch_buttons">
+                                <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
+                                <a href="" class="telephone-number-mobile"><i class="fa fa-phone"></i></a>
+                                <a href="" class="location">الموقع</a>
+                                <a href="" class="telephone-number">01146635939</a>
+                            </div>
+                        </div>
+                        <div class="branch-page_center_branches_content_branch">
+                            <h3>المكتب الرئيسى</h3>
+                            <p>الرياض</p>
+                            <h4>شارع الدكتور احمد فهمي</h4>
+                            <p class="so">من السبت الي الخميس</p>
+                            <div class="branch-page_center_branches_content_branch_detailing">
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                                <p>|</p>
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                            </div>
+                            <div class="branch-page_center_branches_content_branch_buttons">
+                                <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
+                                <a href="" class="telephone-number-mobile"><i class="fa fa-phone"></i></a>
+                                <a href="" class="location">الموقع</a>
+                                <a href="" class="telephone-number">01146635939</a>
+                            </div>
+                        </div>
+                        <div class="branch-page_center_branches_content_branch">
+                            <h3>المكتب الرئيسى</h3>
+                            <p>الرياض</p>
+                            <h4>شارع الدكتور احمد فهمي</h4>
+                            <p class="so">من السبت الي الخميس</p>
+                            <div class="branch-page_center_branches_content_branch_detailing">
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                                <p>|</p>
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                            </div>
+                            <div class="branch-page_center_branches_content_branch_buttons">
+                                <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
+                                <a href="" class="telephone-number-mobile"><i class="fa fa-phone"></i></a>
+                                <a href="" class="location">الموقع</a>
+                                <a href="" class="telephone-number">01146635939</a>
+                            </div>
+                        </div>
+                        <div class="branch-page_center_branches_content_branch">
+                            <h3>المكتب الرئيسى</h3>
+                            <p>الرياض</p>
+                            <h4>شارع الدكتور احمد فهمي</h4>
+                            <p class="so">من السبت الي الخميس</p>
+                            <div class="branch-page_center_branches_content_branch_detailing">
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                                <p>|</p>
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                            </div>
+                            <div class="branch-page_center_branches_content_branch_buttons">
+                                <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
+                                <a href="" class="telephone-number-mobile"><i class="fa fa-phone"></i></a>
+                                <a href="" class="location">الموقع</a>
+                                <a href="" class="telephone-number">01146635939</a>
+                            </div>
+                        </div>
+                        <div class="branch-page_center_branches_content_branch">
+                            <h3>المكتب الرئيسى</h3>
+                            <p>الرياض</p>
+                            <h4>شارع الدكتور احمد فهمي</h4>
+                            <p class="so">من السبت الي الخميس</p>
+                            <div class="branch-page_center_branches_content_branch_detailing">
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                                <p>|</p>
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                            </div>
+                            <div class="branch-page_center_branches_content_branch_buttons">
+                                <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
+                                <a href="" class="telephone-number-mobile"><i class="fa fa-phone"></i></a>
+                                <a href="" class="location">الموقع</a>
+                                <a href="" class="telephone-number">01146635939</a>
+                            </div>
+                        </div>
+                        <div class="branch-page_center_branches_content_branch">
+                            <h3>المكتب الرئيسى</h3>
+                            <p>الرياض</p>
+                            <h4>شارع الدكتور احمد فهمي</h4>
+                            <p class="so">من السبت الي الخميس</p>
+                            <div class="branch-page_center_branches_content_branch_detailing">
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                                <p>|</p>
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                            </div>
+                            <div class="branch-page_center_branches_content_branch_buttons">
+                                <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
+                                <a href="" class="telephone-number-mobile"><i class="fa fa-phone"></i></a>
+                                <a href="" class="location">الموقع</a>
+                                <a href="" class="telephone-number">01146635939</a>
+                            </div>
+                        </div>
+                        <div class="branch-page_center_branches_content_branch">
+                            <h3>المكتب الرئيسى</h3>
+                            <p>الرياض</p>
+                            <h4>شارع الدكتور احمد فهمي</h4>
+                            <p class="so">من السبت الي الخميس</p>
+                            <div class="branch-page_center_branches_content_branch_detailing">
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                                <p>|</p>
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                            </div>
+                            <div class="branch-page_center_branches_content_branch_buttons">
+                                <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
+                                <a href="" class="telephone-number-mobile"><i class="fa fa-phone"></i></a>
+                                <a href="" class="location">الموقع</a>
+                                <a href="" class="telephone-number">01146635939</a>
+                            </div>
+                        </div>
+                        <div class="branch-page_center_branches_content_branch">
+                            <h3>المكتب الرئيسى</h3>
+                            <p>الرياض</p>
+                            <h4>شارع الدكتور احمد فهمي</h4>
+                            <p class="so">من السبت الي الخميس</p>
+                            <div class="branch-page_center_branches_content_branch_detailing">
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                                <p>|</p>
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                            </div>
+                            <div class="branch-page_center_branches_content_branch_buttons">
+                                <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
+                                <a href="" class="telephone-number-mobile"><i class="fa fa-phone"></i></a>
+                                <a href="" class="location">الموقع</a>
+                                <a href="" class="telephone-number">01146635939</a>
+                            </div>
+                        </div>
+                        <div class="branch-page_center_branches_content_branch">
+                            <h3>المكتب الرئيسى</h3>
+                            <p>الرياض</p>
+                            <h4>شارع الدكتور احمد فهمي</h4>
+                            <p class="so">من السبت الي الخميس</p>
+                            <div class="branch-page_center_branches_content_branch_detailing">
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                                <p>|</p>
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                            </div>
+                            <div class="branch-page_center_branches_content_branch_buttons">
+                                <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
+                                <a href="" class="telephone-number-mobile"><i class="fa fa-phone"></i></a>
+                                <a href="" class="location">الموقع</a>
+                                <a href="" class="telephone-number">01146635939</a>
+                            </div>
+                        </div>
+                        <div class="branch-page_center_branches_content_branch">
+                            <h3>المكتب الرئيسى</h3>
+                            <p>الرياض</p>
+                            <h4>شارع الدكتور احمد فهمي</h4>
+                            <p class="so">من السبت الي الخميس</p>
+                            <div class="branch-page_center_branches_content_branch_detailing">
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                                <p>|</p>
+                                <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                            </div>
+                            <div class="branch-page_center_branches_content_branch_buttons">
+                                <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
+                                <a href="" class="telephone-number-mobile"><i class="fa fa-phone"></i></a>
+                                <a href="" class="location">الموقع</a>
+                                <a href="" class="telephone-number">01146635939</a>
+                            </div>
                         </div>
                     </div>
                 </div>
