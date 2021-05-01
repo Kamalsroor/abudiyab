@@ -7,7 +7,7 @@
                 <h1>صفحة بيع السيارات</h1>
             </div>
         </section>
-
+        <car_seles></car_seles>
         <section class="car-sales_center">
                 <div class="car-sales_center_content">
                     <div class="car-sales_center_content_filter">
