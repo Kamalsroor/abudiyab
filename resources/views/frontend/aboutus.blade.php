@@ -1,7 +1,7 @@
 <x-front-layout :title="trans('dashboard.home')" :breadcrumbs="['dashboard.home']" >
     <section class="about-company">
 
-        <section class="about-company_head" style="background: url({{asset('front/img/branches.jpg')}});background-repeat: no-repeat; background-size: cover;"><h1 class="main-title main-page-title">حول شركة أبوذياب</h1></section>
+        <section class="about-company_head" style="background: url({{asset('front/img/branches.jpg')}});background-repeat: no-repeat; background-size: cover;"><h1 class="main-title main-page-title">من نحن</h1></section>
 
         <section class="about-company_center">
 
