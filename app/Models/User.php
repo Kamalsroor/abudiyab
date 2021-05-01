@@ -94,6 +94,7 @@ class User extends Authenticatable implements HasMedia
         'post_box',
         'identity',
         'licence',
+        'membership_id',
     ];
 
     /**
@@ -261,6 +262,11 @@ class User extends Authenticatable implements HasMedia
     public function orders()
     {
         return $this->hasMany(Order::class, 'user_id');
+    }
+
+    public function membership()
+    {
+        return $this->belongsTo(Membership::class, 'membership_id');
     }
 
     public function contracts()

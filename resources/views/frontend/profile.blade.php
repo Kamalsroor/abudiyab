@@ -44,7 +44,7 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-center align-items-end information-card">
-                        <img src="{{asset('front/img/smallgoldencard.png')}}" alt="client-type" style="width: 90%;">
+                        <img src="{{Auth()->user()->membership->getFirstMediaUrl()}}" alt="{{Auth()->user()->membership->name}}" style="width: 90%;">
                         <div class="pb-2" style="width: 70%;position:absolute;font-weight: 700;text-shadow: 1px 1px 2px black;color:white;">
                             <p class="mb-0">{{Auth::user()->name}}</p>
                             <div class="d-flex justify-content-between" >
@@ -53,8 +53,8 @@
                             </div>
 
                             <div class="d-flex justify-content-between" >
-                                <p class="mb-0" >ذهبى</p>
-                                <p class="mb-0" >gold</p>
+                                <p class="mb-0" >{{Auth()->user()->membership->name}}</p>
+                                <p class="mb-0" >{{Auth()->user()->membership->translate('en')->name}}   </p>
                             </div>
 
                         </div>

@@ -11,9 +11,12 @@ use App\Events\VerificationCreated;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Validation\ValidationException;
 use App\Http\Requests\Api\RegisterRequest;
+use App\Models\Custmerrequest;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Settings;
 
+// use Sms
 class RegisterController extends Controller
 {
     use AuthorizesRequests, ValidatesRequests;
@@ -65,8 +68,19 @@ class RegisterController extends Controller
 
         $customer
             ->forceFill($request->only('phone', 'type'))
-            ->fill($request->allWithHashedPassword())
+            ->fill(array_merge(
+                $request->allWithHashedPassword(),
+                ['membership_id' => Settings::get('membership_default','1')]
+            ))
             ->save();
+        $CustmerRequest = Custmerrequest::create([
+            'user_id' => $customer->id,
+        ]);
+        $CustmerRequest->addMediaFromRequest('identityFace')->toMediaCollection('identityFace');
+        $CustmerRequest->addMediaFromRequest('identityBack')->toMediaCollection('identityBack');
+        $CustmerRequest->addMediaFromRequest('licenceFace')->toMediaCollection('licenceFace');
+        $CustmerRequest->addMediaFromRequest('licenceBack')->toMediaCollection('licenceBack');
+
 
         return $customer;
     }

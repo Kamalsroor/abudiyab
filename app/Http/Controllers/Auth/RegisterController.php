@@ -11,7 +11,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use AhmedAliraqi\LaravelMediaUploader\Entities\Concerns\HasUploader;
-use App\Models\CustmerRequest;
+use App\Models\Custmerrequest;
+use Settings;
 
 class RegisterController extends Controller implements HasMedia
 {
@@ -81,9 +82,12 @@ class RegisterController extends Controller implements HasMedia
             'email' => $data['email'],
             'phone' => $data['phone'],
             'type' => User::CUSTOMER_TYPE,
+            'membership_id' => Settings::get('membership_default','1'),
             'password' => Hash::make($data['password']),
         ]);
-        $CustmerRequest = CustmerRequest::create([
+
+
+        $CustmerRequest = Custmerrequest::create([
             'user_id' => $newUser['id'],
         ]);
         $CustmerRequest->addMediaFromRequest('identityFace')->toMediaCollection('identityFace');

@@ -290,6 +290,10 @@ a:not([href]):not([tabindex]) {
         width: 100%;
         margin: auto;
         padding: 25px;
+        filter: grayscale(1);
+        &:hover{
+            filter: grayscale(0);
+        }
     }
     .home-our-partners__heading {
         font-family: 'Cairo', sans-serif;
@@ -299,8 +303,11 @@ a:not([href]):not([tabindex]) {
         }
     }
     .home-our-partners__content {
-        width: 100%;
+        width: 80%;
         margin: auto;
+        .slick-slide{
+            padding: 25px;
+        }
         .slick-slider {
             padding: 0 5px;
             img {

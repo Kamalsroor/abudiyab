@@ -32,6 +32,7 @@ class SettingJson
             'pusher_app_host' => Settings::get('pusher_app_host'),
             'pusher_app_port' => Settings::get('pusher_app_port'),
             'pusher_app_scheme' => Settings::get('pusher_app_scheme'),
+            'membership_default' => Settings::get('membership_default'),
         ];
     }
 
