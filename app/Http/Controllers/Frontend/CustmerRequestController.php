@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\custmer_request;
 use App\Http\Requests\frontend\CustmerRequests;
 use App\Http\Requests\frontend\ChangePassword;
-use App\Models\CustmerRequest;
+use App\Models\Custmerrequest;
 use App\Models\User;
 use Illuminate\Routing\Controller;
 
@@ -33,7 +33,7 @@ class CustmerRequestController extends Controller
         )
         {
 
-            $CustmerRequest = CustmerRequest::create([
+            $CustmerRequest = Custmerrequest::create([
                 'user_id' => auth()->id()
             ]);
         }

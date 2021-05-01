@@ -34,6 +34,10 @@ class RegisterRequest extends FormRequest
             'phone' => ['required', 'unique:users,phone'],
             'password' => ['required', 'min:8', 'confirmed'],
             'avatar' => ['nullable', 'image'],
+            'identityFace' => ['required', 'image'],
+            'identityBack' => ['required', 'image'],
+            'licenceFace' => ['required', 'image'],
+            'licenceBack' => ['required', 'image'],
             'type' => [
                 'nullable',
                 Rule::in([
