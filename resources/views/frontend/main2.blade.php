@@ -1,11 +1,11 @@
 <x-front-layout :title="trans('dashboard.home')" :breadcrumbs="['dashboard.home']" >
+<link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/assets/icon/icofont/css/icofont.css')}}">
+@section('styles')
     <style>
         .footer{
             padding-top: 100px;
         }
     </style>
-<link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/assets/icon/icofont/css/icofont.css')}}">
-@section('styles')
     @include('frontend.css.main_cartogray')
 @endsection
 
