@@ -36,6 +36,8 @@ return [
         'color_exterior' => 'color exterior',
         'quantity' => 'quantity',
         'for_sale' => 'for sale',
+        'sold' => 'sold',
+
         'created_at' => 'Created At',
         'deleted_at' => 'Deleted At',
     ],

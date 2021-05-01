@@ -36,6 +36,7 @@ return [
         'color_exterior' => 'اللون الخارجي',
         'quantity' => 'عدد السيارات',
         'for_sale' => 'للبيع',
+        'sold' => 'تم بيعها',
 
         'created_at' => 'اضافة في',
         'deleted_at' => 'حذف في',
