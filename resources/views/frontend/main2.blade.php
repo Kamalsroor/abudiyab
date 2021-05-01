@@ -195,7 +195,7 @@
             <span class="g-title">شركاؤنا في النجاح</span>
         </div> --}}
 
-        <div class="home-our-partners__content">
+        <div class="home-our-partners__content pt-2 mt-5">
             @foreach($partners as $partner)
             <div class="text-center home-our-partners__item">
                 <img src="{{$partner->getFirstMediaUrl()}}" class="d-block wd-100"  alt="car brand">

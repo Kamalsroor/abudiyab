@@ -303,8 +303,11 @@ a:not([href]):not([tabindex]) {
         }
     }
     .home-our-partners__content {
-        width: 100%;
+        width: 80%;
         margin: auto;
+        .slick-slide{
+            padding: 45px;
+        }
         .slick-slider {
             padding: 0 5px;
             img {
