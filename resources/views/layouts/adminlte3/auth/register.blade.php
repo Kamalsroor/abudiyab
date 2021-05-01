@@ -13,10 +13,10 @@
                     </div>
                     <div class="col px-0">
                     <input type="text" class="form-control" name="username"
-                    value="{{ old('name') }}"
+                    value="{{ old('username') }}"
                     autofocus>
-                    @if($errors->has('name'))
-                        <div class="valiadtion-error">{{ $errors->first('name') }}</div>
+                    @if($errors->has('username'))
+                        <div class="valiadtion-error">{{ $errors->first('username') }}</div>
                     @endif
                     </div>
                 </div>

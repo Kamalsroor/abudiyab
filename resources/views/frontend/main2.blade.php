@@ -195,7 +195,7 @@
             <span class="g-title">شركاؤنا في النجاح</span>
         </div> --}}
 
-        <div class="home-our-partners__content">
+        <div class="home-our-partners__content pt-3 mt-5">
             @foreach($partners as $partner)
             <div class="text-center home-our-partners__item">
                 <img src="{{$partner->getFirstMediaUrl()}}" class="d-block wd-100"  alt="car brand">
@@ -217,7 +217,7 @@
         <div class="input-group">
             <input type="text" id="mailsu" class="form-control" placeholder="أدخل بريدك الالكترونى" aria-label="" aria-describedby="basic-addon1">
             <div class="input-group-prepend">
-            <button class="btn " id='subscribe' type="button"><i class="fab fa-telegram-plane"></i></button>
+            <button class="btn " id='subscribe' type="button"><i class="fab fa-telegram-plane" style="font-size: 35px"></i></button>
             </div>
         </div>
         <div class="alert alert-success  my-2 confirmed" id='confirm' style="display: none" role="alert">
