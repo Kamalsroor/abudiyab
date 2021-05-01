@@ -129,10 +129,10 @@
 
     <section class="container-90">
         <div class="home-category">
-            <div class="home-category__heading d-flex justify-content-center py-3">
-                <span class="g-title">فئات الاسطول</span>
+            <div class="home-category__heading d-flex justify-content-center py-3 ">
+                <span class="g-title " >فئات الاسطول</span>
             </div>
-            <div class="home-category__conent">
+            <div class="home-category__conent wow animate__slideInUp" data-wow-duration="2s">
                 <div class="row px-0 mx-0 justify-content-center home-category__item not-active">
                     @foreach($allCategories as $category)
                         <div class='col-sm-3 col-lg-3 col-md-4 my-2 ' id='{{$category->id}}'>
@@ -150,7 +150,7 @@
         </div>
     </section>
 
-    <section class="car-model" id="car-model-section">
+    <section class="car-model wow animate__slideInUp" data-wow-duration="2s" id="car-model-section">
         <livewire:frontend.car-model />
         <div class="container slick-section">
             <div class="row justify-content-center px-0 mx-0 car-model__heading" >
@@ -210,7 +210,7 @@
 <div class="modal fade" id="BookingModel" tabindex="-1" aria-labelledby="BookingModelLabel" aria-hidden="true">
     <livewire:booking-model/>
 </div>
-<div class="mail-subscripe text-center" style="background: url({{asset('front/img/subscription2.jpg')}});">
+<div class="mail-subscripe text-center wow animate__rollIn" data-wow-duration="2s" style="background: url({{asset('front/img/subscription2.jpg')}});">
     <div class="subscription-overlay">
         <label for="mail-subscripe mb-5">أبق على تواصل معنا من خلال اشتراكك فى نشرتنا البريدية</label>
         <div class="input-group">

@@ -30,11 +30,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </head>
 <body style="overflow: hidden;">
 <!-- ------------START-----loader------------ -->
-<div class="loader">
+{{-- <div class="loader">
     <div class="loader_img">
         <img src="{{ asset('front/img/loader.gif') }}" alt="Loader..">
     </div>
-</div>
+</div> --}}
 <!-- ------------END-------loader------------ -->
         <!--================
             main Navbar

@@ -104,7 +104,7 @@
         </div>
     </div>
 
-    <div class="row text-center py-4 m-0">
+    <div class="row text-center py-4 m-0 wow slideInLeft" >
         <div class="col-lg-4 col-md-6 col-sm-10 text-center m-auto">
             <h2 class="doubleline color-black">فئات الأسطول</h2>
         </div>
