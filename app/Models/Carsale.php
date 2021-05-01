@@ -29,14 +29,17 @@ class Carsale extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
-        'model',
-        'brand',
+        'car_id',
         'couter',
         'color_interior',
         'color_exterior',
         'quantity',
         'for_sale',
+        'sold',
     ];
+    public function car()
+    {
+        return $this->belongsTo(Car::class, 'car_id');
+    }
 
 }

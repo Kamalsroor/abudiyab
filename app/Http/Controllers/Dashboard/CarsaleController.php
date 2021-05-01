@@ -28,7 +28,6 @@ class CarsaleController extends Controller
     public function index()
     {
         $carsales = Carsale::filter()->paginate();
-
         return view('dashboard.carsales.index', compact('carsales'));
     }
 

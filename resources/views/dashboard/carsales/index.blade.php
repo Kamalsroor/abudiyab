@@ -43,6 +43,7 @@
             <th>@lang('carsales.attributes.color_exterior')</th>
             <th>@lang('carsales.attributes.quantity')</th>
             <th>@lang('carsales.attributes.for_sale')</th>
+            <th>@lang('carsales.attributes.sold')</th>
             <th>@lang('carsales.attributes.created_at')</th>
             <th style="width: 160px">...</th>
         </tr>
@@ -56,19 +57,19 @@
                 <td>
                     <a href="{{ route('dashboard.carsales.show', $carsale) }}"
                        class="text-decoration-none text-ellipsis">
-                        {{ $carsale->name }}
+                        {{ $carsale->car->name }}
                     </a>
                 </td>
                 <td>
                     <a href="{{ route('dashboard.carsales.show', $carsale) }}"
                        class="text-decoration-none text-ellipsis">
-                        {{ $carsale->model }}
+                        {{ $carsale->car->model }}
                     </a>
                 </td>
                 <td>
                     <a href="{{ route('dashboard.carsales.show', $carsale) }}"
                        class="text-decoration-none text-ellipsis">
-                        {{ $carsale->brand }}
+                        {{ $carsale->car->manufactory->name }}
                     </a>
                 </td>
                 <td>
@@ -99,6 +100,12 @@
                     <a href="{{ route('dashboard.carsales.show', $carsale) }}"
                        class="text-decoration-none text-ellipsis">
                         {{ $carsale->for_sale }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ route('dashboard.carsales.show', $carsale) }}"
+                       class="text-decoration-none text-ellipsis">
+                        {{ $carsale->sold }}
                     </a>
                 </td>
                 <td>{{ $carsale->created_at->format('Y-m-d') }}</td>

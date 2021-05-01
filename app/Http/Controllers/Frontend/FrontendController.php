@@ -17,6 +17,7 @@ use App\Models\Slider;
 use App\Models\Category;
 use App\Models\Membership;
 use Carbon\Carbon;
+use App\Models\Carsale;
 use Illuminate\Http\Request;
 
 
@@ -63,7 +64,16 @@ class FrontendController extends Controller
 
     public function CarSales()
     {
-        return view('frontend.car_sales');
+        $cars=Carsale::with('car','car.manufactory')->get();
+        $models=[];
+        foreach($cars as $car)
+        {
+            if(!in_array($car->car->model,$models))
+            {
+              $models[]=$car->car->model;
+            }
+        }
+        return view('frontend.car_sales', compact('cars','models'));
     }
 
     public function NewsDetails()
