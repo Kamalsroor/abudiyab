@@ -84,6 +84,8 @@ return [
         'car_sales_title' => 'صفحة مبيعات السيارات : العنوان الرئيسي',
         'car_sales_content' => 'صفحة مبيعات السيارات : الوصف',
 
+        'home_description' => 'الصفحه الرئيسيه : الوصف',
+
         'media_center_background' => 'صفحة المركز الاعلامي : الصوره الخلفيه',
         'media_center_title' => 'صفحة المركز الاعلامي : العنوان الرئيسي',
         'media_center_content' => 'صفحة المركز الاعلامي : المحتوي',

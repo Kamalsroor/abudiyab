@@ -1,11 +1,11 @@
 <x-front-layout :title="trans('dashboard.home')" :breadcrumbs="['dashboard.home']" >
+<link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/assets/icon/icofont/css/icofont.css')}}">
+@section('styles')
     <style>
         .footer{
             padding-top: 100px;
         }
     </style>
-<link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/assets/icon/icofont/css/icofont.css')}}">
-@section('styles')
     @include('frontend.css.main_cartogray')
 @endsection
 
@@ -184,7 +184,7 @@
     background-repeat: no-repeat;
     background-size: cover;">
         <div>
-        <h2 >{{Settings::locale(app()->getLocale())->get('home_links_title')}}</h2>
+        <h2 >{!!Settings::locale(app()->getLocale())->get('home_description')!!}</h2>
         </div>
     </section>
 
@@ -213,13 +213,27 @@
 <div class="mail-subscripe text-center wow animate__rollIn" data-wow-duration="2s" style="background: url({{asset('front/img/subscription2.jpg')}});">
     <div class="subscription-overlay">
         <label for="mail-subscripe mb-5">أبق على تواصل معنا من خلال اشتراكك فى نشرتنا البريدية</label>
+
         <div class="input-group">
             <input type="text" id="mailsu" class="form-control" placeholder="أدخل بريدك الالكترونى" aria-label="" aria-describedby="basic-addon1">
             <div class="input-group-prepend">
             <button class="btn " id='subscribe' type="button"><i class="fab fa-telegram-plane"></i></button>
             </div>
         </div>
+        <div class="alert alert-success  my-2 confirmed" id='confirm' style="display: none" role="alert">
+            عميلنا العزيز تم الاشتراك في النشره الاخباريه بنجاح
+        </div>
+        <div class="alert alert-danger  my-2 rejected" id='reject' style="display: none" role="alert">
+            عميلنا العزيز ناسف لوجود مشكله في الوقت الحالي برجاء المحاوله في وقت اخر
+        </div>
+        <div class="alert alert-danger  my-2 rejected" id='exist' style="display: none" role="alert">
+            عميلنا العزيز هذا الايميل مشترك بلفعل في النشره الاخباريه
+        </div>
+        <div class="alert alert-danger  my-2 rejected" id='notvalide' style="display: none" role="alert">
+            يجب ادخال ايميل
+        </div>
     </div>
+
 </div>
 @push('js')
 <script>

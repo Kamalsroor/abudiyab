@@ -16,5 +16,6 @@
     "manage.works",
     "manage.memberships",
     "manage.regions",
-    "manage.custmerrequests"
+    "manage.custmerrequests",
+    "manage.carsales"
 ]

@@ -163,7 +163,14 @@ Route::resource('applications', 'WorkCandidatesController')->only('index', 'show
         Route::post('regions/{trashed_region}/restore', 'RegionController@restore')->name('regions.restore');
         Route::delete('regions/{trashed_region}/forceDelete', 'RegionController@forceDelete')->name('regions.forceDelete');
         Route::resource('regions', 'RegionController');
+
+        Route::get('trashed/carsales', 'CarsaleController@trashed')->name('carsales.trashed');
+        Route::get('trashed/carsales/{trashed_carsale}', 'CarsaleController@showTrashed')->name('carsales.trashed.show');
+        Route::post('carsales/{trashed_carsale}/restore', 'CarsaleController@restore')->name('carsales.restore');
+        Route::delete('carsales/{trashed_carsale}/forceDelete', 'CarsaleController@forceDelete')->name('carsales.forceDelete');
+        Route::resource('carsales', 'CarsaleController');
 /*  The routes of generated crud will set here: Don't remove this line  */
+        
 
 
 

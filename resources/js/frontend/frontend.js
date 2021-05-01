@@ -16,7 +16,51 @@ var wow = new WOW({
 wow.init();
 
 
+const lang = document.documentElement.lang.substr(0, 2);
 
+window.axios = require('axios');
+
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common['X-Accept-Language'] = lang;
+
+/**
+ * Next we will register the CSRF Token as a common header with Axios so that
+ * all outgoing HTTP requests automatically have it attached. This is just
+ * a simple convenience so we don't have to attach every token manually.
+ */
+
+let token = document.head.querySelector('meta[name="csrf-token"]');
+
+if (token) {
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+} else {
+    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+}
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+        'X-Accept-Language': lang
+    }
+});
+
+import Vue from 'vue';
+
+
+// or however you determine your current app locale
+
+
+
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
+
+Vue.component('car_seles', require('../components/CarSelesComponent').default);
+
+const app = new Vue({
+    el: '#app',
+});
 
 $(document).ready(function() {
     /* general variables */
@@ -252,21 +296,53 @@ $(document).ready(function() {
     let subscribe = $('#subscribe');
     if (subscribe.length) {
         $('#subscribe').on('click', function() {
-            console.log($('#mailsu').val());
-            $.ajax({
-                type: 'post',
-                url: subscribeURL,
-                headers: {
-                    "x-accept-language": "ar",
-                    "X-CSRF-TOKEN": csrf_token,
-                },
-                data: {
-                    'subscribeEmail': $('#mailsu').val()
-                },
-                success: function(data, status) {
-                    console.log(data);
-                }
-            });
+            let subscriptionEmail = $('#mailsu').val();
+            var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+            var validateEmail = subscriptionEmail.match(pattern);
+            if (validateEmail) {
+                $.ajax({
+                    type: 'post',
+                    url: subscribeURL,
+                    headers: {
+                        "x-accept-language": "ar",
+                        "X-CSRF-TOKEN": csrf_token,
+                    },
+                    data: {
+                        'subscribeEmail': $('#mailsu').val()
+                    },
+                    success: function(data, status) {
+
+                        console.log(data);
+                        if (data == true) {
+                            console.log('sssssss');
+                            $('#confirm').show();
+                            $('#reject').hide();
+                            $('#exist').hide();
+                            $('#notvalide').hide();
+
+
+                        } else if (data['error'] == 'exist') {
+                            $('#exist').show();
+                            $('#confirm').hide();
+                            $('#reject').hide();
+                            $('#notvalide').hide();
+
+
+                        } else {
+                            $('#reject').show();
+                            $('#confirm').hide();
+                            $('#reject').hide();
+                            $('#notvalide').hide();
+
+                        }
+                    }
+                });
+            } else {
+                $('#notvalide').show();
+                $('#confirm').hide();
+                $('#reject').hide();
+                $('#exist').hide();
+            }
         });
     }
 

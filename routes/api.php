@@ -72,4 +72,6 @@ Route::apiResource('regions', 'RegionController');
 Route::get('/select/regions', 'RegionController@select')->name('regions.select');
 
 Route::post('/subscribe', 'SubscribeController')->name('user.subscribe');
+Route::apiResource('carsales', 'CarsaleController');
+Route::get('/select/carsales', 'CarsaleController@select')->name('carsales.select');
 /*  The routes of generated crud will set here: Don't remove this line  */

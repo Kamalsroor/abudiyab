@@ -29,13 +29,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
     {{-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> --}}
 </head>
 <body style="overflow: hidden;">
-<!-- ------------START-----loader------------ -->
-{{-- <div class="loader">
-    <div class="loader_img">
-        <img src="{{ asset('front/img/loader.gif') }}" alt="Loader..">
+<div id="app">
+
+    <!-- ------------START-----loader------------ -->
+    <div class="loader">
+        <div class="loader_img">
+            <img src="{{ asset('front/img/loader.gif') }}" alt="Loader..">
+        </div>
     </div>
-</div> --}}
-<!-- ------------END-------loader------------ -->
+    <!-- ------------END-------loader------------ -->
         <!--================
             main Navbar
         =================-->
@@ -91,6 +93,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     {{-- <script src="{{asset('front/lnkse/main.js')}}"></script> --}}
     <img id="character" src="{{asset('images/character-1.png')}}" class="d-none d-md-block" alt="our character">
+</div>
 
 
     <script>

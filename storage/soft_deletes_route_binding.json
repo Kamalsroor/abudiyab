@@ -15,5 +15,6 @@
     "trashed_work": "App\\Models\\Work",
     "trashed_membership": "App\\Models\\Membership",
     "trashed_region": "App\\Models\\Region",
-    "trashed_custmerrequest": "App\\Models\\Custmerrequest"
+    "trashed_custmerrequest": "App\\Models\\Custmerrequest",
+    "trashed_carsale": "App\\Models\\Carsale"
 }
