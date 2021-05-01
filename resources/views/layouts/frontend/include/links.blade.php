@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Katibeh&display=swap">
 
 
+<link rel="stylesheet" href="{{asset('front/mycollection/font/flaticon.css')}}">  
+
 
 
 {{-- <!-- <link rel="stylesheet" href="{{asset('front/web/css/main.css')}}"> --> --}}

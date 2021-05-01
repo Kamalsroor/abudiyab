@@ -20,7 +20,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     @include('layouts.frontend.include.links')
     <link href="//db.onlinewebfonts.com/c/eb685f5dc6b663497f7d5d4aa4a6c13d?family=Noto+Kufi+Arabic" rel="stylesheet" type="text/css"/>
 
-
+    
+    
     @yield('styles')
     @stack('styles')
 
@@ -65,7 +66,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
         <div class="social-media-links d-none d-md-block">
-            <a href="/aboutus" ><p>حولنا</p></a>
+            <a href="/aboutus" ><i class="flaticon-information" style="font-size: 35px;"></i></a>
             <a href="https://wa.me/996920026600" target="_blank"><i class="fab fa-whatsapp"></i></a>
             <a href="tel:996920026600"><i class="fas fa-phone-alt"></i></a>
         </div>
