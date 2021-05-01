@@ -162,10 +162,30 @@
                         &_center {
                             width: 100%;
                             text-align: right;
-                            display: flex;
-                            justify-content: space-between;
                             padding: 10px 12px;
-                            font-size: 18px;
+                            h6 {
+                                font-size: 20px;
+                            }
+                            &_color {
+                                width: 100%;
+                                text-align: right;
+                                display: flex;
+                                justify-content: space-between;
+                                font-size: 18px;
+                                p {
+                                    span:after {
+                                        content: "";
+                                        width: 16px;
+                                        height: 16px;
+                                        border-radius: 33px;
+                                        background-color: currentColor;
+                                        display: inline-block;
+                                        margin-top: 5.5px;
+                                        margin-left: 2px;
+                                        float: right;
+                                    }
+                                }
+                            }
                         }
                         &_bottom {
                             width: 100%;
@@ -184,10 +204,30 @@
                             color: #fff !important;
                         }
                     }
+                    &_button_sold {
+                        width: 100%;
+                        height: 40px;
+                        border-radius: 0px 0 4px 4px;
+                        text-align: center;
+                        background: #ccc;
+                        box-shadow: none;
+                        text-shadow: none;
+                        cursor: auto;
+                        display: none;
+                        &:hover {
+                            color: #fff !important;
+                        }
+                    }
                 }
                 &_car.sold {
                     .car-sales_center_content_cars_car_sold {
                         display: block;
+                    }
+                    .car-sales_center_content_cars_car_button_sold {
+                        display: flex;
+                    }
+                    .car-sales_center_content_cars_car_button {
+                        display: none;
                     }
                 }
             }
