@@ -39,7 +39,7 @@ class CarsaleController extends Controller
      */
     public function index()
     {
-        $carsales = Carsale::filter()->simplePaginate();
+        $carsales = Carsale::filter()->get();
         return CarsaleResource::collection($carsales);
     }
 
