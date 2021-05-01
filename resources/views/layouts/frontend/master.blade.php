@@ -20,8 +20,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     @include('layouts.frontend.include.links')
     <link href="//db.onlinewebfonts.com/c/eb685f5dc6b663497f7d5d4aa4a6c13d?family=Noto+Kufi+Arabic" rel="stylesheet" type="text/css"/>
 
-    
-    
+
+
     @yield('styles')
     @stack('styles')
 
@@ -30,7 +30,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     {{-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> --}}
 </head>
 <body style="overflow: hidden;">
-<div id="app">
+<div id="vue_app">
 
     <!-- ------------START-----loader------------ -->
     <div class="loader">

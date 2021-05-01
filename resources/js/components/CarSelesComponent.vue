@@ -1,39 +1,140 @@
 <template>
-    <div class="form-group">
-            testt
-            testt
-            testt
-            testt
-    </div>
+    <section class="car-sales_center">
+        <div class="car-sales_center_content">
+            <div class="car-sales_center_content_filter">
+                <div class="car-sales_center_content_filter_select">
+                    <input type="hidden" v-model='cars'>
+                    <select v-model="filterByCarId">
+                        <option disabled="" selected="">ابحث بالسيارة</option>
+                        <option value="">الكل</option>
+                        <option :value="index" v-for="(carname, index) in cars_select">{{carname}}</option>
+                    </select>
+                </div>
+                <div class="car-sales_center_content_filter_select">
+                    <select v-model="filterByModel">
+                            <option disabled="" selected="">ابحث بالسنة</option>
+                            <option value="">الكل</option>
+                                <option :value="model"  v-for="model in models">{{model}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="car-sales_center_content_cars">
+                <div class="car-sales_center_content_cars_car" v-for="car in cars">
+
+                    <div class="car-sales_center_content_cars_car_sold" v-if="car.sold">تم البيع</div>
+
+                    <div class="car-sales_center_content_cars_car_img">
+                        <img :src="car.car.photo" alt="">
+                    </div>
+                    <div class="car-sales_center_content_cars_car_name">
+                        <h4>{{car.car.name}}</h4>
+                    </div>
+                    <div class="car-sales_center_content_cars_car_detailing">
+                        <div class="car-sales_center_content_cars_car_detailing_top">
+                            <h5>{{car.car.manufactory.name}}</h5>
+                            <h4>{{car.car.model}}</h4>
+                        </div>
+                        <div class="car-sales_center_content_cars_car_detailing_center">
+                            <h6> العداد {{car.couter}} كم</h6>
+                            <div class="car-sales_center_content_cars_car_detailing_center_color">
+                                <p> اللون الداخلي <span style="font-weight: 700; color: red;">{{car.color_interior}}</span> </p>
+                                <p>|</p>
+                                <p> اللون الخارجي <span style="font-weight: 700; color: green;">{{car.color_exterior}}</span></p>
+                            </div>
+                        </div>
+                        <div class="car-sales_center_content_cars_car_detailing_bottom">
+                            <p>مكيف | ناقل حركة أوتوماتيكي</p>
+                        </div>
+                    </div>
+                    <a class="primary-btn car-sales_center_content_cars_car_button" v-if="!car.sold">اقتراح سعر</a>
+                    <a class="primary-btn car-sales_center_content_cars_car_button_sold" v-if="car.sold">تم البيع</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
 </template>
 
 <script>
     export default {
         props: {
-            name: {
+
+            remoteUrl: {
                 required: true,
                 type: String,
             },
-            value: {
-                required: false,
-                default: null
-            },
+
         },
         data() {
             return {
-                items: [],
-                selected: '',
-                selected_values: [],
+                cars: [],
+                models: [],
+                cars_select: [],
+                filterByCarId: '',
+                allcars: [],
+                filterByModel: ''
             }
         },
         mounted() {
-
+         axios.get(this.remoteUrl)
+            .then(response => {
+                this.cars = response.data.data;
+                this.models=[];
+                this.cars_select={};
+                console.log(response.data.data);
+                this.cars.forEach(element => {
+                    if(!this.models.includes(element.car.model))
+                    {
+                        this.models.push(element.car.model);
+                    }
+                    this.cars_select[element.car.id] = element.car.name;
+                });
+            });
 
         },
         methods: {
+            filterCar: function() {
+                console.log(this.cars);
+            }
+        },
+        watch:{
+            filterByCarId: function(){
+                if (this.allcars.length) {
+                    this.cars=this.allcars
+                }else{
+                    this.allcars=this.cars
+                }
+                console.log(this.cars);
+                this.cars.map(element =>{
+                    if(element.car.id == this.filterByCarId)
+                    {
+                        this.cars=[element];
+                    }
+                })
+            },
+            filterByModel: function(){
 
+                if (this.filterByModel != "") {
+                    if (!this.allcars.length) {
+                        this.allcars=this.cars
+                    }
+                    console.log(this.cars);
+                    this.cars = [];
+                    this.allcars.map(element =>{
+                        if(element.car.model == this.filterByModel)
+                        {
+                            this.cars.push(element);
+                        }
+                    })
+                }else{
+                    this.cars = this.allcars;
+                }
+            },
         }
     }
+
+
 </script>
 
 
