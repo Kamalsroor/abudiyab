@@ -708,18 +708,18 @@ $(document).ready(function() {
     });
 
     $('.home-our-partners__content').slick({
-        slidesToShow: 6,
+        slidesToShow: 9,
         slidesToScroll: 1,
         centerMode: false,
         dots: false,
-        arrows: true,
+        arrows: false,
         rtl: html.dir === 'rtl',
         autoplay: true,
         autoplaySpeed: 1500,
         responsive: [{
                 breakpoint: 767,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 5,
                     centerMode: false,
                     slidesToScroll: 1,
                 }
@@ -727,7 +727,7 @@ $(document).ready(function() {
             {
                 breakpoint: 992,
                 settings: {
-                    slidesToShow: 4,
+                    slidesToShow: 6,
                     centerMode: false,
                     slidesToScroll: 1,
                 }
@@ -735,7 +735,7 @@ $(document).ready(function() {
             {
                 breakpoint: 1200,
                 settings: {
-                    slidesToShow: 4,
+                    slidesToShow: 6,
                     centerMode: false,
                     slidesToScroll: 1,
                 }
