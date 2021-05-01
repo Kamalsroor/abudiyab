@@ -7,7 +7,6 @@
                 <h1>صفحة بيع السيارات</h1>
             </div>
         </section>
-        <car_seles></car_seles>
         <section class="car-sales_center">
                 <div class="car-sales_center_content">
                     <div class="car-sales_center_content_filter">
@@ -50,10 +49,8 @@
                     </div>
                     <div class="car-sales_center_content_cars">
                     @foreach ($cars as $car)
-                        <div class="car-sales_center_content_cars_car sold">
-                            @if ($car->sold)
+                        <div class="car-sales_center_content_cars_car @if ($car->sold) sold @endif">
                             <div class="car-sales_center_content_cars_car_sold">تم البيع</div>
-                            @endif
                             <div class="car-sales_center_content_cars_car_img">
                                 <img src="{{ $car->car->getFirstMediaUrl()}}" alt="">
                             </div>
@@ -66,19 +63,19 @@
                                     <h4>{{$car->car->model}}</h4>
                                 </div>
                                 <div class="car-sales_center_content_cars_car_detailing_center">
-                                    <p> العداد {{$car->couter}} كم</p>
-                                    <p>|</p>
-                                    <p> اللون الداخلي {{$car->color_interior}}</p>
-                                    <p>|</p>
-                                    <p> اللون الخارجي {{$car->color_exterior}}</p>
+                                    <h6> العداد {{$car->couter}} كم</h6>
+                                    <div class="car-sales_center_content_cars_car_detailing_center_color">
+                                        <p> اللون الداخلي <span style="font-weight: 700; color: red;">{{$car->color_interior}}</span> </p>
+                                        <p>|</p>
+                                        <p> اللون الخارجي <span style="font-weight: 700; color: green;">{{$car->color_exterior}}</span></p>
+                                    </div>
                                 </div>
                                 <div class="car-sales_center_content_cars_car_detailing_bottom">
                                     <p>مكيف | ناقل حركة أوتوماتيكي</p>
                                 </div>
                             </div>
-                            @if (!($car->sold))
                             <a class="primary-btn car-sales_center_content_cars_car_button">اقتراح سعر</a>
-                            @endif
+                            <a class="primary-btn car-sales_center_content_cars_car_button_sold">تم البيع</a>
                         </div>
                         @endforeach
 
