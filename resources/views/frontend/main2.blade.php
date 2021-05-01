@@ -191,9 +191,9 @@
 
     <section class="home-our-partners">
 
-        <div class="home-our-partners__heading">
+        {{-- <div class="home-our-partners__heading">
             <span class="g-title">شركاؤنا في النجاح</span>
-        </div>
+        </div> --}}
 
         <div class="home-our-partners__content">
             @foreach($partners as $partner)
