@@ -19,9 +19,9 @@
                                         <li class="text-right">خصم التسليم بين المناطق : {{$Membership->delivery_discount_regions}}%</li>
                                         <li class="text-right">النقاط المكتسبة لكل 100 ريال مدفوع : {{$Membership->ratio_points}}</li>
                                     </ul>
-                                    <div class="text-center py-2">
+                                    {{-- <div class="text-center py-2">
                                     <a href="#"  class="primary-btn btn-hover btn-curved mt-2 p-2"><i class="fab fa-whatsapp"></i> أطلب العضوية</a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>

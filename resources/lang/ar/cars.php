@@ -26,6 +26,8 @@ return [
         'updated' => 'تم تعديل السيارة بنجاح.',
         'deleted' => 'تم حذف السيارة بنجاح.',
         'restored' => 'تم استعادة السيارة بنجاح.',
+        'favorite' => 'تم اضافة السياره للمفضله بنجاح',
+        'unFavorite' => 'تم حذف السياره من مفضله بنجاح',
     ],
 
 
@@ -45,7 +47,6 @@ return [
         'name' => 'اسم السيارة',
         '%name%' => 'اسم السيارة',
         'image' => 'صورة السيارة',
-
         'category_id' => 'category_id',
         'branch_id' => 'branch_id',
         'manufactory_id' => 'manufactory_id',
@@ -63,7 +64,6 @@ return [
         'price_after_from_6month_to_12month' => 'السعر بعد الخصم من 6 اشهر الي 12 شهر',
         'price_after_from_1year_to_2years' => 'السعر بعد الخصم من سنه الي سنتين',
         'price_after_from_2year_to_3years' => 'السعر بعد الخصم من سنتين الي 3 سنوات',
-
         'model' => 'الموديل',
         'door' => 'عدد الابواب',
         'luggage' => 'الحقائب',

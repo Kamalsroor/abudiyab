@@ -8,7 +8,7 @@
             </div>
         </section>
 
-        <section class="media-center_center">
+        {{-- <section class="media-center_center">
 
             <div class="media-center_center_content">
                 <div class="media-center_center_content_news">
@@ -133,7 +133,7 @@
                 </div>
             </div>
 
-        </section>
+        </section> --}}
 
     </section>
 </x-front-layout>

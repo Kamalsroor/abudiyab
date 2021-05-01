@@ -16,9 +16,14 @@ class SubscribeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        Subscribe::create([
-            'email' => $request->subscribeEmail,
-        ]);
+        try{
+            Subscribe::create([
+                'email' => $request->subscribeEmail,
+            ]);
+        }
+        catch (\Exception $e) {
+            return response()->json(['error' => 'exist'], 200);
+        }
         return true;
     }
 }

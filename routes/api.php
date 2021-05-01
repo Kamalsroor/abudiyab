@@ -26,6 +26,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('verification/verify', 'VerificationController@verify')->name('verification.verify');
     Route::get('profile', 'ProfileController@show')->name('profile.show');
     Route::match(['put', 'patch'], 'profile', 'ProfileController@update')->name('profile.update');
+    Route::apiResource('orders', 'OrderController');
+    Route::get('/select/orders', 'OrderController@select')->name('orders.select');
+    Route::post('/favorite/{car}', 'CarController@addToFavorite')->name('cars.favorite');
 });
 Route::post('/editor/upload', 'MediaController@editorUpload')->name('editor.upload');
 Route::get('/settings', 'SettingController@index')->name('settings.index');
@@ -44,20 +47,20 @@ Route::apiResource('branches', 'BranchController');
 Route::get('/select/branches', 'BranchController@select')->name('branches.select');
 Route::apiResource('categories', 'CategoryController');
 Route::get('/select/categories', 'CategoryController@select')->name('categories.select');
-Route::get('/cars/{car}/related', 'CarController@carRelated')->name('cars.related');
+Route::get('/cars/recomended', 'CarController@carRelated')->name('cars.related');
 Route::apiResource('cars', 'CarController');
+Route::get('/filters', 'FilterController@index')->name('cars.filter');
 Route::get('/select/cars', 'CarController@select')->name('cars.select');
 Route::apiResource('manufactories', 'ManufactoryController');
 Route::get('/select/manufactories', 'ManufactoryController@select')->name('manufactories.select');
 Route::apiResource('sliders', 'SliderController');
 Route::get('/select/sliders', 'SliderController@select')->name('sliders.select');
-Route::apiResource('orders', 'OrderController');
-Route::get('/select/orders', 'OrderController@select')->name('orders.select');
+
 Route::apiResource('partners', 'PartnerController');
 Route::get('/select/partners', 'PartnerController@select')->name('partners.select');
 
-// Route::apiResource('offers', 'OfferController');
-// Route::get('/select/offers', 'OfferController@select')->name('offers.select');
+Route::apiResource('offers', 'OfferController');
+Route::get('/select/offers', 'OfferController@select')->name('offers.select');
 
 Route::apiResource('works', 'WorkController');
 Route::get('/select/works', 'WorkController@select')->name('works.select');
@@ -69,4 +72,6 @@ Route::apiResource('regions', 'RegionController');
 Route::get('/select/regions', 'RegionController@select')->name('regions.select');
 
 Route::post('/subscribe', 'SubscribeController')->name('user.subscribe');
+Route::apiResource('carsales', 'CarsaleController');
+Route::get('/select/carsales', 'CarsaleController@select')->name('carsales.select');
 /*  The routes of generated crud will set here: Don't remove this line  */

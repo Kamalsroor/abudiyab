@@ -7,7 +7,7 @@
                 <h1>صفحة بيع السيارات</h1>
             </div>
         </section>
-
+        <car_seles></car_seles>
         <section class="car-sales_center">
                 <div class="car-sales_center_content">
                     <div class="car-sales_center_content_filter">
@@ -42,171 +42,46 @@
                             <select>
                                     <option disabled="" selected="">ابحث بالسنة</option>
                                     <option value="all">الكل</option>
-                                    <option value="2016">2016</option>
-                                    <option value="2017">2017</option>
-                                    <option value="2018">2018</option>
-                                    <option value="2019">2019</option>
-                                    <option value="2020">2020</option>
+                                    @foreach ($models as $model)
+                                        <option value="{{$model}}">{{$model}}</option>
+                                    @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="car-sales_center_content_cars">
-                        <div class="car-sales_center_content_cars_car">
-                            <div class="car-sales_center_content_cars_car_sold">تم البيع</div>
-                            <div class="car-sales_center_content_cars_car_img">
-                                <img src="{{ asset('front/img/car-img/car-2.png') }}" alt="">
-                            </div>
-                            <div class="car-sales_center_content_cars_car_name">
-                                <h4>ام جى زد اس</h4>
-                            </div>
-                            <div class="car-sales_center_content_cars_car_detailing">
-                                <div class="car-sales_center_content_cars_car_detailing_top">
-                                    <h5>عائلية صغيرة</h5>
-                                    <h4>2021</h4>
-                                </div>
-                                <div class="car-sales_center_content_cars_car_detailing_center">
-                                    <p>5 الأمتعة</p>
-                                    <p>|</p>
-                                    <p>4 أبواب</p>
-                                    <p>|</p>
-                                    <p>2 الأمتعة</p>
-                                </div>
-                                <div class="car-sales_center_content_cars_car_detailing_bottom">
-                                    <p>مكيف | ناقل حركة أوتوماتيكي</p>
-                                </div>
-                            </div>
-                            <a class="primary-btn car-sales_center_content_cars_car_button">اقتراح سعر</a>
-                        </div>
-                        <div class="car-sales_center_content_cars_car">
-                            <div class="car-sales_center_content_cars_car_sold">تم البيع</div>
-                            <div class="car-sales_center_content_cars_car_img">
-                                <img src="{{ asset('front/img/car-img/car-1.png') }}" alt="">
-                            </div>
-                            <div class="car-sales_center_content_cars_car_name">
-                                <h4>تويوتا راف فور</h4>
-                            </div>
-                            <div class="car-sales_center_content_cars_car_detailing">
-                                <div class="car-sales_center_content_cars_car_detailing_top">
-                                    <h5>عائلية اقتصادية</h5>
-                                    <h4>2020</h4>
-                                </div>
-                                <div class="car-sales_center_content_cars_car_detailing_center">
-                                    <p>5 الأمتعة</p>
-                                    <p>|</p>
-                                    <p>4 أبواب</p>
-                                    <p>|</p>
-                                    <p>2 الأمتعة</p>
-                                </div>
-                                <div class="car-sales_center_content_cars_car_detailing_bottom">
-                                    <p>مكيف | ناقل حركة أوتوماتيكي</p>
-                                </div>
-                            </div>
-                            <a class="primary-btn car-sales_center_content_cars_car_button">اقتراح سعر</a>
-                        </div>
+                    @foreach ($cars as $car)
                         <div class="car-sales_center_content_cars_car sold">
+                            @if ($car->sold)
                             <div class="car-sales_center_content_cars_car_sold">تم البيع</div>
+                            @endif
                             <div class="car-sales_center_content_cars_car_img">
-                                <img src="{{ asset('front/img/car-img/car-3.png') }}" alt="">
+                                <img src="{{ $car->car->getFirstMediaUrl()}}" alt="">
                             </div>
                             <div class="car-sales_center_content_cars_car_name">
-                                <h4>هونداى ازيرا</h4>
+                                <h4>{{$car->car->name}}</h4>
                             </div>
                             <div class="car-sales_center_content_cars_car_detailing">
                                 <div class="car-sales_center_content_cars_car_detailing_top">
-                                    <h5>سيدان كبير</h5>
-                                    <h4>2021</h4>
+                                    <h5>{{$car->car->manufactory->name}}</h5>
+                                    <h4>{{$car->car->model}}</h4>
                                 </div>
                                 <div class="car-sales_center_content_cars_car_detailing_center">
-                                    <p>5 الأمتعة</p>
+                                    <p> العداد {{$car->couter}} كم</p>
                                     <p>|</p>
-                                    <p>4 أبواب</p>
+                                    <p> اللون الداخلي {{$car->color_interior}}</p>
                                     <p>|</p>
-                                    <p>2 الأمتعة</p>
+                                    <p> اللون الخارجي {{$car->color_exterior}}</p>
                                 </div>
                                 <div class="car-sales_center_content_cars_car_detailing_bottom">
                                     <p>مكيف | ناقل حركة أوتوماتيكي</p>
                                 </div>
                             </div>
+                            @if (!($car->sold))
                             <a class="primary-btn car-sales_center_content_cars_car_button">اقتراح سعر</a>
+                            @endif
                         </div>
-                        <div class="car-sales_center_content_cars_car sold">
-                            <div class="car-sales_center_content_cars_car_sold">تم البيع</div>
-                            <div class="car-sales_center_content_cars_car_img">
-                                <img src="{{ asset('front/img/car-img/car-2.png') }}" alt="">
-                            </div>
-                            <div class="car-sales_center_content_cars_car_name">
-                                <h4>ام جى زد اس</h4>
-                            </div>
-                            <div class="car-sales_center_content_cars_car_detailing">
-                                <div class="car-sales_center_content_cars_car_detailing_top">
-                                    <h5>عائلية صغيرة</h5>
-                                    <h4>2021</h4>
-                                </div>
-                                <div class="car-sales_center_content_cars_car_detailing_center">
-                                    <p>5 الأمتعة</p>
-                                    <p>|</p>
-                                    <p>4 أبواب</p>
-                                    <p>|</p>
-                                    <p>2 الأمتعة</p>
-                                </div>
-                                <div class="car-sales_center_content_cars_car_detailing_bottom">
-                                    <p>مكيف | ناقل حركة أوتوماتيكي</p>
-                                </div>
-                            </div>
-                            <a class="primary-btn car-sales_center_content_cars_car_button">اقتراح سعر</a>
-                        </div>
-                        <div class="car-sales_center_content_cars_car">
-                            <div class="car-sales_center_content_cars_car_sold">تم البيع</div>
-                            <div class="car-sales_center_content_cars_car_img">
-                                <img src="{{ asset('front/img/car-img/car-1.png') }}" alt="">
-                            </div>
-                            <div class="car-sales_center_content_cars_car_name">
-                                <h4>تويوتا راف فور</h4>
-                            </div>
-                            <div class="car-sales_center_content_cars_car_detailing">
-                                <div class="car-sales_center_content_cars_car_detailing_top">
-                                    <h5>عائلية اقتصادية</h5>
-                                    <h4>2020</h4>
-                                </div>
-                                <div class="car-sales_center_content_cars_car_detailing_center">
-                                    <p>5 الأمتعة</p>
-                                    <p>|</p>
-                                    <p>4 أبواب</p>
-                                    <p>|</p>
-                                    <p>2 الأمتعة</p>
-                                </div>
-                                <div class="car-sales_center_content_cars_car_detailing_bottom">
-                                    <p>مكيف | ناقل حركة أوتوماتيكي</p>
-                                </div>
-                            </div>
-                            <a class="primary-btn car-sales_center_content_cars_car_button">اقتراح سعر</a>
-                        </div>
-                        <div class="car-sales_center_content_cars_car sold">
-                            <div class="car-sales_center_content_cars_car_sold">تم البيع</div>
-                            <div class="car-sales_center_content_cars_car_img">
-                                <img src="{{ asset('front/img/car-img/car-3.png') }}" alt="">
-                            </div>
-                            <div class="car-sales_center_content_cars_car_name">
-                                <h4>هونداى ازيرا</h4>
-                            </div>
-                            <div class="car-sales_center_content_cars_car_detailing">
-                                <div class="car-sales_center_content_cars_car_detailing_top">
-                                    <h5>سيدان كبير</h5>
-                                    <h4>2021</h4>
-                                </div>
-                                <div class="car-sales_center_content_cars_car_detailing_center">
-                                    <p>5 الأمتعة</p>
-                                    <p>|</p>
-                                    <p>4 أبواب</p>
-                                    <p>|</p>
-                                    <p>2 الأمتعة</p>
-                                </div>
-                                <div class="car-sales_center_content_cars_car_detailing_bottom">
-                                    <p>مكيف | ناقل حركة أوتوماتيكي</p>
-                                </div>
-                            </div>
-                            <a class="primary-btn car-sales_center_content_cars_car_button">اقتراح سعر</a>
-                        </div>
+                        @endforeach
+
                     </div>
                 </div>
         </section>

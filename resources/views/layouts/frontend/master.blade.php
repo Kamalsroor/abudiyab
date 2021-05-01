@@ -29,13 +29,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
     {{-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> --}}
 </head>
 <body style="overflow: hidden;">
-<!-- ------------START-----loader------------ -->
-<div class="loader">
-    <div class="loader_img">
-        <img src="{{ asset('front/img/loader.gif') }}" alt="Loader..">
+<div id="app">
+
+    <!-- ------------START-----loader------------ -->
+    <div class="loader">
+        <div class="loader_img">
+            <img src="{{ asset('front/img/loader.gif') }}" alt="Loader..">
+        </div>
     </div>
-</div>
-<!-- ------------END-------loader------------ -->
+    <!-- ------------END-------loader------------ -->
         <!--================
             main Navbar
         =================-->
@@ -59,12 +61,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         {{-- <span><i class="fas fa-less-than"></i></span> --}}
 
-        <i class="fas fa-phone-alt d-md-none" id="social-media-links-toggeler" style="cursor: pointer;position: fixed;top: 86%;right: 10px;color: white;border-radius: 50%;background-color: #ff0202;font-size: 21px;padding: 12px;"></i>
+        <i class="fas fa-phone-alt d-md-none" id="social-media-links-toggeler" style="cursor: pointer;position: fixed;top: 30px;z-index:200; left: 10px;color: white;border-radius: 50%;background-color: #ff0202;font-size: 21px;padding: 12px;"></i>
 
 
         <div class="social-media-links d-none d-md-block">
             <a href="/aboutus" ><p>حولنا</p></a>
-            <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://wa.me/996920026600" target="_blank"><i class="fab fa-whatsapp"></i></a>
             <a href="tel:996920026600"><i class="fas fa-phone-alt"></i></a>
         </div>
 
@@ -91,6 +93,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     {{-- <script src="{{asset('front/lnkse/main.js')}}"></script> --}}
     <img id="character" src="{{asset('images/character-1.png')}}" class="d-none d-md-block" alt="our character">
+</div>
 
 
     <script>

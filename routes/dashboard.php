@@ -133,11 +133,11 @@ Route::resource('applications', 'WorkCandidatesController')->only('index', 'show
         Route::delete('partners/{trashed_partner}/forceDelete', 'PartnerController@forceDelete')->name('partners.forceDelete');
         Route::resource('partners', 'PartnerController');
 
-        // Route::get('trashed/offers', 'OfferController@trashed')->name('offers.trashed');
-        // Route::get('trashed/offers/{trashed_offer}', 'OfferController@showTrashed')->name('offers.trashed.show');
-        // Route::post('offers/{trashed_offer}/restore', 'OfferController@restore')->name('offers.restore');
-        // Route::delete('offers/{trashed_offer}/forceDelete', 'OfferController@forceDelete')->name('offers.forceDelete');
-        // Route::resource('offers', 'OfferController');
+        Route::get('trashed/offers', 'OfferController@trashed')->name('offers.trashed');
+        Route::get('trashed/offers/{trashed_offer}', 'OfferController@showTrashed')->name('offers.trashed.show');
+        Route::post('offers/{trashed_offer}/restore', 'OfferController@restore')->name('offers.restore');
+        Route::delete('offers/{trashed_offer}/forceDelete', 'OfferController@forceDelete')->name('offers.forceDelete');
+        Route::resource('offers', 'OfferController');
 
         Route::get('trashed/works', 'WorkController@trashed')->name('works.trashed');
         Route::get('trashed/works/{trashed_work}', 'WorkController@showTrashed')->name('works.trashed.show');
@@ -163,7 +163,14 @@ Route::resource('applications', 'WorkCandidatesController')->only('index', 'show
         Route::post('regions/{trashed_region}/restore', 'RegionController@restore')->name('regions.restore');
         Route::delete('regions/{trashed_region}/forceDelete', 'RegionController@forceDelete')->name('regions.forceDelete');
         Route::resource('regions', 'RegionController');
+
+        Route::get('trashed/carsales', 'CarsaleController@trashed')->name('carsales.trashed');
+        Route::get('trashed/carsales/{trashed_carsale}', 'CarsaleController@showTrashed')->name('carsales.trashed.show');
+        Route::post('carsales/{trashed_carsale}/restore', 'CarsaleController@restore')->name('carsales.restore');
+        Route::delete('carsales/{trashed_carsale}/forceDelete', 'CarsaleController@forceDelete')->name('carsales.forceDelete');
+        Route::resource('carsales', 'CarsaleController');
 /*  The routes of generated crud will set here: Don't remove this line  */
+        
 
 
 

@@ -299,16 +299,17 @@ a:not([href]):not([tabindex]) {
         }
     }
     .home-our-partners__content {
-        width: 50%;
+        width: 100%;
         margin: auto;
-        @include mediumScreen() {
-            width: 70%;
-        }
         .slick-slider {
             padding: 0 5px;
             img {
                 width: 100%;
                 margin: auto;
+                filter: grayscale(1);
+                &:hover {
+                    filter: grayscale(0);
+                }
             }
         }
     }

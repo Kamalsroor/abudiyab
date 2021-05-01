@@ -1,7 +1,66 @@
 require('./bootstrap');
+import WOW from 'wow.js'
+var wow = new WOW({
+    boxClass: 'wow', // animated element css class (default is wow)
+    animateClass: 'animated', // animation css class (default is animated)
+    offset: 0, // distance to the element when triggering the animation (default is 0)
+    mobile: true, // trigger animations on mobile devices (default is true)
+    live: true, // act on asynchronously loaded content (default is true)
+    callback: function(box) {
+        // the callback is fired every time an animation is started
+        // the argument that is passed in is the DOM node being animated
+    },
+    scrollContainer: null, // optional scroll container selector, otherwise use window,
+    resetAnimation: true, // reset animation on end (default is true)
+});
+wow.init();
+
+
+const lang = document.documentElement.lang.substr(0, 2);
+
+window.axios = require('axios');
+
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common['X-Accept-Language'] = lang;
+
+/**
+ * Next we will register the CSRF Token as a common header with Axios so that
+ * all outgoing HTTP requests automatically have it attached. This is just
+ * a simple convenience so we don't have to attach every token manually.
+ */
+
+let token = document.head.querySelector('meta[name="csrf-token"]');
+
+if (token) {
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+} else {
+    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+}
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+        'X-Accept-Language': lang
+    }
+});
+
+import Vue from 'vue';
+
+
+// or however you determine your current app locale
 
 
 
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
+
+Vue.component('car_seles', require('../components/CarSelesComponent').default);
+
+const app = new Vue({
+    el: '#app',
+});
 
 $(document).ready(function() {
     /* general variables */
@@ -237,21 +296,53 @@ $(document).ready(function() {
     let subscribe = $('#subscribe');
     if (subscribe.length) {
         $('#subscribe').on('click', function() {
-            console.log($('#mailsu').val());
-            $.ajax({
-                type: 'post',
-                url: subscribeURL,
-                headers: {
-                    "x-accept-language": "ar",
-                    "X-CSRF-TOKEN": csrf_token,
-                },
-                data: {
-                    'subscribeEmail': $('#mailsu').val()
-                },
-                success: function(data, status) {
-                    console.log(data);
-                }
-            });
+            let subscriptionEmail = $('#mailsu').val();
+            var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+            var validateEmail = subscriptionEmail.match(pattern);
+            if (validateEmail) {
+                $.ajax({
+                    type: 'post',
+                    url: subscribeURL,
+                    headers: {
+                        "x-accept-language": "ar",
+                        "X-CSRF-TOKEN": csrf_token,
+                    },
+                    data: {
+                        'subscribeEmail': $('#mailsu').val()
+                    },
+                    success: function(data, status) {
+
+                        console.log(data);
+                        if (data == true) {
+                            console.log('sssssss');
+                            $('#confirm').show();
+                            $('#reject').hide();
+                            $('#exist').hide();
+                            $('#notvalide').hide();
+
+
+                        } else if (data['error'] == 'exist') {
+                            $('#exist').show();
+                            $('#confirm').hide();
+                            $('#reject').hide();
+                            $('#notvalide').hide();
+
+
+                        } else {
+                            $('#reject').show();
+                            $('#confirm').hide();
+                            $('#reject').hide();
+                            $('#notvalide').hide();
+
+                        }
+                    }
+                });
+            } else {
+                $('#notvalide').show();
+                $('#confirm').hide();
+                $('#reject').hide();
+                $('#exist').hide();
+            }
         });
     }
 
@@ -617,18 +708,18 @@ $(document).ready(function() {
     });
 
     $('.home-our-partners__content').slick({
-        slidesToShow: 6,
+        slidesToShow: 9,
         slidesToScroll: 1,
         centerMode: false,
         dots: false,
-        arrows: true,
+        arrows: false,
         rtl: html.dir === 'rtl',
         autoplay: true,
         autoplaySpeed: 1500,
         responsive: [{
                 breakpoint: 767,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 5,
                     centerMode: false,
                     slidesToScroll: 1,
                 }
@@ -636,7 +727,7 @@ $(document).ready(function() {
             {
                 breakpoint: 992,
                 settings: {
-                    slidesToShow: 4,
+                    slidesToShow: 6,
                     centerMode: false,
                     slidesToScroll: 1,
                 }
@@ -644,7 +735,7 @@ $(document).ready(function() {
             {
                 breakpoint: 1200,
                 settings: {
-                    slidesToShow: 4,
+                    slidesToShow: 6,
                     centerMode: false,
                     slidesToScroll: 1,
                 }
@@ -732,8 +823,30 @@ $(document).ready(function() {
 
     // gallery page ends here---------------------------------------------------------------------
 
+    $('.nav-link').click(function() {
+        $('.nav-link.active').removeClass('active');
+        $(this).addClass('active');
+    })
 
+    $('#oldcontracts-toggel').click(function() {
+        $('.contracts-section').addClass('d-none');
+        $('#oldcontracts').removeClass('d-none');
+    })
+    $('#newcontracts-toggel').click(function() {
+        $('.contracts-section').addClass('d-none');
+        $('#newcontracts').removeClass('d-none');
+    })
 
+    /* ========================================================
+       ===================logo animation=======================
+       ========================================================
+    */
+    $('.nav-logo').animate({ top: '10px' }, 2500)
+        // $('.nav-logo').animate({ width: '120px' }, 'slow')
+        /* ==========================================================
+           ===================logo animation ends====================
+           ==========================================================
+        */
 
 });
 

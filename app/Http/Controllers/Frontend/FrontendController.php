@@ -16,6 +16,8 @@ use App\Models\Setting;
 use App\Models\Slider;
 use App\Models\Category;
 use App\Models\Membership;
+use Carbon\Carbon;
+use App\Models\Carsale;
 use Illuminate\Http\Request;
 
 
@@ -36,7 +38,13 @@ class FrontendController extends Controller
         $miniSliders    =   Slider::where('is_mobile',1)->get();
         $showFirstCatInCatgories   =  Car::where('category_id' , $showCategories->first()->id)->get();
         $firstcar   = $showFirstCatInCatgories->first();
-        return view('frontend.main2', compact('sliders','miniSliders','showFirstCatInCatgories','showCategories','showCategoriesCars','allCategories','firstcar','partners'));
+        $todaydate = Carbon::today();
+
+        $offers =  Car::whereHas('offers',function($q) use($todaydate){
+            $q->where('is_work',1)->whereDate('from' ,'<=' , $todaydate)->whereDate('to' ,'>=' , $todaydate);
+        })->get();
+        // dd();
+        return view('frontend.main2', compact('sliders','miniSliders','showFirstCatInCatgories','showCategories','showCategoriesCars','allCategories','firstcar','partners','offers'));
     }
 
 
@@ -56,7 +64,16 @@ class FrontendController extends Controller
 
     public function CarSales()
     {
-        return view('frontend.car_sales');
+        $cars=Carsale::with('car','car.manufactory')->get();
+        $models=[];
+        foreach($cars as $car)
+        {
+            if(!in_array($car->car->model,$models))
+            {
+              $models[]=$car->car->model;
+            }
+        }
+        return view('frontend.car_sales', compact('cars','models'));
     }
 
     public function NewsDetails()

@@ -1,11 +1,11 @@
 <x-front-layout :title="trans('dashboard.home')" :breadcrumbs="['dashboard.home']" >
+<link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/assets/icon/icofont/css/icofont.css')}}">
+@section('styles')
     <style>
         .footer{
             padding-top: 100px;
         }
     </style>
-<link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/assets/icon/icofont/css/icofont.css')}}">
-@section('styles')
     @include('frontend.css.main_cartogray')
 @endsection
 
@@ -60,26 +60,29 @@
 
     </div>
 
-        {{-- <section class="home-offers content whitebg">
+        <section class="home-offers content whitebg">
             <div class="home-offers_head">
                 <span class="g-title">عروضنا</span>
             </div>
             <div class="container-fluid offers" style="padding-top:0">
-              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pod" url="#" number="1">
-                <div class="hover-offer ehover1"><img class="img-responsive" src="https://saudiauto.com.sa/uploads/Untitled-1_109.jpg" alt="Barcelona" />
-                  <div class="offer-content">
-                    <div class="ribbon orange">خصم 5%</div>
-                    <figcaption> <span class="flights-icon">(</span>
-                      <h4>S 320 مرسيدس</h4>
-                      <p class="detail">5 مقاعد | 4 أبواب | 2 الأمتعة</p>
-                      <p class="detail">فخمة كبيرة</p>
-                      <p class="price-offer"><span><i class="icofont icofont-cur-riyal"></i></span>900</p>
-                      <div class="button2">احجز الان</div>
-                    </figcaption>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pod" url="#" number="2">
+                @foreach ($offers as $offer)
+
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pod" url="#" number="1">
+                        <div class="hover-offer ehover1"><img class="img-responsive" src="https://saudiauto.com.sa/uploads/Untitled-1_109.jpg" alt="Barcelona" />
+                            <div class="offer-content">
+                            <div class="ribbon orange">خصم {{$offer->value}}%</div>
+                            <figcaption> <span class="flights-icon">(</span>
+                                <h4>{{$offer->name}} {{$offer->model}}</h4>
+                                <p class="detail">5 مقاعد | {{$offer->door}} أبواب | 2 الأمتعة</p>
+                                <p class="detail">{{$offer->category ? $offer->category->name : ""}}</p>
+                                <p class="price-offer"><span><i class="icofont icofont-cur-riyal"></i></span>{{$offer->price1}}</p>
+                                <div class="button2">احجز الان</div>
+                            </figcaption>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+              {{-- <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pod" url="#" number="2">
                 <div class="hover-offer ehover1"><img class="img-responsive" src="https://1.bp.blogspot.com/-F5cZ10DJ68A/Xukz4ACNbgI/AAAAAAAABAs/ndkQ6DAwv-k7MdS2_0ldSZFI3cJVUbYLwCK4BGAYYCw/s1600/3864%2Bcopy.jpg" alt="París" />
                   <div class="offer-content">
                     <div class="ribbon orange">خصم 20%</div>
@@ -120,16 +123,16 @@
                     </figcaption>
                   </div>
                 </div>
-              </div>
+              </div> --}}
             </div>
-          </section> --}}
+          </section>
 
     <section class="container-90">
         <div class="home-category">
-            <div class="home-category__heading d-flex justify-content-center py-3">
-                <span class="g-title">فئات الاسطول</span>
+            <div class="home-category__heading d-flex justify-content-center py-3 ">
+                <span class="g-title " >فئات الاسطول</span>
             </div>
-            <div class="home-category__conent">
+            <div class="home-category__conent wow animate__slideInUp" data-wow-duration="2s">
                 <div class="row px-0 mx-0 justify-content-center home-category__item not-active">
                     @foreach($allCategories as $category)
                         <div class='col-sm-3 col-lg-3 col-md-4 my-2 ' id='{{$category->id}}'>
@@ -147,7 +150,7 @@
         </div>
     </section>
 
-    <section class="car-model" id="car-model-section">
+    <section class="car-model wow animate__slideInUp" data-wow-duration="2s" id="car-model-section">
         <livewire:frontend.car-model />
         <div class="container slick-section">
             <div class="row justify-content-center px-0 mx-0 car-model__heading" >
@@ -181,16 +184,16 @@
     background-repeat: no-repeat;
     background-size: cover;">
         <div>
-        <h2 >{{Settings::locale(app()->getLocale())->get('home_links_title')}}</h2>
+        <h2 >{!!Settings::locale(app()->getLocale())->get('home_description')!!}</h2>
         </div>
     </section>
 
 
     <section class="home-our-partners">
 
-        <div class="home-our-partners__heading">
+        {{-- <div class="home-our-partners__heading">
             <span class="g-title">شركاؤنا في النجاح</span>
-        </div>
+        </div> --}}
 
         <div class="home-our-partners__content">
             @foreach($partners as $partner)
@@ -207,16 +210,30 @@
 <div class="modal fade" id="BookingModel" tabindex="-1" aria-labelledby="BookingModelLabel" aria-hidden="true">
     <livewire:booking-model/>
 </div>
-<div class="mail-subscripe text-center" style="background: url({{asset('front/img/subscription2.jpg')}});">
+<div class="mail-subscripe text-center wow animate__rollIn" data-wow-duration="2s" style="background: url({{asset('front/img/subscription2.jpg')}});">
     <div class="subscription-overlay">
         <label for="mail-subscripe mb-5">أبق على تواصل معنا من خلال اشتراكك فى نشرتنا البريدية</label>
+
         <div class="input-group">
             <input type="text" id="mailsu" class="form-control" placeholder="أدخل بريدك الالكترونى" aria-label="" aria-describedby="basic-addon1">
             <div class="input-group-prepend">
             <button class="btn " id='subscribe' type="button"><i class="fab fa-telegram-plane"></i></button>
             </div>
         </div>
+        <div class="alert alert-success  my-2 confirmed" id='confirm' style="display: none" role="alert">
+            عميلنا العزيز تم الاشتراك في النشره الاخباريه بنجاح
+        </div>
+        <div class="alert alert-danger  my-2 rejected" id='reject' style="display: none" role="alert">
+            عميلنا العزيز ناسف لوجود مشكله في الوقت الحالي برجاء المحاوله في وقت اخر
+        </div>
+        <div class="alert alert-danger  my-2 rejected" id='exist' style="display: none" role="alert">
+            عميلنا العزيز هذا الايميل مشترك بلفعل في النشره الاخباريه
+        </div>
+        <div class="alert alert-danger  my-2 rejected" id='notvalide' style="display: none" role="alert">
+            يجب ادخال ايميل
+        </div>
     </div>
+
 </div>
 @push('js')
 <script>

@@ -70,7 +70,7 @@ class CarController extends Controller
             'intercity_price' => str_replace(',' , '' , $request->intercity_price ?? 0),
         ]);
 
-        
+
         $car = Car::create($request->all());
 
         $car->addAllMediaFromTokens();
@@ -88,7 +88,8 @@ class CarController extends Controller
      */
     public function show(Car $car)
     {
-        return view('dashboard.cars.show', compact('car'));
+        $offers = $car->offers ;
+        return view('dashboard.cars.show', compact('car','offers'));
     }
 
     /**

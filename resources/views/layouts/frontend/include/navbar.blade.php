@@ -20,22 +20,22 @@
                 <div  class="form-popup d-none" id="myForm">
 
 
-                    <form action="{{ route('login') }}"  method="post" class="form-container">
+                    <form action="{{ route('login') }}"  method="post" class="form-container text-center">
                         @csrf
-                        <h1 style="color: black;font-size: 20px;">تسجيل الدخول</h1>
+                        {{-- <h1 style="color: black;font-size: 20px;">تسجيل الدخول</h1> --}}
 
 
                         <label class="color-black" for="email"><b class="color-black">البريد الالكترونى</b></label>
-                        <input type="text" class="color-black" placeholder="Enter Email"  name="email" value="{{ old('email') }}" required>
+                        <input type="text" class="color-black form-control" placeholder="Enter Email"  name="email" value="{{ old('email') }}" required>
 
 
 
                         <label class="color-black" for="psw"><b class="color-black">كلمة السر</b></label>
-                        <input type="password" class="color-black" placeholder="Enter Password"  name="password" required>
+                        <input type="password" class="color-black form-control" placeholder="Enter Password"  name="password" required>
 
                         <button type="submit" class="btn">تسجيل الدخول</button>
                         <a href="/register"  class="btn btn-warning  mt-2 mx-auto" >انشاء حساب جديد</a>
-                        <a  class="btn btn-danger cancel mt-2 mx-auto" onclick="closeForm()">خروج</a>
+                        {{-- <a  class="btn btn-danger cancel mt-2 mx-auto" onclick="closeForm()">خروج</a> --}}
                         <p class="mt-2" style="font-size: 12px;color:gray;">بالضغط على مواصلة او تسجيل الاشتراك أوافق على بنود و شروط و سياسة الخصوصية</p>
 
                     </form>
@@ -50,7 +50,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item mx-0 text-right" style="color: black;padding:6px 12px;" href="/profile">الحساب الشخصى</a>
-                    <a class="dropdown-item mx-0 text-right" style="color: black;padding:6px 12px;" href="/contracts">العقود</a>
+                    <a class="dropdown-item mx-0 text-right" style="color: black;padding:6px 12px;" href="/contracts">الحجوزات</a>
                     <a href="#"onclick="event.preventDefault();document.getElementById('logoutForm').submit()"
                            class="btn btn-default btn-flat float-right color-black" style="color: black;">@lang('dashboard.auth.logout')</a>
                         <form class="d-none" action="{{ route('logout') }}" method="post" id="logoutForm">
@@ -166,7 +166,7 @@
             </div>
             <div class="col-md-5 col-sm-12 py-2 d-flex justify-content-end">
 
-                    <a  href="{{route('front.main')}}"><img class="ml-4" src="{{ asset('front/img/logo-edited-.png') }}"  ></a>
+                    <a  href="{{route('front.main')}}"><img class="ml-4 nav-logo" src="{{ asset('front/img/logo-edited-.png') }}"  ></a>
 
             </div>
 
