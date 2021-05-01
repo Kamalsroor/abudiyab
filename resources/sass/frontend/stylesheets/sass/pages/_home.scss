@@ -290,6 +290,10 @@ a:not([href]):not([tabindex]) {
         width: 100%;
         margin: auto;
         padding: 25px;
+        filter: grayscale(1);
+        &:hover{
+            filter: grayscale(0);
+        }
     }
     .home-our-partners__heading {
         font-family: 'Cairo', sans-serif;
