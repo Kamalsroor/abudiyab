@@ -290,8 +290,11 @@ a:not([href]):not([tabindex]) {
         width: 100%;
         margin: auto;
         padding: 25px;
+        @include smallScreen() {
+            padding: 0;
+        }
         filter: grayscale(1);
-        &:hover{
+        &:hover {
             filter: grayscale(0);
         }
     }
@@ -305,7 +308,7 @@ a:not([href]):not([tabindex]) {
     .home-our-partners__content {
         width: 80%;
         margin: auto;
-        .slick-slide{
+        .slick-slide {
             padding: 25px;
         }
         .slick-slider {
