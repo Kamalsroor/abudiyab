@@ -19,7 +19,7 @@ Breadcrumbs::for('dashboard.purchaserequests.create', function ($breadcrumb) {
 
 Breadcrumbs::for('dashboard.purchaserequests.show', function ($breadcrumb, $purchaserequest) {
     $breadcrumb->parent('dashboard.purchaserequests.index');
-    $breadcrumb->push($purchaserequest->name, route('dashboard.purchaserequests.show', $purchaserequest));
+    // $breadcrumb->push($purchaserequest->name, route('dashboard.purchaserequests.show', $purchaserequest));
 });
 
 Breadcrumbs::for('dashboard.purchaserequests.edit', function ($breadcrumb, $purchaserequest) {

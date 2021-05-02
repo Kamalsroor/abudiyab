@@ -28,7 +28,11 @@ return [
         'restored' => 'The purchaserequest has been restored successfully.',
     ],
     'attributes' => [
-        'name' => 'Purchaserequest name',
+        'username' => 'user name',
+        'carname' => 'car name',
+        'carmodel' => 'car model',
+        'carbrand' => 'car brand',
+        'price' => 'price',
         'created_at' => 'Created At',
         'deleted_at' => 'Deleted At',
     ],

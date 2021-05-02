@@ -8,8 +8,24 @@
                 <table class="table table-striped table-middle">
                     <tbody>
                     <tr>
-                        <th width="200">@lang('purchaserequests.attributes.name')</th>
-                        <td>{{ $purchaserequest->name }}</td>
+                        <th width="200">@lang('purchaserequests.attributes.username')</th>
+                        <td>{{ $purchaserequest->customer->name }}</td>
+                    </tr>
+                    <tr>
+                        <th width="200">@lang('purchaserequests.attributes.carname')</th>
+                        <td>{{ $purchaserequest->car->name }}</td>
+                    </tr>
+                    <tr>
+                        <th width="200">@lang('purchaserequests.attributes.carmodel')</th>
+                        <td>{{ $purchaserequest->car->model }}</td>
+                    </tr>
+                    <tr>
+                        <th width="200">@lang('purchaserequests.attributes.carbrand')</th>
+                        <td>{{ $purchaserequest->car->manufactory->name }}</td>
+                    </tr>
+                    <tr>
+                        <th width="200">@lang('purchaserequests.attributes.price')</th>
+                        <td>{{ $purchaserequest->price }}</td>
                     </tr>
                     </tbody>
                 </table>

@@ -15,7 +15,11 @@ class CreatePurchaserequestsTable extends Migration
     {
         Schema::create('purchaserequests', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->foreignId('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreignId('car_id');
+            $table->foreign('car_id')->references('id')->on('cars')->cascadeOnDelete();
+            $table->integer('price')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
