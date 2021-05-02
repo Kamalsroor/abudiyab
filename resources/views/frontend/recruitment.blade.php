@@ -1,6 +1,6 @@
 <x-front-layout :title="trans('dashboard.home')" :breadcrumbs="['dashboard.home']">
     <section class="recruitment" style="background: url('{{ asset('front/img/recruitment.png') }}'); background-size: cover;">
-        <div class="recruitment_center">
+        <div class="recruitment_center wow animate__animated animate__slideInUp" data-wow-duration="2s"  >
             <header class="recruitment_center_header" style="background: url('{{asset('front/img/jobs.jpg')}}')">
                 <div class="recruitment_center_header_content">
                     <div>
@@ -12,7 +12,7 @@
             <div class="recruitment_center_content">
                 <div class="recruitment_center_content_form">
                 {{-- {{ BsForm::resource('works')->post(route('front.addCandidates')) }} --}}
-                <form action="{{route('front.addCandidates')}}" method="post" enctype="multipart/form-data">
+                <form  action="{{route('front.addCandidates')}}" method="post" enctype="multipart/form-data">
                     @csrf
                         <div class="select">
                             <label for="">اختر الوظيفه المناسبه <span>*</span></label>

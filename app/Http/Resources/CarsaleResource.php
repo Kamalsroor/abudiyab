@@ -22,8 +22,13 @@ class CarsaleResource extends JsonResource
         }
 
         return [
-            'id' => $this->id,
-            'name' => $this->name,
+            'car' => new CarResource($this->car),
+            'couter' => $this->couter,
+            'color_interior' => $this->color_interior,
+            'color_exterior' => $this->color_exterior,
+            'quantity' => $this->quantity,
+            'for_sale' => $this->for_sale,
+            'sold' => $this->sold,
         ];
     }
 }

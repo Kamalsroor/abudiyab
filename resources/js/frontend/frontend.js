@@ -59,7 +59,7 @@ import Vue from 'vue';
 Vue.component('car_seles', require('../components/CarSelesComponent').default);
 
 const app = new Vue({
-    el: '#app',
+    el: '#vue_app',
 });
 
 $(document).ready(function() {
