@@ -472,7 +472,7 @@ $(document).ready(function() {
                             // });
 
                             for (const [key, value] of Object.entries(branch.work_time)) {
-                                timeText += `<p>${ weekDays.[key] } ${ value.lock == 1 ?  "مغلق" : value.timeopen + ' : ' + value.timeclose  }</p>`;
+                                // timeText += `<p>${ weekDays.[key] } ${ value.lock == 1 ?  "مغلق" : value.timeopen + ' : ' + value.timeclose  }</p>`;
 
                                 console.log(`${key}: `, value);
                             }

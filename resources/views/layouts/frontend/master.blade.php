@@ -18,7 +18,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta name="description" content="ابحث عن سيارتك المفضلة بأحدث وافخم اسطول سيارات أبو ذياب 2021  ">
     <meta name="keywords" content="تأجير سيارات,ايجار سيارات ,ايجار سيارات حديثة ,أبوذياب ,مكتب تاجير سيارات ,مكاتب تاجير سيارات ,تطبيق تأجير سيارات ,تأجير سيارات الرياض ,تأجير سيارات جدة ,تأجير سيارات الدمام ,تأجير سيارات أبها ,تأجير سيارات خميس مشيط" />
     @include('layouts.frontend.include.links')
-    <link href="//db.onlinewebfonts.com/c/eb685f5dc6b663497f7d5d4aa4a6c13d?family=Noto+Kufi+Arabic" rel="stylesheet" type="text/css"/>
+   
 
 
 

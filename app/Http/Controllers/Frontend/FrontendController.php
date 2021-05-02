@@ -42,7 +42,7 @@ class FrontendController extends Controller
         $todaydate = Carbon::today();
 
         $offers =  Car::whereHas('offers',function($q) use($todaydate){
-            $q->where('is_work',1)->whereDate('from' ,'<=' , $todaydate)->whereDate('to' ,'>=' , $todaydate);
+            $q->where('is_work',1)->where('type',4)->whereDate('from' ,'<=' , $todaydate)->whereDate('to' ,'>=' , $todaydate);
         })->get();
         // dd();
         return view('frontend.main2', compact('sliders','miniSliders','showFirstCatInCatgories','showCategories','showCategoriesCars','allCategories','firstcar','partners','offers'));
