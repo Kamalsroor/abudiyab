@@ -30,42 +30,42 @@
                         @endif
                         <div class="input">
                             <label for="">الاسم <span>*</span></label>
-                            <input @if($errors->has('name')) class="error" @endif type="text" id="" name='name' placeholder="الاسم">
+                            <input class="form-control @if($errors->has('name')) error @endif"  type="text" id="" name='name' placeholder="الاسم">
                         </div>
                         @if($errors->has('name'))
-                            <div class="valiadtion-error">{{ $errors->first('name') }}</div>
+                            <div class="valiadtion-error ">{{ $errors->first('name') }}</div>
                         @endif
                         <div class="input">
                             <label for="">رقم الجوال <span>*</span></label>
-                            <input @if($errors->has('phone')) class="error" @endif type="number" id="" name='phone' placeholder="رقم الجوال">
+                            <input  class="form-control @if($errors->has('phone')) error @endif"  type="number" id="" name='phone' placeholder="رقم الجوال">
                         </div>
                         @if($errors->has('phone'))
                             <div class="valiadtion-error">{{ $errors->first('phone') }}</div>
                         @endif
                         <div class="input">
                             <label for="">البريد الالكتروني <span>*</span></label>
-                            <input @if($errors->has('email')) class="error" @endif type="email" id="" name='email' placeholder="البريد الالكتروني">
+                            <input  class="form-control @if($errors->has('email')) error @endif"  type="email" id="" name='email' placeholder="البريد الالكتروني">
                         </div>
                         @if($errors->has('email'))
                             <div class="valiadtion-error">{{ $errors->first('email') }}</div>
                         @endif
                         <div class="input">
                             <label for="">الراتب المتوقع <span>*</span></label>
-                            <input @if($errors->has('expected_salary')) class="error" @endif type="number" id="" name='expected_salary' placeholder="الراتب المتوقع">
+                            <input  class="form-control @if($errors->has('expected_salary')) error @endif"  type="number" id="" name='expected_salary' placeholder="الراتب المتوقع">
                         </div>
                         @if($errors->has('expected_salaray'))
                             <div class="valiadtion-error">{{ $errors->first('expected_salaray') }}</div>
                         @endif
                         <div class="input">
                             <label for="">السيرة الذاتية <span>*</span></label>
-                            <input @if($errors->has('cv')) class="error" @endif type="file" id="" name='cv' placeholder="السيرة الذاتية">
+                            <input  class=" @if($errors->has('cv')) error @endif"  type="file" id="" name='cv' placeholder="السيرة الذاتية">
                         </div>
                         @if($errors->has('cv'))
                             <div class="valiadtion-error">{{ $errors->first('cv') }}</div>
                         @endif
                         <div class="textarea">
                             {{-- <label for="">ملاحظات <span>*</span></label> --}}
-                            <textarea id="" name='message' placeholder="رسالتك"></textarea>
+                            <textarea id="" name='message' class="form-control" placeholder="رسالتك"></textarea>
                         </div>
                         <div class="button">
                             <button class="primary-btn" type="submit">ارسال</button>
