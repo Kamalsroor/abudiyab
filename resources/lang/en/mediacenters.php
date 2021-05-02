@@ -1,0 +1,60 @@
+<?php
+
+return [
+    'singular' => 'Mediacenter',
+    'plural' => 'Mediacenters',
+    'empty' => 'There are no mediacenters yet.',
+    'count' => 'Mediacenters Count.',
+    'search' => 'Search',
+    'select' => 'Select Mediacenter',
+    'permission' => 'Manage mediacenters',
+    'trashed' => 'mediacenters Trashed',
+    'perPage' => 'Results Per Page',
+    'filter' => 'Search for mediacenter',
+    'actions' => [
+        'list' => 'List All',
+        'create' => 'Create a new mediacenter',
+        'show' => 'Show mediacenter',
+        'edit' => 'Edit mediacenter',
+        'delete' => 'Delete mediacenter',
+        'options' => 'Options',
+        'save' => 'Save',
+        'filter' => 'Filter',
+    ],
+    'messages' => [
+        'created' => 'The mediacenter has been created successfully.',
+        'updated' => 'The mediacenter has been updated successfully.',
+        'deleted' => 'The mediacenter has been deleted successfully.',
+        'restored' => 'The mediacenter has been restored successfully.',
+    ],
+    'attributes' => [
+        'name' => 'Mediacenter name',
+        'title' => 'title',
+        'description' => 'description',
+        'show' => 'show news',
+        '%name%' => 'Mediacenter name',
+        'image' => 'Mediacenter image',
+        'created_at' => 'Created At',
+        'deleted_at' => 'Deleted At',
+    ],
+    'dialogs' => [
+        'delete' => [
+            'title' => 'Warning !',
+            'info' => 'Are you sure you want to delete the mediacenter?',
+            'confirm' => 'Delete',
+            'cancel' => 'Cancel',
+        ],
+        'restore' => [
+            'title' => 'Warning !',
+            'info' => 'Are you sure you want to restore the mediacenter?',
+            'confirm' => 'Restore',
+            'cancel' => 'Cancel',
+        ],
+        'forceDelete' => [
+            'title' => 'Warning !',
+            'info' => 'Are you sure you want to force delete the mediacenter?',
+            'confirm' => 'Force',
+            'cancel' => 'Cancel',
+        ],
+    ],
+];

@@ -7,7 +7,11 @@
                 <h1>صفحة بيع السيارات</h1>
             </div>
         </section>
+<<<<<<< HEAD
               <car_seles remote-url="{{route('api.carsales.index')}}" >
+=======
+        <car_seles remote-url="{{route('api.carsales.index')}}" >
+>>>>>>> 539566c74f40c4846543f9ad19858da8ce8fc82e
 
         </car_seles>
     </section>
@@ -26,19 +30,27 @@
                     <h4>تسجيل الدخول</h4>
                     <p>الرجاء تسجيل الدخول للمتابعة</p>
                  </div>
+            {{-- <form action="{{ route('login') }}"  method="post" class="form-container text-center"> --}}
                 <div class="car-sales_price-suggestion_center_step-1_form">
                     <div class="form-row">
                       <div class="form-group col-12">
+                        <div class="alert alert-danger  my-2 rejected" id='invalideCradentilas' style="display: none" role="alert">
+
+                        </div>
+                      </div>
+                      <div class="form-group col-12">
                         <label for="inputEmail4">البريد الاركتروني</label>
-                        <input type="email" class="form-control" id="inputEmail4">
+                        <input type="email" name="email" class="form-control" id="inputEmail4">
                       </div>
                       <div class="form-group col-12">
                         <label for="inputPassword4">كلمة السر</label>
-                        <input type="password" class="form-control" id="inputPassword4">
+                        <input type="password" name="password" class="form-control" id="inputPassword4">
                       </div>
                     </div>
                     <button type="submit" class="primary-btn btn-hover btn-curved" onclick="MoveStep(2);">تسجيل الدخول</button>
                 </div>
+            {{-- </form> --}}
+
             </div>
 
             <div class="car-sales_price-suggestion_center_step-2">
@@ -60,13 +72,64 @@
             </div>
         </div>
     </section>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    @push('js')
     <script>
+        let isLogin=false;
+        let loginURL="{{route('api.sanctum.login')}}";
         function MoveStep(step) {
+
             stepsClass = '.car-sales_price-suggestion_center_step-';
             steps = stepsClass + '1, ' + stepsClass + '2, ' + stepsClass + '3';
+            if(step==2 && isLogin==true)
+            {
+                let email=$('#inputEmail4').val();
+                let password=$('#inputPassword4').val();
+                console.log(email,password);
 
-            $(steps).addClass('price-suggestion-h');
+
+                $.ajax({
+                    type: 'post',
+                    url: loginURL,
+                    headers: {
+                        "x-accept-language": "ar",
+                        "X-CSRF-TOKEN": csrf_token,
+                    },
+                    data: {
+                        'username': email,
+                        'password': password
+                    },
+                    success: function(data, status) {
+                    console.log( data.token);
+                    $(steps).addClass('price-suggestion-h');
+                    $(steps).removeClass('price-suggestion-s');
+
+
+                    setTimeout(function(){
+                        $(".car-sales_price-suggestion_center_loader").animate({opacity: "1"}, 0, function() {
+                            $(".car-sales_price-suggestion_center_loader").toggle();
+                        });
+                        setTimeout(function(){
+                            $(".car-sales_price-suggestion_center_loader").animate({opacity: "0"}, 500, function() {
+                                $(".car-sales_price-suggestion_center_loader").toggle();
+                            });
+                            $(steps).css('display','none');
+                            $(stepsClass + step).css('display','block');
+                            $(stepsClass + step).removeClass('price-suggestion-h');
+                            $(stepsClass + step).addClass('price-suggestion-s');
+                        },1000);
+                    },400);
+
+                    },
+                    error: function(data){
+                        $('#invalideCradentilas').show();
+                        $('#invalideCradentilas').text(data.responseJSON.errors.username[0]);
+                        console.log(data.responseJSON.errors.username[0]);
+                    }
+
+                });
+            }
+            else{
+                $(steps).addClass('price-suggestion-h');
             $(steps).removeClass('price-suggestion-s');
 
 
@@ -84,9 +147,28 @@
                     $(stepsClass + step).addClass('price-suggestion-s');
                 },1000);
             },400);
-        }
-        MoveStep(1);
-    </script>
-    <a class="primary-btn car-sales_center_content_cars_car_button" onclick="$('.car-sales_price-suggestion').toggleClass('price-suggestion-s');$('.car-sales_price-suggestion').toggleClass('price-suggestion-h');$('.car-sales_price-suggestion').css('display','block');">اقتراح سعر</a>
+            }
 
+        }
+        function checkLogin(){
+            let auth="{{Auth()->check() ? 'true' : 'false'}}";
+            if(auth =='true')
+            {
+                MoveStep(2);
+            }
+            else
+            {
+                isLogin=true;
+                MoveStep(1);
+            }
+        }
+
+        function showPopUp(){
+            $('.car-sales_price-suggestion').toggleClass('price-suggestion-s');
+            $('.car-sales_price-suggestion').toggleClass('price-suggestion-h');
+            $('.car-sales_price-suggestion').css('display','block');
+            checkLogin();
+        }
+    </script>
+    @endpush
             </x-front-layout>
