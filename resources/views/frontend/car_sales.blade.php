@@ -7,11 +7,7 @@
                 <h1>صفحة بيع السيارات</h1>
             </div>
         </section>
-<<<<<<< HEAD
-              <car_seles remote-url="{{route('api.carsales.index')}}" >
-=======
         <car_seles remote-url="{{route('api.carsales.index')}}" >
->>>>>>> 539566c74f40c4846543f9ad19858da8ce8fc82e
 
         </car_seles>
     </section>
