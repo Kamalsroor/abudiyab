@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="container my-0 pb-2">
-            <div class="row mx-0 my-4 text-right row1">
+            <div class="row mx-0 my-4 text-right row1 wow animate__animated animate__slideInRight" >
                 <p>من أجل تلبية الإحتياجات والمتطلبات المتنوعة لعملائنا الكرام الأعزاء سواء كانت تتعلق بخدمة التأجير لفترة قصيرة السيارات (للأفراد و الشركات) أو خدمة التأجير طويل الأجل للشركات لفترة طويلة (للشركات و المؤسسات الفردية أو القطاع الحكومي). أنشأت شركة أبو ذياب أقساماً متخصصة تقدم خدمات من أجل ضمان تحقيق أعلى المستويات من رضا العملاء والاحتفاظ بهم. وهي تتضمن ما يلي:</p>
                     <ul class="text-right">
                         <li>- خدمة تأجير السيارات</li>
@@ -16,7 +16,7 @@
                     </ul>
             </div>
 
-            <div class="row row2  mx-0 my-4  text-right">
+            <div class="row row2  mx-0 my-4  text-right wow animate__animated animate__slideInLeft">
                 <h2>
                     تأجير السيارات
                 </h2>
@@ -30,7 +30,7 @@
                 </ul>
             </div>
 
-            <div class="row row3  mx-0 my-4  text-right">
+            <div class="row row3  mx-0 my-4  text-right wow animate__animated animate__slideInRight">
                 <h2>
                     التأجير طويل الأجل للشركات:
                 </h2>
@@ -39,7 +39,7 @@
 
             </div>
 
-            <div class="row row4  mx-0 my-4  text-right">
+            <div class="row row4  mx-0 my-4  text-right wow animate__animated animate__slideInUp">
                 <h2>
                     مبيعات السيارات المستعملة:
                 </h2>

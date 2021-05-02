@@ -59,7 +59,7 @@ import Vue from 'vue';
 Vue.component('car_seles', require('../components/CarSelesComponent').default);
 
 const app = new Vue({
-    el: '#app',
+    el: '#vue_app',
 });
 
 $(document).ready(function() {
@@ -472,7 +472,7 @@ $(document).ready(function() {
                             // });
 
                             for (const [key, value] of Object.entries(branch.work_time)) {
-                                timeText += `<p>${ weekDays.[key] } ${ value.lock == 1 ?  "مغلق" : value.timeopen + ' : ' + value.timeclose  }</p>`;
+                                // timeText += `<p>${ weekDays.[key] } ${ value.lock == 1 ?  "مغلق" : value.timeopen + ' : ' + value.timeclose  }</p>`;
 
                                 console.log(`${key}: `, value);
                             }

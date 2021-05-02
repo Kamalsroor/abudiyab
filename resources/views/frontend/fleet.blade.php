@@ -20,6 +20,7 @@
             <h1 class="main-page-title" style="font-size: 50px; padding-bottom:10px; font-weight:600;color:white;border-bottom:2px red solid;">الأسطــــول</h1>
          </div>
         </div>
+    </div>
         <livewire:show-fleet/>
 
 

@@ -269,7 +269,7 @@
                         <div class="container-fluid bg-block py-2 mb-2 fleet-car-details" >
                             <div class="row mb-2">
                                 <div class="col-lg-4 fleet-car-img d-flex align-items-center">
-                                    <img class="w-100" src="{{$formcar->getFirstMediaUrl()}}" alt="car-image">
+                                    <img class="w-100 wow animate__animated animate__bounceInRight" data-wow-offset="200" data-wow-duration="2s" src="{{$formcar->getFirstMediaUrl()}}" alt="car-image">
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="container-fluid color-black ">
