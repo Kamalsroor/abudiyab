@@ -42,7 +42,7 @@ Route::as('front.')->group(function () {
 
 
     Route::get('/services', 'Frontend\FrontendController@services')->name('services');
-    Route::get('/news-details', 'Frontend\FrontendController@NewsDetails')->name('news-details');
+    Route::get('/news-details/{news}', 'Frontend\FrontendController@NewsDetails')->name('news-details');
     Route::get('/points_program', 'Frontend\FrontendController@PointsProgram')->name('points_program');
     Route::get('/membership_cards', 'Frontend\FrontendController@MembershipCards')->name('membership_cards');
     Route::get('/recruitment', 'Frontend\FrontendController@recruitment')->name('recruitment');

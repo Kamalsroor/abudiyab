@@ -20,6 +20,7 @@
 @include('dashboard.regions.partials.actions.sidebar')
 {{-- @include('dashboard.custmerrequests.partials.actions.sidebar') --}}
 @include('dashboard.carsales.partials.actions.sidebar')
+@include('dashboard.mediacenters.partials.actions.sidebar')
 {{-- The sidebar of generated crud will set here: Don't remove this line --}}
 @include('dashboard.feedback.partials.actions.sidebar')
 @include('dashboard.applications.partials.actions.sidebar')
