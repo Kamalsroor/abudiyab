@@ -17,10 +17,10 @@
                         <img src="{{$new->getFirstMediaUrl()}}" alt="">
                     </div>
                     <div class="media-center_center_content_news_title">
-                        <h2>{{$new->title}}</h2>
+                        <h2>{!! $new->title!!}</h2>
                     </div>
                     <div class="media-center_center_content_news_describe">
-                        <p>{{$new->description}}</p>
+                        <p>{!! $new->description !!}</p>
                     </div>
                     <a href="{{route('front.news-details', ['news' => $new])}}" class="primary-btn">اقرأ المزيد</a>
 

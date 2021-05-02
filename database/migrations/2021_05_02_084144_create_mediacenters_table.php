@@ -23,8 +23,8 @@ class CreateMediacentersTable extends Migration
         Schema::create('mediacenter_translations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('mediacenter_id');
-            $table->string('title')->nullable();
-            $table->string('description')->nullable();
+            $table->longText('title')->nullable();
+            $table->longText('description')->nullable();
             $table->string('locale')->index();
             $table->unique(['mediacenter_id', 'locale']);
             $table->foreign('mediacenter_id')->references('id')->on('mediacenters')->cascadeOnDelete();
