@@ -11,6 +11,8 @@
             background-color: #00000080;
             h1 {
                 @include location(50%, 50%);
+                text-align: center;
+                width: fit-content;
                 span {
                     color: get-color(red);
                 }
@@ -156,6 +158,21 @@
                             margin-bottom: 25px;
                         }
                     }
+                }
+            }
+        }
+        &_empty {
+            width: fit-content;
+            margin: -75px auto 0;
+            overflow: hidden;
+            h1 {
+                color: #3F4A86;
+            }
+            svg {
+                height: 500px;
+                width: 500px;
+                @media (max-width: 499px) {
+                    width: 100%;
                 }
             }
         }

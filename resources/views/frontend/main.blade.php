@@ -171,17 +171,16 @@
                     <div class="col-4 d-flex align-items-center justify-content-center">
 
                             <div class="text-center price">
-                            <p class="before-price m-0" style=" text-decoration: line-through;" ><i class="icofont icofont-cur-riyal"></i>{{$firstcar->price2}}</p>
-                            <h2 class="after-price"  ><i class="icofont icofont-cur-riyal"></i>{{$firstcar->price1}}</h2>
-                            <p style="transform: translateY(-20px);" class="m-0 before-price">يومى</p>
-                            <a  href="#" class="btn-block primary-btn p-2"
-                            {{-- style="background: linear-gradient(91deg, #0d157b 15%, #0095ff 121%);color: #fff;font-size: 16px; border-radius: 50px;padding: 10px 45px;" --}}
-                            >احجز الان</a>
+                                <p class="before-price m-0" style=" text-decoration: line-through;" ><i class="icofont icofont-cur-riyal"></i>{{$firstcar->price2}}</p>
+                                <h2 class="after-price"  ><i class="icofont icofont-cur-riyal"></i>{{$firstcar->price1}}</h2>
+                                <p style="transform: translateY(-20px);" class="m-0 before-price">يومى</p>
+                                <a  href="#" class="btn-block primary-btn p-2"
+                                >احجز الان</a>
                             </div>
                     </div>
                     <div class="col-8 d-flex align-items-end justify-content-center">
 
-                        <img class="mx-lg-5 mx-md-2 ml-sm-2" style="width: 80%;" src="{{$firstcar->getFirstMediaUrl()}}" alt="car image" >
+                        <img class="mx-lg-5 mx-md-2 ml-sm-2" style="width: 70%;" src="{{$firstcar->getFirstMediaUrl()}}" alt="car image" >
                     </div>
 
 

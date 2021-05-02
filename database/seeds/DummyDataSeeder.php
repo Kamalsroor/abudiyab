@@ -31,6 +31,8 @@ $this->call(WorkSeeder::class);
 $this->call(MembershipSeeder::class);
 $this->call(CustmerrequestSeeder::class);
 $this->call(CarsaleSeeder::class);
+$this->call(MediacenterSeeder::class);
+$this->call(PurchaserequestSeeder::class);
 /*  The seeders of generated crud will set here: Don't remove this line  */
 
     }

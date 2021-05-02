@@ -10,13 +10,13 @@
                     <div class="about-company_center_content_right_text wow animate__lightSpeedInRight" data-wow-duration="2s">
                         <p>تعد مؤسسة أبو ذياب لتأجير السيارات أول مؤسسة لتأجير السيارات في المملكة العربية السعودية. تأسست عام 1386 هـ في المملكة العربية السعودية على يد مؤسسها الشيخ "محمد حسين ابو ذياب" وتصدرت المشهد في تلك الأعوام حتي تربعت على عرش سوق تأجير السيارات بالمملكة.وتحولت المؤسسة الى شركة فى نهايه عام 2018ميلادى وتتواجد الشركة في أكبر المناطق الحيوية في المملكة وفي المطارات الدولية مثل 'جدة - الرياض - الدمام - الخبر - خميس مشيط' .</p>
                     </div>
-                    <div class="about-company_center_content_right_img wow animate__slideInUp"  data-wow-duration="2s">
-                        <img src="https://abudiyab.com.sa/wp-content/uploads/2017/06/our-build.jpg" alt="">
+                    <div class="about-company_center_content_right_img">
+                        <img src="{{ asset('front/img/Abudiyab-building.jpg') }}" alt="">
                     </div>
                 </div>
                 <div class="about-company_center_content_left">
-                    <div class="about-company_center_content_left_img wow animate__lightSpeedInLeft"  data-wow-duration="2s">
-                        <img src="https://abudiyab.com.sa/wp-content/uploads/2017/06/about-page-pic-1.jpg" alt="">
+                    <div class="about-company_center_content_left_img">
+                        <img src="{{ asset('front/img/car-2.png') }}" alt="">
                     </div>
                     <div class="about-company_center_content_left_text ">
                         <div class="about-company_center_content_left_text_informations wow animate__lightSpeedInLeft"  data-wow-duration="2s">
