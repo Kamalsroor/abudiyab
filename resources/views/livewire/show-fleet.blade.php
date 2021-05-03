@@ -12,9 +12,9 @@
 
   <div>
     @push('styles')
-     <link rel="stylesheet" href="{{asset('front/mycollection/font/flaticon.css')}}">  
+     <link rel="stylesheet" href="{{asset('front/mycollection/font/flaticon.css')}}">
     @endpush
-  
+
         <!-- top container -->
         <section class="fleet-top-container">
             <div class="container-fluid bg-block py-2 my-2 top-container" >
@@ -170,7 +170,7 @@
                                             <label for="luxury-car"><i class="flaticon-supercar"></i>فخمة</label>
                                             <input type="checkbox" id="luxury-car">
                                         </div>
-                                        
+
                                     </div>
                                 </div> --}}
                             </div>
@@ -254,11 +254,11 @@
                                             <label for="luxury-car"><i class="flaticon-supercar"></i>فخمة</label>
                                             <input type="checkbox" id="luxury-car">
                                         </div>
-                                        
+
                                     </div>
                                 </div> --}}
                         </div>
-                            
+
                     </div>
                     <div class="col-lg-9  col-md-12 px-0">
                         <!-- loop comes here -->
@@ -322,6 +322,7 @@
 @push('js')
 
 <script>
+
     window.addEventListener('changeRender', event => {
         $('#select2-dropdown').select2();
         // $(".ex2").slider({ });
@@ -343,6 +344,7 @@
 
 
     $(document).ready(function () {
+
         $(".ex2").slider({});
 
         $('.ex2').on('change', function(event, ui) {
@@ -374,7 +376,10 @@
     <script>
 
         document.addEventListener('livewire:load', function () {
-
+            var toBooing = @this.toBooking;
+            if (toBooing) {
+                window.livewire.emit('redirectToBookingSteps')
+            }
             if(@this.addedItems.length !=0)
             {
                 console.log(@this.addedItems);
