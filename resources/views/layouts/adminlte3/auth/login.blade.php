@@ -7,11 +7,10 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        .login-logo{
+        .logo-img{
             position: relative;
-            animation: slideUp 2s ;
-            animation-delay: 1s;
-            
+            animation: slideUp 3s ;
+            animation-delay: 1.5s; 
         }
         @keyframes slideUp {
             from {top: 300px;}
@@ -28,11 +27,11 @@
 <body class="hold-transition login-page" style="background-image: url({{asset('front/img/dashboard-login.jpg')}});background-repeat:no-repeat;background-size:cover;">
 
 <div class="login-box" >
-    <div class="login-logo" style="background-color: #00000099;border-radius: 31px 31px 0 0;margin-bottom:-30px !important; padding-bottom:50px !important  " >
+    <div class="login-logo" style="background-color: #ffffff99;border-radius: 15px 15px 0 0;margin-bottom:-30px !important; padding-bottom:125px !important;padding-top:85px   " >
         <a href="{{ url('/') }}"><b><img class="logo-img" src="{{asset('front/img/logo-edited-.png')}}" style="width: 200px;" alt="logo"></b></a>
     </div>
     <!-- /.login-logo -->
-    <div class="card" style="border-radius: 31px !important;">
+    <div class="card" style="border-radius: 15px !important;">
         <div class="card-body login-card-body" style="border-radius: 31px !important;">
             <p class="login-box-msg">@lang('dashboard.auth.login.info')</p>
 

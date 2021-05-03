@@ -11,7 +11,7 @@
                             <div class="card" >
                                 <img src="{{$Membership->getFirstMediaUrl()}}" class="card-img-top" alt="{{$Membership->name}}">
                                 <div class="card-body">
-                                    <h5 class="card-title text-right">{{$Membership->name}}</h5>
+                                    <h5 class="card-title text-center">{{$Membership->name}}</h5>
                                     <ul>
                                         <li class="text-right">خصم التأخير : {{$Membership->rental_discount}}%</li>
                                         <li class="text-right">الكيلو المسموح : {{$Membership->allowed_Kilos}}</li>
