@@ -25,10 +25,10 @@ class FilterController extends Controller
     {
         $car = Car::where(function($q) use($request){
             if ($request->has('category_ids')) {
-                $q->whereIn('category_id',$request->category_id);
+                $q->whereIn('category_id',$request->category_ids);
             }
             if ($request->has('manufactory_ids')) {
-                $q->whereIn('manufactory_id' , $request->manufactory_id);
+                $q->whereIn('manufactory_id' , $request->manufactory_ids);
             }
         })->get();
         $max = $car->max('price1') ?? 0;
