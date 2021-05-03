@@ -64,7 +64,7 @@ class CarResource extends JsonResource
             'discount' => $this->desc,
             'doors' => $this->door,
             'luggage' => $this->luggage,
-            'features' => trans('cars.features.' . $this->features),
+            'transmission' => trans('cars.features.' . $this->features),
             'is_favorite' => $this->is_favorite,
             'description' => "",
             'photo' => $this->getPhoto(),

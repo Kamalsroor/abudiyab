@@ -51,13 +51,13 @@ class ProfileController extends Controller
             if ($request->hasFile('identityFace')) {
                 $CustmerRequest->addMediaFromRequest('identityFace')->toMediaCollection('identityFace');
             }
-            if ($request->hasFile('identityFace')) {
+            if ($request->hasFile('identityBack')) {
                 $CustmerRequest->addMediaFromRequest('identityBack')->toMediaCollection('identityBack');
             }
-            if ($request->hasFile('identityFace')) {
+            if ($request->hasFile('licenceFace')) {
                 $CustmerRequest->addMediaFromRequest('licenceFace')->toMediaCollection('licenceFace');
             }
-            if ($request->hasFile('identityFace')) {
+            if ($request->hasFile('licenceBack')) {
                 $CustmerRequest->addMediaFromRequest('licenceBack')->toMediaCollection('licenceBack');
             }
         }
