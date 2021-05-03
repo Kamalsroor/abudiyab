@@ -24,7 +24,7 @@
                     <div class="d-flex align-items-start justify-content-center" style="height: 100%;flex-direction: column;padding-right: 60px;        background-image: linear-gradient(90deg, #00000063 15%, #00000063 50%, #00000063 85%); ">
 
                         <h1>{{ $slider->first_header }}</h1>
-                        <h1>{{ $slider->second_header }}</h1>
+                        <p style="font-size:30px;text-shadow: 1px 1px 10px #000;">{{ $slider->second_header }}</p>
                         {{-- <a href="#more" class="primary-btn btn-hover btn-curved m-5 p-3" style="width: 10%;">المزيــد <i class='fas fa-angle-double-down'  style="margin-right:5px; "></i></a> --}}
 
 
