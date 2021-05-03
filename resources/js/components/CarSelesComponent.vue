@@ -47,7 +47,8 @@
                             <p>مكيف | ناقل حركة أوتوماتيكي</p>
                         </div>
                     </div>
-                    <a class="primary-btn car-sales_center_content_cars_car_button" v-if="!car.sold">اقتراح سعر</a>
+    <a class="primary-btn car-sales_center_content_cars_car_button" v-if="!car.sold" onclick="showPopUp()">اقتراح سعر</a>
+
                     <a class="primary-btn car-sales_center_content_cars_car_button_sold" v-if="car.sold">تم البيع</a>
                 </div>
 
@@ -133,7 +134,6 @@
             },
         }
     }
-
 
 </script>
 
