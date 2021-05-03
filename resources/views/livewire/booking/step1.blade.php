@@ -497,8 +497,8 @@
                     <div class="min">
                         <div class="img">
                             <i class="fas fa-shipping-fast"></i>
-                            <h1>شحن بين المدن</h1>
-                            <p>شحن بلا حدود</p>
+                            <h1>سائق اضافي</h1>
+                            {{-- <p>شحن بلا حدود</p> --}}
                         </div>
                         <div class="price">
                             <h2>
@@ -532,7 +532,7 @@
 
                                 <div class="check">
                                     <div>
-                                        <h2>خدمه التوصيل للمنزل</h2>
+                                        <h2>سائق اضافي</h2>
                                         <ul>
                                             <li>بلا بلا بلا</li>
                                             <li>بلا بلا بلا</li>
