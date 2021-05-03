@@ -1,9 +1,9 @@
 @can('delete', $purchaserequest)
-    <a href="#custmerrequest-{{ $purchaserequest->id }}-delete-model"
-        class="btn btn-outline-danger btn-sm"
-        data-toggle="modal">
-       <i class="fas fa fa-fw fa-trash"></i>
-     </a>
+    <a href="#purchaserequest-{{ $purchaserequest->id }}-delete-model"
+       class="btn btn-outline-danger btn-sm"
+       data-toggle="modal">
+        <i class="fas fa fa-fw fa-trash"></i>
+    </a>
 
 
     <!-- Modal -->
