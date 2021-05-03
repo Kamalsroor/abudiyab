@@ -10,6 +10,7 @@ use App\Models\Car;
 use App\Models\CarsInStock;
 use Auth;
 use App\Http\Requests\Api\OrderStep1Request;
+use App\Http\Requests\Api\OrderStep2Request;
 use Carbon\Carbon;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -185,16 +186,9 @@ class OrderController extends Controller
                     ];
                 }
 
-
-
-
-
-
                 $delivery_date = Carbon::parse($request->delivery_date);
                 $receiving_date = Carbon::parse($request->receiving_date);
                 $diffInDays = $delivery_date->diffInDays($receiving_date);
-
-
                 $order = Order::updateOrCreate([
                     'id' => $request->order_id ? $request->order_id : 0
                 ],[
@@ -208,7 +202,6 @@ class OrderController extends Controller
                     'delivery_branch' => $request->delivery_branche,
                     'car_id' => $request->car_id,
                 ]);
-
 
                 return response()->json([
                     'status' => true,
@@ -225,6 +218,43 @@ class OrderController extends Controller
          return response()->json(['status' => false,'massage' => 'يرجي اختيار فرع الاستلام والتسليم' ], 200);
        }
     }
+
+
+
+     /**
+     * @param \App\Models\Order $order
+     * @return \App\Http\Resources\OrderResource
+     */
+    public function step2(OrderStep2Request $request)
+    {
+        if ($request->features != null && is_array($request->features))
+        {
+            $features = [];
+            foreach ($request->features as  $feature) {
+                $order = Order::find($request->order_id);
+
+                $features[] = [
+                    $feature => $order->car->{$feature}
+                ];
+
+                // dd($order->car->{$feature});
+            }
+
+            $order->update([
+                'features_added' => $features,
+            ]);
+
+            return response()->json([
+                'status' => true,
+                'order' => new OrderResource($order),
+            ]);
+        }
+       else{
+         return response()->json(['status' => false,'massage' => 'يرجي التأكيد من البيانات' ], 200);
+       }
+    }
+
+
 
 
     /**

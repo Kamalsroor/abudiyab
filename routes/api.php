@@ -27,6 +27,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('profile', 'ProfileController@show')->name('profile.show');
     Route::match(['put', 'patch'], 'profile', 'ProfileController@update')->name('profile.update');
     Route::post('/orders/step1', 'OrderController@step1')->name('orders.step1');
+    Route::post('/orders/step2', 'OrderController@step2')->name('orders.step2');
     Route::apiResource('orders', 'OrderController');
     Route::get('/select/orders', 'OrderController@select')->name('orders.select');
     Route::post('/favorite/{car}', 'CarController@addToFavorite')->name('cars.favorite');
