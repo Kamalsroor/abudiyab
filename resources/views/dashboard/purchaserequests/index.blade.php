@@ -35,7 +35,11 @@
             <th style="width: 30px;" class="text-center">
               <x-check-all></x-check-all>
             </th>
-            <th>@lang('purchaserequests.attributes.name')</th>
+            <th>@lang('purchaserequests.attributes.username')</th>
+            <th>@lang('purchaserequests.attributes.carname')</th>
+            <th>@lang('purchaserequests.attributes.carmodel')</th>
+            <th>@lang('purchaserequests.attributes.carbrand')</th>
+            <th>@lang('purchaserequests.attributes.price')</th>
             <th>@lang('purchaserequests.attributes.created_at')</th>
             <th style="width: 160px">...</th>
         </tr>
@@ -47,16 +51,24 @@
                   <x-check-all-item :model="$purchaserequest"></x-check-all-item>
                 </td>
                 <td>
-                    <a href="{{ route('dashboard.purchaserequests.show', $purchaserequest) }}"
-                       class="text-decoration-none text-ellipsis">
-                        {{ $purchaserequest->name }}
-                    </a>
+                    {{ $purchaserequest->customer->name }}
+                </td>
+                <td>
+                    {{ $purchaserequest->car->name }}
+                </td>
+                <td>
+                    {{ $purchaserequest->car->model }}
+                </td>
+                <td>
+                    {{ $purchaserequest->car->manufactory->name }}
+                </td>
+                <td>
+                    {{ $purchaserequest->price }}
                 </td>
                 <td>{{ $purchaserequest->created_at->format('Y-m-d') }}</td>
 
                 <td style="width: 160px">
-                    @include('dashboard.purchaserequests.partials.actions.show')
-                    @include('dashboard.purchaserequests.partials.actions.edit')
+                    @include('dashboard.purchaserequests.partials.actions.done')
                     @include('dashboard.purchaserequests.partials.actions.delete')
                 </td>
             </tr>

@@ -27,7 +27,7 @@ class PurchaserequestController extends Controller
      */
     public function index()
     {
-        $purchaserequests = Purchaserequest::filter()->paginate();
+        $purchaserequests = Purchaserequest::filter()->orderBy('created_at','DESC')->paginate();
 
         return view('dashboard.purchaserequests.index', compact('purchaserequests'));
     }

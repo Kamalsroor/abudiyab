@@ -23,7 +23,9 @@ class PurchaserequestResource extends JsonResource
 
         return [
             'id' => $this->id,
-            'name' => $this->name,
+            'user_id' => $this->user_id,
+            'car_id' => $this->car_id,
+            'price' => $this->price,
         ];
     }
 }
