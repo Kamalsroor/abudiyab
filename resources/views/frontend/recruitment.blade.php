@@ -17,7 +17,7 @@
                         <div class="select">
                             <label for="">اختر الوظيفه المناسبه <span>*</span></label>
                             <select id="" name='jobname' @if($errors->has('jobname')) class="error" @endif>
-                                <option value="" hidden>وظيفتي هي</option>
+                                <option value="" hidden>اختر الوظيفة</option>
                                 @foreach ($works as $work)
                                     @if ($work->available)
                                         <option value="{{$work->id}}">{{$work->title}}</option>

@@ -142,7 +142,7 @@
                     $(stepsClass + step).removeClass('price-suggestion-h');
                     $(stepsClass + step).addClass('price-suggestion-s');
                 },1000);
-            },400);
+            },0);
             }
 
         }

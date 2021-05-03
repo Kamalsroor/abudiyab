@@ -120,7 +120,7 @@ class BranchController extends Controller
      */
     public function select()
     {
-        $branches = Branch::filter()->simplePaginate();
+        $branches = Branch::filter()->get();
 
         return SelectResource::collection($branches);
     }

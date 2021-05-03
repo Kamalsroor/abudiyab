@@ -14,6 +14,7 @@
                     <div class="col px-0">
                     <input type="text" class="form-control" name="username"
                     value="{{ old('username') }}"
+                    required
                     autofocus>
                     @if($errors->has('username'))
                         <div class="valiadtion-error">{{ $errors->first('username') }}</div>
@@ -46,7 +47,7 @@
                     <p class="color-black text-right text-md-center">رقم الهوية</p>
                     </div>
                     <div class="col px-0">
-                    <input type="text" class="form-control" value="{{old('id_number')}}"  name="id_number">
+                    <input type="text" class="form-control" required  value="{{old('id_number')}}"  name="id_number">
                     @if($errors->has('id_number'))
                         <div class="valiadtion-error">{{ $errors->first('id_number') }}</div>
                     @endif
@@ -57,7 +58,7 @@
                     <p class="color-black text-right text-md-center">البريد الالكترونى</p>
                     </div>
                     <div class="col px-0">
-                    <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                    <input type="email" class="form-control" required name="email" value="{{ old('email') }}">
                     @if($errors->has('email'))
                         <div class="valiadtion-error">{{ $errors->first('email') }}</div>
                     @endif
@@ -69,7 +70,7 @@
                     <p class="color-black text-right text-md-center">رقم الجوال</p>
                     </div>
                     <div class="col px-0">
-                    <input type="text" class="form-control"  name="phone" value="{{ old('phone') }}">
+                    <input type="text" class="form-control" required  name="phone" value="{{ old('phone') }}">
                     @if($errors->has('phone'))
                         <div class="valiadtion-error">{{ $errors->first('phone') }}</div>
                     @endif
@@ -80,16 +81,16 @@
                     <p class="color-black text-right text-md-center">البطاقه الشخصيه الوجه الامامي</p>
                     </div>
                     <div class="col px-0">
-                    <input  type="file" class="form-control" id="" name='identityFace' placeholder="البطاقه الشخصيه">
-                    @if($errors->has('identity'))
-                        <div class="valiadtion-error">{{ $errors->first('identity') }}</div>
+                    <input  type="file" class="form-control"  required name='identityFace' placeholder="البطاقه الشخصيه">
+                    @if($errors->has('identityFace'))
+                        <div class="valiadtion-error">{{ $errors->first('identityFace') }}</div>
                     @endif
                     </div>
                     <div class="col-md-2 col-12">
                     <p class="color-black text-right text-md-center">البطاقه الشخصيه الوجه الخلفي</p>
                     </div>
                     <div class="col px-0">
-                    <input  type="file" class="form-control" id="" name='identityBack' placeholder="البطاقه الشخصيه">
+                    <input  type="file" class="form-control"   required name='identityBack' placeholder="البطاقه الشخصيه">
                     @if($errors->has('identityBack'))
                         <div class="valiadtion-error">{{ $errors->first('identityBack') }}</div>
                     @endif
@@ -100,7 +101,7 @@
                     <p class="color-black text-right text-md-center">الرخصه الوجه الامامي</p>
                     </div>
                     <div class="col px-0">
-                    <input  type="file" class="form-control" id="" name='licenceFace' placeholder="البطاقه الشخصيه">
+                    <input  type="file" class="form-control"  required name='licenceFace' placeholder="البطاقه الشخصيه">
                     @if($errors->has('licenceFace'))
                         <div class="valiadtion-error">{{ $errors->first('licenceFace') }}</div>
                     @endif
@@ -109,7 +110,7 @@
                     <p class="color-black text-right text-md-center">الرخصه الوجه الخلفي</p>
                     </div>
                     <div class="col px-0">
-                    <input  type="file" class="form-control" id="" name='licenceBack' placeholder="البطاقه الشخصيه">
+                    <input  type="file" class="form-control"  required name='licenceBack' placeholder="البطاقه الشخصيه">
                     @if($errors->has('licenceBack'))
                         <div class="valiadtion-error">{{ $errors->first('licenceBack') }}</div>
                     @endif

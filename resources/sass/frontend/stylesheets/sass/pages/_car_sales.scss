@@ -31,25 +31,37 @@
         direction: rtl;
         &_content {
             width: 80%;
-            @media (max-width: 1034px) {
+            @media (max-width: 1430px) {
                 width: 90%;
             }
-            @media (max-width: 616px) {
+            @media (max-width: 1265px) {
                 width: 95%;
             }
-            @media (max-width: 582px) {
+            @media (max-width: 1200px) {
                 width: 98.5%;
             }
-            @media (max-width: 562px) {
+            @media (max-width: 1150px) {
                 width: 80%;
             }
-            @media (max-width: 364px) {
+            @media (max-width: 958px) {
                 width: 90%;
             }
-            @media (max-width: 324px) {
+            @media (max-width: 850px) {
                 width: 95%;
             }
-            @media (max-width: 307px) {
+            @media (max-width: 810px) {
+                width: 98.5%;
+            }
+            @media (max-width: 780px) {
+                width: 80%;
+            }
+            @media (max-width: 511px) {
+                width: 90%;
+            }
+            @media (max-width: 441px) {
+                width: 95%;
+            }
+            @media (max-width: 420px) {
                 width: 100%;
             }
             margin: 20px auto;
@@ -79,15 +91,16 @@
                 width: 100%;
                 display: flex;
                 flex-wrap: wrap;
-                justify-content: space-between;
+                // justify-content: space-between;
                 &_car {
                     width: 32%;
-                    @media (max-width: 918px) {
-                        width: 49%;
+                    @media (max-width: 1150px) {
+                        width: 48.8%;
                     }
-                    @media (max-width: 562px) {
+                    @media (max-width: 780px) {
                         width: 100%;
                     }
+                    margin: .6%;
                     border: 1px solid #ccc;
                     border-radius: 4px;
                     position: relative;
@@ -114,7 +127,7 @@
                         min-width: 40%;
                         max-width: 50%;
                         height: 32px;
-                        display: none;
+                        display: block;
                         &:after {
                             content: "";
                             position: absolute;
@@ -163,15 +176,27 @@
                             width: 100%;
                             text-align: right;
                             padding: 10px 12px;
-                            h6 {
-                                font-size: 20px;
-                            }
                             &_color {
                                 width: 100%;
                                 text-align: right;
                                 display: flex;
                                 justify-content: space-between;
                                 font-size: 18px;
+                                @media (max-width: 395px) {
+                                    font-size: 17px;
+                                }
+                                @media (max-width: 381px) {
+                                    font-size: 15px;
+                                }
+                                @media (max-width: 345px) {
+                                    font-size: 14px;
+                                }
+                                @media (max-width: 330px) {
+                                    font-size: 12.5px;
+                                }
+                                @media (max-width: 308px) {
+                                    font-size: 11.5px;
+                                }
                                 p {
                                     span:after {
                                         content: "";
@@ -181,6 +206,12 @@
                                         background-color: currentColor;
                                         display: inline-block;
                                         margin-top: 5.5px;
+                                        @media (max-width: 381px) {
+                                            margin-top: 3.5px;
+                                        }
+                                        @media (max-width: 330px) {
+                                            margin-top: 0;
+                                        }
                                         margin-left: 2px;
                                         float: right;
                                     }
@@ -213,21 +244,10 @@
                         box-shadow: none;
                         text-shadow: none;
                         cursor: auto;
-                        display: none;
+                        display: flex;
                         &:hover {
                             color: #fff !important;
                         }
-                    }
-                }
-                &_car.sold {
-                    .car-sales_center_content_cars_car_sold {
-                        display: block;
-                    }
-                    .car-sales_center_content_cars_car_button_sold {
-                        display: flex;
-                    }
-                    .car-sales_center_content_cars_car_button {
-                        display: none;
                     }
                 }
             }
@@ -263,7 +283,7 @@
             background-color: #fff;
             overflow: hidden;
             width: 450px;
-            height: 300px;
+            height: 380px;
             border-radius: 4px;
             text-align: center;
             position: relative;
@@ -302,9 +322,11 @@
                 }
             }
             &_step-1 {
-                display: none;
+                @include location(50%, 50%);
+                width: 100%;
                 text-align: right;
-                padding: 10px 10px;
+                padding: 0 15px 15px;
+                display: none;
                 &_text {
                     text-align: center;
                     width: 100%;
@@ -320,15 +342,17 @@
                 }
             }
             &_step-2 {
+                @include location(50%, 50%);
+                width: 100%;
                 display: none;
-                padding: 20px 10px;
+                padding: 0;
                 &_price {
                     width: 100%;
                     input {
                         width: 300px;
                         height: 50px;
                         border: none;
-                        margin: 65px 0 30px;
+                        margin: 0px 0 30px;
                         background: transparent;
                         outline: none;
                         padding: 0 20px;
@@ -360,13 +384,15 @@
                 }
             }
             &_step-3 {
+                @include location(50%, 50%);
+                width: 100%;
                 display: none;
-                padding: 20px 10px;
+                padding: 0px 10px 50px;
                 &_img {
                     width: 100%;
                     img {
-                        width: 150px;
-                        height: 150px;
+                        width: 200px;
+                        height: 200px;
                     }
                 }
                 &_text {
