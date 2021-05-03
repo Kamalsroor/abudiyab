@@ -15,6 +15,8 @@ class CarFilter extends BaseFilters
         'selected_id',
         'category_id',
         'manufactory_id',
+        'category_ids',
+        'manufactory_ids',
         'minimum',
         'maximum',
     ];
@@ -99,6 +101,21 @@ class CarFilter extends BaseFilters
     }
 
     /**
+     * Filter the query by a given category ids.
+     *
+     * @param string|int $value
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    protected function categoryIds($value)
+    {
+        if ($value) {
+            return $this->builder->whereIn('category_id', $value);
+        }
+
+        return $this->builder;
+    }
+
+    /**
      * Filter the query by a given manufactory_id.
      *
      * @param string|int $value
@@ -112,6 +129,23 @@ class CarFilter extends BaseFilters
 
         return $this->builder;
     }
+
+
+    /**
+     * Filter the query by a given manufactory ids.
+     *
+     * @param string|int $value
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    protected function manufactoryIds($value)
+    {
+        if ($value) {
+            return $this->builder->whereIn('manufactory_id', $value);
+        }
+
+        return $this->builder;
+    }
+
 
     /**
      * Sorting results by the given id.

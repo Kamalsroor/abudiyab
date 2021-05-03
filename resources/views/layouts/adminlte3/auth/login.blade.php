@@ -6,6 +6,18 @@
     <title>@lang('dashboard.auth.login.title') | {{ config('app.name', 'Laravel') }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .login-logo{
+            position: relative;
+            animation: slideUp 2s ;
+            animation-delay: 1s;
+            
+        }
+        @keyframes slideUp {
+            from {top: 300px;}
+            to {top: 0px;}
+            }
+    </style>
 
     @if(Locales::getDir() == 'rtl')
         <link rel="stylesheet" href="{{ asset(mix('/css/adminlte3-auth.rtl.css')) }}">
@@ -13,15 +25,15 @@
         <link rel="stylesheet" href="{{ asset(mix('/css/adminlte3-auth.css')) }}">
     @endif
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="background-image: url({{asset('front/img/dashboard-login.jpg')}});background-repeat:no-repeat;background-size:cover;">
 
-<div class="login-box">
-    <div class="login-logo">
-        <a href="{{ url('/') }}"><b>{{ config('app.name') }}</b></a>
+<div class="login-box" >
+    <div class="login-logo" style="background-color: #00000099;border-radius: 31px 31px 0 0;margin-bottom:-30px !important; padding-bottom:50px !important  " >
+        <a href="{{ url('/') }}"><b><img class="logo-img" src="{{asset('front/img/logo-edited-.png')}}" style="width: 200px;" alt="logo"></b></a>
     </div>
     <!-- /.login-logo -->
-    <div class="card">
-        <div class="card-body login-card-body">
+    <div class="card" style="border-radius: 31px !important;">
+        <div class="card-body login-card-body" style="border-radius: 31px !important;">
             <p class="login-box-msg">@lang('dashboard.auth.login.info')</p>
 
             <form action="{{ route('login') }}" method="post">

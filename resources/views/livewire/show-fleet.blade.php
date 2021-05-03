@@ -23,9 +23,9 @@
 
                     <div class="col-lg-3 col-md-6">
                         <div class="form-group">
-                            <p class="text-right">أختار السيارة</p>
+                            <p class="text-right">اختار السيارة</p>
                             <select class="form-control" id="select2-dropdown" wire:model='searchTerm'>
-                                <option class="color-black" selected disabled>أختار السيارة</option>
+                                <option class="color-black" selected disabled>اختار السيارة</option>
                             @foreach ($carArraySelect as $carSelect)
                             <option class="color-black" value="{{$carSelect->id}}">{{$carSelect->name}}</option>
                             @endforeach
@@ -36,7 +36,7 @@
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="form-group">
-                            <p class="text-right">أختار المنطقة</p>
+                            <p class="text-right">اختار المنطقة</p>
                             <select class="form-control" id="exampleFormControlSelect1" wire:model='region'>
                                 @foreach ($regionSelect as $key => $value)
                                 <option class="color-black" value="{{$key}}">{{$value}}</option>
@@ -118,7 +118,7 @@
                                     <option class="color-black" value='modeldes'>الموديل من الأحدث إلى الأقدم</option>
                             </select>
                             <div  class="py-2 text-center justify-content-center filter-menu-heading">
-                                <p class="m-0">أختر السعر المناسب</p>
+                                <p class="m-0">اختر السعر المناسب</p>
                             </div>
                             <div class="range-slider my-3 text-center">
 
@@ -201,7 +201,7 @@
                                     <option  value='modeldes'>الموديل من الأحدث إلى الأقدم</option>
                             </select>
                             <div  class="py-2 text-center justify-content-center category-menu-heading">
-                                <p class="m-0">أختر السعر المناسب</p>
+                                <p class="m-0">اختر السعر المناسب</p>
                             </div>
                             <div class="range-slider my-3 text-center">
 
