@@ -145,7 +145,7 @@ class BookingSteps extends Component
 
         $features_price = 0 ;
         foreach ($this->features_added as $key => $value) {
-            if ($key == "home_delivery_price" ||$key == "intercity_price" ) {
+            if ($key == "home_delivery_price" ||$key == "intercity_price" ||$key == "baby_seat_price" ||$key == "navigation_price" ) {
                 $features_price += $value;
             }else{
                 $features_price += $value * $this->diff;

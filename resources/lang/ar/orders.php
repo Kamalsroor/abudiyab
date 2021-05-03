@@ -52,13 +52,17 @@ return [
         'status' => 'الحالة',
         'deleted_at' => 'حذف في',
         'recieving_branch' => 'فرع الاستلام',
+        'recieving_breceiving_brancheranch' => 'فرع الاستلام',
         'booking_days' => 'عدد ايام الحجز',
         'recieving_date' => 'وقت الاستلام',
+        'receiving_date' => 'وقت الاستلام',
         'delivery_date' => 'وقت التسليم',
         'delivery_branch' => 'فرع التسليم',
+        'delivery_branche' => 'فرع التسليم',
         'payment_type' => 'طريقه الدفع',
         'payment_status' => 'حالة الدفع',
         'features_added' => 'الاضافات',
+        'car_id' => 'السياره',
     ],
     'dialogs' => [
         'delete' => [

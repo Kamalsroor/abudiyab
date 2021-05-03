@@ -74,7 +74,7 @@ return [
         'open_kilometers_price' => 'سعر الكيلومتر المفتوح',
         'navigation_price' => 'سعر جهاز الملاحه',
         'home_delivery_price' => 'سعر التوصيل للمنزل',
-        'intercity_price' => ' تكلفه الشحن بين المدن',
+        'intercity_price' => 'تكلفة السائق الخاص',
 
         'is_baby_seat' => 'لدية كرسي اطفال',
         'is_shield' => 'لدية درع ابو دياب',
@@ -82,8 +82,7 @@ return [
         'is_open_kilometers' => 'لدية الكيلومتر المفتوح',
         'is_navigation' => 'لدية جهاز ملاحة',
         'is_home_delivery' => 'لدية توصيل للمنزل',
-        'is_intercity' => 'لدية شحن بين المدن',
-
+        'is_intercity' => 'تكلفة السائق الخاص',
 
         'created_at' => 'اضافة في',
         'deleted_at' => 'حذف في',

@@ -124,4 +124,44 @@ class BranchController extends Controller
 
         return SelectResource::collection($branches);
     }
+
+
+
+        /**
+     * Display a listing of the resource.
+    * @OA\Get(
+     *      path="/select/branches",
+     *      operationId="getSelectBranchesList",
+     *      tags={"Branches"},
+     *      summary="Get list of Select branches",
+     *      description="Returns list of Select branches",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent(ref="#/components/schemas/BranchResource")
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function selectByCarId(Request $request)
+    {
+        $receiving = Branch::whereHas('CarsInStock' , function ($q) use($request)
+        {
+            $q->where('car_id' , $request->car_id)->where('count' ,'>',0);
+        })->get();
+        $delivery = Branch::filter()->get();
+        return  response()->json([
+            'receiving' => SelectResource::collection($receiving),
+            'delivery' => SelectResource::collection($delivery),
+        ]);
+
+    }
 }
