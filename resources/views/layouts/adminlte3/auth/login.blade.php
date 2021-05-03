@@ -13,11 +13,11 @@
         <link rel="stylesheet" href="{{ asset(mix('/css/adminlte3-auth.css')) }}">
     @endif
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="background-image: url({{asset('front/img/dashboard-login.jpg')}});background-repeat:no-repeat;background-size:cover;">
 
 <div class="login-box">
     <div class="login-logo">
-        <a href="{{ url('/') }}"><b>{{ config('app.name') }}</b></a>
+        <a href="{{ url('/') }}"><b><img src="{{asset('front/img/logo-edited-.png')}}" style="width: 200px;" alt="logo"></b></a>
     </div>
     <!-- /.login-logo -->
     <div class="card">

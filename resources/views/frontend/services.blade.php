@@ -16,7 +16,7 @@
                     </ul>
             </div>
 
-            <div class="row row2  mx-0 my-4  text-right wow animate__animated animate__slideInLeft">
+            <div class="row row2  mx-0 my-4  text-right wow animate__animated animate__slideInUp" data-wow-offset="200">
                 <h2>
                     تأجير السيارات
                 </h2>
@@ -30,7 +30,7 @@
                 </ul>
             </div>
 
-            <div class="row row3  mx-0 my-4  text-right wow animate__animated animate__slideInRight">
+            <div class="row row3  mx-0 my-4  text-right wow animate__animated animate__slideInRight" data-wow-offset="200">
                 <h2>
                     التأجير طويل الأجل للشركات:
                 </h2>
@@ -39,7 +39,7 @@
 
             </div>
 
-            <div class="row row4  mx-0 my-4  text-right wow animate__animated animate__slideInUp">
+            <div class="row row4  mx-0 my-4  text-right wow animate__animated animate__slideInRight" data-wow-offset="200">
                 <h2>
                     مبيعات السيارات المستعملة:
                 </h2>
