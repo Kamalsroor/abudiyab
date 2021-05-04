@@ -160,10 +160,14 @@ class BranchController extends Controller
             $q->where('car_id' , $request->car_id)->where('count' ,'>',0);
         })->get();
         $delivery = Branch::filter()->get();
+
+
+        $car = Car::find($request->car_id);
+        // dd($car);
         return  response()->json([
             'receiving' => SelectResource::collection($receiving),
             'delivery' => SelectResource::collection($delivery),
-            'Car' => CarResource::collection(Car::find($request->car_id)),
+            'Car' => new CarResource($car),
         ]);
 
     }
