@@ -21,6 +21,32 @@ return [
         'save' => 'Save',
         'filter' => 'Filter',
     ],
+
+
+
+
+
+
+
+
+    'features_added' => [
+        "shield" => 'Safe Yourself',
+        "insurance" => 'Secure Your Car',
+        "open_kilometers" => 'Kilometer Open',
+        "navigation" => 'New System',
+        "home_delivery" => 'Stay Relaxed',
+        "intercity" => 'Your Private Driver',
+        "baby_seat" => 'Your Child Matters To Us',
+    ],
+    'features_added_title' => [
+        'baby_seat_price' => 'Kids Chair',
+        'shield_price' => 'Abu Diab Shield',
+        'insurance_price' => 'Insurance',
+        'open_kilometers_price' => 'The Open Kilometer',
+        'navigation_price' => 'Navigation Device',
+        'home_delivery_price' => 'Home Delivery',
+        'intercity_price' => 'private Driver',
+    ],
     'messages' => [
         'created' => 'The car has been created successfully.',
         'updated' => 'The car has been updated successfully.',

@@ -39,6 +39,9 @@ Route::as('front.')->group(function () {
     Route::as('car.')->group(function () {
         Route::get('car/{car}', 'Frontend\CarsController@show')->name('show');
     });
+    Route::as('booking.')->group(function () {
+        Route::get('/booking/payment', 'Frontend\BookingController@payment')->name('payment');
+    });
 
 
     Route::get('/services', 'Frontend\FrontendController@services')->name('services');
