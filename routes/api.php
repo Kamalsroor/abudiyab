@@ -26,6 +26,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('verification/verify', 'VerificationController@verify')->name('verification.verify');
     Route::get('profile', 'ProfileController@show')->name('profile.show');
     Route::match(['put', 'patch'], 'profile', 'ProfileController@update')->name('profile.update');
+    Route::post('/orders/step1', 'OrderController@step1')->name('orders.step1');
+    Route::post('/orders/step2', 'OrderController@step2')->name('orders.step2');
     Route::apiResource('orders', 'OrderController');
     Route::get('/select/orders', 'OrderController@select')->name('orders.select');
     Route::post('/favorite/{car}', 'CarController@addToFavorite')->name('cars.favorite');
@@ -45,6 +47,7 @@ Route::get('/select/roles', 'RoleController@select')->name('roles.select');
 
 Route::apiResource('branches', 'BranchController');
 Route::get('/select/branches', 'BranchController@select')->name('branches.select');
+Route::get('/select/receiving/branches', 'BranchController@selectByCarId')->name('branches.selectByCarId');
 Route::apiResource('categories', 'CategoryController');
 Route::get('/select/categories', 'CategoryController@select')->name('categories.select');
 Route::get('/cars/recomended', 'CarController@carRelated')->name('cars.related');

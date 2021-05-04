@@ -1,3 +1,9 @@
 .zopim {
     right: 0 !important;
+    .meshim_widget_components_ChatButton.br .rtl .favicon {
+        background-color: get-color(primary);
+    }
+    .meshim_widget_components_chatButton_Button {
+        background-color: #5f6796 !important;
+    }
 }

@@ -2,11 +2,11 @@ $flaticon-font: "flaticon";
 
 @font-face {
     font-family: $flaticon-font;
-    src: url("./flaticon.ttf?b793734ea8c121d032657d6405570ba1") format("truetype"),
-url("./flaticon.woff?b793734ea8c121d032657d6405570ba1") format("woff"),
-url("./flaticon.woff2?b793734ea8c121d032657d6405570ba1") format("woff2"),
-url("./flaticon.eot?b793734ea8c121d032657d6405570ba1#iefix") format("embedded-opentype"),
-url("./flaticon.svg?b793734ea8c121d032657d6405570ba1#flaticon") format("svg");
+    src: url("./flaticon.ttf?a5f0041731b3a047c15acf16cac83e8f") format("truetype"),
+url("./flaticon.woff?a5f0041731b3a047c15acf16cac83e8f") format("woff"),
+url("./flaticon.woff2?a5f0041731b3a047c15acf16cac83e8f") format("woff2"),
+url("./flaticon.eot?a5f0041731b3a047c15acf16cac83e8f#iefix") format("embedded-opentype"),
+url("./flaticon.svg?a5f0041731b3a047c15acf16cac83e8f#flaticon") format("svg");
 }
 
 i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
@@ -28,6 +28,7 @@ $flaticon-map: (
     "supercar": "\f105",
     "car-2": "\f106",
     "information": "\f107",
+    "driving": "\f108",
 );
 
 .flaticon-car:before {
@@ -50,4 +51,7 @@ $flaticon-map: (
 }
 .flaticon-information:before {
     content: map-get($flaticon-map, "information");
+}
+.flaticon-driving:before {
+    content: map-get($flaticon-map, "driving");
 }

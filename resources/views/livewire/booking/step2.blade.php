@@ -72,7 +72,7 @@
                     <div class="H3-TST-D5-1">
                         <p><span><i class="icofont icofont-cur-riyal"></i></span>{{$features_price}}</p>
                     </div>
-                    <i class="fas fa-info-circle"></i>
+                    <i class="fas fa-info-circle" id="addingFeatures" ></i>
                 </div>
 
                 <div class="H3-TST-D3" id="additions" style="display: none;">
@@ -136,4 +136,15 @@
             </div>
         </div>
     </div>
+@push('js')
+    <script>
+        $(document).ready(function(){
+            // $('.adding').click(function(){
+            //     console.log('ssssssss ');
+            // })
+            // $('.adding').on('click',function(){
+            // })
+        })
+    </script>
+@endpush
 </div>

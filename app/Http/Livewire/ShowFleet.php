@@ -35,8 +35,10 @@ class ShowFleet extends Component
     public $filterCategory= [];
     public $priceRangeNewStart , $priceRangeNewEnd ;
     protected $listeners = [
-        'addToFavorite' => 'addToFavorite'
+        'addToFavorite' => 'addToFavorite',
+        'redirectToBookingSteps' => 'redirectToBookingSteps'
     ];
+    public $toBooking=false;
     public $rec_date;
     public $del_date;
     public $isAlert=false;
@@ -45,6 +47,7 @@ class ShowFleet extends Component
     public $addedItems=[];
     public $addCarId=false;
     public $carAdded=[];
+
     public function mount()
     {
         $date = new DateTime();
@@ -60,6 +63,14 @@ class ShowFleet extends Component
     }
     public function render()
     {
+        if(Auth()->check())
+        {
+            if(session()->get('log_in'))
+            {
+                session()->forget('log_in');
+                $this->toBooking=true;
+            }
+        }
         if($this->receivingDate >= $this->deliveryDate)
         {
             $this->dayTwoFormated= date('Y-m-d\TH:i:s', strtotime($this->receivingDate. ' + 1 days'));
@@ -165,69 +176,86 @@ class ShowFleet extends Component
             }
         }
     }
-    public function showBrnaches()
+    public function redirectToBookingSteps()
     {
+        return redirect()->to(session()->get('redirect'));
     }
     public function booking($car_id)
     {
-        if ($this->dervery_branch_id != null && $this->receiving_branch_id != 0 && $this->receivingDate != null && $this->deliveryDate != null )
-         {
-            $carInBranch =  CarsInStock::where('car_id',$car_id)->where('branch_id', $this->receiving_branch_id)->get();
-            $car_in_stock = CarsInStock::where('car_id',$car_id)->where('count','>',0)->whereHas('branch', function($q){
-                $q->where('code', $this->region ?? 1);
-            })->with('branch')->get();
-            if ($carInBranch->count() > 0) {
-                if ($carInBranch->first()->count > 0) {
-                 return redirect()->to('/booking?car_id='.$car_id.
-                                                    '&receiving_branch='.$this->receiving_branch_id .
-                                                    '&delivery_branch='.$this->dervery_branch_id .
-                                                    '&receiving_date='.$this->receivingDate.
-                                                    '&delivery_date='.$this->deliveryDate  );
+
+            if ($this->dervery_branch_id != null && $this->receiving_branch_id != 0 && $this->receivingDate != null && $this->deliveryDate != null )
+            {
+                $carInBranch =  CarsInStock::where('car_id',$car_id)->where('branch_id', $this->receiving_branch_id)->get();
+                $car_in_stock = CarsInStock::where('car_id',$car_id)->where('count','>',0)->whereHas('branch', function($q){
+                    $q->where('code', $this->region ?? 1);
+                })->with('branch')->get();
+                if ($carInBranch->count() > 0) {
+                    if ($carInBranch->first()->count > 0) {
+                        if(!Auth()->check())
+                        {
+                            $current_url=url()->previous();
+                            session()->push('redircitURl', $current_url);
+                            session(['log_in' => true]);
+                            session(['redirect' => '/booking?car_id='.$car_id.
+                            '&receiving_branch='.$this->receiving_branch_id .
+                            '&delivery_branch='.$this->dervery_branch_id .
+                            '&receiving_date='.$this->receivingDate.
+                            '&delivery_date='.$this->deliveryDate]);
+
+                            $this->dispatchBrowserEvent('notLogin');
+                        }
+                        else{
+                            return redirect()->to('/booking?car_id='.$car_id.
+                                                                '&receiving_branch='.$this->receiving_branch_id .
+                                                                '&delivery_branch='.$this->dervery_branch_id .
+                                                                '&receiving_date='.$this->receivingDate.
+                                                                '&delivery_date='.$this->deliveryDate  );
+
+                        }
+                    }else{
+                        $branche_names = "";
+                        foreach ($car_in_stock as $value) {
+                            $branche_names .= " - " . $value->branch->name;
+                        }
+                        $carNotFound['title'] = "هذه السياره متوفره فقط في فروع ". $branche_names ;
+                        if($car_in_stock->count() == 0)
+                        {
+                            $carNotFound['title'] = "هذه السياره غير متوفره الان " ;
+                        }
+                        $this->dispatchBrowserEvent('sweetalert', $carNotFound);
+                    }
                 }else{
                     $branche_names = "";
                     foreach ($car_in_stock as $value) {
-                        $branche_names .= " - " . $value->branch->name;
+                        $branche_names .= " / " . $value->branch->name;
                     }
                     $carNotFound['title'] = "هذه السياره متوفره فقط في فروع ". $branche_names ;
                     if($car_in_stock->count() == 0)
                     {
                         $carNotFound['title'] = "هذه السياره غير متوفره الان " ;
                     }
+
                     $this->dispatchBrowserEvent('sweetalert', $carNotFound);
                 }
-            }else{
-                $branche_names = "";
-                foreach ($car_in_stock as $value) {
-                    $branche_names .= " / " . $value->branch->name;
-                }
-                $carNotFound['title'] = "هذه السياره متوفره فقط في فروع ". $branche_names ;
-                if($car_in_stock->count() == 0)
-                {
-                    $carNotFound['title'] = "هذه السياره غير متوفره الان " ;
 
-                }
-
-                $this->dispatchBrowserEvent('sweetalert', $carNotFound);
             }
+            else if($this->dervery_branch_id != null && $this->dervery_branch_id != 0){
+                $errorData = [
+                    'title' => 'يرجي اختيار وقت الاستلام والتسليم',
+                    'type' => 'error',
+                ];
+                $this->dispatchBrowserEvent('sweetalert', $errorData);
+            }
+            else{
 
-        }
-        else if($this->dervery_branch_id != null && $this->dervery_branch_id != 0){
-            $errorData = [
-                'title' => 'يرجي اختيار وقت الاستلام والتسليم',
-                'type' => 'error',
-            ];
-            $this->dispatchBrowserEvent('sweetalert', $errorData);
-        }
-        else{
-
-            $errorData = [
-                'title' => 'يرجي اختيار فرع الاستلام والتسليم',
-                'type' => 'error',
-            ];
-            $this->dispatchBrowserEvent('sweetalert', $errorData);
+                $errorData = [
+                    'title' => 'يرجي اختيار فرع الاستلام والتسليم',
+                    'type' => 'error',
+                ];
+                $this->dispatchBrowserEvent('sweetalert', $errorData);
 
 
-        }
+            }
 
     }
 

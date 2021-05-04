@@ -44,7 +44,7 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-center align-items-end information-card">
-                        <img src="{{Auth()->user()->membership->getFirstMediaUrl()}}" alt="{{Auth()->user()->membership->name}}" style="width: 90%;">
+                        <img src="{{isset(Auth()->user()->membership) ? Auth()->user()->membership->getFirstMediaUrl(): ''}}" alt="" style="width: 90%;">
                         <div class="pb-2" style="width: 70%;position:absolute;font-weight: 700;text-shadow: 1px 1px 2px black;color:white;">
                             <p class="mb-0">{{Auth::user()->name}}</p>
                             <div class="d-flex justify-content-between" >

@@ -98,4 +98,16 @@ class Branch extends Model implements HasMedia, TranslatableContract
     }
 
 
+    /**
+     * Get the CarsInStock that car belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function CarsInStock()
+    {
+        return $this->hasMany(CarsInStock::class, 'branch_id');
+    }
+
+
+
 }

@@ -289,8 +289,14 @@ $(document).ready(function() {
         $('.car-details__heading').slick('slickAdd', div);
 
     }
+    let addind = $('#addingFeatures');
+    if (addind.length) {
+        $('#addingFeatures').click(function() {
+                // console.log('ssssssss ');
+            })
+            // console.log('aaaaaa ');
 
-
+    }
 
 
     let subscribe = $('#subscribe');
