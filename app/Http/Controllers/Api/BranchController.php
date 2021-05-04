@@ -6,6 +6,8 @@ use App\Models\Branch;
 use Illuminate\Routing\Controller;
 use App\Http\Resources\SelectResource;
 use App\Http\Resources\BranchResource;
+use App\Http\Resources\CarResource;
+use App\Models\Car;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
@@ -161,6 +163,7 @@ class BranchController extends Controller
         return  response()->json([
             'receiving' => SelectResource::collection($receiving),
             'delivery' => SelectResource::collection($delivery),
+            'Car' => CarResource::collection(Car::find($request->car_id)),
         ]);
 
     }
