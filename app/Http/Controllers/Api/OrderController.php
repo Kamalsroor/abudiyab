@@ -237,7 +237,7 @@ class OrderController extends Controller
     public function step2(OrderStep2Request $request)
     {
 
-        return response()->json(['status' => false,'data' => $request->all() ], 200);
+        // return response()->json(['status' => false,'data' => $request->all() ], 200);
 
         if ($request->features != null && is_array($request->features))
         {

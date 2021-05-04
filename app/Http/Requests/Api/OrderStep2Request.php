@@ -27,8 +27,8 @@ class OrderStep2Request extends FormRequest
     {
 
         return [
-            // 'features' => ['required', 'array'],
-            // 'order_id' => ['required', 'exists:orders,id'],
+            'features' => ['required', 'array'],
+            'order_id' => ['required', 'exists:orders,id'],
         ];
     }
 
