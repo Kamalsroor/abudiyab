@@ -19,7 +19,21 @@ class BookingController extends Controller
     public function payment(Request $request)
     {
         // dd($request->all() , Crypt::decrypt($request->order_id) , Crypt::decrypt($request->user_id));
+        // for ($i=0; $i < 1000 ; $i++) {
+        //     $rount = decimalRand(1,10,0.1);
 
+        //     if ($rount <= 0.5) {
+        //         echo(1);
+        //     }
+        //     else if ($rount <= 1) {
+        //         echo(2);
+        //     }
+        //     else if ($rount <= 100) {
+        //         echo(3);
+        //     }
+        //     // echo('<br>');
+
+        // }
         $order = Order::find(Crypt::decrypt($request->order_id));
 
         if ($order) {

@@ -24,6 +24,14 @@ if (! function_exists('app_name')) {
             ?: config('app.name', 'Laravel');
     }
 }
+if (! function_exists('decimalRand')) {
+    function decimalRand($iMin, $iMax, $fSteps = 0.5)
+    {
+        $a = range($iMin, $iMax, $fSteps);
+
+        return $a[mt_rand(0, count($a)-1)];
+    }
+}
 
 if (! function_exists('app_logo')) {
     /**
