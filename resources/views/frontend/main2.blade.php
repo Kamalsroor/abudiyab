@@ -85,7 +85,7 @@
                     </div>
                     <div class="home-offers_content_text_button">
                         <button class="detailing">التفاصيل</button>
-                        <button class="primary-btn btn-hover btn-curved">احجز الان</button>
+                        <button>احجز الان</button>
                     </div>
                 </div>
             </div>
