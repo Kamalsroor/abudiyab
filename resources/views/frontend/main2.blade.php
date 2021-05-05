@@ -202,7 +202,7 @@
 
     </section>
 
-    <section class="home-linking-section wow animate__slideInUp" >{{-- animate__slideInUp data-wow-offset="200" data-wow-duration="2s" --}}
+    <section class="home-linking-section wow animate__slideInUp" data-wow-offset="200" data-wow-duration="2s">{{-- animate__slideInUp data-wow-offset="200" data-wow-duration="2s" --}}
         <div class="home-linking-section_right">
             <div class="home-linking-section_right_content" style="background-image: url({{asset('front/img/download-2.jpg')}});">
                 <div>
