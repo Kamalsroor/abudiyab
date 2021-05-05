@@ -766,9 +766,37 @@ $(document).ready(function() {
         $(this).toggleClass('active');
     })
 
+    /* =============================================================== */
+    /* ======================       Offers       ===================== */
+    /* =============================================================== */
+    $(window).scroll(function() {
+        OffersAnimation(this);
+    });
+    $(function() {
+        OffersAnimation(window);
+    });
+    var OffersAnimationStart = false;
 
-
-
+    function OffersAnimation(userLocation) {
+        var nameClassOffers = '.home-offers_content_text',
+            hT = $(nameClassOffers + '_discount').offset().top,
+            hH = $(nameClassOffers + '_discount').outerHeight(),
+            wH = $(window).height(),
+            wS = $(userLocation).scrollTop();
+        if (wS > (hT + hH - wH) && OffersAnimationStart == false) {
+            $(nameClassOffers + '_discount').animate({ left: '104%' }, 1000, function() {
+                $(nameClassOffers + '_name').animate({ left: '96%' }, 800, function() {
+                    $(nameClassOffers + '_detailing').animate({ left: '95%' }, 600, function() {
+                        $(nameClassOffers + '_price').animate({ top: '40%' }, 400, function() {
+                            $(nameClassOffers + '_button').animate({ top: '97%' }, 400);
+                        });
+                    });
+                });
+            });
+            OffersAnimationStart = true;
+            console.log(hT + hH - wH);
+        }
+    }
 
     // gallery page----------------------------------------------------------------
     // $(".oldImg").click(function() {
@@ -855,7 +883,6 @@ $(document).ready(function() {
         */
 
 });
-
 
 
 

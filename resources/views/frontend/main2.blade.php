@@ -21,7 +21,7 @@
             <div class="carousel-inner">
                 @foreach ($sliders as $slider )
                 <div class='carousel-item {{ $loop->first ? "active" : " " }}' style="background-image: url({{$slider->getFirstMediaUrl()}});">
-                    <div class="d-flex align-items-start justify-content-center" style="height: 100%;flex-direction: column;padding-right: 60px;        background-image: linear-gradient(90deg, #00000063 15%, #00000063 50%, #00000063 85%); ">
+                    <div class="d-flex align-items-start justify-content-center" style="height: 100%;flex-direction: column;padding-right: 60px;background: #00000012;">
 
                         <h1>{{ $slider->first_header }}</h1>
                         <p style="font-size:30px;text-shadow: 1px 1px 10px #000;">{{ $slider->second_header }}</p>
@@ -69,7 +69,7 @@
                     <img src="{{ asset('front/img/SLIDERS/slide-1.jpg') }}" alt="">
                 </div>
                 <div class="home-offers_content_text">
-                    <div class="home-offers_content_text_discount">
+                    <div class="home-offers_content_text_discount wow animate__wobble">
                         <h1>خصم <span>20%</span></h1>
                     </div>
                     <div class="home-offers_content_text_name">
@@ -84,8 +84,8 @@
                         <h2><i class="icofont icofont-cur-riyal"></i>1200</h2>
                     </div>
                     <div class="home-offers_content_text_button">
-                        <button class="">احجز الان</button>
-                        <button class="detailing">التفصيل</button>
+                        <button class="detailing">التفاصيل</button>
+                        <button class="primary-btn btn-hover btn-curved">احجز الان</button>
                     </div>
                 </div>
             </div>
