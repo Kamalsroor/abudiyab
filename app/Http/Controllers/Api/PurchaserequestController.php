@@ -8,6 +8,7 @@ use App\Http\Resources\SelectResource;
 use App\Http\Resources\PurchaserequestResource;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Http\Request;
 
 class PurchaserequestController extends Controller
 {
@@ -117,5 +118,15 @@ class PurchaserequestController extends Controller
         $purchaserequests = Purchaserequest::filter()->simplePaginate();
 
         return SelectResource::collection($purchaserequests);
+    }
+
+    public function create(Request $request)
+    {
+        Purchaserequest::create([
+            'user_id' => $request->user_id,
+            'car_id' => $request->car_id,
+            'price' => $request->price
+        ]);
+        return response()->json(['purchase'=> 'done']);
     }
 }

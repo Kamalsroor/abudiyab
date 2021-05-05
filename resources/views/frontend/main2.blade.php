@@ -89,8 +89,8 @@
                     </div>
                 </div>
             </div>
-            <div class="container-fluid offers" style="padding-top:0">
-                {{-- @foreach ($offers as $offer)
+            {{-- <div class="container-fluid offers" style="padding-top:0">
+                @foreach ($offers as $offer)
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pod" url="#" number="1">
                         <div class="hover-offer ehover1"><img class="img-responsive" src="https://saudiauto.com.sa/uploads/Untitled-1_109.jpg" alt="Barcelona" />
                             <div class="offer-content">
@@ -148,7 +148,7 @@
                   </div>
                 </div>
               </div> --}}
-            </div>
+            {{-- </div> --}}
           </section>
 
     <section class="container-90">

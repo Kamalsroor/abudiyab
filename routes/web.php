@@ -73,6 +73,9 @@ Route::as('front.')->group(function () {
         return view('frontend.aboutus');
     })->name('aboutus');
     Route::get('/contracts', 'Frontend\ContractController@getContracts')->name('contracts');
+
+    Route::post('/car-sales-request', 'Frontend\PurchaseController@create')->name('purchaserequests.car-sales-request');
+
     // Route::get('/register', function(){
     //     return view('frontend.register');
     // })->name('register.index');

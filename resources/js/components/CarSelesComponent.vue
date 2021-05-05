@@ -30,7 +30,7 @@
                     <div class="car-sales_center_content_cars_car_name">
                         <h4>{{car.car.name}}</h4>
                     </div>
-                    <div class="car-sales_center_content_cars_car_detailing">
+                    <div class="car-sales_center_content_cars_car_detailing" v-if="car.quantity == 1">
                         <div class="car-sales_center_content_cars_car_detailing_top">
                             <h5> العداد {{car.couter}} كم</h5>
                             <h4>{{car.car.model}}</h4>
@@ -46,20 +46,43 @@
                             <p>مكيف | ناقل حركة أوتوماتيكي</p>
                         </div>
                     </div>
-    <a class="primary-btn car-sales_center_content_cars_car_button" v-if="!car.sold" onclick="showPopUp()">اقتراح سعر</a>
+                    <div class="car-sales_center_content_cars_car_detailing" v-else>
+                        <div class="car-sales_center_content_cars_car_detailing_top">
+                            <h5> العداد xxxxxxx كم</h5>
+                            <h4>{{car.car.model}}</h4>
+                        </div>
+                        <div class="car-sales_center_content_cars_car_detailing_center">
+                            <div class="car-sales_center_content_cars_car_detailing_center_color">
+                                <p> الكميه <span style="font-weight: 700; color: red;">{{car.quantity}}</span> </p>
+                            </div>
+                        </div>
+                        <div class="car-sales_center_content_cars_car_detailing_bottom">
+                            <p>مكيف | ناقل حركة أوتوماتيكي</p>
+                        </div>
+                    </div>
+
+
+                    <div style="visibility:hidden">{{car.quantity}}</div>
+                    <div style="visibility:hidden">{{car.car.id}}</div>
+                    <a class="primary-btn car-sales_center_content_cars_car_button buy_car" v-if="!car.sold" :id="car.car.id" >اقتراح سعر</a>
 
                     <a class="primary-btn car-sales_center_content_cars_car_button_sold" v-if="car.sold">تم البيع</a>
                 </div>
 
             </div>
         </div>
+
+
     </section>
+
+
+
+
 </template>
 
 <script>
     export default {
         props: {
-
             remoteUrl: {
                 required: true,
                 type: String,
@@ -82,7 +105,6 @@
                 this.cars = response.data.data;
                 this.models=[];
                 this.cars_select={};
-                console.log(response.data.data);
                 this.cars.forEach(element => {
                     if(!this.models.includes(element.car.model))
                     {
@@ -95,7 +117,7 @@
         },
         methods: {
             filterCar: function() {
-                console.log(this.cars);
+                // console.log(this.cars);
             }
         },
         watch:{
@@ -105,7 +127,6 @@
                 }else{
                     this.allcars=this.cars
                 }
-                console.log(this.cars);
                 this.cars.map(element =>{
                     if(element.car.id == this.filterByCarId)
                     {

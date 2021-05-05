@@ -4,7 +4,7 @@
     <div class="col-md-3" id="cars_select">
         <select2
             placeholder="@lang('cars.singular')"
-            name="name"
+            name="car_id"
             id="cars"
             value="{{isset($offer) && $offer->type == 1 ? optional($offer ?? "")->cars->pluck('id') : null}}"
             label="@lang('cars.singular')"
