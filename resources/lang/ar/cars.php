@@ -43,6 +43,24 @@ return [
         "true" => 'لديه',
     ],
 
+    'features_added' => [
+        "shield" => 'امن نفسك',
+        "insurance" => 'امن سيارتك',
+        "open_kilometers" => 'كيلو متر مفتوح',
+        "navigation" => 'نظام جديد',
+        "home_delivery" => 'خليك مرتاح',
+        "intercity" => 'سائقك الخاص',
+        "baby_seat" => 'طفلك يهمنا',
+    ],
+    'features_added_title' => [
+        'baby_seat_price' => 'كرسي الاطفال',
+        'shield_price' => 'درع ابو دياب',
+        'insurance_price' => 'التامين',
+        'open_kilometers_price' => 'الكيلومتر المفتوح',
+        'navigation_price' => 'جهاز الملاحه',
+        'home_delivery_price' => 'التوصيل للمنزل',
+        'intercity_price' => 'السائق الخاص',
+    ],
     'attributes' => [
         'name' => 'اسم السيارة',
         '%name%' => 'اسم السيارة',

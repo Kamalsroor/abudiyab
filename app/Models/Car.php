@@ -136,6 +136,12 @@ class Car extends Model implements HasMedia, TranslatableContract
         if (Request()->has('user_id')) {
             return addToFavorite::where('user_id' , Request()->get('user_id'))->where('car_id' , $this->id)->count() > 0 ? true : false;
         }
+
+        if (auth()->check()) {
+            return addToFavorite::where('user_id' , auth()->user()->id)->where('car_id' , $this->id)->count() > 0 ? true : false;
+        }
+
+
         return false;
     }
 

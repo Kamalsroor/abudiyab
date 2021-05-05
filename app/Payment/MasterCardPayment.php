@@ -194,31 +194,37 @@ class MasterCardPayment extends Controller
 	/*
 	*	Create Session Live for Payment via MasterCard Or Visa
 	*/
-	public static function createSessionLive($orderID, $merchantID, $merchantPassword)
+	public static function createSessionTest($orderID, $merchantID, $merchantPassword)
 	{
 		self::$orderID = $orderID;
 		self::$merchantID = $merchantID;
 		self::$merchantPassword = $merchantPassword;
 
-		$curl = curl_init();
         $data = [
-           	'apiOperation' => 'CREATE_CHECKOUT_SESSION',
-            'order' => [
-                'id' => self::$orderID,
-                'currency' => 'EGP'
-            ]
-        ];
-       	curl_setopt($curl, CURLOPT_URL, config('BankPayment.ApiUrl')."merchant/".self::$merchantID."/session");
-       	curl_setopt($curl, CURLOPT_USERPWD, 'merchant.'.self::$merchantID.':'.self::$merchantPassword.'');
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_POST, true);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
-        $response = curl_exec($curl);
-        curl_close($curl);
-        $jsonData = json_decode($response);
-        self::$sessionID = $jsonData->session->id;
+			'apiOperation' => config('BankPayment.apiOperation'),
+			'interaction' => [
+                'operation' => 'PURCHASE'
+            ],
+			'order' => [
+				'id' => self::$orderID,
+				'currency' => config('BankPayment.currency')
+			]
+		];
 
-        return self::$sessionID;
+
+        // $test = MasterCardPayment::createSessionSandBox();
+        $response = Http::contentType("application/json")
+        ->withBasicAuth('merchant.'.self::$merchantID, self::$merchantPassword)
+        ->withHeaders([
+            'Accept' => 'application/json'
+        ])->post(config('BankPayment.ApiUrlTest'). '/merchant/'.self::$merchantID.'/session', $data)->json();
+
+        self::$sessionID = $response;
+
+        if (self::$sessionID['result'] == "SUCCESS") {
+            # code...
+            return self::$sessionID['session']['id'];
+        }
 	}
 
 	/*
