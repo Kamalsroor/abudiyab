@@ -50,11 +50,15 @@
             </div>
 
             <div class="car-sales_price-suggestion_center_step-2">
+                <div class="alert alert-danger  my-2 rejected" id='notenough' style="display: none" role="alert">
+
+                </div>
                 <div class="car-sales_price-suggestion_center_step-2_price">
-                    <input type="text" placeholder="سعر">
+                    <input type="text" name="price" class="price" placeholder=" اقتراح سعر ">
+                    <input type="text" name="quantity" class="quantity" style="text-align: center" placeholder="الكميه">
                 </div>
                 <div class="car-sales_price-suggestion_center_step-2_button">
-                    <button class="primary-btn btn-hover btn-curved" onclick="MoveStep(3);">اقتراح سعر</button>
+                    <button class="primary-btn btn-hover btn-curved" onclick="sendPurchaseRequest()">اقتراح سعر</button>
                 </div>
             </div>
             <div class="car-sales_price-suggestion_center_step-3">
@@ -70,18 +74,37 @@
     </section>
     @push('js')
     <script>
+        let fromLogin=false;
+        let loginURL="{{route('api.sanctum.login-with-session')}}";
         let isLogin=false;
-        let loginURL="{{route('api.sanctum.login')}}";
-        function MoveStep(step) {
+        let user_id='';
+        let car_id='';
+        let quantity=0;
+        $('.buy_car').on('click',function(){
+            car_id=$(this).prev()[0].innerHTML;
+            quantity=$(this).prev().prev()[0].innerHTML;
+            if(quantity==1)
+            {
+                $('.quantity').css('display', 'none');
+            }
+            else{
+                $('.quantity').css('display', 'block');
 
+            }
+            showPopUp();
+        })
+        function MoveStep(step) {
+            if(step == 1 || step == 2 )
+            {
+                $('#notenough').css('display','none');
+            }
             stepsClass = '.car-sales_price-suggestion_center_step-';
             steps = stepsClass + '1, ' + stepsClass + '2, ' + stepsClass + '3';
-            if(step==2 && isLogin==true)
+            if(step==2 && fromLogin==true )
             {
                 let email=$('#inputEmail4').val();
                 let password=$('#inputPassword4').val();
                 console.log(email,password);
-
 
                 $.ajax({
                     type: 'post',
@@ -95,8 +118,11 @@
                         'password': password
                     },
                     success: function(data, status) {
-                    console.log( data.token);
-                    console.log(csrf_token);
+                     user_id=data['user_id'];
+                    if(data['attempt'])
+                    {
+                        isLogin=true;
+                    }
                     $(steps).addClass('price-suggestion-h');
                     $(steps).removeClass('price-suggestion-s');
 
@@ -124,6 +150,7 @@
                     }
 
                 });
+
             }
             else{
                 $(steps).addClass('price-suggestion-h');
@@ -149,15 +176,58 @@
         }
         function checkLogin(){
             let auth="{{Auth()->check() ? 'true' : 'false'}}";
-            if(auth =='true')
+            if(auth =='true' || isLogin==true)
             {
                 MoveStep(2);
             }
             else
             {
-                isLogin=true;
+                fromLogin=true;
                 MoveStep(1);
             }
+        }
+        function sendPurchaseRequest(){
+            let purchaseURL="{{route('front.purchaserequests.car-sales-request')}}";
+            console.log(user_id);
+            if(!user_id)
+            {
+                user_id='{{Auth()->id()}}';
+            }
+            console.log(car_id);
+            let price=$('.price').val();
+            let localquantity=$('.quantity').val();
+            if(localquantity > quantity)
+            {
+                $('#notenough').css('display','block');
+                $('#notenough').text('هذه الكميه غير متوفره');
+            }
+            else
+            {
+                $.ajax({
+                        type: 'post',
+                        url: purchaseURL,
+                        headers: {
+                            "x-accept-language": "ar",
+                            "X-CSRF-TOKEN": csrf_token,
+                        },
+                        data: {
+                            'user_id': user_id,
+                            'car_id': car_id,
+                            'price': price,
+                            'quantity': localquantity,
+                        },
+                        success: function(data, status) {
+                            if(data['purchase']=='done')
+                            {
+                                MoveStep(3);
+                            }
+                        },
+                        error: function(data){
+                        }
+
+                });
+            }
+
         }
 
         function showPopUp(){

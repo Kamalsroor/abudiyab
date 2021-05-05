@@ -20,6 +20,7 @@ class CreatePurchaserequestsTable extends Migration
             $table->foreignId('car_id');
             $table->foreign('car_id')->references('id')->on('cars')->cascadeOnDelete();
             $table->integer('price')->nullable();
+            $table->integer('quantity')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });
