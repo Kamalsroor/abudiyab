@@ -64,7 +64,7 @@
             <div class="home-offers_head">
                 <span class="g-title">عروضنا</span>
             </div>
-            <div class="home-offers_content">
+            {{-- <div class="home-offers_content">
                 <div class="home-offers_content_background">
                     <img src="{{ asset('front/img/SLIDERS/slide-1.jpg') }}" alt="">
                 </div>
@@ -88,9 +88,9 @@
                         <button class="primary-btn btn-hover btn-curved">احجز الان</button>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="container-fluid offers" style="padding-top:0">
-                {{-- @foreach ($offers as $offer)
+                @foreach ($offers as $offer)
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pod" url="#" number="1">
                         <div class="hover-offer ehover1"><img class="img-responsive" src="https://saudiauto.com.sa/uploads/Untitled-1_109.jpg" alt="Barcelona" />
                             <div class="offer-content">
@@ -105,7 +105,7 @@
                             </div>
                         </div>
                     </div>
-                @endforeach --}}
+                @endforeach
               {{-- <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pod" url="#" number="2">
                 <div class="hover-offer ehover1"><img class="img-responsive" src="https://1.bp.blogspot.com/-F5cZ10DJ68A/Xukz4ACNbgI/AAAAAAAABAs/ndkQ6DAwv-k7MdS2_0ldSZFI3cJVUbYLwCK4BGAYYCw/s1600/3864%2Bcopy.jpg" alt="París" />
                   <div class="offer-content">

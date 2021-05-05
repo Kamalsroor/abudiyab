@@ -96,6 +96,7 @@
                     },
                     success: function(data, status) {
                     console.log( data.token);
+                    console.log(csrf_token);
                     $(steps).addClass('price-suggestion-h');
                     $(steps).removeClass('price-suggestion-s');
 
