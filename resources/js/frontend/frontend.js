@@ -790,8 +790,8 @@ $(document).ready(function() {
                 $(nameClassOffers + '_discount').animate({ left: '104%' }, 1000, function() {
                     $(nameClassOffers + '_name').animate({ left: '96%' }, 800, function() {
                         $(nameClassOffers + '_detailing').animate({ left: '95%' }, 600, function() {
-                            $(nameClassOffers + '_price').animate({ top: '40%' }, 400, function() {
-                                $(nameClassOffers + '_button').animate({ top: '97%' }, 400);
+                            $(nameClassOffers + '_price').animate({ top: '37%' }, 400, function() {
+                                $(nameClassOffers + '_button').animate({ top: '95%' }, 400);
                             });
                         });
                     });
@@ -1593,7 +1593,6 @@ $(document).ready(function() {
 //         });
 
 //     }
-
 
 
 

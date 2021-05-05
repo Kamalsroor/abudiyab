@@ -85,7 +85,7 @@
                     </div>
                     <div class="home-offers_content_text_button">
                         <button class="detailing">التفاصيل</button>
-                        <button class="primary-btn btn-hover btn-curved">احجز الان</button>
+                        <button>احجز الان</button>
                     </div>
                 </div>
             </div>
@@ -202,13 +202,26 @@
 
     </section>
 
-    <section class="home-linking-section wow animate__slideInUp" data-wow-offset="200" data-wow-duration="2s" style="    background-image: url({{optional(Settings::instance('home_links_backgraund'))->getFirstMediaUrl('home_links_backgraund')}});
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;">
-        <div>
-        <h2 >{!!Settings::locale(app()->getLocale())->get('home_description')!!}</h2>
+    <section class="home-linking-section wow animate__slideInUp" data-wow-offset="200" data-wow-duration="2s">{{-- animate__slideInUp data-wow-offset="200" data-wow-duration="2s" --}}
+        <div class="home-linking-section_right">
+            <div class="home-linking-section_right_content" style="background-image: url({{asset('front/img/download-2.jpg')}});">
+                <div>
+                    <h5>هل انت ترغب في</h5>
+                    <h2>شراء سياره</h2>
+                    <p>MotorLand is nisi aliquip exa con velit esse cillum dolore fugiatal sint occaecat excepteur ipsum dolor sit amet consectetur.</p>
+                    <a href="{{route('front.car_sales')}}">شراء سياره</a>
+                </div>
+            </div>
+        </div>
+        <div class="home-linking-section_left">
+            <div class="home-linking-section_left_content" style="background-image: url({{asset('front/img/download-1.jpg')}});">
+                <div>
+                    <h5>هل تبحث عن</h5>
+                    <h2> سياره للايجار</h2>
+                    <p>MotorLand is nisi aliquip exa con velit esse cillum dolore fugiatal sint occaecat excepteur ipsum dolor sit amet consectetur.</p>
+                    <a href="{{route('front.fleet')}}">تأجير سياره</a>
+                </div>
+            </div>
         </div>
     </section>
 
