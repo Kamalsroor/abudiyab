@@ -259,27 +259,121 @@ a:not([href]):not([tabindex]) {
 }
 
 .home-linking-section {
-    background-image: url('../../../imgs/mercedes4.jpg');
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    margin-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
     width: 100%;
-    height: 500px;
-    div {
-        background-color: rgb(0 0 0 / 88%);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        h2 {
-            position: absolute;
-            font-size: 60px;
-            font-weight: 500;
-            color: get-color(light);
-            @include smallScreen {
-                font-size: 30px;
+    &_right {
+        width: 50%;
+        @media (max-width: 767px) {
+            width: 100%;
+        }
+        position: relative;
+        z-index: 2;
+        &_content {
+            width: fit-content;
+            margin: auto;
+            text-align: right;
+            color: #fff;
+            padding: 109px 34% 116px 23%;
+            clip-path: polygon(5% 0, 100% 0%, 100% 100%, 0% 100%);
+            @media (max-width: 767px) {
+                clip-path: none;
+                margin: 0 -90px 0 0;
+                padding: 82px 25% 90px 40%;
+            }
+            @media (max-width: 400px) {
+                padding: 109px 34% 116px 23%;
+            }
+            div {
+                position: relative;
+                z-index: 110;
+                h2 {
+                    margin-top: 6px;
+                    font-size: 36px;
+                    text-transform: uppercase;
+                }
+                a {
+                    color: #fff;
+                    border: 2px solid #fff;
+                    background-color: transparent;
+                    margin-top: 34px;
+                    padding: 3px 40px;
+                    cursor: pointer;
+                    border-radius: 4px;
+                    transition: .4s;
+                    &:hover {
+                        background-color: #fff;
+                        color: #000 !important;
+                        transition: .4s;
+                    }
+                }
+            }
+            &:after {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background-color: #222;
+                opacity: .8;
+            }
+        }
+    }
+    &_left {
+        width: 50%;
+        @media (max-width: 767px) {
+            width: 100%;
+        }
+        position: relative;
+        z-index: 1;
+        &_content {
+            width: fit-content;
+            margin: auto;
+            text-align: right;
+            color: #fff;
+            position: relative;
+            margin: 28px -90px 0 0;
+            padding: 82px 25% 90px 40%;
+            @media (max-width: 400px) {
+                padding: 109px 34% 116px 23%;
+            }
+            div {
+                position: relative;
+                z-index: 110;
+                z-index: 110;
+                h2 {
+                    margin-top: 6px;
+                    font-size: 36px;
+                    text-transform: uppercase;
+                }
+                a {
+                    color: #fff;
+                    border: 2px solid #fff;
+                    background-color: transparent;
+                    margin-top: 34px;
+                    padding: 3px 40px;
+                    transition: .3s;
+                    cursor: pointer;
+                    border-radius: 4px;
+                    transition: .4s;
+                    &:hover {
+                        background-color: #fff;
+                        color: #000 !important;
+                        transition: .4s;
+                    }
+                }
+            }
+            &:after {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background-color: rgb(161 34 36); // rgb(161 34 36) // #313283
+                opacity: .8;
             }
         }
     }
