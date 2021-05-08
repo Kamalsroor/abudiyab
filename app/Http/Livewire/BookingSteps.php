@@ -210,8 +210,11 @@ class BookingSteps extends Component
         // ]);
         $Custmerrequest = Custmerrequest::where('user_id',auth()->id())->where('is_confirmed','confirmed')->orderBy('created_at', 'DESC')->first();
         $currentDate= now();
-        $idExpireDate= $Custmerrequest->id_expiry_date;
-        $driverIdExpireDate= $Custmerrequest->driver_id_expiry_date;
+        if(isset($Custmerrequest->id_expiry_date) && isset($Custmerrequest->driver_id_expiry_date))
+        {
+            $idExpireDate= $Custmerrequest->id_expiry_date;
+            $driverIdExpireDate= $Custmerrequest->driver_id_expiry_date;
+        }
         $this->order = Order::updateOrCreate([
             'id' => $this->order ? $this->order->id : 0
         ],[
@@ -239,22 +242,35 @@ class BookingSteps extends Component
             $this->dispatchBrowserEvent('notLogin');
             $this->currentStep = 2;
         }else{
-            if($currentDate->lt($idExpireDate) || $currentDate->lt($driverIdExpireDate))
+            if(isset($idExpireDate) && isset($driverIdExpireDate))
             {
-                if($this->visa_buy != 0 || $this->visa_buy != false ){
-                    $this->paymentType = "visa";
-                    $this->thirdStepSubmit();
-               }else{
-                   $this->currentStep = 3;
-               }
+                if($currentDate->lt($idExpireDate) && $currentDate->lt($driverIdExpireDate))
+                {
+                    if($this->visa_buy != 0 || $this->visa_buy != false ){
+                        $this->paymentType = "visa";
+                        $this->thirdStepSubmit();
+                    }
+                    else{
+                        $this->currentStep = 3;
+                    }
+                }
+                else{
+                    $errorData = [
+                        'title' => 'يرجي تحديث البيانات الشخصيه',
+                        'type' => 'error',
+                    ];
+                    $this->dispatchBrowserEvent('sweetalert', $errorData);
+                }
             }
-            else{
-                $errorData = [
-                    'title' => 'يرجي تحديث البيانات الشخصيه',
+            else
+            {
+                $errorInformationData = [
+                    'title' => 'يرجي انتظار قبول البيانات',
                     'type' => 'error',
                 ];
-                $this->dispatchBrowserEvent('sweetalert', $errorData);
+                $this->dispatchBrowserEvent('sweetalert', $errorInformationData);
             }
+
         }
     }
 
