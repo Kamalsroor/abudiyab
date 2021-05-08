@@ -1063,10 +1063,70 @@ a:not([href]):not([tabindex]) {
 .home-offers {
     margin-top: 20px;
     margin-bottom: 40px;
-    .offers {
-        display: flex;
-        flex-wrap: wrap;
-        width: 70%;
+    &_price-suggestion {
+        position: fixed;
+        top: 0%;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .26);
+        z-index: 100;
+        &_center {
+            @include location(50%,
+            50%);
+            background-color: rgb(238, 234, 234);
+            max-width: 1000px;
+            width: 98%;
+            border-radius: 8px;
+            padding: 10px 20px;
+            &_cancel {
+                @include location(0%,
+                100%);
+                background-color: #1abc9c;
+                color: #fff;
+                padding: 1px 10px 1px;
+                border-radius: 2px 0px 0 36px;
+                cursor: pointer;
+                z-index: 3;
+                i {
+                    margin-left: 3px;
+                }
+                &:hover {
+                    background-color: red;
+                }
+            }
+            &_text {
+                width: 100%;
+                &_empty {
+                    width: 100%;
+                    color: #666;
+                    text-align: center;
+                    padding: 20px 0;
+                }
+            }
+        }
+    }
+    @keyframes price-suggestion-s {
+        0% {
+            transform: scale(0);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    @keyframes price-suggestion-h {
+        0% {
+            transform: scale(1);
+        }
+        100% {
+            transform: scale(0);
+        }
+    }
+    .price-suggestion-s {
+        animation: price-suggestion-s 0.4s both;
+    }
+    .price-suggestion-h {
+        animation: price-suggestion-h 0.4s both;
     }
     &_head {
         border-bottom: double 4px red;
