@@ -52,9 +52,9 @@ class ShowFleet extends Component
     {
         $date = new DateTime();
         $recievingInterval = new DateInterval('P1D');
-        $this->dayOneFormated=$date->add($recievingInterval)->format('Y-m-d\TH:i:s');
+        $this->dayOneFormated=$date->add($recievingInterval)->format('Y-m-d\TH:i');
         $deliveryInterval = new DateInterval('P1D');
-        $this->dayTwoFormated=$date->add($deliveryInterval)->format('Y-m-d\TH:i:s');
+        $this->dayTwoFormated=$date->add($deliveryInterval)->format('Y-m-d\TH:i');
 
         $this->receivingDate=$this->dayOneFormated;
         $this->deliveryDate=$this->dayTwoFormated;
@@ -73,8 +73,8 @@ class ShowFleet extends Component
         }
         if($this->receivingDate >= $this->deliveryDate)
         {
-            $this->dayTwoFormated= date('Y-m-d\TH:i:s', strtotime($this->receivingDate. ' + 1 days'));
-            $this->deliveryDate= date('Y-m-d\TH:i:s', strtotime($this->receivingDate. ' + 1 days'));
+            $this->dayTwoFormated= date('Y-m-d\TH:i', strtotime($this->receivingDate. ' + 1 days'));
+            $this->deliveryDate= date('Y-m-d\TH:i', strtotime($this->receivingDate. ' + 1 days'));
         }
         if ($car_id = session()->get('car_id') && Auth()->check()) {
             # code...

@@ -111,16 +111,16 @@
                         <span> خصم العضويه</span>
                     </div>
                     <div class="H3-TST-D5-1">
-                        <p><span><i class="icofont icofont-cur-riyal"></i></span>5</p>
+                        <p><span><i class="icofont icofont-cur-riyal"></i></span>{{ $membership_discount }}</p>
                     </div>
                 </div>
 
                 <div class="H3-TST-D4-1">
                     <div class="H3-TST-D5-1">
-                        <span> خصم ترويجي</span>
+                        <span> خصم اضافي</span>
                     </div>
                     <div class="H3-TST-D5-1">
-                        <p><span><i class="icofont icofont-cur-riyal"></i></span>10</p>
+                        <p><span><i class="icofont icofont-cur-riyal"></i></span>{{ $promotional_discount}}</p>
                     </div>
                 </div>
 
