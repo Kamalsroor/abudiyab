@@ -40,7 +40,7 @@ class BookingSteps extends Component
     public $start_date=0;
     public $end_date=0;
     public $membership_discount=0;
-    public $promotional_discount=10;
+    public $promotional_discount=0;
     public $featureArray=[
         'baby_seat_price'=>'مقعد اطفال',
         'shield_price'=>'درع أبو ذياب',
@@ -54,6 +54,7 @@ class BookingSteps extends Component
     public $features_price=0;
     public $car_price=0;
     public $total=0;
+    public $visa_price=0;
 
     protected $listeners = [
         'payment:cancelled' => 'paymentCancelled',
@@ -67,6 +68,25 @@ class BookingSteps extends Component
         $this->car = Car::find($this->data['car_id']);
         $this->reciving_date=$this->data['receiving_date'];
         $this->delivery_date=$this->data['delivery_date'];
+        $offerLast = $this->car->offers->last();
+        if ($offerLast) {
+            if($offerLast->to->lt(now()))
+            {
+                $this->promotional_discount = 0;
+            }
+            else
+            {
+                if($offerLast->discount_type == "percentage")
+                {
+                    $this->promotional_discount = (($offerLast->discount_value /100) * ($this->car->price1));
+                }
+                else if($offerLast->discount_type == 'fixed')
+                {
+                    $this->promotional_discount = $offerLast->discount_value;
+                }
+            }
+        }
+
         $this->start_date=$this->reciving_date;
         $this->end_date=$this->delivery_date;
         $this->delivery_date = Carbon::parse($this->delivery_date);
@@ -76,7 +96,6 @@ class BookingSteps extends Component
         $this->receiving_branch = Branch::find($this->data['receiving_branch']);
         $this->delivery_branch = Branch::find($this->data['delivery_branch']);
         $this->membership_discount = ((Auth()->user()->membership->rental_discount /100) * ($this->car->price1));
-        $this->promotional_discount = (($this->car->offers[0]->discount_value /100) * ($this->car->price1));
     }
 
 
@@ -169,6 +188,7 @@ class BookingSteps extends Component
         $visa_buy = 0;
         if ($this->visa_buy) {
         $visa_buy = $this->car_price * (Settings::get('visa_offer') / 100) ; //visa discount amount
+        $this->visa_price=$visa_buy;
         }
 
         $this->price = ($this->car_price - $visa_buy ) + $features_price + $this->authorization_fee ;
@@ -453,6 +473,8 @@ class BookingSteps extends Component
      */
     public function back($step)
     {
+        $this->authorization_fee=0;
+
         if($step != 0)
         {
             $this->currentStep = $step;

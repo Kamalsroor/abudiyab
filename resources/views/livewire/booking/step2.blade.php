@@ -114,15 +114,27 @@
                         <p><span><i class="icofont icofont-cur-riyal"></i></span>{{ $membership_discount }}</p>
                     </div>
                 </div>
+                @if ($promotional_discount != 0)
+                    <div class="H3-TST-D4-1">
+                        <div class="H3-TST-D5-1">
+                            <span> خصم العرض الترويجي</span>
+                        </div>
+                        <div class="H3-TST-D5-1">
+                            <p><span><i class="icofont icofont-cur-riyal"></i></span>{{ $promotional_discount}}</p>
+                        </div>
+                    </div>
+                @endif
 
+                @if ($visa_buy != 0)
                 <div class="H3-TST-D4-1">
                     <div class="H3-TST-D5-1">
-                        <span> خصم اضافي</span>
+                        <span> خصم سداد البطاقات الائتمانيه</span>
                     </div>
                     <div class="H3-TST-D5-1">
-                        <p><span><i class="icofont icofont-cur-riyal"></i></span>{{ $promotional_discount}}</p>
+                        <p><span><i class="icofont icofont-cur-riyal"></i></span>{{ $visa_price}}</p>
                     </div>
                 </div>
+                @endif
 
                 <div class="H3-TST-D4-1 H3-P">
                     <div class="H3-TST-D5-1">

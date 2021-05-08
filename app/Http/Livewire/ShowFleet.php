@@ -140,7 +140,16 @@ class ShowFleet extends Component
 
         $regionSelect=Branch::Region;
         $this->dispatchBrowserEvent('changeRender');
-
+        if(Auth()->check())
+        {
+            $i=0;
+            foreach($car as $item )
+            {
+                // dd($car[$i]->price1);
+                $car[$i]->price1=$item->price1 - ((Auth()->user()->membership->rental_discount /100) * $item->price1);
+                $i++;
+            }
+        }
         return view('livewire.show-fleet',[
             'cars' => $car,
             'regionSelect' => $regionSelect,
@@ -205,11 +214,17 @@ class ShowFleet extends Component
                             $this->dispatchBrowserEvent('notLogin');
                         }
                         else{
-                            return redirect()->to('/booking?car_id='.$car_id.
-                                                                '&receiving_branch='.$this->receiving_branch_id .
-                                                                '&delivery_branch='.$this->dervery_branch_id .
-                                                                '&receiving_date='.$this->receivingDate.
-                                                                '&delivery_date='.$this->deliveryDate  );
+                            session(['redirect' => '/booking?car_id='.$car_id.
+                            '&receiving_branch='.$this->receiving_branch_id .
+                            '&delivery_branch='.$this->dervery_branch_id .
+                            '&receiving_date='.$this->receivingDate.
+                            '&delivery_date='.$this->deliveryDate]);
+                            $this->dispatchBrowserEvent('simpilar');
+                            // return redirect()->to('/booking?car_id='.$car_id.
+                            //                                     '&receiving_branch='.$this->receiving_branch_id .
+                            //                                     '&delivery_branch='.$this->dervery_branch_id .
+                            //                                     '&receiving_date='.$this->receivingDate.
+                            //                                     '&delivery_date='.$this->deliveryDate  );
 
                         }
                     }else{

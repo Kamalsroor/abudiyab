@@ -30,7 +30,7 @@
                     </div>
                     <div class="price">
                         <h2>
-                            <i class="icofont icofont-cur-riyal"></i>{{$car->insurance_price}} <span style="font-size: 12px; color: #555;">يومي</span>
+                            <i class="icofont icofont-cur-riyal"></i>{{$car->insurance_price}}<span style="font-size: 12px; color: #555;">يومي</span>
                         </h2>
                     </div>
                     <div class="check">
@@ -131,7 +131,7 @@
                             </div>
                             <div class="price">
                                 <h2>
-                                    <i class="icofont icofont-cur-riyal"></i>{{$car->shield_price}}
+                                    <i class="icofont icofont-cur-riyal"></i>{{$car->shield_price}}<span style="font-size: 12px; color: #555;">يومي</span>
                                 </h2>
                             </div>
                             <div class="check">
@@ -227,7 +227,7 @@
                         </div>
                         <div class="price">
                             <h2>
-                                <i class="icofont icofont-cur-riyal"></i>{{$car->intercity_price}} <span style="font-size: 12px; color: #555;">يومي</span>
+                                <i class="icofont icofont-cur-riyal"></i>{{$car->intercity_price}}<span style="font-size: 12px; color: #555;">يومي</span>
                             </h2>
                         </div>
                         <div class="check">
@@ -360,7 +360,7 @@
                                 <p>طفلك يهمنا</p>
                             </div>
                             <div class="price">
-                                <h2><i class="icofont icofont-cur-riyal"></i>{{$car->baby_seat_price}}</h2> <span style="font-size: 12px; color: #555;">يومي</span>
+                                <h2><i class="icofont icofont-cur-riyal"></i>{{$car->baby_seat_price}}</h2>
                             </div>
                             <div class="check">
                                 <div class="form-check ">
