@@ -21,7 +21,7 @@
             <div class="carousel-inner">
                 @foreach ($sliders as $slider )
                 <div class='carousel-item {{ $loop->first ? "active" : " " }}' style="background-image: url({{$slider->getFirstMediaUrl()}});">
-                    <div class="d-flex align-items-start justify-content-center" style="height: 100%;flex-direction: column;padding-right: 60px;        background-image: linear-gradient(90deg, #00000063 15%, #00000063 50%, #00000063 85%); ">
+                    <div class="d-flex align-items-start justify-content-center" style="height: 100%;flex-direction: column;padding-right: 60px;background: #00000012;">
 
                         <h1>{{ $slider->first_header }}</h1>
                         <p style="font-size:30px;text-shadow: 1px 1px 10px #000;">{{ $slider->second_header }}</p>
@@ -64,9 +64,33 @@
             <div class="home-offers_head">
                 <span class="g-title">عروضنا</span>
             </div>
-            <div class="container-fluid offers" style="padding-top:0">
+            <div class="home-offers_content">
+                <div class="home-offers_content_background">
+                    <img src="{{ asset('front/img/SLIDERS/slide-1.jpg') }}" alt="">
+                </div>
+                <div class="home-offers_content_text">
+                    <div class="home-offers_content_text_discount wow animate__wobble">
+                        <h1>خصم <span>20%</span></h1>
+                    </div>
+                    <div class="home-offers_content_text_name">
+                        <h2>رنج روفر</h2>
+                    </div>
+                    <div class="home-offers_content_text_detailing">
+                        <h4>فخمه كبيره</h4>
+                        <h2>2021</h2>
+                    </div>
+                    <div class="home-offers_content_text_price">
+                        <s><i class="icofont icofont-cur-riyal"></i>2000</s>
+                        <h2><i class="icofont icofont-cur-riyal"></i>1200</h2>
+                    </div>
+                    <div class="home-offers_content_text_button">
+                        <button class="detailing">التفاصيل</button>
+                        <button>احجز الان</button>
+                    </div>
+                </div>
+            </div>
+            {{-- <div class="container-fluid offers" style="padding-top:0">
                 @foreach ($offers as $offer)
-
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pod" url="#" number="1">
                         <div class="hover-offer ehover1"><img class="img-responsive" src="https://saudiauto.com.sa/uploads/Untitled-1_109.jpg" alt="Barcelona" />
                             <div class="offer-content">
@@ -81,7 +105,7 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @endforeach --}}
               {{-- <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pod" url="#" number="2">
                 <div class="hover-offer ehover1"><img class="img-responsive" src="https://1.bp.blogspot.com/-F5cZ10DJ68A/Xukz4ACNbgI/AAAAAAAABAs/ndkQ6DAwv-k7MdS2_0ldSZFI3cJVUbYLwCK4BGAYYCw/s1600/3864%2Bcopy.jpg" alt="París" />
                   <div class="offer-content">
@@ -124,7 +148,7 @@
                   </div>
                 </div>
               </div> --}}
-            </div>
+            {{-- </div> --}}
           </section>
 
     <section class="container-90">
@@ -178,13 +202,26 @@
 
     </section>
 
-    <section class="home-linking-section wow animate__slideInUp" data-wow-offset="200" data-wow-duration="2s" style="    background-image: url({{optional(Settings::instance('home_links_backgraund'))->getFirstMediaUrl('home_links_backgraund')}});
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;">
-        <div>
-        <h2 >{!!Settings::locale(app()->getLocale())->get('home_description')!!}</h2>
+    <section class="home-linking-section wow animate__slideInUp" data-wow-offset="200" data-wow-duration="2s">{{-- animate__slideInUp data-wow-offset="200" data-wow-duration="2s" --}}
+        <div class="home-linking-section_right">
+            <div class="home-linking-section_right_content" style="background-image: url({{asset('front/img/download-2.jpg')}});">
+                <div>
+                    <h5>هل انت ترغب في</h5>
+                    <h2>شراء سياره</h2>
+                    <p>MotorLand is nisi aliquip exa con velit esse cillum dolore fugiatal sint occaecat excepteur ipsum dolor sit amet consectetur.</p>
+                    <a href="{{route('front.car_sales')}}">شراء سياره</a>
+                </div>
+            </div>
+        </div>
+        <div class="home-linking-section_left">
+            <div class="home-linking-section_left_content" style="background-image: url({{asset('front/img/download-1.jpg')}});">
+                <div>
+                    <h5>هل تبحث عن</h5>
+                    <h2> سياره للايجار</h2>
+                    <p>MotorLand is nisi aliquip exa con velit esse cillum dolore fugiatal sint occaecat excepteur ipsum dolor sit amet consectetur.</p>
+                    <a href="{{route('front.fleet')}}">تأجير سياره</a>
+                </div>
+            </div>
         </div>
     </section>
 

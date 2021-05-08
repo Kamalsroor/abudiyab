@@ -24,7 +24,7 @@ class CarsaleRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
+            'car_id' => ['required', 'string', 'max:255'],
         ];
     }
 

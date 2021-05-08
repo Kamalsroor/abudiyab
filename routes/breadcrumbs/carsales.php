@@ -19,7 +19,7 @@ Breadcrumbs::for('dashboard.carsales.create', function ($breadcrumb) {
 
 Breadcrumbs::for('dashboard.carsales.show', function ($breadcrumb, $carsale) {
     $breadcrumb->parent('dashboard.carsales.index');
-    $breadcrumb->push($carsale->car->name, route('dashboard.carsales.show', $carsale));
+    // $breadcrumb->push($carsale->car->name, route('dashboard.carsales.show', $carsale));
 });
 
 Breadcrumbs::for('dashboard.carsales.edit', function ($breadcrumb, $carsale) {

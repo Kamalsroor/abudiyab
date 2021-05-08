@@ -13,7 +13,7 @@ use Illuminate\Validation\ValidationException;
 use App\Http\Requests\Api\PasswordLessLoginRequest;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-
+use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     use AuthorizesRequests, ValidatesRequests;
@@ -55,12 +55,41 @@ class LoginController extends Controller
 
         event(new Login('sanctum', $user, false));
 
+
         return $user->getResource()->additional([
             'token' => $user->createTokenForDevice(
                 $request->header('user-agent')
             ),
         ]);
     }
+
+    /**
+     * Handle a login request to the application.
+     *
+     * @param \App\Http\Requests\Api\LoginRequest $request
+     * @throws \Illuminate\Validation\ValidationException
+     * @return \Illuminate\Http\Resources\Json\JsonResource
+     */
+    public function loginWithSession(LoginRequest $request)
+    {
+        $attempt=false;
+        $user = User::where(function (Builder $query) use ($request) {
+            $query->where('email', $request->username);
+            $query->orWhere('phone', $request->username);
+        })->first();
+
+        if (! $user || ! Hash::check($request->password, $user->password)) {
+            throw ValidationException::withMessages([
+                'username' => [trans('auth.failed')],
+            ]);
+        }
+        if (Auth::attempt(['email' => $user->email ,'password' => $request->password])) {
+            $attempt=true;
+        }
+        return response()->json(['attempt'=>$attempt,'user_id'=> Auth()->id()]);
+    }
+
+
 
     /**
      * Handle a login request to the application using firebase.
