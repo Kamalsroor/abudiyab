@@ -81,4 +81,6 @@ Route::apiResource('mediacenters', 'MediacenterController');
 Route::get('/select/mediacenters', 'MediacenterController@select')->name('mediacenters.select');
 Route::apiResource('purchaserequests', 'PurchaserequestController');
 Route::get('/select/purchaserequests', 'PurchaserequestController@select')->name('purchaserequests.select');
+Route::apiResource('additions', 'AdditionController');
+Route::get('/select/additions', 'AdditionController@select')->name('additions.select');
 /*  The routes of generated crud will set here: Don't remove this line  */

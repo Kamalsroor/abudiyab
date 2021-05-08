@@ -11,6 +11,8 @@ use App\Models\Custmerrequest;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 use App\Payment\MasterCardPayment;
+use Illuminate\Support\Facades\Http;
+
 class BookingSteps extends Component
 {
     public $currentStep = 1;
@@ -293,35 +295,62 @@ class BookingSteps extends Component
 
         if ($this->paymentType == "visa" || $this->paymentType == "mada") {
             $orderID =  $this->order->id;
-            $merchantID = "3000000721";
-            $merchantPassword = "8c9e1db3899b93bd92348bc176cc109c";
-            // $merchantID = "TEST3000000721";
-            // $merchantPassword = "0c7fb828291074dc52486465bbf18e69";
+            // $merchantID = "3000000721";
+            // $merchantPassword = "8c9e1db3899b93bd92348bc176cc109c";
+            $merchantID = "TEST3000000721";
+            $merchantPassword = "0c7fb828291074dc52486465bbf18e69";
 
-            $sessionID = MasterCardPayment::createSessionSandBox($orderID, $merchantID, $merchantPassword);
+
+            $orderID = $orderID;
+            $merchantID = $merchantID;
+            $merchantPassword = $merchantPassword;
+
+            $data = [
+                'correlationId' => "123",
+                'session' => [
+                    'authenticationLimit' => 10,
+                ]
+            ];
+
+            // $test = MasterCardPayment::createSessionSandBox();
+            $response = Http::contentType("application/json")
+            ->withBasicAuth('merchant.'.$merchantID, $merchantPassword)
+            ->withHeaders([
+                'Accept' => 'application/json'
+            ])->post(config('BankPayment.ApiUrlTest'). '/merchant/'.$merchantID.'/session', $data)->json();
+
+            $sessionID = $response;
+            dd($sessionID);
+            if ($sessionID['result'] == "SUCCESS") {
+                # code...
+                return $sessionID['session']['id'];
+            }
+
+
+            // $sessionID = MasterCardPayment::createSessionSandBox($orderID, $merchantID, $merchantPassword);
             // dd($sessionID);
             // $createTransactionAuthorize = MasterCardPayment::createTransactionAuthorize($orderID, $merchantID, $merchantPassword,$sessionID);
             // dd($createTransactionAuthorize);
 
-            $successURL = "completeCallback";
-            $failURL = "errorCallback";
-            $totalPrice = $this->total;
-            // $totalPrice = 5;
-            $siteName = "test";
-            $siteAddress = "tetst";
-            $siteEmail = "kamal.s.sroor@gmail.com";
-            $sitePhone = "01012316954";
-            $siteLogoURL = "https://abudiyab.test/";
-            $this->paymentData = [
-                'merchant' => $merchantID,
-                'order_amount' => $totalPrice,
-                'order_currency' => config('BankPayment.currency'),
-                'order_id' => $orderID,
-                'session_id' => $sessionID,
-                'merchant_name' => $siteName,
-            ];
-            // dd($this->paymentData );
-            $this->dispatchBrowserEvent('openPayment', $this->paymentData);
+            // $successURL = "completeCallback";
+            // $failURL = "errorCallback";
+            // $totalPrice = $this->total;
+            // // $totalPrice = 5;
+            // $siteName = "test";
+            // $siteAddress = "tetst";
+            // $siteEmail = "kamal.s.sroor@gmail.com";
+            // $sitePhone = "01012316954";
+            // $siteLogoURL = "https://abudiyab.test/";
+            // $this->paymentData = [
+            //     'merchant' => $merchantID,
+            //     'order_amount' => $totalPrice,
+            //     'order_currency' => config('BankPayment.currency'),
+            //     'order_id' => $orderID,
+            //     'session_id' => $sessionID,
+            //     'merchant_name' => $siteName,
+            // ];
+            // // dd($this->paymentData );
+            // $this->dispatchBrowserEvent('openPayment', $this->paymentData);
         }else{
 
             // 'عميلنا العزيز شكرا لتعاملك مع أبو ذياب طلبك قيد التنفيذ،رقم الحجز هو 14913,  للاستعلام عن الحجز فضلاً الاتصال بالرقم المجاني 920026600'
