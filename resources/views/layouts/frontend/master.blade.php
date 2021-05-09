@@ -108,7 +108,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <div class="social-media-links d-none d-md-block">
             <a href="/aboutus" ><i class="flaticon-information" style="font-size: 25px;"></i></a>
-            <a href="https://wa.me/996920026600" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://wa.me/00966557492493" target="_blank"><i class="fab fa-whatsapp"></i></a>
             <a href="tel:996920026600"><i class="fas fa-phone-alt"></i></a>
         </div>
 

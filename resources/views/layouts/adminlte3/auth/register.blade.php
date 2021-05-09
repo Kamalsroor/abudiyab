@@ -5,7 +5,7 @@
                 <h1 class=" mb-0" >إنشاء حساب جديد</h1>
             </div>
             <div class="content" style="padding: 30px">
-                <form action="{{ route('register') }}"  method="post" enctype="multipart/form-data" style="background-color: #7b7b7bbf;border-radius:30px;">
+                <form action="{{ route('register') }}"  method="post" enctype="multipart/form-data" style="background-color: rgb(177 177 177 / 75%);border-radius:30px;">
                 @csrf
                 <div class="row py-3 pt-5 px-4 mx-0">
                     <div class="col-md-2 col-12">
