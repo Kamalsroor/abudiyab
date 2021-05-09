@@ -26,6 +26,14 @@
                         <th width="200">@lang('sliders.attributes.second_header')</th>
                         <td>{{ $slider->second_header}}</td>
                     </tr>
+                    <tr>
+                        <th>مقاس الصورة</th>
+                        <td> 1440*860</td>
+                    </tr>
+                    <tr>
+                        <th>مقاس الصورة للجوال</th>
+                        <td>480*500</td>
+                    </tr>
                     @if($slider->getFirstMedia())
                         <tr>
                             <th width="200">@lang('sliders.attributes.image')</th>

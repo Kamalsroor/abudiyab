@@ -36,6 +36,8 @@ import Vue from 'vue';
 import VueInternationalization from 'vue-i18n';
 import Locale from '../../js/vue-i18n-locales.generated';
 import FileUploader from 'laravel-file-uploader';
+import IconPicker from "vue-icon-picker";
+import IconsPicker from "vue-icons-picker";
 
 Vue.use(FileUploader);
 Vue.use(VueInternationalization);
@@ -54,6 +56,8 @@ const i18n = new VueInternationalization({
  */
 
 Vue.component('select2', require('../components/Select2Component').default);
+Vue.component('icon-picker', IconPicker)
+Vue.component('icons-picker', IconsPicker)
 
 const app = new Vue({
     el: '#app',

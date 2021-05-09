@@ -51,25 +51,28 @@
                 <input type="radio" value="points" id="points" name="paymentType" wire:model="paymentType">
                 <label for="points">النقاط</label>
             </div>
+
+
+
         </div>
-        <div id="bg" class="display-none {{ $paymentType != "visa" ? 'display-none' : '' }} bay-g ">
+        <div id="bg" class="{{ $paymentType != "visa" ? 'display-none' : '' }} bay-g ">
             <div class="inputs">
                 <div >
                     <p>*اسم البطاقه</p>
-                    <input  id="nni" type="text">
+                    <input  id="nni"   wire:model="nameOnCard" type="text">
                 </div>
                 <div >
                     <p>*رقم البطاقه</p>
-                    <input  id="v1" type="number">
+                    <input  id="v1"  wire:model="CardNumber" type="number">
                 </div>
                 <div class="dd">
                     <p>*تاريخ الانتهاء</p>
-                    <input maxlength="2"  onkeyup="yea()" id="ye" placeholder="الشهر" type="text">
-                    <input maxlength="2" onkeyup="mon()" id="mo" placeholder="الموديل" type="text">
+                    <input maxlength="2"  wire:model="expiry_month" onkeyup="yea()" id="ye" placeholder="الشهر" type="text">
+                    <input maxlength="2" wire:model="expiry_year" onkeyup="mon()" id="mo" placeholder="الموديل" type="text">
                 </div>
                 <div >
                     <p>*رقم CCV</p>
-                    <input maxlength="3" id="ccv" data="000 000" onkeyup="nnou()" maxlength="3" type="number">
+                    <input maxlength="3" wire:model="securityCode"  id="ccv" data="000 000" onkeyup="nnou()" maxlength="3" type="number">
                 </div>
             </div>
             <div class="card">

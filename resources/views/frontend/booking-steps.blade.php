@@ -38,6 +38,17 @@
 
 
         });
+        window.addEventListener('openPaymenthtmlBodyContent', event => {
+            console.log(event.detail);
+
+
+            var dstFrame = document.getElementById('openPaymenthtmlBodyContent');
+            var dstDoc = dstFrame.contentDocument || dstFrame.contentWindow.document;
+            dstDoc.write(event.detail);
+            dstDoc.close()
+
+            // $('#openPaymenthtmlBodyContent').html(event.detail);
+        });
     </script>
 
     <link rel="stylesheet" type="text/css" href="{{asset('front/admin/files/assets/icon/icofont/css/icofont.css')}}">
@@ -116,14 +127,21 @@
                         window.livewire.emit('payment:complete')
 
                     }
+                    function closeIFrame(){
+                        $('#openPaymenthtmlBodyContent').remove();
+                        console.log('payment Done');
+                        window.livewire.emit('payment:complete')
 
-            window.addEventListener('sweetalert',function(){
+                    }
+
+            window.addEventListener('sweetalert', event => {
                 Swal.fire({
-                    title: "يرجي تحديث البيانات الشخصيه",
-                    icon:"error",
+                    title: event.detail.title,
+                    text: event.detail.text,
+                    icon: event.detail.type,
                     confirmButtonText: 'موافق'
                 })
-            })
+            });
             </script>
 
     @endsection

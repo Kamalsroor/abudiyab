@@ -104,7 +104,7 @@ class BookingController extends Controller
         }
 
         // dd($sessionID);
-        // $createTransactionAuthorize = MasterCardPayment::createTransactionAuthorize($orderID, $merchantID, $merchantPassword,$sessionID);
+        $createTransactionAuthorize = MasterCardPayment::createTransactionAuthorize($orderID, $merchantID, $merchantPassword,$sessionID);
         // dd($createTransactionAuthorize);
 
 

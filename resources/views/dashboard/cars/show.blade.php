@@ -140,6 +140,11 @@
                         <td>{{ trans('cars.features_enable.' .$is_intercity) }}</td>
                     </tr>
 
+                    <tr>
+                        <th >مقاس الصورة</th>
+                        <td>327*188</td>
+                    </tr>
+
                     @if($car->getFirstMedia())
                         <tr>
                             <th >@lang('cars.attributes.image')</th>
