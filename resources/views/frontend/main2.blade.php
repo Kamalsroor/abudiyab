@@ -222,20 +222,20 @@
         <div class="home-linking-section_right">
             <div class="home-linking-section_right_content" style="background-image: url({{asset('front/img/download-2.jpg')}});">
                 <div>
-                    <h5>هل انت ترغب في</h5>
-                    <h2>شراء سياره</h2>
+                    <h5>هل تبحث عن</h5>
+                    <h2> ايجار سيارة</h2>
                     <p>MotorLand is nisi aliquip exa con velit esse cillum dolore fugiatal sint occaecat excepteur ipsum dolor sit amet consectetur.</p>
-                    <a href="{{route('front.car_sales')}}">شراء سياره</a>
+                    <a href="{{route('front.fleet')}}">تأجير سياره</a>
                 </div>
             </div>
         </div>
         <div class="home-linking-section_left">
             <div class="home-linking-section_left_content" style="background-image: url({{asset('front/img/download-1.jpg')}});">
                 <div>
-                    <h5>هل تبحث عن</h5>
-                    <h2> سياره للايجار</h2>
+                    <h5>هل انت ترغب في</h5>
+                    <h2>شراء سياره</h2>
                     <p>MotorLand is nisi aliquip exa con velit esse cillum dolore fugiatal sint occaecat excepteur ipsum dolor sit amet consectetur.</p>
-                    <a href="{{route('front.fleet')}}">تأجير سياره</a>
+                    <a href="{{route('front.car_sales')}}">شراء سياره</a>
                 </div>
             </div>
         </div>
