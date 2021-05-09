@@ -2,10 +2,10 @@
 
 <div class="main-navbar container-fluid d-md-block d-lg-block">
     <div class="container-fluid mx-0">
-        <div class="row ">
+        <div class="row">
             <div class="col-1 d-flex justify-content-center align-items-center">
                 <a class="btn " data-toggle="tooltip" data-placement="bottom" title="القائمة الرئيسية" id="hamburger-bars">
-                    <i class="fas fa-bars"  ></i>
+                    <i class="fas fa-bars"></i>
                 </a>
 
             </div>

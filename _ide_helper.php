@@ -14795,6 +14795,17 @@
      
 }
 
+    namespace kamalsroor\MoyasarApi { 
+            /**
+     * 
+     *
+     */ 
+        class MoyasarFaced {
+         
+    }
+     
+}
+
     namespace Barryvdh\Debugbar { 
             /**
      * 
@@ -21536,6 +21547,7 @@ namespace  {
             class Validator extends \Illuminate\Support\Facades\Validator {}
             class View extends \Illuminate\Support\Facades\View {}
             class Excel extends \Maatwebsite\Excel\Facades\Excel {}
+            class Moyasar extends \kamalsroor\MoyasarApi\MoyasarFaced {}
             class Debugbar extends \Barryvdh\Debugbar\Facade {}
             class L5Swagger extends \L5Swagger\L5SwaggerFacade {}
             class Breadcrumbs extends \Diglactic\Breadcrumbs\Breadcrumbs {}

@@ -103,16 +103,11 @@ class MasterCardPayment extends Controller
 		self::$merchantPassword = $merchantPassword;
 
         $data = [
-			'apiOperation' => config('BankPayment.apiOperation'),
-			'interaction' => [
-                'operation' => 'PURCHASE'
-            ],
-			'order' => [
-				'id' => self::$orderID,
-				'currency' => config('BankPayment.currency')
-			]
+			'correlationId' => "123",
+			'session' => [
+				'authenticationLimit' => 10,
+            ]
 		];
-
 
         // $test = MasterCardPayment::createSessionSandBox();
         $response = Http::contentType("application/json")
@@ -156,6 +151,7 @@ class MasterCardPayment extends Controller
                 'type' => 'CARD',
                 'provided' => [
                     'card' => [
+                        'nameOnCard' => 'kamal salah',
                         'number' => '5297411991746553',
                         'expiry' => [
                             'month' => '06',
@@ -168,20 +164,14 @@ class MasterCardPayment extends Controller
             ]
 		];
 
-        // 'number' => '5297411991746553',
-        // 'expiry' => [
-        //     'month' => '06',
-        //     'year' => '23',
-        // ],
-        // 'securityCode' => '578',
 
-        // https://ap-gateway.mastercard.com/api/rest/version/59/merchant/{merchantId}/order/{orderid}/transaction/{transactionid}
-        // $test = MasterCardPayment::createSessionSandBox();
+   
+
         $response = Http::contentType("application/json")
         ->withBasicAuth('merchant.'.self::$merchantID, self::$merchantPassword)
         ->withHeaders([
             'Accept' => 'application/json'
-        ])->put(config('BankPayment.ApiUrl'). '/merchant/'.self::$merchantID.'/order/'.self::$orderID.'/transaction/1003', $data)->json();
+        ])->put(config('BankPayment.ApiUrl'). '/merchant/'.self::$merchantID.'/order/'.self::$orderID.'/transaction/1088', $data)->json();
 
         self::$sessionID = $response;
         return self::$sessionID ;
@@ -217,7 +207,7 @@ class MasterCardPayment extends Controller
         ->withBasicAuth('merchant.'.self::$merchantID, self::$merchantPassword)
         ->withHeaders([
             'Accept' => 'application/json'
-        ])->post(config('BankPayment.ApiUrlTest'). '/merchant/'.self::$merchantID.'/session', $data)->json();
+        ])->post(config('BankPayment.ApiUrl'). '/merchant/'.self::$merchantID.'/session', $data)->json();
 
         self::$sessionID = $response;
 

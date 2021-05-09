@@ -11,6 +11,10 @@
                         <th width="200">@lang('partners.attributes.name')</th>
                         <td>{{ $partner->name }}</td>
                     </tr>
+                    <tr>
+                        <th >مقاس الصورة</th>
+                        <td>154*159</td>
+                    </tr>
                     @if($partner->getFirstMedia())
                         <tr>
                             <th width="200">@lang('partners.attributes.image')</th>

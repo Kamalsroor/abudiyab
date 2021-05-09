@@ -41,6 +41,8 @@
         "webpack-rtl-plugin": "^2.0.0"
     },
     "dependencies": {
+        "vue-icon-picker": "1.0.0",
+        "vue-icons-picker": "1.1.2",
         "animate.css": "^4.1.1",
         "bootstrap": "^4.6.0",
         "nouislider": "^14.7.0",

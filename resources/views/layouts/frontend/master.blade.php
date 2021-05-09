@@ -20,10 +20,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     @include('layouts.frontend.include.links')
 
 
-
-
     @yield('styles')
     @stack('styles')
+
+
     <!-- Hotjar Tracking Code for https://abudiyab-soft.com/ -->
     <script>
         (function(h,o,t,j,a,r){
