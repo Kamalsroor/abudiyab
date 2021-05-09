@@ -67,6 +67,16 @@
         console.log(data);
         @this.set('dervery_branch_id', data);
     });
+
+
+    window.addEventListener('sweetalert', event => {
+        Swal.fire({
+            title: event.detail.title,
+            text: event.detail.text,
+            icon: event.detail.type,
+            confirmButtonText: 'موافق'
+        })
+    });
 </script>
 @endpush
 

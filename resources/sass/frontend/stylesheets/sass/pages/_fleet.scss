@@ -117,20 +117,40 @@
                 }
             }
             .category-icons {
-                input {
-                    display: none;
-                }
-                label {
-                    display: flex;
-                    flex-direction: column;
-                    cursor: pointer;
-                    i {
-                        font-size: 64px;
-                        height: 64px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                div {
+                    width: 49%;
+                    padding-left: 0;
+                    padding-right: 0;
+                    margin-bottom: 5px;
+                    input {
+                        display: none;
                     }
-                    &.active {
-                        color: get-color(secondary);
-                        font-weight: 900;
+                    label {
+                        display: flex;
+                        flex-direction: column;
+                        cursor: pointer;
+                        border: 1px solid #cccccc81;
+                        text-align: center;
+                        border-radius: 8px;
+                        transition: 0.6s;
+                        padding: 14px 0;
+                        img {
+                            margin: auto;
+                            width: 55px;
+                        }
+                        &.active,
+                        &:hover {
+                            box-shadow: 2px 2px 3px #ccc;
+                            transition: 0.6s;
+                        }
+                        &.active {
+                            color: get-color(secondary);
+                            font-weight: 900;
+                            border-color: rgba(181, 33, 34, .86);
+                        }
                     }
                 }
             }
@@ -267,7 +287,8 @@ div.slider-handle.min-slider-handle.round {
     &_center {
         @include location(20%, 50%);
         background-color: #fff;
-        width: 800px;
+        max-width: 800px;
+        width: 98%;
         border-radius: 8px;
         box-shadow: 4px 9px 20px #00000061;
         overflow: hidden;
@@ -293,15 +314,17 @@ div.slider-handle.min-slider-handle.round {
             h2 {
                 color: #222;
                 font-weight: 500;
-                margin-bottom: 40px;
+                margin-bottom: 50px;
                 color: rgb(255, 30, 30);
                 span {
                     border-bottom: 1px solid;
                 }
             }
             &_definition {
+                margin-top: 20px;
                 width: 100%;
                 color: #333;
+                font-size: 20px;
             }
             button {
                 display: block;

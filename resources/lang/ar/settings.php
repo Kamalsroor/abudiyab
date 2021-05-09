@@ -22,6 +22,8 @@ return [
         'privacy' => 'صفحة سياسة الموقع',
         'branches' => 'صفحه الفروع',
         'visa_offer' => 'خصم الفيزا',
+        'fleet' => 'صفحه الاسطول',
+
     ],
     'dashboard_templates' => [
         'adminlte3' => 'Adminlte 3',
@@ -48,6 +50,10 @@ return [
         'email' => 'البريد الالكتروني للتواصل',
         'branch_name' => 'الفرع',
         'huawei' => 'رابط تطبيف الهاواوي',
+
+        'fleet_title' => 'العنوان الرئيسي',
+        'fleet_content' => 'عنوان العرض',
+        'fleet_background' => 'الخلفيه',
 
         'copyright' => 'حقوق النشر',
         '%copyright%' => 'حقوق النشر',
