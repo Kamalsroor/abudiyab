@@ -75,6 +75,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         </div>
 
+
+        <div class="fleet-popup" style="display: none">
+            <div class="fleet-popup_center">
+
+                <span class="fleet-popup_center_cancel" onclick="cancel()">
+                    <i class="fas fa-times"></i>
+                </span>
+
+                <div class="fleet-popup_center_text">
+                    <h2><span> أو مشابهة - ماذا تعني؟ </span></h2>
+                    <div class="fleet-popup_center_text_definition popup_text" style="font-size: 1.3em;font-weight: 600">
+                        تلتزم شركة ابو ذياب بتوفير نفس الموديل وسنة الصنع التي قمت باختيارها وقت الحجز و في حال عدم توفر السيارة المختارة عند تنفيذ الحجز تلتزم يـلو بتوفير سيارة من نفس الفئة ونفس سنة الصنع او سنة صنع اعلى، وفي حال عدم توفر سيارة من نفس الفئة يتم الترقية لفئة اعلى بدون اي تكاليف أضافية
+                    </div>
+                    <ul id="bNames"  style="display: none">
+                    </ul>
+                    <button class="primary-btn btn-hover btn-curved agreetosimilar" onclick="cancel()">موافق</button>
+                </div>
+            </div>
+        </div>
+
         <!--================
             social media
         =================-->
@@ -88,7 +108,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <div class="social-media-links d-none d-md-block">
             <a href="/aboutus" ><i class="flaticon-information" style="font-size: 25px;"></i></a>
-            <a href="https://wa.me/996920026600" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://wa.me/00966557492493" target="_blank"><i class="fab fa-whatsapp"></i></a>
             <a href="tel:996920026600"><i class="fas fa-phone-alt"></i></a>
         </div>
 
@@ -124,11 +144,46 @@ scratch. This page gets rid of all links and provides the needed markup only.
         let csrf_token = "{{ csrf_token() }}";
         function openBookingModel(id) {
             window.livewire.emit('setCarId',id);
-
+            console.log('modaaaaaaaaal');
             $('#BookingModel').modal('show');
         }
+        function cancel(){
+            $('.fleet-popup').css('display','none');
+        }
+        </script>
 
+<script>
+    window.addEventListener('fleetalert',function(data){
+        $('.fleet-popup_center_text h2 span').text(data.detail.title);
+        if(! Array.isArray(data.detail.body))
+        {
+            $('.popup_text').text(data.detail.body);
+        }
+        else{
+            $('.popup_text').text('');
+
+        }
+        let branchesList=''
+        if(Array.isArray(data.detail.body))
+        {
+            // branchesNames
+            for (const name of data.detail.body) {
+                branchesList += `<li style='font-size: 1.3em;font-weight: 600'>${name}</li>`;
+                console.log(name);
+            }
+            console.log(branchesList);
+            $('#bNames').html(branchesList);
+            $('#bNames').css('display','block');
+        }
+        if(typeof data.detail.booking !== 'undefined')
+        {
+            $('.agreetosimilar').on('click',booking);
+        }
+        $('.fleet-popup').css('display','block');
+
+        });
     </script>
+
     <script src="{{ asset(mix('/js/frontend.js')) }}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
@@ -140,6 +195,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             });
             $('body').css('overflow','auto');
         });
+
     </script>
     <!-- ------------END------SCRIPT------LOAD------------ -->
 

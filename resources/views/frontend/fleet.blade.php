@@ -12,29 +12,14 @@
             }
         </style>
     @endsection
-    <div class="fleet-popup" style="display: none">
-        <div class="fleet-popup_center">
 
-            <span class="fleet-popup_center_cancel" onclick="$('.home-offers_price-suggestion').toggleClass('price-suggestion-s');$('.home-offers_price-suggestion').toggleClass('price-suggestion-h');">
-                <i class="fas fa-times"></i>
-            </span>
-
-            <div class="fleet-popup_center_text">
-                <h2><span> أو مشابهة - ماذا تعني؟ </span></h2>
-                <div class="fleet-popup_center_text_definition">
-                    تلتزم شركة ابو ذياب بتوفير نفس الموديل وسنة الصنع التي قمت باختيارها وقت الحجز و في حال عدم توفر السيارة المختارة عند تنفيذ الحجز تلتزم يـلو بتوفير سيارة من نفس الفئة ونفس سنة الصنع او سنة صنع اعلى، وفي حال عدم توفر سيارة من نفس الفئة يتم الترقية لفئة اعلى بدون اي تكاليف أضافية
-                </div>
-                <button class="primary-btn btn-hover btn-curved" onclick="booking()">موافق</button>
-            </div>
-
-        </div>
-    </div>
     <div class="container-fluid m-0 p-0" style="background-color: #dcdcdc8c">
         <!-- fleet hero pic -->
-        <div style="background-image: url({{asset('front/img/Webp.net-compress-image.jpg')}});height:340px;background-position: center;background-size: cover;background-repeat: no-repeat">
+        <div style="background-image: url({{optional(Settings::instance('fleet_background'))->getFirstMediaUrl('fleet_background')}});height:340px;background-position: center;background-size: cover;background-repeat: no-repeat">
          {{-- <img class="w-100" src="{{asset('front/img/Webp.net-compress-image.jpg')}}" alt="hero image"> --}}
          <div class="d-flex justify-content-center align-items-center" style="background-color: #000000c7;width:100%;height: 100%;">
-            <h1 class="main-page-title" style="font-size: 50px; padding-bottom:10px; font-weight:600;color:white;border-bottom:2px red solid;">الأسطــــول</h1>
+            <h1 class="main-page-title" style="font-size: 50px; padding-bottom:10px; font-weight:600;color:white;border-bottom:2px red solid;">{{Settings::locale(app()->getLocale())->get('fleet_title')}}</h1>
+            {{-- <h1 class="main-page-title" style="font-size: 50px; padding-bottom:10px; font-weight:600;color:white;border-bottom:2px red solid;">{!!Settings::locale(app()->getLocale())->get('fleet_content')!!}</h1> --}}
          </div>
         </div>
     </div>
