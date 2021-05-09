@@ -353,7 +353,6 @@ $(document).ready(function() {
     }
 
     window.addEventListener("notLogin", function() {
-        console.log("i'm here");
         $('#loginModal').modal('toggle');
     })
 

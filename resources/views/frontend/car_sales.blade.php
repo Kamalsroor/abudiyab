@@ -2,9 +2,9 @@
     <section class="car-sales">
         {{-- {{optional(Settings::instance('car_sales_backgraund'))->getFirstMediaUrl('car_sales_backgraund')}} --}}
         {{-- {!! Settings::locale(app()->getLocale())->get('car_sales_content')!!} --}}
-        <section class="car-sales_head" style="background: url('https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BB1bt6T1.img?h=552&w=750&m=6&q=60&u=t&o=f&l=f');background-repeat: no-repeat; background-size: cover;">
+        <section class="car-sales_head" style="background: url({{optional(Settings::instance('car_sales_backgraund'))->getFirstMediaUrl('car_sales_backgraund')}})">
             <div class="car-sales_head_overlay-black">
-                <h1>صفحة بيع السيارات</h1>
+                <h1>{{Settings::locale(app()->getLocale())->get('car_sales_title')}}</h1>
             </div>
         </section>
         <car_seles remote-url="{{route('api.carsales.index')}}" >
