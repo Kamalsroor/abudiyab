@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "22c4eec065c943accad41f3f6bd639a5",
+    "content-hash": "8bd7f3f99b140e585e21f9621d9261c3",
     "packages": [
         {
             "name": "ahmed-aliraqi/laravel-media-uploader",
@@ -2009,6 +2009,59 @@
             "time": "2021-03-13T18:04:52+00:00"
         },
         {
+            "name": "kamalsroor/moyasarapi",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Kamalsroor/MoyasarApi.git",
+                "reference": "5ca7b7ae8ac0e76adf4ac841bf299162c6b579da"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Kamalsroor/MoyasarApi/zipball/5ca7b7ae8ac0e76adf4ac841bf299162c6b579da",
+                "reference": "5ca7b7ae8ac0e76adf4ac841bf299162c6b579da",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.2",
+                "php": ">= 7.1.0"
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "kamalsroor\\MoyasarApi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kamal Sroor",
+                    "email": "kamal.s.sroor@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Moyasar Api Package With Laravel 8.0 above ^ created by kamalsroor :)",
+            "keywords": [
+                "Banking",
+                "Moyasar",
+                "api",
+                "getaway",
+                "integration",
+                "laravel",
+                "payment",
+                "php",
+                "phpanonymous"
+            ],
+            "support": {
+                "issues": "https://github.com/Kamalsroor/MoyasarApi/issues",
+                "source": "https://github.com/Kamalsroor/MoyasarApi/tree/v1.0.1"
+            },
+            "time": "2021-05-05T10:47:23+00:00"
+        },
+        {
             "name": "kreait/clock",
             "version": "1.1.0",
             "source": {
@@ -2479,6 +2532,54 @@
             "time": "2020-09-09T22:28:14+00:00"
         },
         {
+            "name": "laratrist/laravel-slugs",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laratrist/laravel-slugs.git",
+                "reference": "6fca7b5494f5c8b6439fa6a9ad7993bc45e3e5f9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laratrist/laravel-slugs/zipball/6fca7b5494f5c8b6439fa6a9ad7993bc45e3e5f9",
+                "reference": "6fca7b5494f5c8b6439fa6a9ad7993bc45e3e5f9",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^6.0|^7.0|^8.0",
+                "illuminate/support": "^6.0|^7.0|^8.0",
+                "php": "^7.4"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "laratrist\\LaravelSlugs\\SlugsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "laratrist\\LaravelSlugs\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "laratrist"
+                }
+            ],
+            "description": "This package is a useful tool to laratrist/laravel-slugs",
+            "support": {
+                "issues": "https://github.com/laratrist/laravel-slugs/issues",
+                "source": "https://github.com/laratrist/laravel-slugs/tree/1.0.2"
+            },
+            "time": "2021-05-02T11:24:13+00:00"
+        },
+        {
             "name": "laravel/framework",
             "version": "v8.32.1",
             "source": {
@@ -2891,6 +2992,56 @@
                 "source": "https://github.com/laravel/ui/tree/v3.2.0"
             },
             "time": "2021-01-06T19:20:22+00:00"
+        },
+        {
+            "name": "laravel_payment/telr",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bafi/Telr.git",
+                "reference": "b7580557afbb33dd6e8b9ff4d1d677e34e15ecd5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bafi/Telr/zipball/b7580557afbb33dd6e8b9ff4d1d677e34e15ecd5",
+                "reference": "b7580557afbb33dd6e8b9ff4d1d677e34e15ecd5",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "TelrGateway\\TelrServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TelrGateway\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Moustafa Gouda",
+                    "email": "mgouda@arkdev.net"
+                }
+            ],
+            "description": "Pay online through telr payment gateway",
+            "keywords": [
+                "laravel",
+                "payment",
+                "telr",
+                "telr payment"
+            ],
+            "support": {
+                "issues": "https://github.com/bafi/Telr/issues",
+                "source": "https://github.com/bafi/Telr/tree/1.2.1"
+            },
+            "time": "2020-09-09T15:41:34+00:00"
         },
         {
             "name": "laravelcollective/html",

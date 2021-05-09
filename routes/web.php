@@ -1,5 +1,7 @@
 <?php
 
+use Composer\Util\Http\Response;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +31,8 @@ Route::get('locale/{locale}', 'LocaleController@update')->name('locale')->where(
 Route:: get('/getCarsCategories', 'Web\SiteController@getCarsCategories');
 
 Route::as('front.')->group(function () {
+
+
     Route::get('/', 'Frontend\FrontendController@index')->name('main');
     Route::get('/fleet', 'Frontend\FrontendController@fleet')->name('fleet');
     Route::get('/booking', 'Frontend\FrontendController@booking')->name('booking');
@@ -80,3 +84,6 @@ Route::as('front.')->group(function () {
     //     return view('frontend.register');
     // })->name('register.index');
 });
+
+
+

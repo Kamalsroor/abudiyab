@@ -52,10 +52,9 @@
                                 <p class="mb-0" >1234567890</p>
                             </div>
 
-                            <div class="d-flex justify-content-between" >
-                                @dd(Auth()->user())
+                            <div class="d-flex justify-content-between">
                                 <p class="mb-0" >{{Auth()->user()->membership->name}}</p>
-                                <p class="mb-0" >{{Auth()->user()->membership->translate('en')->name}}   </p>
+                                <p class="mb-0" >{{Auth()->user()->membership->translate('en')->name}}</p>
                             </div>
 
                         </div>

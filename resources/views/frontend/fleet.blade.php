@@ -12,6 +12,23 @@
             }
         </style>
     @endsection
+    <div class="fleet-popup" style="display: none">
+        <div class="fleet-popup_center">
+
+            <span class="fleet-popup_center_cancel" onclick="$('.home-offers_price-suggestion').toggleClass('price-suggestion-s');$('.home-offers_price-suggestion').toggleClass('price-suggestion-h');">
+                <i class="fas fa-times"></i>
+            </span>
+
+            <div class="fleet-popup_center_text">
+                <h2><span> أو مشابهة - ماذا تعني؟ </span></h2>
+                <div class="fleet-popup_center_text_definition">
+                    تلتزم شركة ابو ذياب بتوفير نفس الموديل وسنة الصنع التي قمت باختيارها وقت الحجز و في حال عدم توفر السيارة المختارة عند تنفيذ الحجز تلتزم يـلو بتوفير سيارة من نفس الفئة ونفس سنة الصنع او سنة صنع اعلى، وفي حال عدم توفر سيارة من نفس الفئة يتم الترقية لفئة اعلى بدون اي تكاليف أضافية
+                </div>
+                <button class="primary-btn btn-hover btn-curved" onclick="booking()">موافق</button>
+            </div>
+
+        </div>
+    </div>
     <div class="container-fluid m-0 p-0" style="background-color: #dcdcdc8c">
         <!-- fleet hero pic -->
         <div style="background-image: url({{asset('front/img/Webp.net-compress-image.jpg')}});height:340px;background-position: center;background-size: cover;background-repeat: no-repeat">
@@ -60,6 +77,13 @@
             console.log(i);
         }
 
+        window.addEventListener('simpilar',function(){
+            // fleet-popup
+            $('.fleet-popup').css('display','block');
+        })
+        function booking(){
+            window.livewire.emit('redirectToBookingSteps');
+        }
  </script>
 
 

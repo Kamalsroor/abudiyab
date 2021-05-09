@@ -11,7 +11,12 @@ use App\Models\Custmerrequest;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 use App\Payment\MasterCardPayment;
+<<<<<<< HEAD
+use Cookie;
 use Illuminate\Support\Facades\Http;
+=======
+use Settings;
+>>>>>>> 31d604a10d9e15168d424b9da92af9d9ee648938
 
 class BookingSteps extends Component
 {
@@ -36,11 +41,11 @@ class BookingSteps extends Component
     public $successMsg = '';
     public $selectedtypes;
     public $visa_buy=0;
-    public $authorization_fee=3;
+    public $authorization_fee=0;
     public $start_date=0;
     public $end_date=0;
-    public $membership_discount=5;
-    public $promotional_discount=10;
+    public $membership_discount=0;
+    public $promotional_discount=0;
     public $featureArray=[
         'baby_seat_price'=>'مقعد اطفال',
         'shield_price'=>'درع أبو ذياب',
@@ -54,6 +59,7 @@ class BookingSteps extends Component
     public $features_price=0;
     public $car_price=0;
     public $total=0;
+    public $visa_price=0;
 
     protected $listeners = [
         'payment:cancelled' => 'paymentCancelled',
@@ -64,10 +70,28 @@ class BookingSteps extends Component
 
     public function mount()
     {
-
         $this->car = Car::find($this->data['car_id']);
         $this->reciving_date=$this->data['receiving_date'];
         $this->delivery_date=$this->data['delivery_date'];
+        $offerLast = $this->car->offers->last();
+        if ($offerLast) {
+            if($offerLast->to->lt(now()))
+            {
+                $this->promotional_discount = 0;
+            }
+            else
+            {
+                if($offerLast->discount_type == "percentage")
+                {
+                    $this->promotional_discount = (($offerLast->discount_value /100) * ($this->car->price1));
+                }
+                else if($offerLast->discount_type == 'fixed')
+                {
+                    $this->promotional_discount = $offerLast->discount_value;
+                }
+            }
+        }
+
         $this->start_date=$this->reciving_date;
         $this->end_date=$this->delivery_date;
         $this->delivery_date = Carbon::parse($this->delivery_date);
@@ -76,14 +100,13 @@ class BookingSteps extends Component
         $this->price = ($this->car->price1 * $this->diff) ;
         $this->receiving_branch = Branch::find($this->data['receiving_branch']);
         $this->delivery_branch = Branch::find($this->data['delivery_branch']);
+        $this->membership_discount = ((Auth()->user()->membership->rental_discount /100) * ($this->car->price1));
     }
 
 
 
     public function render()
     {
-
-
         if ($this->order_id == null) {
             $this->order_id = $this->order ? $this->order->id : null ;
         }
@@ -169,7 +192,8 @@ class BookingSteps extends Component
         $this->features_price = $features_price;
         $visa_buy = 0;
         if ($this->visa_buy) {
-            $visa_buy = $this->car_price * 0.15 ; //visa discount amount
+        $visa_buy = $this->car_price * (Settings::get('visa_offer') / 100) ; //visa discount amount
+        $this->visa_price=$visa_buy;
         }
 
         $this->price = ($this->car_price - $visa_buy ) + $features_price + $this->authorization_fee ;
@@ -197,6 +221,7 @@ class BookingSteps extends Component
         //     'price' => 'required|numeric',
         //     'detail' => 'required',
         // ]);
+        $this->authorization_fee=3;
         $this->currentStep = 2;
 
 
@@ -311,35 +336,95 @@ class BookingSteps extends Component
 
         if ($this->paymentType == "visa" || $this->paymentType == "mada") {
             $orderID =  $this->order->id;
-            // $merchantID = "3000000721";
-            // $merchantPassword = "8c9e1db3899b93bd92348bc176cc109c";
-            $merchantID = "TEST3000000721";
-            $merchantPassword = "0c7fb828291074dc52486465bbf18e69";
+            $merchantID = "3000000721";
+            $merchantPassword = "8c9e1db3899b93bd92348bc176cc109c";
+            // $merchantID = "TEST3000000721";
+            // $merchantPassword = "0c7fb828291074dc52486465bbf18e69";
 
 
             $orderID = $orderID;
             $merchantID = $merchantID;
             $merchantPassword = $merchantPassword;
-
+            $orderData = [
+                'orderID' => $orderID,
+                'merchantID' => $merchantID,
+                'merchantPassword' => $merchantPassword,
+            ];
             $data = [
                 'correlationId' => "123",
                 'session' => [
                     'authenticationLimit' => 10,
                 ]
             ];
-
             // $test = MasterCardPayment::createSessionSandBox();
             $response = Http::contentType("application/json")
             ->withBasicAuth('merchant.'.$merchantID, $merchantPassword)
             ->withHeaders([
                 'Accept' => 'application/json'
-            ])->post(config('BankPayment.ApiUrlTest'). '/merchant/'.$merchantID.'/session', $data)->json();
+            ])->post(config('BankPayment.ApiUrl'). '/merchant/'.$merchantID.'/session', $data)->json();
 
             $sessionID = $response;
-            dd($sessionID);
             if ($sessionID['result'] == "SUCCESS") {
-                # code...
-                return $sessionID['session']['id'];
+
+                $sessionID =   $sessionID['session']['id'];
+                $orderData['sessionID'] = $sessionID ;
+                $data = [
+                    'sourceOfFunds' => [
+                        "provided" => [
+                            "card" => [
+                                "nameOnCard" => $this->nameOnCard,
+                                "number" => $this->CardNumber,
+                                "expiry" => [
+                                  "month" => $this->expiry_month,
+                                  "year" => $this->expiry_year
+                                ],
+                                "securityCode" => $this->securityCode
+                            ]
+                        ]
+                    ],
+                ];
+
+                $orderData['securityCode'] = $data['sourceOfFunds']['provided']['card']['securityCode'] ;
+
+
+                $response = Http::contentType("application/json")
+                ->withBasicAuth('merchant.'.$merchantID, $merchantPassword)
+                ->withHeaders([
+                    'Accept' => 'application/json'
+                ])->put(config('BankPayment.ApiUrl'). '/merchant/'.$merchantID.'/session/'.$sessionID, $data)->json();
+                if($response['session']['updateStatus'] == "SUCCESS"){
+                    $data = [
+                        '3DSecure' => [
+                            "authenticationRedirect" => [
+                                "responseUrl" => route('api.payment.pay', [$orderID,$sessionID]),
+                                "pageGenerationMode" => "SIMPLE"
+                            ],
+                        ],
+                        "apiOperation" => "CHECK_3DS_ENROLLMENT",
+                        "order" => [
+                            "amount" =>  $this->total,
+                            "currency" => "SAR"
+                        ],
+                        "session" => [
+                            "id" =>  $sessionID,
+                        ],
+                    ];
+
+                    $orderData['amount'] = $this->total;
+                    $orderData['currency'] = "SAR";
+                    $response = Http::contentType("application/json")
+                    ->withBasicAuth('merchant.'.$merchantID, $merchantPassword)
+                    ->withHeaders([
+                        'Accept' => 'application/json'
+                    ])->put(config('BankPayment.ApiUrl'). '/merchant/'.$merchantID.'/3DSecureId/3dsID_'.$orderID, $data)->json();
+                    dd($response);
+
+                    $htmlBodyContent = $response['3DSecure']['authenticationRedirect']['simple']['htmlBodyContent'];
+
+                    $this->dispatchBrowserEvent('openPaymenthtmlBodyContent', $htmlBodyContent);
+
+                }
+
             }
 
 
@@ -375,7 +460,7 @@ class BookingSteps extends Component
                 // 'payment_data' => $getOrderDetailsSandBox['result']
             ]);
 
-            $smsText = " تم حجز سيارة " . $this->car->name . " من خلال موقع ابو ذياب لتأجير السيارت رقم العمليه " . $this->order->id ;
+            $smsText = "- تم حجز سيارة " . $this->car->name . " من خلال موقع ابو ذياب لتأجير السيارت رقم العمليه " . $this->order->id ;
             $smsPhone = "+966554001171";
             // $smsPhone = "+201012316954";
 
@@ -400,13 +485,14 @@ class BookingSteps extends Component
      */
     public function paymentComplete()
     {
-
         $orderID =  $this->order->id;
         // $merchantID = "TEST3000000721";
         // $merchantPassword = "0c7fb828291074dc52486465bbf18e69";
         $merchantID = "3000000721";
         $merchantPassword = "8c9e1db3899b93bd92348bc176cc109c";
         $getOrderDetailsSandBox = MasterCardPayment::getOrderDetailsSandBox($orderID, $merchantID, $merchantPassword);
+
+
         if ($getOrderDetailsSandBox['result'] == "SUCCESS"  &&  $getOrderDetailsSandBox['status'] == "CAPTURED") {
             $this->order->update([
                 'payment_status' => $getOrderDetailsSandBox['result']
@@ -423,7 +509,7 @@ class BookingSteps extends Component
                 $car_in_stock->save();
             }
 
-            $smsText = " تم حجز سيارة " . $this->car->name . " من خلال موقع ابو ذياب لتأجير السيارت رقم العمليه " . $this->order->id ;
+            $smsText = "- تم حجز سيارة " . $this->car->name . " من خلال موقع ابو ذياب لتأجير السيارت رقم العمليه " . $this->order->id ;
             $smsPhone = "+966554001171";
             // $smsPhone = "+201012316954";
 
@@ -461,7 +547,7 @@ class BookingSteps extends Component
                 }
 
 
-                $smsText = " تم حجز سيارة " . $this->car->name . " من خلال موقع ابو ذياب لتأجير السيارت رقم العمليه " . $this->order->id ;
+                $smsText = "- تم حجز سيارة " . $this->car->name . " من خلال موقع ابو ذياب لتأجير السيارت رقم العمليه " . $this->order->id ;
                 $smsPhone = "+966554001171";
                 // $smsPhone = "+201012316954";
 
@@ -480,6 +566,8 @@ class BookingSteps extends Component
      */
     public function back($step)
     {
+        $this->authorization_fee=0;
+
         if($step != 0)
         {
             $this->currentStep = $step;

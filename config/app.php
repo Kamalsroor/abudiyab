@@ -168,6 +168,7 @@ return [
         L5Swagger\L5SwaggerServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        kamalsroor\MoyasarApi\MoyasarProvider::class,
 
         /*
          * Application Service Providers...
@@ -233,6 +234,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Moyasar'   => kamalsroor\MoyasarApi\MoyasarFaced::class,
     ],
 
 ];

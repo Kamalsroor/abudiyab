@@ -255,3 +255,60 @@ div.slider-handle.min-slider-handle.round {
     background-image: none !important;
     background-color: get-color(primary) !important;
 }
+
+.fleet-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.226);
+    z-index: 100;
+    &_center {
+        @include location(20%, 50%);
+        background-color: #fff;
+        width: 800px;
+        border-radius: 8px;
+        box-shadow: 4px 9px 20px #00000061;
+        overflow: hidden;
+        &_cancel {
+            @include location(0%, 100%);
+            background-color: #1abc9c;
+            color: #fff;
+            padding: 1px 10px 1px;
+            border-radius: 2px 0px 0 36px;
+            cursor: pointer;
+            z-index: 3;
+            i {
+                margin-left: 3px;
+            }
+            &:hover {
+                background-color: red;
+            }
+        }
+        &_text {
+            width: 100%;
+            padding: 40px;
+            text-align: center;
+            h2 {
+                color: #222;
+                font-weight: 500;
+                margin-bottom: 40px;
+                color: rgb(255, 30, 30);
+                span {
+                    border-bottom: 1px solid;
+                }
+            }
+            &_definition {
+                width: 100%;
+                color: #333;
+            }
+            button {
+                display: block;
+                margin: 40px auto 0;
+                width: 140px;
+                height: 40px;
+            }
+        }
+    }
+}

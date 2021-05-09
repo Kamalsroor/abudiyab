@@ -61,6 +61,21 @@
     </div>
 
         <section class="home-offers content whitebg">
+
+            <section class="home-offers_price-suggestion price-suggestion-h">
+                <div class="home-offers_price-suggestion_center">
+                    <span class="home-offers_price-suggestion_center_cancel" onclick="$('.home-offers_price-suggestion').toggleClass('price-suggestion-s');$('.home-offers_price-suggestion').toggleClass('price-suggestion-h');">
+                        <i class="fas fa-times"></i>
+                    </span>
+                    <div class="home-offers_price-suggestion_center_text">
+                        <h2 class="home-offers_price-suggestion_center_text_empty">
+                            لا يوجد تفصيل لهذه العرض
+                        </h2>
+                    </div>
+
+                </div>
+            </section>
+
             <div class="home-offers_head">
                 <span class="g-title">عروضنا</span>
             </div>
@@ -84,7 +99,7 @@
                         <h2><i class="icofont icofont-cur-riyal"></i>1200</h2>
                     </div>
                     <div class="home-offers_content_text_button">
-                        <button class="detailing">التفاصيل</button>
+                        <button class="detailing" onclick="$('.home-offers_price-suggestion').toggleClass('price-suggestion-s');$('.home-offers_price-suggestion').toggleClass('price-suggestion-h');">التفاصيل</button>
                         <button>احجز الان</button>
                     </div>
                 </div>

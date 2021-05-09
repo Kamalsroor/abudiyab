@@ -778,10 +778,10 @@ $(document).ready(function() {
         $(function() {
             OffersAnimation(window);
         });
-        var OffersAnimationStart = false;
+        let OffersAnimationStart = false;
 
         function OffersAnimation(userLocation) {
-            var nameClassOffers = '.home-offers_content_text',
+            let nameClassOffers = '.home-offers_content_text',
                 hT = $(nameClassOffers + '_discount').offset().top,
                 hH = $(nameClassOffers + '_discount').outerHeight(),
                 wH = $(window).height(),
@@ -797,7 +797,6 @@ $(document).ready(function() {
                     });
                 });
                 OffersAnimationStart = true;
-                console.log(hT + hH - wH);
             }
         }
     }

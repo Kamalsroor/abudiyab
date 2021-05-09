@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -85,5 +86,6 @@ Route::get('/select/purchaserequests', 'PurchaserequestController@select')->name
 Route::apiResource('additions', 'AdditionController');
 Route::get('/select/additions', 'AdditionController@select')->name('additions.select');
 
+Route::post('/payment/{order}/{session}', 'PaymentController@pay')->name('payment.pay');
 
 /*  The routes of generated crud will set here: Don't remove this line  */

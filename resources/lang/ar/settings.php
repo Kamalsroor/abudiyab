@@ -21,6 +21,7 @@ return [
         'terms' => 'صفحة الشروط والاحكام',
         'privacy' => 'صفحة سياسة الموقع',
         'branches' => 'صفحه الفروع',
+        'visa_offer' => 'خصم الفيزا',
     ],
     'dashboard_templates' => [
         'adminlte3' => 'Adminlte 3',
@@ -39,6 +40,7 @@ return [
         'twitter' => 'رابط التويتر',
         'instagram' => 'رابط الانستجرام',
         'snapchat' => 'رابط السناب شات',
+        'visa_offer' => 'خصم الفيزه',
         'youtube' => 'رابط اليوتيوب',
         'apple' => 'رابط تطبيق الايفون',
         'android' => 'رابط تطبيق الاندرويد',

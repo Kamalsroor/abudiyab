@@ -30,7 +30,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
     @livewireStyles
 
     @stack('styles')
+    <style>
+        .uploader-w-32[data-v-e95c90d2]{
+            width: 40rem !important;
+            height: 40rem !important;
+        }
 
+    </style>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini">
