@@ -8,6 +8,14 @@
                 ->attribute('class', 'form-control textarea')
                 ->value(Settings::locale($locale->code)->get('car_sales_content')) }}
         @endBsMultilangualFormTabs
+        <table>
+            <th>
+                مقاس الصورة
+            </th>
+            <td>
+                1440*500
+            </td>
+        </table>
         {{ BsForm::image('car_sales_backgraund')->collection('car_sales_backgraund')->files(optional(Settings::instance('car_sales_backgraund'))->getMediaResource('car_sales_backgraund')) }}
 
 

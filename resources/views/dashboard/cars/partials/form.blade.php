@@ -146,6 +146,10 @@
                     <th width="25%">{{ BsForm::checkbox('is_intercity')->value(1)->default('0')->checked(isset($car) ? $car->is_intercity : false) }}  {{ BsForm::price('intercity_price') }}</th>
                 </tr>
 
+                <tr>
+                    <th >مقاس الصورة</th>
+                    <td>327*188</td>
+                </tr>
 
                 </tbody>
             </table>
