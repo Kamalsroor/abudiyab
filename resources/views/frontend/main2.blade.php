@@ -64,6 +64,7 @@
 
             <section class="home-offers_price-suggestion price-suggestion-h">
                 <div class="home-offers_price-suggestion_center">
+
                     <span class="home-offers_price-suggestion_center_cancel" onclick="$('.home-offers_price-suggestion').toggleClass('price-suggestion-s');$('.home-offers_price-suggestion').toggleClass('price-suggestion-h');">
                         <i class="fas fa-times"></i>
                     </span>
@@ -81,7 +82,7 @@
             </div>
             <div class="home-offers_content">
                 <div class="home-offers_content_background">
-                    <img src="{{ asset('front/img/SLIDERS/slide-1.jpg') }}" alt="">
+                    <img src="{{ asset('front/img/offer-slider.jpg') }}" alt="">
                 </div>
                 <div class="home-offers_content_text">
                     <div class="home-offers_content_text_discount wow animate__wobble">
