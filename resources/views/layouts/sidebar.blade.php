@@ -22,6 +22,7 @@
 @include('dashboard.carsales.partials.actions.sidebar')
 @include('dashboard.mediacenters.partials.actions.sidebar')
 @include('dashboard.purchaserequests.partials.actions.sidebar')
+@include('dashboard.additions.partials.actions.sidebar')
 {{-- The sidebar of generated crud will set here: Don't remove this line --}}
 @include('dashboard.feedback.partials.actions.sidebar')
 @include('dashboard.applications.partials.actions.sidebar')

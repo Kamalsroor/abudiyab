@@ -14,7 +14,7 @@
 
     <div class='bodycontainer my-0' style="background: url('{{asset("front/img/BackgroundH4.jpg")}}')">
         <div class="opacity-div">
-            
+
             <div class="booking-steps">
                 <div class="booking-steps_head @if ($currentStep == 3) col-lg-8 @else col-lg-12 @endif" style="padding: 0;">
                             <div class="booking-steps_head_background" style="width: 100% !important;">.</div>
@@ -34,6 +34,9 @@
                 @if($currentStep == 4)
                 <div style="height: 50vh">
 
+                    <iframe style="width: 100%;height: 100%;" id="openPaymenthtmlBodyContent">
+
+                    </iframe >
                 </div>
                 @endif
                 <div style="height: auto;overflow: hidden;" class="container-fluid">

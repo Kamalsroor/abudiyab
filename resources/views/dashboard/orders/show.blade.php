@@ -11,7 +11,7 @@
                       <div class="col-12">
                         <h4>
                           <i class="fas fa-globe"></i> {{ $order->car->name }} {{ $order->car->model }}
-                          <small class="float-right">تاريخ العملية: {{ $order->created_at->format('Y-m-d h:i A') }}</small>
+                          <small class="float-right">تاريخ الحجز: {{ $order->created_at->format('Y-m-d h:i A') }}</small>
                         </h4>
                       </div>
                         <div class="col-12 text-center">
@@ -41,11 +41,11 @@
                       </div>
                       <!-- /.col -->
                       <div class="col-sm-4 invoice-col">
-                        <b>العملية رقم : {{$order->id}}</b><br>
+                        <b>رقم الحجز : {{$order->id}}</b><br>
                         <br>
-                        <b>Order ID:</b> 4F3S8J<br>
-                        <b>Payment Due:</b> 2/22/2014<br>
-                        <b>Account:</b> 968-34567
+                        <b>Order ID:</b> {{$order->id}}<br>
+                        {{-- <b>Payment Due:</b> 2/22/2014<br> --}}
+                        {{-- <b>Account:</b> 968-34567 --}}
                       </div>
                       <!-- /.col -->
                     </div>
