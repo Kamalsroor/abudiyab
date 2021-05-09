@@ -18,8 +18,8 @@
  */
 
 /*!
- * AdminLTE v3.1.0-rc (https://adminlte.io)
- * Copyright 2014-2020 Colorlib <https://colorlib.com>
+ * AdminLTE v3.1.0 (https://adminlte.io)
+ * Copyright 2014-2021 Colorlib <https://colorlib.com>
  * Licensed under MIT (https://github.com/ColorlibHQ/AdminLTE/blob/master/LICENSE)
  */
 
@@ -30,6 +30,11 @@
  * @license MIT
  * @link https://itsjavi.com/bootstrap-colorpicker/
  * @link https://github.com/itsjavi/bootstrap-colorpicker.git
+ */
+
+/*!
+ * Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 
 /*!
@@ -80,7 +85,7 @@
  */
 
 /*!
- * vue-i18n v8.23.0 
+ * vue-i18n v8.24.3 
  * (c) 2021 kazuya kawaguchi
  * Released under the MIT License.
  */
