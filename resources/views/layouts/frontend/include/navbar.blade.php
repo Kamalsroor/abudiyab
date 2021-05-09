@@ -49,8 +49,8 @@
                 اهلا بك {{ Auth()->user()->name}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item mx-0 text-right" style="color: black;padding:6px 12px;" href="/profile">الحساب الشخصى</a>
-                    <a class="dropdown-item mx-0 text-right" style="color: black;padding:6px 12px;" href="/contracts">الحجوزات</a>
+                    <a class="dropdown-item mx-0 text-right" style="color: black;padding:6px 12px;" href="/profile">الملف الشخصى</a>
+                    <a class="dropdown-item mx-0 text-right" style="color: black;padding:6px 12px;" href="/contracts">الحجوزات و العقود</a>
                     <a href="#"onclick="event.preventDefault();document.getElementById('logoutForm').submit()"
                            class="btn btn-default btn-flat float-right color-black" style="color: black;">@lang('dashboard.auth.logout')</a>
                         <form class="d-none" action="{{ route('logout') }}" method="post" id="logoutForm">
