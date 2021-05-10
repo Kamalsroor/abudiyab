@@ -80,19 +80,23 @@
         let user_id='';
         let car_id='';
         let quantity=0;
-        $('.buy_car').on('click',function(){
-            car_id=$(this).prev()[0].innerHTML;
-            quantity=$(this).prev().prev()[0].innerHTML;
-            if(quantity==1)
-            {
-                $('.quantity').css('display', 'none');
-            }
-            else{
-                $('.quantity').css('display', 'block');
+        setTimeout(function(){
+                $('.buy_car').on('click',function(){
+                console.log('sssssssss');
+                car_id=$(this).prev()[0].innerHTML;
+                quantity=$(this).prev().prev()[0].innerHTML;
+                if(quantity==1)
+                {
+                    $('.quantity').css('display', 'none');
+                }
+                else{
+                    $('.quantity').css('display', 'initial');
 
-            }
-            showPopUp();
-        })
+                }
+                showPopUp();
+            })
+        },1000)
+
         function MoveStep(step) {
             if(step == 1 || step == 2 )
             {
