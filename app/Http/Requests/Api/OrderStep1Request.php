@@ -25,15 +25,17 @@ class OrderStep1Request extends FormRequest
      */
     public function rules()
     {
+        $date = $this->receiving_date + 86400;
 
-        $date = Carbon::createFromFormat('Y-m-d H:i:s', $this->receiving_date);
-        $date = $date->addDays(1);
+        $this->receiving_date = Carbon::createFromTimestamp($this->receiving_date)->format('Y-m-d H:i:s');
+        $this->delivery_date = Carbon::createFromTimestamp($this->delivery_date)->format('Y-m-d H:i:s');
+        // $date = Carbon::createFromFormat('Y-m-d H:i:s',$this->receiving_date );
 
         return [
             'receiving_branche' => ['required', 'exists:branches,id'],
             'delivery_branche' => ['required', 'exists:branches,id'],
-            'receiving_date' => ['required', 'date_format:Y-m-d H:i:s'],
-            'delivery_date' => ['required', 'date_format:Y-m-d H:i:s','after:'.$date],
+            'receiving_date' => ['required'],
+            'delivery_date' => ['required','integer' ,'min:'.$date],
             'car_id' => ['required', 'exists:cars,id'],
         ];
     }
@@ -51,4 +53,19 @@ class OrderStep1Request extends FormRequest
     {
         return trans('orders.attributes');
     }
+
+
+        /**
+     * Get the validation messages that apply to the request.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'delivery_date.min' => 'يجب اي يكون :attribute اكبر من ميعاد التسليم ب 24 ساعة',
+        ];
+    }
+
+
 }

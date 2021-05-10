@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::post('/register', 'RegisterController@register')->name('sanctum.register');
 Route::post('/login', 'LoginController@login')->name('sanctum.login');
+Route::post('/login-with-session', 'LoginController@loginWithSession')->name('sanctum.login-with-session');
 Route::post('/firebase/login', 'LoginController@firebase')->name('sanctum.login.firebase');
 
 Route::post('/password/forget', 'ResetPasswordController@forget')->name('password.forget');
@@ -27,6 +29,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('profile', 'ProfileController@show')->name('profile.show');
     Route::match(['put', 'patch'], 'profile', 'ProfileController@update')->name('profile.update');
     Route::post('/orders/step1', 'OrderController@step1')->name('orders.step1');
+    Route::post('/orders/step2', 'OrderController@step2')->name('orders.step2');
     Route::apiResource('orders', 'OrderController');
     Route::get('/select/orders', 'OrderController@select')->name('orders.select');
     Route::post('/favorite/{car}', 'CarController@addToFavorite')->name('cars.favorite');
@@ -34,7 +37,7 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::post('/editor/upload', 'MediaController@editorUpload')->name('editor.upload');
 Route::get('/settings', 'SettingController@index')->name('settings.index');
 Route::get('/settings/pages/{page}', 'SettingController@page')
-    ->where('page', 'about|terms|privacy')->name('settings.page');
+->where('page', 'about|terms|privacy')->name('settings.page');
 
 Route::post('feedback', 'FeedbackController@store')->name('feedback.send');
 Route::apiResource('categories', 'CategoryController');
@@ -80,4 +83,9 @@ Route::apiResource('mediacenters', 'MediacenterController');
 Route::get('/select/mediacenters', 'MediacenterController@select')->name('mediacenters.select');
 Route::apiResource('purchaserequests', 'PurchaserequestController');
 Route::get('/select/purchaserequests', 'PurchaserequestController@select')->name('purchaserequests.select');
+Route::apiResource('additions', 'AdditionController');
+Route::get('/select/additions', 'AdditionController@select')->name('additions.select');
+
+Route::post('/payment/{order}/{session}', 'PaymentController@pay')->name('payment.pay');
+
 /*  The routes of generated crud will set here: Don't remove this line  */

@@ -103,16 +103,11 @@ class MasterCardPayment extends Controller
 		self::$merchantPassword = $merchantPassword;
 
         $data = [
-			'apiOperation' => config('BankPayment.apiOperation'),
-			'interaction' => [
-                'operation' => 'PURCHASE'
-            ],
-			'order' => [
-				'id' => self::$orderID,
-				'currency' => config('BankPayment.currency')
-			]
+			'correlationId' => "123",
+			'session' => [
+				'authenticationLimit' => 10,
+            ]
 		];
-
 
         // $test = MasterCardPayment::createSessionSandBox();
         $response = Http::contentType("application/json")
@@ -156,6 +151,7 @@ class MasterCardPayment extends Controller
                 'type' => 'CARD',
                 'provided' => [
                     'card' => [
+                        'nameOnCard' => 'kamal salah',
                         'number' => '5297411991746553',
                         'expiry' => [
                             'month' => '06',
@@ -168,20 +164,14 @@ class MasterCardPayment extends Controller
             ]
 		];
 
-        // 'number' => '5297411991746553',
-        // 'expiry' => [
-        //     'month' => '06',
-        //     'year' => '23',
-        // ],
-        // 'securityCode' => '578',
 
-        // https://ap-gateway.mastercard.com/api/rest/version/59/merchant/{merchantId}/order/{orderid}/transaction/{transactionid}
-        // $test = MasterCardPayment::createSessionSandBox();
+   
+
         $response = Http::contentType("application/json")
         ->withBasicAuth('merchant.'.self::$merchantID, self::$merchantPassword)
         ->withHeaders([
             'Accept' => 'application/json'
-        ])->put(config('BankPayment.ApiUrl'). '/merchant/'.self::$merchantID.'/order/'.self::$orderID.'/transaction/1003', $data)->json();
+        ])->put(config('BankPayment.ApiUrl'). '/merchant/'.self::$merchantID.'/order/'.self::$orderID.'/transaction/1088', $data)->json();
 
         self::$sessionID = $response;
         return self::$sessionID ;
@@ -194,31 +184,37 @@ class MasterCardPayment extends Controller
 	/*
 	*	Create Session Live for Payment via MasterCard Or Visa
 	*/
-	public static function createSessionLive($orderID, $merchantID, $merchantPassword)
+	public static function createSessionTest($orderID, $merchantID, $merchantPassword)
 	{
 		self::$orderID = $orderID;
 		self::$merchantID = $merchantID;
 		self::$merchantPassword = $merchantPassword;
 
-		$curl = curl_init();
         $data = [
-           	'apiOperation' => 'CREATE_CHECKOUT_SESSION',
-            'order' => [
-                'id' => self::$orderID,
-                'currency' => 'EGP'
-            ]
-        ];
-       	curl_setopt($curl, CURLOPT_URL, config('BankPayment.ApiUrl')."merchant/".self::$merchantID."/session");
-       	curl_setopt($curl, CURLOPT_USERPWD, 'merchant.'.self::$merchantID.':'.self::$merchantPassword.'');
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_POST, true);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
-        $response = curl_exec($curl);
-        curl_close($curl);
-        $jsonData = json_decode($response);
-        self::$sessionID = $jsonData->session->id;
+			'apiOperation' => config('BankPayment.apiOperation'),
+			'interaction' => [
+                'operation' => 'PURCHASE'
+            ],
+			'order' => [
+				'id' => self::$orderID,
+				'currency' => config('BankPayment.currency')
+			]
+		];
 
-        return self::$sessionID;
+
+        // $test = MasterCardPayment::createSessionSandBox();
+        $response = Http::contentType("application/json")
+        ->withBasicAuth('merchant.'.self::$merchantID, self::$merchantPassword)
+        ->withHeaders([
+            'Accept' => 'application/json'
+        ])->post(config('BankPayment.ApiUrl'). '/merchant/'.self::$merchantID.'/session', $data)->json();
+
+        self::$sessionID = $response;
+
+        if (self::$sessionID['result'] == "SUCCESS") {
+            # code...
+            return self::$sessionID['session']['id'];
+        }
 	}
 
 	/*

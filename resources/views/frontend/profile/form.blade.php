@@ -66,6 +66,44 @@
                         @endif
                     </tbody>
                 </table>
+                {{-- <div id="img">
+                    <div class="container">
+                        <div class="wrapper" onclick="defaultBtnActive()">
+                            <div class="image">
+                                <img src="" alt="" id="ShowImg">
+                            </div>
+                            <div class="content">
+                                <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                <div class="text">No file chosen, yet!</div>
+                            </div>
+                            <div id="cancel-btn"><i class="fas fa-times"></i></div>
+                            <div class="file-name">File name here</div>
+                        </div>
+                        <input id="default-btn" type="file" hidden>
+                    </div>
+                </div>
+                @push('js')
+                    <script>
+                        const defaultBtn = document.querySelector('#default-btn');
+                        const customBtn = document.querySelector('#custom-btn');
+                        const ShowImg = document.querySelector('#ShowImg');
+                        function defaultBtnActive(){
+                            defaultBtn.click();
+                        }
+                        defaultBtn.addEventListener("change", function(){
+                            const file = this.files[0];
+                            if(file){
+                                const reader = new FileReader();
+                                reader.onload = function(){
+                                    const result = reader.result;
+                                    ShowImg.src = result;
+                                    ShowImg.style.display = 'block';
+                                }
+                                reader.readAsDataURL(file);
+                            }
+                        });
+                    </script>
+                @endpush --}}
                 <button type="submit" class="primary-btn btn-hover btn-curved p-2 m-auto">تأكيد البيانات</button>
                 <button  class="primary-btn btn-hover btn-curved p-2 m-auto">الرجوع</button>
     </form>

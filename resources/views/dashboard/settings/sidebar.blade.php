@@ -65,6 +65,16 @@
     @slot('icon', 'fas fa-cogs')
     @slot('tree', [
         [
+        'name' => trans('settings.tabs.visa_offer'),
+        'url' => route('dashboard.settings.index', ['tab' => 'visa_offer']),
+        'active' => request()->routeIs('*settings*') && request('tab') == 'visa_offer',
+        ],
+        [
+        'name' => trans('settings.tabs.fleet'),
+        'url' => route('dashboard.settings.index', ['tab' => 'fleet']),
+        'active' => request()->routeIs('*settings*') && request('tab') == 'fleet',
+        ],
+        [
             'name' => trans('settings.tabs.main'),
             'url' => route('dashboard.settings.index', ['tab' => 'main']),
             'active' => request()->routeIs('*settings*') && request('tab') == 'main',

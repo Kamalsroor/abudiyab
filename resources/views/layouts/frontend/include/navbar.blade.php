@@ -2,10 +2,10 @@
 
 <div class="main-navbar container-fluid d-md-block d-lg-block">
     <div class="container-fluid mx-0">
-        <div class="row ">
+        <div class="row">
             <div class="col-1 d-flex justify-content-center align-items-center">
                 <a class="btn " data-toggle="tooltip" data-placement="bottom" title="القائمة الرئيسية" id="hamburger-bars">
-                    <i class="fas fa-bars"  ></i>
+                    <i class="fas fa-bars"></i>
                 </a>
 
             </div>
@@ -49,8 +49,8 @@
                 اهلا بك {{ Auth()->user()->name}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item mx-0 text-right" style="color: black;padding:6px 12px;" href="/profile">الحساب الشخصى</a>
-                    <a class="dropdown-item mx-0 text-right" style="color: black;padding:6px 12px;" href="/contracts">الحجوزات</a>
+                    <a class="dropdown-item mx-0 text-right" style="color: black;padding:6px 12px;" href="/profile">الملف الشخصى</a>
+                    <a class="dropdown-item mx-0 text-right" style="color: black;padding:6px 12px;" href="/contracts">الحجوزات و العقود</a>
                     <a href="#"onclick="event.preventDefault();document.getElementById('logoutForm').submit()"
                            class="btn btn-default btn-flat float-right color-black" style="color: black;">@lang('dashboard.auth.logout')</a>
                         <form class="d-none" action="{{ route('logout') }}" method="post" id="logoutForm">
@@ -72,7 +72,7 @@
                                     <span aria-hidden="true" style="color: red;cursor: pointer;">&times;</span>
                                 </a>
                             </div>
-                            <form action="{{ route('login') }}"  method="post" class="form-container " style="width: 100%">
+                            <form action="{{ route('login') }}"  method="post" class="form-container " style="width: 100%;max-width: initial;">
                                 @csrf
                                 <div class="modal-body" style="margin: auto">
                                     <div class="form-group">

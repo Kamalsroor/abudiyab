@@ -65,6 +65,7 @@ class Offer extends Model implements HasMedia, TranslatableContract
 
     protected $casts = [
         'branch_value' => 'array',
+        'to' => 'date',
         // 'value' => 'array',
     ];
 

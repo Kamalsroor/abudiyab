@@ -8,6 +8,14 @@
                 ->attribute('class', 'form-control textarea')
                 ->value(Settings::locale($locale->code)->get('maintenance_content')) }}
         @endBsMultilangualFormTabs
+        <table>
+            <th>
+                مقاس الصورة
+            </th>
+            <td>
+                1440*500
+            </td>
+        </table>
         {{ BsForm::image('maintenance_backgraund')->collection('maintenance_backgraund')->files(optional(Settings::instance('maintenance_backgraund'))->getMediaResource('maintenance_backgraund')) }}
 
 

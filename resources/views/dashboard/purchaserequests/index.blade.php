@@ -40,6 +40,7 @@
             <th>@lang('purchaserequests.attributes.carmodel')</th>
             <th>@lang('purchaserequests.attributes.carbrand')</th>
             <th>@lang('purchaserequests.attributes.price')</th>
+            <th>@lang('purchaserequests.attributes.quantity')</th>
             <th>@lang('purchaserequests.attributes.created_at')</th>
             <th style="width: 160px">...</th>
         </tr>
@@ -64,6 +65,9 @@
                 </td>
                 <td>
                     {{ $purchaserequest->price }}
+                </td>
+                <td>
+                    {{ $purchaserequest->quantity }}
                 </td>
                 <td>{{ $purchaserequest->created_at->format('Y-m-d') }}</td>
 

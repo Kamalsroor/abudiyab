@@ -4,8 +4,8 @@
             <div class="d-flex align-items-center justify-content-center py-5 heading" >
                 <h1 class=" mb-0" >إنشاء حساب جديد</h1>
             </div>
-            <div class="content">
-                <form action="{{ route('register') }}"  method="post" enctype="multipart/form-data">
+            <div class="content" style="padding: 30px">
+                <form action="{{ route('register') }}"  method="post" enctype="multipart/form-data" style="background-color: rgb(177 177 177 / 75%);border-radius:30px;">
                 @csrf
                 <div class="row py-3 pt-5 px-4 mx-0">
                     <div class="col-md-2 col-12">
@@ -120,7 +120,7 @@
 
                 <div class="row mx-0 px-0 py-3">
                     <div class="col-5 text-center m-auto">
-                <button type="submit" class="btn btn-success ">تأكيد البيانات</button>
+                <button type="submit" class="primary-btn btn-hover btn-curved p-3 m-auto">تأكيد البيانات</button>
                     </div>
                 </div>
                 </form>

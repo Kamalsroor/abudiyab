@@ -45,18 +45,12 @@
                     </div>
                     <div class="d-flex justify-content-center align-items-end information-card">
                         <img src="{{isset(Auth()->user()->membership) ? Auth()->user()->membership->getFirstMediaUrl(): ''}}" alt="" style="width: 90%;">
-                        <div class="pb-2" style="width: 70%;position:absolute;font-weight: 700;text-shadow: 1px 1px 2px black;color:white;">
-                            <p class="mb-0">{{Auth::user()->name}}</p>
-                            <div class="d-flex justify-content-between" >
-                                <p class="mb-0" >DATE</p>
-                                <p class="mb-0" >1234567890</p>
+                        <div class="pb-2" style="width: 60%;position:absolute;font-weight: 700;text-shadow: 1px 1px 2px black;color:white;transform:translateY(-25px);">
+                            <p style="    font-size: 30px;transform: translateY(-20px);" class="mb-0">{{Auth::user()->name}}</p>
+                            <div style="transform: translateY(-10px);" class="d-flex justify-content-between" >
+                                <p style="font-size: 20px" class="mb-0" >DATE 05/2022</p>
+                                <p style="font-size: 20px" class="mb-0" >1234567890</p>
                             </div>
-
-                            <div class="d-flex justify-content-between" >
-                                <p class="mb-0" >{{Auth()->user()->membership->name}}</p>
-                                <p class="mb-0" >{{Auth()->user()->membership->translate('en')->name}}   </p>
-                            </div>
-
                         </div>
 
 

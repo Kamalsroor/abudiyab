@@ -52,9 +52,9 @@ class ShowFleet extends Component
     {
         $date = new DateTime();
         $recievingInterval = new DateInterval('P1D');
-        $this->dayOneFormated=$date->add($recievingInterval)->format('Y-m-d\TH:i:s');
+        $this->dayOneFormated=$date->add($recievingInterval)->format('Y-m-d\TH:i');
         $deliveryInterval = new DateInterval('P1D');
-        $this->dayTwoFormated=$date->add($deliveryInterval)->format('Y-m-d\TH:i:s');
+        $this->dayTwoFormated=$date->add($deliveryInterval)->format('Y-m-d\TH:i');
 
         $this->receivingDate=$this->dayOneFormated;
         $this->deliveryDate=$this->dayTwoFormated;
@@ -73,8 +73,8 @@ class ShowFleet extends Component
         }
         if($this->receivingDate >= $this->deliveryDate)
         {
-            $this->dayTwoFormated= date('Y-m-d\TH:i:s', strtotime($this->receivingDate. ' + 1 days'));
-            $this->deliveryDate= date('Y-m-d\TH:i:s', strtotime($this->receivingDate. ' + 1 days'));
+            $this->dayTwoFormated= date('Y-m-d\TH:i', strtotime($this->receivingDate. ' + 1 days'));
+            $this->deliveryDate= date('Y-m-d\TH:i', strtotime($this->receivingDate. ' + 1 days'));
         }
         if ($car_id = session()->get('car_id') && Auth()->check()) {
             # code...
@@ -140,7 +140,16 @@ class ShowFleet extends Component
 
         $regionSelect=Branch::Region;
         $this->dispatchBrowserEvent('changeRender');
-
+        if(Auth()->check())
+        {
+            $i=0;
+            foreach($car as $item )
+            {
+                // dd($car[$i]->price1);
+                $car[$i]->price1=$item->price1 - ((Auth()->user()->membership->rental_discount /100) * $item->price1);
+                $i++;
+            }
+        }
         return view('livewire.show-fleet',[
             'cars' => $car,
             'regionSelect' => $regionSelect,
@@ -205,54 +214,68 @@ class ShowFleet extends Component
                             $this->dispatchBrowserEvent('notLogin');
                         }
                         else{
-                            return redirect()->to('/booking?car_id='.$car_id.
-                                                                '&receiving_branch='.$this->receiving_branch_id .
-                                                                '&delivery_branch='.$this->dervery_branch_id .
-                                                                '&receiving_date='.$this->receivingDate.
-                                                                '&delivery_date='.$this->deliveryDate  );
+                            session(['redirect' => '/booking?car_id='.$car_id.
+                            '&receiving_branch='.$this->receiving_branch_id .
+                            '&delivery_branch='.$this->dervery_branch_id .
+                            '&receiving_date='.$this->receivingDate.
+                            '&delivery_date='.$this->deliveryDate]);
+                            $modelData = [
+                                'title' => 'أو مشابهة - ماذا تعني؟',
+                                'body' => 'تلتزم شركة ابو ذياب بتوفير نفس الموديل وسنة الصنع التي قمت باختيارها وقت الحجز و في حال عدم توفر السيارة المختارة عند تنفيذ الحجز تلتزم يـلو بتوفير سيارة من نفس الفئة ونفس سنة الصنع او سنة صنع اعلى، وفي حال عدم توفر سيارة من نفس الفئة يتم الترقية لفئة اعلى بدون اي تكاليف أضافية',
+                                'booking'=>1
+                            ];
+                            $this->dispatchBrowserEvent('fleetalert',$modelData);
+                            // return redirect()->to('/booking?car_id='.$car_id.
+                            //                                     '&receiving_branch='.$this->receiving_branch_id .
+                            //                                     '&delivery_branch='.$this->dervery_branch_id .
+                            //                                     '&receiving_date='.$this->receivingDate.
+                            //                                     '&delivery_date='.$this->deliveryDate  );
 
                         }
                     }else{
-                        $branche_names = "";
+                        $branche_names = [];
                         foreach ($car_in_stock as $value) {
-                            $branche_names .= " - " . $value->branch->name;
+                            $branche_names[] =  $value->branch->name;
                         }
-                        $carNotFound['title'] = "هذه السياره متوفره فقط في فروع ". $branche_names ;
+                        $carNotFound['title'] = "هذه السياره متوفره فقط في فروع " ;
                         if($car_in_stock->count() == 0)
                         {
                             $carNotFound['title'] = "هذه السياره غير متوفره الان " ;
                         }
-                        $this->dispatchBrowserEvent('sweetalert', $carNotFound);
+                        $carNotFound['body']=$branche_names;
+
+                        $this->dispatchBrowserEvent('fleetalert', $carNotFound);
                     }
                 }else{
-                    $branche_names = "";
+                    $branche_names = [];
                     foreach ($car_in_stock as $value) {
-                        $branche_names .= " / " . $value->branch->name;
+                        $branche_names[] = $value->branch->name;
                     }
-                    $carNotFound['title'] = "هذه السياره متوفره فقط في فروع ". $branche_names ;
+                    $carNotFound['title'] = "هذه السياره متوفره فقط في فروع " ;
+                    $carNotFound['body']=$branche_names;
                     if($car_in_stock->count() == 0)
                     {
                         $carNotFound['title'] = "هذه السياره غير متوفره الان " ;
                     }
 
-                    $this->dispatchBrowserEvent('sweetalert', $carNotFound);
+                    $this->dispatchBrowserEvent('fleetalert', $carNotFound);
                 }
 
             }
             else if($this->dervery_branch_id != null && $this->dervery_branch_id != 0){
                 $errorData = [
                     'title' => 'يرجي اختيار وقت الاستلام والتسليم',
-                    'type' => 'error',
+                    'body' => '',
                 ];
-                $this->dispatchBrowserEvent('sweetalert', $errorData);
+                $this->dispatchBrowserEvent('fleetalert', $errorData);
             }
             else{
 
                 $errorData = [
                     'title' => 'يرجي اختيار فرع الاستلام والتسليم',
-                    'type' => 'error',
+                    'body' => '',
                 ];
-                $this->dispatchBrowserEvent('sweetalert', $errorData);
+                $this->dispatchBrowserEvent('fleetalert', $errorData);
 
 
             }

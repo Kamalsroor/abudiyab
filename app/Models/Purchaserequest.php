@@ -33,6 +33,7 @@ class Purchaserequest extends Model
         'user_id',
         'car_id',
         'price',
+        'quantity',
     ];
 
     /**

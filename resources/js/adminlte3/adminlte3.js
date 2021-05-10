@@ -36,6 +36,8 @@ import Vue from 'vue';
 import VueInternationalization from 'vue-i18n';
 import Locale from '../../js/vue-i18n-locales.generated';
 import FileUploader from 'laravel-file-uploader';
+import IconPicker from "vue-icon-picker";
+import IconsPicker from "vue-icons-picker";
 
 Vue.use(FileUploader);
 Vue.use(VueInternationalization);
@@ -54,6 +56,8 @@ const i18n = new VueInternationalization({
  */
 
 Vue.component('select2', require('../components/Select2Component').default);
+Vue.component('icon-picker', IconPicker)
+Vue.component('icons-picker', IconsPicker)
 
 const app = new Vue({
     el: '#app',
@@ -61,14 +65,14 @@ const app = new Vue({
 });
 require('@ahmed-aliraqi/check-all');
 
-CheckAll.onChange(function (el) {
+CheckAll.onChange(function(el) {
     if (el.checked) {
         el.closest('tr').classList.add("tw-bg-gray-400");
     } else {
         el.closest('tr').classList.remove("tw-bg-gray-400");
     }
 });
-(function ($) {
+(function($) {
 
     $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
     $('#flash-overlay-modal').modal();
@@ -78,16 +82,16 @@ CheckAll.onChange(function (el) {
     });
 
 
-    $(".export-btn").on("click", function(){
-        $( this ).addClass('disabled');
+    $(".export-btn").on("click", function() {
+        $(this).addClass('disabled');
         setTimeout(() => {
-            $( this ).removeClass('disabled');
+            $(this).removeClass('disabled');
         }, 35000);
     });
 
 })(jQuery);
 
-$(function () {
+$(function() {
     var Inputmask = require('inputmask').default;
     // $('.price').mask('9999.999');
     // $(".price").inputmask({ alias : "currency", prefix: '₱ ' });

@@ -24,11 +24,11 @@ class FilterController extends Controller
     public function index(Request $request)
     {
         $car = Car::where(function($q) use($request){
-            if ($request->has('category_id')) {
-                $q->where('category_id',$request->category_id);
+            if ($request->has('category_ids')) {
+                $q->whereIn('category_id',$request->category_ids);
             }
-            if ($request->has('manufactory_id')) {
-                $q->where('manufactory_id' , $request->manufactory_id);
+            if ($request->has('manufactory_ids')) {
+                $q->whereIn('manufactory_id' , $request->manufactory_ids);
             }
         })->get();
         $max = $car->max('price1') ?? 0;
