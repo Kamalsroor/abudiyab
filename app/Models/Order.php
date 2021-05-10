@@ -59,6 +59,11 @@ class Order extends Model
         'rejected' => ' الحجز مرفوض',
         'done' => ' الحجز تم',
     ];
+    const orderType=[
+        'cash' => 'نقدا',
+        'visa' => 'فيزا',
+        'points' => ' نقاطي',
+    ];
 
 
     protected $casts = [
