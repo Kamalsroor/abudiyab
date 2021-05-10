@@ -90,7 +90,7 @@
                     $('.quantity').css('display', 'none');
                 }
                 else{
-                    $('.quantity').css('display', 'block');
+                    $('.quantity').css('display', 'initial');
 
                 }
                 showPopUp();
