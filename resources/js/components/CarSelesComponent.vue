@@ -64,7 +64,7 @@
 
                     <div style="display: none;">{{car.quantity}}</div>
                     <div style="display: none;">{{car.car.id}}</div>
-                    <a class="primary-btn car-sales_center_content_cars_car_button buy_car" v-if="!car.sold" :id="car.car.id" >اقتراح سعر</a>
+                    <a class="primary-btn car-sales_center_content_cars_car_button buy_car" v-if="!car.sold" >اقتراح سعر</a>
 
                     <a class="primary-btn car-sales_center_content_cars_car_button_sold" v-if="car.sold">تم البيع</a>
                 </div>

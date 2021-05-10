@@ -364,6 +364,18 @@ $(document).ready(function() {
     //     })
     // }
 
+
+
+
+
+
+
+
+
+
+
+
+
     const checkReservation = $('.check-reservation');
     if (checkReservation.length) {
         $('.check-reservation').on('click', function() {
