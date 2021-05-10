@@ -92,6 +92,10 @@ class BookingController extends Controller
         $data = Crypt::decrypt($request->data);
 
         $data['order']['amount'] = $price;
+
+        $order->price = $price;
+        $order->save();
+
         $response = Http::contentType("application/json")
         ->withBasicAuth('merchant.'.$merchantID, $merchantPassword)
         ->withHeaders([

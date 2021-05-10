@@ -11,6 +11,7 @@ use App\Models\CarsInStock;
 use Auth;
 use App\Http\Requests\Api\OrderStep1Request;
 use App\Http\Requests\Api\OrderStep2Request;
+use App\Http\Requests\Api\OrderStep3Request;
 use App\Payment\MasterCardPayment;
 use Carbon\Carbon;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -276,104 +277,152 @@ class OrderController extends Controller
      * @param \App\Models\Order $order
      * @return \App\Http\Resources\OrderResource
      */
-    public function step3(Request $request)
+    public function step3(OrderStep3Request $request)
     {
         $merchantID = "TEST3000000721";
         $merchantPassword = "0c7fb828291074dc52486465bbf18e69";
         $orderID =  $request->order_id;
+        $order = Order::find($request->order_id);
 
         // $merchantID = "3000000721";
         // $merchantPassword = "8c9e1db3899b93bd92348bc176cc109c";
 
-        $sessionID = MasterCardPayment::createSessionSandBox($orderID, $merchantID, $merchantPassword);
-        $totalPrice = 5000;
+        $order->update([
+            'payment_type' => $request->payment_type,
+        ]);
 
-        $orderData = [
-            'orderID' => $orderID,
-            'merchantID' => $merchantID,
-            'merchantPassword' => $merchantPassword,
-        ];
-        $data = [
-            'correlationId' => "123",
-            'session' => [
-                'authenticationLimit' => 10,
-            ]
-        ];
-        $response = Http::contentType("application/json")
-        ->withBasicAuth('merchant.'.$merchantID, $merchantPassword)
-        ->withHeaders([
-            'Accept' => 'application/json'
-        ])->post(config('BankPayment.ApiUrlTest'). '/merchant/'.$merchantID.'/session', $data)->json();
-        $sessionID = $response;
-        if ($sessionID['result'] == "SUCCESS") {
+        if ($request->payment_type == "visa") {
+            # code...
 
-            $sessionID =   $sessionID['session']['id'];
-            $orderData['sessionID'] = $sessionID ;
-            $data = [
-                'sourceOfFunds' => [
-                    "provided" => [
-                        "card" => [
-                            "nameOnCard" => $request->nameOnCard,
-                            "number" => $request->CardNumber,
-                            "expiry" => [
-                              "month" => $request->expiry_month,
-                              "year" => $request->expiry_year
-                            ],
-                            "securityCode" => $request->securityCode
-                        ]
-                    ]
-                ],
+
+
+
+            $sessionID = MasterCardPayment::createSessionSandBox($orderID, $merchantID, $merchantPassword);
+            $totalPrice = 5000;
+
+            $orderData = [
+                'orderID' => $orderID,
+                'merchantID' => $merchantID,
+                'merchantPassword' => $merchantPassword,
             ];
-
-            $orderData['sourceOfFunds'] = $data ;
-
-
+            $data = [
+                'correlationId' => "123",
+                'session' => [
+                    'authenticationLimit' => 10,
+                ]
+            ];
             $response = Http::contentType("application/json")
             ->withBasicAuth('merchant.'.$merchantID, $merchantPassword)
             ->withHeaders([
                 'Accept' => 'application/json'
-            ])->put(config('BankPayment.ApiUrlTest'). '/merchant/'.$merchantID.'/session/'.$sessionID, $data)->json();
+            ])->post(config('BankPayment.ApiUrlTest'). '/merchant/'.$merchantID.'/session', $data)->json();
+            $sessionID = $response;
+            if ($sessionID['result'] == "SUCCESS") {
 
-            if($response['session']['updateStatus'] == "SUCCESS"){
+                $sessionID =   $sessionID['session']['id'];
+                $orderData['sessionID'] = $sessionID ;
                 $data = [
-                    '3DSecure' => [
-                        "authenticationRedirect" => [
-                            "responseUrl" => route('api.payment.pay', [$orderID,$sessionID]),
-                            "pageGenerationMode" => "SIMPLE"
-                        ],
-                    ],
-                    "apiOperation" => "CHECK_3DS_ENROLLMENT",
-                    "order" => [
-                        "amount" =>   $totalPrice,
-                        "currency" => config('BankPayment.currency')
-                    ],
-                    "session" => [
-                        "id" =>  $sessionID,
+                    'sourceOfFunds' => [
+                        "provided" => [
+                            "card" => [
+                                "nameOnCard" => $request->nameOnCard,
+                                "number" => $request->CardNumber,
+                                "expiry" => [
+                                  "month" => $request->expiry_month,
+                                  "year" => $request->expiry_year
+                                ],
+                                "securityCode" => $request->securityCode
+                            ]
+                        ]
                     ],
                 ];
 
-                $orderData['amount'] =  $totalPrice;
-                $orderData['currency'] = config('BankPayment.currency');
+                $orderData['sourceOfFunds'] = $data ;
 
-                $order = Order::find($request->order_id);
-                $order_id = Crypt::encrypt($order->id);
-                $orderData = Crypt::encrypt($orderData);
-                $data = Crypt::encrypt($data);
-                $user_id = Crypt::encrypt(Auth()->id());
-                $paymentUrl = Route('front.booking.payment') . "?order_id=".$order_id."&&user_id=".$user_id."&&order_data=".$orderData."&&data=".$data;
 
-                return response()->json([
-                    'status' => true,
-                    'order' => new OrderResource($order),
-                    'payment_url' => $paymentUrl,
-                ]);
-                // return  $htmlBodyContent ;
+                $response = Http::contentType("application/json")
+                ->withBasicAuth('merchant.'.$merchantID, $merchantPassword)
+                ->withHeaders([
+                    'Accept' => 'application/json'
+                ])->put(config('BankPayment.ApiUrlTest'). '/merchant/'.$merchantID.'/session/'.$sessionID, $data)->json();
+
+                if($response['session']['updateStatus'] == "SUCCESS"){
+                    $data = [
+                        '3DSecure' => [
+                            "authenticationRedirect" => [
+                                "responseUrl" => route('api.payment.pay', [$orderID,$sessionID]),
+                                "pageGenerationMode" => "SIMPLE"
+                            ],
+                        ],
+                        "apiOperation" => "CHECK_3DS_ENROLLMENT",
+                        "order" => [
+                            "amount" =>   $totalPrice,
+                            "currency" => config('BankPayment.currency')
+                        ],
+                        "session" => [
+                            "id" =>  $sessionID,
+                        ],
+                    ];
+
+                    $orderData['amount'] =  $totalPrice;
+                    $orderData['currency'] = config('BankPayment.currency');
+
+                    $order_id = Crypt::encrypt($order->id);
+                    $orderData = Crypt::encrypt($orderData);
+                    $data = Crypt::encrypt($data);
+                    $user_id = Crypt::encrypt(Auth()->id());
+                    $paymentUrl = Route('front.booking.payment') . "?order_id=".$order_id."&&user_id=".$user_id."&&order_data=".$orderData."&&data=".$data;
+
+                    return response()->json([
+                        'status' => true,
+                        'order' => new OrderResource($order),
+                        'payment_url' => $paymentUrl,
+                    ]);
+                    // return  $htmlBodyContent ;
+                }
             }
+        }else{
+            $order->update([
+                'payment_type' => 'cash',
+            ]);
+            return response()->json([
+                'status' => true,
+                'order' => new OrderResource($order),
+            ]);
         }
     }
 
+     /**
+     * @param \App\Models\Order $order
+     * @return \App\Http\Resources\OrderResource
+     */
+    public function orderCheck(Request $request)
+    {
+        $orderID =  $request->order_id;
+        $merchantID = "TEST3000000721";
+        $merchantPassword = "0c7fb828291074dc52486465bbf18e69";
+        // $merchantID = "3000000721";
+        // $merchantPassword = "8c9e1db3899b93bd92348bc176cc109c";
+        $order = Order::find($orderID);
+        $getOrderDetailsSandBox = MasterCardPayment::getOrderDetailsSandBox($orderID, $merchantID, $merchantPassword);
 
-
+        if ($getOrderDetailsSandBox['result'] == "SUCCESS"  &&  $getOrderDetailsSandBox['status'] == "CAPTURED") {
+            $order->update([
+                'payment_status' => $getOrderDetailsSandBox['result']
+                // 'payment_data' => $getOrderDetailsSandBox['result']
+            ]);
+            return response()->json([
+                'status' => true,
+                'order' => new OrderResource($order),
+            ]);
+            // $this->currentStep = 5;
+        }else{
+            return response()->json([
+                'status' => false,
+                'order' => new OrderResource($order),
+            ]);
+        }
+    }
 
 
     /**
