@@ -6,18 +6,18 @@
                 <img src="{{$car->getFirstMediaUrl()}}" alt=".">
             </div>
             <div class="H3-TST-D3 H3-TST-D3-1">
-                <h2>{{$car->name}} {{$car->model}} <span>أو ما شابه ذلك</span></h2>
+                <h2>{{$car->name}} {{$car->model}} <span>أو مشابهة</span></h2>
                 <span>{{$car->category? $car->category->name : '-'}}</span>
             </div>
             <div class="H3-TST-D3 H3-TST-D3-2">
                 <div class="H3-TST-D4-2">
-                    <h5>الاستلام</h5>
+                    <h5 class="text-center" style="font-weight: 800">تفاصيل الاستلام</h5>
                     <p>{{$receiving_branch->name}} <i class="fas fa-map-marker-alt"></i></p>
                     <p>{{$reciving_date->format('d-m-Y')}} <i class="fas fa-calendar-alt"></i></p>
                     <p>{{$reciving_date->format('h:i A')}} <i class="far fa-clock"></i></p>
                 </div>
                 <div class="H3-TST-D4-2">
-                    <h5>التسليم</h5>
+                    <h5 class="text-center" style="font-weight: 800">تفاصيل التسليم</h5>
                     <p>{{$delivery_branch->name}} <i class="fas fa-map-marker-alt"></i></p>
                     <p>{{$delivery_date->format('d-m-Y')}} <i class="fas fa-calendar-alt"></i></p>
                     <p>{{$delivery_date->format('h:i A')}} <i class="far fa-clock"></i></p>
@@ -25,7 +25,7 @@
 
 
                 <div class="H3-TST-D4-2">
-                    <h5>المواصفات</h5>
+                    <h5>مواصفات السيارة</h5>
                     <div class="H3-icons">
                         <div><i class="fas fa-user-tie"></i></i>
                             <p>{{$car->door}}</p>
