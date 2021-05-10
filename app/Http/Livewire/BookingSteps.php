@@ -11,12 +11,9 @@ use App\Models\Custmerrequest;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 use App\Payment\MasterCardPayment;
-<<<<<<< HEAD
 use Cookie;
 use Illuminate\Support\Facades\Http;
-=======
 use Settings;
->>>>>>> 31d604a10d9e15168d424b9da92af9d9ee648938
 
 class BookingSteps extends Component
 {
