@@ -325,7 +325,7 @@ class OrderController extends Controller
                 ],
             ];
 
-            $orderData['securityCode'] = $data['sourceOfFunds']['provided']['card']['securityCode'] ;
+            $orderData['sourceOfFunds'] = $data ;
 
 
             $response = Http::contentType("application/json")
@@ -354,15 +354,20 @@ class OrderController extends Controller
 
                 $orderData['amount'] =  $totalPrice;
                 $orderData['currency'] = config('BankPayment.currency');
-                $response = Http::contentType("application/json")
-                ->withBasicAuth('merchant.'.$merchantID, $merchantPassword)
-                ->withHeaders([
-                    'Accept' => 'application/json'
-                ])->put(config('BankPayment.ApiUrlTest'). '/merchant/'.$merchantID.'/3DSecureId/3dsID_'.$orderID, $data)->json();
 
-                $htmlBodyContent = $response['3DSecure']['authenticationRedirect']['simple']['htmlBodyContent'];
+                $order = Order::find($request->order_id);
+                $order_id = Crypt::encrypt($order->id);
+                $orderData = Crypt::encrypt($orderData);
+                $data = Crypt::encrypt($data);
+                $user_id = Crypt::encrypt(Auth()->id());
+                $paymentUrl = Route('front.booking.payment') . "?order_id=".$order_id."&&user_id=".$user_id."&&order_data=".$orderData."&&data=".$data;
 
-                return  $htmlBodyContent ;
+                return response()->json([
+                    'status' => true,
+                    'order' => new OrderResource($order),
+                    'payment_url' => $paymentUrl,
+                ]);
+                // return  $htmlBodyContent ;
             }
         }
     }

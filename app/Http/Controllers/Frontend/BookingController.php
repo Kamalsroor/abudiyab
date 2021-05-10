@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Payment\MasterCardPayment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Http;
 
 class BookingController extends Controller
 {
@@ -18,7 +19,7 @@ class BookingController extends Controller
      */
     public function payment(Request $request)
     {
-        // dd($request->all() , Crypt::decrypt($request->order_id) , Crypt::decrypt($request->user_id));
+        // dd($request->all() , Crypt::decrypt($request->order_id) , Crypt::decrypt($request->user_id) , Crypt::decrypt($request->order_data) , Crypt::decrypt($request->data));
         // for ($i=0; $i < 1000 ; $i++) {
         //     $rount = decimalRand(1,10,0.1);
 
@@ -34,7 +35,16 @@ class BookingController extends Controller
         //     // echo('<br>');
 
         // }
+
+
+
         $order = Order::find(Crypt::decrypt($request->order_id));
+        $order_data = Crypt::decrypt($request->order_data);
+
+        $merchantID = $order_data['merchantID'];
+        $merchantPassword = $order_data['merchantPassword'];
+        $orderID = $order->id;
+
 
         if ($order) {
             if ($order->user_id != Crypt::decrypt($request->user_id)) {
@@ -74,43 +84,22 @@ class BookingController extends Controller
             }
 
             $price = $featuresPrice + $carPrice;
-            // $merchantID = "3000000721";
-            // $merchantPassword = "8c9e1db3899b93bd92348bc176cc109c";
 
-            // $sessionID = MasterCardPayment::createSessionSandBox($orderID, $merchantID, $merchantPassword);
-
-
-            $merchantID = "TEST3000000721";
-            $merchantPassword = "0c7fb828291074dc52486465bbf18e69";
-            $sessionID = MasterCardPayment::createSessionTest($orderID, $merchantID, $merchantPassword);
-
-            $successURL = "completeCallback";
-            $failURL = "errorCallback";
-            $totalPrice = $price;
-            // $totalPrice = 5;
-            $siteName = "test";
-            $siteAddress = "tetst";
-            $siteEmail = "kamal.s.sroor@gmail.com";
-            $sitePhone = "01012316954";
-            $siteLogoURL = "https://abudiyab.test/";
-            $paymentData = [
-                'merchant' => $merchantID,
-                'order_amount' => $totalPrice,
-                'order_currency' => config('BankPayment.currency'),
-                'order_id' => $orderID,
-                'session_id' => $sessionID,
-                'merchant_name' => $siteName,
-            ];
         }
 
-        // dd($sessionID);
-        $createTransactionAuthorize = MasterCardPayment::createTransactionAuthorize($orderID, $merchantID, $merchantPassword,$sessionID);
-        // dd($createTransactionAuthorize);
 
+        $data = Crypt::decrypt($request->data);
 
+        $data['order']['amount'] = $price;
+        $response = Http::contentType("application/json")
+        ->withBasicAuth('merchant.'.$merchantID, $merchantPassword)
+        ->withHeaders([
+            'Accept' => 'application/json'
+        ])->put(config('BankPayment.ApiUrlTest'). '/merchant/'.$merchantID.'/3DSecureId/3dsID_'.$orderID, $data)->json();
 
+        $htmlBodyContent = $response['3DSecure']['authenticationRedirect']['simple']['htmlBodyContent'];
 
-        return view('frontend.payment',compact('paymentData'));
+        return view('frontend.payment',compact('htmlBodyContent'));
     }
 
 
