@@ -56,30 +56,31 @@ class BookingController extends Controller
             $orderID =  $order->id;
             $carPrice = $order->car->price1 * $order->days;
             $featuresPrice = 0;
-
-            foreach ($order->features_added as $key => $value) {
-                switch ($key) {
-                    case "shield_price":
-                        $featuresPrice += $value *  $order->days;
-                        break;
-                    case "insurance_price":
-                        $featuresPrice += $value *  $order->days;
-                        break;
-                    case "open_kilometers_price":
-                        $featuresPrice += $value ;
-                        break;
-                    case "navigation_price":
-                        $featuresPrice += $value ;
-                        break;
-                    case "home_delivery_price":
-                        $featuresPrice += $value ;
-                        break;
-                    case "intercity_price":
-                        $featuresPrice += $value *  $order->days;
-                        break;
-                    case "baby_seat_price":
-                        $featuresPrice += $value ;
-                        break;
+            if (is_array($order->features_added)) {
+                foreach ($order->features_added as $key => $value) {
+                    switch ($key) {
+                        case "shield_price":
+                            $featuresPrice += $value *  $order->days;
+                            break;
+                        case "insurance_price":
+                            $featuresPrice += $value *  $order->days;
+                            break;
+                        case "open_kilometers_price":
+                            $featuresPrice += $value ;
+                            break;
+                        case "navigation_price":
+                            $featuresPrice += $value ;
+                            break;
+                        case "home_delivery_price":
+                            $featuresPrice += $value ;
+                            break;
+                        case "intercity_price":
+                            $featuresPrice += $value *  $order->days;
+                            break;
+                        case "baby_seat_price":
+                            $featuresPrice += $value ;
+                            break;
+                    }
                 }
             }
 
