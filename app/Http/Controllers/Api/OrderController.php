@@ -17,6 +17,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request ;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Http;
 use Moyasar;
 
 class OrderController extends Controller
@@ -240,61 +241,16 @@ class OrderController extends Controller
      */
     public function step2(OrderStep2Request $request)
     {
-        // Moyasar::setApiKey(config('moyasar.Test_Secret_Key'));
-        // $card = [
-        //     "type" => Moyasar::CREDIT_CARD,
-        //    "name" => "Abdulaziz Nasser",
-        //    "number" => "4111111111111111",
-        //    "cvc" => 331,
-        //    "month" => 12,
-        //    "year" => 2021
-        //      ];
-        //  return Moyasar::PayCreate("10000"  ,$card,  "bag payment", "SAR");
 
-
-
-
-        $merchantID = "TEST3000000721";
-        $merchantPassword = "0c7fb828291074dc52486465bbf18e69";
-
-        // $merchantID = "3000000721";
-        // $merchantPassword = "8c9e1db3899b93bd92348bc176cc109c";
-
-        $sessionID = MasterCardPayment::createSessionSandBox(7070, $merchantID, $merchantPassword);
-        $successURL = "completeCallback";
-        $failURL = "errorCallback";
-        $totalPrice = 5000;
-        // $totalPrice = 5;
-        $siteName = "test";
-        $siteAddress = "tetst";
-        $siteEmail = "kamal.s.sroor@gmail.com";
-        $sitePhone = "01012316954";
-        $siteLogoURL = "https://abudiyab.test/";
-        $paymentData = [
-            'merchant' => $merchantID,
-            'order_amount' => $totalPrice,
-            'order_currency' => config('BankPayment.currency'),
-            'order_id' => 7070,
-            'session_id' => $sessionID,
-            'merchant_name' => $siteName,
-        ];
-
-        // dd($sessionID);
-        $createTransactionAuthorize = MasterCardPayment::createTransactionAuthorize(7070, $merchantID, $merchantPassword,$sessionID);
-        dd($createTransactionAuthorize);
-
-
-        // $invoice = Invoice::fromArray($data);
-        // $invoice->setClient($this->client);
-        // $invoiceService = new \Moyasar\Providers\InvoiceService();
-        // $invoice = $invoiceService->create();
-        // return response()->json(['status' => false,'data' => $request->all() ], 200);
+        $order = Order::find($request->order_id);
+        $order_id = Crypt::encrypt($order->id);
+        $user_id = Crypt::encrypt(Auth()->id());
+        $paymentUrl = Route('front.booking.payment') . "?order_id=".$order_id."&&user_id=".$user_id;
 
         if ($request->features != null && is_array($request->features))
         {
             $features = [];
             foreach ($request->features as  $feature) {
-                $order = Order::find($request->order_id);
 
                 $features[$feature] = $order->car->{$feature};
 
@@ -304,20 +260,113 @@ class OrderController extends Controller
             $order->update([
                 'features_added' => $features,
             ]);
-            $order_id = Crypt::encrypt($order->id);
-            $user_id = Crypt::encrypt(Auth()->id());
-            $paymentUrl = Route('front.booking.payment') . "?order_id=".$order_id."&&user_id=".$user_id;
-
-            return response()->json([
-                'status' => true,
-                'order' => new OrderResource($order),
-                'payment_url' => $paymentUrl,
-            ]);
         }
-       else{
-         return response()->json(['status' => false,'massage' => 'يرجي التأكيد من البيانات' ], 200);
-       }
+
+        return response()->json([
+            'status' => true,
+            'order' => new OrderResource($order),
+            // 'payment_url' => $paymentUrl,
+        ]);
     }
+
+
+
+
+     /**
+     * @param \App\Models\Order $order
+     * @return \App\Http\Resources\OrderResource
+     */
+    public function step3(Request $request)
+    {
+        $merchantID = "TEST3000000721";
+        $merchantPassword = "0c7fb828291074dc52486465bbf18e69";
+        $orderID =  $request->order_id;
+
+        // $merchantID = "3000000721";
+        // $merchantPassword = "8c9e1db3899b93bd92348bc176cc109c";
+
+        $sessionID = MasterCardPayment::createSessionSandBox($orderID, $merchantID, $merchantPassword);
+        $totalPrice = 5000;
+
+        $orderData = [
+            'orderID' => $orderID,
+            'merchantID' => $merchantID,
+            'merchantPassword' => $merchantPassword,
+        ];
+        $data = [
+            'correlationId' => "123",
+            'session' => [
+                'authenticationLimit' => 10,
+            ]
+        ];
+        $response = Http::contentType("application/json")
+        ->withBasicAuth('merchant.'.$merchantID, $merchantPassword)
+        ->withHeaders([
+            'Accept' => 'application/json'
+        ])->post(config('BankPayment.ApiUrlTest'). '/merchant/'.$merchantID.'/session', $data)->json();
+        $sessionID = $response;
+        if ($sessionID['result'] == "SUCCESS") {
+
+            $sessionID =   $sessionID['session']['id'];
+            $orderData['sessionID'] = $sessionID ;
+            $data = [
+                'sourceOfFunds' => [
+                    "provided" => [
+                        "card" => [
+                            "nameOnCard" => $request->nameOnCard,
+                            "number" => $request->CardNumber,
+                            "expiry" => [
+                              "month" => $request->expiry_month,
+                              "year" => $request->expiry_year
+                            ],
+                            "securityCode" => $request->securityCode
+                        ]
+                    ]
+                ],
+            ];
+
+            $orderData['securityCode'] = $data['sourceOfFunds']['provided']['card']['securityCode'] ;
+
+
+            $response = Http::contentType("application/json")
+            ->withBasicAuth('merchant.'.$merchantID, $merchantPassword)
+            ->withHeaders([
+                'Accept' => 'application/json'
+            ])->put(config('BankPayment.ApiUrlTest'). '/merchant/'.$merchantID.'/session/'.$sessionID, $data)->json();
+
+            if($response['session']['updateStatus'] == "SUCCESS"){
+                $data = [
+                    '3DSecure' => [
+                        "authenticationRedirect" => [
+                            "responseUrl" => route('api.payment.pay', [$orderID,$sessionID]),
+                            "pageGenerationMode" => "SIMPLE"
+                        ],
+                    ],
+                    "apiOperation" => "CHECK_3DS_ENROLLMENT",
+                    "order" => [
+                        "amount" =>   $totalPrice,
+                        "currency" => config('BankPayment.currency')
+                    ],
+                    "session" => [
+                        "id" =>  $sessionID,
+                    ],
+                ];
+
+                $orderData['amount'] =  $totalPrice;
+                $orderData['currency'] = config('BankPayment.currency');
+                $response = Http::contentType("application/json")
+                ->withBasicAuth('merchant.'.$merchantID, $merchantPassword)
+                ->withHeaders([
+                    'Accept' => 'application/json'
+                ])->put(config('BankPayment.ApiUrlTest'). '/merchant/'.$merchantID.'/3DSecureId/3dsID_'.$orderID, $data)->json();
+
+                $htmlBodyContent = $response['3DSecure']['authenticationRedirect']['simple']['htmlBodyContent'];
+
+                return  $htmlBodyContent ;
+            }
+        }
+    }
+
 
 
 
