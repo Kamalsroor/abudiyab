@@ -319,8 +319,8 @@
                                                 <i class="fas fa-exclamation-circle dollar d-none d-lg-block" data-container="body" data-toggle="popover" data-placement="right" data-content="عرض خصم (5%)"></i>
                                                 <p class="color-black">السعر لليوم الواحد</p>
                                                 <div class="fleet-pricing-section" >
-                                                    <span class="color-black price2" ><i class="icofont icofont-cur-riyal color-black"></i>{{$formcar->price2}}</span>
-                                                    <span class="color-black price1" ><i class="icofont icofont-cur-riyal color-black"></i>{{$formcar->price1}}</span>
+                                                    <i class="icofont icofont-cur-riyal color-black"></i><span class="color-black price2">{{$formcar->price2}}</span>
+                                                    <span class="color-black price1"><i class="icofont icofont-cur-riyal color-black"></i>{{$formcar->price1}}</span>
                                                 </div>
 
                                             </div>

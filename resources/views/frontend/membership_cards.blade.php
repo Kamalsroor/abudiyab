@@ -8,7 +8,7 @@
                 <div class="row">
                     @foreach ($Memberships as $Membership)
                         <div class="col-12 col-md-3 p-3">
-                            <div class="card" >
+                            <div class="card" style="padding: 20px;">
                                 <img src="{{$Membership->getFirstMediaUrl()}}" class="card-img-top" alt="{{$Membership->name}}">
                                 <div class="card-body">
                                     <h5 class="card-title text-center">{{$Membership->name}}</h5>

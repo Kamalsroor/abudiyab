@@ -125,24 +125,28 @@
                 </div>
                 @push('js')
                     <script>
-                        function defaultBtnActive(div){
+                        let imageType = ['image/jpeg','image/jpg','image/png'];
+                        function defaultBtnActive(div, click){
                             let fileName = div.children[3];
                             let defaultBtn = div.nextElementSibling;
                             let cancelBtn = div.children[2];
                             let img = div.children[0].children[0];
                             let regExp = /[0-9a-zA-Z\^\&\'\@\{\}\[\]\,\$\=\!\-\#\(\)\.\%\+\~\_ ]+$/;
-                            cancelBtn.addEventListener('click', function() {
+                            if (click == 'I') {
                                 img.src = '';
                                 img.style.display = 'none';
                                 cancelBtn.style.display = 'none';
                                 fileName.style.display = 'none';
                                 div.style.border = '2px dashed #c2cdda';
-                                console.log(img.src);
-                            });
-                            defaultBtn.click();
+                                defaultBtn.value = null;
+                            }
+                            else{
+                                defaultBtn.click();
+                            }
                             defaultBtn.addEventListener("change", function(){
                                 const file = this.files[0];
-                                if(file){
+                                console.log(file.type);
+                                if(file && imageType.includes(file.type)){
                                     const reader = new FileReader();
                                     reader.onload = function(){
                                         const result = reader.result;
@@ -154,18 +158,27 @@
                                     }
                                     reader.readAsDataURL(file);
                                 }
-                                if(this.value) {
+                                if(this.value && imageType.includes(file.type)) {
                                     let valueStore = this.value.match(regExp);
                                     fileName.textContent = valueStore;
                                 }
                             });
                         }
                         let identityFace = document.getElementById('identityFace');
-                        let identityBack = document.getElementById('identityBack');
-                        let licenceFace = document.getElementById('licenceFace');
-                        let licenceBack = document.getElementById('licenceBack');
                         identityFace.addEventListener('click', function(n){
-                            defaultBtnActive(this);
+                            defaultBtnActive(this, n.target.nodeName);
+                        });
+                        let identityBack = document.getElementById('identityBack');
+                        identityBack.addEventListener('click', function(n){
+                            defaultBtnActive(this, n.target.nodeName);
+                        });
+                        let licenceFace = document.getElementById('licenceFace');
+                        licenceFace.addEventListener('click', function(n){
+                            defaultBtnActive(this, n.target.nodeName);
+                        });
+                        let licenceBack = document.getElementById('licenceBack');
+                        licenceBack.addEventListener('click', function(n){
+                            defaultBtnActive(this, n.target.nodeName);
                         });
                     </script>
                 @endpush

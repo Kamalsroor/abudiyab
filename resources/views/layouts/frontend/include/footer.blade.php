@@ -1,9 +1,9 @@
 <section class="footer-page">
-    
+
     <footer class="footer">
-            
+
         <div class="container text-center">
-            
+
             <div class="row">
                 <div class="col-12 col-lg-4 footer_section-3">
                     <div class="row">
@@ -12,13 +12,13 @@
                                 <img class="w-100" src="{{asset('front/img/logo-edited-.png')}}" alt="logo">
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
 
                 <div class="col-12 col-lg-4 footer_section-1">
                     <div class="row">
-                        
+
                         <div class="m-auto">
                             <p>العنوان</p>
                             <p>{{Settings::get('branch_name')}}</p>
@@ -32,8 +32,8 @@
                             <a href="{{Settings::get('instagram')}}" target="_blank"><i class="fab fa-instagram"></i></a>
                             <a href="{{Settings::get('linkedin')}}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                         </div>
-                        
-                    
+
+
                     </div>
                 </div>
 
@@ -42,9 +42,9 @@
                         <div class="col-12 footer_section-3_text">
                             <p>يسعدنا خدمتكم من خلال تطبيقنا</p>
                         </div>
-                        
+
                         <div class="col-12 mb-2">
-                            <a href="tel:996920026600" class="btn btn-danger btn-lg btn-block"> {{Settings::get('phone')}} <i class="fas fa-phone-volume"></i></a>
+                            <a href="tel:996920026600" class="btn btn-danger btn-lg btn-block" style="text-shadow: none;font-weight: bold;"> {{Settings::get('phone')}} <i class="fas fa-phone-volume"></i></a>
                         </div>
 
                         <div class="col-12 mb-2">
@@ -59,9 +59,9 @@
                     </div>
                 </div>
 
-                
+
             </div>
-            
+
         </div>
         <div class="container-fluid">
             <div class="row footer_section-4 text-center">
