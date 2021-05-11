@@ -313,7 +313,7 @@ class OrderController extends Controller
             ->withBasicAuth('merchant.'.$merchantID, $merchantPassword)
             ->withHeaders([
                 'Accept' => 'application/json'
-            ])->post(config('BankPayment.ApiUrlTest'). '/merchant/'.$merchantID.'/session', $data)->json();
+            ])->post(config('BankPayment.ApiUrl'). '/merchant/'.$merchantID.'/session', $data)->json();
             $sessionID = $response;
             if ($sessionID['result'] == "SUCCESS") {
 
@@ -342,7 +342,7 @@ class OrderController extends Controller
                 ->withBasicAuth('merchant.'.$merchantID, $merchantPassword)
                 ->withHeaders([
                     'Accept' => 'application/json'
-                ])->put(config('BankPayment.ApiUrlTest'). '/merchant/'.$merchantID.'/session/'.$sessionID, $data)->json();
+                ])->put(config('BankPayment.ApiUrl'). '/merchant/'.$merchantID.'/session/'.$sessionID, $data)->json();
 
                 if($response['session']['updateStatus'] == "SUCCESS"){
                     $data = [
@@ -365,79 +365,16 @@ class OrderController extends Controller
                     $orderData['amount'] =  $totalPrice;
                     $orderData['currency'] = config('BankPayment.currency');
 
-                    // $order_id = Crypt::encrypt($order->id);
-                    // $orderData = Crypt::encrypt($orderData);
-                    // $data = Crypt::encrypt($data);
-                    // $user_id = Crypt::encrypt(Auth()->id());
-                    // $paymentUrl = Route('front.booking.payment') . "?order_id=".$order_id."&&user_id=".$user_id."&&order_data=".$orderData."&&data=".$data;
-                    // $merchantID = $order_data['merchantID'];
-                    // $merchantPassword = $order_data['merchantPassword'];
-                    $orderID = $order->id;
-
-
-                    if ($order) {
-                        // if ($order->user_id != Crypt::decrypt($request->user_id)) {
-                        //     abort(404);
-                        // }
-                        $price = 0;
-
-                        // dd($order, $order->car->price1 , $order->days ,$order->features_added);
-                        $orderID =  $order->id;
-                        $carPrice = $order->car->price1 * $order->days;
-                        $featuresPrice = 0;
-                        if (is_array($order->features_added)) {
-                            foreach ($order->features_added as $key => $value) {
-                                switch ($key) {
-                                    case "shield_price":
-                                        $featuresPrice += $value *  $order->days;
-                                        break;
-                                    case "insurance_price":
-                                        $featuresPrice += $value *  $order->days;
-                                        break;
-                                    case "open_kilometers_price":
-                                        $featuresPrice += $value ;
-                                        break;
-                                    case "navigation_price":
-                                        $featuresPrice += $value ;
-                                        break;
-                                    case "home_delivery_price":
-                                        $featuresPrice += $value ;
-                                        break;
-                                    case "intercity_price":
-                                        $featuresPrice += $value *  $order->days;
-                                        break;
-                                    case "baby_seat_price":
-                                        $featuresPrice += $value ;
-                                        break;
-                                }
-                            }
-                        }
-
-                        $price = $featuresPrice + $carPrice;
-
-                    }
-
-
-                    // $data = Crypt::decrypt($request->data);
-
-                    $data['order']['amount'] = $price;
-
-                    $order->price = $price;
-                    $order->save();
-
-                    $response = Http::contentType("application/json")
-                    ->withBasicAuth('merchant.'.$merchantID, $merchantPassword)
-                    ->withHeaders([
-                        'Accept' => 'application/json'
-                    ])->put(config('BankPayment.ApiUrlTest'). '/merchant/'.$merchantID.'/3DSecureId/3dsID_'.$orderID, $data)->json();
-                    // dd($response);
-                    $htmlBodyContent = $response['3DSecure']['authenticationRedirect']['simple']['htmlBodyContent'];
+                    $order_id = Crypt::encrypt($order->id);
+                    $orderData = Crypt::encrypt($orderData);
+                    $data = Crypt::encrypt($data);
+                    $user_id = Crypt::encrypt(Auth()->id());
+                    $paymentUrl = Route('front.booking.payment') . "?order_id=".$order_id."&&user_id=".$user_id."&&order_data=".$orderData."&&data=".$data;
 
                     return response()->json([
                         'status' => true,
                         'order' => new OrderResource($order),
-                        // 'payment_url' => $paymentUrl,
-                        'htmlBodyContent' => $htmlBodyContent,
+                        'payment_url' => $paymentUrl,
                     ]);
                     // return  $htmlBodyContent ;
                 }

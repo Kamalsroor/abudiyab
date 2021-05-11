@@ -356,7 +356,7 @@ class BookingSteps extends Component
             ->withBasicAuth('merchant.'.$this->merchantID, $this->merchantPassword)
             ->withHeaders([
                 'Accept' => 'application/json'
-            ])->post(config('BankPayment.ApiUrlTest'). '/merchant/'.$this->merchantID.'/session', $data)->json();
+            ])->post(config('BankPayment.ApiUrl'). '/merchant/'.$this->merchantID.'/session', $data)->json();
             $sessionID = $response;
 
             if ($sessionID['result'] == "SUCCESS") {
@@ -385,7 +385,7 @@ class BookingSteps extends Component
                 ->withBasicAuth('merchant.'.$this->merchantID, $this->merchantPassword)
                 ->withHeaders([
                     'Accept' => 'application/json'
-                ])->put(config('BankPayment.ApiUrlTest'). '/merchant/'.$this->merchantID.'/session/'.$sessionID, $data)->json();
+                ])->put(config('BankPayment.ApiUrl'). '/merchant/'.$this->merchantID.'/session/'.$sessionID, $data)->json();
 
                 if(isset($response['session']) && $response['session']['updateStatus'] == "SUCCESS"){
                     $sessionID =   $response['session']['id'];
@@ -412,7 +412,7 @@ class BookingSteps extends Component
                     ->withBasicAuth('merchant.'.$this->merchantID, $this->merchantPassword)
                     ->withHeaders([
                         'Accept' => 'application/json'
-                    ])->put(config('BankPayment.ApiUrlTest'). '/merchant/'.$this->merchantID.'/3DSecureId/3dsID_'.$orderID, $data)->json();
+                    ])->put(config('BankPayment.ApiUrl'). '/merchant/'.$this->merchantID.'/3DSecureId/3dsID_'.$orderID, $data)->json();
                     dd($response , $sessionID );
 
                     if(isset($response['error']) ){
