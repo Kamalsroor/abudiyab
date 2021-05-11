@@ -3,17 +3,19 @@
         <div class="car-sales_center_content">
             <div class="car-sales_center_content_filter">
                 <div class="car-sales_center_content_filter_select">
+                    <h5>ابحث بالسيارة</h5>
                     <input type="hidden" v-model='cars'>
                     <select v-model="filterByCarId">
-                        <option disabled="" selected="">ابحث بالسيارة</option>
-                        <option value="">ابحث بالسيارة</option>
+                        <option disabled="" selected>ابحث بالسيارة</option>
+                        <option value="">الكل</option>
                         <option :value="index" v-for="(carname, index) in cars_select">{{carname}}</option>
                     </select>
                 </div>
                 <div class="car-sales_center_content_filter_select">
+                    <h5>ابحث بالموديل</h5>
                     <select v-model="filterByModel">
-                            <option disabled="" selected="">ابحث بالموديل</option>
-                            <option value="">ابحث بالموديل</option>
+                            <option disabled="" selected>ابحث بالموديل</option>
+                            <option value="">الكل</option>
                                 <option :value="model"  v-for="model in models">{{model}}</option>
                     </select>
                 </div>
