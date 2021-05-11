@@ -279,13 +279,11 @@ class OrderController extends Controller
      */
     public function step3(OrderStep3Request $request)
     {
-        $merchantID = "TEST3000000721";
-        $merchantPassword = "0c7fb828291074dc52486465bbf18e69";
+        $merchantID = config('BankPayment.merchantID');
+        $merchantPassword = config('BankPayment.merchantPassword');
         $orderID =  $request->order_id;
         $order = Order::find($request->order_id);
 
-        // $merchantID = "3000000721";
-        // $merchantPassword = "8c9e1db3899b93bd92348bc176cc109c";
 
         $order->update([
             'payment_type' => $request->payment_type,
@@ -315,7 +313,7 @@ class OrderController extends Controller
             ->withBasicAuth('merchant.'.$merchantID, $merchantPassword)
             ->withHeaders([
                 'Accept' => 'application/json'
-            ])->post(config('BankPayment.ApiUrlTest'). '/merchant/'.$merchantID.'/session', $data)->json();
+            ])->post(config('BankPayment.ApiUrl'). '/merchant/'.$merchantID.'/session', $data)->json();
             $sessionID = $response;
             if ($sessionID['result'] == "SUCCESS") {
 
@@ -344,7 +342,7 @@ class OrderController extends Controller
                 ->withBasicAuth('merchant.'.$merchantID, $merchantPassword)
                 ->withHeaders([
                     'Accept' => 'application/json'
-                ])->put(config('BankPayment.ApiUrlTest'). '/merchant/'.$merchantID.'/session/'.$sessionID, $data)->json();
+                ])->put(config('BankPayment.ApiUrl'). '/merchant/'.$merchantID.'/session/'.$sessionID, $data)->json();
 
                 if($response['session']['updateStatus'] == "SUCCESS"){
                     $data = [
@@ -399,10 +397,8 @@ class OrderController extends Controller
     public function orderCheck(Request $request)
     {
         $orderID =  $request->order_id;
-        $merchantID = "TEST3000000721";
-        $merchantPassword = "0c7fb828291074dc52486465bbf18e69";
-        // $merchantID = "3000000721";
-        // $merchantPassword = "8c9e1db3899b93bd92348bc176cc109c";
+        $merchantID = config('BankPayment.merchantID');
+        $merchantPassword = config('BankPayment.merchantPassword');
         $order = Order::find($orderID);
         $getOrderDetailsSandBox = MasterCardPayment::getOrderDetailsSandBox($orderID, $merchantID, $merchantPassword);
 

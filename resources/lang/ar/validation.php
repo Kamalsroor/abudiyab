@@ -153,5 +153,11 @@ return [
         'phone' => 'الجوال',
         'expected_salaray' => 'الراتب المتوقع',
         'jobname' => 'الوظيفه',
+        'paymentType' => 'طريقة الدفع',
+        'nameOnCard' => 'الاسم علي البطاقة',
+        'CardNumber' => 'رقم البطاقة',
+        'expiry_month' => 'الشهر',
+        'expiry_year' => 'السنة',
+        'securityCode' => 'CVV',
     ],
 ];
