@@ -31,6 +31,8 @@ return [
         'name' => 'Region name',
         '%name%' => 'Region name',
         'code' => 'Region code',
+        'city' => 'city',
+
         'created_at' => 'Created At',
         'deleted_at' => 'Deleted At',
     ],

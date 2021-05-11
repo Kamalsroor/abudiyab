@@ -51,6 +51,8 @@ class BranchController extends Controller
         return BranchResource::collection($branches);
     }
 
+
+
     /**
      * Display the specified branch.
      *

@@ -29,6 +29,7 @@ Route::get('locale/{locale}', 'LocaleController@update')->name('locale')->where(
 // });
 
 Route:: get('/getCarsCategories', 'Web\SiteController@getCarsCategories');
+Route:: get('/collectiontest', 'Frontend\FrontendController@collectiontest');
 
 Route::as('front.')->group(function () {
 
