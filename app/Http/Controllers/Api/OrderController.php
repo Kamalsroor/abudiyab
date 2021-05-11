@@ -313,7 +313,7 @@ class OrderController extends Controller
             ->withBasicAuth('merchant.'.$merchantID, $merchantPassword)
             ->withHeaders([
                 'Accept' => 'application/json'
-            ])->post(config('BankPayment.ApiUrl'). '/merchant/'.$merchantID.'/session', $data)->json();
+            ])->post(config('BankPayment.ApiUrlTest'). '/merchant/'.$merchantID.'/session', $data)->json();
             $sessionID = $response;
             if ($sessionID['result'] == "SUCCESS") {
 
@@ -342,7 +342,7 @@ class OrderController extends Controller
                 ->withBasicAuth('merchant.'.$merchantID, $merchantPassword)
                 ->withHeaders([
                     'Accept' => 'application/json'
-                ])->put(config('BankPayment.ApiUrl'). '/merchant/'.$merchantID.'/session/'.$sessionID, $data)->json();
+                ])->put(config('BankPayment.ApiUrlTest'). '/merchant/'.$merchantID.'/session/'.$sessionID, $data)->json();
 
                 if($response['session']['updateStatus'] == "SUCCESS"){
                     $data = [

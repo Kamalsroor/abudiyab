@@ -33,7 +33,7 @@ class PaymentController extends Controller
         ->withBasicAuth('merchant.'.$merchantID, $merchantPassword)
         ->withHeaders([
             'Accept' => 'application/json'
-        ])->post(config('BankPayment.ApiUrl'). '/merchant/'.$merchantID.'/3DSecureId/3dsID_'.$order->id, $data)->json();
+        ])->post(config('BankPayment.ApiUrlTest'). '/merchant/'.$merchantID.'/3DSecureId/3dsID_'.$order->id, $data)->json();
 
 
         $data = [
@@ -58,7 +58,7 @@ class PaymentController extends Controller
         ->withBasicAuth('merchant.'.$merchantID, $merchantPassword)
         ->withHeaders([
             'Accept' => 'application/json'
-        ])->put(config('BankPayment.ApiUrl'). '/merchant/'.$merchantID.'/order/'.$order->id.'/transaction/1', $data)->json();
+        ])->put(config('BankPayment.ApiUrlTest'). '/merchant/'.$merchantID.'/order/'.$order->id.'/transaction/1', $data)->json();
         return view('frontend.payment2');
     }
 

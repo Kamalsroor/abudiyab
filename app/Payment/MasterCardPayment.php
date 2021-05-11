@@ -114,7 +114,7 @@ class MasterCardPayment extends Controller
         ->withBasicAuth('merchant.'.self::$merchantID, self::$merchantPassword)
         ->withHeaders([
             'Accept' => 'application/json'
-        ])->post(config('BankPayment.ApiUrl'). '/merchant/'.self::$merchantID.'/session', $data)->json();
+        ])->post(config('BankPayment.ApiUrlTest'). '/merchant/'.self::$merchantID.'/session', $data)->json();
 
         self::$sessionID = $response;
 
@@ -171,7 +171,7 @@ class MasterCardPayment extends Controller
         ->withBasicAuth('merchant.'.self::$merchantID, self::$merchantPassword)
         ->withHeaders([
             'Accept' => 'application/json'
-        ])->put(config('BankPayment.ApiUrl'). '/merchant/'.self::$merchantID.'/order/'.self::$orderID.'/transaction/1088', $data)->json();
+        ])->put(config('BankPayment.ApiUrlTest'). '/merchant/'.self::$merchantID.'/order/'.self::$orderID.'/transaction/1088', $data)->json();
 
         self::$sessionID = $response;
         return self::$sessionID ;
@@ -207,7 +207,7 @@ class MasterCardPayment extends Controller
         ->withBasicAuth('merchant.'.self::$merchantID, self::$merchantPassword)
         ->withHeaders([
             'Accept' => 'application/json'
-        ])->post(config('BankPayment.ApiUrl'). '/merchant/'.self::$merchantID.'/session', $data)->json();
+        ])->post(config('BankPayment.ApiUrlTest'). '/merchant/'.self::$merchantID.'/session', $data)->json();
 
         self::$sessionID = $response;
 
@@ -281,7 +281,7 @@ class MasterCardPayment extends Controller
         ->withBasicAuth('merchant.'.self::$merchantID, self::$merchantPassword)
         ->withHeaders([
             'Accept' => 'application/json'
-        ])->get(config('BankPayment.ApiUrl'). '/merchant/'.self::$merchantID.'/order/'.self::$orderID)->json();
+        ])->get(config('BankPayment.ApiUrlTest'). '/merchant/'.self::$merchantID.'/order/'.self::$orderID)->json();
         return $response;
 	}
 
@@ -295,7 +295,7 @@ class MasterCardPayment extends Controller
 		self::$merchantPassword = $merchantPassword;
 
 		$curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, config('BankPayment.ApiUrl')."merchant/".self::$merchantID."/order/".self::$orderID."/");
+        curl_setopt($curl, CURLOPT_URL, config('BankPayment.ApiUrlTest')."merchant/".self::$merchantID."/order/".self::$orderID."/");
         curl_setopt($curl, CURLOPT_USERPWD, 'merchant.'.self::$merchantID.':'.self::$merchantPassword.'');
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($curl);
@@ -369,7 +369,7 @@ class MasterCardPayment extends Controller
         ->withBasicAuth('merchant.'.self::$merchantID, self::$merchantPassword)
         ->withHeaders([
             'Accept' => 'application/json'
-        ])->put(config('BankPayment.ApiUrl'). '/merchant/'.self::$merchantID.'/order/'.self::$orderID.'/transaction/'.$transaction, $data)->json();
+        ])->put(config('BankPayment.ApiUrlTest'). '/merchant/'.self::$merchantID.'/order/'.self::$orderID.'/transaction/'.$transaction, $data)->json();
         return $response;
 	}
 }
