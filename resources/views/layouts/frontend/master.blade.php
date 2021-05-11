@@ -153,6 +153,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </script>
 
 <script>
+    window.addEventListener('sweetalert', event => {
+        Swal.fire({
+            title: event.detail.title,
+            text: event.detail.text,
+            icon: event.detail.type,
+            confirmButtonText: 'موافق'
+        })
+    });
+
+
     window.addEventListener('fleetalert',function(data){
         $('.fleet-popup_center_text h2 span').text(data.detail.title);
         if(! Array.isArray(data.detail.body))

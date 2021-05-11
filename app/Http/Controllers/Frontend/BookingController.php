@@ -100,8 +100,8 @@ class BookingController extends Controller
         ->withBasicAuth('merchant.'.$merchantID, $merchantPassword)
         ->withHeaders([
             'Accept' => 'application/json'
-        ])->put(config('BankPayment.ApiUrl'). '/merchant/'.$merchantID.'/3DSecureId/3dsID_'.$orderID, $data)->json();
-
+        ])->put(config('BankPayment.ApiUrlTest'). '/merchant/'.$merchantID.'/3DSecureId/3dsID_'.$orderID, $data)->json();
+        // dd($response);
         $htmlBodyContent = $response['3DSecure']['authenticationRedirect']['simple']['htmlBodyContent'];
 
         return view('frontend.payment',compact('htmlBodyContent'));
