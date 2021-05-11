@@ -14,7 +14,7 @@
                         </div>
                         <div class="dis red">
                             <p style="font-size: 25px;" class="color-black">الحاله : تحت الدراسه</p>
-                            <p style="font-size: 25px;" class="color-black">نوع السداد : {{ $order ? trans('orders.payment_type.'.$order->payment_type) : "" }}</p>
+                            <p style="font-size: 25px;" class="color-black">نوع السداد : {{ $order::orderType[$order->payment_type]}}</p>
                         </div>
                     </div>
                     <div class="date red">

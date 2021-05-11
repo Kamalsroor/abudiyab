@@ -8,8 +8,11 @@
     <title>Document</title>
 </head>
 <body>
+    <button id="cancel">cancel</button>
     <script>
+
         parent.closeIFrame();
+
     </script>
 </body>
 </html>

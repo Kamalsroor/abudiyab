@@ -81,32 +81,34 @@
                         </table>
                       </div>
                       <!-- /.col -->
-                      <div class="col-12 text-center">
-                            <hr><h4 >الاضافات</h4><hr>
-                        </div>
-                      <div class="col-12 table-responsive">
-                        <table class="table table-striped">
-                          <thead>
-                          <tr>
-                            <th>أسم الاضافة</th>
-                            <th>عدد ايام الحجز</th>
-                            <th>سعر الاضافة</th>
-                          </tr>
-                          </thead>
-                          <tbody>
-                          <tr>
-                            @foreach ($order->features_added as $key => $value)
-                                <tr>
-                                    <td>{{trans('cars.attributes.'.$key) }}</td>
-                                    <td>{{ $order->days }}</td>
-                                    <td>{{$value}}</td>
-                                </tr>
-                            @endforeach
-                          </tr>
+                      @if ($order->features_added != null)
+                        <div class="col-12 text-center">
+                                <hr><h4 >الاضافات</h4><hr>
+                            </div>
+                        <div class="col-12 table-responsive">
+                            <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>أسم الاضافة</th>
+                                <th>عدد ايام الحجز</th>
+                                <th>سعر الاضافة</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                @foreach ($order->features_added as $key => $value)
+                                    <tr>
+                                        <td>{{trans('cars.attributes.'.$key) }}</td>
+                                        <td>{{ $order->days }}</td>
+                                        <td>{{$value}}</td>
+                                    </tr>
+                                @endforeach
+                            </tr>
 
-                          </tbody>
-                        </table>
-                      </div>
+                            </tbody>
+                            </table>
+                        </div>
+                      @endif
                     </div>
                     <!-- /.row -->
 

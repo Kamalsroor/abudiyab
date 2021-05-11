@@ -146,11 +146,6 @@
                     <th width="25%">{{ BsForm::checkbox('is_intercity')->value(1)->default('0')->checked(isset($car) ? $car->is_intercity : false) }}  {{ BsForm::price('intercity_price') }}</th>
                 </tr>
 
-                <tr>
-                    <th >مقاس الصورة</th>
-                    <td>327*188</td>
-                </tr>
-
                 </tbody>
             </table>
 
@@ -158,7 +153,7 @@
         @endcomponent
     </div>
 </div>
-
+<h5 class="text-danger"><small class="text-muted">{{ trans('settings.file_size', ['size' => '327*188']) }}</small></h5>
 @isset($car)
     {{ BsForm::image('image')->files($car->getMediaResource()) }}
 @else

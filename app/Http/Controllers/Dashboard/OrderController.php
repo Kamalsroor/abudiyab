@@ -67,9 +67,10 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         $TotalFeatures = 0;
-
-        foreach ($order->features_added as $key => $value) {
-            $TotalFeatures += $value * $order->days;
+        if ($order->features_added != null) {
+            foreach ($order->features_added as $key => $value) {
+                $TotalFeatures += $value * $order->days;
+            }
         }
 
         $order->markAsRead();

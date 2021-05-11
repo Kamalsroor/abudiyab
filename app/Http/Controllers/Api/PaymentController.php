@@ -19,10 +19,8 @@ class PaymentController extends Controller
 
     public function pay(Request $request, Order $order, $session)
     {
-        // $merchantID = "TEST3000000721";
-        // $merchantPassword = "0c7fb828291074dc52486465bbf18e69";
-        $merchantID = "3000000721";
-        $merchantPassword = "8c9e1db3899b93bd92348bc176cc109c";
+        $merchantID = config('BankPayment.merchantID');
+        $merchantPassword = config('BankPayment.merchantPassword');
         // "apiOperation": "PROCESS_ACS_RESULT"
         $data = [
             '3DSecure' => [
@@ -35,7 +33,7 @@ class PaymentController extends Controller
         ->withBasicAuth('merchant.'.$merchantID, $merchantPassword)
         ->withHeaders([
             'Accept' => 'application/json'
-        ])->post(config('BankPayment.ApiUrl'). '/merchant/'.$merchantID.'/3DSecureId/3dsID_'.$order->id, $data)->json();
+        ])->post(config('BankPayment.ApiUrlTest'). '/merchant/'.$merchantID.'/3DSecureId/3dsID_'.$order->id, $data)->json();
 
 
         $data = [
@@ -60,7 +58,7 @@ class PaymentController extends Controller
         ->withBasicAuth('merchant.'.$merchantID, $merchantPassword)
         ->withHeaders([
             'Accept' => 'application/json'
-        ])->put(config('BankPayment.ApiUrl'). '/merchant/'.$merchantID.'/order/'.$order->id.'/transaction/1', $data)->json();
+        ])->put(config('BankPayment.ApiUrlTest'). '/merchant/'.$merchantID.'/order/'.$order->id.'/transaction/1', $data)->json();
         return view('frontend.payment2');
     }
 

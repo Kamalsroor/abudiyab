@@ -57,19 +57,27 @@ class BookingSteps extends Component
     public $car_price=0;
     public $total=0;
     public $visa_price=0;
-
+    public $nameOnCard;
+    public $CardNumber;
+    public $expiry_month;
+    public $expiry_year;
+    public $securityCode;
     protected $listeners = [
         'payment:cancelled' => 'paymentCancelled',
         'payment:complete' => 'paymentComplete',
         'openPayment' => 'openPayment'
     ];
-
+    public $merchantID;
+    public $merchantPassword;
 
     public function mount()
     {
         $this->car = Car::find($this->data['car_id']);
         $this->reciving_date=$this->data['receiving_date'];
         $this->delivery_date=$this->data['delivery_date'];
+
+        $this->merchantID = config('BankPayment.merchantID');
+        $this->merchantPassword  = config('BankPayment.merchantPassword');
         $offerLast = $this->car->offers->last();
         if ($offerLast) {
             if($offerLast->to->lt(now()))
@@ -118,32 +126,24 @@ class BookingSteps extends Component
             $this->paymentType = $this->order->payment_type;
 
             $orderID =  $this->order->id;
-            // $merchantID = "TEST3000000721";
-            // $merchantPassword = "0c7fb828291074dc52486465bbf18e69";
-            $merchantID = "3000000721";
-            $merchantPassword = "8c9e1db3899b93bd92348bc176cc109c";
-            $getOrderDetailsSandBox = MasterCardPayment::getOrderDetailsSandBox($orderID, $merchantID, $merchantPassword);
+            $getOrderDetailsSandBox = MasterCardPayment::getOrderDetailsSandBox($orderID, $this->merchantID, $this->merchantPassword);
             if ($getOrderDetailsSandBox['result'] == "SUCCESS"  &&  $getOrderDetailsSandBox['status'] == "CAPTURED") {
                 $this->order->update([
                     'payment_status' => $getOrderDetailsSandBox['result']
-                    // 'payment_data' => $getOrderDetailsSandBox['result']
                 ]);
                 $this->currentStep = 5;
             }
-            // $orderAmount =
-            // $RefundOrderByTransaction = MasterCardPayment::RefundOrderByTransaction($orderID, $merchantID, $merchantPassword , $this->order->price);
-            // dd($getOrderDetailsSandBox );
 
             if ($this->order->payment_status == "SUCCESS") {
                 $this->currentStep = 5 ;
             }else{
                 if ($this->paymentType == "visa"   || $this->paymentType == "mada") {
 
-                    $sessionID = MasterCardPayment::createSessionSandBox($orderID, $merchantID, $merchantPassword);
+                    $sessionID = MasterCardPayment::createSessionSandBox($orderID, $this->merchantID, $this->merchantPassword);
                     $totalPrice = $this->total;
                     $siteName = "test";
                     $this->paymentData = [
-                        'merchant' => $merchantID,
+                        'merchant' => $this->merchantID,
                         'order_amount' => $totalPrice,
                         'order_currency' => config('BankPayment.currency'),
                         'order_id' => $orderID,
@@ -305,6 +305,11 @@ class BookingSteps extends Component
     {
         $validatedData = $this->validate([
             'paymentType' => 'required',
+            'nameOnCard' => ['required_if:paymentType,visa', 'string','max:200'],
+            'CardNumber' => ['required_if:paymentType,visa', 'numeric','digits_between:10,20'],
+            'expiry_month' => ['required_if:paymentType,visa','max:2'],
+            'expiry_year' => ['required_if:paymentType,visa','max:2'],
+            'securityCode' => ['required_if:paymentType,visa','numeric','digits_between:2,4'],
         ]);
 
 
@@ -330,22 +335,15 @@ class BookingSteps extends Component
         ]);
 
 
-
         if ($this->paymentType == "visa" || $this->paymentType == "mada") {
             $orderID =  $this->order->id;
-            $merchantID = "3000000721";
-            $merchantPassword = "8c9e1db3899b93bd92348bc176cc109c";
-            // $merchantID = "TEST3000000721";
-            // $merchantPassword = "0c7fb828291074dc52486465bbf18e69";
 
 
             $orderID = $orderID;
-            $merchantID = $merchantID;
-            $merchantPassword = $merchantPassword;
             $orderData = [
                 'orderID' => $orderID,
-                'merchantID' => $merchantID,
-                'merchantPassword' => $merchantPassword,
+                'merchantID' => $this->merchantID,
+                'merchantPassword' => $this->merchantPassword,
             ];
             $data = [
                 'correlationId' => "123",
@@ -355,12 +353,12 @@ class BookingSteps extends Component
             ];
             // $test = MasterCardPayment::createSessionSandBox();
             $response = Http::contentType("application/json")
-            ->withBasicAuth('merchant.'.$merchantID, $merchantPassword)
+            ->withBasicAuth('merchant.'.$this->merchantID, $this->merchantPassword)
             ->withHeaders([
                 'Accept' => 'application/json'
-            ])->post(config('BankPayment.ApiUrl'). '/merchant/'.$merchantID.'/session', $data)->json();
-
+            ])->post(config('BankPayment.ApiUrlTest'). '/merchant/'.$this->merchantID.'/session', $data)->json();
             $sessionID = $response;
+
             if ($sessionID['result'] == "SUCCESS") {
 
                 $sessionID =   $sessionID['session']['id'];
@@ -380,16 +378,17 @@ class BookingSteps extends Component
                         ]
                     ],
                 ];
-
                 $orderData['securityCode'] = $data['sourceOfFunds']['provided']['card']['securityCode'] ;
 
 
                 $response = Http::contentType("application/json")
-                ->withBasicAuth('merchant.'.$merchantID, $merchantPassword)
+                ->withBasicAuth('merchant.'.$this->merchantID, $this->merchantPassword)
                 ->withHeaders([
                     'Accept' => 'application/json'
-                ])->put(config('BankPayment.ApiUrl'). '/merchant/'.$merchantID.'/session/'.$sessionID, $data)->json();
-                if($response['session']['updateStatus'] == "SUCCESS"){
+                ])->put(config('BankPayment.ApiUrlTest'). '/merchant/'.$this->merchantID.'/session/'.$sessionID, $data)->json();
+
+                if(isset($response['session']) && $response['session']['updateStatus'] == "SUCCESS"){
+                    $sessionID =   $response['session']['id'];
                     $data = [
                         '3DSecure' => [
                             "authenticationRedirect" => [
@@ -410,51 +409,44 @@ class BookingSteps extends Component
                     $orderData['amount'] = $this->total;
                     $orderData['currency'] = "SAR";
                     $response = Http::contentType("application/json")
-                    ->withBasicAuth('merchant.'.$merchantID, $merchantPassword)
+                    ->withBasicAuth('merchant.'.$this->merchantID, $this->merchantPassword)
                     ->withHeaders([
                         'Accept' => 'application/json'
-                    ])->put(config('BankPayment.ApiUrl'). '/merchant/'.$merchantID.'/3DSecureId/3dsID_'.$orderID, $data)->json();
-                    dd($response);
+                    ])->put(config('BankPayment.ApiUrlTest'). '/merchant/'.$this->merchantID.'/3DSecureId/3dsID_'.$orderID, $data)->json();
+                    dd($response , $sessionID );
 
-                    $htmlBodyContent = $response['3DSecure']['authenticationRedirect']['simple']['htmlBodyContent'];
+                    if(isset($response['error']) ){
+                        $errorInformationData = [
+                            'title' => $response['error']['explanation'],
+                            'type' => 'error',
+                        ];
+                        $this->dispatchBrowserEvent('sweetalert', $errorInformationData);
+                    }else{
+                        $htmlBodyContent = $response['3DSecure']['authenticationRedirect']['simple']['htmlBodyContent'];
 
-                    $this->dispatchBrowserEvent('openPaymenthtmlBodyContent', $htmlBodyContent);
+                        $this->dispatchBrowserEvent('openPaymenthtmlBodyContent', $htmlBodyContent);
+                        $this->currentStep =  4 ;
+
+                    }
+
+
+                }else{
+                    $errorInformationData = [
+                        'title' => $response['error']['explanation'],
+                        'type' => 'error',
+                    ];
+                    $this->dispatchBrowserEvent('sweetalert', $errorInformationData);
 
                 }
+
 
             }
 
 
-            // $sessionID = MasterCardPayment::createSessionSandBox($orderID, $merchantID, $merchantPassword);
-            // dd($sessionID);
-            // $createTransactionAuthorize = MasterCardPayment::createTransactionAuthorize($orderID, $merchantID, $merchantPassword,$sessionID);
-            // dd($createTransactionAuthorize);
-
-            // $successURL = "completeCallback";
-            // $failURL = "errorCallback";
-            // $totalPrice = $this->total;
-            // // $totalPrice = 5;
-            // $siteName = "test";
-            // $siteAddress = "tetst";
-            // $siteEmail = "kamal.s.sroor@gmail.com";
-            // $sitePhone = "01012316954";
-            // $siteLogoURL = "https://abudiyab.test/";
-            // $this->paymentData = [
-            //     'merchant' => $merchantID,
-            //     'order_amount' => $totalPrice,
-            //     'order_currency' => config('BankPayment.currency'),
-            //     'order_id' => $orderID,
-            //     'session_id' => $sessionID,
-            //     'merchant_name' => $siteName,
-            // ];
-            // // dd($this->paymentData );
-            // $this->dispatchBrowserEvent('openPayment', $this->paymentData);
         }else{
 
-            // 'عميلنا العزيز شكرا لتعاملك مع أبو ذياب طلبك قيد التنفيذ،رقم الحجز هو 14913,  للاستعلام عن الحجز فضلاً الاتصال بالرقم المجاني 920026600'
             $this->order->update([
                 'payment_status' => "SUCCESS"
-                // 'payment_data' => $getOrderDetailsSandBox['result']
             ]);
 
             $smsText = "- تم حجز سيارة " . $this->car->name . " من خلال موقع ابو ذياب لتأجير السيارت رقم العمليه " . $this->order->id ;
@@ -463,9 +455,9 @@ class BookingSteps extends Component
 
             $client = new Client();
             $res = $client->get('http://sms.netpowers.net/http/api.php?id=abudiyab&password=abudiyab1171&to='.$smsPhone.'&sender=ABUDIYAB&msg='.$smsText);
+            $this->currentStep = 5;
         }
 
-        $this->currentStep = $this->paymentType == "visa"   || $this->paymentType == "mada" ? 4 : 5;
     }
 
     /**
@@ -483,17 +475,13 @@ class BookingSteps extends Component
     public function paymentComplete()
     {
         $orderID =  $this->order->id;
-        // $merchantID = "TEST3000000721";
-        // $merchantPassword = "0c7fb828291074dc52486465bbf18e69";
-        $merchantID = "3000000721";
-        $merchantPassword = "8c9e1db3899b93bd92348bc176cc109c";
-        $getOrderDetailsSandBox = MasterCardPayment::getOrderDetailsSandBox($orderID, $merchantID, $merchantPassword);
+
+        $getOrderDetailsSandBox = MasterCardPayment::getOrderDetailsSandBox($orderID, $this->merchantID, $this->merchantPassword);
 
 
         if ($getOrderDetailsSandBox['result'] == "SUCCESS"  &&  $getOrderDetailsSandBox['status'] == "CAPTURED") {
             $this->order->update([
                 'payment_status' => $getOrderDetailsSandBox['result']
-                // 'payment_data' => $getOrderDetailsSandBox['result']
             ]);
             $this->currentStep = 5;
         }
@@ -517,11 +505,11 @@ class BookingSteps extends Component
         }else{
             if ($this->paymentType == "visa"   || $this->paymentType == "mada") {
 
-                $sessionID = MasterCardPayment::createSessionSandBox($orderID, $merchantID, $merchantPassword);
+                $sessionID = MasterCardPayment::createSessionSandBox($orderID, $this->merchantID, $this->merchantPassword);
                 $totalPrice = $this->total;
                 $siteName = "test";
                 $this->paymentData = [
-                    'merchant' => $merchantID,
+                    'merchant' => $this->merchantID,
                     'order_amount' => $totalPrice,
                     'order_currency' => config('BankPayment.currency'),
                     'order_id' => $orderID,

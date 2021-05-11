@@ -27,6 +27,7 @@ class OrderResource extends JsonResource
             'reciving_date' => $this->reciving_date->format('Y-m-d h:i A'),
             'delivery_date' => $this->delivery_date->format('Y-m-d h:i A'),
             'payment_type' => $this->payment_type,
+            'payment_status' => $this->payment_status,
             'price' => $this->price,
             'created_at' => $this->created_at->diffForHumans(),
             'status' => $this->status,

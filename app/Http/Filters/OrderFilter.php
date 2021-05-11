@@ -11,6 +11,7 @@ class OrderFilter extends BaseFilters
      */
     protected $filters = [
         'name',
+        'status',
         'selected_id',
     ];
 
@@ -28,6 +29,26 @@ class OrderFilter extends BaseFilters
 
         return $this->builder;
     }
+
+    /**
+     * Filter the query by a given status.
+     *
+     * @param string|int $value
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    protected function status($value)
+    {
+        if ($value == "pending") {
+            return $this->builder->where('status', '!=', 'confirmed');
+        }
+        if ($value == "done") {
+            return $this->builder->where('status', 'confirmed');
+        }
+
+        return $this->builder;
+    }
+
+
 
     /**
      * Sorting results by the given id.

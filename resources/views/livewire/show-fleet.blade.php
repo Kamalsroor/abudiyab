@@ -363,14 +363,7 @@
         });
     });
 
-    window.addEventListener('sweetalert', event => {
-        Swal.fire({
-            title: event.detail.title,
-            text: event.detail.text,
-            icon: event.detail.type,
-            confirmButtonText: 'موافق'
-        })
-    });
+
 
 
     $(document).ready(function () {
