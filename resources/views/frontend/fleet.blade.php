@@ -69,6 +69,17 @@
         function booking(){
             window.livewire.emit('redirectToBookingSteps');
         }
+        window.addEventListener('filterCategory', function(category) {
+                for(let category_id of category.detail)
+                {
+                    let cat=`#category-${category_id}`;
+                    let largecat=`#largCategory-${category_id}`;
+                    $(cat).next().addClass('active');
+                    $(largecat).next().addClass('active');
+                    console.log($(largecat).next());
+                }
+        });
+
  </script>
 
 

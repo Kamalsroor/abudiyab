@@ -19,6 +19,7 @@ use App\Models\Membership;
 use Carbon\Carbon;
 use App\Models\Carsale;
 use App\Models\Mediacenter;
+use App\Models\Region;
 use Illuminate\Http\Request;
 
 
@@ -35,7 +36,7 @@ class FrontendController extends Controller
         $allCategories  = Category::all();
         $showCategoriesCars = Car::where('category_id' , $showCategories->first()->id)->get();
         $partners   =  Partner::all();
-        $sliders    =   Slider::where('is_mobile',0)->get();
+        $sliders    =   Slider::where('is_mobile',0)->limit(6)->get();
         $miniSliders    =   Slider::where('is_mobile',1)->get();
         $showFirstCatInCatgories   =  Car::where('category_id' , $showCategories->first()->id)->get();
         $firstcar   = $showFirstCatInCatgories->first();
@@ -52,8 +53,8 @@ class FrontendController extends Controller
     public function branches()
     {
         $branches = Branch::all();
-        $background=Setting::all();
-        return view('frontend.branches', compact('branches'));
+        $regions=Region::all();
+        return view('frontend.branches', compact('branches','regions'));
     }
 
 
@@ -289,6 +290,15 @@ class FrontendController extends Controller
         return redirect()->back();
 
     }
-
+    public function collectiontest(){
+        $arr=['name' => 'sayed','email' => 'sayed@gmail.com','age' => 25];
+        $users=[];
+        Custmerrequest::get()->each(function($value,$key){
+            global $users;
+            $users[]=$value->only('user_id');
+        });
+        dd($users);
+        // dd(collect($arr)->only('name','email'));
+    }
 
 }

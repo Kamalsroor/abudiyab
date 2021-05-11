@@ -242,43 +242,43 @@
                                             </div> 4 6 --}}
                                             @if ($category->id === 3 || $category->id === 4 || $category->id === 6)
                                                 <div>
-                                                    <input type="checkbox" id="category-{{$category->id}}">
-                                                    <label for="category-{{$category->id}}"><img src="{{ asset('front/img/car/car-2.png') }}" alt="">{{$category->name}}</label>
+                                                    <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  id="largCategory-{{$category->id}}">
+                                                    <label for="largCategory-{{$category->id}}"><img src="{{ asset('front/img/car/car-2.png') }}" alt="">{{$category->name}}</label>
                                                 </div>
                                             @elseif ($category->id === 5 || $category->id === 8 || $category->id === 11 || $category->id === 17)
                                                 <div>
-                                                    <input type="checkbox" id="category-{{$category->id}}">
-                                                    <label for="category-{{$category->id}}"><img style="width: 60px;transform: scale(1.1);margin-top: -11px;margin-bottom: 5px;" src="{{ asset('front/img/car/car-1.png') }}" alt="">{{$category->name}}</label>
+                                                    <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  id="largCategory-{{$category->id}}">
+                                                    <label for="largCategory-{{$category->id}}"><img style="width: 60px;transform: scale(1.1);margin-top: -11px;margin-bottom: 5px;" src="{{ asset('front/img/car/car-1.png') }}" alt="">{{$category->name}}</label>
                                                 </div>
                                             @elseif ($category->id === 15 || $category->id === 19)
                                                 <div>
-                                                    <input type="checkbox" id="category-{{$category->id}}">
-                                                    <label for="category-{{$category->id}}"><img src="{{ asset('front/img/car/car.png') }}" alt="">{{$category->name}}</label>
+                                                    <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  id="largCategory-{{$category->id}}">
+                                                    <label for="largCategory-{{$category->id}}"><img src="{{ asset('front/img/car/car.png') }}" alt="">{{$category->name}}</label>
                                                 </div>
                                             @elseif ($category->id === 2)
                                                 <div>
-                                                    <input type="checkbox" id="category-{{$category->id}}">
-                                                    <label for="category-{{$category->id}}"><img src="{{ asset('front/img/car/car-4.png') }}" alt="">{{$category->name}}</label>
+                                                    <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  id="largCategory-{{$category->id}}">
+                                                    <label for="largCategory-{{$category->id}}"><img src="{{ asset('front/img/car/car-4.png') }}" alt="">{{$category->name}}</label>
                                                 </div>
                                             @elseif ($category->id === 1)
                                                 <div>
-                                                    <input type="checkbox" id="category-{{$category->id}}">
-                                                    <label for="category-{{$category->id}}"><img src="{{ asset('front/img/car/car-7.png') }}" alt="">{{$category->name}}</label>
+                                                    <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  id="largCategory-{{$category->id}}">
+                                                    <label for="largCategory-{{$category->id}}"><img src="{{ asset('front/img/car/car-7.png') }}" alt="">{{$category->name}}</label>
                                                 </div>
                                             @elseif ($category->id === 9)
                                                 <div>
-                                                    <input type="checkbox" id="category-{{$category->id}}">
-                                                    <label for="category-{{$category->id}}"><img src="{{ asset('front/img/car/car-5.png') }}" alt="">{{$category->name}}</label>
+                                                    <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  id="largCategory-{{$category->id}}">
+                                                    <label for="largCategory-{{$category->id}}"><img src="{{ asset('front/img/car/car-5.png') }}" alt="">{{$category->name}}</label>
                                                 </div>
                                             @elseif ($category->id === 10)
                                                 <div>
-                                                    <input type="checkbox" id="category-{{$category->id}}">
-                                                    <label for="category-{{$category->id}}"><img src="{{ asset('front/img/car/car-6.png') }}" alt="">{{$category->name}}</label>
+                                                    <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  id="largCategory-{{$category->id}}">
+                                                    <label for="largCategory-{{$category->id}}"><img src="{{ asset('front/img/car/car-6.png') }}" alt="">{{$category->name}}</label>
                                                 </div>
                                             @elseif ($category->id === 20)
                                                 <div>
-                                                    <input type="checkbox" id="category-{{$category->id}}">
-                                                    <label for="category-{{$category->id}}"><img src="{{ asset('front/img/car/car-8.png') }}" alt="">{{$category->name}}</label>
+                                                    <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  id="largCategory-{{$category->id}}">
+                                                    <label for="largCategory-{{$category->id}}"><img src="{{ asset('front/img/car/car-8.png') }}" alt="">{{$category->name}}</label>
                                                 </div>
                                             @endif
                                         @endforeach
@@ -371,7 +371,6 @@
             confirmButtonText: 'موافق'
         })
     });
-
 
 
     $(document).ready(function () {

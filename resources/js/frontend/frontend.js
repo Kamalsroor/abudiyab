@@ -57,6 +57,7 @@ import Vue from 'vue';
  */
 
 Vue.component('car_seles', require('../components/CarSelesComponent').default);
+Vue.component('branches', require('../components/BranchesComponent').default);
 
 const app = new Vue({
     el: '#vue_app',
@@ -363,7 +364,6 @@ $(document).ready(function() {
     //         interval: 7000
     //     })
     // }
-
 
 
 
@@ -773,9 +773,6 @@ $(document).ready(function() {
         $('.social-media-links').toggleClass('d-none');
     })
 
-    $('.category-icons label').click(function() {
-        $(this).toggleClass('active');
-    })
 
     /* =============================================================== */
     /* ======================       Offers       ===================== */

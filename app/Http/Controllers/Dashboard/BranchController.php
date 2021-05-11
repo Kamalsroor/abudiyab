@@ -42,7 +42,6 @@ class BranchController extends Controller
     public function create()
     {
         $regions = Region::get()->pluck('name','id');
-
         return view('dashboard.branches.create', compact('regions'));
     }
 
@@ -55,7 +54,6 @@ class BranchController extends Controller
     public function store(BranchRequest $request)
     {
         $branch = Branch::create($request->all());
-
         $branch->addAllMediaFromTokens();
 
         flash(trans('branches.messages.created'));
