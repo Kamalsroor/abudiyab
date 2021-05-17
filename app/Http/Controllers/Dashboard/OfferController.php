@@ -83,21 +83,25 @@ class OfferController extends Controller
         unset($data['category_id']);
         unset($data['single_car_id']);
         $todaydate = Carbon::today();
-
         switch ($data['type']) {
             case 0:
-                $offerCount = Offer::where('type' , 0)->whereDate('from' ,'<=' , $todaydate)->whereDate('from' ,'<=' , $todaydate)->count();
-                if ($offerCount) {
-                    # code...
-                }
+                // $offerCount = Offer::where('type' , 0)->whereDate('from' ,'<=' , $todaydate)->whereDate('from' ,'<=' , $todaydate)->count();
+                // if ($offerCount) {
+                //     # code...
+                // }
                 break;
             case 4:
-                $offerCount = Offer::where('type' , 0)->whereDate('from' ,'<=' , $todaydate)->whereDate('from' ,'<=' , $todaydate)->whereHas('cars' , function($q) use($data){
-                    $q->where('id' , $data['value']);
-                })->count();
-                if ($offerCount) {
-                    # code...
-                }
+                // $offerCount = Offer::where('type' , 0)->whereDate('from' ,'<=' , $todaydate)->whereDate('from' ,'<=' , $todaydate)->whereHas('cars' , function($q) use($data){
+
+
+                //     $q->where('id' , $data['value']);
+                // })->count();
+
+                // dd($data['value']);
+
+                // if ($offerCount) {
+                //     # code...
+                // }
                 break;
         }
 

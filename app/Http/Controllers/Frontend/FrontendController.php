@@ -21,10 +21,16 @@ use App\Models\Carsale;
 use App\Models\Mediacenter;
 use App\Models\Region;
 use Illuminate\Http\Request;
-
-
+use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
+use Settings;
+use Artesaos\SEOTools\Facades\SEOMeta;
 class FrontendController extends Controller
 {
+
+    use SEOToolsTrait;
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -46,6 +52,14 @@ class FrontendController extends Controller
             $q->where('is_work',1)->where('type',4)->whereDate('from' ,'<=' , $todaydate)->whereDate('to' ,'>=' , $todaydate);
         })->get();
         // dd();
+
+
+        $this->seo()->setTitle(Settings::locale(app()->getLocale())->get('seo_home_title'));
+        $this->seo()->setDescription(Settings::locale(app()->getLocale())->get('seo_home_description'));
+        SEOMeta::addMeta('twitter:image', optional(Settings::instance('seo_home_image'))->getFirstMediaUrl('seo_home_image') , 'property');
+        SEOMeta::addMeta('og:image', optional(Settings::instance('seo_home_image'))->getFirstMediaUrl('seo_home_image') , 'property');
+        SEOMeta::setKeywords(Settings::locale(app()->getLocale())->get('seo_home_keywords'));
+
         return view('frontend.main2', compact('sliders','miniSliders','showFirstCatInCatgories','showCategories','showCategoriesCars','allCategories','firstcar','partners','offers'));
     }
 
@@ -54,6 +68,16 @@ class FrontendController extends Controller
     {
         $branches = Branch::all();
         $regions=Region::all();
+
+
+        $this->seo()->setTitle(Settings::locale(app()->getLocale())->get('seo_branche_title'));
+        $this->seo()->setDescription(Settings::locale(app()->getLocale())->get('seo_branche_description'));
+        SEOMeta::addMeta('twitter:image', optional(Settings::instance('seo_branche_image'))->getFirstMediaUrl('seo_branche_image') , 'property');
+        SEOMeta::addMeta('og:image', optional(Settings::instance('seo_branche_image'))->getFirstMediaUrl('seo_branche_image') , 'property');
+        SEOMeta::setKeywords(Settings::locale(app()->getLocale())->get('seo_branche_keywords'));
+
+
+
         return view('frontend.branches', compact('branches','regions'));
     }
 
@@ -73,9 +97,16 @@ class FrontendController extends Controller
         {
             if(!in_array($car->car->model,$models))
             {
-              $models[]=$car->car->model;
+                $models[]=$car->car->model;
             }
         }
+
+        $this->seo()->setTitle(Settings::locale(app()->getLocale())->get('seo_car_sales_title'));
+        $this->seo()->setDescription(Settings::locale(app()->getLocale())->get('seo_car_sales_description'));
+        SEOMeta::addMeta('twitter:image', optional(Settings::instance('seo_car_sales_image'))->getFirstMediaUrl('seo_car_sales_image') , 'property');
+        SEOMeta::addMeta('og:image', optional(Settings::instance('seo_car_sales_image'))->getFirstMediaUrl('seo_car_sales_image') , 'property');
+        SEOMeta::setKeywords(Settings::locale(app()->getLocale())->get('seo_car_sales_keywords'));
+
         return view('frontend.car_sales', compact('cars','models'));
     }
 
@@ -89,6 +120,12 @@ class FrontendController extends Controller
 
     public function services()
     {
+        $this->seo()->setTitle(Settings::locale(app()->getLocale())->get('seo_maintenance_title'));
+        $this->seo()->setDescription(Settings::locale(app()->getLocale())->get('seo_maintenance_description'));
+        SEOMeta::addMeta('twitter:image', optional(Settings::instance('seo_maintenance_image'))->getFirstMediaUrl('seo_maintenance_image') , 'property');
+        SEOMeta::addMeta('og:image', optional(Settings::instance('seo_maintenance_image'))->getFirstMediaUrl('seo_maintenance_image') , 'property');
+        SEOMeta::setKeywords(Settings::locale(app()->getLocale())->get('seo_maintenance_keywords'));
+
         return view('frontend.services');
     }
 

@@ -53,12 +53,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-
-        $orders = Order::where('user_id' , auth()->user()->id)->with('car')->filter()->simplePaginate();
+        $orders = Order::where('user_id' , auth()->user()->id)->with('car','receivingBranch','deliveryBranch')->filter()->simplePaginate();
         return OrderResource::collection($orders);
     }
-
-    /**
+/**
      * Display the specified order.
      *
      * @OA\Get(

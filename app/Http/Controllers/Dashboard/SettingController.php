@@ -27,6 +27,10 @@ class SettingController extends Controller
         'car_sales_backgraund',
         'maintenance_backgraund',
         'media_center_background',
+        'seo_home_image',
+        'seo_branche_image',
+        'seo_car_sales_image',
+        'seo_maintenance_image',
     ];
 
     /**
