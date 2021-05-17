@@ -310,7 +310,7 @@
                                                 <a href="{{route('front.car.show',$formcar)}}"><h3 class="color-black fleet-car-name" style="display: inline">{{$formcar->name}} <span  class=" color-black">أو مشابهة</span></h3></a>
                                                 <span class="color-black text-right addToFavorite {{in_array($formcar->id,$favCars) ? 'active' : ''}}" data-id="{{$formcar->id}}"><i class="far fa-heart heart"></i><i class="fas fa-heart heart"></i></span>
 
-                                                <h5 class="fleet-car-model" > الموديل : {{$formcar->model}}20</h5>
+                                                <h5 class="fleet-car-model" > الموديل : {{$formcar->model}}</h5>
                                                 <p class="color-black fleet-doors-seats" >5 مقاعد | 4 أبواب | 2 الأمتعة </p>
                                                 <p class=" color-black fleet-transmission-ac">مكيف | ناقل حركة أوتوماتيكي{{-- trans('cars.features.' . $formcar->features) --}}</p>
                                                 <p class="fleet-category" > {{$formcar->category?$formcar->category->name:'-'}}</p>
