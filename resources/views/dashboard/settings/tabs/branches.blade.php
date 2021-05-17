@@ -13,6 +13,20 @@
             </td>
         </table>
             {{ BsForm::image('branches_backgraund')->collection('branches_backgraund')->files(optional(Settings::instance('branches_backgraund'))->getMediaResource('branches_backgraund')) }}
+
+
+            <hr/>
+            @bsMultilangualFormTabs
+            {{ BsForm::text('seo_branche_title')->value(Settings::locale($locale->code)->get('seo_branche_title')) }}
+            {{ BsForm::text('seo_branche_keywords')->value(Settings::locale($locale->code)->get('seo_branche_keywords')) }}
+            {{ BsForm::textarea('seo_branche_description')
+            ->attribute('class', 'form-control ')
+            ->value(Settings::locale($locale->code)->get('seo_branche_description')) }}
+
+            @endBsMultilangualFormTabs
+                {{ BsForm::image('seo_branche_image')->collection('seo_branche_image')->files(optional(Settings::instance('seo_branche_image'))->getMediaResource('seo_branche_image')) }}
+
+
         @slot('footer')
             {{ BsForm::submit()->label(trans('settings.actions.save')) }}
         @endslot
