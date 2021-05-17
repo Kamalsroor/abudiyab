@@ -26,6 +26,7 @@ class CustomerResource extends JsonResource
         }
 
         $is_confirmed = true ;
+        $newRequest = null;
         $Custmerrequest = Custmerrequest::where('user_id',$this->id)->orderBy('created_at', 'DESC')->first();
         if($Custmerrequest){
             $newRequest = $Custmerrequest;
