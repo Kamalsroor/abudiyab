@@ -34,6 +34,7 @@
         "laravel_payment/telr": "^1.2",
         "livewire/livewire": "^2.4",
         "maatwebsite/excel": "^3.1",
+        "mad-web/laravel-seoable": "^3.1",
         "pusher/pusher-php-server": "^4.1",
         "qoraiche/laravel-mail-editor": "^3.2",
         "spatie/laravel-backup": "^6.14",
