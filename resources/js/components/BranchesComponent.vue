@@ -51,10 +51,9 @@
                         <h4>{{branch.address}}</h4>
                         <p class="so">من السبت الي الخميس</p>
                         <div class="branch-page_center_branches_content_branch_detailing">
-                            <!-- <p>من الساعه {{branch.work_time != null  ?  branch.work_time.alldays.morning.timeclose: ''  }} صباحا الي {{branch.work_time != null  ?  branch.work_time.alldays.afternone.timeclose:  ''}} مساءا</p> -->
+                            <p>من الساعه {{branch.work_time != null  ?  branch.work_time.alldays.morning.timeopen: ''  }} صباحا الي {{branch.work_time != null  ?  branch.work_time.alldays.afternone.timeclose:  ''}} مساءا</p>
                             <p>|</p>
                             <p>من الساعه 10 صباحا الي 2 مساءا</p>
-
                         </div>
                         <div class="branch-page_center_branches_content_branch_buttons">
                             <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
@@ -101,12 +100,30 @@
             .then(response => {
                 this.branchs = response.data.data;
                 this.allBranches=this.branchs;
-                console.log(response.data.data);
+                for (const branch in this.allBranches) {
+                    if(branch.work_time != null)
+                    {
+                        this.formatAMPM(branch.work_time.alldays.morning.timeopen);
+                        this.formatAMPM(branch.work_time.alldays.morning.timeclose);
+                    }
+                }
+
+                this.allBranches.forEach(function (branch, i) {
+                    if(branch.work_time != null)
+                    {
+                        console.log(i);
+                        openformated=this.formatAMPM(branch.work_time.alldays.morning.timeopen);
+                        closeformated=this.formatAMPM(branch.work_time.alldays.morning.timeclose);
+
+                        console.log(openformated);
+                        console.log(closeformated);
+                    }
+                });
+
             });
          axios.get(this.regionUrl)
             .then(response => {
                 this.regions = response.data.data;
-                console.log(this.regions);
             });
 
         },
@@ -119,9 +136,20 @@
                 })
                 e.target.parentElement.style.background='#11118b';
                 this.allBranches=this.branchs;
+
                     this.allBranches=this.branchs.filter(element => {
                         return element.region_id == e.target.id;
                     });
+            },
+            formatAMPM: function(date) {
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var ampm = hours >= 12 ? 'pm' : 'am';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            minutes = minutes < 10 ? '0'+minutes : minutes;
+            var strTime = hours + ':' + minutes + ' ' + ampm;
+            return strTime;
             }
         },
         watch:{
