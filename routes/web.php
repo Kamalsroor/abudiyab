@@ -4,6 +4,7 @@ use Composer\Util\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Spatie\Sitemap\SitemapGenerator;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,6 +77,10 @@ Route::as('front.')->group(function () {
     })->name('car-interior');
     Route::get('/aboutus', function(){
         return view('frontend.aboutus');
+    })->name('aboutus');
+    Route::get('/SitemapGenerator', function(){
+        SitemapGenerator::create(config('app.url'))
+        ->writeToFile(public_path('sitemap.xml'));
     })->name('aboutus');
     Route::get('/contracts', 'Frontend\ContractController@getContracts')->name('contracts');
 
