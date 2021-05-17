@@ -32,6 +32,7 @@ class OfferResource extends JsonResource
             'branch_value' => $this->branch_value,
             'branch_type' => $this->branch_type,
             'consumer' => $this->consumer,
+            'offarable_id' => $this->cars,
             // 'car_name' => $this->cars->name,
             // 'car_model' => $this->cars->model,
             'image' => $this->getFirstMediaUrl(),
