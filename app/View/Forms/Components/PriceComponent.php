@@ -27,6 +27,7 @@ class PriceComponent extends BaseComponent
      */
     protected $readonly;
 
+
     /**
      * Initialized the input arguments.
      *
@@ -73,6 +74,7 @@ class PriceComponent extends BaseComponent
 
         return $this;
     }
+
 
     /**
      * The variables with registered in view component.

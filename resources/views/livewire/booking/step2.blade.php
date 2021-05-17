@@ -105,7 +105,16 @@
                         <p><span><i class="icofont icofont-cur-riyal"></i></span>{{$price}}</p>
                     </div>
                 </div>
-
+                @if ($AreaPricing != 0)
+                    <div class="H3-TST-D4-1">
+                        <div class="H3-TST-D5-1">
+                            <span> سعر الشحن بين المدن</span>
+                        </div>
+                        <div class="H3-TST-D5-1">
+                            <p><span><i class="icofont icofont-cur-riyal"></i></span>{{ $AreaPricing}}</p>
+                        </div>
+                    </div>
+                @endif
                 <div class="H3-TST-D4-1">
                     <div class="H3-TST-D5-1">
                         <span> خصم العضويه</span>
@@ -114,6 +123,7 @@
                         <p><span><i class="icofont icofont-cur-riyal"></i></span>{{ $membership_discount }}</p>
                     </div>
                 </div>
+
                 @if ($promotional_discount != 0)
                     <div class="H3-TST-D4-1">
                         <div class="H3-TST-D5-1">

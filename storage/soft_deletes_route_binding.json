@@ -19,5 +19,6 @@
     "trashed_carsale": "App\\Models\\Carsale",
     "trashed_mediacenter": "App\\Models\\Mediacenter",
     "trashed_purchaserequest": "App\\Models\\Purchaserequest",
-    "trashed_addition": "App\\Models\\Addition"
+    "trashed_addition": "App\\Models\\Addition",
+    "trashed_area_pricing": "App\\Models\\AreaPricing"
 }

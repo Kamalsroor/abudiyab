@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\AreaPricing;
 use Livewire\Component;
 use App\Models\Car;
 use App\Models\Branch;
@@ -57,6 +58,7 @@ class BookingSteps extends Component
     public $car_price=0;
     public $total=0;
     public $visa_price=0;
+    public $AreaPricing=0;
     public $nameOnCard;
     public $CardNumber;
     public $expiry_month;
@@ -105,6 +107,12 @@ class BookingSteps extends Component
         $this->price = ($this->car->price1 * $this->diff) ;
         $this->receiving_branch = Branch::find($this->data['receiving_branch']);
         $this->delivery_branch = Branch::find($this->data['delivery_branch']);
+        if ($this->receiving_branch->code != $this->delivery_branch->code) {
+            $sAreaPricing = AreaPricing::where('region_id' ,$this->receiving_branch->code )->where('region_to_id',$this->delivery_branch->code)->first()  ;
+            $this->AreaPricing =  $sAreaPricing ?  $sAreaPricing->price : 0 ;
+        }
+
+
         $this->membership_discount = ((Auth()->user()->membership->rental_discount /100) * ($this->car->price1));
     }
 
@@ -194,7 +202,7 @@ class BookingSteps extends Component
         }
 
         $this->price = ($this->car_price - $visa_buy ) + $features_price + $this->authorization_fee ;
-        $this->total = $this->price - $this->membership_discount - $this->promotional_discount;
+        $this->total = $this->price + $this->AreaPricing - $this->membership_discount - $this->promotional_discount;
         return view('livewire.booking-steps');
     }
 

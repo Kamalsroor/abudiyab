@@ -187,7 +187,14 @@ Route::resource('applications', 'WorkCandidatesController')->only('index', 'show
         Route::post('additions/{trashed_addition}/restore', 'AdditionController@restore')->name('additions.restore');
         Route::delete('additions/{trashed_addition}/forceDelete', 'AdditionController@forceDelete')->name('additions.forceDelete');
         Route::resource('additions', 'AdditionController');
+
+        Route::get('trashed/area_pricings', 'AreaPricingController@trashed')->name('area_pricings.trashed');
+        Route::get('trashed/area_pricings/{trashed_area_pricing}', 'AreaPricingController@showTrashed')->name('area_pricings.trashed.show');
+        Route::post('area_pricings/{trashed_area_pricing}/restore', 'AreaPricingController@restore')->name('area_pricings.restore');
+        Route::delete('area_pricings/{trashed_area_pricing}/forceDelete', 'AreaPricingController@forceDelete')->name('area_pricings.forceDelete');
+        Route::resource('area_pricings', 'AreaPricingController');
 /*  The routes of generated crud will set here: Don't remove this line  */
+        
         
         
         

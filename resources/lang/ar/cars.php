@@ -105,6 +105,7 @@ return [
         'created_at' => 'اضافة في',
         'deleted_at' => 'حذف في',
     ],
+
     'dialogs' => [
         'delete' => [
             'title' => 'تحذير !',

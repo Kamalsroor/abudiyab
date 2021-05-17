@@ -53,6 +53,7 @@ class OrderController extends Controller
      */
     public function index()
     {
+
         $orders = Order::where('user_id' , auth()->user()->id)->with('car')->filter()->simplePaginate();
         return OrderResource::collection($orders);
     }
