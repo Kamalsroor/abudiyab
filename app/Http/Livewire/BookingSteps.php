@@ -280,7 +280,8 @@ class BookingSteps extends Component
                 {
                     if($this->visa_buy != 0 || $this->visa_buy != false ){
                         $this->paymentType = "visa";
-                        $this->thirdStepSubmit();
+                        // $this->thirdStepSubmit();
+                        $this->currentStep = 3;
                     }
                     else{
                         $this->currentStep = 3;
@@ -311,15 +312,15 @@ class BookingSteps extends Component
     }
     public function thirdStepSubmit()
     {
+
         $validatedData = $this->validate([
             'paymentType' => 'required',
-            'nameOnCard' => ['required_if:paymentType,visa', 'string','max:200'],
-            'CardNumber' => ['required_if:paymentType,visa', 'numeric','digits_between:10,20'],
-            'expiry_month' => ['required_if:paymentType,visa','max:2'],
-            'expiry_year' => ['required_if:paymentType,visa','max:2'],
-            'securityCode' => ['required_if:paymentType,visa','numeric','digits_between:2,4'],
+            'nameOnCard' => ['required_if:paymentType,visa','sometimes','nullable', 'string','max:200'],
+            'CardNumber' => ['required_if:paymentType,visa','sometimes','nullable', 'numeric','digits_between:10,20'],
+            'expiry_month' => ['required_if:paymentType,visa','sometimes','nullable','max:2'],
+            'expiry_year' => ['required_if:paymentType,visa','sometimes','nullable','max:2'],
+            'securityCode' => ['required_if:paymentType,visa','sometimes','nullable','numeric','digits_between:2,4'],
         ]);
-
 
         $this->order = $this->order->updateOrCreate([
             'id' => $this->order ? $this->order->id : 0
