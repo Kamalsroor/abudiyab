@@ -24,6 +24,16 @@ class OfferResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'from' => $this->from,
+            'to' => $this->to,
+            'limit' => $this->limit,
+            'is_work' => $this->is_work,
+            'discount_value' => $this->discount_value,
+            'branch_value' => $this->branch_value,
+            'branch_type' => $this->branch_type,
+            'consumer' => $this->consumer,
+            // 'car_name' => $this->cars->name,
+            // 'car_model' => $this->cars->model,
             'image' => $this->getFirstMediaUrl(),
         ];
     }

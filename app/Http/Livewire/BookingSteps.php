@@ -303,6 +303,7 @@ class BookingSteps extends Component
     }
     public function thirdStepSubmit()
     {
+
         $validatedData = $this->validate([
             'paymentType' => 'required',
             'nameOnCard' => ['required_if:paymentType,visa', 'string','max:200'],
