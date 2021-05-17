@@ -12,9 +12,37 @@
         <div class="container py-md-4">
             <div class="row align-items-end py-2" style="background-color: hsl(0deg 0% 94% / 53%);border-radius:30px;box-shadow: 1px 1px 5px black;">
                 <div class="col-lg-5 col-md-12  text-center justify-content-center" style="align-self: start">
-                    <div >
-                        <img  src="{{asset('front/img/5.png')}}" style="width: 200px;border-radius: 50%;" alt="profile-img">
+                    <div class="profile-img">
+                        <img src="{{asset('front/img/5.png')}}" alt="profile-img">
                     </div>
+                    <div class="profile-img d-none" onclick="profileImg(this)">
+                        <img src="{{asset('front/img/5.png')}}" alt="profile-img">
+                        <div><i class="fas fa-camera"></i></div>
+                    </div>
+                    <input type="file" value="" hidden>
+                    @push('js')
+                    <script>
+                        function profileImg(div){
+                            let inputFile = div.nextElementSibling;
+                            let img = div.children[0];
+                            let icon = div.children[1];
+                            inputFile.click();
+                            inputFile.addEventListener("change", function(){
+                                const file = this.files[0];
+                                if(file){
+                                    const reader = new FileReader();
+                                    reader.onload = function(){
+                                        const result = reader.result;
+                                        img.src = result;
+                                        img.style.display = 'block';
+                                        icon.classList.add('active');
+                                    }
+                                    reader.readAsDataURL(file);
+                                }
+                            });
+                        }
+                    </script>
+                    @endpush
                     <div style="font-size: 20px;width:85%;" class="mx-auto my-3 justify-content-start align-items-start row">
                         <div class="col-2">
                             <img src="{{asset('front/img/riyal.png')}}" alt="coins">

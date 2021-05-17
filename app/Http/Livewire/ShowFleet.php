@@ -160,6 +160,10 @@ class ShowFleet extends Component
     {
 
     }
+    public function dehydrate(){
+        $this->dispatchBrowserEvent('filterCategory',$this->filterCategory);
+
+    }
     public function addToFavorite($id)
     {
         if (!Auth()->check()) {

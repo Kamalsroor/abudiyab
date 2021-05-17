@@ -35,6 +35,7 @@ class Region extends Model implements TranslatableContract
         'name',
         'code',
         'master_id',
+        'city',
     ];
 
     /**

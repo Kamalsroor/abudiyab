@@ -86,7 +86,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="fleet-popup_center_text">
                     <h2><span> أو مشابهة - ماذا تعني؟ </span></h2>
                     <div class="fleet-popup_center_text_definition popup_text" style="font-size: 1.3em;font-weight: 600">
-                        تلتزم شركة ابو ذياب بتوفير نفس الموديل وسنة الصنع التي قمت باختيارها وقت الحجز و في حال عدم توفر السيارة المختارة عند تنفيذ الحجز تلتزم يـلو بتوفير سيارة من نفس الفئة ونفس سنة الصنع او سنة صنع اعلى، وفي حال عدم توفر سيارة من نفس الفئة يتم الترقية لفئة اعلى بدون اي تكاليف أضافية
+                        تلتزم شركة ابو ذياب بتوفير نفس الموديل وسنة الصنع التي قمت باختيارها وقت الحجز و في حال عدم توفر السيارة المختارة عند تنفيذ الحجز تلتزم ابو ذياب بتوفير سيارة من نفس الفئة ونفس سنة الصنع او سنة صنع اعلى، وفي حال عدم توفر سيارة من نفس الفئة يتم الترقية لفئة اعلى بدون اي تكاليف أضافية
                     </div>
                     <ul id="bNames"  style="display: none">
                     </ul>
@@ -103,7 +103,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         {{-- <span><i class="fas fa-less-than"></i></span> --}}
 
-        <i class="fas fa-phone-alt d-md-none" id="social-media-links-toggeler" style="cursor: pointer;position: fixed;top: 30px;z-index:200; left: 10px;color: white;border-radius: 50%;background-color: #ff0202;font-size: 21px;padding: 12px;"></i>
+        <i class="fas fa-phone-alt d-md-none" id="social-media-links-toggeler" style="cursor: pointer;position: fixed;top: 30px;z-index:200; left: 10px;color: white;border-radius: 50%;background-color: #b52122db;font-size: 21px;padding: 12px;"></i>
 
 
         <div class="social-media-links d-none d-md-block">

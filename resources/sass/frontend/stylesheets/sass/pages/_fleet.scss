@@ -190,6 +190,10 @@
         }
         .fleet-pricing-section {
             font-size: 35px;
+            i {
+                font-size: 25px;
+                color: #777;
+            }
             .price2 {
                 text-decoration: line-through;
                 font-size: 25px;

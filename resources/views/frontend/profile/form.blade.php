@@ -23,7 +23,7 @@
                             <td class="color-black text-center"><input type="text" class="color-black form-control" name="post_box" value="{{Auth::user()->post_box}}"></td>
                         </tr>
 
-                        @if (isset($user))
+                        {{-- @if (isset($user))
                             <tr>
                                 <th class="color-black text-center" scope="row">البطاقه الشخصيه الوجه الامامي </th>
                                 <td class="color-black text-center"><input type="file" class="color-black form-control" style="border: 1px solid {{(now()->gt($user->id_expiry_date)) ? 'red':''}}" name="identityFace"></td>
@@ -63,47 +63,127 @@
                                 <th class="color-black text-center" scope="row">الرخصه الوجه الخلفي</th>
                                 <td class="color-black text-center"><input type="file" class="color-black form-control"  name="licenceBack"></td>
                             </tr>
-                        @endif
+                        @endif --}}
                     </tbody>
                 </table>
-                {{-- <div id="img">
+                <div id="img">
                     <div class="container">
-                        <div class="wrapper" onclick="defaultBtnActive()">
+
+                        <div class="wrapper" id="identityFace">
                             <div class="image">
-                                <img src="" alt="" id="ShowImg">
+                                <img src="{{$newRequest->getFirstMediaUrl('identityFace')}}" alt="" id="ShowImg-1">
                             </div>
                             <div class="content">
                                 <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                                <div class="text">No file chosen, yet!</div>
+                                <div class="text">البطاقه الشخصيه الوجه الامامي</div>
                             </div>
-                            <div id="cancel-btn"><i class="fas fa-times"></i></div>
-                            <div class="file-name">File name here</div>
+                            <div class="cancel-btn"><i class="fas fa-times"></i></div>
+                            <div class="file-name">البطاقه الشخصيه الوجه الامامي</div>
                         </div>
-                        <input id="default-btn" type="file" hidden>
+                        <input id="default-btn-1" type="file" hidden name="identityFace">
+
+                        <div class="wrapper" id="identityBack">
+                            <div class="image">
+                                <img src="{{$newRequest->getFirstMediaUrl('identityBack')}}" alt="" id="ShowImg-2">
+                            </div>
+                            <div class="content">
+                                <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                <div class="text">البطاقه الشخصيه الوجه الخلفي</div>
+                            </div>
+                            <div class="cancel-btn"><i class="fas fa-times"></i></div>
+                            <div class="file-name">البطاقه الشخصيه الوجه الخلفي</div>
+                        </div>
+                        <input id="default-btn-2" type="file" hidden name="identityBack">
+
+                        <div class="wrapper" id="licenceFace">
+                            <div class="image">
+                                <img src="{{$newRequest->getFirstMediaUrl('licenceFace')}}" alt="" id="ShowImg-3">
+                            </div>
+                            <div class="content">
+                                <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                <div class="text">الرخصه الوجه الامامي</div>
+                            </div>
+                            <div class="cancel-btn"><i class="fas fa-times"></i></div>
+                            <div class="file-name">الرخصه الوجه الامامي</div>
+                        </div>
+                        <input id="default-btn-3" type="file" hidden name="licenceFace">
+
+                        <div class="wrapper" id="licenceBack">
+                            <div class="image">
+                                <img src="{{$newRequest->getFirstMediaUrl('licenceBack')}}" alt="" id="ShowImg-4">
+                            </div>
+                            <div class="content">
+                                <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                <div class="text">الرخصه الوجه الخلفي</div>
+                            </div>
+                            <div class="cancel-btn"><i class="fas fa-times"></i></div>
+                            <div class="file-name">الرخصه الوجه الخلفي</div>
+                        </div>
+                        <input id="default-btn-4" type="file" hidden name="licenceBack">
+
                     </div>
                 </div>
                 @push('js')
                     <script>
-                        const defaultBtn = document.querySelector('#default-btn');
-                        const customBtn = document.querySelector('#custom-btn');
-                        const ShowImg = document.querySelector('#ShowImg');
-                        function defaultBtnActive(){
-                            defaultBtn.click();
-                        }
-                        defaultBtn.addEventListener("change", function(){
-                            const file = this.files[0];
-                            if(file){
-                                const reader = new FileReader();
-                                reader.onload = function(){
-                                    const result = reader.result;
-                                    ShowImg.src = result;
-                                    ShowImg.style.display = 'block';
-                                }
-                                reader.readAsDataURL(file);
+                        let imageType = ['image/jpeg','image/jpg','image/png'];
+                        function defaultBtnActive(div, click){
+                            let fileName = div.children[3];
+                            let defaultBtn = div.nextElementSibling;
+                            let cancelBtn = div.children[2];
+                            let img = div.children[0].children[0];
+                            let regExp = /[0-9a-zA-Z\^\&\'\@\{\}\[\]\,\$\=\!\-\#\(\)\.\%\+\~\_ ]+$/;
+                            if (click == 'I') {
+                                img.src = '';
+                                img.style.display = 'none';
+                                cancelBtn.style.display = 'none';
+                                fileName.style.display = 'none';
+                                div.style.border = '2px dashed #c2cdda';
+                                defaultBtn.value = null;
                             }
+                            else{
+                                defaultBtn.click();
+                            }
+                            defaultBtn.addEventListener("change", function(){
+                                const file = this.files[0];
+                                console.log(file.type);
+                                if(file && imageType.includes(file.type)){
+                                    const reader = new FileReader();
+                                    reader.onload = function(){
+                                        const result = reader.result;
+                                        img.src = result;
+                                        img.style.display = 'block';
+                                        cancelBtn.style.display = 'block';
+                                        fileName.style.display = 'block';
+                                        div.style.border = 'none';
+                                    }
+                                    reader.readAsDataURL(file);
+                                }
+                                if(this.value && imageType.includes(file.type)) {
+                                    let valueStore = this.value.match(regExp);
+                                    fileName.textContent = valueStore;
+                                }
+                            });
+                        }
+                        let identityFace = document.getElementById('identityFace');
+                        identityFace.addEventListener('click', function(n){
+                            defaultBtnActive(this, n.target.nodeName);
+                        });
+                        let identityBack = document.getElementById('identityBack');
+                        identityBack.addEventListener('click', function(n){
+                            defaultBtnActive(this, n.target.nodeName);
+                        });
+                        let licenceFace = document.getElementById('licenceFace');
+                        licenceFace.addEventListener('click', function(n){
+                            defaultBtnActive(this, n.target.nodeName);
+                        });
+                        let licenceBack = document.getElementById('licenceBack');
+                        licenceBack.addEventListener('click', function(n){
+                            defaultBtnActive(this, n.target.nodeName);
                         });
                     </script>
-                @endpush --}}
-                <button type="submit" class="primary-btn btn-hover btn-curved p-2 m-auto">تأكيد البيانات</button>
-                <button  class="primary-btn btn-hover btn-curved p-2 m-auto">الرجوع</button>
+                @endpush
+                <div class="row">
+                    <button class="primary-btn btn-hover btn-curved p-2 m-auto">تأكيد البيانات</button>
+                    <button class="primary-btn btn-hover btn-curved p-2 m-auto">الرجوع</button>
+                </div>
     </form>
