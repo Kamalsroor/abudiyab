@@ -56,8 +56,7 @@ class OrderController extends Controller
         $orders = Order::where('user_id' , auth()->user()->id)->with('car','receivingBranch','deliveryBranch')->filter()->simplePaginate();
         return OrderResource::collection($orders);
     }
-
-    /**
+/**
      * Display the specified order.
      *
      * @OA\Get(

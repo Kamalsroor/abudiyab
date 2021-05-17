@@ -1,0 +1,30 @@
+.payment2 {
+    overflow: hidden;
+    width: 100%;
+    background-color: rgb(228, 226, 226);
+    &_content {
+        animation: payment2 2s;
+        width: fit-content;
+        text-align: center;
+        margin: auto;
+        margin-bottom: 50px;
+        img {
+            width: 300px;
+        }
+        p {
+            font-size: 18px;
+        }
+        color: green;
+    }
+}
+
+@keyframes payment2 {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

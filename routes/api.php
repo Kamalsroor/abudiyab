@@ -90,4 +90,6 @@ Route::get('/select/additions', 'AdditionController@select')->name('additions.se
 
 Route::post('/payment/{order}/{session}', 'PaymentController@pay')->name('payment.pay');
 
+Route::apiResource('area_pricings', 'AreaPricingController');
+Route::get('/select/area_pricings', 'AreaPricingController@select')->name('area_pricings.select');
 /*  The routes of generated crud will set here: Don't remove this line  */
