@@ -2611,16 +2611,16 @@
         },
         {
             "name": "laratrist/laravel-slugs",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laratrist/laravel-slugs.git",
-                "reference": "6fca7b5494f5c8b6439fa6a9ad7993bc45e3e5f9"
+                "reference": "5a48aa30ded5a94a44457e0ca2195454d0e4bbaa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laratrist/laravel-slugs/zipball/6fca7b5494f5c8b6439fa6a9ad7993bc45e3e5f9",
-                "reference": "6fca7b5494f5c8b6439fa6a9ad7993bc45e3e5f9",
+                "url": "https://api.github.com/repos/laratrist/laravel-slugs/zipball/5a48aa30ded5a94a44457e0ca2195454d0e4bbaa",
+                "reference": "5a48aa30ded5a94a44457e0ca2195454d0e4bbaa",
                 "shasum": ""
             },
             "require": {
@@ -2653,9 +2653,9 @@
             "description": "This package is a useful tool to laratrist/laravel-slugs",
             "support": {
                 "issues": "https://github.com/laratrist/laravel-slugs/issues",
-                "source": "https://github.com/laratrist/laravel-slugs/tree/1.0.2"
+                "source": "https://github.com/laratrist/laravel-slugs/tree/1.0.3"
             },
-            "time": "2021-05-02T11:24:13+00:00"
+            "time": "2021-05-17T14:10:28+00:00"
         },
         {
             "name": "laravel/framework",
