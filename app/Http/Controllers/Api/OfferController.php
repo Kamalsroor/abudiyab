@@ -39,7 +39,7 @@ class OfferController extends Controller
      */
     public function index()
     {
-        $offers = Offer::filter()->simplePaginate();
+        $offers = Offer::filter()->where('type','4')->simplePaginate();
         return OfferResource::collection($offers);
     }
 
