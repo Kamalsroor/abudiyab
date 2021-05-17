@@ -51,9 +51,9 @@
                         <h4>{{branch.address}}</h4>
                         <p class="so">من السبت الي الخميس</p>
                         <div class="branch-page_center_branches_content_branch_detailing">
-                            <p>من الساعه {{branch.work_time != null  ?  branch.work_time.alldays.morning.timeopen: ''  }} صباحا الي {{branch.work_time != null  ?  branch.work_time.alldays.afternone.timeclose:  ''}} مساءا</p>
+                            <p>من الساعه {{branch.work_time != null  ?  branch.work_time.alldays.morning.timeopen: ''  }}  الي {{branch.work_time != null  ?  branch.work_time.alldays.morning.timeclose:  ''}} </p>
                             <p>|</p>
-                            <p>من الساعه 10 صباحا الي 2 مساءا</p>
+                            <p>من الساعه {{branch.work_time != null  ?  branch.work_time.alldays.afternone.timeopen: ''  }}  الي {{branch.work_time != null  ?  branch.work_time.alldays.afternone.timeclose: ''  }} </p>
                         </div>
                         <div class="branch-page_center_branches_content_branch_buttons">
                             <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
@@ -100,23 +100,16 @@
             .then(response => {
                 this.branchs = response.data.data;
                 this.allBranches=this.branchs;
-                for (const branch in this.allBranches) {
-                    if(branch.work_time != null)
-                    {
-                        this.formatAMPM(branch.work_time.alldays.morning.timeopen);
-                        this.formatAMPM(branch.work_time.alldays.morning.timeclose);
-                    }
-                }
+
+                let root=this;
 
                 this.allBranches.forEach(function (branch, i) {
                     if(branch.work_time != null)
                     {
-                        console.log(i);
-                        openformated=this.formatAMPM(branch.work_time.alldays.morning.timeopen);
-                        closeformated=this.formatAMPM(branch.work_time.alldays.morning.timeclose);
-
-                        console.log(openformated);
-                        console.log(closeformated);
+                        root.allBranches[i].work_time.alldays.morning.timeopen=root.formatAMPM(branch.work_time.alldays.morning.timeopen,i);
+                        root.allBranches[i].work_time.alldays.morning.timeclose=root.formatAMPM(branch.work_time.alldays.morning.timeclose,i);
+                        root.allBranches[i].work_time.alldays.afternone.timeopen=root.formatAMPM(branch.work_time.alldays.afternone.timeopen,i);
+                        root.allBranches[i].work_time.alldays.afternone.timeclose=root.formatAMPM(branch.work_time.alldays.afternone.timeclose,i);
                     }
                 });
 
@@ -141,15 +134,19 @@
                         return element.region_id == e.target.id;
                     });
             },
-            formatAMPM: function(date) {
-            var hours = date.getHours();
-            var minutes = date.getMinutes();
-            var ampm = hours >= 12 ? 'pm' : 'am';
-            hours = hours % 12;
-            hours = hours ? hours : 12; // the hour '0' should be '12'
-            minutes = minutes < 10 ? '0'+minutes : minutes;
-            var strTime = hours + ':' + minutes + ' ' + ampm;
-            return strTime;
+            formatAMPM: function(time,i) {
+                let localtime=parseFloat(time);
+
+                let timearr=time.split(':');
+                 if(timearr[0] > '12')
+                 {
+                     timearr[0]-=12;
+                     timearr[1]+='pm';
+                 }
+                 else{
+                     timearr[1]+='am';
+                 }
+                return timearr.join(':');
             }
         },
         watch:{

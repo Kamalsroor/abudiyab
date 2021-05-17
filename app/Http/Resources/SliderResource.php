@@ -24,6 +24,10 @@ class SliderResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'first_header' => $this->first_header,
+            'second_header' => $this->second_header,
+            'image' => $this->getFirstMediaUrl(),
+
         ];
     }
 }
