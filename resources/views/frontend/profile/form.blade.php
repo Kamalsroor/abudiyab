@@ -68,10 +68,9 @@
                 </table>
                 <div id="img">
                     <div class="container">
-
                         <div class="wrapper" id="identityFace">
                             <div class="image">
-                                <img src="{{$newRequest->getFirstMediaUrl('identityFace')}}" alt="" id="ShowImg-1">
+                                <img src="{{$newRequest->getFirstMediaUrl('identityFace')}}" alt="">
                             </div>
                             <div class="content">
                                 <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
@@ -79,12 +78,14 @@
                             </div>
                             <div class="cancel-btn"><i class="fas fa-times"></i></div>
                             <div class="file-name">البطاقه الشخصيه الوجه الامامي</div>
+                            <p class="image-projection"></p>
+                            <div class="div-hidden"></div>
                         </div>
                         <input id="default-btn-1" type="file" hidden name="identityFace">
 
                         <div class="wrapper" id="identityBack">
                             <div class="image">
-                                <img src="{{$newRequest->getFirstMediaUrl('identityBack')}}" alt="" id="ShowImg-2">
+                                <img src="{{$newRequest->getFirstMediaUrl('identityBack')}}" alt="">
                             </div>
                             <div class="content">
                                 <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
@@ -92,12 +93,14 @@
                             </div>
                             <div class="cancel-btn"><i class="fas fa-times"></i></div>
                             <div class="file-name">البطاقه الشخصيه الوجه الخلفي</div>
+                            <p class="image-projection"></p>
+                            <div class="div-hidden"></div>
                         </div>
                         <input id="default-btn-2" type="file" hidden name="identityBack">
 
                         <div class="wrapper" id="licenceFace">
                             <div class="image">
-                                <img src="{{$newRequest->getFirstMediaUrl('licenceFace')}}" alt="" id="ShowImg-3">
+                                <img src="{{$newRequest->getFirstMediaUrl('licenceFace')}}" alt="">
                             </div>
                             <div class="content">
                                 <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
@@ -105,12 +108,14 @@
                             </div>
                             <div class="cancel-btn"><i class="fas fa-times"></i></div>
                             <div class="file-name">الرخصه الوجه الامامي</div>
+                            <p class="image-projection"></p>
+                            <div class="div-hidden"></div>
                         </div>
                         <input id="default-btn-3" type="file" hidden name="licenceFace">
 
                         <div class="wrapper" id="licenceBack">
                             <div class="image">
-                                <img src="{{$newRequest->getFirstMediaUrl('licenceBack')}}" alt="" id="ShowImg-4">
+                                <img src="{{$newRequest->getFirstMediaUrl('licenceBack')}}" alt="">
                             </div>
                             <div class="content">
                                 <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
@@ -118,6 +123,8 @@
                             </div>
                             <div class="cancel-btn"><i class="fas fa-times"></i></div>
                             <div class="file-name">الرخصه الوجه الخلفي</div>
+                            <p class="image-projection"></p>
+                            <div class="div-hidden"></div>
                         </div>
                         <input id="default-btn-4" type="file" hidden name="licenceBack">
 
@@ -125,8 +132,9 @@
                 </div>
                 @push('js')
                     <script>
-                        let imageType = ['image/jpeg','image/jpg','image/png'];
-                        function defaultBtnActive(div, click){
+                        let validExtensions = ['image/jpeg','image/jpg','image/png'];
+
+                        function bringPicture(div, click){
                             let fileName = div.children[3];
                             let defaultBtn = div.nextElementSibling;
                             let cancelBtn = div.children[2];
@@ -146,7 +154,7 @@
                             defaultBtn.addEventListener("change", function(){
                                 const file = this.files[0];
                                 console.log(file.type);
-                                if(file && imageType.includes(file.type)){
+                                if(file && validExtensions.includes(file.type)){
                                     const reader = new FileReader();
                                     reader.onload = function(){
                                         const result = reader.result;
@@ -158,28 +166,37 @@
                                     }
                                     reader.readAsDataURL(file);
                                 }
-                                if(this.value && imageType.includes(file.type)) {
+                                if(this.value && validExtensions.includes(file.type)) {
                                     let valueStore = this.value.match(regExp);
                                     fileName.textContent = valueStore;
                                 }
                             });
                         }
-                        let identityFace = document.getElementById('identityFace');
-                        identityFace.addEventListener('click', function(n){
-                            defaultBtnActive(this, n.target.nodeName);
-                        });
-                        let identityBack = document.getElementById('identityBack');
-                        identityBack.addEventListener('click', function(n){
-                            defaultBtnActive(this, n.target.nodeName);
-                        });
-                        let licenceFace = document.getElementById('licenceFace');
-                        licenceFace.addEventListener('click', function(n){
-                            defaultBtnActive(this, n.target.nodeName);
-                        });
-                        let licenceBack = document.getElementById('licenceBack');
-                        licenceBack.addEventListener('click', function(n){
-                            defaultBtnActive(this, n.target.nodeName);
-                        });
+
+                        function identifyElement(divId) {
+                            let div = document.getElementById(divId);
+                            let divHidden = div.children[5];
+                            div.addEventListener('click', function(n){
+                                bringPicture(this, n.target.nodeName);
+                            });
+                            divHidden.addEventListener('dragover', () => {
+                                event.preventDefault();
+                                div.classList.add('image-projection');
+                            });
+                            divHidden.addEventListener('dragleave', () => {
+                                div.classList.remove('image-projection');
+                            });
+                            divHidden.addEventListener('drop', (event) => {
+                                event.preventDefault();
+                                file = event.dataTransfer.files[0];
+                                console.log(file);
+                            });
+                        }
+                        identifyElement('identityFace');
+                        identifyElement('identityBack');
+                        identifyElement('licenceFace');
+                        identifyElement('licenceBack');
+
                     </script>
                 @endpush
                 <div class="row">

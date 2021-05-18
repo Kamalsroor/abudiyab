@@ -170,7 +170,7 @@
                     </div>
 
                     <div id="update-profile" class="d-none">
-                    @include('frontend.profile.form')
+                        @include('frontend.profile.form')
                     </div>
                     <div id="update-password" class="d-none">
                         @include('frontend.profile.change-password')
