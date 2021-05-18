@@ -12,6 +12,7 @@ use Auth;
 use App\Http\Requests\Api\OrderStep1Request;
 use App\Http\Requests\Api\OrderStep2Request;
 use App\Http\Requests\Api\OrderStep3Request;
+use App\Models\AreaPricing;
 use App\Payment\MasterCardPayment;
 use Carbon\Carbon;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -261,9 +262,48 @@ class OrderController extends Controller
                 'features_added' => $features,
             ]);
         }
+            $membership_discount = ((Auth()->user()->membership->rental_discount /100) * ($order->car->price1));
+            $offerLast = $order->car->offers->last();
+            $promotional_discount = 0;
+            if ($offerLast) {
+                if($offerLast->to->lt(now()))
+                {
+                    $promotional_discount = 0;
+                }
+                else
+                {
+                    if($offerLast->discount_type == "percentage")
+                    {
+                        $promotional_discount = (($offerLast->discount_value /100) * ($order->car->price1));
+                    }
+                    else if($offerLast->discount_type == 'fixed')
+                    {
+                        $promotional_discount = $offerLast->discount_value;
+                    }
+                }
+            }
+            $features_price=0;
+            foreach($order->features_added as $key => $value)
+            {
+                $features_price+=$value;
+            }
+            $delivery_date = Carbon::parse($order->delivery_date);
+            $reciving_date = Carbon::parse($order->reciving_date);
+            $diff = $delivery_date->diffInDays($reciving_date);
+
+            $car_price = ($order->car->price1 * $diff) ;
+            $authorization_fee=3;
+            $price = ($car_price  ) + $features_price + $authorization_fee ;
+            $total = $price  - $membership_discount - $promotional_discount;
 
         return response()->json([
             'status' => true,
+            'promotional_discount' => $promotional_discount,
+            'total' => $total,
+            'diff' => $diff,
+            'price' => $price,
+            'authorization_fee' => $authorization_fee,
+            'membership_discount' => $membership_discount,
             'order' => new OrderResource($order),
             // 'payment_url' => $paymentUrl,
         ]);
@@ -290,9 +330,6 @@ class OrderController extends Controller
 
         if ($request->payment_type == "visa") {
             # code...
-
-
-
 
             $sessionID = MasterCardPayment::createSessionSandBox($orderID, $merchantID, $merchantPassword);
             $totalPrice = 5000;
