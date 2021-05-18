@@ -303,6 +303,7 @@ class OrderController extends Controller
             'promotional_discount' => $promotional_discount,
             'total' => $total,
             'diff' => $diff,
+            'features_price' => $features_price,
             'price' => $price,
             'authorization_fee' => $authorization_fee,
             'membership_discount' => $membership_discount,
