@@ -51,7 +51,6 @@ return [
         'email' => 'البريد الالكتروني للتواصل',
         'branch_name' => 'الفرع',
         'huawei' => 'رابط تطبيف الهاواوي',
-
         'fleet_title' => 'العنوان الرئيسي',
         'fleet_content' => 'عنوان العرض',
         'fleet_background' => 'الخلفيه',
@@ -190,9 +189,33 @@ return [
 
 
 
+        'seo_home_title' => 'ألصفحةالرئيسيه : seo : العنوان',
+        'seo_home_description' => 'ألصفحةالرئيسيه : seo : الوصف',
+        'seo_home_keywords' => 'ألصفحةالرئيسيه : seo : ألكلمات المفتاحية',
+        'seo_home_image' => 'ألصفحةالرئيسيه : seo : ألصورة الخلفية',
 
 
 
+        'seo_branche_title' => 'صفحة فروعنا : seo : العنوان',
+        'seo_branche_description' => 'صفحة فروعنا : seo : الوصف',
+        'seo_branche_keywords' => 'صفحة فروعنا : seo : ألكلمات المفتاحية',
+        'seo_branche_image' => 'صفحة فروعنا : seo : ألصورة الخلفية',
+
+
+
+
+        'seo_car_sales_title' => 'صفحة مبيعات السيارات : seo : العنوان',
+        'seo_car_sales_description' => 'صفحة مبيعات السيارات : seo : الوصف',
+        'seo_car_sales_keywords' => 'صفحة مبيعات السيارات : seo : ألكلمات المفتاحية',
+        'seo_car_sales_image' => 'صفحة مبيعات السيارات : seo : ألصورة الخلفية',
+
+
+
+
+        'seo_maintenance_title' => 'صفحة الخدمات والصيانه : seo : العنوان',
+        'seo_maintenance_description' => 'صفحة الخدمات والصيانه : seo : الوصف',
+        'seo_maintenance_keywords' => 'صفحة الخدمات والصيانه : seo : ألكلمات المفتاحية',
+        'seo_maintenance_image' => 'صفحة الخدمات والصيانه : seo : ألصورة الخلفية',
 
 
 
