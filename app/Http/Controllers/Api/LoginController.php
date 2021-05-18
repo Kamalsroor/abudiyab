@@ -14,6 +14,8 @@ use App\Http\Requests\Api\PasswordLessLoginRequest;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
+use Settings;
+
 class LoginController extends Controller
 {
     use AuthorizesRequests, ValidatesRequests;
@@ -101,7 +103,6 @@ class LoginController extends Controller
     public function firebase(PasswordLessLoginRequest $request)
     {
         $verifier = $this->firebaseToken->accessToken($request->access_token);
-
         $phone = $verifier->getPhoneNumber();
 
         $email = $verifier->getEmail();
@@ -112,7 +113,6 @@ class LoginController extends Controller
         $userQuery = User::where(compact('phone'))
             ->orWhere(compact('email'))
             ->orWhere('firebase_id', $firebaseId);
-
         if ($userQuery->exists()) {
             $user = $userQuery->first();
         } else {
@@ -121,6 +121,8 @@ class LoginController extends Controller
                 'name' => $name ?: 'Anonymous User',
                 'email' => $email,
                 'phone' => $phone,
+                'type' => 'customer',
+                'membership_id' => Settings::get('membership_default','1'),
                 'phone_verified_at' => $phone ? now() : null,
                 'email_verified_at' => $email ? now() : null,
             ]);
