@@ -124,15 +124,9 @@
     </tr>
 </table>
 <table class="table table-striped table-middle">
-    <p>مفتوح 14 ساعه</p>
+    <p>مفتوح 24 ساعه</p>
     <tr class="row">
-        <td class="col-1">{{ BsForm::checkbox('work_time[sat][allday]')->label(trans('branches.weekDays.sat'))->value(1)->default('0')->checked(isset($branch->work_time) &&  $branch->work_time != null ?  $branch->work_time['sat']['allday'] : false) }}</td>
-        <td class="col-1">{{ BsForm::checkbox('work_time[sun][allday]')->label(trans('branches.weekDays.sun'))->value(1)->default('0')->checked(isset($branch->work_time) &&  $branch->work_time != null ?  $branch->work_time['sun']['allday'] : false) }}</td>
-        <td class="col-1">{{ BsForm::checkbox('work_time[mon][allday]')->label(trans('branches.weekDays.mon'))->value(1)->default('0')->checked(isset($branch->work_time) &&  $branch->work_time != null ?  $branch->work_time['mon']['allday'] : false) }}</td>
-        <td class="col-1">{{ BsForm::checkbox('work_time[tue][allday]')->label(trans('branches.weekDays.tue'))->value(1)->default('0')->checked(isset($branch->work_time) &&  $branch->work_time != null ?  $branch->work_time['tue']['allday'] : false) }}</td>
-        <td class="col-1">{{ BsForm::checkbox('work_time[wed][allday]')->label(trans('branches.weekDays.wed'))->value(1)->default('0')->checked(isset($branch->work_time) &&  $branch->work_time != null ?  $branch->work_time['wed']['allday'] : false) }}</td>
-        <td class="col-1">{{ BsForm::checkbox('work_time[thu][allday]')->label(trans('branches.weekDays.thu'))->value(1)->default('0')->checked(isset($branch->work_time) &&  $branch->work_time != null ?  $branch->work_time['thu']['allday'] : false) }}</td>
-        <td class="col-1">{{ BsForm::checkbox('work_time[fri][allday]')->label(trans('branches.weekDays.fri'))->value(1)->default('0')->checked(isset($branch->work_time) &&  $branch->work_time != null ?  $branch->work_time['fri']['allday'] : false) }}</td>
+        <td class="col-3">{{ BsForm::checkbox('work_time[sat][allday]')->label(trans('branches.weekDays.openAllDays'))->value(1)->default('0')->checked(isset($branch->work_time) &&  $branch->work_time != null ?  $branch->work_time['sat']['allday'] : false) }}</td>
     </tr>
 </table>
 

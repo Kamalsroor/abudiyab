@@ -130,77 +130,108 @@
 
                     </div>
                 </div>
-                @push('js')
-                    <script>
-                        let validExtensions = ['image/jpeg','image/jpg','image/png'];
 
-                        function bringPicture(div, click){
-                            let fileName = div.children[3];
-                            let defaultBtn = div.nextElementSibling;
-                            let cancelBtn = div.children[2];
-                            let img = div.children[0].children[0];
-                            let regExp = /[0-9a-zA-Z\^\&\'\@\{\}\[\]\,\$\=\!\-\#\(\)\.\%\+\~\_ ]+$/;
-                            if (click == 'I') {
-                                img.src = '';
-                                img.style.display = 'none';
-                                cancelBtn.style.display = 'none';
-                                fileName.style.display = 'none';
-                                div.style.border = '2px dashed #c2cdda';
-                                defaultBtn.value = null;
-                            }
-                            else{
-                                defaultBtn.click();
-                            }
-                            defaultBtn.addEventListener("change", function(){
-                                const file = this.files[0];
-                                console.log(file.type);
-                                if(file && validExtensions.includes(file.type)){
-                                    const reader = new FileReader();
-                                    reader.onload = function(){
-                                        const result = reader.result;
-                                        img.src = result;
-                                        img.style.display = 'block';
-                                        cancelBtn.style.display = 'block';
-                                        fileName.style.display = 'block';
-                                        div.style.border = 'none';
-                                    }
-                                    reader.readAsDataURL(file);
-                                }
-                                if(this.value && validExtensions.includes(file.type)) {
-                                    let valueStore = this.value.match(regExp);
-                                    fileName.textContent = valueStore;
-                                }
-                            });
-                        }
-
-                        function identifyElement(divId) {
-                            let div = document.getElementById(divId);
-                            let divHidden = div.children[5];
-                            div.addEventListener('click', function(n){
-                                bringPicture(this, n.target.nodeName);
-                            });
-                            divHidden.addEventListener('dragover', () => {
-                                event.preventDefault();
-                                div.classList.add('image-projection');
-                            });
-                            divHidden.addEventListener('dragleave', () => {
-                                div.classList.remove('image-projection');
-                            });
-                            divHidden.addEventListener('drop', (event) => {
-                                event.preventDefault();
-                                file = event.dataTransfer.files[0];
-                                console.log(file);
-                            });
-                        }
-                        identifyElement('identityFace');
-                        identifyElement('identityBack');
-                        identifyElement('licenceFace');
-                        identifyElement('licenceBack');
-
-                    </script>
-                @endpush
                 <div class="row">
                     <button class="primary-btn btn-hover btn-curved p-2 m-auto">تأكيد البيانات</button>
                     <button class="primary-btn btn-hover btn-curved p-2 m-auto">الرجوع</button>
                 </div>
     </form>
+    @push('js')
+    <script>
+        let validExtensions = ['image/jpeg','image/jpg','image/png'];
+        let regExp = /[0-9a-zA-Z\^\&\'\@\{\}\[\]\,\$\=\!\-\#\(\)\.\%\+\~\_ ]+$/;
+
+        function bringPicture(div, click){
+            let fileName = div.children[3];
+            let defaultBtn = div.nextElementSibling;
+            let cancelBtn = div.children[2];
+            let img = div.children[0].children[0];
+            if (click == 'I') {
+                img.src = '';
+                img.style.display = 'none';
+                cancelBtn.style.display = 'none';
+                fileName.style.display = 'none';
+                div.style.border = '2px dashed #c2cdda';
+                defaultBtn.value = null;
+            }
+            else{
+                defaultBtn.click();
+            }
+            defaultBtn.addEventListener("change", function(){
+                const file = this.files[0];
+                if(file && validExtensions.includes(file.type)){
+                    const reader = new FileReader();
+                    reader.onload = function(){
+                        const result = reader.result;
+                        img.src = result;
+                        img.style.display = 'block';
+                        cancelBtn.style.display = 'block';
+                        fileName.style.display = 'block';
+                        div.style.border = 'none';
+                    }
+                    reader.readAsDataURL(file);
+                }
+                if(this.value && validExtensions.includes(file.type)) {
+                    let valueStore = this.value.match(regExp);
+                    fileName.textContent = valueStore;
+                }
+            });
+        }
+
+        function identifyElement(divId) {
+            let div = document.getElementById(divId);
+            let img = div.children[0].children[0];
+            let cancelBtn = div.children[2];
+            let fileName = div.children[3];
+            let imageProjection = div.children[4];
+            let divHidden = div.children[5];
+            div.addEventListener('click', function(n){
+                bringPicture(this, n.target.nodeName);
+            });
+            divHidden.addEventListener('dragover', () => {
+                event.preventDefault();
+                div.classList.add('image-projection');
+                imageProjection.classList.add('show');
+                imageProjection.classList.remove('hide');
+                // fileName.textContent = 'افلت الصوره';
+            });
+            divHidden.addEventListener('dragleave', () => {
+                div.classList.remove('image-projection');
+                imageProjection.classList.remove('show');
+                imageProjection.classList.add('hide');
+            });
+            divHidden.addEventListener('drop', (event) => {
+                event.preventDefault();
+                const file = event.dataTransfer.files[0];
+                div.classList.remove('image-projection');
+                imageProjection.classList.remove('show');
+                imageProjection.classList.add('hide');
+                if(file && validExtensions.includes(file.type)){
+                    const reader = new FileReader();
+                    reader.onload = function(){
+                        const result = reader.result;
+                        img.src = result;
+                        console.log(result);
+                        img.style.display = 'block';
+                        cancelBtn.style.display = 'block';
+                        fileName.style.display = 'block';
+                        div.style.border = 'none';
+                        div.classList.remove('image-projection');
+                        imageProjection.classList.remove('show');
+                        imageProjection.classList.add('hide');
+                    }
+                    reader.readAsDataURL(file);
+                }
+                if(file.name && validExtensions.includes(file.type)) {
+                    let valueStore = file.name.match(regExp);
+                    fileName.textContent = valueStore;
+                }
+            });
+        }
+        identifyElement('identityFace');
+        identifyElement('identityBack');
+        identifyElement('licenceFace');
+        identifyElement('licenceBack');
+
+    </script>
+@endpush
