@@ -283,9 +283,11 @@ class OrderController extends Controller
                 }
             }
             $features_price=0;
-            foreach($order->features_added as $key => $value)
-            {
-                $features_price+=$value;
+            if (is_array($order->features_added)) {
+                foreach($order->features_added as $key => $value)
+                {
+                    $features_price+=$value;
+                }
             }
             $delivery_date = Carbon::parse($order->delivery_date);
             $reciving_date = Carbon::parse($order->reciving_date);
