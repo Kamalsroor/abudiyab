@@ -28,7 +28,7 @@ class CustmerRequests extends FormRequest
             'name' => ['required', 'max:255'],
             'email' => ['required', 'email', 'max:255', 'unique:users,email,'.auth()->id()],
             'phone' => ['required', 'string', 'min:8','unique:users,phone,'.auth()->id()],
-            'post_box' => ['required'],
+            // 'post_box' => ['required'],
         ];
     }
 }

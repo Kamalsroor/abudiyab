@@ -159,6 +159,11 @@ class FrontendController extends Controller
         return view('frontend.favorite');
     }
 
+    public function payment2()
+    {
+        return view('frontend.payment2');
+    }
+
     public function recruitment()
     {
         $works=Work::all();
@@ -267,9 +272,13 @@ class FrontendController extends Controller
     {
         $is_confirmed = true ;
         $user = Custmerrequest::where('user_id',auth()->id())->orderBy('created_at', 'DESC')->first();
+        // dd($user->getFirstMediaUrl('identityBack'));
         if($user){
+
             $newRequest = $user;
+
            if($user->is_confirmed != "confirmed"){
+
                 $is_confirmed = false ;
                 $user = Custmerrequest::where('user_id',auth()->id())->where('is_confirmed' , 'confirmed')->orderBy('created_at', 'DESC')->first();
            }

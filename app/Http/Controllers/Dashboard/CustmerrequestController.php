@@ -29,7 +29,7 @@ class CustmerrequestController extends Controller
      */
     public function index()
     {
-        $custmerrequests = Custmerrequest::filter()->paginate();
+        $custmerrequests = Custmerrequest::filter()->orderBy('created_at','desc')->paginate();
 
         return view('dashboard.custmerrequests.index', compact('custmerrequests'));
     }
