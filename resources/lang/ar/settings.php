@@ -24,6 +24,7 @@ return [
         'branches' => 'صفحه الفروع',
         'visa_offer' => 'خصم الفيزا',
         'fleet' => 'صفحه الاسطول',
+        'points' => 'صفحه نقاطي',
 
     ],
     'dashboard_templates' => [
@@ -54,6 +55,11 @@ return [
         'fleet_title' => 'العنوان الرئيسي',
         'fleet_content' => 'عنوان العرض',
         'fleet_background' => 'الخلفيه',
+
+        'points_title'  => 'العنوان الرئيسي',
+        'points_content'  => 'المحتوي',
+        'points_background'  => 'الخلفيه الرئيسيه',
+        'points_image'  => 'صوره نقاطي',
 
         'copyright' => 'حقوق النشر',
         '%copyright%' => 'حقوق النشر',

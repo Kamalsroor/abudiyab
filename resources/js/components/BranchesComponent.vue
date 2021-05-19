@@ -152,11 +152,11 @@
             },
             formatAMPM: function(time,i) {
                 let localtime=parseFloat(time);
-                console.log(time);
                 if (time != null) {
                     let timearr=time.split(':');
                     if(timearr[0] > '12')
                     {
+
                         timearr[0]-=12;
                         timearr[1]+='pm';
                     }

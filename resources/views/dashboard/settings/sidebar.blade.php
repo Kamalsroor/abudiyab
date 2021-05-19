@@ -12,6 +12,13 @@
         'url' => route('dashboard.settings.index', ['tab' => 'home']),
         'active' => request()->routeIs('*settings*') && request('tab') == 'home',
     ],
+
+    [
+        'name' => trans('settings.tabs.points'),
+        'url' => route('dashboard.settings.index', ['tab' => 'points']),
+        'active' => request()->routeIs('*settings*') && request('tab') == 'points',
+    ],
+
     [
         'name' => trans('settings.tabs.branches'),
         'url' => route('dashboard.settings.index', ['tab' => 'branches']),
@@ -69,11 +76,7 @@
         'url' => route('dashboard.settings.index', ['tab' => 'visa_offer']),
         'active' => request()->routeIs('*settings*') && request('tab') == 'visa_offer',
         ],
-        [
-        'name' => trans('settings.tabs.points'),
-        'url' => route('dashboard.settings.index', ['tab' => 'points']),
-        'active' => request()->routeIs('*settings*') && request('tab') == 'points',
-        ],
+
         [
         'name' => trans('settings.tabs.fleet'),
         'url' => route('dashboard.settings.index', ['tab' => 'fleet']),
