@@ -138,6 +138,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <img id="character" src="{{asset('images/character-1.png')}}" class="d-none d-md-block" alt="our character">
 </div>
 
+<div class="go-top">
+    <i class="fas fa-chevron-up"></i>
+    <i class="fas fa-chevron-up"></i>
+</div>
+
 
     <script>
         let showOrderURL="{{route('api.orders.index')}}"

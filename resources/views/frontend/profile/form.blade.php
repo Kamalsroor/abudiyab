@@ -193,7 +193,6 @@
                 div.classList.add('image-projection');
                 imageProjection.classList.add('show');
                 imageProjection.classList.remove('hide');
-                // fileName.textContent = 'افلت الصوره';
             });
             divHidden.addEventListener('dragleave', () => {
                 div.classList.remove('image-projection');
@@ -211,7 +210,6 @@
                     reader.onload = function(){
                         const result = reader.result;
                         img.src = result;
-                        console.log(result);
                         img.style.display = 'block';
                         cancelBtn.style.display = 'block';
                         fileName.style.display = 'block';

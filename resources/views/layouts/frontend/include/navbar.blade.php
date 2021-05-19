@@ -16,13 +16,12 @@
                 <!--  ---------------------------------------->
                 <!-- pop over------------------------------ -->
                 <!--  ---------------------------------------->
-                <a  class="mx-3 open-button" id="myFormtoggeler" >تسجيل الدخول</a>
-                <div  class="form-popup d-none" id="myForm">
+                <a class="mx-3 open-button" id="myFormtoggeler" >تسجيل الدخول</a>
 
-
+                {{-- <div class="form-popup d-none" id="myForm">
                     <form action="{{ route('login') }}"  method="post" class="form-container text-center">
                         @csrf
-                        {{-- <h1 style="color: black;font-size: 20px;">تسجيل الدخول</h1> --}}
+                        <!-- <h1 style="color: black;font-size: 20px;">تسجيل الدخول</h1> -->
 
 
                         <label class="color-black" for="email"><b class="color-black">البريد الالكترونى</b></label>
@@ -35,11 +34,34 @@
 
                         <button type="submit" class="btn">تسجيل الدخول</button>
                         <a href="/register"  class="btn btn-warning  mt-2 mx-auto" >انشاء حساب جديد</a>
-                        {{-- <a  class="btn btn-danger cancel mt-2 mx-auto" onclick="closeForm()">خروج</a> --}}
+                        <!-- <a  class="btn btn-danger cancel mt-2 mx-auto" onclick="closeForm()">خروج</a> -->
                         <p class="mt-2" style="font-size: 12px;color:gray;">بالضغط على مواصلة او تسجيل الاشتراك أوافق على بنود و شروط و سياسة الخصوصية</p>
 
                     </form>
+                </div> --}}
+
+                <div class="log-in">
+                    <div class="log-in_top">
+                        <i>+</i>
+                    </div>
+                    <div class="log-in_center">
+                        <form action="{{ route('login') }}" method="post" class="log-in_center_form">
+                            @csrf
+                            <h2>تسجيل الدخول</h2>
+                            <div class="log-in_center_form_email">
+                                <label>البريد الاركتروني<span>احتاج الى حساب? <a href="/register">انشاء حساب</a></span></label>
+                                <input type="email" name="email" class="form-control" required>
+                            </div>
+                            <div class="log-in_center_form_password">
+                                <label>كلمة السر<span><i class="far fa-eye"></i> اظهار</span></label>
+                                <input type="password" name="password" class="form-control" required>
+                            </div>
+                            <button type="submit" class="primary-btn btn-hover btn-curved">تسجيل الدخول</button>
+                            <a href="" class="log-in_center_form_forgot-password">نسيت كلمة السر? </a>
+                        </form>
+                    </div>
                 </div>
+
                 <!--  --------------------------------------------->
                 <!-- pop over ends------------------------------ -->
                 <!--  --------------------------------------------->
@@ -59,11 +81,11 @@
                 </div>
                 @endauth
 
-              
 
-                    
 
-             
+
+
+
 
               <!--  ------------------------------------>
               <!-- Modal2 starts here------------------- -->
@@ -181,7 +203,7 @@
                     <span aria-hidden="true" style="color: red;cursor: pointer;">&times;</span>
                 </a>
             </div>
-            <form action="{{ route('login') }}"  method="post" class="form-container " style="width: 100%;max-width: initial;">
+            {{-- <form action="{{ route('login') }}"  method="post" class="form-container " style="width: 100%;max-width: initial;">
                 @csrf
                 <div class="modal-body" style="margin: auto">
                     <div class="form-group">
@@ -193,14 +215,44 @@
                         <label for="message-text" class="col-form-label color-black">كلمة السر</label>
                         <input type="password" class="form-control" id="user" placeholder="Enter Password"  name="password">
                     </div>
-                    {{-- <button class="btn btn-primary" type="submit">تسجيل</button> --}}
+                    <!-- <button class="btn btn-primary" type="submit">تسجيل</button> -->
                 </div>
                 <button class="btn btn-primary" type="submit">تسجيل</button>
                 <a href="{{ route('register') }}" class="btn btn-warning" type="submit">إنشاء حساب جديد</a>
-            </form>
+            </form> --}}
         </div>
     </div>
 </div>
 <!--  ------------------------------------>
 <!-- Modal ends here------------------- -->
 <!--  ------------------------------------>
+@push('js')
+    <script>
+        let logIn = document.querySelector('.log-in'),
+            btnHideLogIn = document.querySelector('.log-in_top i'),
+            btnShowLogIn = document.querySelector('#myFormtoggeler'),
+            btnShowLogInModal = document.querySelector('#loginModalLabel'),
+            btnShowPassword = document.querySelector('.log-in_center_form_password label span'),
+            inputPassword = document.querySelector('.log-in_center_form_password input'),
+            ShowPassword = false,
+            togglePassword = () => {
+            if (ShowPassword === false) {
+                btnShowPassword.innerHTML = '<i class="far fa-eye-slash"></i> اخفاء';
+                inputPassword.type = 'text';
+                ShowPassword = true;
+            }
+            else{
+                btnShowPassword.innerHTML = '<i class="far fa-eye"></i> اظهار';
+                inputPassword.type = 'password';
+                ShowPassword = false;
+            }
+        }
+        btnShowPassword.addEventListener('click', togglePassword);
+        btnShowLogIn.addEventListener('click', () => logIn.style.display = 'block');
+        btnShowLogInModal.addEventListener('click', () => logIn.style.display = 'block');
+        btnHideLogIn.addEventListener('click', () => logIn.style.display = 'none');
+        if (document.location['hash'] == '#login') {
+            logIn.style.display = 'block';
+        }
+    </script>
+@endpush
