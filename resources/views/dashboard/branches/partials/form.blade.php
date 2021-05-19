@@ -40,6 +40,7 @@
     <thead>
         <tr>
             <th>اليوم</th>
+            <th>فتره/فترتين</th>
             <th colspan='2'>صباحا</th>
             <th colspan='2'>مساء</th>
         </tr>
@@ -47,6 +48,7 @@
     <tbody>
         <tr>
             <th>من السبت الي الخميس </th>
+            <td>{{ BsForm::checkbox('work_time[alldays][period]')->attribute(['class' => 'period','id' => 'alldays'])->value(1)->default('0')->checked(isset($branch->work_time) &&  $branch->work_time != null ?  $branch->work_time['alldays']['period'] : false) }}</td>
             <td>
                 <div class="form-group row">
                     <div class="col-10">
@@ -62,14 +64,14 @@
                 </div>
             </td>
             <td>
-                <div class="form-group row">
+                <div class="form-group row alldays-period" style="display: {{(isset($branch->work_time) && $branch->work_time != null) ? $branch->work_time['alldays']['period']==1 ? 'block':'none' : 'none'}}">
                     <div class="col-10">
                       <input class="form-control" type="time" value="{{isset($branch->work_time) && $branch->work_time != null  ? $branch->work_time['alldays']['afternone']['timeopen']:null}}" name="work_time[alldays][afternone][timeopen]" id="example-time-input">
                     </div>
                 </div>
             </td>
             <td>
-                <div class="form-group row">
+                <div class="form-group row alldays-period" style="display: {{(isset($branch->work_time) && $branch->work_time != null) ? $branch->work_time['alldays']['period']==1 ? 'block':'none' : 'none'}}">
                     <div class="col-10">
                       <input class="form-control" type="time" value="{{isset($branch->work_time) && $branch->work_time != null  ? $branch->work_time['alldays']['afternone']['timeclose']:null}}" name="work_time[alldays][afternone][timeclose]" id="example-time-input">
                     </div>
@@ -78,7 +80,7 @@
         </tr>
         <tr>
             <th>الجمعه</th>
-
+            <td>{{ BsForm::checkbox('work_time[fri][period]')->attribute(['class' => 'period','id' => 'friday'])->value(1)->default('0')->checked(isset($branch->work_time) &&  $branch->work_time != null ?  $branch->work_time['fri']['period'] : false) }}</td>
             <td>
                 <div class="form-group row">
                     <div class="col-10">
@@ -94,14 +96,14 @@
                 </div>
             </td>
             <td>
-                <div class="form-group row">
+                <div class="form-group row fri-period" style="display: {{(isset($branch->work_time) && $branch->work_time != null) ? $branch->work_time['fri']['period']==1 ? 'block':'none' : 'none'}}">
                     <div class="col-10">
                       <input class="form-control" type="time" value="{{isset($branch->work_time) && $branch->work_time != null  ? $branch->work_time['fri']['afternone']['timeclose']:null}}" name="work_time[fri][afternone][timeclose]"  id="example-time-input">
                     </div>
                 </div>
             </td>
             <td>
-                <div class="form-group row">
+                <div class="form-group row fri-period" style="display: {{(isset($branch->work_time) && $branch->work_time != null) ? $branch->work_time['fri']['period']==1 ? 'block':'none' : 'none'}}">
                     <div class="col-10">
                       <input class="form-control" type="time" value="{{isset($branch->work_time) && $branch->work_time != null  ? $branch->work_time['fri']['afternone']['timeclose']:null}}" name="work_time[fri][afternone][timeclose]"  id="example-time-input">
                     </div>
@@ -131,7 +133,41 @@
 </table>
 
 
+@push('scripts')
+    <script>
+        let periods=document.getElementsByClassName('period');
+        for (let i = 0; i < periods.length; i++) {
+            periods[i].addEventListener('change',switchPeriod) ;
+        }
+        function switchPeriod(e){
+            console.log(e.target.checked);
+            if(e.target.checked)
+            {
 
+                if(e.target.id == 'alldays')
+                {
+                    document.getElementsByClassName('alldays-period')[0].style.display='block';
+                    document.getElementsByClassName('alldays-period')[1].style.display='block';
+                }
+                else if(e.target.id == 'friday'){
+                    document.getElementsByClassName('fri-period')[0].style.display='block';
+                    document.getElementsByClassName('fri-period')[1].style.display='block';
+                }
+            }
+            else{
+                if(e.target.id == 'alldays')
+                {
+                    document.getElementsByClassName('alldays-period')[0].style.display='none';
+                    document.getElementsByClassName('alldays-period')[1].style.display='none';
+                }
+                else if(e.target.id == 'friday'){
+                    document.getElementsByClassName('fri-period')[0].style.display='none';
+                    document.getElementsByClassName('fri-period')[1].style.display='none';
+                }
+            }
+        }
+    </script>
+@endpush
 
 {{--
 @isset($branch)
