@@ -51,6 +51,7 @@ Route::get('/select/roles', 'RoleController@select')->name('roles.select');
 
 Route::apiResource('branches', 'BranchController');
 Route::get('/select/branches', 'BranchController@select')->name('branches.select');
+Route::get('/select/branches/website', 'BranchController@selectForWeb')->name('branches.website.select');
 Route::get('/select/receiving/branches', 'BranchController@selectByCarId')->name('branches.selectByCarId');
 Route::apiResource('categories', 'CategoryController');
 Route::get('/select/categories', 'CategoryController@select')->name('categories.select');

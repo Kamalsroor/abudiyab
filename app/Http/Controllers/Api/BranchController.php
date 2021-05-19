@@ -130,6 +130,38 @@ class BranchController extends Controller
     }
 
 
+    /**
+     * Display a listing of the resource.
+    * @OA\Get(
+     *      path="/select/branches",
+     *      operationId="getSelectBranchesList",
+     *      tags={"Branches"},
+     *      summary="Get list of Select branches",
+     *      description="Returns list of Select branches",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent(ref="#/components/schemas/BranchResource")
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function selectForWeb()
+    {
+        $branches = Branch::filter()->simplePaginate();
+
+        return SelectResource::collection($branches);
+    }
+
+
 
         /**
      * Display a listing of the resource.

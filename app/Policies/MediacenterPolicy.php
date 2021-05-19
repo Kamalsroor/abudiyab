@@ -19,7 +19,7 @@ class MediacenterPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.mediacenters');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -31,7 +31,7 @@ class MediacenterPolicy
      */
     public function view(User $user, Mediacenter $mediacenter)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.mediacenters');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -42,7 +42,7 @@ class MediacenterPolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.mediacenters');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -54,7 +54,7 @@ class MediacenterPolicy
      */
     public function update(User $user, Mediacenter $mediacenter)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.mediacenters');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -66,7 +66,7 @@ class MediacenterPolicy
      */
     public function delete(User $user, Mediacenter $mediacenter)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.mediacenters');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
      /**
@@ -77,7 +77,7 @@ class MediacenterPolicy
      */
     public function viewTrash(User $user)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.mediacenters')) && $this->hasSoftDeletes();
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->hasSoftDeletes();
     }
 
     /**
@@ -89,7 +89,7 @@ class MediacenterPolicy
      */
     public function restore(User $user, mediacenter $Mediacenter)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.mediacenters')) && $this->trashed($Mediacenter);
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->trashed($Mediacenter);
     }
 
     /**
@@ -101,7 +101,7 @@ class MediacenterPolicy
      */
     public function forceDelete(User $user, mediacenter $Mediacenter)
     {
-        return ($user->isAdmin()  || $user->hasPermissionTo('manage.mediacenters')) && $this->trashed($Mediacenter);
+        return ($user->isAdmin()  || $user->isSupervisor()) && $this->trashed($Mediacenter);
     }
 
     /**

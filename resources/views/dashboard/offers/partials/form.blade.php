@@ -77,7 +77,7 @@
             id="branches"
             value="{{isset($offer) && $offer->branch_type  == "fixed" ? $branch_value : null }}"
             label="@lang('branches.singular')"
-            remote-url="{{ route('api.branches.select') }}"
+            remote-url="{{ route('api.branches.website.select') }}"
         ></select2>
 
     </div>

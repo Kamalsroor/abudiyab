@@ -19,7 +19,7 @@ class MembershipPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.memberships');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -31,7 +31,7 @@ class MembershipPolicy
      */
     public function view(User $user, Membership $membership)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.memberships');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -42,7 +42,7 @@ class MembershipPolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.memberships');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -54,7 +54,7 @@ class MembershipPolicy
      */
     public function update(User $user, Membership $membership)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.memberships');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -66,7 +66,7 @@ class MembershipPolicy
      */
     public function delete(User $user, Membership $membership)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.memberships');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
      /**
@@ -77,7 +77,7 @@ class MembershipPolicy
      */
     public function viewTrash(User $user)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.memberships')) && $this->hasSoftDeletes();
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->hasSoftDeletes();
     }
 
     /**
@@ -89,7 +89,7 @@ class MembershipPolicy
      */
     public function restore(User $user, membership $Membership)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.memberships')) && $this->trashed($Membership);
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->trashed($Membership);
     }
 
     /**
@@ -101,7 +101,7 @@ class MembershipPolicy
      */
     public function forceDelete(User $user, membership $Membership)
     {
-        return ($user->isAdmin()  || $user->hasPermissionTo('manage.memberships')) && $this->trashed($Membership);
+        return ($user->isAdmin()  || $user->isSupervisor()) && $this->trashed($Membership);
     }
 
     /**

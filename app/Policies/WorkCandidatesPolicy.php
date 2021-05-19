@@ -18,7 +18,7 @@ class WorkCandidatesPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.application');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -30,7 +30,7 @@ class WorkCandidatesPolicy
      */
     public function view(User $user, WorkCandidates $application)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.applications');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -65,6 +65,6 @@ class WorkCandidatesPolicy
      */
     public function delete(User $user, WorkCandidates $application)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.application');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 }

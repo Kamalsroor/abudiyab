@@ -19,7 +19,7 @@ class OrderPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.orders');
+        return $user->isAdmin() || $user->isSupervisor() || $user->isEmployee();
     }
 
     /**
@@ -31,7 +31,7 @@ class OrderPolicy
      */
     public function view(User $user, Order $order)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.orders');
+        return $user->isAdmin() || $user->isSupervisor() || $user->isEmployee();
     }
 
     /**
@@ -42,7 +42,7 @@ class OrderPolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.orders');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -54,7 +54,7 @@ class OrderPolicy
      */
     public function update(User $user, Order $order)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.orders');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -66,8 +66,35 @@ class OrderPolicy
      */
     public function delete(User $user, Order $order)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.orders');
+        return $user->isAdmin() || $user->isSupervisor();
     }
+
+    /**
+     * Determine whether the user can confirmation the order.
+     *
+     * @param \App\Models\User $user
+     * @param \App\Models\Order $order
+     * @return mixed
+     */
+    public function confirmation(User $user, Order $order)
+    {
+        return $user->isAdmin() || $user->isSupervisor() || $user->isEmployee();
+    }
+
+
+    /**
+     * Determine whether the user can rejected the order.
+     *
+     * @param \App\Models\User $user
+     * @param \App\Models\Order $order
+     * @return mixed
+     */
+    public function rejected(User $user, Order $order)
+    {
+        return $user->isAdmin() || $user->isSupervisor() || $user->isEmployee();
+    }
+
+
 
      /**
      * Determine whether the user can view trashed orders.
@@ -77,7 +104,7 @@ class OrderPolicy
      */
     public function viewTrash(User $user)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.orders')) && $this->hasSoftDeletes();
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->hasSoftDeletes();
     }
 
     /**
@@ -89,7 +116,7 @@ class OrderPolicy
      */
     public function restore(User $user, order $Order)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.orders')) && $this->trashed($Order);
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->trashed($Order);
     }
 
     /**
@@ -101,7 +128,7 @@ class OrderPolicy
      */
     public function forceDelete(User $user, order $Order)
     {
-        return ($user->isAdmin()  || $user->hasPermissionTo('manage.orders')) && $this->trashed($Order);
+        return ($user->isAdmin()  || $user->isSupervisor()) && $this->trashed($Order);
     }
 
     /**

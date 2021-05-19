@@ -19,7 +19,7 @@ class CustomerPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.customers');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -31,7 +31,7 @@ class CustomerPolicy
      */
     public function view(User $user, Customer $customer)
     {
-        return $user->isAdmin() || $user->is($customer) || $user->hasPermissionTo('manage.customers');
+        return $user->isAdmin() || $user->is($customer) || $user->isSupervisor();
     }
 
     /**
@@ -42,7 +42,7 @@ class CustomerPolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.customers');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -54,7 +54,7 @@ class CustomerPolicy
      */
     public function update(User $user, Customer $customer)
     {
-        return ($user->isAdmin() || $user->is($customer) || $user->hasPermissionTo('manage.customers')) && ! $this->trashed($customer);
+        return ($user->isAdmin() || $user->is($customer) || $user->isSupervisor()) && ! $this->trashed($customer);
     }
 
     /**
@@ -66,7 +66,7 @@ class CustomerPolicy
      */
     public function updateType(User $user, Customer $customer)
     {
-        return $user->isAdmin() && $user->isNot($customer) || $user->hasPermissionTo('manage.customers');
+        return $user->isAdmin() && $user->isNot($customer) || $user->isSupervisor();
     }
 
     /**
@@ -78,7 +78,7 @@ class CustomerPolicy
      */
     public function delete(User $user, Customer $customer)
     {
-        return ($user->isAdmin() && $user->isNot($customer) || $user->hasPermissionTo('manage.customers')) && ! $this->trashed($customer);
+        return ($user->isAdmin() && $user->isNot($customer) || $user->isSupervisor()) && ! $this->trashed($customer);
     }
 
     /**
@@ -89,7 +89,7 @@ class CustomerPolicy
      */
     public function viewTrash(User $user)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.customers')) && $this->hasSoftDeletes();
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->hasSoftDeletes();
     }
 
     /**
@@ -101,7 +101,7 @@ class CustomerPolicy
      */
     public function restore(User $user, Customer $customer)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.customers')) && $this->trashed($customer);
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->trashed($customer);
     }
 
     /**
@@ -113,7 +113,7 @@ class CustomerPolicy
      */
     public function forceDelete(User $user, Customer $customer)
     {
-        return ($user->isAdmin() && $user->isNot($customer) || $user->hasPermissionTo('manage.customers')) && $this->trashed($customer);
+        return ($user->isAdmin() && $user->isNot($customer) || $user->isSupervisor()) && $this->trashed($customer);
     }
 
     /**

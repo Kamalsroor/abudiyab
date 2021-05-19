@@ -28,7 +28,15 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::filter()->latest()->paginate();
+        $orders = Order::filter()->where(function ($q)
+        {
+            if ( auth()->user()->isEmployee()) {
+               $q->where('receiving_branch_id', auth()->user()->branch_id);
+            }
+            if ( auth()->user()->isSupervisor()) {
+                $q->whereIn('receiving_branch_id', auth()->user()->branchs);
+            }
+        })->latest()->paginate();
 
         return view('dashboard.orders.index', compact('orders'));
     }

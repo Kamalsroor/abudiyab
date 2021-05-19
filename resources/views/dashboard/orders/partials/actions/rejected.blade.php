@@ -1,4 +1,4 @@
-@can('delete', $order)
+@can('rejected', $order)
 
     @if ($order->pending())
         <a href="#order-{{ $order->id }}-rejected-model"

@@ -95,6 +95,9 @@ class User extends Authenticatable implements HasMedia
         'identity',
         'licence',
         'membership_id',
+        'branch_id',
+        'region_id',
+        'branchs',
     ];
 
     /**
@@ -131,6 +134,7 @@ class User extends Authenticatable implements HasMedia
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'branchs' => 'array',
     ];
 
     /**
@@ -267,6 +271,16 @@ class User extends Authenticatable implements HasMedia
     public function membership()
     {
         return $this->belongsTo(Membership::class, 'membership_id');
+    }
+
+    public function branch()
+    {
+        return $this->belongsTo(Branch::class, 'branch_id');
+    }
+
+    public function region()
+    {
+        return $this->belongsTo(Region::class, 'region_id');
     }
 
     public function contracts()

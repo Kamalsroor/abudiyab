@@ -19,7 +19,7 @@ class CategoryPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.categories');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -31,7 +31,7 @@ class CategoryPolicy
      */
     public function view(User $user, Category $category)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.categories');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -42,7 +42,7 @@ class CategoryPolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.categories');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -54,7 +54,7 @@ class CategoryPolicy
      */
     public function update(User $user, Category $category)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.categories');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -66,7 +66,7 @@ class CategoryPolicy
      */
     public function delete(User $user, Category $category)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.categories');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
      /**
@@ -77,7 +77,7 @@ class CategoryPolicy
      */
     public function viewTrash(User $user)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.categories')) && $this->hasSoftDeletes();
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->hasSoftDeletes();
     }
 
     /**
@@ -89,7 +89,7 @@ class CategoryPolicy
      */
     public function restore(User $user, category $Category)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.categories')) && $this->trashed($Category);
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->trashed($Category);
     }
 
     /**
@@ -101,7 +101,7 @@ class CategoryPolicy
      */
     public function forceDelete(User $user, category $Category)
     {
-        return ($user->isAdmin()  || $user->hasPermissionTo('manage.categories')) && $this->trashed($Category);
+        return ($user->isAdmin()  || $user->isSupervisor()) && $this->trashed($Category);
     }
 
     /**

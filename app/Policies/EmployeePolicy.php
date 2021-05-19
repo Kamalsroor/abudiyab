@@ -19,7 +19,7 @@ class EmployeePolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.employees');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -31,7 +31,7 @@ class EmployeePolicy
      */
     public function view(User $user, Employee $supervisor)
     {
-        return $user->isAdmin() || $user->is($supervisor) || $user->hasPermissionTo('manage.employees');
+        return $user->isAdmin() || $user->is($supervisor) || $user->isSupervisor();
     }
 
     /**
@@ -42,7 +42,7 @@ class EmployeePolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.employees');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -54,7 +54,7 @@ class EmployeePolicy
      */
     public function update(User $user, Employee $supervisor)
     {
-        return (($user->isAdmin() || $user->is($supervisor)) || $user->hasPermissionTo('manage.employees')) && ! $this->trashed($supervisor);
+        return (($user->isAdmin() || $user->is($supervisor)) || $user->isSupervisor()) && ! $this->trashed($supervisor);
     }
 
     /**
@@ -66,7 +66,7 @@ class EmployeePolicy
      */
     public function updateType(User $user, Employee $supervisor)
     {
-        return ($user->isAdmin() || $user->is($supervisor)) || $user->hasPermissionTo('manage.employees');
+        return ($user->isAdmin() || $user->is($supervisor)) || $user->isSupervisor();
     }
 
     /**
@@ -78,7 +78,7 @@ class EmployeePolicy
      */
     public function delete(User $user, Employee $supervisor)
     {
-        return ($user->isAdmin() && $user->isNot($supervisor) || $user->hasPermissionTo('manage.employees')) && ! $this->trashed($supervisor);
+        return ($user->isAdmin() && $user->isNot($supervisor) || $user->isSupervisor()) && ! $this->trashed($supervisor);
     }
 
     /**
@@ -89,7 +89,7 @@ class EmployeePolicy
      */
     public function viewTrash(User $user)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.employees')) && $this->hasSoftDeletes();
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->hasSoftDeletes();
     }
 
     /**
@@ -101,7 +101,7 @@ class EmployeePolicy
      */
     public function restore(User $user, Employee $supervisor)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.employees')) && $this->trashed($supervisor);
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->trashed($supervisor);
     }
 
     /**
@@ -113,7 +113,7 @@ class EmployeePolicy
      */
     public function forceDelete(User $user, Employee $supervisor)
     {
-        return ($user->isAdmin() && $user->isNot($supervisor) || $user->hasPermissionTo('manage.employees')) && $this->trashed($supervisor);
+        return ($user->isAdmin() && $user->isNot($supervisor) || $user->isSupervisor()) && $this->trashed($supervisor);
     }
 
     /**

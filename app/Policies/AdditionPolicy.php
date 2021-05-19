@@ -19,7 +19,7 @@ class AdditionPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.additions');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -31,7 +31,7 @@ class AdditionPolicy
      */
     public function view(User $user, Addition $addition)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.additions');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -42,7 +42,7 @@ class AdditionPolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.additions');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -54,7 +54,7 @@ class AdditionPolicy
      */
     public function update(User $user, Addition $addition)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.additions');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -66,7 +66,7 @@ class AdditionPolicy
      */
     public function delete(User $user, Addition $addition)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.additions');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
      /**
@@ -77,7 +77,7 @@ class AdditionPolicy
      */
     public function viewTrash(User $user)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.additions')) && $this->hasSoftDeletes();
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->hasSoftDeletes();
     }
 
     /**
@@ -89,7 +89,7 @@ class AdditionPolicy
      */
     public function restore(User $user, addition $Addition)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.additions')) && $this->trashed($Addition);
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->trashed($Addition);
     }
 
     /**
@@ -101,7 +101,7 @@ class AdditionPolicy
      */
     public function forceDelete(User $user, addition $Addition)
     {
-        return ($user->isAdmin()  || $user->hasPermissionTo('manage.additions')) && $this->trashed($Addition);
+        return ($user->isAdmin()  || $user->isSupervisor()) && $this->trashed($Addition);
     }
 
     /**

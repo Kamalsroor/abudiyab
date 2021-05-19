@@ -19,7 +19,7 @@ class ManufactoryPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.manufactories');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -31,7 +31,7 @@ class ManufactoryPolicy
      */
     public function view(User $user, Manufactory $manufactory)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.manufactories');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -42,7 +42,7 @@ class ManufactoryPolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.manufactories');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -54,7 +54,7 @@ class ManufactoryPolicy
      */
     public function update(User $user, Manufactory $manufactory)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.manufactories');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -66,7 +66,7 @@ class ManufactoryPolicy
      */
     public function delete(User $user, Manufactory $manufactory)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.manufactories');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
      /**
@@ -77,7 +77,7 @@ class ManufactoryPolicy
      */
     public function viewTrash(User $user)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.manufactories')) && $this->hasSoftDeletes();
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->hasSoftDeletes();
     }
 
     /**
@@ -89,7 +89,7 @@ class ManufactoryPolicy
      */
     public function restore(User $user, manufactory $Manufactory)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.manufactories')) && $this->trashed($Manufactory);
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->trashed($Manufactory);
     }
 
     /**
@@ -101,7 +101,7 @@ class ManufactoryPolicy
      */
     public function forceDelete(User $user, manufactory $Manufactory)
     {
-        return ($user->isAdmin()  || $user->hasPermissionTo('manage.manufactories')) && $this->trashed($Manufactory);
+        return ($user->isAdmin()  || $user->isSupervisor()) && $this->trashed($Manufactory);
     }
 
     /**

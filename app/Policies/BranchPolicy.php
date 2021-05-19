@@ -19,7 +19,7 @@ class BranchPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.branches');
+        return $user->isAdmin() || $user->isSupervisor() || $user->isEmployee();
     }
 
     /**
@@ -31,7 +31,7 @@ class BranchPolicy
      */
     public function view(User $user, Branch $branch)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.branches');
+        return $user->isAdmin() || $user->isSupervisor() || $user->isEmployee();
     }
 
     /**
@@ -42,7 +42,7 @@ class BranchPolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.branches');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -54,7 +54,7 @@ class BranchPolicy
      */
     public function update(User $user, Branch $branch)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.branches');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -66,7 +66,7 @@ class BranchPolicy
      */
     public function delete(User $user, Branch $branch)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.branches');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
      /**
@@ -77,7 +77,7 @@ class BranchPolicy
      */
     public function viewTrash(User $user)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.branches')) && $this->hasSoftDeletes();
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->hasSoftDeletes();
     }
 
     /**
@@ -89,7 +89,7 @@ class BranchPolicy
      */
     public function restore(User $user, branch $Branch)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.branches')) && $this->trashed($Branch);
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->trashed($Branch);
     }
 
     /**
@@ -101,7 +101,7 @@ class BranchPolicy
      */
     public function forceDelete(User $user, branch $Branch)
     {
-        return ($user->isAdmin()  || $user->hasPermissionTo('manage.branches')) && $this->trashed($Branch);
+        return ($user->isAdmin()  || $user->isSupervisor()) && $this->trashed($Branch);
     }
 
     /**

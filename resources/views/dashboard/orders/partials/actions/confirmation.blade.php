@@ -1,4 +1,4 @@
-@can('delete', $order)
+@can('confirmation', $order)
 
     @if ($order->pending())
         <a href="#order-{{ $order->id }}-confirmation-model"
