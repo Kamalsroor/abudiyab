@@ -122,6 +122,10 @@
                         root.allBranches[i].work_time.alldays.morning.timeclose=root.formatAMPM(branch.work_time.alldays.morning.timeclose,i);
                         root.allBranches[i].work_time.alldays.afternone.timeopen=root.formatAMPM(branch.work_time.alldays.afternone.timeopen,i);
                         root.allBranches[i].work_time.alldays.afternone.timeclose=root.formatAMPM(branch.work_time.alldays.afternone.timeclose,i);
+                        root.allBranches[i].work_time.fri.morning.timeopen=root.formatAMPM(branch.work_time.fri.morning.timeopen,i);
+                        root.allBranches[i].work_time.fri.morning.timeclose=root.formatAMPM(branch.work_time.fri.morning.timeclose,i);
+                        root.allBranches[i].work_time.fri.afternone.timeopen=root.formatAMPM(branch.work_time.fri.afternone.timeopen,i);
+                        root.allBranches[i].work_time.fri.afternone.timeclose=root.formatAMPM(branch.work_time.fri.afternone.timeclose,i);
                     }
                 });
 
@@ -148,17 +152,20 @@
             },
             formatAMPM: function(time,i) {
                 let localtime=parseFloat(time);
-
-                let timearr=time.split(':');
-                 if(timearr[0] > '12')
-                 {
-                     timearr[0]-=12;
-                     timearr[1]+='pm';
-                 }
-                 else{
-                     timearr[1]+='am';
-                 }
+                console.log(time);
+                if (time != null) {
+                    let timearr=time.split(':');
+                    if(timearr[0] > '12')
+                    {
+                        timearr[0]-=12;
+                        timearr[1]+='pm';
+                    }
+                    else{
+                        timearr[1]+='am';
+                    }
                 return timearr.join(':');
+                }
+
             }
         },
         watch:{
