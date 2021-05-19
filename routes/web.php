@@ -32,6 +32,12 @@ Route::get('locale/{locale}', 'LocaleController@update')->name('locale')->where(
 Route:: get('/getCarsCategories', 'Web\SiteController@getCarsCategories');
 Route:: get('/collectiontest', 'Frontend\FrontendController@collectiontest');
 
+
+Route::post('/test', 'Frontend\CustmerRequestController@convertBase64ToImage')->name('test');
+
+
+
+
 Route::as('front.')->group(function () {
 
 
@@ -50,6 +56,7 @@ Route::as('front.')->group(function () {
     });
 
 
+    Route::get('/payment2', 'Frontend\FrontendController@payment2')->name('payment2');
     Route::get('/services', 'Frontend\FrontendController@services')->name('services');
     Route::get('/news-details/{news}', 'Frontend\FrontendController@NewsDetails')->name('news-details');
     Route::get('/points_program', 'Frontend\FrontendController@PointsProgram')->name('points_program');
@@ -64,6 +71,7 @@ Route::as('front.')->group(function () {
     Route::get('/profile', 'Frontend\FrontendController@profile')->name('profile');
 
     Route::post('/custermRequest', 'Frontend\CustmerRequestController@createCustmerRequest')->name('custermRequest');
+
 
     Route::post('/changePassword', 'Frontend\CustmerRequestController@changePassword')->name('changePassword');
     Route::get('/points', function(){

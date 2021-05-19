@@ -217,12 +217,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 @stack('scripts')
-
-@if ($errors->any())
-<script>
-    toastr.error("{{trans('frontend.errors.des')}}", "{{trans('frontend.errors.title')}}")
-</script>
-@endif
+@isset($errors)
+    @if ($errors->any())
+    <script>
+        toastr.error("{{trans('frontend.errors.des')}}", "{{trans('frontend.errors.title')}}")
+    </script>
+    @endif
+@endisset
 
 
 @foreach (session('flash_notification', collect())->toArray() as $message)

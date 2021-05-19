@@ -422,7 +422,7 @@ class BookingSteps extends Component
                     ->withHeaders([
                         'Accept' => 'application/json'
                     ])->put(config('BankPayment.ApiUrlTest'). '/merchant/'.$this->merchantID.'/3DSecureId/3dsID_'.$orderID, $data)->json();
-                    dd($response , $sessionID );
+                    // dd($response , $sessionID );
 
                     if(isset($response['error']) ){
                         $errorInformationData = [

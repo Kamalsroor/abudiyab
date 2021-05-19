@@ -7,7 +7,10 @@
         @if($hasDefaultValue)
             {{ Form::hidden($name, $defaultValue) }}
         @endif
-        {{ Form::checkbox($name, $value, $checked, ['class' => 'form-check-input', 'id' => $id]) }}
+        {{ Form::checkbox($name, $value, $checked,array_merge([
+            'class' => 'form-check-input',
+            'id' => $id
+        ], $attributes)) }}
 
 
         {{-- {{ Form::label($name, $label) }} --}}

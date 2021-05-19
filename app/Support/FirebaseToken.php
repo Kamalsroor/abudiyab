@@ -25,8 +25,8 @@ class FirebaseToken
      */
     public function getPhoneNumber()
     {
-        return $this->getVerifier()->hasClaim('phone_number')
-            ? $this->getVerifier()->getClaim('phone_number') : null;
+        return $this->getVerifier()->claims()->has('phone_number')
+            ? $this->getVerifier()->claims()->get('phone_number') : null;
     }
 
     /**
@@ -37,8 +37,8 @@ class FirebaseToken
      */
     public function getEmail()
     {
-        return $this->getVerifier()->hasClaim('email')
-            ? $this->getVerifier()->getClaim('email') : null;
+        return $this->getVerifier()->claims()->has('email')
+            ? $this->getVerifier()->claims()->get('email') : null;
     }
 
     /**
@@ -49,8 +49,8 @@ class FirebaseToken
      */
     public function getName()
     {
-        return $this->getVerifier()->hasClaim('name')
-            ? $this->getVerifier()->getClaim('name') : null;
+        return $this->getVerifier()->claims()->has('name')
+            ? $this->getVerifier()->claims()->get('name') : null;
     }
 
     /**
@@ -61,8 +61,8 @@ class FirebaseToken
      */
     public function getFirebaseId()
     {
-        return $this->getVerifier()->hasClaim('user_id')
-            ? $this->getVerifier()->getClaim('user_id') : null;
+        return $this->getVerifier()->claims()->has('user_id')
+            ? $this->getVerifier()->claims()->get('user_id') : null;
     }
 
     /**
