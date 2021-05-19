@@ -232,6 +232,94 @@
         left: 50px;
         top: -150px;
     }
+    .log-in {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: #fff;
+        display: none;
+        &_top {
+            position: relative;
+            width: 100%;
+            i {
+                position: absolute;
+                top: -15px;
+                right: 45px;
+                font-size: 70px;
+                font-style: normal;
+                transform: rotate(45deg);
+                font-weight: 200;
+                color: #7e7f86;
+                cursor: pointer;
+            }
+        }
+        &_center {
+            @include location(50%, 50%);
+            width: fit-content;
+            text-align: right;
+            font-style: normal;
+            border: 1px solid #e3e3e3;
+            padding: 48px;
+            border-radius: 12px;
+            &_form {
+                width: 100%;
+                h2 {
+                    margin-bottom: 45px;
+                }
+                div {
+                    width: 380px;
+                    margin-bottom: 40px;
+                    label {
+                        width: 100%;
+                        font-weight: 600;
+                        font-size: 16px;
+                        span {
+                            float: left;
+                            font-size: 14px;
+                            a {
+                                color: #345998 !important;
+                                &:hover {
+                                    color: #345998 !important;
+                                }
+                            }
+                        }
+                    }
+                    input {
+                        width: 100%;
+                        height: 48px;
+                    }
+                }
+                &_password {
+                    label {
+                        span {
+                            cursor: pointer;
+                            user-select: none;
+                        }
+                    }
+                }
+                button {
+                    width: 100%;
+                    height: 50px;
+                    border-radius: 30px;
+                }
+                &_forgot-password {
+                    display: block;
+                    max-width: 100%;
+                    width: fit-content;
+                    font-weight: 600;
+                    font-size: 13px;
+                    margin: auto;
+                    margin-top: 30px;
+                    color: #000;
+                    &:hover {
+                        color: #345998;
+                    }
+                }
+            }
+        }
+    }
 }
 
 .small-screen-navbar {
