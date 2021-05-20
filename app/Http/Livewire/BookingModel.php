@@ -4,6 +4,8 @@ namespace App\Http\Livewire;
 
 use App\Models\Branch;
 use App\Models\CarsInStock;
+use Cache;
+use Carbon\Carbon;
 use Livewire\Component;
 use DateInterval;
 use DateTime;
@@ -31,7 +33,15 @@ class BookingModel extends Component
 
         $this->receivingDate=$this->dayOneFormated;
         $this->deliveryDate=$this->dayTwoFormated;
-        $this->branches=Branch::all();
+        // $this->branches = Branch::get();
+
+        $expire = Carbon::now()->addMinutes(10);
+
+        $this->branches = Cache::remember('branches', $expire, function() {
+            return Branch::get();
+        });
+
+
     }
 
     public function render()

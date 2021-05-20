@@ -5,6 +5,8 @@ namespace App\Http\Livewire\Frontend;
 use Livewire\Component;
 use App\Models\Car;
 use App\Models\Category;
+use Cache;
+use Carbon\Carbon;
 
 class CarDetails extends Component
 {
@@ -17,8 +19,20 @@ class CarDetails extends Component
 
     public function mount()
     {
-        $showCategories = Category::orderBy('id', 'ASC')->take(4)->get();
-        $this->car = Car::where('category_id' , $showCategories->first()->id)->first();
+        // $showCategories = Category::orderBy('id', 'ASC')->take(4)->get();
+        $expire = Carbon::now()->addMinutes(10);
+
+        $allCategories = Cache::remember('allCategories', $expire, function() {
+            return Category::get();
+        });
+
+        $this->car = Cache::remember('CarDetailsCars', $expire, function() use($allCategories) {
+            return Car::where('category_id' , $allCategories->first()->id)->first();
+        });
+        // $this->car = Car::where('category_id' , $allCategories->first()->id)->first();
+
+
+
     }
 
 
