@@ -34,7 +34,7 @@ class Car extends Model implements HasMedia, TranslatableContract , Seoable
      *
      * @var array
      */
-    public $translatedAttributes = ['name'];
+    public $translatedAttributes = ['name','description'];
 
     /**
      * The attributes that are mass assignable.

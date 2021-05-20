@@ -52,6 +52,14 @@
         {{ BsForm::price('price1') }}
     </div>
 </div>
+
+@bsMultilangualFormTabs
+<div class="row">
+    {{ BsForm::textarea('description')
+        ->attribute('class', 'form-control textarea')
+    }}
+</div>
+@endBsMultilangualFormTabs
 <div class="row">
     <div class="col-md-12">
             @component('dashboard::components.box')

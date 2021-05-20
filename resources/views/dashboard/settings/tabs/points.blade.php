@@ -17,6 +17,7 @@
             </td>
         </table>
         {{ BsForm::image('points_background')->collection('points_background')->files(optional(Settings::instance('points_background'))->getMediaResource('points_background')) }}
+        {{ BsForm::image('points_image')->collection('points_image')->files(optional(Settings::instance('points_image'))->getMediaResource('points_image')) }}
 
 
         @slot('footer')
