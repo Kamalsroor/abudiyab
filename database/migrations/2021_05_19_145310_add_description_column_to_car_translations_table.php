@@ -15,7 +15,7 @@ class AddDescriptionColumnToCarTranslationsTable extends Migration
     {
         Schema::table('car_translations', function (Blueprint $table) {
             //
-            $table->longText('description');
+            $table->longText('description')->nullable();
         });
     }
 
