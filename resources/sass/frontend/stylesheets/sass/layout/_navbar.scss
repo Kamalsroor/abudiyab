@@ -320,6 +320,248 @@
             }
         }
     }
+    .register {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: #fff;
+        display: none;
+        &_top {
+            position: relative;
+            width: 100%;
+            i {
+                position: absolute;
+                top: -15px;
+                right: 45px;
+                font-size: 70px;
+                font-style: normal;
+                transform: rotate(45deg);
+                font-weight: 200;
+                color: #7e7f86;
+                cursor: pointer;
+            }
+        }
+        &_center {
+            @include location(50%, 50%);
+            width: fit-content;
+            text-align: right;
+            font-style: normal;
+            border: 1px solid #e3e3e3;
+            background-color: #f7f7f7;
+            padding: 48px 48px 0px;
+            border-radius: 12px;
+            &_form {
+                width: 100%;
+                h2 {
+                    width: 100%;
+                    text-align: center;
+                    margin-bottom: 45px;
+                }
+                &_inputs {
+                    width: 760px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                    &_input {
+                        position: relative;
+                        width: 49%;
+                        margin-bottom: 40px;
+                        label {
+                            width: 100%;
+                            font-weight: 600;
+                            font-size: 16px;
+                            span {
+                                float: left;
+                                font-size: 14px;
+                                a {
+                                    color: #345998 !important;
+                                    cursor: pointer;
+                                    &:hover {
+                                        color: #345998 !important;
+                                    }
+                                }
+                            }
+                        }
+                        input {
+                            width: 100%;
+                            height: 48px;
+                        }
+                    }
+                    .registerMobileNumber {
+                        direction: ltr;
+                        input {
+                            text-align: left;
+                            padding-left: 4.25rem;
+                            direction: ltr;
+                            font-size: 1.1rem;
+                        }
+                    }
+                    .registerMobileNumber::after {
+                        content: "+966";
+                        position: absolute;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        top: 32px;
+                        left: 0;
+                        width: 4rem;
+                        height: 48px;
+                        border-right: 1px solid #ced4da;
+                    }
+                    .registerMobileNumber.error::after {
+                        border-right: 1px solid #dc3545;
+                    }
+                    &_input:nth-child(1) {
+                        width: 100%;
+                    }
+                    .password {
+                        label {
+                            span {
+                                cursor: pointer;
+                                user-select: none;
+                            }
+                        }
+                    }
+                    .wrapper {
+                        position: relative;
+                        height: 160px;
+                        width: 49.5%;
+                        margin-bottom: 10px;
+                        border-radius: 10px;
+                        background-color: #f7f7f7;
+                        border: 2px dashed #c2cdda;
+                        display: flex;
+                        align-items: center;
+                        text-align: center;
+                        justify-content: center;
+                        overflow: hidden;
+                        .div-hidden {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            background: #0000;
+                            z-index: 1000;
+                        }
+                        .image {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            img {
+                                object-fit: cover;
+                                position: initial;
+                                z-index: 0;
+                                width: 100%;
+                                height: 100%;
+                                display: none;
+                            }
+                        }
+                        .icon {
+                            font-size: 70px;
+                            color: #345998;
+                        }
+                        .text {
+                            font-size: 16px;
+                            font-weight: 500;
+                            color: #5B5B7B;
+                        }
+                        .cancel-btn {
+                            position: absolute;
+                            right: 15px;
+                            top: 5px;
+                            font-size: 20px;
+                            cursor: pointer;
+                            color: #345998;
+                            text-shadow: 0px 0px 0px #fff;
+                            opacity: 0;
+                            display: none;
+                        }
+                        .file-name {
+                            position: absolute;
+                            bottom: 0px;
+                            width: 100%;
+                            color: #fff;
+                            padding: 8px 0;
+                            font-size: 18px;
+                            opacity: 0;
+                            background: #345998;
+                            display: none;
+                        }
+                        &:hover {
+                            .file-name {
+                                opacity: 1;
+                            }
+                            .cancel-btn {
+                                opacity: 1;
+                                z-index: 10000;
+                            }
+                        }
+                        .image-projection {
+                            content: "";
+                            background: #345998;
+                            width: 0%;
+                            height: 0%;
+                            border-radius: 50% 50% 0 0;
+                            bottom: 0;
+                            position: absolute;
+                            margin: 0;
+                        }
+                        .image-projection.show {
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 0% 0% 0 0;
+                            animation: update-profile-show 0.5s;
+                        }
+                        .image-projection.hide {
+                            width: 0%;
+                            height: 0%;
+                            border-radius: 50% 50% 0 0;
+                            animation: update-profile-hide 0.5s;
+                        }
+                    }
+                    .wrapper.image-projection {
+                        border: none;
+                        transition: .5s;
+                        .content {
+                            z-index: 1;
+                            .icon {
+                                color: #fff;
+                                transition: .5s;
+                            }
+                            .text {
+                                color: #fff;
+                                transition: .5s;
+                            }
+                        }
+                    }
+                }
+                button {
+                    max-width: 380px;
+                    width: 100%;
+                    height: 50px;
+                    border-radius: 30px;
+                    margin: 20px auto;
+                }
+                &_forgot-password {
+                    display: block;
+                    max-width: 100%;
+                    width: fit-content;
+                    font-weight: 600;
+                    font-size: 13px;
+                    margin: auto;
+                    margin-top: 30px;
+                    color: #000;
+                    &:hover {
+                        color: #345998;
+                    }
+                }
+            }
+        }
+    }
 }
 
 .small-screen-navbar {
