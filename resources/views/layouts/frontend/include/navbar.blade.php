@@ -67,13 +67,13 @@
                         <i>+</i>
                     </div>
                     <div class="register_center">
-                        <form action="" method="post" class="register_center_form">
+                        <form action="{{ route('register') }}" method="post" enctype="multipart/form-data" class="register_center_form">
                             @csrf
                             <h2>حساب جديد</h2>
                             <div class="register_center_form_inputs">
                                 <div class="register_center_form_inputs_input">
                                     <label>الاسم باكامل<span>لدي حساب بالفعل? <a onclick="logInOrRegister('login')">تسجيل الدخول</a></span></label>
-                                    <input type="text" name="text" class="form-control" id="registerName">
+                                    <input type="text" name="username" class="form-control" id="registerName">
                                     <div class="invalid-feedback"></div>
                                 </div>
                                 <div class="register_center_form_inputs_input">
@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="register_center_form_inputs_input registerMobileNumber">
                                     <label>رقم الجوال</label>
-                                    <input type="text" name="text" class="form-control" id="registerMobileNumber" oninput="numberDesign(this);" max="12">
+                                    <input type="text" name="phone" class="form-control" id="registerMobileNumber" oninput="numberDesign(this);" max="12">
                                     <div class="invalid-feedback"></div>
                                 </div>
                                 <div class="register_center_form_inputs_input password One">
@@ -93,7 +93,7 @@
                                 </div>
                                 <div class="register_center_form_inputs_input password Two">
                                     <label>تأكيد كلمة السر</label>
-                                    <input type="password" name="password" class="form-control" id="registerConfirmPassword">
+                                    <input type="password" name="password_confirmation" class="form-control" id="registerConfirmPassword">
                                     <div class="invalid-feedback"></div>
                                 </div>
 
@@ -350,14 +350,14 @@
             }
 
         if (document.location['hash'] == '#login') {
+            document.body.style.overflow='hidden';
+
             logIn.style.display = 'block';
             register.style.display = 'none';
         }
         btnShowPasswordLogIn.addEventListener('click', togglePasswordLogIn);
-        btnShowLogIn.addEventListener('click', () => logIn.style.display = 'block');
-        btnHideLogIn.addEventListener('click', () => logIn.style.display = 'none');
-        btnShowLogInModal.addEventListener('click', () => logIn.style.display = 'block');
-
+        btnShowLogIn.addEventListener('click', () => {logIn.style.display = 'block'; document.body.style.overflow='hidden'});
+        btnHideLogIn.addEventListener('click', () => {logIn.style.display = 'none'; document.body.style.overflow='auto';});
 
         // register
         let register = document.querySelector('.main-navbar .register'),
@@ -383,14 +383,17 @@
             }
 
         if (document.location['hash'] == '#register') {
+            document.body.style.overflow='hidden';
+
             register.style.display = 'block';
             logIn.style.display = 'none';
         }
         btnShowPasswordRegister.addEventListener('click', togglePasswordRegister);
         btnShowRegister.addEventListener('click', () => register.style.display = 'block');
         btnShowRegister.addEventListener('click', () => logIn.style.display = 'none');
-
+        btnHideRegister.addEventListener('click', () => register.style.display = 'none');
         function logInOrRegister(page) {
+            document.body.style.overflow='hidden';
             let register = document.querySelector('.main-navbar .register'),
                 logIn = document.querySelector('.main-navbar .log-in');
             if (page == 'login') {
@@ -456,6 +459,14 @@
             });
         }
 
+        let showInputError = (input, errorText, wanted = true) => {
+                    input.classList.add('is-invalid');
+                    input.nextElementSibling.innerHTML = errorText;
+                    if (input.value.length == 0 && wanted == true) {
+                        input.nextElementSibling.innerHTML = 'هذا الحقل مطلوب';
+                    }
+                    errors = true;
+                };
         function identifyElement(divId) {
             let div = document.getElementById(divId);
             let img = div.children[0].children[0];
@@ -512,7 +523,19 @@
         // is-invalid
         let valueMobileNumber = '';
         let previousLength = 0;
-
+        let registerHasError=`{{$errors->any()}}`;
+        let emailHasError=`{{$errors->has('email') ? $errors->first('email') : ''}}`;
+        let phoneHasError=`{{$errors->has('phone') ? $errors->first('phone') : ''}}`;
+        if(registerHasError)
+        {
+            register.style.display = 'block';
+            if (emailHasError) {
+                showInputError(document.getElementById('registerEmail'), emailHasError, false);
+            }
+            if (phoneHasError) {
+                showInputError(document.getElementById('registerMobileNumber'), phoneHasError, false);
+            }
+        }
         let numberDesign = (input) => {
             let value = input.value.match(/[0-9\ ]+$/);
             if (value === null && input.value != '' || input.value.length > 12) {
@@ -541,14 +564,7 @@
                 registerPassword = document.getElementById('registerPassword'),
                 registerConfirmPassword = document.getElementById('registerConfirmPassword'),
                 errors = false;
-                error = (input, errorText, wanted = true) => {
-                    input.classList.add('is-invalid');
-                    input.nextElementSibling.innerHTML = errorText;
-                    if (input.value.length == 0 && wanted == true) {
-                        input.nextElementSibling.innerHTML = 'هذه الحقل مطلوب';
-                    }
-                    errors = true;
-                };
+
 
             registerName.classList.remove('is-invalid');
             registerMobileNumber.classList.remove('is-invalid');
@@ -559,27 +575,29 @@
 
             // Name
             if (registerName.value.length < 4 || registerName.value.length > 24) {
-                error(registerName, 'يجب أن يتكون الاسم من 4 أحرف على الأقل و لا يزيد عن 24 حرفًا');
+                showInputError(registerName, 'يجب أن يتكون الاسم من 4 أحرف على الأقل و لا يزيد عن 24 حرفًا');
             }
 
             // Email
             let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
             if (registerEmail.value.match(pattern) === null) {
-                error(registerEmail, 'البريد الالكتروني هذا غير صحيح');
+                showInputError(registerEmail, 'البريد الالكتروني هذا غير صحيح');
             }
 
+
+
             // Mobile Number
-            if (registerMobileNumber.value.length != 12) {
-                error(registerMobileNumber, 'رقم الهاتف غير صحيح');
-                document.querySelector('.registerMobileNumber').classList.add('error');
+            if (registerMobileNumber.value.replaceAll(' ','').length != 10) {
+                showInputError(registerMobileNumber, 'رقم الهاتف غير صحيح');
+                document.querySelector('.registerMobileNumber').classList.add('showInputError');
             }
 
             // Password
             if (registerPassword.value.length < 8) {
-                error(registerPassword, 'يجب أن تكون كلمة المرور 8 على الأقل');
+                showInputError(registerPassword, 'يجب أن تكون كلمة المرور 8 على الأقل');
             }
             else if (registerConfirmPassword.value != registerPassword.value) {
-                error(registerConfirmPassword, 'كلمة السر غير متطابقة');
+                showInputError(registerConfirmPassword, 'كلمة السر غير متطابقة');
             }
 
 

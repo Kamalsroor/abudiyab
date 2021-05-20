@@ -59,7 +59,6 @@ class RegisterController extends Controller implements HasMedia
         return Validator::make($data, [
             'username' => ['required','string', 'max:255'],
             'password' => ['required','confirmed', 'max:255'],
-            'id_number' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', 'unique:users'],
             'phone' => ['required', 'string', 'min:8','unique:users'],
             'identityFace' => ['required'],
