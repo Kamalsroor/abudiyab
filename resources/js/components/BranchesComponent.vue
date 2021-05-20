@@ -57,15 +57,18 @@
                                 <p v-if="branch.work_time.alldays.period == 1">من الساعه {{branch.work_time != null  ?  branch.work_time.alldays.afternone.timeopen: ''  }}  الي {{branch.work_time != null  ?  branch.work_time.alldays.afternone.timeclose: ''  }} </p>
                             </div>
                             <p class="so">الجمعه</p>
-                            <div class="branch-page_center_branches_content_branch_detailing">
+                            <div class="branch-page_center_branches_content_branch_detailing" v-if="branch.work_time.fri.lock == 0">
                                 <p>من الساعه {{branch.work_time != null  ?  branch.work_time.fri.morning.timeopen: ''  }}  الي {{branch.work_time != null  ?  branch.work_time.fri.morning.timeclose:  ''}} </p>
                                 <p v-if="branch.work_time.fri.period == 1">|</p>
                                 <p v-if="branch.work_time.fri.period == 1">من الساعه {{branch.work_time != null  ?  branch.work_time.fri.afternone.timeopen: ''  }}  الي {{branch.work_time != null  ?  branch.work_time.fri.afternone.timeclose: ''  }} </p>
                             </div>
+                            <div class="branch-page_center_branches_content_branch_detailing" v-else>
+                                <p>مغلق</p>
+                             </div>
                         </div>
                         <div v-else>
-                            <p class="so">من السبت الي الجمعه</p>
-                            <p class="so">24 ساعه</p>
+                                <p class="so">من السبت الي الجمعه</p>
+                                <p class="so">24 ساعه</p>
                         </div>
                         <div class="branch-page_center_branches_content_branch_buttons">
                             <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
@@ -112,7 +115,7 @@
             .then(response => {
                 this.branchs = response.data.data;
                 this.allBranches=this.branchs;
-
+                console.log(this.allBranches);
                 let root=this;
 
                 this.allBranches.forEach(function (branch, i) {
