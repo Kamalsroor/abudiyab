@@ -22,9 +22,11 @@ class RedirectIfAuthenticated
             if(isset(session()->get('redircitURl')[0])){
                 return redirect(session()->get('redircitURl')[0]);
             }else{
-                return redirect(url()->previous());
+
+                    return redirect(url()->previous());
 
             }
+
             if (Auth()->user()->canAccessDashboard()) {
                 return redirect(RouteServiceProvider::ADMIN);
             }else{

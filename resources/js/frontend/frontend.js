@@ -354,6 +354,7 @@ $(document).ready(function() {
     }
 
     window.addEventListener("notLogin", function() {
+        $('#BookingModel').modal('hide');
         $('#loginModal').modal('toggle');
     })
 

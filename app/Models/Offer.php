@@ -103,6 +103,16 @@ class Offer extends Model implements HasMedia, TranslatableContract
         return $this->morphedByMany(Car::class, 'offarable');
     }
 
+
+
+    /**
+     * Get all of the car that are assigned this offar.
+     */
+    public function car()
+    {
+        return $this->cars->first();
+    }
+
     /**
      * Get all of the videos that are assigned this offar.
      */
