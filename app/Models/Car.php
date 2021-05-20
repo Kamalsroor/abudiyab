@@ -15,8 +15,9 @@ use AhmedAliraqi\LaravelMediaUploader\Entities\Concerns\HasUploader;
 use App\Models\Relations\CarRelations;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Illuminate\Http\Request;
-
-class Car extends Model implements HasMedia, TranslatableContract
+use MadWeb\Seoable\Traits\SeoableTrait;
+use MadWeb\Seoable\Contracts\Seoable;
+class Car extends Model implements HasMedia, TranslatableContract , Seoable
 {
     use HasFactory;
     use Translatable;
@@ -26,6 +27,8 @@ class Car extends Model implements HasMedia, TranslatableContract
     use Selectable;
     use SoftDeletes;
     use CarRelations;
+    use SeoableTrait;
+
     /**
      * The translated attributes that are mass assignable.
      *
@@ -77,6 +80,15 @@ class Car extends Model implements HasMedia, TranslatableContract
         'is_intercity',
 
     ];
+
+
+    public function seoable()
+    {
+        $this->seo()
+            ->setTitle('name')
+            ->setDescription('name');
+    }
+
 
     /**
      * The relations to eager load on every query.
