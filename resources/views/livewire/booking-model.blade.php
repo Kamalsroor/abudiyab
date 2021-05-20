@@ -54,7 +54,7 @@
                 </div>
             {{-- <button class="btn btn-primary" type="submit">تسجيل</button> --}}
             </div>
-            <button wire:click='booking({{$car_id}})' class="btn-lg btn-block primary-btn btn-hover btn-curved ">حجز</button>
+            <button type="button" wire:click='booking({{$car_id}})' class="btn-lg btn-block primary-btn btn-hover btn-curved ">حجز</button>
         </div>
     </form>
 </div>

@@ -19,6 +19,7 @@ use App\Models\Membership;
 use Carbon\Carbon;
 use App\Models\Carsale;
 use App\Models\Mediacenter;
+use App\Models\Offer;
 use App\Models\Region;
 use Illuminate\Http\Request;
 use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
@@ -56,10 +57,12 @@ class FrontendController extends Controller
         $firstcar   = $showFirstCatInCatgories->first();
         $todaydate = Carbon::today();
 
-        $offers =  Car::whereHas('offers',function($q) use($todaydate){
-            $q->where('is_work',1)->where('type',4)->whereDate('from' ,'<=' , $todaydate)->whereDate('to' ,'>=' , $todaydate);
-        })->get();
+        $offers =  Offer::where('is_work',1)->where('type',4)->whereDate('from' ,'<=' , $todaydate)->whereDate('to' ,'>=' , $todaydate)->with('cars')->get();
         // dd();
+        // $offers =  Car::whereHas('offers',function($q) use($todaydate){
+        //     $q->where('is_work',1)->where('type',4)->whereDate('from' ,'<=' , $todaydate)->whereDate('to' ,'>=' , $todaydate);
+        // })->with('offers')->get();
+        // dd($offers[0]->offers()->where('is_work',1)->where('type',4)->whereDate('from' ,'<=' , $todaydate)->whereDate('to' ,'>=' , $todaydate)->first());
 
 
 

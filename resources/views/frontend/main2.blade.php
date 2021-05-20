@@ -62,109 +62,57 @@
 
         <section class="home-offers content whitebg">
 
-            <section class="home-offers_price-suggestion price-suggestion-h">
-                <div class="home-offers_price-suggestion_center">
-
-                    <span class="home-offers_price-suggestion_center_cancel" onclick="$('.home-offers_price-suggestion').toggleClass('price-suggestion-s');$('.home-offers_price-suggestion').toggleClass('price-suggestion-h');">
-                        <i class="fas fa-times"></i>
-                    </span>
-                    <div class="home-offers_price-suggestion_center_text">
-                        <h2 class="home-offers_price-suggestion_center_text_empty">
-                            لا يوجد تفصيل لهذه العرض
-                        </h2>
-                    </div>
-
-                </div>
-            </section>
-
             <div class="home-offers_head">
                 <span class="g-title">عروضنا</span>
             </div>
-            <div class="home-offers_content">
-                <div class="home-offers_content_background">
-                    <img src="{{ asset('front/img/offer-slider.jpg') }}" alt="">
-                </div>
-                <div class="home-offers_content_text">
-                    <div class="home-offers_content_text_discount wow animate__wobble">
-                        <h1>خصم <span>20%</span></h1>
-                    </div>
-                    <div class="home-offers_content_text_name">
-                        <h2>رنج روفر</h2>
-                    </div>
-                    <div class="home-offers_content_text_detailing">
-                        <h4>فخمه كبيره</h4>
-                        <h2>2021</h2>
-                    </div>
-                    <div class="home-offers_content_text_price">
-                        <s><i class="icofont icofont-cur-riyal"></i>2000</s>
-                        <h2><i class="icofont icofont-cur-riyal"></i>1200</h2>
-                    </div>
-                    <div class="home-offers_content_text_button">
-                        <button class="detailing" onclick="$('.home-offers_price-suggestion').toggleClass('price-suggestion-s');$('.home-offers_price-suggestion').toggleClass('price-suggestion-h');">التفاصيل</button>
-                        <button>احجز الان</button>
-                    </div>
-                </div>
-            </div>
-            {{-- <div class="container-fluid offers" style="padding-top:0">
+
+            @if ($offers->count() > 1)
+            <div class="container-fluid offers" style="padding-top:0; display: flex;width: 80%;justify-content: center;">
                 @foreach ($offers as $offer)
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pod" url="#" number="1">
-                        <div class="hover-offer ehover1"><img class="img-responsive" src="https://saudiauto.com.sa/uploads/Untitled-1_109.jpg" alt="Barcelona" />
+                        <div class="hover-offer ehover1"><img class="img-responsive" src="{{$offer->getFirstMediaUrl()}}" alt="Barcelona" />
                             <div class="offer-content">
-                            <div class="ribbon orange">خصم {{$offer->value}}%</div>
+                            <div class="ribbon orange">خصم {{$offer->discount_value}}{{$offer->discount_type=='percentage' ? '%':'  ريال' }}</div>
                             <figcaption> <span class="flights-icon">(</span>
-                                <h4>{{$offer->name}} {{$offer->model}}</h4>
-                                <p class="detail">5 مقاعد | {{$offer->door}} أبواب | 2 الأمتعة</p>
-                                <p class="detail">{{$offer->category ? $offer->category->name : ""}}</p>
-                                <p class="price-offer"><span><i class="icofont icofont-cur-riyal"></i></span>{{$offer->price1}}</p>
-                                <div class="button2">احجز الان</div>
+                                <h4>{{$offer->car()->name}} {{$offer->car()->model}}</h4>
+                                <p class="detail">5 مقاعد | {{$offer->car()->door}} أبواب | 2 الأمتعة</p>
+                                <p class="detail">{{$offer->car()->category ? $offer->car()->category->name : ""}}</p>
+                                <p class="price-offer"><span><i class="icofont icofont-cur-riyal"></i></span>{{round(($offers[0]->car()->price1) - ($offer->discount_type=='percentage'   ? $offers[0]->discount_value /100 * $offers[0]->car()->price1 : $offers[0]->discount_value ))}}</p>
+                                <div class="button2" onclick="openBookingModel({{$offer->car()->id}})">احجز الان</div>
                             </figcaption>
                             </div>
                         </div>
                     </div>
-                @endforeach --}}
-              {{-- <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pod" url="#" number="2">
-                <div class="hover-offer ehover1"><img class="img-responsive" src="https://1.bp.blogspot.com/-F5cZ10DJ68A/Xukz4ACNbgI/AAAAAAAABAs/ndkQ6DAwv-k7MdS2_0ldSZFI3cJVUbYLwCK4BGAYYCw/s1600/3864%2Bcopy.jpg" alt="París" />
-                  <div class="offer-content">
-                    <div class="ribbon orange">خصم 20%</div>
-                    <figcaption> <span class="flights-icon">Q</span>
-                      <h4>S 320 مرسيدس</h4>
-                      <p class="detail">5 مقاعد | 4 أبواب | 2 الأمتعة</p>
-                      <p class="detail">فخمة كبيرة</p>
-                      <p class="price-offer"><span><i class="icofont icofont-cur-riyal"></i></span>1309</p>
-                      <div class="button2">احجز الان</div>
-                    </figcaption>
-                  </div>
+                @endforeach
+            </div>
+            @elseif ($offers->count() == 1 )
+            <div class="home-offers_content">
+                <div class="home-offers_content_background">
+                    <img src="{{ $offers[0]->getFirstMediaUrl()}}" alt="">
                 </div>
-              </div>
-              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pod" url="#" number="3">
-                <div class="hover-offer ehover1"><img class="img-responsive" src="https://meaningg.cc/wp-content/uploads/2018/08/618.jpg" alt="Roma" />
-                  <div class="offer-content">
-                    <div class="ribbon orange">خصم 5%</div>
-                    <figcaption> <span class="flights-icon">U</span>
-                      <h4>S 320 مرسيدس</h4>
-                      <p class="detail">5 مقاعد | 4 أبواب | 2 الأمتعة</p>
-                      <p class="detail">فخمة كبيرة</p>
-                      <p class="price-offer"><span><i class="icofont icofont-cur-riyal"></i></span>260</p>
-                      <div class="button2">احجز الان</div>
-                    </figcaption>
-                  </div>
+                <div class="home-offers_content_text">
+                    <div class="home-offers_content_text_discount wow animate__wobble">
+                        <h1>خصم <span>{{$offers[0]->discount_value}}%</span></h1>
+                    </div>
+                    <div class="home-offers_content_text_name">
+                        <h2>{{$offers[0]->car()->name}}</h2>
+                    </div>
+                    <div class="home-offers_content_text_detailing">->
+                        <h4>{{$offers[0]->car()->category->name}}</h4>
+                        <h2>{{$offers[0]->car()->model}}</h2>
+                    </div>
+                    <div class="home-offers_content_text_price">
+                        <s><i class="icofont icofont-cur-riyal"></i>{{$offers[0]->car()->price2}}</s>
+                        <h2><i class="icofont icofont-cur-riyal"></i>{{ round(($offers[0]->car()->price1) - ($offers[0]->discount_type=='percentage'   ? $offers[0]->discount_value /100 * $offers[0]->car()->price1 : $offers[0]->discount_value ))}}</h2>
+                    </div>
+                    <div class="home-offers_content_text_button">
+                        <button class="detailing" onclick="$('.home-offers_price-suggestion').toggleClass('price-suggestion-s');$('.home-offers_price-suggestion').toggleClass('price-suggestion-h');">التفاصيل</button>
+                        <button onclick="openBookingModel({{$offers[0]->car()->id}})">احجز الان</button>
+                    </div>
                 </div>
-              </div>
-              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pod" url="#" number="4">
-                <div class="hover-offer ehover1"><img class="img-responsive" src="https://i.ytimg.com/vi/Ew5Lwb9fI1I/hqdefault.jpg" alt="Londres" />
-                  <div class="offer-content">
-                    <div class="ribbon orange">خصم 5%</div>
-                    <figcaption> <span class="flights-icon">(</span>
-                      <h4>S 320 مرسيدس</h4>
-                      <p class="detail">5 مقاعد | 4 أبواب | 2 الأمتعة</p>
-                      <p class="detail">فخمة كبيرة</p>
-                      <p class="price-offer"><span><i class="icofont icofont-cur-riyal"></i></span>150</p>
-                      <div class="button2">احجز الان</div>
-                    </figcaption>
-                  </div>
-                </div>
-              </div> --}}
-            {{-- </div> --}}
+            </div>
+            @endif
+
           </section>
 
     <section class="container-90">
