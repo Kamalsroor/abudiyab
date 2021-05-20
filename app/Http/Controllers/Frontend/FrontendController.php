@@ -24,6 +24,8 @@ use Illuminate\Http\Request;
 use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
 use Settings;
 use Artesaos\SEOTools\Facades\SEOMeta;
+use Cache;
+
 class FrontendController extends Controller
 {
 
@@ -38,13 +40,19 @@ class FrontendController extends Controller
      */
     public function index()
     {
-        $showCategories = Category::orderBy('id', 'ASC')->take(4)->get();
-        $allCategories  = Category::all();
-        $showCategoriesCars = Car::where('category_id' , $showCategories->first()->id)->get();
-        $partners   =  Partner::all();
-        $sliders    =   Slider::where('is_mobile',0)->limit(6)->get();
-        $miniSliders    =   Slider::where('is_mobile',1)->get();
-        $showFirstCatInCatgories   =  Car::where('category_id' , $showCategories->first()->id)->get();
+        $expire = Carbon::now()->addMinutes(10);
+
+
+
+        $allCategories = Cache::remember('allCategories', $expire, function() {
+            return Category::get();
+        });
+        // $showFirstCatInCatgories   =  Car::where('category_id' , $allCategories->first()->id)->get();
+
+        $showFirstCatInCatgories = Cache::remember('showFirstCatInCatgories', $expire, function() use($allCategories) {
+            return Car::where('category_id' , $allCategories->first()->id)->get();
+        });
+
         $firstcar   = $showFirstCatInCatgories->first();
         $todaydate = Carbon::today();
 
@@ -54,13 +62,25 @@ class FrontendController extends Controller
         // dd();
 
 
+
+        $sliders = Cache::remember('sliders', $expire, function() {
+            return Slider::where('is_mobile',0)->limit(6)->get();
+        });
+        $miniSliders = Cache::remember('miniSliders', $expire, function() {
+            return Slider::where('is_mobile',1)->get();
+        });
+        $partners = Cache::remember('partners', $expire, function() {
+            return Partner::get();
+        });
+
+
         $this->seo()->setTitle(Settings::locale(app()->getLocale())->get('seo_home_title'));
         $this->seo()->setDescription(Settings::locale(app()->getLocale())->get('seo_home_description'));
         SEOMeta::addMeta('twitter:image', optional(Settings::instance('seo_home_image'))->getFirstMediaUrl('seo_home_image') , 'property');
         SEOMeta::addMeta('og:image', optional(Settings::instance('seo_home_image'))->getFirstMediaUrl('seo_home_image') , 'property');
         SEOMeta::setKeywords(Settings::locale(app()->getLocale())->get('seo_home_keywords'));
 
-        return view('frontend.main2', compact('sliders','miniSliders','showFirstCatInCatgories','showCategories','showCategoriesCars','allCategories','firstcar','partners','offers'));
+        return view('frontend.main2', compact('sliders','miniSliders','showFirstCatInCatgories','allCategories','firstcar','partners','offers'));
     }
 
 
