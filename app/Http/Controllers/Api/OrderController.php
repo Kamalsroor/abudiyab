@@ -13,6 +13,7 @@ use App\Http\Requests\Api\OrderStep1Request;
 use App\Http\Requests\Api\OrderStep2Request;
 use App\Http\Requests\Api\OrderStep3Request;
 use App\Models\AreaPricing;
+use App\Models\Branch;
 use App\Payment\MasterCardPayment;
 use Carbon\Carbon;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -295,9 +296,20 @@ class OrderController extends Controller
 
             $car_price = ($order->car->price1 * $diff) ;
             $authorization_fee=3;
-            $price = ($car_price  ) + $features_price + $authorization_fee ;
-            $total = $price  - $membership_discount - $promotional_discount;
 
+            $AreaPricing = 0 ;
+            $receiving_branch = Branch::find($order->receiving_branch_id);
+            $delivery_branch = Branch::find($order->delivery_branch);
+            if ($receiving_branch->code != $delivery_branch->code) {
+                $sAreaPricing = AreaPricing::where('region_id' ,$receiving_branch->code )->where('region_to_id',$delivery_branch->code)->first()  ;
+                $AreaPricing =  $sAreaPricing ?  $sAreaPricing->price : 0 ;
+            }
+
+            $price = ($car_price  ) + $features_price + $authorization_fee ;
+            $total = $price + $AreaPricing  - $membership_discount - $promotional_discount;
+            $order->update([
+                'price' => $total,
+            ]);
         return response()->json([
             'status' => true,
             'promotional_discount' => $promotional_discount,
@@ -335,7 +347,7 @@ class OrderController extends Controller
             # code...
 
             $sessionID = MasterCardPayment::createSessionSandBox($orderID, $merchantID, $merchantPassword);
-            $totalPrice = 5000;
+            $totalPrice = $order->price;
 
             $orderData = [
                 'orderID' => $orderID,
