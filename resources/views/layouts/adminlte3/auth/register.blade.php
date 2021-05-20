@@ -120,10 +120,16 @@
 
                 <div class="row mx-0 px-0 py-3">
                     <div class="col-5 text-center m-auto">
-                <button type="submit" class="primary-btn btn-hover btn-curved p-3 m-auto">تأكيد البيانات</button>
+                        <button type="submit" class="primary-btn btn-hover btn-curved p-3 m-auto">تأكيد البيانات</button>
+
+
                     </div>
                 </div>
                 </form>
+
+
+
+
             </div>
         </div>
     </section>
