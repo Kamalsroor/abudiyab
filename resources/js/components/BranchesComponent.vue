@@ -57,15 +57,18 @@
                                 <p v-if="branch.work_time.alldays.period == 1">من الساعه {{branch.work_time != null  ?  branch.work_time.alldays.afternone.timeopen: ''  }}  الي {{branch.work_time != null  ?  branch.work_time.alldays.afternone.timeclose: ''  }} </p>
                             </div>
                             <p class="so">الجمعه</p>
-                            <div class="branch-page_center_branches_content_branch_detailing">
+                            <div class="branch-page_center_branches_content_branch_detailing" v-if="branch.work_time.fri.lock == 0">
                                 <p>من الساعه {{branch.work_time != null  ?  branch.work_time.fri.morning.timeopen: ''  }}  الي {{branch.work_time != null  ?  branch.work_time.fri.morning.timeclose:  ''}} </p>
                                 <p v-if="branch.work_time.fri.period == 1">|</p>
                                 <p v-if="branch.work_time.fri.period == 1">من الساعه {{branch.work_time != null  ?  branch.work_time.fri.afternone.timeopen: ''  }}  الي {{branch.work_time != null  ?  branch.work_time.fri.afternone.timeclose: ''  }} </p>
                             </div>
+                            <div class="branch-page_center_branches_content_branch_detailing" v-else>
+                                <p>مغلق</p>
+                             </div>
                         </div>
                         <div v-else>
-                            <p class="so">من السبت الي الجمعه</p>
-                            <p class="so">24 ساعه</p>
+                                <p class="so">من السبت الي الجمعه</p>
+                                <p class="so">24 ساعه</p>
                         </div>
                         <div class="branch-page_center_branches_content_branch_buttons">
                             <a href="" class="location-mobile"><i class="fa fa-map-marker"></i></a>
@@ -112,7 +115,7 @@
             .then(response => {
                 this.branchs = response.data.data;
                 this.allBranches=this.branchs;
-
+                console.log(this.allBranches);
                 let root=this;
 
                 this.allBranches.forEach(function (branch, i) {
@@ -122,6 +125,10 @@
                         root.allBranches[i].work_time.alldays.morning.timeclose=root.formatAMPM(branch.work_time.alldays.morning.timeclose,i);
                         root.allBranches[i].work_time.alldays.afternone.timeopen=root.formatAMPM(branch.work_time.alldays.afternone.timeopen,i);
                         root.allBranches[i].work_time.alldays.afternone.timeclose=root.formatAMPM(branch.work_time.alldays.afternone.timeclose,i);
+                        root.allBranches[i].work_time.fri.morning.timeopen=root.formatAMPM(branch.work_time.fri.morning.timeopen,i);
+                        root.allBranches[i].work_time.fri.morning.timeclose=root.formatAMPM(branch.work_time.fri.morning.timeclose,i);
+                        root.allBranches[i].work_time.fri.afternone.timeopen=root.formatAMPM(branch.work_time.fri.afternone.timeopen,i);
+                        root.allBranches[i].work_time.fri.afternone.timeclose=root.formatAMPM(branch.work_time.fri.afternone.timeclose,i);
                     }
                 });
 
@@ -148,17 +155,20 @@
             },
             formatAMPM: function(time,i) {
                 let localtime=parseFloat(time);
+                if (time != null) {
+                    let timearr=time.split(':');
+                    if(timearr[0] > '12')
+                    {
 
-                let timearr=time.split(':');
-                 if(timearr[0] > '12')
-                 {
-                     timearr[0]-=12;
-                     timearr[1]+='pm';
-                 }
-                 else{
-                     timearr[1]+='am';
-                 }
+                        timearr[0]-=12;
+                        timearr[1]+='pm';
+                    }
+                    else{
+                        timearr[1]+='am';
+                    }
                 return timearr.join(':');
+                }
+
             }
         },
         watch:{

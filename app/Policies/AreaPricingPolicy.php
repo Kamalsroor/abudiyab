@@ -19,7 +19,7 @@ class AreaPricingPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.area_pricings');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -31,7 +31,7 @@ class AreaPricingPolicy
      */
     public function view(User $user, AreaPricing $area_pricing)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.area_pricings');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -42,7 +42,7 @@ class AreaPricingPolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.area_pricings');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -54,7 +54,7 @@ class AreaPricingPolicy
      */
     public function update(User $user, AreaPricing $area_pricing)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.area_pricings');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -66,7 +66,7 @@ class AreaPricingPolicy
      */
     public function delete(User $user, AreaPricing $area_pricing)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.area_pricings');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
      /**
@@ -77,31 +77,31 @@ class AreaPricingPolicy
      */
     public function viewTrash(User $user)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.area_pricings')) && $this->hasSoftDeletes();
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->hasSoftDeletes();
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param \App\Models\User $user
-     * @param \App\Models\area_pricing $AreaPricing
+     * @param \App\Models\AreaPricing $AreaPricing
      * @return mixed
      */
-    public function restore(User $user, area_pricing $AreaPricing)
+    public function restore(User $user, AreaPricing $AreaPricing)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.area_pricings')) && $this->trashed($AreaPricing);
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->trashed($AreaPricing);
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      *
      * @param \App\Models\User $user
-     * @param \App\Models\area_pricing $AreaPricing
+     * @param \App\Models\AreaPricing $AreaPricing
      * @return mixed
      */
-    public function forceDelete(User $user, area_pricing $AreaPricing)
+    public function forceDelete(User $user, AreaPricing $AreaPricing)
     {
-        return ($user->isAdmin()  || $user->hasPermissionTo('manage.area_pricings')) && $this->trashed($AreaPricing);
+        return ($user->isAdmin()  || $user->isSupervisor()) && $this->trashed($AreaPricing);
     }
 
     /**

@@ -19,7 +19,7 @@ class RegionPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.regions');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -31,7 +31,7 @@ class RegionPolicy
      */
     public function view(User $user, Region $region)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.regions');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -42,7 +42,7 @@ class RegionPolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.regions');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -54,7 +54,7 @@ class RegionPolicy
      */
     public function update(User $user, Region $region)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.regions');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -66,7 +66,7 @@ class RegionPolicy
      */
     public function delete(User $user, Region $region)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.regions');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
      /**
@@ -77,7 +77,7 @@ class RegionPolicy
      */
     public function viewTrash(User $user)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.regions')) && $this->hasSoftDeletes();
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->hasSoftDeletes();
     }
 
     /**
@@ -89,7 +89,7 @@ class RegionPolicy
      */
     public function restore(User $user, region $Region)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.regions')) && $this->trashed($Region);
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->trashed($Region);
     }
 
     /**
@@ -101,7 +101,7 @@ class RegionPolicy
      */
     public function forceDelete(User $user, region $Region)
     {
-        return ($user->isAdmin()  || $user->hasPermissionTo('manage.regions')) && $this->trashed($Region);
+        return ($user->isAdmin()  || $user->isSupervisor()) && $this->trashed($Region);
     }
 
     /**

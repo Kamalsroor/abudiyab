@@ -19,7 +19,7 @@ class CustmerrequestPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.custmerrequests');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -31,7 +31,7 @@ class CustmerrequestPolicy
      */
     public function view(User $user, Custmerrequest $custmerrequest)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.custmerrequests');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -42,7 +42,7 @@ class CustmerrequestPolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.custmerrequests');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -54,7 +54,7 @@ class CustmerrequestPolicy
      */
     public function update(User $user, Custmerrequest $custmerrequest)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.custmerrequests');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -66,7 +66,7 @@ class CustmerrequestPolicy
      */
     public function delete(User $user, Custmerrequest $custmerrequest)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.custmerrequests');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
      /**
@@ -77,7 +77,7 @@ class CustmerrequestPolicy
      */
     public function viewTrash(User $user)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.custmerrequests')) && $this->hasSoftDeletes();
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->hasSoftDeletes();
     }
 
     /**
@@ -89,7 +89,7 @@ class CustmerrequestPolicy
      */
     public function restore(User $user, custmerrequest $Custmerrequest)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.custmerrequests')) && $this->trashed($Custmerrequest);
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->trashed($Custmerrequest);
     }
 
     /**
@@ -101,7 +101,7 @@ class CustmerrequestPolicy
      */
     public function forceDelete(User $user, custmerrequest $Custmerrequest)
     {
-        return ($user->isAdmin()  || $user->hasPermissionTo('manage.custmerrequests')) && $this->trashed($Custmerrequest);
+        return ($user->isAdmin()  || $user->isSupervisor()) && $this->trashed($Custmerrequest);
     }
 
     /**

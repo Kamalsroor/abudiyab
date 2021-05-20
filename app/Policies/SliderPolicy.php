@@ -19,7 +19,7 @@ class SliderPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.sliders');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -31,7 +31,7 @@ class SliderPolicy
      */
     public function view(User $user, Slider $slider)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.sliders');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -42,7 +42,7 @@ class SliderPolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.sliders');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -54,7 +54,7 @@ class SliderPolicy
      */
     public function update(User $user, Slider $slider)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.sliders');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -66,7 +66,7 @@ class SliderPolicy
      */
     public function delete(User $user, Slider $slider)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.sliders');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
      /**
@@ -77,7 +77,7 @@ class SliderPolicy
      */
     public function viewTrash(User $user)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.sliders')) && $this->hasSoftDeletes();
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->hasSoftDeletes();
     }
 
     /**
@@ -89,7 +89,7 @@ class SliderPolicy
      */
     public function restore(User $user, slider $Slider)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.sliders')) && $this->trashed($Slider);
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->trashed($Slider);
     }
 
     /**
@@ -101,7 +101,7 @@ class SliderPolicy
      */
     public function forceDelete(User $user, slider $Slider)
     {
-        return ($user->isAdmin()  || $user->hasPermissionTo('manage.sliders')) && $this->trashed($Slider);
+        return ($user->isAdmin()  || $user->isSupervisor()) && $this->trashed($Slider);
     }
 
     /**

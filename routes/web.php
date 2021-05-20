@@ -89,7 +89,7 @@ Route::as('front.')->group(function () {
     Route::get('/SitemapGenerator', function(){
         SitemapGenerator::create(config('app.url'))
         ->writeToFile(public_path('sitemap.xml'));
-    })->name('aboutus');
+    })->name('SitemapGenerator');
     Route::get('/contracts', 'Frontend\ContractController@getContracts')->name('contracts');
 
     Route::post('/car-sales-request', 'Frontend\PurchaseController@create')->name('purchaserequests.car-sales-request');

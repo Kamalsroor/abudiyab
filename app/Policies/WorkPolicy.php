@@ -19,7 +19,7 @@ class WorkPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.works');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -31,7 +31,7 @@ class WorkPolicy
      */
     public function view(User $user, Work $work)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.works');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -42,7 +42,7 @@ class WorkPolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.works');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -54,7 +54,7 @@ class WorkPolicy
      */
     public function update(User $user, Work $work)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.works');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -66,7 +66,7 @@ class WorkPolicy
      */
     public function delete(User $user, Work $work)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.works');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
      /**
@@ -77,7 +77,7 @@ class WorkPolicy
      */
     public function viewTrash(User $user)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.works')) && $this->hasSoftDeletes();
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->hasSoftDeletes();
     }
 
     /**
@@ -89,7 +89,7 @@ class WorkPolicy
      */
     public function restore(User $user, work $Work)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.works')) && $this->trashed($Work);
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->trashed($Work);
     }
 
     /**
@@ -101,7 +101,7 @@ class WorkPolicy
      */
     public function forceDelete(User $user, work $Work)
     {
-        return ($user->isAdmin()  || $user->hasPermissionTo('manage.works')) && $this->trashed($Work);
+        return ($user->isAdmin()  || $user->isSupervisor()) && $this->trashed($Work);
     }
 
     /**

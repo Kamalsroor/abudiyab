@@ -19,7 +19,7 @@ class SupervisorPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.supervisors');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -31,7 +31,7 @@ class SupervisorPolicy
      */
     public function view(User $user, Supervisor $supervisor)
     {
-        return $user->isAdmin() || $user->is($supervisor) || $user->hasPermissionTo('manage.supervisors');
+        return $user->isAdmin() || $user->is($supervisor) || $user->isSupervisor();
     }
 
     /**
@@ -42,7 +42,7 @@ class SupervisorPolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.supervisors');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -54,7 +54,7 @@ class SupervisorPolicy
      */
     public function update(User $user, Supervisor $supervisor)
     {
-        return (($user->isAdmin() || $user->is($supervisor)) || $user->hasPermissionTo('manage.supervisors')) && ! $this->trashed($supervisor);
+        return (($user->isAdmin() || $user->is($supervisor)) || $user->isSupervisor()) && ! $this->trashed($supervisor);
     }
 
     /**
@@ -66,7 +66,7 @@ class SupervisorPolicy
      */
     public function updateType(User $user, Supervisor $supervisor)
     {
-        return ($user->isAdmin() || $user->is($supervisor)) || $user->hasPermissionTo('manage.supervisors');
+        return ($user->isAdmin() || $user->is($supervisor)) || $user->isSupervisor();
     }
 
     /**
@@ -78,7 +78,7 @@ class SupervisorPolicy
      */
     public function delete(User $user, Supervisor $supervisor)
     {
-        return ($user->isAdmin() && $user->isNot($supervisor) || $user->hasPermissionTo('manage.supervisors')) && ! $this->trashed($supervisor);
+        return ($user->isAdmin() && $user->isNot($supervisor) || $user->isSupervisor()) && ! $this->trashed($supervisor);
     }
 
     /**
@@ -89,7 +89,7 @@ class SupervisorPolicy
      */
     public function viewTrash(User $user)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.supervisors')) && $this->hasSoftDeletes();
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->hasSoftDeletes();
     }
 
     /**
@@ -101,7 +101,7 @@ class SupervisorPolicy
      */
     public function restore(User $user, Supervisor $supervisor)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.supervisors')) && $this->trashed($supervisor);
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->trashed($supervisor);
     }
 
     /**
@@ -113,7 +113,7 @@ class SupervisorPolicy
      */
     public function forceDelete(User $user, Supervisor $supervisor)
     {
-        return ($user->isAdmin() && $user->isNot($supervisor) || $user->hasPermissionTo('manage.supervisors')) && $this->trashed($supervisor);
+        return ($user->isAdmin() && $user->isNot($supervisor) || $user->isSupervisor()) && $this->trashed($supervisor);
     }
 
     /**

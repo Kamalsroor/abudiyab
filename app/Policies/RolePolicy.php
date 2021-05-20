@@ -19,7 +19,7 @@ class RolePolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.roles');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -31,7 +31,7 @@ class RolePolicy
      */
     public function view(User $user, Role $role)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.roles');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -42,7 +42,7 @@ class RolePolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.roles');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -54,7 +54,7 @@ class RolePolicy
      */
     public function update(User $user, Role $role)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.roles');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -66,7 +66,7 @@ class RolePolicy
      */
     public function delete(User $user, Role $role)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.roles');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
      /**
@@ -77,7 +77,7 @@ class RolePolicy
      */
     public function viewTrash(User $user)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.roles')) && $this->hasSoftDeletes();
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->hasSoftDeletes();
     }
 
     /**
@@ -89,7 +89,7 @@ class RolePolicy
      */
     public function restore(User $user, role $Role)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.roles')) && $this->trashed($Role);
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->trashed($Role);
     }
 
     /**
@@ -101,7 +101,7 @@ class RolePolicy
      */
     public function forceDelete(User $user, role $Role)
     {
-        return ($user->isAdmin()  || $user->hasPermissionTo('manage.roles')) && $this->trashed($Role);
+        return ($user->isAdmin()  || $user->isSupervisor()) && $this->trashed($Role);
     }
 
     /**

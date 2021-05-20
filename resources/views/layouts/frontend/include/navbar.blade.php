@@ -303,7 +303,7 @@
                     <span aria-hidden="true" style="color: red;cursor: pointer;">&times;</span>
                 </a>
             </div>
-            {{-- <form action="{{ route('login') }}"  method="post" class="form-container " style="width: 100%;max-width: initial;">
+            <form action="{{ route('login') }}"  method="post" class="form-container " style="width: 100%;max-width: initial;">
                 @csrf
                 <div class="modal-body" style="margin: auto">
                     <div class="form-group">
@@ -319,7 +319,7 @@
                 </div>
                 <button class="btn btn-primary" type="submit">تسجيل</button>
                 <a href="{{ route('register') }}" class="btn btn-warning" type="submit">إنشاء حساب جديد</a>
-            </form> --}}
+            </form>
         </div>
     </div>
 </div>

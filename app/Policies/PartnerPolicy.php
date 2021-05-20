@@ -19,7 +19,7 @@ class PartnerPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.partners');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -31,7 +31,7 @@ class PartnerPolicy
      */
     public function view(User $user, Partner $partner)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.partners');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -42,7 +42,7 @@ class PartnerPolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.partners');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -54,7 +54,7 @@ class PartnerPolicy
      */
     public function update(User $user, Partner $partner)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.partners');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -66,7 +66,7 @@ class PartnerPolicy
      */
     public function delete(User $user, Partner $partner)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.partners');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
      /**
@@ -77,7 +77,7 @@ class PartnerPolicy
      */
     public function viewTrash(User $user)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.partners')) && $this->hasSoftDeletes();
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->hasSoftDeletes();
     }
 
     /**
@@ -89,7 +89,7 @@ class PartnerPolicy
      */
     public function restore(User $user, partner $Partner)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.partners')) && $this->trashed($Partner);
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->trashed($Partner);
     }
 
     /**
@@ -101,7 +101,7 @@ class PartnerPolicy
      */
     public function forceDelete(User $user, partner $Partner)
     {
-        return ($user->isAdmin()  || $user->hasPermissionTo('manage.partners')) && $this->trashed($Partner);
+        return ($user->isAdmin()  || $user->isSupervisor()) && $this->trashed($Partner);
     }
 
     /**

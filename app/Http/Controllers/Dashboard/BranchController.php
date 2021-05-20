@@ -28,7 +28,15 @@ class BranchController extends Controller
      */
     public function index()
     {
-        $branches = Branch::filter()->paginate();
+        $branches = Branch::filter()->where(function ($q)
+        {
+            if ( auth()->user()->isEmployee()) {
+               $q->where('id', auth()->user()->branch_id);
+            }
+            if ( auth()->user()->isSupervisor()) {
+                $q->whereIn('id', auth()->user()->branchs);
+            }
+        })->paginate();
         $regions = Branch::Region;
 
         return view('dashboard.branches.index', compact('branches','regions'));

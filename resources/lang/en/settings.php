@@ -17,6 +17,7 @@ return [
         'service' => 'Service',
         'terms' => 'Terms & Conditions',
         'privacy' => 'Privacy Policy',
+        'points' => 'points page',
     ],
     'dashboard_templates' => [
         'adminlte3' => 'Adminlte 3',
@@ -65,6 +66,11 @@ return [
         'pusher_app_encrypted' => 'Pusher App Encrypted',
         'pusher_app_scheme' => 'Pusher App Scheme',
         'about_home_title'  => 'About Home : Title',
+
+        'points_title'  => 'points page : Title',
+        'points_content'  => 'points page : Content',
+        'points_background'  => 'points page : Background',
+
         'about_home_subtitle'   => 'About Home : SubTitle',
         'about_home_des'    => 'About Home : Description',
         'about_home_youtube_link'   => 'About Home : Youtube Video Link',

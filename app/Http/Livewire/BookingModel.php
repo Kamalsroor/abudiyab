@@ -4,6 +4,8 @@ namespace App\Http\Livewire;
 
 use App\Models\Branch;
 use App\Models\CarsInStock;
+use Cache;
+use Carbon\Carbon;
 use Livewire\Component;
 use DateInterval;
 use DateTime;
@@ -31,7 +33,15 @@ class BookingModel extends Component
 
         $this->receivingDate=$this->dayOneFormated;
         $this->deliveryDate=$this->dayTwoFormated;
-        $this->branches=Branch::all();
+        // $this->branches = Branch::get();
+
+        $expire = Carbon::now()->addMinutes(10);
+
+        $this->branches = Cache::remember('branches', $expire, function() {
+            return Branch::get();
+        });
+
+
     }
 
     public function render()
@@ -59,11 +69,25 @@ class BookingModel extends Component
             })->with('branch')->get();
             if ($carInBranch->count() > 0) {
                 if ($carInBranch->first()->count > 0) {
-                 return redirect()->to('/booking?car_id='.$car_id.
-                                                    '&receiving_branch='.$this->receiving_branch_id .
-                                                    '&delivery_branch='.$this->dervery_branch_id .
-                                                    '&receiving_date='.$this->receivingDate.
-                                                    '&delivery_date='.$this->deliveryDate  );
+
+                    if(!Auth()->check())
+                    {
+                        $current_url=url()->previous();
+                        session()->push('redircitURl', '/booking?car_id='.$car_id.
+                        '&receiving_branch='.$this->receiving_branch_id .
+                        '&delivery_branch='.$this->dervery_branch_id .
+                        '&receiving_date='.$this->receivingDate.
+                        '&delivery_date='.$this->deliveryDate);
+                        session(['log_in' => true]);
+                        $this->dispatchBrowserEvent('notLogin');
+                    }
+                    else{
+                        return redirect()->to('/booking?car_id='.$car_id.
+                                                           '&receiving_branch='.$this->receiving_branch_id .
+                                                           '&delivery_branch='.$this->dervery_branch_id .
+                                                           '&receiving_date='.$this->receivingDate.
+                                                           '&delivery_date='.$this->deliveryDate  );
+                    }
                 }else{
                     $branche_names = "";
                     foreach ($car_in_stock as $value) {

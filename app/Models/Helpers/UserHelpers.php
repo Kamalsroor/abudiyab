@@ -27,6 +27,19 @@ trait UserHelpers
         return $this->type == User::SUPERVISOR_TYPE;
     }
 
+
+
+       /**
+     * Determine whether the user type is supervisor.
+     *
+     * @return bool
+     */
+    public function isEmployee()
+    {
+        return $this->type == User::EMPLOYEE_TYPE;
+    }
+
+
     /**
      * Determine whether the user type is customer.
      *
@@ -61,7 +74,7 @@ trait UserHelpers
      */
     public function canAccessDashboard()
     {
-        return $this->isAdmin() || $this->isSupervisor();
+        return $this->isAdmin() || $this->isSupervisor() || $this->isEmployee();
     }
 
     /**

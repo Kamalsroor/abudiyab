@@ -19,7 +19,7 @@ class PurchaserequestPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.purchaserequests');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -31,7 +31,7 @@ class PurchaserequestPolicy
      */
     public function view(User $user, Purchaserequest $purchaserequest)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.purchaserequests');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -42,7 +42,7 @@ class PurchaserequestPolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.purchaserequests');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -54,7 +54,7 @@ class PurchaserequestPolicy
      */
     public function update(User $user, Purchaserequest $purchaserequest)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.purchaserequests');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -66,7 +66,7 @@ class PurchaserequestPolicy
      */
     public function delete(User $user, Purchaserequest $purchaserequest)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.purchaserequests');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
      /**
@@ -77,7 +77,7 @@ class PurchaserequestPolicy
      */
     public function viewTrash(User $user)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.purchaserequests')) && $this->hasSoftDeletes();
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->hasSoftDeletes();
     }
 
     /**
@@ -89,7 +89,7 @@ class PurchaserequestPolicy
      */
     public function restore(User $user, purchaserequest $Purchaserequest)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.purchaserequests')) && $this->trashed($Purchaserequest);
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->trashed($Purchaserequest);
     }
 
     /**
@@ -101,7 +101,7 @@ class PurchaserequestPolicy
      */
     public function forceDelete(User $user, purchaserequest $Purchaserequest)
     {
-        return ($user->isAdmin()  || $user->hasPermissionTo('manage.purchaserequests')) && $this->trashed($Purchaserequest);
+        return ($user->isAdmin()  || $user->isSupervisor()) && $this->trashed($Purchaserequest);
     }
 
     /**

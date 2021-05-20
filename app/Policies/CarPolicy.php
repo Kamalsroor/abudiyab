@@ -19,7 +19,7 @@ class CarPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.cars');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -31,7 +31,7 @@ class CarPolicy
      */
     public function view(User $user, Car $car)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.cars');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -42,7 +42,7 @@ class CarPolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.cars');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -54,7 +54,7 @@ class CarPolicy
      */
     public function update(User $user, Car $car)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.cars');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -66,7 +66,7 @@ class CarPolicy
      */
     public function delete(User $user, Car $car)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.cars');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
      /**
@@ -77,7 +77,7 @@ class CarPolicy
      */
     public function viewTrash(User $user)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.cars')) && $this->hasSoftDeletes();
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->hasSoftDeletes();
     }
 
     /**
@@ -89,7 +89,7 @@ class CarPolicy
      */
     public function restore(User $user, car $Car)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.cars')) && $this->trashed($Car);
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->trashed($Car);
     }
 
     /**
@@ -101,7 +101,7 @@ class CarPolicy
      */
     public function forceDelete(User $user, car $Car)
     {
-        return ($user->isAdmin()  || $user->hasPermissionTo('manage.cars')) && $this->trashed($Car);
+        return ($user->isAdmin()  || $user->isSupervisor()) && $this->trashed($Car);
     }
 
     /**

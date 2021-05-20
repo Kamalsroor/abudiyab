@@ -84,7 +84,7 @@
             <td>
                 <div class="form-group row">
                     <div class="col-10">
-                      <input class="form-control" type="time" value="{{isset($branch->work_time) && $branch->work_time != null  ? $branch->work_time['fri']['morning']['timeclose']:null}}" name="work_time[fri][morning][timeclose]"  id="example-time-input">
+                      <input class="form-control" type="time" value="{{isset($branch->work_time) && $branch->work_time != null  ? $branch->work_time['fri']['morning']['timeopen']:null}}" name="work_time[fri][morning][timeopen]"  id="example-time-input">
                     </div>
                 </div>
             </td>
@@ -105,7 +105,7 @@
             <td>
                 <div class="form-group row fri-period" style="display: {{(isset($branch->work_time) && $branch->work_time != null) ? $branch->work_time['fri']['period']==1 ? 'block':'none' : 'none'}}">
                     <div class="col-10">
-                      <input class="form-control" type="time" value="{{isset($branch->work_time) && $branch->work_time != null  ? $branch->work_time['fri']['afternone']['timeclose']:null}}" name="work_time[fri][afternone][timeclose]"  id="example-time-input">
+                      <input class="form-control" type="time" value="{{isset($branch->work_time) && $branch->work_time != null  ? $branch->work_time['fri']['afternone']['timeclose']:null}}" name="work_time[fri][afternone][timeopen]"  id="example-time-input">
                     </div>
                 </div>
             </td>

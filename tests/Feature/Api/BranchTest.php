@@ -34,7 +34,7 @@ class BranchTest extends TestCase
     {
         Branch::factory()->count(5)->create();
 
-        $response = $this->getJson(route('api.branches.select'))
+        $response = $this->getJson(route('api.branches.website.select'))
             ->assertSuccessful()
             ->assertJsonStructure([
                 'data' => [
@@ -46,7 +46,7 @@ class BranchTest extends TestCase
 
         $this->assertCount(5, $response->json('data'));
 
-        $response = $this->getJson(route('api.branches.select', ['selected_id' => 4]))
+        $response = $this->getJson(route('api.branches.website.select', ['selected_id' => 4]))
             ->assertSuccessful()
             ->assertJsonStructure([
                 'data' => [

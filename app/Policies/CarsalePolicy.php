@@ -19,7 +19,7 @@ class CarsalePolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.carsales');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -31,7 +31,7 @@ class CarsalePolicy
      */
     public function view(User $user, Carsale $carsale)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.carsales');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -42,7 +42,7 @@ class CarsalePolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.carsales');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -54,7 +54,7 @@ class CarsalePolicy
      */
     public function update(User $user, Carsale $carsale)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.carsales');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
     /**
@@ -66,7 +66,7 @@ class CarsalePolicy
      */
     public function delete(User $user, Carsale $carsale)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.carsales');
+        return $user->isAdmin() || $user->isSupervisor();
     }
 
      /**
@@ -77,7 +77,7 @@ class CarsalePolicy
      */
     public function viewTrash(User $user)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.carsales')) && $this->hasSoftDeletes();
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->hasSoftDeletes();
     }
 
     /**
@@ -89,7 +89,7 @@ class CarsalePolicy
      */
     public function restore(User $user, carsale $Carsale)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.carsales')) && $this->trashed($Carsale);
+        return ($user->isAdmin() || $user->isSupervisor()) && $this->trashed($Carsale);
     }
 
     /**
@@ -101,7 +101,7 @@ class CarsalePolicy
      */
     public function forceDelete(User $user, carsale $Carsale)
     {
-        return ($user->isAdmin()  || $user->hasPermissionTo('manage.carsales')) && $this->trashed($Carsale);
+        return ($user->isAdmin()  || $user->isSupervisor()) && $this->trashed($Carsale);
     }
 
     /**
