@@ -263,6 +263,8 @@
             border: 1px solid #e3e3e3;
             padding: 48px;
             border-radius: 12px;
+            // background-color: #f7f7f7;
+            background-color: #eaeaea;
             &_form {
                 width: 100%;
                 h2 {
@@ -280,6 +282,7 @@
                             font-size: 14px;
                             a {
                                 color: #345998 !important;
+                                cursor: pointer;
                                 &:hover {
                                     color: #345998 !important;
                                 }
@@ -349,7 +352,8 @@
             text-align: right;
             font-style: normal;
             border: 1px solid #e3e3e3;
-            background-color: #f7f7f7;
+            // background-color: #f7f7f7;
+            background-color: #eaeaea;
             padding: 48px 48px 0px;
             border-radius: 12px;
             &_form {

@@ -520,9 +520,9 @@
         identifyElement('licenceFace');
         identifyElement('licenceBack');
 
-        // is-invalid
         let valueMobileNumber = '';
         let previousLength = 0;
+        let phoneNumberKeys = ['050','053','054','055','056','057','058','059'];
         let registerHasError=`{{$errors->any()}}`;
         let emailHasError=`{{$errors->has('email') ? $errors->first('email') : ''}}`;
         let phoneHasError=`{{$errors->has('phone') ? $errors->first('phone') : ''}}`;
@@ -548,7 +548,6 @@
                 {
                     if(valueMobileNumber.replaceAll(' ','').length%3 ==0)
                     {
-                        console.log('IN');
                         input.value += ' ';
                     }
 
@@ -581,23 +580,28 @@
             // Email
             let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
             if (registerEmail.value.match(pattern) === null) {
-                showInputError(registerEmail, 'البريد الالكتروني هذا غير صحيح');
+                showInputError(registerEmail, 'عذرا ، البريد الالكتروني هذا غير صحيح');
             }
 
 
 
             // Mobile Number
+            let phoneNumberKey = `${registerMobileNumber.value[0]}${registerMobileNumber.value[1]}${registerMobileNumber.value[2]}`;
             if (registerMobileNumber.value.replaceAll(' ','').length != 10) {
-                showInputError(registerMobileNumber, 'رقم الهاتف غير صحيح');
-                document.querySelector('.registerMobileNumber').classList.add('showInputError');
+                showInputError(registerMobileNumber, 'عذرا ، هذا الرقم السعودي غير صحيح');
+                document.querySelector('.registerMobileNumber').classList.add('error');
+            }
+            else if (!phoneNumberKeys.includes(phoneNumberKey)) {
+                showInputError(registerMobileNumber, 'عذرا ، لا يوجد رقم سعودي يبدأ بهذه الأرقام');
+                document.querySelector('.registerMobileNumber').classList.add('error');
             }
 
             // Password
             if (registerPassword.value.length < 8) {
-                showInputError(registerPassword, 'يجب أن تكون كلمة المرور 8 على الأقل');
+                showInputError(registerPassword, 'عذرا ، لاكن يجب أن تكون كلمة المرور 8 على الأقل');
             }
             else if (registerConfirmPassword.value != registerPassword.value) {
-                showInputError(registerConfirmPassword, 'كلمة السر غير متطابقة');
+                showInputError(registerConfirmPassword, 'عذرا ، لاكن كلمة السر غير متطابقة');
             }
 
 
