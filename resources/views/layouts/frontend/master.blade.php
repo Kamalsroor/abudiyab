@@ -498,12 +498,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                     // Mobile Number
                     let phoneNumberKey = `${registerMobileNumber.value[0]}${registerMobileNumber.value[1]}${registerMobileNumber.value[2]}`;
-                    if (registerMobileNumber.value.replaceAll(' ','').length != 10) {
-                        showInputError(registerMobileNumber, 'عذرا ، هذا الرقم السعودي غير صحيح');
-                        document.querySelector('.registerMobileNumber').classList.add('error');
-                    }
-                    else if (!phoneNumberKeys.includes(phoneNumberKey)) {
-                        showInputError(registerMobileNumber, 'عذرا ، لا يوجد رقم سعودي يبدأ بهذه الأرقام');
+                    if (registerMobileNumber.value.replaceAll(' ','').length != 10 || !phoneNumberKeys.includes(phoneNumberKey)) {
+                        showInputError(registerMobileNumber, 'عذرا ، رقم الهاتف هذه غير صحيح');
                         document.querySelector('.registerMobileNumber').classList.add('error');
                     }
 
