@@ -39,7 +39,7 @@
 
                     </form>
                 </div> --}}
-                <div class="log-in">
+                {{-- <div class="log-in">
                     <div class="log-in_top">
                         <i>+</i>
                     </div>
@@ -160,7 +160,7 @@
                             <button id="formSumbit" class="primary-btn btn-hover btn-curved" >تأكيد البيانات</button>
                         </form>
                     </div>
-                </div>
+                </div> --}}
                 <!--  --------------------------------------------->
                 <!-- pop over ends------------------------------ -->
                 <!--  --------------------------------------------->
