@@ -39,7 +39,7 @@ class MembershipController extends Controller
      */
     public function index()
     {
-        $memberships = Membership::filter()->simplePaginate();
+        $memberships = Membership::filter()->paginate();
         return MembershipResource::collection($memberships);
     }
 
@@ -114,7 +114,7 @@ class MembershipController extends Controller
      */
     public function select()
     {
-        $memberships = Membership::filter()->simplePaginate();
+        $memberships = Membership::filter()->paginate();
 
         return SelectResource::collection($memberships);
     }

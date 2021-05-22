@@ -114,7 +114,7 @@ class CarsaleController extends Controller
      */
     public function select()
     {
-        $carsales = Carsale::filter()->simplePaginate();
+        $carsales = Carsale::filter()->paginate();
 
         return SelectResource::collection($carsales);
     }

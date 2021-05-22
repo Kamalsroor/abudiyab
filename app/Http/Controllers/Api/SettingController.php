@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Laraeast\LaravelSettings\Facades\Settings;
+use KamalSroor\LaravelSettings\Facades\Settings;
 
 class SettingController extends Controller
 {

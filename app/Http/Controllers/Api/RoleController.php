@@ -39,7 +39,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::filter()->simplePaginate();
+        $roles = Role::filter()->paginate();
         return RoleResource::collection($roles);
     }
 
@@ -114,7 +114,7 @@ class RoleController extends Controller
      */
     public function select()
     {
-        $roles = Role::filter()->simplePaginate();
+        $roles = Role::filter()->paginate();
 
         return SelectResource::collection($roles);
     }

@@ -55,7 +55,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::where('user_id' , auth()->user()->id)->with('car','receivingBranch','deliveryBranch')->filter()->simplePaginate();
+        $orders = Order::where('user_id' , auth()->user()->id)->with('car','receivingBranch','deliveryBranch')->filter()->paginate();
         return OrderResource::collection($orders);
     }
 /**
@@ -498,7 +498,7 @@ class OrderController extends Controller
      */
     public function select()
     {
-        $orders = Order::filter()->simplePaginate();
+        $orders = Order::filter()->paginate();
 
         return SelectResource::collection($orders);
     }

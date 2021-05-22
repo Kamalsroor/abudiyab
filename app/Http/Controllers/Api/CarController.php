@@ -42,11 +42,11 @@ class CarController extends Controller
     public function index(Request $request)
     {
         if ($request->has('submit') && $request->submit == 1) {
-            $cars = Car::filter()->simplePaginate();
+            $cars = Car::filter()->paginate();
         }else if ($request->has('submit') && $request->submit == 0) {
             $cars = Car::filter()->take(5)->get();
         }else{
-            $cars = Car::filter()->simplePaginate();
+            $cars = Car::filter()->paginate();
         }
 
         return CarResource::collection($cars);
@@ -155,7 +155,7 @@ class CarController extends Controller
      */
     public function select()
     {
-        $cars = Car::filter()->simplePaginate();
+        $cars = Car::filter()->paginate();
 
         return SelectResource::collection($cars);
     }

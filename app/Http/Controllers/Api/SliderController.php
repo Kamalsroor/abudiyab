@@ -39,7 +39,7 @@ class SliderController extends Controller
      */
     public function index()
     {
-        $sliders = Slider::where('is_mobile',1)->filter()->simplePaginate();
+        $sliders = Slider::where('is_mobile',1)->filter()->paginate();
         return SliderResource::collection($sliders);
     }
 
@@ -114,7 +114,7 @@ class SliderController extends Controller
      */
     public function select()
     {
-        $sliders = Slider::where('is_mobile',1)->filter()->simplePaginate();
+        $sliders = Slider::where('is_mobile',1)->filter()->paginate();
 
         return SelectResource::collection($sliders);
     }

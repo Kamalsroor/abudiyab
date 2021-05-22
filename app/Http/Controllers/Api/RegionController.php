@@ -39,7 +39,7 @@ class RegionController extends Controller
      */
     public function index()
     {
-        $regions = Region::filter()->simplePaginate();
+        $regions = Region::filter()->paginate();
         return RegionResource::collection($regions);
     }
 
@@ -114,7 +114,7 @@ class RegionController extends Controller
      */
     public function select()
     {
-        $regions = Region::filter()->simplePaginate();
+        $regions = Region::filter()->paginate();
 
         return SelectResource::collection($regions);
     }

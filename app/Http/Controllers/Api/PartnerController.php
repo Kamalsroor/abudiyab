@@ -39,7 +39,7 @@ class PartnerController extends Controller
      */
     public function index()
     {
-        $partners = Partner::filter()->simplePaginate();
+        $partners = Partner::filter()->paginate();
         return PartnerResource::collection($partners);
     }
 
@@ -114,7 +114,7 @@ class PartnerController extends Controller
      */
     public function select()
     {
-        $partners = Partner::filter()->simplePaginate();
+        $partners = Partner::filter()->paginate();
 
         return SelectResource::collection($partners);
     }

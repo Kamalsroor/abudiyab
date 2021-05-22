@@ -46,7 +46,7 @@ class BranchController extends Controller
         if ($request->all) {
             $branches = Branch::filter()->get();
         }else{
-            $branches = Branch::filter()->simplePaginate(3);
+            $branches = Branch::filter()->paginate(3);
         }
         return BranchResource::collection($branches);
     }
@@ -156,7 +156,7 @@ class BranchController extends Controller
      */
     public function selectForWeb()
     {
-        $branches = Branch::filter()->simplePaginate();
+        $branches = Branch::filter()->paginate();
 
         return SelectResource::collection($branches);
     }

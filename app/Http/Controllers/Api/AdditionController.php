@@ -39,7 +39,7 @@ class AdditionController extends Controller
      */
     public function index()
     {
-        $additions = Addition::filter()->simplePaginate();
+        $additions = Addition::filter()->paginate();
         return AdditionResource::collection($additions);
     }
 
@@ -114,7 +114,7 @@ class AdditionController extends Controller
      */
     public function select()
     {
-        $additions = Addition::filter()->simplePaginate();
+        $additions = Addition::filter()->paginate();
 
         return SelectResource::collection($additions);
     }
