@@ -58,7 +58,7 @@ class CarResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name . " - " . $this->model ,
             'model' => $this->model,
-            'category' => $this->manufactory ? $this->category->name : "",
+            'category' => $this->category ? $this->category->name : "",
             'manufactory' => $this->manufactory ? $this->manufactory->name : "",
             'price_before' => $this->price2,
             'price_after' => $this->price1,
