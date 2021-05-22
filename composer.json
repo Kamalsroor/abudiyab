@@ -19,7 +19,7 @@
         "fideloper/proxy": "^4.0",
         "fruitcake/laravel-cors": "^1.0",
         "kamalsroor/crud-generator": "^1.0",
-        "kamalsroor/laravel-settings": "^1.4",
+        "kamalsroor/laravel-settings": "^1.5",
         "kamalsroor/moyasarapi": "^1.0",
         "kreait/firebase-tokens": "^1.10",
         "lab404/laravel-impersonate": "^1.7",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ab7cb06623424e8fbb5f6b3502238b56",
+    "content-hash": "825b4928ecc4185c89181e0003db4da2",
     "packages": [
         {
             "name": "ahmed-aliraqi/laravel-media-uploader",
@@ -2088,7 +2088,7 @@
         },
         {
             "name": "kamalsroor/laravel-settings",
-            "version": "v1.4",
+            "version": "v1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Kamalsroor/laravel-settings.git",
@@ -2139,7 +2139,7 @@
             ],
             "description": "Persistent key-value storage for Laravel",
             "support": {
-                "source": "https://github.com/Kamalsroor/laravel-settings/tree/v1.4"
+                "source": "https://github.com/Kamalsroor/laravel-settings/tree/v1.5.0"
             },
             "time": "2021-05-22T08:36:43+00:00"
         },
