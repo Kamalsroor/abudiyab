@@ -2,7 +2,7 @@
 
 namespace App\Support;
 
-use Laraeast\LaravelSettings\Facades\Settings;
+use KamalSroor\LaravelSettings\Facades\Settings;
 
 class SettingJson
 {
