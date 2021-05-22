@@ -509,10 +509,9 @@
         identifyElement('licenceFace');
         identifyElement('licenceBack');
 
-        // is-invalid
         let valueMobileNumber = '';
         let previousLength = 0;
-
+        let phoneNumberKeys = ['050','053','054','055','056','057','058','059'];
         let numberDesign = (input) => {
             let value = input.value.match(/[0-9\ ]+$/);
             if (value === null && input.value != '' || input.value.length > 12) {
@@ -525,7 +524,6 @@
                 {
                     if(valueMobileNumber.replaceAll(' ','').length%3 ==0)
                     {
-                        console.log('IN');
                         input.value += ' ';
                     }
 
@@ -565,21 +563,26 @@
             // Email
             let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
             if (registerEmail.value.match(pattern) === null) {
-                error(registerEmail, 'البريد الالكتروني هذا غير صحيح');
+                error(registerEmail, 'عذرا ، البريد الالكتروني هذا غير صحيح');
             }
 
             // Mobile Number
+            let phoneNumberKey = `${registerMobileNumber.value[0]}${registerMobileNumber.value[1]}${registerMobileNumber.value[2]}`;
             if (registerMobileNumber.value.length != 12) {
-                error(registerMobileNumber, 'رقم الهاتف غير صحيح');
+                error(registerMobileNumber, 'عذرا ، هذا الرقم السعودي غير صحيح');
+                document.querySelector('.registerMobileNumber').classList.add('error');
+            }
+            else if (!phoneNumberKeys.includes(phoneNumberKey)) {
+                error(registerMobileNumber, 'عذرا ، لا يوجد رقم سعودي يبدأ بهذه الأرقام');
                 document.querySelector('.registerMobileNumber').classList.add('error');
             }
 
             // Password
             if (registerPassword.value.length < 8) {
-                error(registerPassword, 'يجب أن تكون كلمة المرور 8 على الأقل');
+                error(registerPassword, 'عذرا ، لاكن يجب أن تكون كلمة المرور 8 على الأقل');
             }
             else if (registerConfirmPassword.value != registerPassword.value) {
-                error(registerConfirmPassword, 'كلمة السر غير متطابقة');
+                error(registerConfirmPassword, 'عذرا ، لاكن كلمة السر غير متطابقة');
             }
 
 
