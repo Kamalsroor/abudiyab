@@ -128,7 +128,7 @@
 <table class="table table-striped table-middle">
     <p>مفتوح 24 ساعه</p>
     <tr class="row">
-        <td class="col-3">{{ BsForm::checkbox('work_time[sat][allday]')->label(trans('branches.weekDays.openAllDays'))->value(1)->default('0')->checked(isset($branch->work_time) &&  $branch->work_time != null ?  $branch->work_time['sat']['allday'] : false) }}</td>
+        <td class="col-3">{{ BsForm::checkbox('work_time[openAllDays]')->label(trans('branches.weekDays.openAllDays'))->value(1)->default('0')->checked(isset($branch->work_time) &&  $branch->work_time != null ?  $branch->work_time['openAllDays'] : false) }}</td>
     </tr>
 </table>
 
