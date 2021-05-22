@@ -30,14 +30,21 @@ class ProfileController extends Controller
      */
     public function update(ProfileRequest $request)
     {
-
         $user = auth()->user();
         $user->update($request->allWithHashedPassword());
+
+        // if ($request->hasFile('avatar')) {
+        //     $user->addMediaFromRequest('avatar')
+        //         ->toMediaCollection('avatars');
+        // }
 
         if ($request->hasFile('avatar')) {
             $user->addMediaFromRequest('avatar')
                 ->toMediaCollection('avatars');
         }
+
+
+
         if($request->hasFile('identityFace')||
             $request->hasFile('identityBack')||
             $request->hasFile('licenceFace')||

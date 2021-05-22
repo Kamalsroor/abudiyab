@@ -26,6 +26,7 @@ class SliderResource extends JsonResource
             'name' => $this->name,
             'first_header' => $this->first_header,
             'second_header' => $this->second_header,
+            'is_mobile' => $this->is_mobile,
             'image' => $this->getFirstMediaUrl(),
 
         ];

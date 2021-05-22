@@ -40,7 +40,7 @@ class PurchaserequestController extends Controller
      */
     public function index()
     {
-        $purchaserequests = Purchaserequest::filter()->simplePaginate();
+        $purchaserequests = Purchaserequest::filter()->paginate();
         return PurchaserequestResource::collection($purchaserequests);
     }
 
@@ -115,7 +115,7 @@ class PurchaserequestController extends Controller
      */
     public function select()
     {
-        $purchaserequests = Purchaserequest::filter()->simplePaginate();
+        $purchaserequests = Purchaserequest::filter()->paginate();
 
         return SelectResource::collection($purchaserequests);
     }

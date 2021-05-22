@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Laraeast\LaravelSettings\Facades\Settings;
+use KamalSroor\LaravelSettings\Facades\Settings;
 
 class MediaController extends Controller
 {

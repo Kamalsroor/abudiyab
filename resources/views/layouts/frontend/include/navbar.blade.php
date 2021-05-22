@@ -39,7 +39,128 @@
 
                     </form>
                 </div> --}}
+                <div class="log-in">
+                    <div class="log-in_top">
+                        <i>+</i>
+                    </div>
+                    <div class="log-in_center">
+                        <form action="{{ route('login') }}" method="post" class="log-in_center_form">
+                            @csrf
+                            <h2>تسجيل الدخول</h2>
+                            <div class="log-in_center_form_email">
+                                <label>البريد الاركتروني<span>احتاج الى حساب? <a onclick="logInOrRegister('register')">انشاء حساب</a></span></label>
+                                <input type="email" name="email" class="form-control" required>
+                            </div>
+                            <div class="log-in_center_form_password">
+                                <label>كلمة السر<span><i class="far fa-eye"></i> اظهار</span></label>
+                                <input type="password" name="password" class="form-control" required>
+                            </div>
+                            <button type="submit" class="primary-btn btn-hover btn-curved">تسجيل الدخول</button>
+                            <a href="" class="log-in_center_form_forgot-password">نسيت كلمة السر? </a>
+                        </form>
+                    </div>
+                </div>
 
+                <div class="register">
+                    <div class="register_top">
+                        <i>+</i>
+                    </div>
+                    <div class="register_center">
+                        <form action="{{ route('register') }}" method="post" enctype="multipart/form-data" class="register_center_form">
+                            @csrf
+                            <h2>حساب جديد</h2>
+                            <div class="register_center_form_inputs">
+                                <div class="register_center_form_inputs_input">
+                                    <label>الاسم باكامل<span>لدي حساب بالفعل? <a onclick="logInOrRegister('login')">تسجيل الدخول</a></span></label>
+                                    <input type="text" name="username" value="{{ old('username') }}" class="form-control" id="registerName">
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                                <div class="register_center_form_inputs_input">
+                                    <label>البريد الاركتروني</label>
+                                    <input type="email" name="email" value="{{ old('email') }}" class="form-control" id="registerEmail">
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                                <div class="register_center_form_inputs_input registerMobileNumber">
+                                    <label>رقم الجوال</label>
+                                    <input type="text" name="phone" class="form-control" value="{{ old('phone') }}" id="registerMobileNumber" oninput="numberDesign(this);" max="12">
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                                <div class="register_center_form_inputs_input password One">
+                                    <label>كلمة السر<span><i class="far fa-eye"></i> اظهار</span></label>
+                                    <input type="password" name="password" class="form-control" id="registerPassword">
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                                <div class="register_center_form_inputs_input password Two">
+                                    <label>تأكيد كلمة السر</label>
+                                    <input type="password" name="password_confirmation" class="form-control" id="registerConfirmPassword">
+                                    <div class="invalid-feedback"></div>
+                                </div>
+
+                                <div class="wrapper" id="identityFace">
+                                    <div class="image">
+                                        <img src="" alt="">
+                                    </div>
+                                    <div class="content">
+                                        <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                        <div class="text">صوره الهويه</div>
+                                    </div>
+                                    <div class="cancel-btn"><i class="fas fa-times"></i></div>
+                                    <div class="file-name">صوره الهويه</div>
+                                    <p class="image-projection"></p>
+                                    <div class="div-hidden"></div>
+                                </div>
+                                <input type="file" hidden name="identityFace" id="input-identityFace">
+
+                                <div class="wrapper" id="identityBack">
+                                    <div class="image">
+                                        <img src="" alt="">
+                                    </div>
+                                    <div class="content">
+                                        <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                        <div class="text">صوره رخصه القياده</div>
+                                    </div>
+                                    <div class="cancel-btn"><i class="fas fa-times"></i></div>
+                                    <div class="file-name">صوره رخصه القياده</div>
+                                    <p class="image-projection"></p>
+                                    <div class="div-hidden"></div>
+                                </div>
+                                <input type="file" hidden name="identityBack" id="input-identityBack">
+
+                                <div class="wrapper" id="licenceFace">
+                                    <div class="image">
+                                        <img src="" alt="">
+                                    </div>
+                                    <div class="content">
+                                        <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                        <div class="text">صوره بطاقه العمل</div>
+                                    </div>
+                                    <div class="cancel-btn"><i class="fas fa-times"></i></div>
+                                    <div class="file-name">صوره بطاقه العمل</div>
+                                    <p class="image-projection"></p>
+                                    <div class="div-hidden"></div>
+                                </div>
+                                <input type="file" hidden name="licenceFace" id="input-licenceFace">
+
+                                <div class="wrapper" id="licenceBack">
+                                    <div class="image">
+                                        <img src="" alt="">
+                                    </div>
+                                    <div class="content">
+                                        <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                        <div class="text">صوره اخرى</div>
+                                    </div>
+                                    <div class="cancel-btn"><i class="fas fa-times"></i></div>
+                                    <div class="file-name">صوره اخرى</div>
+                                    <p class="image-projection"></p>
+                                    <div class="div-hidden"></div>
+                                </div>
+                                <input type="file" hidden name="licenceBack" id="input-licenceBack">
+
+                            </div>
+                            <button id="formSumbit" class="primary-btn btn-hover btn-curved" >تأكيد البيانات</button>
+                        </form>
+                    </div>
+                </div>
                 <!--  --------------------------------------------->
                 <!-- pop over ends------------------------------ -->
                 <!--  --------------------------------------------->

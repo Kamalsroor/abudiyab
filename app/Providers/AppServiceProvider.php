@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use App\View\Forms\Components\ColorComponent;
 use App\View\Forms\Components\PriceComponent;
 use Laraeast\LaravelBootstrapForms\Facades\BsForm;
+use Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,8 +30,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
         BsForm::registerComponent('price', PriceComponent::class);
         BsForm::registerComponent('color', ColorComponent::class);
+        Validator::extend('base64_image', function ($attribute, $value, $parameters, $validator) {
+            return validate_base64($value, ['png', 'jpg', 'jpeg', 'gif']);
+        });
         Paginator::useBootstrap();
     }
 }

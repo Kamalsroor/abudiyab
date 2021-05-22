@@ -39,7 +39,7 @@ class CustmerrequestController extends Controller
      */
     public function index()
     {
-        $custmerrequests = Custmerrequest::filter()->simplePaginate();
+        $custmerrequests = Custmerrequest::filter()->paginate();
         return CustmerrequestResource::collection($custmerrequests);
     }
 
@@ -114,7 +114,7 @@ class CustmerrequestController extends Controller
      */
     public function select()
     {
-        $custmerrequests = Custmerrequest::filter()->simplePaginate();
+        $custmerrequests = Custmerrequest::filter()->paginate();
 
         return SelectResource::collection($custmerrequests);
     }

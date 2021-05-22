@@ -39,7 +39,7 @@ class ManufactoryController extends Controller
      */
     public function index()
     {
-        $manufactories = Manufactory::filter()->simplePaginate();
+        $manufactories = Manufactory::filter()->paginate();
         return ManufactoryResource::collection($manufactories);
     }
 
@@ -114,7 +114,7 @@ class ManufactoryController extends Controller
      */
     public function select()
     {
-        $manufactories = Manufactory::filter()->simplePaginate();
+        $manufactories = Manufactory::filter()->paginate();
 
         return SelectResource::collection($manufactories);
     }

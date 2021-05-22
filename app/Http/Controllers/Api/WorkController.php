@@ -39,7 +39,7 @@ class WorkController extends Controller
      */
     public function index()
     {
-        $works = Work::filter()->simplePaginate();
+        $works = Work::filter()->paginate();
         return WorkResource::collection($works);
     }
 
@@ -114,7 +114,7 @@ class WorkController extends Controller
      */
     public function select()
     {
-        $works = Work::filter()->simplePaginate();
+        $works = Work::filter()->paginate();
 
         return SelectResource::collection($works);
     }

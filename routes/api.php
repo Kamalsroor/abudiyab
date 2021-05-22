@@ -27,7 +27,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('verification/send', 'VerificationController@send')->name('verification.send');
     Route::post('verification/verify', 'VerificationController@verify')->name('verification.verify');
     Route::get('profile', 'ProfileController@show')->name('profile.show');
-    Route::match(['put', 'patch'], 'profile', 'ProfileController@update')->name('profile.update');
+    Route::match(['put','post', 'patch'], 'profile', 'ProfileController@update')->name('profile.update');
     Route::post('/orders/step1', 'OrderController@step1')->name('orders.step1');
     Route::post('/orders/step2', 'OrderController@step2')->name('orders.step2');
     Route::post('/orders/step3', 'OrderController@step3')->name('orders.step3');

@@ -39,7 +39,7 @@ class AreaPricingController extends Controller
      */
     public function index()
     {
-        $area_pricings = AreaPricing::filter()->simplePaginate();
+        $area_pricings = AreaPricing::filter()->paginate();
         return AreaPricingResource::collection($area_pricings);
     }
 
@@ -114,7 +114,7 @@ class AreaPricingController extends Controller
      */
     public function select()
     {
-        $area_pricings = AreaPricing::filter()->simplePaginate();
+        $area_pricings = AreaPricing::filter()->paginate();
 
         return SelectResource::collection($area_pricings);
     }

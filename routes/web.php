@@ -35,7 +35,7 @@ Route:: get('/collectiontest', 'Frontend\FrontendController@collectiontest');
 
 Route::post('/test', 'Frontend\CustmerRequestController@convertBase64ToImage')->name('test');
 
-
+Auth::routes(['verify' => true]);
 
 
 Route::as('front.')->group(function () {

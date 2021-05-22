@@ -39,7 +39,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::filter()->simplePaginate();
+        $categories = Category::filter()->paginate();
         return CategoryResource::collection($categories);
     }
 
@@ -114,7 +114,7 @@ class CategoryController extends Controller
      */
     public function select()
     {
-        $categories = Category::filter()->simplePaginate();
+        $categories = Category::filter()->paginate();
 
         return SelectResource::collection($categories);
     }

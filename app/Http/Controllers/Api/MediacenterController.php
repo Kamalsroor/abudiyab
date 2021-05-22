@@ -39,7 +39,7 @@ class MediacenterController extends Controller
      */
     public function index()
     {
-        $mediacenters = Mediacenter::filter()->simplePaginate();
+        $mediacenters = Mediacenter::filter()->paginate();
         return MediacenterResource::collection($mediacenters);
     }
 
@@ -114,7 +114,7 @@ class MediacenterController extends Controller
      */
     public function select()
     {
-        $mediacenters = Mediacenter::filter()->simplePaginate();
+        $mediacenters = Mediacenter::filter()->paginate();
 
         return SelectResource::collection($mediacenters);
     }
