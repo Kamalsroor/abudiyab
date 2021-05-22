@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "71af0ba7ffce1b3079b419af52a1f5fc",
+    "content-hash": "ab7cb06623424e8fbb5f6b3502238b56",
     "packages": [
         {
             "name": "ahmed-aliraqi/laravel-media-uploader",
@@ -2085,6 +2085,63 @@
                 "source": "https://github.com/Kamalsroor/crud-generator/tree/V1.0.7"
             },
             "time": "2021-03-13T18:04:52+00:00"
+        },
+        {
+            "name": "kamalsroor/laravel-settings",
+            "version": "v1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Kamalsroor/laravel-settings.git",
+                "reference": "d927ca8b65f5f4f0c43c56c1cb4ae15c6efd6469"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Kamalsroor/laravel-settings/zipball/d927ca8b65f5f4f0c43c56c1cb4ae15c6efd6469",
+                "reference": "d927ca8b65f5f4f0c43c56c1cb4ae15c6efd6469",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.2|^6.0|^7.0|^8.0"
+            },
+            "require-dev": {
+                "ahmed-aliraqi/laravel-media-uploader": "^6.0",
+                "mockery/mockery": "^1.4",
+                "orchestra/testbench": "~3.0|~4.0|~5.0|~6.0"
+            },
+            "type": "package",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.0.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "KamalSroor\\LaravelSettings\\Providers\\SettingsServiceProvider"
+                    ],
+                    "aliases": {
+                        "Settings": "KamalSroor\\LaravelSettings\\Facades\\Settings"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "KamalSroor\\LaravelSettings\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kamal Sroor",
+                    "email": "aliraqi.dev@gmail.com"
+                }
+            ],
+            "description": "Persistent key-value storage for Laravel",
+            "support": {
+                "source": "https://github.com/Kamalsroor/laravel-settings/tree/v1.4"
+            },
+            "time": "2021-05-22T08:36:43+00:00"
         },
         {
             "name": "kamalsroor/moyasarapi",
