@@ -236,9 +236,9 @@
               <!-- Modal2 ends here------------------- -->
               <!--  ------------------------------------>
                 <div class="dropdown mx-3">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-globe-americas" style="font-size: 25px;"></i>
-                    </a>
+                    </a> --}}
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
                         @foreach(Locales::get() as $locale)
                         {{-- <li>
