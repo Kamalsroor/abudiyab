@@ -114,6 +114,442 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div>
 
         <!--=========
+        - Login and Register -
+        ===========-->
+
+        <div class="log-in" style="background: #fff">{{-- asset('front/img/regestraion-1.jpg') --}}
+            <div class="log-in_top">
+                <i>+</i>
+                <a href="{{route('front.main')}}"><img src="{{optional(Settings::instance('logo'))->getFirstMediaUrl('logo')}}"></a>
+            </div>
+            <div class="log-in_center">
+                {{-- <a class="log-in_center_logo" href="{{route('front.main')}}"><img src="{{optional(Settings::instance('logo'))->getFirstMediaUrl('logo')}}"></a> --}}
+                <form action="{{ route('login') }}" method="post" class="log-in_center_form">
+                    @csrf
+                    <h2>تسجيل الدخول</h2>
+                    <div class="log-in_center_form_email">
+                        <label>البريد الاركتروني<span>احتاج الى حساب? <a onclick="logInOrRegister('register')">انشاء حساب</a></span></label>
+                        <input type="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="log-in_center_form_password">
+                        <label>كلمة السر<span><i class="far fa-eye"></i> اظهار</span></label>
+                        <input type="password" name="password" class="form-control" required>
+                    </div>
+                    <button type="submit" class="primary-btn btn-hover btn-curved">تسجيل الدخول</button>
+                    <a href="" class="log-in_center_form_forgot-password">نسيت كلمة السر? </a>
+                </form>
+            </div>
+        </div>
+
+        <div class="register">
+            <div class="register_top">
+                <i>+</i>
+                <a href="{{route('front.main')}}"><img class="ml-4 nav-logo" src="{{optional(Settings::instance('logo'))->getFirstMediaUrl('logo')}}" style="position: relative;top: 10px;left: 65px;width: 120px;"></a>
+            </div>
+            <div class="register_center">
+                <form action="{{ route('register') }}" method="post" enctype="multipart/form-data" class="register_center_form">
+                    @csrf
+                    <h2>حساب جديد</h2>
+                    <div class="register_center_form_inputs">
+                        <div class="register_center_form_inputs_input">
+                            <label>الاسم باكامل<span>لدي حساب بالفعل? <a onclick="logInOrRegister('login')">تسجيل الدخول</a></span></label>
+                            <input type="text" name="username" class="form-control" id="registerName">
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="register_center_form_inputs_input">
+                            <label>البريد الاركتروني</label>
+                            <input type="email" name="email" class="form-control" id="registerEmail">
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="register_center_form_inputs_input registerMobileNumber">
+                            <label>رقم الجوال</label>
+                            <input type="text" name="phone" class="form-control" id="registerMobileNumber" oninput="numberDesign(this);" max="12">
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="register_center_form_inputs_input password One">
+                            <label>كلمة السر<span><i class="far fa-eye"></i> اظهار</span></label>
+                            <input type="password" name="password" class="form-control" id="registerPassword">
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="register_center_form_inputs_input password Two">
+                            <label>تأكيد كلمة السر</label>
+                            <input type="password" name="password_confirmation" class="form-control" id="registerConfirmPassword">
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="wrapper" id="identityFace">
+                            <div class="image">
+                                <img src="" alt="">
+                            </div>
+                            <div class="content">
+                                <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                <div class="text">صوره الهويه</div>
+                            </div>
+                            <div class="cancel-btn"><i class="fas fa-times"></i></div>
+                            <div class="file-name">صوره الهويه</div>
+                            <p class="image-projection"></p>
+                            <div class="div-hidden"></div>
+                        </div>
+                        <input type="file" hidden name="identityFace" id="input-identityFace">
+
+                        <div class="wrapper" id="identityBack">
+                            <div class="image">
+                                <img src="" alt="">
+                            </div>
+                            <div class="content">
+                                <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                <div class="text">صوره رخصه القياده</div>
+                            </div>
+                            <div class="cancel-btn"><i class="fas fa-times"></i></div>
+                            <div class="file-name">صوره رخصه القياده</div>
+                            <p class="image-projection"></p>
+                            <div class="div-hidden"></div>
+                        </div>
+                        <input type="file" hidden name="identityBack" id="input-identityBack">
+
+                        <div class="wrapper" id="licenceFace">
+                            <div class="image">
+                                <img src="" alt="">
+                            </div>
+                            <div class="content">
+                                <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                <div class="text">صوره بطاقه العمل</div>
+                            </div>
+                            <div class="cancel-btn"><i class="fas fa-times"></i></div>
+                            <div class="file-name">صوره بطاقه العمل</div>
+                            <p class="image-projection"></p>
+                            <div class="div-hidden"></div>
+                        </div>
+                        <input type="file" hidden name="licenceFace" id="input-licenceFace">
+
+                        <div class="wrapper" id="licenceBack">
+                            <div class="image">
+                                <img src="" alt="">
+                            </div>
+                            <div class="content">
+                                <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                <div class="text">صوره اخرى</div>
+                            </div>
+                            <div class="cancel-btn"><i class="fas fa-times"></i></div>
+                            <div class="file-name">صوره اخرى</div>
+                            <p class="image-projection"></p>
+                            <div class="div-hidden"></div>
+                        </div>
+                        <input type="file" hidden name="licenceBack" id="input-licenceBack">
+
+                    </div>
+                    <button id="formSumbit" class="primary-btn btn-hover btn-curved" >تأكيد البيانات</button>
+                </form>
+            </div>
+        </div>
+
+
+        @push('js')
+            <script>
+                // logIn
+                let logIn = document.querySelector('#vue_app .log-in'),
+                    btnHideLogIn = document.querySelector('.log-in_top i'),
+                    btnShowLogIn = document.querySelector('#myFormtoggeler'),
+                    btnShowLogInModal = document.querySelector('#loginModalLabel'),
+                    btnShowPasswordLogIn = document.querySelector('.log-in_center_form_password label span'),
+                    inputPasswordLogIn = document.querySelector('.log-in_center_form_password input'),
+                    ShowPasswordLogIn = false,
+                    togglePasswordLogIn = () => {
+                        if (ShowPasswordLogIn === false) {
+                            btnShowPasswordLogIn.innerHTML = '<i class="far fa-eye-slash"></i> اخفاء';
+                            inputPasswordLogIn.type = 'text';
+                            ShowPasswordLogIn = true;
+                        }
+                        else{
+                            btnShowPasswordLogIn.innerHTML = '<i class="far fa-eye"></i> اظهار';
+                            inputPasswordLogIn.type = 'password';
+                            ShowPasswordLogIn = false;
+                        }
+                    }
+                btnShowPasswordLogIn.addEventListener('click', togglePasswordLogIn);
+                btnShowLogIn.addEventListener('click', () => {logIn.style.display = 'block'; document.body.style.overflow='hidden'});
+                btnHideLogIn.addEventListener('click', () => {logIn.style.display = 'none'; document.body.style.overflow='auto';});
+
+                // register
+                let register = document.querySelector('#vue_app .register'),
+                    btnShowRegister = document.querySelector('.log-in_center_form_email label span a'),
+                    btnHideRegister = document.querySelector('.register_top i'),
+                    btnShowPasswordRegister = document.querySelector('.register_center_form_inputs_input.password label span'),
+                    inputPasswordRegisterOne = document.querySelector('.register_center_form_inputs_input.password.One input'),
+                    inputPasswordRegisterTwo = document.querySelector('.register_center_form_inputs_input.password.Two input'),
+                    ShowPasswordRegister = false,
+                    togglePasswordRegister = () => {
+                        if (ShowPasswordRegister === false) {
+                            btnShowPasswordRegister.innerHTML = '<i class="far fa-eye-slash"></i> اخفاء';
+                            inputPasswordRegisterOne.type = 'text';
+                            inputPasswordRegisterTwo.type = 'text';
+                            ShowPasswordRegister = true;
+                        }
+                        else{
+                            btnShowPasswordRegister.innerHTML = '<i class="far fa-eye"></i> اظهار';
+                            inputPasswordRegisterOne.type = 'password';
+                            inputPasswordRegisterTwo.type = 'password';
+                            ShowPasswordRegister = false;
+                        }
+                    }
+                if (document.location['hash'] == '#register') {
+                    document.body.style.overflow = 'hidden';
+                    register.style.display = 'block';
+                    logIn.style.display = 'none';
+                }
+                if (document.location['hash'] == '#login') {
+                    document.body.style.overflow='hidden';
+                    logIn.style.display = 'block';
+                    register.style.display = 'none';
+                }
+                btnShowPasswordRegister.addEventListener('click', togglePasswordRegister);
+                btnShowRegister.addEventListener('click', () => register.style.display = 'block');
+                btnShowRegister.addEventListener('click', () => logIn.style.display = 'none');
+                btnHideRegister.addEventListener('click', () => register.style.display = 'none');
+                function logInOrRegister(page) {
+                    document.body.style.overflow='hidden';
+                    let register = document.querySelector('#vue_app .register'),
+                        logIn = document.querySelector('#vue_app .log-in');
+                    if (page == 'login') {
+                        logIn.style.display = 'block';
+                        register.style.display = 'none';
+                    }
+                    if (page == 'register') {
+                        register.style.display = 'block';
+                        logIn.style.display = 'none';
+                    }
+                }
+
+                let validExtensions = ['image/jpeg','image/jpg','image/png'];
+                let regExp = /[0-9a-zA-Z\^\&\'\@\{\}\[\]\,\$\=\!\-\#\(\)\.\%\+\~\_ ]+$/;
+                let identityFace = false,
+                    identityBack = false,
+                    licenceFace = false,
+                    licenceBack = false;
+
+
+                function bringPicture(div, click){
+                    let fileName = div.children[3];
+                    let defaultBtn = div.nextElementSibling;
+                    let cancelBtn = div.children[2];
+                    let img = div.children[0].children[0];
+                    if (click == 'I') {
+                        img.src = '';
+                        img.style.display = 'none';
+                        cancelBtn.style.display = 'none';
+                        fileName.style.display = 'none';
+                        div.style.border = '2px dashed #c2cdda';
+                        defaultBtn.value = null;
+                        if (defaultBtn.id == 'input-identityFace') {identityFace = false}
+                        if (defaultBtn.id == 'input-identityBack') {identityBack = false}
+                        if (defaultBtn.id == 'input-licenceFace') {licenceFace = false}
+                        if (defaultBtn.id == 'input-licenceBack') {licenceBack = false}
+                    }
+                    else{
+                        defaultBtn.click();
+                    }
+                    defaultBtn.addEventListener("change", function(){
+                        const file = this.files[0];
+                        if(file && validExtensions.includes(file.type)){
+                            const reader = new FileReader();
+                            reader.onload = function(){
+                                const result = reader.result;
+                                img.src = result;
+                                img.style.display = 'block';
+                                cancelBtn.style.display = 'block';
+                                fileName.style.display = 'block';
+                                div.style.border = 'none';
+                                if (defaultBtn.id == 'input-identityFace') {identityFace = true}
+                                if (defaultBtn.id == 'input-identityBack') {identityBack = true}
+                                if (defaultBtn.id == 'input-licenceFace') {licenceFace = true}
+                                if (defaultBtn.id == 'input-licenceBack') {licenceBack = true}
+                            }
+                            reader.readAsDataURL(file);
+                        }
+                        if(this.value && validExtensions.includes(file.type)) {
+                            let valueStore = this.value.match(regExp);
+                            fileName.textContent = valueStore;
+                        }
+                    });
+                }
+                let errors = false;
+                let showInputError = (input, errorText, wanted = true) => {
+                    input.classList.add('is-invalid');
+                    input.nextElementSibling.innerHTML = errorText;
+                    if (input.value.length == 0 && wanted == true) {
+                        input.nextElementSibling.innerHTML = 'هذا الحقل مطلوب';
+                    }
+                    errors = true;
+                }
+                function identifyElement(divId) {
+                    let div = document.getElementById(divId);
+                    let img = div.children[0].children[0];
+                    let cancelBtn = div.children[2];
+                    let fileName = div.children[3];
+                    let imageProjection = div.children[4];
+                    let divHidden = div.children[5];
+                    div.addEventListener('click', function(n){
+                        bringPicture(this, n.target.nodeName);
+                    });
+                    divHidden.addEventListener('dragover', () => {
+                        event.preventDefault();
+                        div.classList.add('image-projection');
+                        imageProjection.classList.add('show');
+                        imageProjection.classList.remove('hide');
+                    });
+                    divHidden.addEventListener('dragleave', () => {
+                        div.classList.remove('image-projection');
+                        imageProjection.classList.remove('show');
+                        imageProjection.classList.add('hide');
+                    });
+                    divHidden.addEventListener('drop', (event) => {
+                        event.preventDefault();
+                        const file = event.dataTransfer.files[0];
+                        div.classList.remove('image-projection');
+                        imageProjection.classList.remove('show');
+                        imageProjection.classList.add('hide');
+                        if(file && validExtensions.includes(file.type)){
+                            const reader = new FileReader();
+                            reader.onload = function(){
+                                const result = reader.result;
+                                img.src = result;
+                                img.style.display = 'block';
+                                cancelBtn.style.display = 'block';
+                                fileName.style.display = 'block';
+                                div.style.border = 'none';
+                                div.classList.remove('image-projection');
+                                imageProjection.classList.remove('show');
+                                imageProjection.classList.add('hide');
+                            }
+                            reader.readAsDataURL(file);
+                        }
+                        if(file.name && validExtensions.includes(file.type)) {
+                            let valueStore = file.name.match(regExp);
+                            fileName.textContent = valueStore;
+                        }
+                    });
+                }
+                identifyElement('identityFace');
+                identifyElement('identityBack');
+                identifyElement('licenceFace');
+                identifyElement('licenceBack');
+
+                let valueMobileNumber = '';
+                let previousLength = 0;
+                let phoneNumberKeys = ['050','053','054','055','056','057','058','059'];
+                let registerHasError=`{{$errors->any()}}`;
+                let emailHasError=`{{$errors->has('email') ? $errors->first('email') : ''}}`;
+                let phoneHasError=`{{$errors->has('phone') ? $errors->first('phone') : ''}}`;
+                if(registerHasError)
+                {
+                    register.style.display = 'block';
+                    if (emailHasError) {
+                        showInputError(document.getElementById('registerEmail'), emailHasError, false);
+                    }
+                    if (phoneHasError) {
+                        showInputError(document.getElementById('registerMobileNumber'), phoneHasError, false);
+                    }
+                }
+                let numberDesign = (input) => {
+                    let value = input.value.match(/[0-9\ ]+$/);
+                    if (value === null && input.value != '' || input.value.length > 12) {
+                        input.value = valueMobileNumber;
+                    }
+                    else{
+                        valueMobileNumber = input.value;
+                        let currentLength = input.value.length;
+                        if(currentLength >previousLength)
+                        {
+                            if(valueMobileNumber.replaceAll(' ','').length%3 ==0)
+                            {
+                                input.value += ' ';
+                            }
+
+                        }
+                        previousLength = currentLength;
+                    }
+                }
+
+                let checkData = () => {
+                    let registerName = document.getElementById('registerName'),
+                        registerEmail = document.getElementById('registerEmail'),
+                        registerMobileNumber = document.getElementById('registerMobileNumber'),
+                        registerPassword = document.getElementById('registerPassword'),
+                        registerConfirmPassword = document.getElementById('registerConfirmPassword');
+
+                    errors = false;
+                    registerName.classList.remove('is-invalid');
+                    registerMobileNumber.classList.remove('is-invalid');
+                    document.querySelector('.registerMobileNumber').classList.remove('error');
+                    registerEmail.classList.remove('is-invalid');
+                    registerPassword.classList.remove('is-invalid');
+                    registerConfirmPassword.classList.remove('is-invalid');
+
+                    // Name
+                    if (registerName.value.length < 4 || registerName.value.length > 24) {
+                        showInputError(registerName, 'يجب أن يتكون الاسم من 4 أحرف على الأقل و لا يزيد عن 24 حرفًا');
+                    }
+
+                    // Email
+                    let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+                    if (registerEmail.value.match(pattern) === null) {
+                        showInputError(registerEmail, 'عذرا ، البريد الالكتروني هذا غير صحيح');
+                    }
+
+                    // Mobile Number
+                    let phoneNumberKey = `${registerMobileNumber.value[0]}${registerMobileNumber.value[1]}${registerMobileNumber.value[2]}`;
+                    if (registerMobileNumber.value.replaceAll(' ','').length != 10) {
+                        showInputError(registerMobileNumber, 'عذرا ، هذا الرقم السعودي غير صحيح');
+                        document.querySelector('.registerMobileNumber').classList.add('error');
+                    }
+                    else if (!phoneNumberKeys.includes(phoneNumberKey)) {
+                        showInputError(registerMobileNumber, 'عذرا ، لا يوجد رقم سعودي يبدأ بهذه الأرقام');
+                        document.querySelector('.registerMobileNumber').classList.add('error');
+                    }
+
+                    // Password
+                    if (registerPassword.value.length < 8) {
+                        showInputError(registerPassword, 'عذرا ، لاكن يجب أن تكون كلمة المرور 8 على الأقل');
+                    }
+                    else if (registerConfirmPassword.value != registerPassword.value) {
+                        showInputError(registerConfirmPassword, 'عذرا ، لاكن كلمة السر غير متطابقة');
+                    }
+
+
+                    if (identityFace === false) {
+                        errors = true;
+                        document.getElementById('identityFace').style.borderColor = '#dc3545';
+                    }
+                    if (identityBack === false) {
+                        errors = true;
+                        document.getElementById('identityBack').style.borderColor = '#dc3545';
+                    }
+                    if (licenceFace === false) {
+                        errors = true;
+                        document.getElementById('licenceFace').style.borderColor = '#dc3545';
+                    }
+                    if (licenceBack === false) {
+                        errors = true;
+                        document.getElementById('licenceBack').style.borderColor = '#dc3545';
+                    }
+
+                    if (errors === false) {
+                        registerMobileNumber.value = registerMobileNumber.value.replaceAll(' ','');
+                    }
+
+                    return errors;
+                }
+
+                $("#formSumbit").click(function(e){
+                    if (checkData()) {
+                        e.preventDefault();
+                    }
+                });
+
+            </script>
+        @endpush
+
+        <!--=========
         - Footer -
         ===========-->
 
