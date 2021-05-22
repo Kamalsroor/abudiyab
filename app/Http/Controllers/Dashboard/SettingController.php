@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
-use Laraeast\LaravelSettings\Facades\Settings;
+use KamalSroor\LaravelSettings\Facades\Settings;
 
 class SettingController extends Controller
 {
@@ -71,7 +71,7 @@ class SettingController extends Controller
             Settings::set($key, $value);
         }
         foreach ($this->files as $file) {
-            Settings::set($file)->addAllMediaFromTokens([], $file);
+            Setting::set($file)->addAllMediaFromTokens([], $file);
         }
 
         app(SettingJson::class)->update();
