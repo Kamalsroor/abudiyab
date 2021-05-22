@@ -5,6 +5,7 @@ namespace App\Models;
 use Parental\HasChildren;
 use App\Http\Filters\Filterable;
 use App\Http\Filters\UserFilter;
+use App\Notifications\Accounts\VerifyEmailNotification;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\MediaLibrary\HasMedia;
 use App\Support\Traits\Selectable;
@@ -19,8 +20,9 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use AhmedAliraqi\LaravelMediaUploader\Entities\Concerns\HasUploader;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-class User extends Authenticatable implements HasMedia
+class User extends Authenticatable implements HasMedia,MustVerifyEmail
 {
     use HasFactory;
     use Notifiable;
@@ -298,4 +300,9 @@ class User extends Authenticatable implements HasMedia
         return $this->customerRequest->where('is_confirmed' , 'confirmed')->last();
     }
 
+
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new VerifyEmailNotification);
+    }
 }

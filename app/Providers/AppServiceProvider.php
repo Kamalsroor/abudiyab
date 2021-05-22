@@ -30,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
         BsForm::registerComponent('price', PriceComponent::class);
         BsForm::registerComponent('color', ColorComponent::class);
         Validator::extend('base64_image', function ($attribute, $value, $parameters, $validator) {
