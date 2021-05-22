@@ -32,7 +32,7 @@ class OfferResource extends JsonResource
             'branch_value' => $this->branch_value,
             'branch_type' => $this->branch_type,
             'consumer' => $this->consumer,
-            'offarable_id' => CarResource::collection($this->cars),
+            'offarable_id' => new CarResource($this->cars[0]),
             // 'offarable_id' => ,
             // 'car_name' => $this->cars->name,
             // 'car_model' => $this->cars->model,
