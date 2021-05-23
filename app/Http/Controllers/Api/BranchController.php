@@ -46,7 +46,7 @@ class BranchController extends Controller
         if ($request->all) {
             $branches = Branch::filter()->get();
         }else{
-            $branches = Branch::filter()->paginate(3);
+            $branches = Branch::filter()->paginate(15);
         }
         return BranchResource::collection($branches);
     }
