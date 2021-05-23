@@ -2,6 +2,8 @@
 
 namespace App\Notifications\Accounts;
 
+use App\Models\Car;
+use App\Models\Offer;
 use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Support\Facades\Config;
@@ -40,7 +42,10 @@ class VerifyEmailNotification extends Notification
                 'hash' => sha1($notifiable->getEmailForVerification()),
             ]
         );
+        $todaydate = Carbon::today();
+        $offers=Car::where('category_id' , 15)->take(2)->get();
+        $homeUrl='https://abudiyab-soft.com/fleet';
         return (new MailMessage)
-            ->view('maileclipse::templates.verifyEmialTemplate', ['url' => $verificationUrl]);
+            ->view('maileclipse::templates.verifyEmialTemplate', ['url' => $verificationUrl,'offers'=>$offers,'homeUrl'=>$homeUrl]);
     }
 }

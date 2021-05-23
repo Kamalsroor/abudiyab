@@ -110,9 +110,20 @@ class LoginController extends Controller
 
         $firebaseId = $verifier->getFirebaseId();
 
-        $userQuery = User::where(compact('phone'))
-            ->orWhere(compact('email'))
-            ->orWhere('firebase_id', $firebaseId);
+        $userQuery = User::where(function($q) use($phone) {
+                if ($phone) {
+                    $q->where(compact('phone'));
+                }
+            })->orWhere(function($q) use($email) {
+                if ($email) {
+                    $q->where(compact('email'));
+                }
+            })
+            ->orWhere(function($q) use($firebaseId) {
+                if ($firebaseId) {
+                    $q->orWhere('firebase_id', $firebaseId);
+                }
+            });
         if ($userQuery->exists()) {
             $user = $userQuery->first();
         } else {

@@ -5,7 +5,7 @@ namespace App\Providers;
 use App\Support\SettingJson;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
-use Laraeast\LaravelSettings\Facades\Settings;
+use KamalSroor\LaravelSettings\Facades\Settings;
 
 class SettingsServiceProvider extends ServiceProvider
 {
