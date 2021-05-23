@@ -114,12 +114,12 @@ class LoginController extends Controller
                 if ($phone) {
                     $q->where(compact('phone'));
                 }
-            })->where(function($q) use($email) {
+            })->orWhere(function($q) use($email) {
                 if ($email) {
                     $q->where(compact('email'));
                 }
             })
-            ->where(function($q) use($firebaseId) {
+            ->orWhere(function($q) use($firebaseId) {
                 if ($firebaseId) {
                     $q->orWhere('firebase_id', $firebaseId);
                 }
