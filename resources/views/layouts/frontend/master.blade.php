@@ -436,7 +436,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                 let valueMobileNumber = '';
                 let previousLength = 0;
-                let phoneNumberKeys = ['050','053','054','055','056','057','058','059'];
+                let phoneNumberKeys = ['50','53','54','55','56','57','58','59'];
                 let registerHasError=`{{$errors->any()}}`;
                 let emailHasError=`{{$errors->has('email') ? $errors->first('email') : ''}}`;
                 let phoneHasError=`{{$errors->has('phone') ? $errors->first('phone') : ''}}`;
