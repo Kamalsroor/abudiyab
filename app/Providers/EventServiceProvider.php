@@ -25,6 +25,9 @@ class EventServiceProvider extends ServiceProvider
         \App\Events\VerificationCreated::class => [
             \App\Listeners\SendVerificationCode::class,
         ],
+        \App\Events\sendSubscripeMessage::class => [
+            \App\Listeners\sendSubscripeEmailListener::class,
+        ],
     ];
 
     /**

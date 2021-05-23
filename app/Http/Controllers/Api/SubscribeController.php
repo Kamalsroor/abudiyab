@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Events\sendSubscripeMessage;
 use App\Http\Controllers\Controller;
 use App\Models\Subscribe;
 use Illuminate\Http\Request;
@@ -17,9 +18,11 @@ class SubscribeController extends Controller
     public function __invoke(Request $request)
     {
         try{
-            Subscribe::create([
+            $user=Subscribe::create([
                 'email' => $request->subscribeEmail,
             ]);
+        event(new sendSubscripeMessage($user));
+
         }
         catch (\Exception $e) {
             return response()->json(['error' => 'exist'], 200);
