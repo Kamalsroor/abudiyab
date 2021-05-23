@@ -257,7 +257,7 @@
 </tr>
 <tr>
 <td class="button">
-<div><a class="button-mobile" style="background-color: #ff6f6f; border-radius: 5px; color: #ffffff; display: inline-block; font-family: 'Cabin', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: regular; line-height: 45px; text-align: center; text-decoration: none; width: 155px; -webkit-text-size-adjust: none; mso-hide: all;" href="{{$url}}">verify Email</a></div>
+<div><a class="button-mobile" style="background-color: #24255e; border-radius: 5px; color: #ffffff; display: inline-block; font-family: 'Cabin', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: regular; line-height: 45px; text-align: center; text-decoration: none; width: 155px; -webkit-text-size-adjust: none; mso-hide: all;" href="{{$url}}">verify Email</a></div>
 </td>
 </tr>
 </tbody>
@@ -284,6 +284,8 @@
 <table style="border-collapse: separate !important;" width="100%" cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
+@foreach ( $offers as $offer)
+
 <td class="info-block">
 <table style="border-collapse: separate !important;" width="100%" cellspacing="0" cellpadding="0">
 <tbody>
@@ -292,15 +294,15 @@
 <table width="100%" cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
-<td class="info-img"><a><img class="info-img" src="http://s3.amazonaws.com/swu-filepicker/9wRy50HQTg2CTyZA5Ozi_item_images_16.jpg" alt="img" /></a></td>
+<td class="info-img"><a><img class="info-img" src="{{$offer->getFirstMediaUrl()}}" alt="img" /></a></td>
 </tr>
 <tr>
 <td style="padding: 15px;">
 <table width="100%" cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
-<td style="text-align: left; width: 155px;"><a><span class="header-sm">Pink Shoes</span></a><br />The hottest summer sneakers are in now!</td>
-<td style="text-align: right; vertical-align: top;"><strong>$29.99</strong></td>
+<td style="text-align: left; width: 155px;"><a><span class="header-sm">{{$offer->name}}</span></a><br />زور موقعنا و تمتع بعروض ابو دياب</td>
+<td style="text-align: right; vertical-align: top;"><strong>{{$offer->price1}}</strong></td>
 </tr>
 </tbody>
 </table>
@@ -313,7 +315,7 @@
                                     <w:anchorlock/>
                                     <center style="color:#ffffff;font-family:Helvetica, Arial, sans-serif;font-size:14px;font-weight:regular;">My Account</center>
                                   </v:roundrect>
-                                <![endif]--><a class="button-width" style="background-color: #ff6f6f; border-radius: 5px; color: #ffffff; display: inline-block; font-family: 'Cabin', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: regular; line-height: 45px; text-align: center; text-decoration: none; -webkit-text-size-adjust: none; mso-hide: all;" href="../../../">View Now!</a></div>
+                                <![endif]--><a class="button-width" style="background-color: #4e3f92; border-radius: 5px; color: #ffffff; display: inline-block; font-family: 'Cabin', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: regular; line-height: 45px; text-align: center; text-decoration: none; -webkit-text-size-adjust: none; mso-hide: all;" href="{{$homeUrl}}">View Now!</a></div>
 </td>
 </tr>
 </tbody>
@@ -323,45 +325,12 @@
 </tbody>
 </table>
 </td>
-<td class="info-block">
-<table style="border-collapse: separate !important;" width="100%" cellspacing="0" cellpadding="0">
-<tbody>
-<tr>
-<td class="block-rounded">
-<table width="100%" cellspacing="0" cellpadding="0">
-<tbody>
-<tr>
-<td class="info-img"><a><img class="info-img" src="http://s3.amazonaws.com/swu-filepicker/RPezUIwPRv8pjatAAH1E_item_images_19.jpg" alt="img" width="258" height="210" /></a></td>
-</tr>
-<tr>
-<td style="padding: 15px;">
-<table width="100%" cellspacing="0" cellpadding="0">
-<tbody>
-<tr>
-<td style="text-align: left; width: 155px;"><a><span class="header-sm">Golden Earings</span></a><br />New city looks! <!-- Remove bottom br and nbsp when item text longer than one line is --> <br />&nbsp;</td>
-<td style="text-align: right; vertical-align: top;"><strong>$29.99</strong></td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr>
-<tr>
-<td style="padding: 15px;">
-<div><!-- [if mso]>
-                                  <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://" style="height:45px;v-text-anchor:middle;width:228px;" arcsize="15%" strokecolor="#ffffff" fillcolor="#ff6f6f">
-                                    <w:anchorlock/>
-                                    <center style="color:#ffffff;font-family:Helvetica, Arial, sans-serif;font-size:14px;font-weight:regular;">My Account</center>
-                                  </v:roundrect>
-                                <![endif]--><a class="button-width" style="background-color: #ff6f6f; border-radius: 5px; color: #ffffff; display: inline-block; font-family: 'Cabin', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: regular; line-height: 45px; text-align: center; text-decoration: none; -webkit-text-size-adjust: none; mso-hide: all;" href="../../../">View Now!</a></div>
-</td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr>
-</tbody>
-</table>
-</td>
+
+@endforeach
+
+
+
+
 </tr>
 </tbody>
 </table>
