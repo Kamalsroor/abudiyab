@@ -145,7 +145,6 @@ class ShowFleet extends Component
             $i=0;
             foreach($car as $item )
             {
-                // dd($car[$i]->price1);
                 $car[$i]->price1=$item->price1 - ((Auth()->user()->membership->rental_discount /100) * $item->price1);
                 $i++;
             }

@@ -6,7 +6,7 @@
             placeholder="@lang('cars.singular')"
             name="car_id"
             id="cars"
-            value="{{isset($offer) && $offer->type == 1 ? optional($offer ?? "")->cars->pluck('id') : null}}"
+            value="{{isset($carsale) ? optional($carsale ?? "")->car_id: null}}"
             label="@lang('cars.singular')"
             remote-url="{{ route('api.cars.select') }}"
         ></select2>
