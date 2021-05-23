@@ -440,6 +440,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 let registerHasError=`{{isset($errors) ? $errors->any() : ''}}`;
                 let emailHasError=`{{$errors->has('email') && isset($errors) ? $errors->first('email') : ''}}`;
                 let phoneHasError=`{{$errors->has('phone') && isset($errors) ? $errors->first('phone') : ''}}`;
+                console.log('kamal');
                 if(registerHasError)
                 {
                     register.style.display = 'block';
