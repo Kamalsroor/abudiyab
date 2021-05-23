@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -52,4 +53,14 @@ class LoginController extends Controller
             'password' => 'required|string',
         ], [], trans('dashboard.auth.login'));
     }
+
+
+    protected function sendFailedLoginResponse()
+    {
+        throw ValidationException::withMessages([
+            $this->username() => [trans('auth.failed')],
+        ])->errorBag('login');
+    }
+
+
 }

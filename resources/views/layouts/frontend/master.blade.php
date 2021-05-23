@@ -53,7 +53,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </head>
 <body style="overflow: hidden;">
 <div id="vue_app">
-
+    {{-- @php
+        dd($errors);
+    @endphp --}}
     <!-- ------------START-----loader------------ -->
     <div class="loader">
         <div class="loader_img">
