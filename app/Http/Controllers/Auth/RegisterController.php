@@ -13,6 +13,9 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use AhmedAliraqi\LaravelMediaUploader\Entities\Concerns\HasUploader;
 use App\Models\Custmerrequest;
 use Settings;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller implements HasMedia
 {
@@ -94,5 +97,28 @@ class RegisterController extends Controller implements HasMedia
         $CustmerRequest->addMediaFromRequest('licenceFace')->toMediaCollection('licenceFace');
         $CustmerRequest->addMediaFromRequest('licenceBack')->toMediaCollection('licenceBack');
         return $newUser;
+    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all());
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        if ($response = $this->registered($request, $user)) {
+            return $response;
+        }
+
+        return $request->wantsJson()
+                    ? new JsonResponse([], 201)
+                    : redirect($this->redirectPath());
     }
 }
