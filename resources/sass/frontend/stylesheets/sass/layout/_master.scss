@@ -149,6 +149,17 @@
                 color: #fff;
                 cursor: pointer;
             }
+            a {
+                width: fit-content;
+                img {
+                    width: 120px;
+                    @include location(0%, 10%);
+                    top: 10px;
+                    @media (max-width: 414px) {
+                        width: 70px;
+                    }
+                }
+            }
         }
         &_center {
             overflow: auto;
@@ -161,7 +172,8 @@
             direction: ltr;
             &_form {
                 margin: auto;
-                width: fit-content;
+                max-width: 858px;
+                width: 100%;
                 text-align: right;
                 font-style: normal;
                 border: 1px solid #e3e3e3;
@@ -175,7 +187,7 @@
                     margin-bottom: 45px;
                 }
                 &_inputs {
-                    width: 760px;
+                    width: 100%;
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: space-between;

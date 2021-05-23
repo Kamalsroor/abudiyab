@@ -124,7 +124,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="log-in" style="background: url({{asset('front/img/background.jpg')}})">{{-- asset('front/img/background.jpg') --}}
             <div class="log-in_top">
                 <i>+</i>
-                <a href="{{route('front.main')}}"><img src="https://abudiyab-soft.com/storage/181/logo-edited-png24.png"></a>
+                <a href="{{route('front.main')}}"><img src="{{optional(Settings::instance('logo'))->getFirstMediaUrl('logo')}}"></a>
             </div>
             <div class="log-in_center">
                 {{-- <a class="log-in_center_logo" href="{{route('front.main')}}"><img src="{{optional(Settings::instance('logo'))->getFirstMediaUrl('logo')}}"></a> --}}
@@ -148,7 +148,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="register" style="background: url({{asset('front/img/background.jpg')}})">
             <div class="register_top">
                 <i>+</i>
-                <a href="{{route('front.main')}}"><img class="ml-4 nav-logo" src="{{optional(Settings::instance('logo'))->getFirstMediaUrl('logo')}}" style="position: relative;top: 10px;left: 65px;width: 120px;"></a>
+                <a href="{{route('front.main')}}"><img src="https://abudiyab-soft.com/storage/181/logo-edited-png24.png"></a>
             </div>
             <div class="register_center">
                 <form action="{{ route('register') }}" method="post" enctype="multipart/form-data" class="register_center_form">
