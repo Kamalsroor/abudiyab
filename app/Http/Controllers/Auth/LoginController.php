@@ -47,7 +47,7 @@ class LoginController extends Controller
      */
     protected function validateLogin(Request $request)
     {
-        $request->validate([
+        $request->validateWithBag('login',[
             $this->username() => 'required|string',
             'password' => 'required|string',
         ], [], trans('dashboard.auth.login'));
