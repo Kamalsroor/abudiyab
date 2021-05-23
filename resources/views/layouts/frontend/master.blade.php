@@ -53,7 +53,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </head>
 <body style="overflow: hidden;">
 <div id="vue_app">
-
+    @php
+            dd($errors , $errors->login, $errors->default);
+    @endphp
     <!-- ------------START-----loader------------ -->
     <div class="loader">
         <div class="loader_img">
@@ -436,10 +438,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                 let valueMobileNumber = '';
                 let previousLength = 0;
-                let phoneNumberKeys = ['050','053','054','055','056','057','058','059'];
-                let registerHasError=`{{$errors->any()}}`;
-                let emailHasError=`{{$errors->has('email') ? $errors->first('email') : ''}}`;
-                let phoneHasError=`{{$errors->has('phone') ? $errors->first('phone') : ''}}`;
+                let phoneNumberKeys = ['50','53','54','55','56','57','58','59'];
+                let registerHasError=`{{isset($errors) ? $errors->any() : ''}}`;
+                let allRegisterError=`{{isset($errors) ? $errors : ''}}`;
+                let emailHasError=`{{isset($errors)&& $errors->has('email')  ? $errors->first('email') : ''}}`;
+                console.log(allRegisterError);
+                let phoneHasError=`{{isset($errors) && $errors->has('phone')  ? $errors->first('phone') : ''}}`;
+                console.log('kamal');
                 if(registerHasError)
                 {
                     register.style.display = 'block';
@@ -497,8 +502,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     }
 
                     // Mobile Number
-                    let phoneNumberKey = `${registerMobileNumber.value[0]}${registerMobileNumber.value[1]}${registerMobileNumber.value[2]}`;
-                    if (registerMobileNumber.value.replaceAll(' ','').length != 10 || !phoneNumberKeys.includes(phoneNumberKey)) {
+                    let phoneNumberKey = `${registerMobileNumber.value[0]}${registerMobileNumber.value[1]}`;
+                    if (registerMobileNumber.value.replaceAll(' ','').length != 9 || !phoneNumberKeys.includes(phoneNumberKey)) {
                         showInputError(registerMobileNumber, 'عذرا ، رقم الهاتف هذه غير صحيح');
                         document.querySelector('.registerMobileNumber').classList.add('error');
                     }

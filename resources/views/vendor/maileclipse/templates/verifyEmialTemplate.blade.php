@@ -219,7 +219,7 @@
 <table class="container-for-gmail-android" width="100%" cellspacing="0" cellpadding="0" align="center">
 <tbody>
 <tr>
-<td style="background: repeat-x url('http://s3.amazonaws.com/swu-filepicker/4E687TRe69Ld95IDWyEg_bg_top_02.jpg') #ffffff;" align="left" valign="top" width="100%"><center><img class="force-width-gmail" src="http://s3.amazonaws.com/swu-filepicker/SBb2fQPrQ5ezxmqUTgCr_transparent.png" />
+<td style="background: repeat-x url('http://s3.amazonaws.com/swu-filepicker/4E687TRe69Ld95IDWyEg_bg_top_02.jpg') #ffffff;" align="left" valign="top" width="100%"><center><img class="force-width-gmail" src="{{app_logo()}}" />
 <table style="background-color: transparent;" width="100%" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
 <tbody>
 <tr>
@@ -231,11 +231,12 @@
 <table class="w320" width="600" cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
-<td class="pull-left mobile-header-padding-left" style="vertical-align: middle;"><a><img src="http://s3.amazonaws.com/swu-filepicker/0zxBZVuORSxdc9ZCqotL_logo_03.gif" alt="logo" width="137" height="47" /></a></td>
-<td class="pull-right mobile-header-padding-right" style="color: #4d4d4d;"><a><img src="http://s3.amazonaws.com/swu-filepicker/k8D8A7SLRuetZspHxsJk_social_08.gif" alt="twitter" width="44" height="47" /></a> <a><img src="http://s3.amazonaws.com/swu-filepicker/LMPMj7JSRoCWypAvzaN3_social_09.gif" alt="facebook" width="38" height="47" /></a> <a><img src="http://s3.amazonaws.com/swu-filepicker/hR33ye5FQXuDDarXCGIW_social_10.gif" alt="rss" width="40" height="47" /></a></td>
+<td class="pull-left mobile-header-padding-left" style="vertical-align: middle;"><a><img src="{{app_logo()}}" alt="logo" width="137" height="47" /></a></td>
+<td class="pull-right mobile-header-padding-right" style="color: #4d4d4d;"><a href="{{Settings::get('twitter')}}"><img src="http://s3.amazonaws.com/swu-filepicker/k8D8A7SLRuetZspHxsJk_social_08.gif" alt="twitter" width="44" height="47" /></a> <a href="{{Settings::get('facebook')}}"><img src="http://s3.amazonaws.com/swu-filepicker/LMPMj7JSRoCWypAvzaN3_social_09.gif" alt="facebook" width="38" height="47" /></a></td>
 </tr>
 </tbody>
 </table>
+
 </center><!-- [if gte mso 9]>
               </v:textbox>
             </v:rect>
