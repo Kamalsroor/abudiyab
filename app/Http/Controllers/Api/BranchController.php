@@ -195,14 +195,19 @@ class BranchController extends Controller
         })->get();
         $delivery = Branch::filter()->get();
 
-
-        $car = Car::find($request->car_id);
-        // dd($car);
-        return  response()->json([
-            'receiving' => SelectResource::collection($receiving),
-            'delivery' => SelectResource::collection($delivery),
-            'Car' => new CarResource($car),
-        ]);
+        if($receiving->count())
+        {
+            $car = Car::find($request->car_id);
+            // dd($car);
+            return  response()->json([
+                'receiving' => SelectResource::collection($receiving),
+                'delivery' => SelectResource::collection($delivery),
+                'Car' => new CarResource($car),
+            ]);
+        }
+        else{
+            return response()->json(['status' => false,'massage' => 'لا توجد هذه السياره في الوقت الحالي' ], 422);
+        }
 
     }
 }
