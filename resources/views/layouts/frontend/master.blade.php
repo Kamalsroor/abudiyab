@@ -128,7 +128,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
             <div class="log-in_center">
                 {{-- <a class="log-in_center_logo" href="{{route('front.main')}}"><img src="{{optional(Settings::instance('logo'))->getFirstMediaUrl('logo')}}"></a> --}}
-                <form action="{{ route('login') }}" method="post" class="log-in_center_form">
+                <form action="{{ route('login') }}" method="post" class="log-in_center_form" style="display: none;">
                     @csrf
                     <h2>تسجيل الدخول</h2>
                     <div class="log-in_center_form_email">
@@ -142,10 +142,55 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="invalid-feedback"></div>
                     </div>
                     <button type="submit" class="primary-btn btn-hover btn-curved">تسجيل الدخول</button>
-                    <a href="" class="log-in_center_form_forgot-password">نسيت كلمة السر? </a>
+                    <a href="" class="log-in_center_form_forgot-password" onclick="forgotPassword(1)">نسيت كلمة السر? </a>
                 </form>
+                <div class="forgot-password">
+                    <form action="" method="post" class="log-in_center_form forgot-password_step-1">
+                        @csrf
+                        <h2>يرجى إدخال بريدك الإلكتروني</h2>
+                        <div class="log-in_center_form_email">1
+                            <label>البريد الاركتروني</label>
+                            <input type="email" name="email" class="form-control" id="loginEmail" required>
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <button type="submit" class="primary-btn btn-hover btn-curved">تحقق</button>
+                    </form>
+                    <form action="" method="post" class="log-in_center_form forgot-password_step-2">
+                        @csrf
+                        <h2>يرجى إدخال بريدك الإلكتروني</h2>
+                        <div class="log-in_center_form_email">2
+                            <label>البريد الاركتروني</label>
+                            <input type="email" name="email" class="form-control" id="loginEmail" required>
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <button type="submit" class="primary-btn btn-hover btn-curved">تحقق</button>
+                    </form>
+                    <form action="" method="post" class="log-in_center_form forgot-password_step-3">
+                        @csrf
+                        <h2>يرجى إدخال بريدك الإلكتروني</h2>
+                        <div class="log-in_center_form_email">3
+                            <label>البريد الاركتروني</label>
+                            <input type="email" name="email" class="form-control" id="loginEmail" required>
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <button type="submit" class="primary-btn btn-hover btn-curved">تحقق</button>
+                    </form>
+                </div>
             </div>
         </div>
+
+        @push('js')
+
+        <script>
+            let forgotPassword = (step) => {
+                let forms = document.querySelector(`.forgot-password form`);
+                let form = document.querySelector(`.forgot-password_step-${step}`);
+                forms.style.display = 'none';
+                form.style.display = 'block';
+            }
+        </script>
+
+        @endpush
 
         <div class="register" style="background: url({{asset('front/img/background.jpg')}})">
             <div class="register_top">

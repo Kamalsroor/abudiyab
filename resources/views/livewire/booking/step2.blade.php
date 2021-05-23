@@ -153,7 +153,10 @@
                     <div class="H3-TST-D5-1">
                         <p><span><i class="icofont icofont-cur-riyal"></i></span>{{$total}}</p>
                     </div>
+
                 </div>
+
+                <h3 style="color: red;text-align: center;">(و قابل للتضقيق VAT) السعر لا يشمل ضريبه القيمه المضافه</h3>
 
             </div>
         </div>
