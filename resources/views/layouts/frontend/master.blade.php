@@ -603,7 +603,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         let csrf_token = "{{ csrf_token() }}";
         function openBookingModel(id) {
             window.livewire.emit('setCarId',id);
-            console.log('modaaaaaaaaal');
             $('#BookingModel').modal('show');
         }
         function cancel(){
@@ -662,7 +661,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             $(".loader").animate({opacity: "0"}, 2000, function() {
                 $(".loader").remove();
             });
-            // $('body').css('overflow','auto');
+            $('body').css('overflow','auto');
         });
 
     </script>
