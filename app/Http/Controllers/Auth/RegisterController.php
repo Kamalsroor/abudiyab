@@ -65,7 +65,7 @@ class RegisterController extends Controller implements HasMedia
             'identityBack' => ['required'],
             'licenceFace' => ['required'],
             'licenceBack' => ['required'],
-        ], [], trans('dashboard.auth.register'));
+        ], [], trans('dashboard.auth.register'))->validateWithBag('register');
     }
 
     /**
