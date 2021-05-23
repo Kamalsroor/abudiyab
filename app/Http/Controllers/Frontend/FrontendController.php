@@ -187,6 +187,11 @@ class FrontendController extends Controller
         return view('frontend.payment2');
     }
 
+    public function messageEmail()
+    {
+        return view('frontend.message-email');
+    }
+
     public function recruitment()
     {
         $works=Work::all();

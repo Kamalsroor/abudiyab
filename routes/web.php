@@ -56,6 +56,7 @@ Route::as('front.')->group(function () {
     });
 
 
+    Route::get('/message-email', 'Frontend\FrontendController@messageEmail')->name('message-email');
     Route::get('/payment2', 'Frontend\FrontendController@payment2')->name('payment2');
     Route::get('/services', 'Frontend\FrontendController@services')->name('services');
     Route::get('/news-details/{news}', 'Frontend\FrontendController@NewsDetails')->name('news-details');
