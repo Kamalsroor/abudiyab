@@ -53,7 +53,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </head>
 <body style="overflow: hidden;">
 <div id="vue_app">
-
+    @php
+            dd($errors , $errors->login, $errors->default);
+    @endphp
     <!-- ------------START-----loader------------ -->
     <div class="loader">
         <div class="loader_img">
@@ -439,9 +441,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 let phoneNumberKeys = ['50','53','54','55','56','57','58','59'];
                 let registerHasError=`{{isset($errors) ? $errors->any() : ''}}`;
                 let allRegisterError=`{{isset($errors) ? $errors : ''}}`;
-                let emailHasError=`{{isset($errors) ? $errors->has('email') && isset($errors) ? $errors->first('email') : ''}}`;
+                let emailHasError=`{{isset($errors)&& $errors->has('email')  ? $errors->first('email') : ''}}`;
                 console.log(allRegisterError);
-                let phoneHasError=`{{isset($errors) ?$errors->has('phone') && isset($errors) ? $errors->first('phone') : ''}}`;
+                let phoneHasError=`{{isset($errors) && $errors->has('phone')  ? $errors->first('phone') : ''}}`;
                 console.log('kamal');
                 if(registerHasError)
                 {
