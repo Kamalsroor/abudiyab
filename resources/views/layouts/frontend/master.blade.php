@@ -120,7 +120,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="log-in" style="background: #fff">{{-- asset('front/img/regestraion-1.jpg') --}}
             <div class="log-in_top">
                 <i>+</i>
-                <a href="{{route('front.main')}}"><img src="{{optional(Settings::instance('logo'))->getFirstMediaUrl('logo')}}"></a>
+                <a href="{{route('front.main')}}"><img src="https://abudiyab-soft.com/storage/181/logo-edited-png24.png"></a>
             </div>
             <div class="log-in_center">
                 {{-- <a class="log-in_center_logo" href="{{route('front.main')}}"><img src="{{optional(Settings::instance('logo'))->getFirstMediaUrl('logo')}}"></a> --}}
