@@ -133,11 +133,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <h2>تسجيل الدخول</h2>
                     <div class="log-in_center_form_email">
                         <label>البريد الاركتروني<span>احتاج الى حساب? <a onclick="logInOrRegister('register')">انشاء حساب</a></span></label>
-                        <input type="email" name="email" class="form-control" required>
+                        <input type="email" name="email" class="form-control" id="loginEmail" required>
+                        <div class="invalid-feedback"></div>
                     </div>
                     <div class="log-in_center_form_password">
                         <label>كلمة السر<span><i class="far fa-eye"></i> اظهار</span></label>
-                        <input type="password" name="password" class="form-control" required>
+                        <input type="password" name="password" class="form-control" id="loginPassword" required>
+                        <div class="invalid-feedback"></div>
                     </div>
                     <button type="submit" class="primary-btn btn-hover btn-curved">تسجيل الدخول</button>
                     <a href="" class="log-in_center_form_forgot-password">نسيت كلمة السر? </a>
@@ -379,6 +381,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 let errors = false;
                 let showInputError = (input, errorText, wanted = true) => {
                     input.classList.add('is-invalid');
+                    console.log(errorText);
                     input.nextElementSibling.innerHTML = errorText;
                     if (input.value.length == 0 && wanted == true) {
                         input.nextElementSibling.innerHTML = 'هذا الحقل مطلوب';
@@ -441,17 +444,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 let valueMobileNumber = '';
                 let previousLength = 0;
                 let phoneNumberKeys = ['50','53','54','55','56','57','58','59'];
-                let registerHasError=`{{isset($errors) ? $errors->any() : ''}}`;
+                let registerHasError=`{{isset($errors) ? $errors->register->any() : ''}}`;
+                let logInHasError=`{{isset($errors) ? $errors->login->any() : ''}}`;
                 let allRegisterError=`{{isset($errors) ? $errors : ''}}`;
-                let emailHasError=`{{isset($errors)&& $errors->has('email')  ? $errors->first('email') : ''}}`;
+                let emailHasError=`{{isset($errors) &&  $errors->login->has('email')  ? $errors->login->first('email') : ''}}`;
+                let emailRegisterHasError=`{{isset($errors) &&  $errors->register->has('email')  ? $errors->register->first('email') : ''}}`;
                 console.log(allRegisterError);
-                let phoneHasError=`{{isset($errors) && $errors->has('phone')  ? $errors->first('phone') : ''}}`;
+                let phoneHasError=`{{isset($errors) && $errors->register->has('phone')  ? $errors->register->first('phone') : ''}}`;
                 console.log('kamal');
+                if(logInHasError)
+                {
+                    console.log(emailHasError);
+                    logIn.style.display = 'block';
+                    if (emailHasError) {
+                        showInputError(document.getElementById('loginEmail'), emailHasError, false);
+                    }
+                }
                 if(registerHasError)
                 {
+                    console.log('errorRegister');
                     register.style.display = 'block';
-                    if (emailHasError) {
-                        showInputError(document.getElementById('registerEmail'), emailHasError, false);
+                    if (emailRegisterHasError) {
+                        showInputError(document.getElementById('registerEmail'), emailRegisterHasError, false);
                     }
                     if (phoneHasError) {
                         showInputError(document.getElementById('registerMobileNumber'), phoneHasError, false);
