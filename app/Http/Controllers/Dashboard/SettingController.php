@@ -71,7 +71,7 @@ class SettingController extends Controller
             Settings::set($key, $value);
         }
         foreach ($this->files as $file) {
-            Setting::set($file)->addAllMediaFromTokens([], $file);
+            Settings::set($file)->addAllMediaFromTokens([], $file);
         }
 
         app(SettingJson::class)->update();

@@ -53,9 +53,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </head>
 <body style="overflow: hidden;">
 <div id="vue_app">
+
     {{-- @php
         dd($errors);
     @endphp --}}
+
     <!-- ------------START-----loader------------ -->
     <div class="loader">
         <div class="loader_img">
@@ -119,7 +121,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         - Login and Register -
         ===========-->
 
-        <div class="log-in" style="background: #fff">{{-- asset('front/img/regestraion-1.jpg') --}}
+        <div class="log-in" style="background: url({{asset('front/img/background.jpg')}})">{{-- asset('front/img/background.jpg') --}}
             <div class="log-in_top">
                 <i>+</i>
                 <a href="{{route('front.main')}}"><img src="https://abudiyab-soft.com/storage/181/logo-edited-png24.png"></a>
@@ -143,7 +145,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
         </div>
 
-        <div class="register">
+        <div class="register" style="background: url({{asset('front/img/background.jpg')}})">
             <div class="register_top">
                 <i>+</i>
                 <a href="{{route('front.main')}}"><img class="ml-4 nav-logo" src="{{optional(Settings::instance('logo'))->getFirstMediaUrl('logo')}}" style="position: relative;top: 10px;left: 65px;width: 120px;"></a>
@@ -438,10 +440,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                 let valueMobileNumber = '';
                 let previousLength = 0;
-                let phoneNumberKeys = ['050','053','054','055','056','057','058','059'];
+                let phoneNumberKeys = ['50','53','54','55','56','57','58','59'];
                 let registerHasError=`{{isset($errors) ? $errors->any() : ''}}`;
-                let emailHasError=`{{$errors->has('email') && isset($errors) ? $errors->first('email') : ''}}`;
-                let phoneHasError=`{{$errors->has('phone') && isset($errors) ? $errors->first('phone') : ''}}`;
+                let allRegisterError=`{{isset($errors) ? $errors : ''}}`;
+                let emailHasError=`{{isset($errors)&& $errors->has('email')  ? $errors->first('email') : ''}}`;
+                console.log(allRegisterError);
+                let phoneHasError=`{{isset($errors) && $errors->has('phone')  ? $errors->first('phone') : ''}}`;
                 console.log('kamal');
                 if(registerHasError)
                 {
@@ -500,8 +504,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     }
 
                     // Mobile Number
-                    let phoneNumberKey = `${registerMobileNumber.value[0]}${registerMobileNumber.value[1]}${registerMobileNumber.value[2]}`;
-                    if (registerMobileNumber.value.replaceAll(' ','').length != 10 || !phoneNumberKeys.includes(phoneNumberKey)) {
+                    let phoneNumberKey = `${registerMobileNumber.value[0]}${registerMobileNumber.value[1]}`;
+                    if (registerMobileNumber.value.replaceAll(' ','').length != 9 || !phoneNumberKeys.includes(phoneNumberKey)) {
                         showInputError(registerMobileNumber, 'عذرا ، رقم الهاتف هذه غير صحيح');
                         document.querySelector('.registerMobileNumber').classList.add('error');
                     }
@@ -644,7 +648,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             $(".loader").animate({opacity: "0"}, 2000, function() {
                 $(".loader").remove();
             });
-            $('body').css('overflow','auto');
+            // $('body').css('overflow','auto');
         });
 
     </script>
