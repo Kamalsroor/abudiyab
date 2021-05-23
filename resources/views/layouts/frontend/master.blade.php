@@ -128,7 +128,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
             <div class="log-in_center">
                 {{-- <a class="log-in_center_logo" href="{{route('front.main')}}"><img src="{{optional(Settings::instance('logo'))->getFirstMediaUrl('logo')}}"></a> --}}
-                <form action="{{ route('login') }}" method="post" class="log-in_center_form" style="display: none;">
+                <form action="{{ route('login') }}" method="post" class="log-in_center_form">
                     @csrf
                     <h2>تسجيل الدخول</h2>
                     <div class="log-in_center_form_email">
