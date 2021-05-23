@@ -35,6 +35,11 @@
                 width: fit-content;
                 img {
                     width: 120px;
+                    @include location(0%, 10%);
+                    @media (max-width: 414px) {
+                        top: 10px;
+                        width: 70px;
+                    }
                 }
             }
         }
@@ -49,7 +54,8 @@
                 border: 1px solid #e3e3e3;
                 padding: 48px;
                 border-radius: 12px;
-                background-color: #f7f7f7;
+                // background-color: #f7f7f7;
+                background-color: #eaeaea;
                 @media (max-width: 475px) {
                     border-radius: 0px;
                     padding: 48px 40px;
@@ -57,7 +63,6 @@
                 @media (max-width: 450px) {
                     padding: 48px 20px;
                 }
-                // background-color: #eaeaea;
                 h2 {
                     margin-bottom: 45px;
                     text-align: center;
@@ -151,8 +156,8 @@
             text-align: right;
             font-style: normal;
             border: 1px solid #e3e3e3;
-            background-color: #f7f7f7;
-            // background-color: #eaeaea;
+            // background-color: #f7f7f7;
+            background-color: #eaeaea;
             padding: 48px 48px 0px;
             border-radius: 12px;
             &_form {

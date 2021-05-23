@@ -120,7 +120,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="log-in" style="background: #fff">{{-- asset('front/img/regestraion-1.jpg') --}}
             <div class="log-in_top">
                 <i>+</i>
-                <a href="{{route('front.main')}}"><img src="{{optional(Settings::instance('logo'))->getFirstMediaUrl('logo')}}"></a>
+                <a href="{{route('front.main')}}"><img src="https://abudiyab-soft.com/storage/181/logo-edited-png24.png"></a>
             </div>
             <div class="log-in_center">
                 {{-- <a class="log-in_center_logo" href="{{route('front.main')}}"><img src="{{optional(Settings::instance('logo'))->getFirstMediaUrl('logo')}}"></a> --}}
@@ -437,9 +437,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 let valueMobileNumber = '';
                 let previousLength = 0;
                 let phoneNumberKeys = ['50','53','54','55','56','57','58','59'];
-                let registerHasError=`{{$errors->any()}}`;
-                let emailHasError=`{{$errors->has('email') ? $errors->first('email') : ''}}`;
-                let phoneHasError=`{{$errors->has('phone') ? $errors->first('phone') : ''}}`;
+                let registerHasError=`{{isset($errors) ? $errors->any() : ''}}`;
+                let allRegisterError=`{{isset($errors) ? $errors : ''}}`;
+                let emailHasError=`{{isset($errors) ? $errors->has('email') && isset($errors) ? $errors->first('email') : ''}}`;
+                console.log(allRegisterError);
+                let phoneHasError=`{{isset($errors) ?$errors->has('phone') && isset($errors) ? $errors->first('phone') : ''}}`;
+                console.log('kamal');
                 if(registerHasError)
                 {
                     register.style.display = 'block';
@@ -497,8 +500,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     }
 
                     // Mobile Number
-                    let phoneNumberKey = `${registerMobileNumber.value[0]}${registerMobileNumber.value[1]}${registerMobileNumber.value[2]}`;
-                    if (registerMobileNumber.value.replaceAll(' ','').length != 10 || !phoneNumberKeys.includes(phoneNumberKey)) {
+                    let phoneNumberKey = `${registerMobileNumber.value[0]}${registerMobileNumber.value[1]}`;
+                    if (registerMobileNumber.value.replaceAll(' ','').length != 9 || !phoneNumberKeys.includes(phoneNumberKey)) {
                         showInputError(registerMobileNumber, 'عذرا ، رقم الهاتف هذه غير صحيح');
                         document.querySelector('.registerMobileNumber').classList.add('error');
                     }
