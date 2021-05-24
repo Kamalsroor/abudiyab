@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Events\sendInvoiceMailEvent;
 use App\Models\AreaPricing;
 use Livewire\Component;
 use App\Models\Car;
@@ -170,7 +171,10 @@ class BookingSteps extends Component
             }
         }
 
-
+        if($this->currentStep == 5)
+        {
+            event(new sendInvoiceMailEvent(Auth()->user(),$this->order,$this->receiving_branch,$this->delivery_branch,$this->reciving_date,$this->delivery_date));
+        }
 
 
         $features_price = 0 ;

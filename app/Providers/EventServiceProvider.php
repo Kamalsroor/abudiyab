@@ -28,6 +28,9 @@ class EventServiceProvider extends ServiceProvider
         \App\Events\sendSubscripeMessage::class => [
             \App\Listeners\sendSubscripeEmailListener::class,
         ],
+        \App\Events\sendInvoiceMailEvent::class => [
+            \App\Listeners\sendInvoiceMailListener::class,
+        ],
     ];
 
     /**

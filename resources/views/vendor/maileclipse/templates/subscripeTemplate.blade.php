@@ -382,6 +382,7 @@
 
 <body bgcolor="#ffffff">
 <div align="center">
+
 <table class="head-wrap w320 full-width-gmail-android" border="0" width="100%" cellspacing="0" cellpadding="0" bgcolor="#f9f8f8">
 <tbody>
 <tr>
@@ -442,7 +443,7 @@
 </tr>
 </tbody>
 </table>
-<div style="text-align: left;"><a style="background-color: #c52205; border: 1px solid #b41b07; border-radius: 4px; color: #ffffff; display: inline-block; font-family: sans-serif; font-size: 17px; font-weight: bold; text-shadow: -1px -1px #ad0e0e; line-height: 38px; text-align: center; text-decoration: none; width: 190px; -webkit-text-size-adjust: none; mso-hide: all;" href="#">لالغاء الاشتراك</a></div>
+<div style="text-align: left;"><a  style="background-color: #c52205; border: 1px solid #b41b07; border-radius: 4px; color: #ffffff; display: inline-block; font-family: sans-serif; font-size: 17px; font-weight: bold; text-shadow: -1px -1px #ad0e0e; line-height: 38px; text-align: center; text-decoration: none; width: 190px; -webkit-text-size-adjust: none; mso-hide: all;" href="{{route('front.main').'?email='.$encemail}}">لالغاء الاشتراك</a></div>
 <table class="body-signature-block" style="width: 0px;">
 <tbody>
 <tr>

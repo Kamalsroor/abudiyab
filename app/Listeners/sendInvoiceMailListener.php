@@ -2,12 +2,12 @@
 
 namespace App\Listeners;
 
-use App\Mail\subscripe;
+use App\Mail\invoiceMail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
 
-class sendSubscripeEmailListener
+class sendInvoiceMailListener
 {
     /**
      * Create the event listener.
@@ -27,7 +27,9 @@ class sendSubscripeEmailListener
      */
     public function handle($event)
     {
+        //
 
-        Mail::to($event->data['email'])->send(new subscripe($event->data['email']));
+        Mail::to($event->data['email'])->send(new invoiceMail($event->data['email'],$event->order,$event->receiving_branch,$event->delivery_branch,$event->reciving_date,$event->delivery_date));
+
     }
 }

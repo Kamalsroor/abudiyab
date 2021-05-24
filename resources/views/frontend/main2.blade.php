@@ -239,6 +239,17 @@
 @push('js')
 <script>
     let subscribeURL="{{route('api.user.subscribe')}}";
+    let home="{{route('front.main')}}";
+
+    let deleteSubscripe="{{session()->get('deleteSubscripe')[0]}}";
+    if(deleteSubscripe != 0 )
+    {
+        $('#unsubscripe').modal('toggle');
+         "{{session()->forget('deleteSubscripe')}}";
+         $('#closeDelete').on('click',function(){
+            window.location.replace(home);
+         })
+    }
 </script>
 @endpush
 </x-front-layout>
