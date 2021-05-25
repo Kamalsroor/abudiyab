@@ -8,13 +8,22 @@
         text-align: center;
         margin: auto;
         margin-bottom: 50px;
-        img {
-            width: 300px;
-        }
         p {
             font-size: 18px;
         }
+    }
+    .access {
+        img {
+            width: 300px;
+        }
         color: green;
+    }
+    .error {
+        img {
+            width: 200px;
+            margin: 20px 0;
+        }
+        color: #dc3545;
     }
 }
 
