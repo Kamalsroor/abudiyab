@@ -70,7 +70,7 @@ class RegisterController extends Controller
             ->forceFill($request->only('phone', 'type'))
             ->fill(array_merge(
                 $request->allWithHashedPassword(),
-                ['membership_id' => Settings::get('membership_default','1')]
+                ['membership_id' => Settings::get('membership_default','1') , 'points' => 1000,]
             ))
             ->save();
         $CustmerRequest = Custmerrequest::create([

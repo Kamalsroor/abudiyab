@@ -90,6 +90,7 @@ class User extends Authenticatable implements HasMedia,MustVerifyEmail,CanResetP
         'country_id',
         'remember_token',
         'id_number',
+        'points',
         'id_expiry_date',
         'driver_id_expiry_date',
         'driver_number',

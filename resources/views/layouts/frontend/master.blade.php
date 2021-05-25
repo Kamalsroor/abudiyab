@@ -133,7 +133,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <h2>تسجيل الدخول</h2>
                     <div class="log-in_center_form_msg"></div>
                     <div class="log-in_center_form_email">
-                        <label>البريد الاركتروني<span>احتاج الى حساب? <a onclick="logInOrRegister('register')">انشاء حساب</a></span></label>
+                        <label>البريد الالكتروني<span>احتاج الى حساب؟ <a onclick="logInOrRegister('register')">انشاء حساب</a></span></label>
                         <input type="email" name="email" class="form-control" id="loginEmail" required>
                         <div class="invalid-feedback"></div>
                     </div>
@@ -143,27 +143,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="invalid-feedback"></div>
                     </div>
                     <button type="submit" class="primary-btn btn-hover btn-curved">تسجيل الدخول</button>
-                    <p class="log-in_center_form_forgot-password" onclick="forgotPassword(1);">نسيت كلمة السر? </p>
+                    <p class="log-in_center_form_forgot-password" onclick="forgotPassword(1);">نسيت كلمة السر؟ </p>
                 </form>
                 <div class="forgot-password">
 
                     <form action="" method="post" class="log-in_center_form forgot-password_step-1">
                         @csrf
-                        <h2>يرجى إدخال بريدك الإلكتروني</h2>
+                        <h2>رجاءا أدخل بريدك الإلكتروني</h2>
+                        <p>سيتم ارسال رمز تأكيد الي بريدك الإلكتروني</p>
                         <div>
-                            <label>البريد الاركتروني</label>
-                            <input type="email" name="email" class="form-control email" required>
+                            <label>البريد الالكتروني <span>العودة إلى <a onclick="forgotPasswordRetreat(1)">تسجيل الدخول</a></span></label>
+                            <input type="email" name="email" class="form-control email" autocomplete="off">
                             <div class="invalid-feedback"></div>
                         </div>
-                        <button type="submit" class="primary-btn btn-hover btn-curved" onclick="forgotPassword(2);">ارسال رمز الي البريد الاركتروني</button>
+                        <button type="submit" class="primary-btn btn-hover btn-curved" onclick="forgotPassword(2);">أرسال الرمز</button>
                     </form>
 
                     <form action="" method="post" class="log-in_center_form forgot-password_step-2">
                         @csrf
-                        <h2>تم ارسال رمز الي بريدك الاركتروني</h2>
+                        <h2>تم ارسال رمز الي بريدك الالكتروني</h2>
+                        <p></p>
                         <div>
-                            <label>ادخال كود</label>
-                            <input type="number" name="code" class="form-control codeNumber" required placeholder="code" style="text-align: left;">
+                            <label>ادخال كود <span>العودة إلى <a onclick="forgotPasswordRetreat(2)">تسجيل الدخول</a></span></label>
+                            <input type="number" name="code" class="form-control codeNumber" placeholder="كود" autocomplete="off">
                             <div class="invalid-feedback"></div>
                         </div>
                         <button type="submit" class="primary-btn btn-hover btn-curved" onclick="forgotPassword(3);">تحقق</button>
@@ -171,18 +173,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                     <form action="" method="post" class="log-in_center_form forgot-password_step-3">
                         @csrf
-                        <h2>كلمة السر الجديده</h2>
+                        <h2>كلمة السر الجديدة</h2>
                         <div>
-                            <label>كلمة السر<span onclick="togglePassword('.forgot-password_step-3 .form-control', this, [`<i class='far fa-eye-slash'></i> اخفاء`, `<i class='far fa-eye'></i> اظهار`]);"><i class="far fa-eye"></i> اظهار</span></label>
-                            <input type="password" name="password" class="form-control password" required>
+                            <label>كلمة السر<span onclick="togglePassword('.forgot-password_step-3 .form-control', this, [`<i class='far fa-eye-slash'></i> اخفاء`, `<i class='far fa-eye'></i> اظهار`]);" style="cursor: pointer;"><i class="far fa-eye"></i> اظهار</span></label>
+                            <input type="password" name="password" class="form-control password" autocomplete="off">
                             <div class="invalid-feedback"></div>
                         </div>
                         <div>
-                            <label>تأكيد كلمة السر</label>
-                            <input type="password" name="password" class="form-control confirmPassword" required>
+                            <label>تأكيد كلمة السر <span>العودة إلى <a onclick="forgotPasswordRetreat(3)">تسجيل الدخول</a></span></label>
+                            <input type="password" name="password" class="form-control confirmPassword" autocomplete="off">
                             <div class="invalid-feedback"></div>
                         </div>
-                        <button type="submit" class="primary-btn btn-hover btn-curved" onclick="forgotPassword(4);">تغير كلمة السر</button>
+                        <button type="submit" class="primary-btn btn-hover btn-curved" onclick="forgotPassword(4);">قم بتغيير كلمة المرور</button>
                     </form>
 
                 </div>
@@ -192,37 +194,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
         @push('js')
 
         <script>
-        // '<i class="far fa-eye-slash"></i> اخفاء'
-        // '<i class="far fa-eye"></i> اظهار'
-            let togglePassword = (input, div, content) => {
-                inputs = document.querySelectorAll(input);
-                inputs.forEach(input => {
-                    if (input.type === 'password') {
-                        if (div != undefined && content[0] != undefined) {
-                            div.innerHTML = content[0];
-                        }
-
-                        input.type = 'text';
-                    }
-                    else{
-                        if (div != undefined && content[1] != undefined) {
-                            div.innerHTML = content[1];
-                        }
-
-                        input.type = 'password';
-                    }
-                });
-            }
-
+            // Function Forgot Password
             let forgotPassword = (step) => {
                 let forms = document.querySelectorAll(`.log-in_center_form`),
                     form = document.querySelector(`.forgot-password_step-${step}`),
                     span = document.querySelector(`.forgot-password_step-4 .span`),
                     errors = false,
                     ShowPassword = false,
+                    commuteTime = 1000,
                     error = (input, errorText, wanted = true) => {
                             input.classList.add('is-invalid');
+                            input.classList.remove('is-valid');
                             input.nextElementSibling.innerHTML = errorText;
+                            input.focus();
                             if (input.value.length == 0 && wanted == true) {
                                 input.nextElementSibling.innerHTML = 'هذا الحقل مطلوب';
                             }
@@ -234,7 +218,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             document.querySelector('.log-in_center_form').style.display = 'block';
                             let msg = document.querySelector('.log-in_center_form_msg');
                             msg.innerHTML = `<div class="alert alert-success alert-dismissible fade show" role="alert">
-                                                <strong>تم تغير كلمة السر</strong>
+                                                <strong>تم تغيير كلمة السر</strong>
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="text-align: right;">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -252,14 +236,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     if (step === 2) {
                         let stepEamil = step - 1;
                         let email = document.querySelector(`.forgot-password_step-${stepEamil} .email`);
+                        let viewEmail = document.querySelector(`.forgot-password_step-${stepEamil + 1} p`);
                         let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
                         if (email.value.match(pattern) === null) {
-                            email.classList.remove('is-invalid');
-                            error(email, 'عذرا ، البريد الالكتروني هذا غير صحيح');
+                            error(email, 'عذرا ، البريد الالكتروني غير صحيح');
                         }
                         else{
                             email.classList.remove('is-invalid');
-                            next();
+                            email.classList.add('is-valid');
+                            viewEmail.innerHTML = email.value;
+                            setTimeout(() => {
+                                next();
+                            }, commuteTime);
                         }
                     }
 
@@ -267,11 +255,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         let stepCodeNumber = step - 1;
                         let codeNumber = document.querySelector(`.forgot-password_step-${stepCodeNumber} .codeNumber`);
                         if (codeNumber.value.length !== 6) {
-                            error(codeNumber, 'عذرا هذه الكود غير صحيح');
+                            error(codeNumber, 'عذرا ، هذا الرمز غير صحيح');
                         }
                         else{
                             codeNumber.classList.remove('is-invalid');
-                            next();
+                            codeNumber.classList.add('is-valid');
+                            setTimeout(() => {
+                                next();
+                            }, commuteTime);
                         }
                     }
 
@@ -280,18 +271,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         let password = document.querySelector(`.forgot-password_step-${stepNewPassword} .password`);
                         let confirmPassword = document.querySelector(`.forgot-password_step-${stepNewPassword} .confirmPassword`);
                         if (password.value.length < 8) {
-                            error(password, 'عذرا ، لاكن يجب أن تكون كلمة المرور 8 على الأقل');
+                            error(password, 'عذرًا ، لكن يجب أن تكون كلمة المرور 8 على الأقل');
                         }
                         else if (confirmPassword.value != password.value) {
                             password.classList.remove('is-invalid');
-                            error(confirmPassword, 'عذرا ، لاكن كلمة السر غير متطابقة');
+                            password.classList.add('is-valid');
+                            error(confirmPassword, 'عذرا ، لكن كلمة المرور غير متطابقة');
                         }
                         else{
-                            next();
+                            password.classList.remove('is-invalid');
+                            confirmPassword.classList.remove('is-invalid');
+                            password.classList.add('is-valid');
+                            confirmPassword.classList.add('is-valid');
+                            setTimeout(() => {
+                                next();
+                            }, commuteTime);
                         }
                     }
 
                     form.addEventListener('click', (e) => {e.preventDefault()});
+            }
+
+            let forgotPasswordRetreat = (step) => {
+                document.querySelector(`.forgot-password_step-${step}`).style.display = 'none';
+                document.querySelector('.log-in_center_form').style.display = 'block';
             }
         </script>
 
@@ -308,7 +311,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <h2>حساب جديد</h2>
                     <div class="register_center_form_inputs">
                         <div class="register_center_form_inputs_input">
-                            <label>الاسم باكامل<span>لدي حساب بالفعل? <a onclick="logInOrRegister('login')">تسجيل الدخول</a></span></label>
+                            <label>الاسم باكامل<span>لدي حساب بالفعل؟ <a onclick="logInOrRegister('login')">تسجيل الدخول</a></span></label>
                             <input type="text" name="username" class="form-control" id="registerName">
                             <div class="invalid-feedback"></div>
                         </div>
@@ -402,6 +405,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         @push('js')
             <script>
+                let togglePassword = (input, div, content) => {
+                    inputs = document.querySelectorAll(input);
+                    inputs.forEach(input => {
+                        if (input.type === 'password') {
+                            if (div != undefined && content[0] != undefined) {
+                                div.innerHTML = content[0];
+                            }
+
+                            input.type = 'text';
+                        }
+                        else{
+                            if (div != undefined && content[1] != undefined) {
+                                div.innerHTML = content[1];
+                            }
+
+                            input.type = 'password';
+                        }
+                    });
+                }
                 // logIn
                 let logIn = document.querySelector('#vue_app .log-in'),
                     btnHideLogIn = document.querySelector('.log-in_top i'),
@@ -424,7 +446,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     }
                 btnShowPasswordLogIn.addEventListener('click', togglePasswordLogIn);
                 btnShowLogIn.addEventListener('click', () => {logIn.style.display = 'block'; document.body.style.overflow='hidden'});
-                btnHideLogIn.addEventListener('click', () => {logIn.style.display = 'none'; document.body.style.overflow='auto';});
+                btnHideLogIn.addEventListener('click', () => {
+                    logIn.style.display = 'none';
+                    document.body.style.overflow='auto';
+                    document.querySelectorAll('.log-in_center_form').forEach(form => {
+                        form.style.display = 'none';
+                    });
+                    document.querySelector('.log-in_center_form').style.display = 'block';
+                });
 
                 // register
                 let register = document.querySelector('#vue_app .register'),
@@ -449,12 +478,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         }
                     }
                 if (document.location['hash'] == '#register') {
-                    document.body.style.overflow = 'hidden';
+                    window.onload = () => document.body.style.overflow = 'hidden';
                     register.style.display = 'block';
                     logIn.style.display = 'none';
                 }
                 if (document.location['hash'] == '#login') {
-                    document.body.style.overflow='hidden';
+                    window.onload = () => document.body.style.overflow = 'hidden';
                     logIn.style.display = 'block';
                     register.style.display = 'none';
                 }
@@ -676,10 +705,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                     // Password
                     if (registerPassword.value.length < 8) {
-                        showInputError(registerPassword, 'عذرا ، لاكن يجب أن تكون كلمة المرور 8 على الأقل');
+                        showInputError(registerPassword, 'عذرًا ، لكن يجب أن تكون كلمة المرور 8 على الأقل');
                     }
                     else if (registerConfirmPassword.value != registerPassword.value) {
-                        showInputError(registerConfirmPassword, 'عذرا ، لاكن كلمة السر غير متطابقة');
+                        showInputError(registerConfirmPassword, 'عذرا ، لكن كلمة المرور غير متطابقة');
                     }
 
 
