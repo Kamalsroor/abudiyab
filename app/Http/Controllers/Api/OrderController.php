@@ -323,9 +323,9 @@ class OrderController extends Controller
             'price' => $price,
             'authorization_fee' => $authorization_fee,
             'membership_discount' => $membership_discount,
-            'cash_active' => isset($cash_active) ? $cash_active : false ,
-            'visa_active' => isset($visa_active) ? $visa_active : false ,
-            'points_active' => isset($points_active) ? $points_active : false ,
+            'cash_active' => isset($cash_active) ? $cash_active : true ,
+            'visa_active' => isset($visa_active) ? $visa_active : true ,
+            'points_active' => isset($points_active) ? $points_active : true ,
             'order' => new OrderResource($order),
             // 'payment_url' => $paymentUrl,
         ]);
