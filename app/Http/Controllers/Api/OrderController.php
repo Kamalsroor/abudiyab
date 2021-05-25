@@ -310,6 +310,10 @@ class OrderController extends Controller
             $order->update([
                 'price' => $total,
             ]);
+
+            $cash_active = null;
+            $visa_active = null;
+            $points_active = null;
         return response()->json([
             'status' => true,
             'promotional_discount' => $promotional_discount,
@@ -319,6 +323,9 @@ class OrderController extends Controller
             'price' => $price,
             'authorization_fee' => $authorization_fee,
             'membership_discount' => $membership_discount,
+            'cash_active' => isset($cash_active) ? $cash_active : true ,
+            'visa_active' => isset($visa_active) ? $visa_active : true ,
+            'points_active' => isset($points_active) ? $points_active : true ,
             'order' => new OrderResource($order),
             // 'payment_url' => $paymentUrl,
         ]);
@@ -430,6 +437,27 @@ class OrderController extends Controller
                     // return  $htmlBodyContent ;
                 }
             }
+        }else if($request->payment_type == "points"){
+
+            $oderPriceForPoints = $order->price * 10 ;
+            if( auth()->user()->points  <  $oderPriceForPoints ){
+                return response()->json([
+                    'massage' => "لا يوجد نقاط كافيه لتأكيد الحجز",
+                ],422);
+            }
+
+            auth()->user()->update([
+                'points' => auth()->user()->points - $oderPriceForPoints ,
+            ]);
+
+            $order->update([
+                'payment_type' => 'points',
+            ]);
+
+            return response()->json([
+                'status' => true,
+                'order' => new OrderResource($order),
+            ]);
         }else{
             $order->update([
                 'payment_type' => 'cash',

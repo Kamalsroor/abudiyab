@@ -28,8 +28,8 @@ class OrderStep3Request extends FormRequest
 
         return [
             'order_id' => ['required', 'exists:orders,id'],
-            'payment_type' => ['required', 'in:visa,cash'],
-            'nameOnCard' => ['required_if:payment_type,visa', 'string','max:200'],
+            'payment_type' => ['required', 'in:visa,cash,points'],
+            'nameOnCard' => ['sometimes','nullable', 'string','max:200'],
             'CardNumber' => ['required_if:payment_type,visa', 'numeric','digits_between:10,20'],
             'expiry_month' => ['required_if:payment_type,visa','max:2'],
             'expiry_year' => ['required_if:payment_type,visa','max:2'],
