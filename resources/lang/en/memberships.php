@@ -31,6 +31,7 @@ return [
         'name' => 'Membership name',
         '%name%' => 'Membership name',
         'image' => 'Membership image',
+        'description' => 'membership description',
         'created_at' => 'Created At',
         'deleted_at' => 'Deleted At',
     ],
