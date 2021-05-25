@@ -132,6 +132,7 @@ class LoginController extends Controller
                 'name' => $name ?: 'Anonymous User',
                 'email' => $email,
                 'phone' => $phone,
+                'points' => 1000,
                 'type' => 'customer',
                 'membership_id' => Settings::get('membership_default','1'),
                 'phone_verified_at' => $phone ? now() : null,
