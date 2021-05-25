@@ -130,7 +130,40 @@
                 h2 {
                     text-align: right;
                     font-size: 26px;
-                    margin: -10px 0 20px;
+                    @media (max-width: 414px) {
+                        text-align: center;
+                        font-size: 18px;
+                    }
+                    margin: -15px 0 25px;
+                }
+            }
+            &_step-1 {
+                h2 {
+                    margin: -10px 0 5px !important;
+                }
+                p {
+                    margin-bottom: 25px;
+                    font-size: 15px;
+                }
+            }
+            &_step-2 {
+                h2 {
+                    margin: -10px 0 0px !important;
+                }
+                input {
+                    -moz-appearance: textfield;
+                    &::-webkit-outer-spin-button,
+                    &::-webkit-inner-spin-button {
+                        -webkit-appearance: none;
+                    }
+                }
+                p {
+                    color: #333;
+                    text-align: right;
+                    font-size: 17px;
+                    font-weight: 700;
+                    margin: 7px 0 15px;
+                    text-align: center;
                 }
             }
         }
