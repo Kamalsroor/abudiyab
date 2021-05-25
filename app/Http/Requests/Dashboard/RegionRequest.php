@@ -45,6 +45,7 @@ class RegionRequest extends FormRequest
             '%name%' => ['required', 'string', 'max:255'],
             'code' => ['required', 'string', 'max:255'],
             'master_id' => ['required','unique:regions,master_id'],
+            'city' => ['required'],
         ]);
     }
 

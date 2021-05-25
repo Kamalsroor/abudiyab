@@ -26,6 +26,10 @@ class CarRequest extends FormRequest
     {
         return RuleFactory::make([
             '%name%' => ['required', 'string', 'max:255'],
+            'category_id' => ['required'],
+            'manufactories' => ['required'],
+            'description' => ['required'],
+            'code' => ['required'],
         ]);
     }
 
