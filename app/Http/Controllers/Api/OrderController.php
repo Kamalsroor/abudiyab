@@ -491,6 +491,16 @@ class OrderController extends Controller
                 'order' => new OrderResource($order),
             ]);
             // $this->currentStep = 5;
+        }else if ( $order->payment_type == 'points') {
+            return response()->json([
+                'status' => true,
+                'order' => new OrderResource($order),
+            ]);
+        }else if ( $order->payment_type == 'cash') {
+            return response()->json([
+                'status' => true,
+                'order' => new OrderResource($order),
+            ]);
         }else{
             return response()->json([
                 'status' => false,
