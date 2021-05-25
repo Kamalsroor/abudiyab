@@ -26,6 +26,8 @@ use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
 use Settings;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Cache;
+use App\Models\Subscribe;
+use Illuminate\Support\Facades\Crypt;
 
 class FrontendController extends Controller
 {
@@ -75,8 +77,16 @@ class FrontendController extends Controller
         $partners = Cache::remember('partners', $expire, function() {
             return Partner::get();
         });
-
-
+        $deleteSubscripe=0;
+        if(request('email') != null)
+        {
+           $email=Crypt::decrypt(request('email'));
+           $deleteSubscripe=Subscribe::where('email',$email);
+           $deleteSubscripe->delete();
+           $deleteSubscripe=1;
+        }
+        session()->forget('deleteSubscripe');
+        session()->push('deleteSubscripe', $deleteSubscripe);
         $this->seo()->setTitle(Settings::locale(app()->getLocale())->get('seo_home_title'));
         $this->seo()->setDescription(Settings::locale(app()->getLocale())->get('seo_home_description'));
         SEOMeta::addMeta('twitter:image', optional(Settings::instance('seo_home_image'))->getFirstMediaUrl('seo_home_image') , 'property');

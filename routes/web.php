@@ -42,6 +42,7 @@ Route::as('front.')->group(function () {
 
 
     Route::get('/', 'Frontend\FrontendController@index')->name('main');
+    Route::post('/test', 'Frontend\FrontendController@index')->name('test');
     Route::get('/fleet', 'Frontend\FrontendController@fleet')->name('fleet');
     Route::get('/booking', 'Frontend\FrontendController@booking')->name('booking');
     Route::get('/branches', 'Frontend\FrontendController@branches')->name('branches');

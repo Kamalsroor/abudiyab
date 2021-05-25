@@ -182,7 +182,21 @@
 
 
 
-
+                <div class="modal" tabindex="-1" id="unsubscripe" style="display: none" role="dialog">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">تم الغاء الاشتراك بنجاح</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-danger" id='closeDelete' data-dismiss="modal">الغاء</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
 
 
