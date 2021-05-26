@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Spatie\Sitemap\SitemapGenerator;
+use Illuminate\Support\Facades\Password;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,6 +96,10 @@ Route::as('front.')->group(function () {
     Route::get('/contracts', 'Frontend\ContractController@getContracts')->name('contracts');
 
     Route::post('/car-sales-request', 'Frontend\PurchaseController@create')->name('purchaserequests.car-sales-request');
+
+    Route::post('/password/reset/message', 'Frontend\ChangeUserPasswordController@forget')->name('password.reset.message');
+    Route::post('/password/reset/code', 'Frontend\ChangeUserPasswordController@code')->name('password.reset.code');
+    Route::post('/password/reset/password', 'Frontend\ChangeUserPasswordController@reset')->name('password.reset.password');
 
     // Route::get('/register', function(){
     //     return view('frontend.register');

@@ -43,6 +43,7 @@ class Membership extends Model implements HasMedia, TranslatableContract
         'extra_hours',
         'allowed_Kilos',
         'delivery_discount_regions',
+        'description',
     ];
 
     /**

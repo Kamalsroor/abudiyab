@@ -107,4 +107,14 @@
             @endslot
         @endif
     @endcomponent
+    @push('scripts')
+        <script>
+            let errors="{{$errors->all()? 1:0 }}";
+            if(errors==1)
+            {
+                let id=`#custmerrequest-{{ $custmerrequest->id }}-approved-model`;
+                $(id).modal('show');
+            }
+        </script>
+    @endpush
 </x-layout>

@@ -6,6 +6,8 @@ use Parental\HasChildren;
 use App\Http\Filters\Filterable;
 use App\Http\Filters\UserFilter;
 use App\Notifications\Accounts\VerifyEmailNotification;
+use App\Notifications\Accounts\ResetPasswordNotification;
+
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\MediaLibrary\HasMedia;
 use App\Support\Traits\Selectable;
@@ -22,7 +24,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use AhmedAliraqi\LaravelMediaUploader\Entities\Concerns\HasUploader;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-class User extends Authenticatable implements HasMedia,MustVerifyEmail
+use Illuminate\Contracts\Auth\CanResetPassword;
+
+class User extends Authenticatable implements HasMedia,MustVerifyEmail,CanResetPassword
 {
     use HasFactory;
     use Notifiable;
@@ -305,5 +309,16 @@ class User extends Authenticatable implements HasMedia,MustVerifyEmail
     public function sendEmailVerificationNotification()
     {
         $this->notify(new VerifyEmailNotification);
+    }
+
+        /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPasswordNotification($token));
     }
 }
