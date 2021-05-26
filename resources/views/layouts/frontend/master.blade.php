@@ -312,17 +312,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="register_center_form_inputs">
                         <div class="register_center_form_inputs_input">
                             <label>الاسم باكامل<span>لدي حساب بالفعل؟ <a onclick="logInOrRegister('login')">تسجيل الدخول</a></span></label>
-                            <input type="text" name="username" class="form-control" id="registerName">
+                            <input type="text" name="username" class="form-control"  value="{{ old('username') }}" id="registerName">
                             <div class="invalid-feedback"></div>
                         </div>
                         <div class="register_center_form_inputs_input">
                             <label>البريد الاركتروني</label>
-                            <input type="email" name="email" class="form-control" id="registerEmail">
+                            <input type="email" name="email" class="form-control" value="{{ old('email') }}" id="registerEmail">
                             <div class="invalid-feedback"></div>
                         </div>
                         <div class="register_center_form_inputs_input registerMobileNumber">
                             <label>رقم الجوال</label>
-                            <input type="text" name="phone" class="form-control" id="registerMobileNumber" oninput="numberDesign(this);" max="12">
+                            <input type="text" name="phone" class="form-control" value="{{ old('phone') }}" id="registerMobileNumber" oninput="numberDesign(this);" max="12">
                             <div class="invalid-feedback"></div>
                         </div>
                         <div class="register_center_form_inputs_input password One">
