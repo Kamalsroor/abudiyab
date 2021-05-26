@@ -68,7 +68,7 @@ Route::as('front.')->group(function () {
     Route::get('/candidates', 'Frontend\FrontendController@getCandidates')->name('getCandidates');
     Route::post('/candidates', 'Frontend\FrontendController@addCandidates')->name('addCandidates');
     Route::get('/favorite', 'Frontend\FrontendController@favorite')->name('favorite');
-    Route::get('/contactus', 'Frontend\FrontendController@contactus')->name('contactus');
+    Route::get('/contact', 'Frontend\FrontendController@contactus')->name('contact');
     Route::get('/employment', 'Frontend\FrontendController@employment')->name('employment');
     Route::get('/bookingmodel', 'Frontend\FrontendController@bookingModal')->name('bookingModel');
     Route::get('/profile', 'Frontend\FrontendController@profile')->name('profile')->middleware('verified');

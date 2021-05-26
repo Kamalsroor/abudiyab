@@ -219,7 +219,7 @@
 <table class="container-for-gmail-android" width="100%" cellspacing="0" cellpadding="0" align="center">
 <tbody>
 <tr>
-<td style="background: repeat-x url('http://s3.amazonaws.com/swu-filepicker/4E687TRe69Ld95IDWyEg_bg_top_02.jpg') #ffffff;" align="left" valign="top" width="100%"><center><img class="force-width-gmail" src="{{app_logo()}}" />
+<td style="background: repeat-x url('http://s3.amazonaws.com/swu-filepicker/4E687TRe69Ld95IDWyEg_bg_top_02.jpg') #ffffff;" align="left" valign="top" width="100%"><center><img class="force-width-gmail" src="{{asset('front/img/ABUDIYAB2.jpg')}}" />
 <table style="background-color: transparent;" width="100%" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
 <tbody>
 <tr>
@@ -231,7 +231,7 @@
 <table class="w320" width="600" cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
-<td class="pull-left mobile-header-padding-left" style="vertical-align: middle;"><a><img src="{{app_logo()}}" alt="logo" width="137" height="47" /></a></td>
+<td class="pull-left mobile-header-padding-left" style="vertical-align: middle;"><a><img src="{{asset('front/img/ABUDIYAB2.jpg')}}" alt="logo" width="137" height="47" /></a></td>
 <td class="pull-right mobile-header-padding-right" style="color: #4d4d4d;"><a href="{{Settings::get('twitter')}}"><img src="http://s3.amazonaws.com/swu-filepicker/k8D8A7SLRuetZspHxsJk_social_08.gif" alt="twitter" width="44" height="47" /></a> <a href="{{Settings::get('facebook')}}"><img src="http://s3.amazonaws.com/swu-filepicker/LMPMj7JSRoCWypAvzaN3_social_09.gif" alt="facebook" width="38" height="47" /></a></td>
 </tr>
 </tbody>
@@ -251,10 +251,10 @@
 <table class="w320" width="600" cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
-<td class="header-lg">Welcome to abudiyab Inc!</td>
+<td class="header-lg">اهلا بك في شركه ابو ذياب لتاجير السيارات</td>
 </tr>
 <tr>
-<td class="free-text">Thank you for signing up with abudiyab We hope you enjoy your time with us. Check out some of our newest offers below or the button to view your new account.</td>
+<td class="free-text"> شكرا لتسجيلك في موقع ابو ذياب , برجاء الضغط علي الزر في الاسفل لتفعيل ايميلك الإلكتروني</td>
 </tr>
 <tr>
 <td class="button">
@@ -274,7 +274,7 @@
 <table width="100%" cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
-<td class="header-md">Check out our newest sales!</td>
+<td class="header-md">تفقد موقعنا و تمتع باسطول ابو ذياب</td>
 </tr>
 </tbody>
 </table>
@@ -303,7 +303,7 @@
 <tbody>
 <tr>
 <td style="text-align: left; width: 155px;"><a><span class="header-sm">{{$offer->name}}</span></a><br />زور موقعنا و تمتع بعروض ابو دياب</td>
-<td style="text-align: right; vertical-align: top;"><strong>{{$offer->price1}}</strong></td>
+<td style="text-align: right; vertical-align: top;"><strong>{{$offer->price1}} ريال</strong></td>
 </tr>
 </tbody>
 </table>

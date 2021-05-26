@@ -324,6 +324,9 @@ class FrontendController extends Controller
 
         return view('frontend.profile',compact('user','is_confirmed','newRequest'));
     }
+    public function contactus(){
+        return redirect()->route('front.main');
+    }
     public function addCandidates(Request $request)
     {
         $extension=['pdf','doc','docx','jpg','png'];

@@ -417,7 +417,7 @@
 <table class="soapbox">
 <tbody>
 <tr>
-<td class="soapbox-title">Welcome to Abudiyab Rent!</td>
+<td class="soapbox-title">مرحبا بك في ابو ذياب</td>
 </tr>
 </tbody>
 </table>
@@ -476,7 +476,7 @@
 <tbody>
 <tr>
 <td class="container">
-<div class="content footer-lead"><a href="#"><strong>Get in touch</strong></a> if you have any questions or feedback</div>
+<div class="content footer-lead"><a href="#"><strong>تواصل معنا</strong></a></div>
 </td>
 </tr>
 </tbody>
@@ -485,7 +485,7 @@
 <tbody>
 <tr>
 <td class="container">
-<div class="content"><a href="#">Contact Us</a>&nbsp;&nbsp;|&nbsp;&nbsp; <span class="footer-group"> <a href="#">Facebook</a>&nbsp;&nbsp;|&nbsp;&nbsp; <a href="#">Twitter</a>&nbsp;&nbsp;|&nbsp;&nbsp; <a href="#">Support</a> </span></div>
+<div class="content"><a href="{{route('front.contact')}}">تواصل معنا</a>&nbsp;&nbsp;|&nbsp;&nbsp; <span class="footer-group"> <a href="{{Settings::get('facebook')}}">فيسبوك</a>&nbsp;&nbsp;|&nbsp;&nbsp; <a href="{{Settings::get('twitter')}}">تويتر</a>&nbsp;&nbsp;|&nbsp;&nbsp;</span></div>
 </td>
 </tr>
 </tbody>
