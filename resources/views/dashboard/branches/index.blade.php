@@ -37,6 +37,7 @@
             </th>
             <th>@lang('branches.attributes.name')</th>
             <th>@lang('branches.attributes.code')</th>
+            <th>@lang('branches.attributes.p_coud')</th>
             <th>@lang('branches.attributes.created_at')</th>
             <th style="width: 160px">...</th>
         </tr>
@@ -54,6 +55,7 @@
                     </a>
                 </td>
                 <td>{{ $branch->region->name }}</td>
+                <td>{{ $branch->p_coud }}</td>
 
                 <td>{{ $branch->created_at->format('Y-m-d') }}</td>
 
