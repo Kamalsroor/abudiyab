@@ -239,6 +239,13 @@
 @push('js')
 <script>
     let subscribeURL="{{route('api.user.subscribe')}}";
+
+    let resetMessageURL="{{route('front.password.reset.message')}}";
+    let resetCodeURL="{{route('front.password.reset.code')}}";
+    let resetPasswordURL="{{route('front.password.reset.password')}}";
+
+
+
     let home="{{route('front.main')}}";
 
     let deleteSubscripe="{{session()->get('deleteSubscripe')[0]}}";
