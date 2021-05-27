@@ -19,6 +19,12 @@
     <div class="col-md-2">
         {{ BsForm::number('delivery_discount_regions')->min(1)->max(100) }}
     </div>
+
+</div>
+<div class="row">
+    <div class="col-md-3">
+        {{ BsForm::textarea('description')->label(trans('memberships.attributes.description'))->value(isset($membership) ? request('description'): 0) }}
+    </div>
 </div>
 @isset($membership)
     {{ BsForm::image('image')->files($membership->getMediaResource()) }}

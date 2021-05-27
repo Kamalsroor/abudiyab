@@ -51,7 +51,7 @@
                     {{ $employee->email }}
                 </td>
                 <td>
-                    @include('dashboard.accounts.employees.partials.flags.phone')
+                    {{ $employee->phone }}
                 </td>
                 <td>{{ $employee->created_at->format('Y-m-d') }}</td>
 

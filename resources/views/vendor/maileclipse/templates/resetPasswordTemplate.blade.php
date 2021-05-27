@@ -219,28 +219,11 @@
 <table class="container-for-gmail-android" width="100%" cellspacing="0" cellpadding="0" align="center">
 <tbody>
 <tr>
-<td style="background: repeat-x url('http://s3.amazonaws.com/swu-filepicker/4E687TRe69Ld95IDWyEg_bg_top_02.jpg') #ffffff;" align="left" valign="top" width="100%"><center><img class="force-width-gmail" src="{{asset('front/img/ABUDIYAB2.jpg')}}" />
+<td style="background: repeat-x url('http://s3.amazonaws.com/swu-filepicker/4E687TRe69Ld95IDWyEg_bg_top_02.jpg') #ffffff;" align="left" valign="top" width="100%"><center><img class="force-width-gmail" src="http://s3.amazonaws.com/swu-filepicker/SBb2fQPrQ5ezxmqUTgCr_transparent.png" />
 <table style="background-color: transparent;" width="100%" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
 <tbody>
 <tr>
-<td style="text-align: center; vertical-align: middle;" valign="top" width="100%" height="80"><!-- [if gte mso 9]>
-            <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="mso-width-percent:1000;height:80px; v-text-anchor:middle;">
-              <v:fill type="tile" src="http://s3.amazonaws.com/swu-filepicker/4E687TRe69Ld95IDWyEg_bg_top_02.jpg" color="#ffffff" />
-              <v:textbox inset="0,0,0,0">
-            <![endif]--><center>
-<table class="w320" width="600" cellspacing="0" cellpadding="0">
-<tbody>
-<tr>
-<td class="pull-left mobile-header-padding-left" style="vertical-align: middle;"><a><img src="{{asset('front/img/ABUDIYAB2.jpg')}}" alt="logo" width="137" height="47" /></a></td>
-<td class="pull-right mobile-header-padding-right" style="color: #4d4d4d;"><a href="{{Settings::get('twitter')}}"><img src="http://s3.amazonaws.com/swu-filepicker/k8D8A7SLRuetZspHxsJk_social_08.gif" alt="twitter" width="44" height="47" /></a> <a href="{{Settings::get('facebook')}}"><img src="http://s3.amazonaws.com/swu-filepicker/LMPMj7JSRoCWypAvzaN3_social_09.gif" alt="facebook" width="38" height="47" /></a></td>
-</tr>
-</tbody>
-</table>
-
-</center><!-- [if gte mso 9]>
-              </v:textbox>
-            </v:rect>
-            <![endif]--></td>
+<td style="text-align: center; vertical-align: middle;" valign="top" width="100%" height="80">&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -248,17 +231,17 @@
 </tr>
 <tr>
 <td class="content-padding" style="background-color: #f7f7f7;" align="center" valign="top" width="100%"><center>
-<table class="w320" width="600" cellspacing="0" cellpadding="0">
+<table class="w320" style="height: 310px;" width="650" cellspacing="0" cellpadding="0">
 <tbody>
-<tr>
-<td class="header-lg">اهلا بك في شركه ابو ذياب لتاجير السيارات</td>
+<tr style="height: 81px;">
+<td class="header-lg" style="height: 81px; width: 650px;">تغيير كلمه السر في موقع ابو دياب</td>
 </tr>
-<tr>
-<td class="free-text"> شكرا لتسجيلك في موقع ابو ذياب , برجاء الضغط علي الزر في الاسفل لتفعيل ايميلك الإلكتروني</td>
+<tr style="height: 63px;">
+<td class="free-text" style="height: 63px; width: 530px;">برجاء الضغط علي الزر في الاسفل لاستكمال خطوات تغيير كلمه السر</td>
 </tr>
-<tr>
-<td class="button">
-<div><a class="button-mobile" style="background-color: #24255e; border-radius: 5px; color: #ffffff; display: inline-block; font-family: 'Cabin', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: regular; line-height: 45px; text-align: center; text-decoration: none; width: 155px; -webkit-text-size-adjust: none; mso-hide: all;" href="{{$url}}">verify Email</a></div>
+<tr style="height: 45px;">
+<td class="button" style="height: 45px; width: 650px;">
+<div><a class="button-mobile" style="background-color: #2b409c; border-radius: 5px; color: #ffffff; display: inline-block; font-family: 'Cabin', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: regular; line-height: 45px; text-align: center; text-decoration: none; width: 155px; -webkit-text-size-adjust: none; mso-hide: all;" href="{{$url}}">تغيير كلمه السر</a></div>
 </td>
 </tr>
 </tbody>
@@ -270,72 +253,10 @@
 <table class="w320" width="600" cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
-<td class="content-padding">
-<table width="100%" cellspacing="0" cellpadding="0">
-<tbody>
-<tr>
-<td class="header-md">تفقد موقعنا و تمتع باسطول ابو ذياب</td>
-</tr>
-</tbody>
-</table>
-</td>
+<td class="content-padding">&nbsp;</td>
 </tr>
 <tr>
-<td style="padding-bottom: 75px;">
-<table style="border-collapse: separate !important;" width="100%" cellspacing="0" cellpadding="0">
-<tbody>
-<tr>
-@foreach ( $offers as $offer)
-
-<td class="info-block">
-<table style="border-collapse: separate !important;" width="100%" cellspacing="0" cellpadding="0">
-<tbody>
-<tr>
-<td class="block-rounded">
-<table width="100%" cellspacing="0" cellpadding="0">
-<tbody>
-<tr>
-<td class="info-img"><a><img class="info-img" src="{{$offer->getFirstMediaUrl()}}" alt="img" /></a></td>
-</tr>
-<tr>
-<td style="padding: 15px;">
-<table width="100%" cellspacing="0" cellpadding="0">
-<tbody>
-<tr>
-<td style="text-align: left; width: 155px;"><a><span class="header-sm">{{$offer->name}}</span></a><br />زور موقعنا و تمتع بعروض ابو دياب</td>
-<td style="text-align: right; vertical-align: top;"><strong>{{$offer->price1}} ريال</strong></td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr>
-<tr>
-<td style="padding: 15px;">
-<div><!-- [if mso]>
-                                  <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://" style="height:45px;v-text-anchor:middle;width:228px;" arcsize="15%" strokecolor="#ffffff" fillcolor="#ff6f6f">
-                                    <w:anchorlock/>
-                                    <center style="color:#ffffff;font-family:Helvetica, Arial, sans-serif;font-size:14px;font-weight:regular;">My Account</center>
-                                  </v:roundrect>
-                                <![endif]--><a class="button-width" style="background-color: #4e3f92; border-radius: 5px; color: #ffffff; display: inline-block; font-family: 'Cabin', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: regular; line-height: 45px; text-align: center; text-decoration: none; -webkit-text-size-adjust: none; mso-hide: all;" href="{{$homeUrl}}">View Now!</a></div>
-</td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr>
-</tbody>
-</table>
-</td>
-
-@endforeach
-
-
-
-
-</tr>
-</tbody>
-</table>
-</td>
+<td style="padding-bottom: 75px;">&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -346,7 +267,7 @@
 <table class="w320" width="600" cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
-<td style="padding: 25px 0 25px;"><strong>abudiyab Inc</strong><br /><br /></td>
+<td style="padding: 25px 0 25px;"><strong>Awesome Inc</strong><br />1234 Awesome St <br />Wonderland <br /><br /></td>
 </tr>
 </tbody>
 </table>

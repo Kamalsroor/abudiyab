@@ -24,7 +24,12 @@ class CustmerrequestRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => ['required', 'string', 'max:255'],
+            'id_number' => ['required', 'numeric', 'digits:10'],
+            'id_expiry_date' => ['required', 'date', 'max:255'],
+            'nationality' => ['required', 'string', 'max:255'],
+            'driver_number' => ['required', 'numeric', 'digits:10'],
+            'driver_id_expiry_date' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
         ];
     }
 

@@ -36,6 +36,7 @@ return [
         'extra_hours' => 'الساعات الزائدة',
         'allowed_Kilos' => 'الكيلو المسموح',
         'delivery_discount_regions' => 'خصم التسليم بين المناطق',
+        'description' => 'تفاصيل العضويه',
         'image' => 'صورة العضويه',
         'created_at' => 'اضافة في',
         'deleted_at' => 'حذف في',

@@ -83,6 +83,7 @@ class RegisterController extends Controller implements HasMedia
             'name' => $data['username'],
             'email' => $data['email'],
             'phone' => $data['phone'],
+            'points' => 1000,
             'type' => User::CUSTOMER_TYPE,
             'membership_id' => Settings::get('membership_default')?? 1,
             'password' => Hash::make($data['password']),

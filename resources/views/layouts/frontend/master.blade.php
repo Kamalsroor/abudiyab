@@ -134,7 +134,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="log-in_center_form_msg"></div>
                     <div class="log-in_center_form_email">
                         <label>البريد الالكتروني<span>احتاج الى حساب؟ <a onclick="logInOrRegister('register')">انشاء حساب</a></span></label>
-                        <input type="email" name="email" class="form-control" id="loginEmail" required>
+                        <input type="email" name="email" class="form-control" value="{{old('email')}}" id="loginEmail" required>
                         <div class="invalid-feedback"></div>
                     </div>
                     <div class="log-in_center_form_password">
@@ -153,10 +153,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <p>سيتم ارسال رمز تأكيد الي بريدك الإلكتروني</p>
                         <div>
                             <label>البريد الالكتروني <span>العودة إلى <a onclick="forgotPasswordRetreat(1)">تسجيل الدخول</a></span></label>
-                            <input type="email" name="email" class="form-control email" autocomplete="off">
+                            <input type="email" name="email" class="form-control email" id="restpasswordemail" autocomplete="off">
                             <div class="invalid-feedback"></div>
                         </div>
-                        <button type="submit" class="primary-btn btn-hover btn-curved" onclick="forgotPassword(2);">أرسال الرمز</button>
+                        <button type="submit" class="primary-btn btn-hover btn-curved"  onclick="forgotPassword(2);">أرسال الرمز</button>
                     </form>
 
                     <form action="" method="post" class="log-in_center_form forgot-password_step-2">
@@ -191,114 +191,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
         </div>
 
-        @push('js')
 
-        <script>
-            // Function Forgot Password
-            let forgotPassword = (step) => {
-                let forms = document.querySelectorAll(`.log-in_center_form`),
-                    form = document.querySelector(`.forgot-password_step-${step}`),
-                    span = document.querySelector(`.forgot-password_step-4 .span`),
-                    errors = false,
-                    ShowPassword = false,
-                    commuteTime = 1000,
-                    error = (input, errorText, wanted = true) => {
-                            input.classList.add('is-invalid');
-                            input.classList.remove('is-valid');
-                            input.nextElementSibling.innerHTML = errorText;
-                            input.focus();
-                            if (input.value.length == 0 && wanted == true) {
-                                input.nextElementSibling.innerHTML = 'هذا الحقل مطلوب';
-                            }
-                            errors = true;
-                    },
-                    next = () => {
-                        forms.forEach(element => element.style.display = 'none');
-                        if (step === 4) {
-                            document.querySelector('.log-in_center_form').style.display = 'block';
-                            let msg = document.querySelector('.log-in_center_form_msg');
-                            msg.innerHTML = `<div class="alert alert-success alert-dismissible fade show" role="alert">
-                                                <strong>تم تغيير كلمة السر</strong>
-                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="text-align: right;">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>`;
-                        }
-                        else{
-                            form.style.display = 'block';
-                        }
-                    }
-
-                    if (step === 1) {
-                        next();
-                    }
-
-                    if (step === 2) {
-                        let stepEamil = step - 1;
-                        let email = document.querySelector(`.forgot-password_step-${stepEamil} .email`);
-                        let viewEmail = document.querySelector(`.forgot-password_step-${stepEamil + 1} p`);
-                        let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-                        if (email.value.match(pattern) === null) {
-                            error(email, 'عذرا ، البريد الالكتروني غير صحيح');
-                        }
-                        else{
-                            email.classList.remove('is-invalid');
-                            email.classList.add('is-valid');
-                            viewEmail.innerHTML = email.value;
-                            setTimeout(() => {
-                                next();
-                            }, commuteTime);
-                        }
-                    }
-
-                    if (step === 3) {
-                        let stepCodeNumber = step - 1;
-                        let codeNumber = document.querySelector(`.forgot-password_step-${stepCodeNumber} .codeNumber`);
-                        if (codeNumber.value.length !== 6) {
-                            error(codeNumber, 'عذرا ، هذا الرمز غير صحيح');
-                        }
-                        else{
-                            codeNumber.classList.remove('is-invalid');
-                            codeNumber.classList.add('is-valid');
-                            setTimeout(() => {
-                                next();
-                            }, commuteTime);
-                        }
-                    }
-
-                    if (step === 4) {
-                        let stepNewPassword = step - 1;
-                        let password = document.querySelector(`.forgot-password_step-${stepNewPassword} .password`);
-                        let confirmPassword = document.querySelector(`.forgot-password_step-${stepNewPassword} .confirmPassword`);
-                        if (password.value.length < 8) {
-                            error(password, 'عذرًا ، لكن يجب أن تكون كلمة المرور 8 على الأقل');
-                        }
-                        else if (confirmPassword.value != password.value) {
-                            password.classList.remove('is-invalid');
-                            password.classList.add('is-valid');
-                            error(confirmPassword, 'عذرا ، لكن كلمة المرور غير متطابقة');
-                        }
-                        else{
-                            password.classList.remove('is-invalid');
-                            confirmPassword.classList.remove('is-invalid');
-                            password.classList.add('is-valid');
-                            confirmPassword.classList.add('is-valid');
-                            setTimeout(() => {
-                                next();
-                            }, commuteTime);
-                        }
-                    }
-
-                    form.addEventListener('click', (e) => {e.preventDefault()});
-            }
-
-            let forgotPasswordRetreat = (step) => {
-                document.querySelector(`.forgot-password_step-${step}`).style.display = 'none';
-                document.querySelector('.log-in_center_form').style.display = 'block';
-            }
-        </script>
-
-        @endpush
 
         <div class="register" style="background: url({{asset('front/img/background.jpg')}})">
             <div class="register_top">
@@ -312,17 +205,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="register_center_form_inputs">
                         <div class="register_center_form_inputs_input">
                             <label>الاسم باكامل<span>لدي حساب بالفعل؟ <a onclick="logInOrRegister('login')">تسجيل الدخول</a></span></label>
-                            <input type="text" name="username" class="form-control" id="registerName">
+                            <input type="text" name="username" value="{{old('username')}}" class="form-control" id="registerName">
                             <div class="invalid-feedback"></div>
                         </div>
                         <div class="register_center_form_inputs_input">
                             <label>البريد الاركتروني</label>
-                            <input type="email" name="email" class="form-control" id="registerEmail">
+                            <input type="email" name="email" value="{{old('email')}}"  class="form-control" id="registerEmail">
                             <div class="invalid-feedback"></div>
                         </div>
                         <div class="register_center_form_inputs_input registerMobileNumber">
                             <label>رقم الجوال</label>
-                            <input type="text" name="phone" class="form-control" id="registerMobileNumber" oninput="numberDesign(this);" max="12">
+                            <input type="text" name="phone" value="{{old('phone')}}" class="form-control" id="registerMobileNumber" oninput="numberDesign(this);" max="12">
                             <div class="invalid-feedback"></div>
                         </div>
                         <div class="register_center_form_inputs_input password One">

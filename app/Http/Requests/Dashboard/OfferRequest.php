@@ -26,6 +26,13 @@ class OfferRequest extends FormRequest
     {
         return RuleFactory::make([
             '%name%' => ['required', 'string', 'max:255'],
+            'discount_type' => ['required'],
+            'discount_value' => ['required'],
+            'limit' => ['required'],
+            'from' => ['required'],
+            'to' => ['required'],
+            'type' => ['required'],
+            'branch_type' => ['required'],
         ]);
     }
 

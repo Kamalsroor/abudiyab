@@ -13,6 +13,24 @@ use Illuminate\Support\Facades\Route;
 | and "api." route's alias name. Enjoy building your API!
 |
 */
+
+Route::post('/forgot-password', function (Request $request) {
+    $request->validate(['email' => 'required|email']);
+
+    $status = Password::sendResetLink(
+        $request->only('email')
+    );
+
+    return $status === Password::RESET_LINK_SENT
+                ? back()->with(['status' => __($status)])
+                : back()->withErrors(['email' => __($status)]);
+})->middleware('guest')->name('password.email');
+
+
+
+
+
+
 Route::post('/register', 'RegisterController@register')->name('sanctum.register');
 Route::post('/login', 'LoginController@login')->name('sanctum.login');
 Route::post('/login-with-session', 'LoginController@loginWithSession')->name('sanctum.login-with-session');
