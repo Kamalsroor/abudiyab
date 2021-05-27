@@ -125,6 +125,8 @@
             }
         }
         .forgot-password {
+            position: relative;
+            overflow: hidden;
             form {
                 display: none;
                 h2 {
@@ -230,6 +232,8 @@
         height: 100%;
         direction: ltr;
         &_form {
+            overflow: hidden;
+            position: relative;
             margin: auto;
             max-width: 858px;
             width: 100%;
@@ -238,7 +242,6 @@
             border: 1px solid #e3e3e3;
             // background-color: #f7f7f7;
             background-color: #eaeaea;
-            padding: 48px 48px 0px;
             border-radius: 12px;
             @media (max-width: 858px) {
                 border-radius: 0px;
@@ -252,9 +255,10 @@
             h2 {
                 width: 100%;
                 text-align: center;
-                margin-bottom: 45px;
+                margin-top: 38px;
             }
             &_inputs {
+                padding: 48px 48px 0px;
                 width: 100%;
                 display: flex;
                 flex-wrap: wrap;

@@ -1601,6 +1601,8 @@ $(document).ready(function() {
 //         });
 
 //     }
+let formLoader = document.querySelector('.forgot-password .form-loader');
+
 function nextstep(step) {
     let forms = document.querySelectorAll(`.log-in_center_form`),
         form = document.querySelector(`.forgot-password_step-${step}`);
@@ -1618,8 +1620,8 @@ $('.forgotPasswordRetreat').click(function() {
     let step = $(this).data('step');
     forgotPasswordRetreat(step);
 });
-var user_email = null ;
-$('#forgot-password_step-1').on('submit', function (e) {
+var user_email = null;
+$('#forgot-password_step-1').on('submit', function(e) {
     e.preventDefault();
     console.log('forgot-password_step-1');
     var url = $(this).attr("action");
@@ -1633,27 +1635,29 @@ $('#forgot-password_step-1').on('submit', function (e) {
     if (email.value.match(pattern) === null) {
         error(email, 'عذرا ، البريد الالكتروني غير صحيح');
     } else {
+        formLoader.classList.add('show');
         email.classList.remove('is-invalid');
         email.classList.add('is-valid');
         $.ajax({
             type: 'POST',
             url: url,
-            data: form_data ,
+            data: form_data,
             headers: {
                 "x-accept-language": "ar",
                 "X-CSRF-TOKEN": csrf_token,
             },
-            dataType : 'JSON',
+            dataType: 'JSON',
             //contentType: "application/x-www-form-urlencoded",
-            success: function (data) { // here I'm adding data as a parameter which stores the response
+            success: function(data) { // here I'm adding data as a parameter which stores the response
+                formLoader.classList.remove('show');
                 toastr.success(data.message)
                 user_email = email.value;
                 email.value = null;
                 $('#usernameByCode').val(user_email);
                 nextstep(2);
             },
-            error:function(response)
-            {
+            error: function(response) {
+                formLoader.classList.remove('show');
                 error(email, response.responseJSON.errors.username);
             }
         });
@@ -1661,7 +1665,7 @@ $('#forgot-password_step-1').on('submit', function (e) {
 });
 
 
-$('.forgot-password_step-2').on('submit', function (e) {
+$('.forgot-password_step-2').on('submit', function(e) {
     e.preventDefault();
     var url = $(this).attr("action");
     var form_data = $(this).serialize();
@@ -1672,25 +1676,27 @@ $('.forgot-password_step-2').on('submit', function (e) {
     } else {
         codeNumber.classList.remove('is-invalid');
         codeNumber.classList.add('is-valid');
+        formLoader.classList.add('show');
         $.ajax({
             type: 'POST',
             url: url,
-            data: form_data ,
+            data: form_data,
             headers: {
                 "x-accept-language": "ar",
                 "X-CSRF-TOKEN": csrf_token,
             },
-            dataType : 'JSON',
+            dataType: 'JSON',
             //contentType: "application/x-www-form-urlencoded",
-            success: function (data) { // here I'm adding data as a parameter which stores the response
+            success: function(data) { // here I'm adding data as a parameter which stores the response
                 // toastr.success(data.message)
-                codeNumber.value = null ;
+                formLoader.classList.remove('show');
+                codeNumber.value = null;
                 $('#tokenByReset').val(data.reset_token);
                 nextstep(3);
             },
-            error:function(response)
-            {
-            console.log(codeNumber);
+            error: function(response) {
+                formLoader.classList.remove('show');
+                console.log(codeNumber);
 
                 error(codeNumber, response.responseJSON.errors.code);
             }
@@ -1700,7 +1706,7 @@ $('.forgot-password_step-2').on('submit', function (e) {
 
 });
 
-$('.forgot-password_step-3').on('submit', function (e) {
+$('.forgot-password_step-3').on('submit', function(e) {
     e.preventDefault();
     var url = $(this).attr("action");
     var form_data = $(this).serialize();
@@ -1719,22 +1725,25 @@ $('.forgot-password_step-3').on('submit', function (e) {
         confirmPassword.classList.remove('is-invalid');
         password.classList.add('is-valid');
         confirmPassword.classList.add('is-valid');
+        formLoader.classList.add('show');
+
         $.ajax({
             type: 'POST',
             url: url,
-            data: form_data ,
+            data: form_data,
             headers: {
                 "x-accept-language": "ar",
                 "X-CSRF-TOKEN": csrf_token,
             },
-            dataType : 'JSON',
+            dataType: 'JSON',
             //contentType: "application/x-www-form-urlencoded",
-            success: function (data) { // here I'm adding data as a parameter which stores the response
+            success: function(data) { // here I'm adding data as a parameter which stores the response
                 toastr.success(data.message)
+                formLoader.classList.remove('show');
                 // nextstep(4);
-                password.value = null ;
+                password.value = null;
 
-                confirmPassword.value = null ;
+                confirmPassword.value = null;
 
                 let forms = document.querySelectorAll(`.log-in_center_form`);
                 forms.forEach(element => element.style.display = 'none')
@@ -1748,8 +1757,8 @@ $('.forgot-password_step-3').on('submit', function (e) {
                                                 </button>
                                             </div>`;
             },
-            error:function(response)
-            {
+            error: function(response) {
+                formLoader.classList.remove('show');
                 error(password, response.responseJSON.errors.token);
             }
         });

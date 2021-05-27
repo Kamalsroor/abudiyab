@@ -2262,1738 +2262,6 @@ try {
 
 /***/ }),
 
-/***/ "./resources/js/frontend/frontend.js":
-/*!*******************************************!*\
-  !*** ./resources/js/frontend/frontend.js ***!
-  \*******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var wow_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! wow.js */ "./node_modules/wow.js/dist/wow.js");
-/* harmony import */ var wow_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(wow_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-__webpack_require__(/*! ./bootstrap */ "./resources/js/frontend/bootstrap.js");
-
-
-var wow = new (wow_js__WEBPACK_IMPORTED_MODULE_1___default())({
-  boxClass: 'wow',
-  // animated element css class (default is wow)
-  animateClass: 'animated',
-  // animation css class (default is animated)
-  offset: 0,
-  // distance to the element when triggering the animation (default is 0)
-  mobile: true,
-  // trigger animations on mobile devices (default is true)
-  live: true,
-  // act on asynchronously loaded content (default is true)
-  callback: function callback(box) {// the callback is fired every time an animation is started
-    // the argument that is passed in is the DOM node being animated
-  },
-  scrollContainer: null,
-  // optional scroll container selector, otherwise use window,
-  resetAnimation: true // reset animation on end (default is true)
-
-});
-wow.init();
-var lang = document.documentElement.lang.substr(0, 2);
-window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-window.axios.defaults.headers.common['X-Accept-Language'] = lang;
-/**
- * Next we will register the CSRF Token as a common header with Axios so that
- * all outgoing HTTP requests automatically have it attached. This is just
- * a simple convenience so we don't have to attach every token manually.
- */
-
-var token = document.head.querySelector('meta[name="csrf-token"]');
-
-if (token) {
-  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-} else {
-  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
-}
-
-$.ajaxSetup({
-  headers: {
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-    'X-Accept-Language': lang
-  }
-});
- // or however you determine your current app locale
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-vue__WEBPACK_IMPORTED_MODULE_2__.default.component('car_seles', __webpack_require__(/*! ../components/CarSelesComponent */ "./resources/js/components/CarSelesComponent.vue").default);
-vue__WEBPACK_IMPORTED_MODULE_2__.default.component('branches', __webpack_require__(/*! ../components/BranchesComponent */ "./resources/js/components/BranchesComponent.vue").default);
-var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
-  el: '#vue_app'
-});
-$(document).ready(function () {
-  /* general variables */
-  // html
-  var html = document.querySelector('html');
-  $('.fa-info-circle').click(function () {
-    $('#additions').toggle(1000);
-  });
-  $("#myFormtoggeler").click(function () {
-    $('#myForm').toggleClass('d-none');
-  });
-  $("#hamburger-bars").click(function () {
-    $('#menu').toggleClass('d-none');
-  });
-  $("#hamburger-bars2").click(function () {
-    $('#menu').toggleClass('d-none');
-  });
-  $(".CarCategoryChange").click(function () {
-    // $('.car-model__heading').slick('unslick');
-    // $('.car-model__heading').removeClass('slick-initialized slick-slider');
-    // $('.car-model__heading').html("");
-    // setTimeout(() => {
-    window.livewire.emit('change:categories', $(this).data('id'));
-    window.livewire.emit('change:carsByCatgory', $(this).data('id'));
-    console.log('change:carsByCatgory', $(this).data('id')); // }, 2000);
-  });
-  $('#toggel-profile').click(function () {
-    $('#update-profile').toggleClass('d-none');
-    $('#profile').toggleClass('d-none');
-    $('#toggel-profile').toggleClass('d-none');
-    $('#toggel-password').toggleClass('d-none');
-  });
-  $('#toggel-password').click(function () {
-    $('#update-password').toggleClass('d-none');
-    $('#profile').toggleClass('d-none');
-    $('#toggel-password').toggleClass('d-none');
-    $('#toggel-profile').toggleClass('d-none');
-  });
-
-  function openForm() {
-    document.getElementById("myForm").style.display = "block";
-  }
-
-  function closeForm() {
-    document.getElementById("myForm").style.display = "none";
-  }
-
-  window.addEventListener('removeSlideCarModel', function (event) {// $('.car-model__heading').slick('removeSlide', null, null, true);
-    // console.log('unslickunslick');
-  });
-  window.addEventListener('CarModelSlick', function (event) {
-    slick_function(event.detail);
-  });
-
-  function slick_function(_x) {
-    return _slick_function.apply(this, arguments);
-  }
-
-  function _slick_function() {
-    _slick_function = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(details) {
-      var model__item_length;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              // $('.car-model__heading').slick('removeSlide', null, null, true);
-              $('.car-model__heading').slick('unslick');
-              $('.car-model__heading').removeClass('slick-initialized slick-slider');
-              $('.car-model__heading').html('');
-              console.log('refreshing : ', details); // $('.car-model__heading').slick('unslick');
-
-              _context.next = 6;
-              return details.forEach(function (entry) {
-                console.log(entry);
-                var div = "\n                        <div class=\"car-model__item py-2\" data-id=\"".concat(entry.id, "\">\n                            <p class=\" text-center\">").concat(entry.name, "</p>\n                        </div>\n                    ");
-                $('.car-model__heading').append(div); // $('.car-model__heading').slick('slickAdd', div);
-              });
-
-            case 6:
-              model__item_length = $('.car-model__item');
-              console.log(model__item_length.length);
-
-              if (model__item_length.length > 5) {
-                $('.car-model__heading').slick({
-                  slidesToShow: 4,
-                  slidesToScroll: 1,
-                  dots: false,
-                  arrows: true,
-                  rtl: html.dir === 'rtl',
-                  autoplay: true,
-                  autoplaySpeed: 8000,
-                  // centerMode: true
-                  responsive: [{
-                    breakpoint: 767,
-                    settings: {
-                      slidesToShow: 1,
-                      slidesToScroll: 1,
-                      dots: false,
-                      arrows: true,
-                      rtl: html.dir === 'rtl',
-                      autoplay: true
-                    }
-                  }, {
-                    breakpoint: 992,
-                    settings: {
-                      slidesToShow: 3,
-                      slidesToScroll: 1,
-                      dots: false,
-                      arrows: true,
-                      rtl: html.dir === 'rtl',
-                      autoplay: true
-                    }
-                  }, {
-                    breakpoint: 1200,
-                    settings: {
-                      slidesToShow: 4,
-                      slidesToScroll: 1,
-                      dots: false,
-                      arrows: true,
-                      rtl: html.dir === 'rtl',
-                      autoplay: true
-                    }
-                  }]
-                });
-              } else {
-                $('.car-model__heading').slick({
-                  slidesToShow: 1,
-                  slidesToScroll: 1,
-                  dots: false,
-                  arrows: true,
-                  rtl: html.dir === 'rtl',
-                  autoplay: true,
-                  autoplaySpeed: 8000,
-                  // centerMode: true
-                  responsive: [{
-                    breakpoint: 767,
-                    settings: {
-                      slidesToShow: 1,
-                      slidesToScroll: 1,
-                      dots: false,
-                      arrows: true,
-                      rtl: html.dir === 'rtl',
-                      autoplay: true
-                    }
-                  }, {
-                    breakpoint: 992,
-                    settings: {
-                      slidesToShow: 1,
-                      slidesToScroll: 1,
-                      dots: false,
-                      arrows: true,
-                      rtl: html.dir === 'rtl',
-                      autoplay: true
-                    }
-                  }, {
-                    breakpoint: 1200,
-                    settings: {
-                      slidesToShow: 1,
-                      slidesToScroll: 1,
-                      dots: false,
-                      arrows: true,
-                      rtl: html.dir === 'rtl',
-                      autoplay: true
-                    }
-                  }]
-                });
-              }
-
-            case 9:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }));
-    return _slick_function.apply(this, arguments);
-  }
-
-  $('.car-model__heading').on('afterChange', function (event, slick, currentSlide, nextSlide) {
-    console.log('change:cars', $(slick.$slides[currentSlide]).find('.car-model__item').data('id'));
-
-    if ($(slick.$slides[currentSlide]).find('.car-model__item').data('id') != undefined) {
-      window.livewire.emit('change:cars', $(slick.$slides[currentSlide]).find('.car-model__item').data('id'));
-    }
-  });
-  $('.car-model__heading').on('init', function (event, slick, currentSlide, nextSlide) {
-    console.log('change:cars', $(slick.$slides[currentSlide]).find('.car-model__item').data('id'));
-
-    if ($(slick.$slides[currentSlide]).find('.car-model__item').data('id') != undefined) {
-      window.livewire.emit('change:cars', $(slick.$slides[currentSlide]).find('.car-model__item').data('id'));
-    }
-  });
-  window.addEventListener('CarDetailSlick', function (event) {
-    CarDetailSlickIteams(event.detail);
-  });
-
-  function CarDetailSlickIteams(_x2) {
-    return _CarDetailSlickIteams.apply(this, arguments);
-  }
-
-  function _CarDetailSlickIteams() {
-    _CarDetailSlickIteams = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(details) {
-      var div;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              $('.car-details__heading').slick('removeSlide', null, null, true);
-              console.log('refreshing : ', details.car.model); // $('.car-details__heading').slick('unslick');
-
-              div = "\n        <div><div class=\"py-2 px-1 mx-0 text-center car-details__item\" ><p class=\"my-0\">\u0645\u0648\u062F\u064A\u0644 : ".concat(details.car.model, "</p></div></div>\n        <div><div class=\"py-2 px-1 mx-0 text-center car-details__item\" ><p class=\"my-0\">\u0646\u0627\u0642\u0644 \u0627\u0644\u062D\u0631\u0643\u0629 : \u0627\u0648\u062A\u0648\u0645\u0627\u062A\u064A\u0643</p></div></div>\n        <div><div class=\"py-2 px-1 mx-0 text-center car-details__item\" ><p class=\"my-0\">\u0639\u062F\u062F \u0627\u0644\u0623\u0628\u0648\u0627\u0628 : ").concat(details.car.door, "</p></div></div>\n        <div><div class=\"py-2 px-1 mx-0 text-center car-details__item\" ><p class=\"my-0\">\u0639\u062F\u062F \u0627\u0644\u0645\u0642\u0627\u0639\u062F : 5</p></div></div>\n                ");
-              $('.car-details__heading').slick('slickAdd', div);
-
-            case 4:
-            case "end":
-              return _context2.stop();
-          }
-        }
-      }, _callee2);
-    }));
-    return _CarDetailSlickIteams.apply(this, arguments);
-  }
-
-  var addind = $('#addingFeatures');
-
-  if (addind.length) {
-    $('#addingFeatures').click(function () {// console.log('ssssssss ');
-    }); // console.log('aaaaaa ');
-  }
-
-  var subscribe = $('#subscribe');
-
-  if (subscribe.length) {
-    $('#subscribe').on('click', function () {
-      var subscriptionEmail = $('#mailsu').val();
-      var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
-      var validateEmail = subscriptionEmail.match(pattern);
-
-      if (validateEmail) {
-        $.ajax({
-          type: 'post',
-          url: subscribeURL,
-          headers: {
-            "x-accept-language": "ar",
-            "X-CSRF-TOKEN": csrf_token
-          },
-          data: {
-            'subscribeEmail': $('#mailsu').val()
-          },
-          success: function success(data, status) {
-            console.log(data);
-
-            if (data == true) {
-              console.log('sssssss');
-              $('#confirm').show();
-              $('#reject').hide();
-              $('#exist').hide();
-              $('#notvalide').hide();
-            } else if (data['error'] == 'exist') {
-              $('#exist').show();
-              $('#confirm').hide();
-              $('#reject').hide();
-              $('#notvalide').hide();
-            } else {
-              $('#reject').show();
-              $('#confirm').hide();
-              $('#reject').hide();
-              $('#notvalide').hide();
-            }
-          }
-        });
-      } else {
-        $('#notvalide').show();
-        $('#confirm').hide();
-        $('#reject').hide();
-        $('#exist').hide();
-      }
-    });
-  }
-
-  window.addEventListener("notLogin", function () {
-    $('#BookingModel').modal('hide');
-    $('#loginModal').modal('toggle');
-  }); // const homeCarousel = $('.home-carousel');
-  // if (homeCarousel.length) {
-  //     $('.home-slider').carousel({
-  //         interval: 7000
-  //     })
-  // }
-
-  var checkReservation = $('.check-reservation');
-
-  if (checkReservation.length) {
-    $('.check-reservation').on('click', function () {
-      var identityNumber = $('.identityNumber');
-
-      if (identityNumber.length) {
-        identityNumber = $('.identityNumber').val();
-      } else {
-        identityNumber = 0;
-      }
-
-      var orderCode = $('#orderCode').val();
-      console.log(orderCode, identityNumber);
-      $.ajax({
-        type: 'get',
-        url: showOrderURL + "/".concat(orderCode),
-        headers: {
-          "x-accept-language": "ar"
-        },
-        data: {
-          'identityNumber': identityNumber
-        },
-        success: function success(data, status) {
-          console.log(data);
-
-          switch (data['data']['status']) {
-            case 'confirmed':
-              $('.confirmed').show();
-              $('.pending').hide();
-              $('.rejected').hide();
-              $('.notfound').hide();
-              break;
-
-            case 'pending':
-              $('.pending').show();
-              $('.confirmed').hide();
-              $('.rejected').hide();
-              $('.notfound').hide();
-              break;
-
-            case 'rejected':
-              console.log('rejected');
-              $('.rejected').show();
-              $('.pending').hide();
-              $('.confirmed').hide();
-              $('.notfound').hide();
-              break;
-          }
-        },
-        error: function error(xhr, status, _error) {
-          $('.notfound').show();
-          $('.pending').hide();
-          $('.confirmed').hide();
-          $('.rejected').hide();
-        }
-      });
-    });
-  }
-
-  var homeCategory = $('.home-category');
-
-  if (homeCategory.length) {
-    var togellerBtn = $('#home-category__togeller');
-    togellerBtn.on('click', function () {
-      var categoryItem = $(this).parents('.home-category__conent').find('.home-category__item.not-active');
-      var categoryItemActive = $(this).parents('.home-category__conent').find('.home-category__item.active');
-
-      if (categoryItem.length) {
-        categoryItem.removeClass('not-active').addClass('active');
-        $(this).html($(this).data('less'));
-      } else if (categoryItemActive.length) {
-        categoryItemActive.addClass('not-active').removeClass('active');
-        $(this).html($(this).data('more'));
-      }
-    });
-  }
-
-  var favoriteIcon = $('.addToFavorite');
-
-  if (favoriteIcon.length) {
-    favoriteIcon.on('click', function () {
-      window.livewire.emit('addToFavorite', $(this).data('id'));
-    });
-  }
-
-  var branchPage = $('.branch-page');
-
-  if (branchPage.length) {
-    var branchRegion = $('.branch-regoin');
-    var page_center_dranches_items = $('.branch-page_center_dranches_items');
-    branchRegion.click(function () {
-      var branchesRegion = '';
-      console.log(page_center_dranches_items);
-      page_center_dranches_items.html("");
-      $.ajax({
-        type: 'get',
-        url: BranchApisUrl,
-        headers: {
-          "x-accept-language": "ar"
-        },
-        data: {
-          code: $(this).data('id'),
-          all: true
-        },
-        success: function success(data) {
-          console.log(data.data);
-          data.data.forEach(function (branch) {
-            var timeText = "";
-
-            if (branch.work_time != null) {
-              // branch.work_time.forEach(function(time) {
-              //     // timeText +=
-              //     console.log(time);
-              // });
-              for (var _i = 0, _Object$entries = Object.entries(branch.work_time); _i < _Object$entries.length; _i++) {
-                var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
-                    key = _Object$entries$_i[0],
-                    value = _Object$entries$_i[1];
-
-                // timeText += `<p>${ weekDays.[key] } ${ value.lock == 1 ?  "مغلق" : value.timeopen + ' : ' + value.timeclose  }</p>`;
-                console.log("".concat(key, ": "), value);
-              }
-            }
-
-            console.log(timeText);
-            branchesRegion += "<div class=\"col-12 col-md-6 col-lg-3 mb-2\">\n                        <div class=\"branch-page_center_dranches_branch\">\n                            <div class=\"branch-hidden-list\">\n                                <p class=\"detail\">\u0627\u0644\u062A\u0641\u0627\u0635\u064A\u0644</p>\n                                <div class=\"section-detail\">\n                                    <h4>\u0627\u0644\u0639\u0646\u0648\u0627\u0646</h4>\n                                    <p>".concat(branch.name, "</p>\n                                    <p>").concat(branch.address, "</p>\n                                    <h4>\u0631\u0642\u0645 \u0627\u0644\u0647\u0627\u062A\u0641</h4>\n                                    <p>").concat(branch.tele_number, "</p>\n                                    <h4>\u0645\u0648\u0639\u062F\u0646\u0627</h4>\n\n                                    ").concat(timeText, "\n                                    <button>\u0627\u0644\u0645\u0648\u0642\u0639</button>\n                                </div>\n                            </div>\n                            <div class=\"branch-list-visible\">\n                                <img src=\"").concat(branchesLogo, "\" alt=\"logo\">\n                                <h2>").concat(branch.name, "</h2>\n                                <a href=\"tel:").concat(branch.tele_number, "\" class=\"btn btn-danger btn-lg btn-block\"><i class=\"fas fa-phone-volume\"></i> ").concat(branch.tele_number, "</a>\n                            </div>\n                        </div>\n                    </div>");
-          });
-          page_center_dranches_items.html(branchesRegion);
-        }
-      }); // $('#menu').toggleClass('d-none');
-    });
-  }
-
-  var model__item_length = $('.car-model__item');
-  console.log(model__item_length.length);
-
-  if (model__item_length.length > 5) {
-    $('.car-model__heading').slick({
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      dots: false,
-      arrows: true,
-      rtl: html.dir === 'rtl',
-      autoplay: true,
-      autoplaySpeed: 8000,
-      // centerMode: true
-      responsive: [{
-        breakpoint: 767,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          dots: false,
-          arrows: true,
-          rtl: html.dir === 'rtl',
-          autoplay: true
-        }
-      }, {
-        breakpoint: 992,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          dots: false,
-          arrows: true,
-          rtl: html.dir === 'rtl',
-          autoplay: true
-        }
-      }, {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 1,
-          dots: false,
-          arrows: true,
-          rtl: html.dir === 'rtl',
-          autoplay: true
-        }
-      }]
-    });
-  } else {
-    $('.car-model__heading').slick({
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      dots: false,
-      arrows: true,
-      rtl: html.dir === 'rtl',
-      autoplay: true,
-      autoplaySpeed: 8000,
-      // centerMode: true
-      responsive: [{
-        breakpoint: 767,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          dots: false,
-          arrows: true,
-          rtl: html.dir === 'rtl',
-          autoplay: true
-        }
-      }, {
-        breakpoint: 992,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          dots: false,
-          arrows: true,
-          rtl: html.dir === 'rtl',
-          autoplay: true
-        }
-      }, {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          dots: false,
-          arrows: true,
-          rtl: html.dir === 'rtl',
-          autoplay: true
-        }
-      }]
-    });
-  }
-
-  window.onscroll = function () {
-    navbarScroll();
-  };
-
-  function navbarScroll() {
-    if (document.documentElement.scrollTop > 50) {
-      document.getElementsByClassName('main-navbar')[0].style.backgroundImage = "linear-gradient( 91deg, #3f4a86 15%, #7f89c0ba 50%, #3f4a86 85%)";
-    } else {
-      document.getElementsByClassName('main-navbar')[0].style.backgroundImage = "none";
-    }
-  } // $('.car-model__heading').slick({
-  //     slidesToShow: 4,
-  //     slidesToScroll: 1,
-  //     dots: false,
-  //     arrows: true,
-  //     rtl: html.dir === 'rtl',
-  //     autoplay: true,
-  //     autoplaySpeed: 8000,
-  //     // centerMode: true
-  //     responsive: [{
-  //             breakpoint: 767,
-  //             settings: {
-  //                 slidesToShow: 1,
-  //                 slidesToScroll: 1,
-  //                 dots: false,
-  //                 arrows: false,
-  //                 rtl: html.dir === 'rtl',
-  //                 autoplay: true
-  //             }
-  //         },
-  //         {
-  //             breakpoint: 992,
-  //             settings: {
-  //                 slidesToShow: 3,
-  //                 slidesToScroll: 1,
-  //                 dots: false,
-  //                 arrows: false,
-  //                 rtl: html.dir === 'rtl',
-  //                 autoplay: true
-  //             }
-  //         },
-  //         {
-  //             breakpoint: 1200,
-  //             settings: {
-  //                 slidesToShow: 3,
-  //                 slidesToScroll: 1,
-  //                 dots: false,
-  //                 arrows: false,
-  //                 rtl: html.dir === 'rtl',
-  //                 autoplay: true
-  //             }
-  //         },
-  //     ]
-  // });
-
-
-  $('.car-details__heading').slick({
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    centerMode: false,
-    dots: false,
-    arrows: false,
-    // rtl: html.dir === 'rtl',
-    autoplay: true,
-    autoplaySpeed: 1500,
-    responsive: [{
-      breakpoint: 767,
-      settings: {
-        slidesToShow: 1,
-        centerMode: false,
-        slidesToScroll: 1
-      }
-    }, {
-      breakpoint: 992,
-      settings: {
-        slidesToShow: 2,
-        centerMode: false,
-        slidesToScroll: 1
-      }
-    }, {
-      breakpoint: 1200,
-      settings: {
-        slidesToShow: 3,
-        centerMode: false,
-        slidesToScroll: 1
-      }
-    }]
-  });
-  $('.home-our-partners__content').slick({
-    slidesToShow: 6,
-    slidesToScroll: 1,
-    centerMode: false,
-    dots: false,
-    arrows: false,
-    rtl: html.dir === 'rtl',
-    autoplay: true,
-    autoplaySpeed: 1500,
-    responsive: [{
-      breakpoint: 767,
-      settings: {
-        slidesToShow: 3,
-        centerMode: false,
-        slidesToScroll: 1
-      }
-    }, {
-      breakpoint: 992,
-      settings: {
-        slidesToShow: 3,
-        centerMode: false,
-        slidesToScroll: 1
-      }
-    }, {
-      breakpoint: 1200,
-      settings: {
-        slidesToShow: 3,
-        centerMode: false,
-        slidesToScroll: 1
-      }
-    }]
-  });
-  $('#filter-toggele').click(function () {
-    $('.toggeling-menue').toggleClass('d-none');
-    $(body).css('position', 'fixed');
-  });
-  $('.cancel-toggle-menue').click(function () {
-    $('.toggeling-menue').toggleClass('d-none');
-  });
-  $('#social-media-links-toggeler').click(function () {
-    $('.social-media-links').toggleClass('d-none');
-  });
-  /* =============================================================== */
-
-  /* ======================       Offers       ===================== */
-
-  /* =============================================================== */
-
-  var offer = $('.home-offers_content_text');
-
-  if (offer.length) {
-    var OffersAnimation = function OffersAnimation(userLocation) {
-      var nameClassOffers = '.home-offers_content_text',
-          hT = $(nameClassOffers + '_discount').offset().top,
-          hH = $(nameClassOffers + '_discount').outerHeight(),
-          wH = $(window).height(),
-          wS = $(userLocation).scrollTop();
-
-      if (wS > hT + hH - wH && OffersAnimationStart == false) {
-        $(nameClassOffers + '_discount').animate({
-          left: '104%'
-        }, 1000, function () {
-          $(nameClassOffers + '_name').animate({
-            left: '96%'
-          }, 800, function () {
-            $(nameClassOffers + '_detailing').animate({
-              left: '95%'
-            }, 600, function () {
-              $(nameClassOffers + '_price').animate({
-                top: '37%'
-              }, 400, function () {
-                $(nameClassOffers + '_button').animate({
-                  top: '95%'
-                }, 400);
-              });
-            });
-          });
-        });
-        OffersAnimationStart = true;
-      }
-    };
-
-    $(window).scroll(function () {
-      OffersAnimation(this);
-    });
-    $(function () {
-      OffersAnimation(window);
-    });
-    var OffersAnimationStart = false;
-  } // gallery page----------------------------------------------------------------
-  // $(".oldImg").click(function() {
-  //     console.log('tasebgday');
-  //     window.location.href = "#";
-  //     $("#container").append($("<div class='opacity '><div class='container-fluid'><a id='close'>X</a><div class='row'> <img class='newImg '></div><div class='row justify-content-between mt-4'><button class='primary-btn btn-curved btn-hover mx-4' id='previous'>السابق</button><button id='next' class='primary-btn btn-curved btn-hover mx-4'>التالى</button></div></div></div>"));
-  //     $(".newImg").attr("src", this.src);
-  //     $("#previous").click(function() {
-  //         let source = $(".newImg").attr("src");
-  //         for (var i = 0; i < $('#container .row .oldImg').length; i++) {
-  //             if ($("#container .row").children('img')[i].src == source) {
-  //                 if (i > 0) {
-  //                     let newUrl = $("#container .row").children('img')[i - 1].src
-  //                     $(".newImg").fadeOut(300, function() {
-  //                         $(".newImg").attr("src", newUrl)
-  //                         $(".newImg").fadeIn(300);
-  //                     });
-  //                 }
-  //             }
-  //         };
-  //     });
-  //     $("#next").click(function() {
-  //         let source = $(".newImg").attr("src");
-  //         for (var i = 0; i < $('#container .row .oldImg').length; i++) {
-  //             if ($("#container .row").children('img')[i].src == source) {
-  //                 if (i < $('#container .oldImg').length - 1) {
-  //                     let newUrl = $("#container .row").children('img')[i + 1].src
-  //                     $(".newImg").fadeOut(300, function() {
-  //                         $(".newImg").attr("src", newUrl)
-  //                         $(".newImg").fadeIn(300);
-  //                     });
-  //                 }
-  //             }
-  //         };
-  //     });
-  //     $('#close').click(function() {
-  //         $(".opacity").remove()
-  //     });
-  // });
-  // gallery page ends here---------------------------------------------------------------------
-
-
-  $('.nav-link').click(function () {
-    $('.nav-link.active').removeClass('active');
-    $(this).addClass('active');
-  });
-  $('#oldcontracts-toggel').click(function () {
-    $('.contracts-section').addClass('d-none');
-    $('#oldcontracts').removeClass('d-none');
-  });
-  $('#newcontracts-toggel').click(function () {
-    $('.contracts-section').addClass('d-none');
-    $('#newcontracts').removeClass('d-none');
-  });
-  /* ========================================================
-     ===================logo animation=======================
-     ========================================================
-  */
-
-  $('.nav-logo').animate({
-    top: '10px'
-  }, 2500); // $('.nav-logo').animate({ width: '120px' }, 'slow')
-
-  /* ==========================================================
-     ===================logo animation ends====================
-     ==========================================================
-  */
-}); // $(document).ready(function() {
-//     /*================
-//      / General Functions /
-//     ================*/
-//     /* general variables */
-//     // html
-//     const html = document.querySelector('html');
-//     // navbar
-//     const navbar = document.querySelector('.main-navbar');
-//     // sidebar
-//     const sidebar = document.querySelector('.side-bar');
-//     // sidebar btn in left of page
-//     const sidebarCollapse = document.querySelector('.sidebar-collapse');
-//     // sidebar close btn
-//     const closeSidebarBtn = document.querySelector('.side-bar__close');
-//     // sidebar btn in narvar
-//     const navCollapse = document.querySelector('.nav-collapse');
-//     // menu in small screen
-//     const navMenu = document.querySelector('.hidden-menu');
-//     // close menu in small screen
-//     const closeNavMenu = document.querySelector('.hidden-menu__close');
-//     // closr sidebar btn
-//     const collapseBtn = document.querySelector('.collapse-sidebar');
-//     // all element that contain data scroll
-//     const elementData = document.querySelectorAll('*[data-scroll]');
-//     // button open and close form add comment
-//     const addCommentBtn = document.querySelector('.add-comment-btn');
-//     // search box
-//     const openSearchBox = document.querySelector('.main-navbar__links__menu__item.search-link a');
-//     // search box close
-//     const closeSearchBox = document.querySelector('.search-box__content__block__btn button');
-//     // // function add rtl option to element that contain slider
-//     // function fixSliderRtl() {
-//     //     if (html.dir === 'rtl') {
-//     //          console.log(html.dir , html.dir === 'rtl');
-//     //         const allSliderBoxes = $('.header__content');
-//     //         allSliderBoxes.slick('slickSetOption', 'rtl', true);
-//     //     }
-//     // }
-//     // fixSliderRtl();
-//     // function fixed navbar when scroll
-//     function fixedElement() {
-//         if (window.scrollY > 300) {
-//             navbar.classList.add('fixed-navbar');
-//         } else {
-//             navbar.classList.remove('fixed-navbar');
-//         }
-//     }
-//     // fixed navbar when scroll
-//     window.onscroll = fixedElement;
-//     // fixed navbar when dom ready
-//     fixedElement();
-//     // function toggle classes of elements
-//     function toggleClasses(element, class1, class2) {
-//         if (element.classList.contains(class1)) {
-//             element.classList.remove(class1)
-//             element.classList.add(class2)
-//         } else {
-//             element.classList.add(class1)
-//             element.classList.remove(class2)
-//         }
-//     }
-//     // close search box
-//     closeSearchBox.onclick = () => {
-//         $('.search-box').slideUp();
-//     }
-//     // open search box
-//     openSearchBox.onclick = (e) => {
-//         e.preventDefault();
-//         $('.search-box').slideDown();
-//     }
-//     // show sidebar when click nav collapse
-//     sidebarCollapse.onclick = () => {
-//         toggleClasses(sidebar, 'show-sidebar', 'hide-sidebar');
-//     };
-//     // open and close add comment form
-//     addCommentBtn.onclick = () => {
-//         $('.add-comment__box').fadeToggle();
-//     };
-//     // show sidebar when click left btn
-//     collapseBtn.onclick = () => {
-//         toggleClasses(sidebar, 'show-sidebar', 'hide-sidebar');
-//     };
-//     // hide sidebar when click close sidebar btn
-//     closeSidebarBtn.onclick = () => {
-//         toggleClasses(sidebar, 'show-sidebar', 'hide-sidebar');
-//     };
-//     // show nav menu
-//     navCollapse.onclick = () => {
-//         toggleClasses(navMenu, 'show-sidebar', 'hide-sidebar');
-//     };
-//     // hide nav menu
-//     closeNavMenu.onclick = () => {
-//         toggleClasses(navMenu, 'show-sidebar', 'hide-sidebar');
-//     };
-//     // nicescroll Plugin
-//     $('html').niceScroll({
-//         cursorcolor: '#BA2D92',
-//         cursorwidth: '6px',
-//         zindex: 30,
-//         cursorborder:"0",
-//     });
-//     // preload of page
-//     $('.preload .loader').fadeOut(1500, function() {
-//         $('.preload').fadeOut(1000);
-//     });
-//     // general function scroll to element
-//     function scrollElement(event) {
-//         // disable prevent behavior of element
-//         event.preventDefault();
-//         // get current data scroll of this element
-//         const element = this.dataset.scroll;
-//         // get related element with thame data scroll
-//         const relatedBox = document.querySelector(`*[data-scroll-target="${element}"]`);
-//         if (relatedBox) {
-//             // scroll to current element
-//             $("html, body").animate({scrollTop: relatedBox.offsetTop}, 'slow');
-//         }
-//         // return false
-//         return false;
-//     }
-//     elementData.forEach((element) => {
-//         element.addEventListener('click', scrollElement);
-//     });
-//     /*================
-//      / Home Page /
-//     ================*/
-//     /* workFlow */
-//     const workFlow = $('.work-flow__process');
-//     if (workFlow.length) {
-//         workFlow.slick({
-//             slidesToShow: 4,
-//             slidesToScroll: 1,
-//             dots: false,
-//             arrows: false,
-//             autoplay: true,
-//             rtl : html.dir === 'rtl' ,
-//             autoplaySpeed: 3000,
-//             responsive: [
-//                 {
-//                     breakpoint: 767,
-//                     settings: {
-//                         slidesToShow: 1,
-//                         slidesToScroll: 1,
-//                     }
-//                 },
-//                 {
-//                     breakpoint: 992,
-//                     settings: {
-//                         slidesToShow: 2,
-//                         slidesToScroll: 1,
-//                     }
-//                 },
-//                 {
-//                     breakpoint: 1200,
-//                     settings: {
-//                         slidesToShow: 3,
-//                         slidesToScroll: 1,
-//                     }
-//                 },
-//             ]
-//         });
-//     }
-//     /* services */
-//     const servicesHome = $('.services-home__cards');
-//     if (servicesHome.length) {
-//         if (window.outerWidth < 992) {
-//             servicesHome.slick({
-//                 slidesToShow: 4,
-//                 slidesToScroll: 1,
-//                 dots: false,
-//                 arrows: false,
-//                 rtl : html.dir === 'rtl' ,
-//                 autoplay: true,
-//                 autoplaySpeed: 3000,
-//                 responsive: [
-//                     {
-//                         breakpoint: 767,
-//                         settings: {
-//                             slidesToShow: 1,
-//                             slidesToScroll: 1,
-//                         }
-//                     },
-//                     {
-//                         breakpoint: 992,
-//                         settings: {
-//                             slidesToShow: 2,
-//                             slidesToScroll: 1,
-//                         }
-//                     },
-//                 ]
-//             });
-//         }
-//     }
-//     /* clientsText */
-//     const clientsText = $('.testmonials__text');
-//     if (clientsText.length) {
-//         clientsText.slick({
-//             slidesToShow: 1,
-//             slidesToScroll: 1,
-//             dots: false,
-//             rtl : html.dir === 'rtl' ,
-//             arrows: false,
-//             autoplay: true,
-//             autoplaySpeed: 3000,
-//             asNavFor: '.testmonials__clients__items'
-//         });
-//     }
-//     /* clientsImgs */
-//     const clientsImgs = $('.testmonials__clients__items');
-//     if (clientsImgs.length) {
-//         clientsImgs.slick({
-//             slidesToShow: 3,
-//             slidesToScroll: 1,
-//             dots: false,
-//             arrows: false,
-//             rtl : html.dir === 'rtl' ,
-//             autoplay: true,
-//             autoplaySpeed: 3000,
-//             asNavFor: '.testmonials__text',
-//             responsive: [
-//                 {
-//                     breakpoint: 767,
-//                     settings: {
-//                         slidesToShow: 1,
-//                         slidesToScroll: 1,
-//                     }
-//                 },
-//                 {
-//                     breakpoint: 992,
-//                     settings: {
-//                         slidesToShow: 2,
-//                         slidesToScroll: 1,
-//                     }
-//                 },
-//                 {
-//                     breakpoint: 1200,
-//                     settings: {
-//                         slidesToShow: 3,
-//                         slidesToScroll: 1,
-//                     }
-//                 },
-//             ]
-//         });
-//     }
-//     const plans = $('.plans');
-//     if (plans.length) {
-//         const planControlBtn = $('.plans__heading__control a');
-//         planControlBtn.on('click', function(e) {
-//             e.preventDefault();
-//             planControlBtn.not($(this)).removeClass('active');
-//             $(this).addClass('active');
-//             $(this).attr('data-plan') === 'year' ? $('.plans__heading__control').addClass('enable') : $('.plans__heading__control').removeClass('enable');
-//             // $('.plans__cards__item__box__price span').text($(this).attr('data-plan'));
-//             $('.plans__cards__item__box__price').hide();
-//             $('.plans__cards__item__box__price.'+$(this).attr('data-plan')).show();
-//         });
-//         $('.plans__cards').slick({
-//             slidesToShow: 3,
-//             slidesToScroll: 1,
-//             dots: false,
-//             arrows: false,
-//             rtl : html.dir === 'rtl' ,
-//             // autoplay: true,
-//             autoplaySpeed: 3000,
-//             responsive: [
-//                 {
-//                     breakpoint: 767,
-//                     settings: {
-//                         slidesToShow: 1,
-//                         slidesToScroll: 1,
-//                     }
-//                 },
-//                 {
-//                     breakpoint: 992,
-//                     settings: {
-//                         slidesToShow: 2,
-//                         slidesToScroll: 1,
-//                     }
-//                 },
-//                 {
-//                     breakpoint: 1200,
-//                     settings: {
-//                         slidesToShow: 3,
-//                         slidesToScroll: 1,
-//                     }
-//                 },
-//             ]
-//         });
-//     }
-//     const blog = $('.blog');
-//     if (blog.length) {
-//         $('.blog__cards__item__box__content__btn').on('click', function() {
-//             const blogImg = $(this).parents('.blog__cards__item__box').find('img').attr('src');
-//             const blogDetail = $(this).parents('.blog__cards__item__box__content').find('.blog__cards__item__box__content__detail').text();
-//             $('.blog-modal img').attr('src', blogImg);
-//             $('.blog-modal p').text(blogDetail);
-//         });
-//         $('.blog__cards').slick({
-//             slidesToShow: 3,
-//             slidesToScroll: 1,
-//             dots: true,
-//             arrows: false,
-//             rtl : html.dir === 'rtl' ,
-//             autoplay: true,
-//             autoplaySpeed: 3000,
-//             responsive: [
-//                 {
-//                     breakpoint: 767,
-//                     settings: {
-//                         slidesToShow: 1,
-//                         slidesToScroll: 1,
-//                     }
-//                 },
-//                 {
-//                     breakpoint: 992,
-//                     settings: {
-//                         slidesToShow: 2,
-//                         slidesToScroll: 1,
-//                     }
-//                 },
-//                 {
-//                     breakpoint: 1200,
-//                     settings: {
-//                         slidesToShow: 3,
-//                         slidesToScroll: 1,
-//                     }
-//                 },
-//             ]
-//         });
-//     }
-//     const brand = $('.brand');
-//     if (brand.length) {
-//         $('.brand__cards').slick({
-//             slidesToShow: 6,
-//             slidesToScroll: 1,
-//             dots: false,
-//             arrows: false,
-//             autoplay: true,
-//             rtl : html.dir === 'rtl' ,
-//             autoplaySpeed: 3000,
-//             responsive: [
-//                 {
-//                     breakpoint: 767,
-//                     settings: {
-//                         slidesToShow: 2,
-//                         slidesToScroll: 1,
-//                     }
-//                 },
-//                 {
-//                     breakpoint: 992,
-//                     settings: {
-//                         slidesToShow: 3,
-//                         slidesToScroll: 1,
-//                     }
-//                 },
-//                 {
-//                     breakpoint: 1200,
-//                     settings: {
-//                         slidesToShow: 4,
-//                         slidesToScroll: 1,
-//                     }
-//                 },
-//             ]
-//         });
-//     }
-//     /*================
-//      / about Page /
-//     ================*/
-//     const us_best = $('.us-the-best');
-//     if (us_best.length) {
-//         $('.us-the-best__process').slick({
-//             slidesToShow: 4,
-//             slidesToScroll: 1,
-//             dots: false,
-//             arrows: false,
-//             rtl : html.dir === 'rtl' ,
-//             autoplay: true,
-//             autoplaySpeed: 3000,
-//             responsive: [
-//                 {
-//                     breakpoint: 767,
-//                     settings: {
-//                         slidesToShow: 1,
-//                         slidesToScroll: 1,
-//                     }
-//                 },
-//                 {
-//                     breakpoint: 992,
-//                     settings: {
-//                         slidesToShow: 2,
-//                         slidesToScroll: 1,
-//                     }
-//                 },
-//                 {
-//                     breakpoint: 1200,
-//                     settings: {
-//                         slidesToShow: 4,
-//                         slidesToScroll: 1,
-//                     }
-//                 },
-//             ]
-//         });
-//     }
-//     /*================
-//      / contact Page /
-//     ================*/
-//     const contactPayments = $('.contact-payments__items');
-//     if (contactPayments.length) {
-//         contactPayments.slick({
-//             slidesToShow: 3,
-//             slidesToScroll: 1,
-//             dots: false,
-//             arrows: false,
-//             rtl : html.dir === 'rtl' ,
-//             autoplay: true,
-//             autoplaySpeed: 3000,
-//             responsive: [
-//                 {
-//                     breakpoint: 767,
-//                     settings: {
-//                         slidesToShow: 1,
-//                         slidesToScroll: 1,
-//                     }
-//                 },
-//                 {
-//                     breakpoint: 992,
-//                     settings: {
-//                         slidesToShow: 2,
-//                         slidesToScroll: 1,
-//                     }
-//                 },
-//                 {
-//                     breakpoint: 1200,
-//                     settings: {
-//                         slidesToShow: 3,
-//                         slidesToScroll: 1,
-//                     }
-//                 },
-//             ]
-//         });
-//     }
-//     var getTouch = $('.get-touch__form');
-//     if (getTouch.length) {
-//         getTouch.validate({
-//             rules: {
-//                 name: {
-//                     required: true,
-//                 },
-//                 email: {
-//                     required: true,
-//                     email: true,
-//                 },
-//                 phone: {
-//                     required: true,
-//                 },
-//                 subject: {
-//                     required: true,
-//                 },
-//                 message: {
-//                     required: true
-//                 },
-//             },
-//             errorPlacement: function (error, element) {
-//                 error.appendTo(element.parent());
-//             },
-//         });
-//     }
-//     /*================
-//      / register Page /
-//     ================*/
-//     var register = $('.register-form form');
-//     register.validate({
-//         rules: {
-//             first_name: {
-//                 required: true,
-//             },
-//             last_name: {
-//                 required: true,
-//             },
-//             email: {
-//                 required: true,
-//                 email: true,
-//             },
-//             number: {
-//                 required: true,
-//             },
-//             another_number: {
-//                 required: true,
-//             },
-//             password: {
-//                 required: true
-//             },
-//             confirm_password: {
-//                 required: true
-//             },
-//         },
-//         errorPlacement: function (error, element) {
-//             error.appendTo(element.parent());
-//         },
-//     });
-//    /*******************
-//     * Profile Page *
-//     ********************/
-//    const profileUser = $('.user-profile');
-//    if (profileUser.length) {
-//         // select all user filter
-//         var userFilter = $('.user-profile__left__cat a[data-user-filter]');
-//         // edit btn
-//         $('.user-profile__right__details__right .edit-btn').click(function() {
-//             $('.user-profile__left__cat a[data-user-filter="user-edit"]').click();
-//         });
-//         $('.user-profile__right__details__right .edit-address').click(function() {
-//             $('.user-profile__left__cat a[data-user-filter="address-edit"]').click();
-//         });
-//         // add active class to current active tab
-//         userFilter.on('click', function(e) {
-//             e.preventDefault();
-//             userFilter.not($(this)).removeClass('active');
-//             $(this).addClass('active');
-//             userSet();
-//         });
-//         $('.user-profile__right__details__right .edit-btn').click(function() {
-//             $('.user-profile__left__cat a[data-user-filter="user-edit"]').click();
-//         });
-//         // function control tabs
-//         function userSet() {
-//             var userFilterLink = $('.user-profile__left__cat a.active').attr('data-user-filter');
-//             var relatedContent = $(`div[data-user="${userFilterLink}"]`);
-//             allUserContent = $(`div[data-user]`);
-//             allUserContent.not(relatedContent).addClass('d-none');
-//             relatedContent.removeClass('d-none');
-//         }
-//         userSet();
-//         var userEdit = $('.edit-user');
-//         userEdit.validate({
-//             rules: {
-//                 name: {
-//                     required: true,
-//                 },
-//                 email: {
-//                     required: true,
-//                     email: true,
-//                 },
-//                 phone: {
-//                     required: true,
-//                     number: true,
-//                 },
-//                 company: {
-//                     required: true,
-//                 },
-//                 password: {
-//                     // required: true,
-//                     minlength: 8
-//                 }
-//             },
-//             errorPlacement: function (error, element) {
-//                 error.appendTo(element.parent());
-//             },
-//             success: function (label) {
-//                 label.addClass("valid").text('success');
-//             }
-//         });
-//         var addressEdit = $('form.edit-address');
-//         addressEdit.validate({
-//             rules: {
-//                 name: {
-//                     required: true,
-//                 },
-//                 government: {
-//                     required: true,
-//                 },
-//                 area: {
-//                     required: true,
-//                 },
-//                 street: {
-//                     required: true,
-//                 },
-//                 'bulding-no': {
-//                     required: true,
-//                 },
-//                 'floor-no': {
-//                     required: true,
-//                 },
-//                 'apartment-no': {
-//                     required: true,
-//                 }
-//             },
-//             errorPlacement: function (error, element) {
-//                 error.appendTo(element.parent());
-//             },
-//             success: function (label) {
-//                 label.addClass("valid").text('success');
-//             }
-//         });
-//     }
-
-function nextstep(step) {
-  var forms = document.querySelectorAll(".log-in_center_form"),
-      form = document.querySelector(".forgot-password_step-".concat(step));
-  forms.forEach(function (element) {
-    return element.style.display = 'none';
-  });
-  form.style.display = 'block';
-}
-
-$('.log-in_center_form_forgot-password').click(function () {
-  console.log('log-in_center_form_forgot-password', $('log-in_center_form_forgot-password'));
-  var step = $(this).data('step');
-  nextstep(step);
-});
-$('.forgotPasswordRetreat').click(function () {
-  var step = $(this).data('step');
-  forgotPasswordRetreat(step);
-});
-var user_email = null;
-$('#forgot-password_step-1').on('submit', function (e) {
-  e.preventDefault();
-  console.log('forgot-password_step-1');
-  var url = $(this).attr("action");
-  var form_data = $(this).serialize();
-  var email = $(this).find('.email')[0]; // console.log(email , email[0].value);
-  // let viewEmail = $(this).find('p');
-
-  var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-  console.log(email.value.match(pattern));
-
-  if (email.value.match(pattern) === null) {
-    _error2(email, 'عذرا ، البريد الالكتروني غير صحيح');
-  } else {
-    email.classList.remove('is-invalid');
-    email.classList.add('is-valid');
-    $.ajax({
-      type: 'POST',
-      url: url,
-      data: form_data,
-      headers: {
-        "x-accept-language": "ar",
-        "X-CSRF-TOKEN": csrf_token
-      },
-      dataType: 'JSON',
-      //contentType: "application/x-www-form-urlencoded",
-      success: function success(data) {
-        // here I'm adding data as a parameter which stores the response
-        toastr.success(data.message);
-        user_email = email.value;
-        email.value = null;
-        $('#usernameByCode').val(user_email);
-        nextstep(2);
-      },
-      error: function error(response) {
-        _error2(email, response.responseJSON.errors.username);
-      }
-    });
-  }
-});
-$('.forgot-password_step-2').on('submit', function (e) {
-  e.preventDefault();
-  var url = $(this).attr("action");
-  var form_data = $(this).serialize();
-  var codeNumber = $(this).find('.codeNumber')[0];
-
-  if (codeNumber.value.length !== 6) {
-    _error2(codeNumber, 'عذرا ، هذا الرمز غير صحيح');
-  } else {
-    codeNumber.classList.remove('is-invalid');
-    codeNumber.classList.add('is-valid');
-    $.ajax({
-      type: 'POST',
-      url: url,
-      data: form_data,
-      headers: {
-        "x-accept-language": "ar",
-        "X-CSRF-TOKEN": csrf_token
-      },
-      dataType: 'JSON',
-      //contentType: "application/x-www-form-urlencoded",
-      success: function success(data) {
-        // here I'm adding data as a parameter which stores the response
-        // toastr.success(data.message)
-        codeNumber.value = null;
-        $('#tokenByReset').val(data.reset_token);
-        nextstep(3);
-      },
-      error: function error(response) {
-        console.log(codeNumber);
-
-        _error2(codeNumber, response.responseJSON.errors.code);
-      }
-    });
-  }
-});
-$('.forgot-password_step-3').on('submit', function (e) {
-  e.preventDefault();
-  var url = $(this).attr("action");
-  var form_data = $(this).serialize();
-  var password = $(this).find('.password')[0];
-  var confirmPassword = $(this).find('.confirmPassword')[0];
-
-  if (password.value.length < 8) {
-    _error2(password, 'عذرًا ، لكن يجب أن تكون كلمة المرور 8 على الأقل');
-  } else if (confirmPassword.value != password.value) {
-    password.classList.remove('is-invalid');
-    password.classList.add('is-valid');
-
-    _error2(confirmPassword, 'عذرا ، لكن كلمة المرور غير متطابقة');
-  } else {
-    password.classList.remove('is-invalid');
-    confirmPassword.classList.remove('is-invalid');
-    password.classList.add('is-valid');
-    confirmPassword.classList.add('is-valid');
-    $.ajax({
-      type: 'POST',
-      url: url,
-      data: form_data,
-      headers: {
-        "x-accept-language": "ar",
-        "X-CSRF-TOKEN": csrf_token
-      },
-      dataType: 'JSON',
-      //contentType: "application/x-www-form-urlencoded",
-      success: function success(data) {
-        // here I'm adding data as a parameter which stores the response
-        toastr.success(data.message); // nextstep(4);
-
-        password.value = null;
-        confirmPassword.value = null;
-        var forms = document.querySelectorAll(".log-in_center_form");
-        forms.forEach(function (element) {
-          return element.style.display = 'none';
-        });
-        document.querySelector('.log-in_center_form').style.display = 'block';
-        var msg = document.querySelector('.log-in_center_form_msg');
-        msg.innerHTML = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">\n                                                <strong>\u062A\u0645 \u062A\u063A\u064A\u064A\u0631 \u0643\u0644\u0645\u0629 \u0627\u0644\u0633\u0631</strong>\n                                                <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\" style=\"text-align: right;\">\n                                                    <span aria-hidden=\"true\">&times;</span>\n                                                </button>\n                                            </div>";
-      },
-      error: function error(response) {
-        _error2(password, response.responseJSON.errors.token);
-      }
-    });
-  }
-});
-
-function _error2(input, errorText) {
-  var wanted = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
-  input.classList.add('is-invalid');
-  input.classList.remove('is-valid');
-  input.nextElementSibling.innerHTML = errorText;
-  input.focus();
-
-  if (input.value.length == 0 && wanted == true) {
-    input.nextElementSibling.innerHTML = 'هذا الحقل مطلوب';
-  }
-
-  errors = true;
-}
-
-var ResetPasswordCode = 0;
-
-var forgotPassword = function forgotPassword(step) {
-  var forms = document.querySelectorAll(".log-in_center_form"),
-      form = document.querySelector(".forgot-password_step-".concat(step)),
-      span = document.querySelector(".forgot-password_step-4 .span"),
-      errors = false,
-      ShowPassword = false,
-      commuteTime = 1000,
-      error = function error(input, errorText) {
-    var wanted = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
-    input.classList.add('is-invalid');
-    input.classList.remove('is-valid');
-    input.nextElementSibling.innerHTML = errorText;
-    input.focus();
-
-    if (input.value.length == 0 && wanted == true) {
-      input.nextElementSibling.innerHTML = 'هذا الحقل مطلوب';
-    }
-
-    errors = true;
-  },
-      next = function next() {
-    forms.forEach(function (element) {
-      return element.style.display = 'none';
-    });
-
-    if (step === 4) {
-      document.querySelector('.log-in_center_form').style.display = 'block';
-      var msg = document.querySelector('.log-in_center_form_msg');
-      msg.innerHTML = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">\n                                                <strong>\u062A\u0645 \u062A\u063A\u064A\u064A\u0631 \u0643\u0644\u0645\u0629 \u0627\u0644\u0633\u0631</strong>\n                                                <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\" style=\"text-align: right;\">\n                                                    <span aria-hidden=\"true\">&times;</span>\n                                                </button>\n                                            </div>";
-    } else {
-      form.style.display = 'block';
-    }
-  };
-
-  if (step === 1) {
-    next();
-  }
-
-  if (step === 2) {
-    var stepEamil = step - 1;
-    var email = document.querySelector(".forgot-password_step-".concat(stepEamil, " .email"));
-    var viewEmail = document.querySelector(".forgot-password_step-".concat(stepEamil + 1, " p"));
-    var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-
-    if (email.value.match(pattern) === null) {
-      error(email, 'عذرا ، البريد الالكتروني غير صحيح');
-    } else {
-      email.classList.remove('is-invalid');
-      email.classList.add('is-valid');
-      viewEmail.innerHTML = email.value;
-      setTimeout(function () {
-        next();
-      }, commuteTime);
-    } // console.log(resetCodeURL);
-    // console.log(resetPasswordURL);
-
-
-    $.ajax({
-      type: 'post',
-      url: resetMessageURL,
-      headers: {
-        "x-accept-language": "ar",
-        "X-CSRF-TOKEN": csrf_token
-      },
-      data: {
-        'username': email.value
-      },
-      success: function success(data, status) {
-        if (data != '') {
-          ResetPasswordCode = data[1];
-        }
-      }
-    });
-  }
-
-  if (step === 3) {
-    var stepCodeNumber = step - 1;
-    var codeNumber = document.querySelector(".forgot-password_step-".concat(stepCodeNumber, " .codeNumber"));
-
-    if (codeNumber.value.length !== 6) {
-      error(codeNumber, 'عذرا ، هذا الرمز غير صحيح');
-    } else {
-      codeNumber.classList.remove('is-invalid');
-      codeNumber.classList.add('is-valid');
-      setTimeout(function () {
-        next();
-      }, commuteTime);
-    }
-  }
-
-  if (step === 4) {
-    var stepNewPassword = step - 1;
-    var password = document.querySelector(".forgot-password_step-".concat(stepNewPassword, " .password"));
-    var confirmPassword = document.querySelector(".forgot-password_step-".concat(stepNewPassword, " .confirmPassword"));
-
-    if (password.value.length < 8) {
-      error(password, 'عذرًا ، لكن يجب أن تكون كلمة المرور 8 على الأقل');
-    } else if (confirmPassword.value != password.value) {
-      password.classList.remove('is-invalid');
-      password.classList.add('is-valid');
-      error(confirmPassword, 'عذرا ، لكن كلمة المرور غير متطابقة');
-    } else {
-      password.classList.remove('is-invalid');
-      confirmPassword.classList.remove('is-invalid');
-      password.classList.add('is-valid');
-      confirmPassword.classList.add('is-valid');
-      setTimeout(function () {
-        next();
-      }, commuteTime);
-    }
-  }
-
-  form.addEventListener('click', function (e) {
-    e.preventDefault();
-  });
-}; // let forgotPasswordRetreat = (step) => {
-//     document.querySelector(`.forgot-password_step-${step}`).style.display = 'none';
-//     document.querySelector('.log-in_center_form').style.display = 'block';
-// }
-
-
-function forgotPasswordRetreat(step) {
-  document.querySelector(".forgot-password_step-".concat(step)).style.display = 'none';
-  document.querySelector('.log-in_center_form').style.display = 'block';
-} // });
-
-/***/ }),
-
 /***/ "./node_modules/bootstrap/dist/js/bootstrap.js":
 /*!*****************************************************!*\
   !*** ./node_modules/bootstrap/dist/js/bootstrap.js ***!
@@ -19323,19 +17591,6 @@ if ( typeof noGlobal === "undefined" ) {
 
 return jQuery;
 } );
-
-
-/***/ }),
-
-/***/ "./resources/sass/frontend/stylesheets/main.scss":
-/*!*******************************************************!*\
-  !*** ./resources/sass/frontend/stylesheets/main.scss ***!
-  \*******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
 
 
 /***/ }),
@@ -63610,45 +61865,11 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = __webpack_modules__;
-/******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/amd define */
 /******/ 	(() => {
 /******/ 		__webpack_require__.amdD = function () {
 /******/ 			throw new Error('define cannot be used indirect');
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/chunk loaded */
-/******/ 	(() => {
-/******/ 		var deferred = [];
-/******/ 		__webpack_require__.O = (result, chunkIds, fn, priority) => {
-/******/ 			if(chunkIds) {
-/******/ 				priority = priority || 0;
-/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
-/******/ 				deferred[i] = [chunkIds, fn, priority];
-/******/ 				return;
-/******/ 			}
-/******/ 			var notFulfilled = Infinity;
-/******/ 			for (var i = 0; i < deferred.length; i++) {
-/******/ 				var [chunkIds, fn, priority] = deferred[i];
-/******/ 				var fulfilled = true;
-/******/ 				for (var j = 0; j < chunkIds.length; j++) {
-/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
-/******/ 						chunkIds.splice(j--, 1);
-/******/ 					} else {
-/******/ 						fulfilled = false;
-/******/ 						if(priority < notFulfilled) notFulfilled = priority;
-/******/ 					}
-/******/ 				}
-/******/ 				if(fulfilled) {
-/******/ 					deferred.splice(i--, 1)
-/******/ 					result = fn();
-/******/ 				}
-/******/ 			}
-/******/ 			return result;
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -63713,66 +61934,1750 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/jsonp chunk loading */
-/******/ 	(() => {
-/******/ 		// no baseURI
-/******/ 		
-/******/ 		// object to store loaded and loading chunks
-/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
-/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
-/******/ 		var installedChunks = {
-/******/ 			"/js/frontend": 0,
-/******/ 			"css/main": 0
-/******/ 		};
-/******/ 		
-/******/ 		// no chunk on demand loading
-/******/ 		
-/******/ 		// no prefetching
-/******/ 		
-/******/ 		// no preloaded
-/******/ 		
-/******/ 		// no HMR
-/******/ 		
-/******/ 		// no HMR manifest
-/******/ 		
-/******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
-/******/ 		
-/******/ 		// install a JSONP callback for chunk loading
-/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
-/******/ 			var [chunkIds, moreModules, runtime] = data;
-/******/ 			// add "moreModules" to the modules object,
-/******/ 			// then flag all "chunkIds" as loaded and fire callback
-/******/ 			var moduleId, chunkId, i = 0;
-/******/ 			for(moduleId in moreModules) {
-/******/ 				if(__webpack_require__.o(moreModules, moduleId)) {
-/******/ 					__webpack_require__.m[moduleId] = moreModules[moduleId];
-/******/ 				}
-/******/ 			}
-/******/ 			if(runtime) runtime(__webpack_require__);
-/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
-/******/ 			for(;i < chunkIds.length; i++) {
-/******/ 				chunkId = chunkIds[i];
-/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
-/******/ 					installedChunks[chunkId][0]();
-/******/ 				}
-/******/ 				installedChunks[chunkIds[i]] = 0;
-/******/ 			}
-/******/ 			__webpack_require__.O();
-/******/ 		}
-/******/ 		
-/******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
-/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
-/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
-/******/ 	})();
-/******/ 	
 /************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/main"], () => (__webpack_require__("./resources/js/frontend/frontend.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/main"], () => (__webpack_require__("./resources/sass/frontend/stylesheets/main.scss")))
-/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
-/******/ 	
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+(() => {
+"use strict";
+/*!*******************************************!*\
+  !*** ./resources/js/frontend/frontend.js ***!
+  \*******************************************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var wow_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! wow.js */ "./node_modules/wow.js/dist/wow.js");
+/* harmony import */ var wow_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(wow_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+__webpack_require__(/*! ./bootstrap */ "./resources/js/frontend/bootstrap.js");
+
+
+var wow = new (wow_js__WEBPACK_IMPORTED_MODULE_1___default())({
+  boxClass: 'wow',
+  // animated element css class (default is wow)
+  animateClass: 'animated',
+  // animation css class (default is animated)
+  offset: 0,
+  // distance to the element when triggering the animation (default is 0)
+  mobile: true,
+  // trigger animations on mobile devices (default is true)
+  live: true,
+  // act on asynchronously loaded content (default is true)
+  callback: function callback(box) {// the callback is fired every time an animation is started
+    // the argument that is passed in is the DOM node being animated
+  },
+  scrollContainer: null,
+  // optional scroll container selector, otherwise use window,
+  resetAnimation: true // reset animation on end (default is true)
+
+});
+wow.init();
+var lang = document.documentElement.lang.substr(0, 2);
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common['X-Accept-Language'] = lang;
+/**
+ * Next we will register the CSRF Token as a common header with Axios so that
+ * all outgoing HTTP requests automatically have it attached. This is just
+ * a simple convenience so we don't have to attach every token manually.
+ */
+
+var token = document.head.querySelector('meta[name="csrf-token"]');
+
+if (token) {
+  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+} else {
+  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+}
+
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+    'X-Accept-Language': lang
+  }
+});
+ // or however you determine your current app locale
+
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
+
+vue__WEBPACK_IMPORTED_MODULE_2__.default.component('car_seles', __webpack_require__(/*! ../components/CarSelesComponent */ "./resources/js/components/CarSelesComponent.vue").default);
+vue__WEBPACK_IMPORTED_MODULE_2__.default.component('branches', __webpack_require__(/*! ../components/BranchesComponent */ "./resources/js/components/BranchesComponent.vue").default);
+var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
+  el: '#vue_app'
+});
+$(document).ready(function () {
+  /* general variables */
+  // html
+  var html = document.querySelector('html');
+  $('.fa-info-circle').click(function () {
+    $('#additions').toggle(1000);
+  });
+  $("#myFormtoggeler").click(function () {
+    $('#myForm').toggleClass('d-none');
+  });
+  $("#hamburger-bars").click(function () {
+    $('#menu').toggleClass('d-none');
+  });
+  $("#hamburger-bars2").click(function () {
+    $('#menu').toggleClass('d-none');
+  });
+  $(".CarCategoryChange").click(function () {
+    // $('.car-model__heading').slick('unslick');
+    // $('.car-model__heading').removeClass('slick-initialized slick-slider');
+    // $('.car-model__heading').html("");
+    // setTimeout(() => {
+    window.livewire.emit('change:categories', $(this).data('id'));
+    window.livewire.emit('change:carsByCatgory', $(this).data('id'));
+    console.log('change:carsByCatgory', $(this).data('id')); // }, 2000);
+  });
+  $('#toggel-profile').click(function () {
+    $('#update-profile').toggleClass('d-none');
+    $('#profile').toggleClass('d-none');
+    $('#toggel-profile').toggleClass('d-none');
+    $('#toggel-password').toggleClass('d-none');
+  });
+  $('#toggel-password').click(function () {
+    $('#update-password').toggleClass('d-none');
+    $('#profile').toggleClass('d-none');
+    $('#toggel-password').toggleClass('d-none');
+    $('#toggel-profile').toggleClass('d-none');
+  });
+
+  function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }
+
+  window.addEventListener('removeSlideCarModel', function (event) {// $('.car-model__heading').slick('removeSlide', null, null, true);
+    // console.log('unslickunslick');
+  });
+  window.addEventListener('CarModelSlick', function (event) {
+    slick_function(event.detail);
+  });
+
+  function slick_function(_x) {
+    return _slick_function.apply(this, arguments);
+  }
+
+  function _slick_function() {
+    _slick_function = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(details) {
+      var model__item_length;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              // $('.car-model__heading').slick('removeSlide', null, null, true);
+              $('.car-model__heading').slick('unslick');
+              $('.car-model__heading').removeClass('slick-initialized slick-slider');
+              $('.car-model__heading').html('');
+              console.log('refreshing : ', details); // $('.car-model__heading').slick('unslick');
+
+              _context.next = 6;
+              return details.forEach(function (entry) {
+                console.log(entry);
+                var div = "\n                        <div class=\"car-model__item py-2\" data-id=\"".concat(entry.id, "\">\n                            <p class=\" text-center\">").concat(entry.name, "</p>\n                        </div>\n                    ");
+                $('.car-model__heading').append(div); // $('.car-model__heading').slick('slickAdd', div);
+              });
+
+            case 6:
+              model__item_length = $('.car-model__item');
+              console.log(model__item_length.length);
+
+              if (model__item_length.length > 5) {
+                $('.car-model__heading').slick({
+                  slidesToShow: 4,
+                  slidesToScroll: 1,
+                  dots: false,
+                  arrows: true,
+                  rtl: html.dir === 'rtl',
+                  autoplay: true,
+                  autoplaySpeed: 8000,
+                  // centerMode: true
+                  responsive: [{
+                    breakpoint: 767,
+                    settings: {
+                      slidesToShow: 1,
+                      slidesToScroll: 1,
+                      dots: false,
+                      arrows: true,
+                      rtl: html.dir === 'rtl',
+                      autoplay: true
+                    }
+                  }, {
+                    breakpoint: 992,
+                    settings: {
+                      slidesToShow: 3,
+                      slidesToScroll: 1,
+                      dots: false,
+                      arrows: true,
+                      rtl: html.dir === 'rtl',
+                      autoplay: true
+                    }
+                  }, {
+                    breakpoint: 1200,
+                    settings: {
+                      slidesToShow: 4,
+                      slidesToScroll: 1,
+                      dots: false,
+                      arrows: true,
+                      rtl: html.dir === 'rtl',
+                      autoplay: true
+                    }
+                  }]
+                });
+              } else {
+                $('.car-model__heading').slick({
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                  dots: false,
+                  arrows: true,
+                  rtl: html.dir === 'rtl',
+                  autoplay: true,
+                  autoplaySpeed: 8000,
+                  // centerMode: true
+                  responsive: [{
+                    breakpoint: 767,
+                    settings: {
+                      slidesToShow: 1,
+                      slidesToScroll: 1,
+                      dots: false,
+                      arrows: true,
+                      rtl: html.dir === 'rtl',
+                      autoplay: true
+                    }
+                  }, {
+                    breakpoint: 992,
+                    settings: {
+                      slidesToShow: 1,
+                      slidesToScroll: 1,
+                      dots: false,
+                      arrows: true,
+                      rtl: html.dir === 'rtl',
+                      autoplay: true
+                    }
+                  }, {
+                    breakpoint: 1200,
+                    settings: {
+                      slidesToShow: 1,
+                      slidesToScroll: 1,
+                      dots: false,
+                      arrows: true,
+                      rtl: html.dir === 'rtl',
+                      autoplay: true
+                    }
+                  }]
+                });
+              }
+
+            case 9:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+    return _slick_function.apply(this, arguments);
+  }
+
+  $('.car-model__heading').on('afterChange', function (event, slick, currentSlide, nextSlide) {
+    console.log('change:cars', $(slick.$slides[currentSlide]).find('.car-model__item').data('id'));
+
+    if ($(slick.$slides[currentSlide]).find('.car-model__item').data('id') != undefined) {
+      window.livewire.emit('change:cars', $(slick.$slides[currentSlide]).find('.car-model__item').data('id'));
+    }
+  });
+  $('.car-model__heading').on('init', function (event, slick, currentSlide, nextSlide) {
+    console.log('change:cars', $(slick.$slides[currentSlide]).find('.car-model__item').data('id'));
+
+    if ($(slick.$slides[currentSlide]).find('.car-model__item').data('id') != undefined) {
+      window.livewire.emit('change:cars', $(slick.$slides[currentSlide]).find('.car-model__item').data('id'));
+    }
+  });
+  window.addEventListener('CarDetailSlick', function (event) {
+    CarDetailSlickIteams(event.detail);
+  });
+
+  function CarDetailSlickIteams(_x2) {
+    return _CarDetailSlickIteams.apply(this, arguments);
+  }
+
+  function _CarDetailSlickIteams() {
+    _CarDetailSlickIteams = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(details) {
+      var div;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              $('.car-details__heading').slick('removeSlide', null, null, true);
+              console.log('refreshing : ', details.car.model); // $('.car-details__heading').slick('unslick');
+
+              div = "\n        <div><div class=\"py-2 px-1 mx-0 text-center car-details__item\" ><p class=\"my-0\">\u0645\u0648\u062F\u064A\u0644 : ".concat(details.car.model, "</p></div></div>\n        <div><div class=\"py-2 px-1 mx-0 text-center car-details__item\" ><p class=\"my-0\">\u0646\u0627\u0642\u0644 \u0627\u0644\u062D\u0631\u0643\u0629 : \u0627\u0648\u062A\u0648\u0645\u0627\u062A\u064A\u0643</p></div></div>\n        <div><div class=\"py-2 px-1 mx-0 text-center car-details__item\" ><p class=\"my-0\">\u0639\u062F\u062F \u0627\u0644\u0623\u0628\u0648\u0627\u0628 : ").concat(details.car.door, "</p></div></div>\n        <div><div class=\"py-2 px-1 mx-0 text-center car-details__item\" ><p class=\"my-0\">\u0639\u062F\u062F \u0627\u0644\u0645\u0642\u0627\u0639\u062F : 5</p></div></div>\n                ");
+              $('.car-details__heading').slick('slickAdd', div);
+
+            case 4:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+    return _CarDetailSlickIteams.apply(this, arguments);
+  }
+
+  var addind = $('#addingFeatures');
+
+  if (addind.length) {
+    $('#addingFeatures').click(function () {// console.log('ssssssss ');
+    }); // console.log('aaaaaa ');
+  }
+
+  var subscribe = $('#subscribe');
+
+  if (subscribe.length) {
+    $('#subscribe').on('click', function () {
+      var subscriptionEmail = $('#mailsu').val();
+      var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+      var validateEmail = subscriptionEmail.match(pattern);
+
+      if (validateEmail) {
+        $.ajax({
+          type: 'post',
+          url: subscribeURL,
+          headers: {
+            "x-accept-language": "ar",
+            "X-CSRF-TOKEN": csrf_token
+          },
+          data: {
+            'subscribeEmail': $('#mailsu').val()
+          },
+          success: function success(data, status) {
+            console.log(data);
+
+            if (data == true) {
+              console.log('sssssss');
+              $('#confirm').show();
+              $('#reject').hide();
+              $('#exist').hide();
+              $('#notvalide').hide();
+            } else if (data['error'] == 'exist') {
+              $('#exist').show();
+              $('#confirm').hide();
+              $('#reject').hide();
+              $('#notvalide').hide();
+            } else {
+              $('#reject').show();
+              $('#confirm').hide();
+              $('#reject').hide();
+              $('#notvalide').hide();
+            }
+          }
+        });
+      } else {
+        $('#notvalide').show();
+        $('#confirm').hide();
+        $('#reject').hide();
+        $('#exist').hide();
+      }
+    });
+  }
+
+  window.addEventListener("notLogin", function () {
+    $('#BookingModel').modal('hide');
+    $('#loginModal').modal('toggle');
+  }); // const homeCarousel = $('.home-carousel');
+  // if (homeCarousel.length) {
+  //     $('.home-slider').carousel({
+  //         interval: 7000
+  //     })
+  // }
+
+  var checkReservation = $('.check-reservation');
+
+  if (checkReservation.length) {
+    $('.check-reservation').on('click', function () {
+      var identityNumber = $('.identityNumber');
+
+      if (identityNumber.length) {
+        identityNumber = $('.identityNumber').val();
+      } else {
+        identityNumber = 0;
+      }
+
+      var orderCode = $('#orderCode').val();
+      console.log(orderCode, identityNumber);
+      $.ajax({
+        type: 'get',
+        url: showOrderURL + "/".concat(orderCode),
+        headers: {
+          "x-accept-language": "ar"
+        },
+        data: {
+          'identityNumber': identityNumber
+        },
+        success: function success(data, status) {
+          console.log(data);
+
+          switch (data['data']['status']) {
+            case 'confirmed':
+              $('.confirmed').show();
+              $('.pending').hide();
+              $('.rejected').hide();
+              $('.notfound').hide();
+              break;
+
+            case 'pending':
+              $('.pending').show();
+              $('.confirmed').hide();
+              $('.rejected').hide();
+              $('.notfound').hide();
+              break;
+
+            case 'rejected':
+              console.log('rejected');
+              $('.rejected').show();
+              $('.pending').hide();
+              $('.confirmed').hide();
+              $('.notfound').hide();
+              break;
+          }
+        },
+        error: function error(xhr, status, _error) {
+          $('.notfound').show();
+          $('.pending').hide();
+          $('.confirmed').hide();
+          $('.rejected').hide();
+        }
+      });
+    });
+  }
+
+  var homeCategory = $('.home-category');
+
+  if (homeCategory.length) {
+    var togellerBtn = $('#home-category__togeller');
+    togellerBtn.on('click', function () {
+      var categoryItem = $(this).parents('.home-category__conent').find('.home-category__item.not-active');
+      var categoryItemActive = $(this).parents('.home-category__conent').find('.home-category__item.active');
+
+      if (categoryItem.length) {
+        categoryItem.removeClass('not-active').addClass('active');
+        $(this).html($(this).data('less'));
+      } else if (categoryItemActive.length) {
+        categoryItemActive.addClass('not-active').removeClass('active');
+        $(this).html($(this).data('more'));
+      }
+    });
+  }
+
+  var favoriteIcon = $('.addToFavorite');
+
+  if (favoriteIcon.length) {
+    favoriteIcon.on('click', function () {
+      window.livewire.emit('addToFavorite', $(this).data('id'));
+    });
+  }
+
+  var branchPage = $('.branch-page');
+
+  if (branchPage.length) {
+    var branchRegion = $('.branch-regoin');
+    var page_center_dranches_items = $('.branch-page_center_dranches_items');
+    branchRegion.click(function () {
+      var branchesRegion = '';
+      console.log(page_center_dranches_items);
+      page_center_dranches_items.html("");
+      $.ajax({
+        type: 'get',
+        url: BranchApisUrl,
+        headers: {
+          "x-accept-language": "ar"
+        },
+        data: {
+          code: $(this).data('id'),
+          all: true
+        },
+        success: function success(data) {
+          console.log(data.data);
+          data.data.forEach(function (branch) {
+            var timeText = "";
+
+            if (branch.work_time != null) {
+              // branch.work_time.forEach(function(time) {
+              //     // timeText +=
+              //     console.log(time);
+              // });
+              for (var _i = 0, _Object$entries = Object.entries(branch.work_time); _i < _Object$entries.length; _i++) {
+                var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+                    key = _Object$entries$_i[0],
+                    value = _Object$entries$_i[1];
+
+                // timeText += `<p>${ weekDays.[key] } ${ value.lock == 1 ?  "مغلق" : value.timeopen + ' : ' + value.timeclose  }</p>`;
+                console.log("".concat(key, ": "), value);
+              }
+            }
+
+            console.log(timeText);
+            branchesRegion += "<div class=\"col-12 col-md-6 col-lg-3 mb-2\">\n                        <div class=\"branch-page_center_dranches_branch\">\n                            <div class=\"branch-hidden-list\">\n                                <p class=\"detail\">\u0627\u0644\u062A\u0641\u0627\u0635\u064A\u0644</p>\n                                <div class=\"section-detail\">\n                                    <h4>\u0627\u0644\u0639\u0646\u0648\u0627\u0646</h4>\n                                    <p>".concat(branch.name, "</p>\n                                    <p>").concat(branch.address, "</p>\n                                    <h4>\u0631\u0642\u0645 \u0627\u0644\u0647\u0627\u062A\u0641</h4>\n                                    <p>").concat(branch.tele_number, "</p>\n                                    <h4>\u0645\u0648\u0639\u062F\u0646\u0627</h4>\n\n                                    ").concat(timeText, "\n                                    <button>\u0627\u0644\u0645\u0648\u0642\u0639</button>\n                                </div>\n                            </div>\n                            <div class=\"branch-list-visible\">\n                                <img src=\"").concat(branchesLogo, "\" alt=\"logo\">\n                                <h2>").concat(branch.name, "</h2>\n                                <a href=\"tel:").concat(branch.tele_number, "\" class=\"btn btn-danger btn-lg btn-block\"><i class=\"fas fa-phone-volume\"></i> ").concat(branch.tele_number, "</a>\n                            </div>\n                        </div>\n                    </div>");
+          });
+          page_center_dranches_items.html(branchesRegion);
+        }
+      }); // $('#menu').toggleClass('d-none');
+    });
+  }
+
+  var model__item_length = $('.car-model__item');
+  console.log(model__item_length.length);
+
+  if (model__item_length.length > 5) {
+    $('.car-model__heading').slick({
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      dots: false,
+      arrows: true,
+      rtl: html.dir === 'rtl',
+      autoplay: true,
+      autoplaySpeed: 8000,
+      // centerMode: true
+      responsive: [{
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: false,
+          arrows: true,
+          rtl: html.dir === 'rtl',
+          autoplay: true
+        }
+      }, {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          dots: false,
+          arrows: true,
+          rtl: html.dir === 'rtl',
+          autoplay: true
+        }
+      }, {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          dots: false,
+          arrows: true,
+          rtl: html.dir === 'rtl',
+          autoplay: true
+        }
+      }]
+    });
+  } else {
+    $('.car-model__heading').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      dots: false,
+      arrows: true,
+      rtl: html.dir === 'rtl',
+      autoplay: true,
+      autoplaySpeed: 8000,
+      // centerMode: true
+      responsive: [{
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: false,
+          arrows: true,
+          rtl: html.dir === 'rtl',
+          autoplay: true
+        }
+      }, {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: false,
+          arrows: true,
+          rtl: html.dir === 'rtl',
+          autoplay: true
+        }
+      }, {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: false,
+          arrows: true,
+          rtl: html.dir === 'rtl',
+          autoplay: true
+        }
+      }]
+    });
+  }
+
+  window.onscroll = function () {
+    navbarScroll();
+  };
+
+  function navbarScroll() {
+    if (document.documentElement.scrollTop > 50) {
+      document.getElementsByClassName('main-navbar')[0].style.backgroundImage = "linear-gradient( 91deg, #3f4a86 15%, #7f89c0ba 50%, #3f4a86 85%)";
+    } else {
+      document.getElementsByClassName('main-navbar')[0].style.backgroundImage = "none";
+    }
+  } // $('.car-model__heading').slick({
+  //     slidesToShow: 4,
+  //     slidesToScroll: 1,
+  //     dots: false,
+  //     arrows: true,
+  //     rtl: html.dir === 'rtl',
+  //     autoplay: true,
+  //     autoplaySpeed: 8000,
+  //     // centerMode: true
+  //     responsive: [{
+  //             breakpoint: 767,
+  //             settings: {
+  //                 slidesToShow: 1,
+  //                 slidesToScroll: 1,
+  //                 dots: false,
+  //                 arrows: false,
+  //                 rtl: html.dir === 'rtl',
+  //                 autoplay: true
+  //             }
+  //         },
+  //         {
+  //             breakpoint: 992,
+  //             settings: {
+  //                 slidesToShow: 3,
+  //                 slidesToScroll: 1,
+  //                 dots: false,
+  //                 arrows: false,
+  //                 rtl: html.dir === 'rtl',
+  //                 autoplay: true
+  //             }
+  //         },
+  //         {
+  //             breakpoint: 1200,
+  //             settings: {
+  //                 slidesToShow: 3,
+  //                 slidesToScroll: 1,
+  //                 dots: false,
+  //                 arrows: false,
+  //                 rtl: html.dir === 'rtl',
+  //                 autoplay: true
+  //             }
+  //         },
+  //     ]
+  // });
+
+
+  $('.car-details__heading').slick({
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    centerMode: false,
+    dots: false,
+    arrows: false,
+    // rtl: html.dir === 'rtl',
+    autoplay: true,
+    autoplaySpeed: 1500,
+    responsive: [{
+      breakpoint: 767,
+      settings: {
+        slidesToShow: 1,
+        centerMode: false,
+        slidesToScroll: 1
+      }
+    }, {
+      breakpoint: 992,
+      settings: {
+        slidesToShow: 2,
+        centerMode: false,
+        slidesToScroll: 1
+      }
+    }, {
+      breakpoint: 1200,
+      settings: {
+        slidesToShow: 3,
+        centerMode: false,
+        slidesToScroll: 1
+      }
+    }]
+  });
+  $('.home-our-partners__content').slick({
+    slidesToShow: 6,
+    slidesToScroll: 1,
+    centerMode: false,
+    dots: false,
+    arrows: false,
+    rtl: html.dir === 'rtl',
+    autoplay: true,
+    autoplaySpeed: 1500,
+    responsive: [{
+      breakpoint: 767,
+      settings: {
+        slidesToShow: 3,
+        centerMode: false,
+        slidesToScroll: 1
+      }
+    }, {
+      breakpoint: 992,
+      settings: {
+        slidesToShow: 3,
+        centerMode: false,
+        slidesToScroll: 1
+      }
+    }, {
+      breakpoint: 1200,
+      settings: {
+        slidesToShow: 3,
+        centerMode: false,
+        slidesToScroll: 1
+      }
+    }]
+  });
+  $('#filter-toggele').click(function () {
+    $('.toggeling-menue').toggleClass('d-none');
+    $(body).css('position', 'fixed');
+  });
+  $('.cancel-toggle-menue').click(function () {
+    $('.toggeling-menue').toggleClass('d-none');
+  });
+  $('#social-media-links-toggeler').click(function () {
+    $('.social-media-links').toggleClass('d-none');
+  });
+  /* =============================================================== */
+
+  /* ======================       Offers       ===================== */
+
+  /* =============================================================== */
+
+  var offer = $('.home-offers_content_text');
+
+  if (offer.length) {
+    var OffersAnimation = function OffersAnimation(userLocation) {
+      var nameClassOffers = '.home-offers_content_text',
+          hT = $(nameClassOffers + '_discount').offset().top,
+          hH = $(nameClassOffers + '_discount').outerHeight(),
+          wH = $(window).height(),
+          wS = $(userLocation).scrollTop();
+
+      if (wS > hT + hH - wH && OffersAnimationStart == false) {
+        $(nameClassOffers + '_discount').animate({
+          left: '104%'
+        }, 1000, function () {
+          $(nameClassOffers + '_name').animate({
+            left: '96%'
+          }, 800, function () {
+            $(nameClassOffers + '_detailing').animate({
+              left: '95%'
+            }, 600, function () {
+              $(nameClassOffers + '_price').animate({
+                top: '37%'
+              }, 400, function () {
+                $(nameClassOffers + '_button').animate({
+                  top: '95%'
+                }, 400);
+              });
+            });
+          });
+        });
+        OffersAnimationStart = true;
+      }
+    };
+
+    $(window).scroll(function () {
+      OffersAnimation(this);
+    });
+    $(function () {
+      OffersAnimation(window);
+    });
+    var OffersAnimationStart = false;
+  } // gallery page----------------------------------------------------------------
+  // $(".oldImg").click(function() {
+  //     console.log('tasebgday');
+  //     window.location.href = "#";
+  //     $("#container").append($("<div class='opacity '><div class='container-fluid'><a id='close'>X</a><div class='row'> <img class='newImg '></div><div class='row justify-content-between mt-4'><button class='primary-btn btn-curved btn-hover mx-4' id='previous'>السابق</button><button id='next' class='primary-btn btn-curved btn-hover mx-4'>التالى</button></div></div></div>"));
+  //     $(".newImg").attr("src", this.src);
+  //     $("#previous").click(function() {
+  //         let source = $(".newImg").attr("src");
+  //         for (var i = 0; i < $('#container .row .oldImg').length; i++) {
+  //             if ($("#container .row").children('img')[i].src == source) {
+  //                 if (i > 0) {
+  //                     let newUrl = $("#container .row").children('img')[i - 1].src
+  //                     $(".newImg").fadeOut(300, function() {
+  //                         $(".newImg").attr("src", newUrl)
+  //                         $(".newImg").fadeIn(300);
+  //                     });
+  //                 }
+  //             }
+  //         };
+  //     });
+  //     $("#next").click(function() {
+  //         let source = $(".newImg").attr("src");
+  //         for (var i = 0; i < $('#container .row .oldImg').length; i++) {
+  //             if ($("#container .row").children('img')[i].src == source) {
+  //                 if (i < $('#container .oldImg').length - 1) {
+  //                     let newUrl = $("#container .row").children('img')[i + 1].src
+  //                     $(".newImg").fadeOut(300, function() {
+  //                         $(".newImg").attr("src", newUrl)
+  //                         $(".newImg").fadeIn(300);
+  //                     });
+  //                 }
+  //             }
+  //         };
+  //     });
+  //     $('#close').click(function() {
+  //         $(".opacity").remove()
+  //     });
+  // });
+  // gallery page ends here---------------------------------------------------------------------
+
+
+  $('.nav-link').click(function () {
+    $('.nav-link.active').removeClass('active');
+    $(this).addClass('active');
+  });
+  $('#oldcontracts-toggel').click(function () {
+    $('.contracts-section').addClass('d-none');
+    $('#oldcontracts').removeClass('d-none');
+  });
+  $('#newcontracts-toggel').click(function () {
+    $('.contracts-section').addClass('d-none');
+    $('#newcontracts').removeClass('d-none');
+  });
+  /* ========================================================
+     ===================logo animation=======================
+     ========================================================
+  */
+
+  $('.nav-logo').animate({
+    top: '10px'
+  }, 2500); // $('.nav-logo').animate({ width: '120px' }, 'slow')
+
+  /* ==========================================================
+     ===================logo animation ends====================
+     ==========================================================
+  */
+}); // $(document).ready(function() {
+//     /*================
+//      / General Functions /
+//     ================*/
+//     /* general variables */
+//     // html
+//     const html = document.querySelector('html');
+//     // navbar
+//     const navbar = document.querySelector('.main-navbar');
+//     // sidebar
+//     const sidebar = document.querySelector('.side-bar');
+//     // sidebar btn in left of page
+//     const sidebarCollapse = document.querySelector('.sidebar-collapse');
+//     // sidebar close btn
+//     const closeSidebarBtn = document.querySelector('.side-bar__close');
+//     // sidebar btn in narvar
+//     const navCollapse = document.querySelector('.nav-collapse');
+//     // menu in small screen
+//     const navMenu = document.querySelector('.hidden-menu');
+//     // close menu in small screen
+//     const closeNavMenu = document.querySelector('.hidden-menu__close');
+//     // closr sidebar btn
+//     const collapseBtn = document.querySelector('.collapse-sidebar');
+//     // all element that contain data scroll
+//     const elementData = document.querySelectorAll('*[data-scroll]');
+//     // button open and close form add comment
+//     const addCommentBtn = document.querySelector('.add-comment-btn');
+//     // search box
+//     const openSearchBox = document.querySelector('.main-navbar__links__menu__item.search-link a');
+//     // search box close
+//     const closeSearchBox = document.querySelector('.search-box__content__block__btn button');
+//     // // function add rtl option to element that contain slider
+//     // function fixSliderRtl() {
+//     //     if (html.dir === 'rtl') {
+//     //          console.log(html.dir , html.dir === 'rtl');
+//     //         const allSliderBoxes = $('.header__content');
+//     //         allSliderBoxes.slick('slickSetOption', 'rtl', true);
+//     //     }
+//     // }
+//     // fixSliderRtl();
+//     // function fixed navbar when scroll
+//     function fixedElement() {
+//         if (window.scrollY > 300) {
+//             navbar.classList.add('fixed-navbar');
+//         } else {
+//             navbar.classList.remove('fixed-navbar');
+//         }
+//     }
+//     // fixed navbar when scroll
+//     window.onscroll = fixedElement;
+//     // fixed navbar when dom ready
+//     fixedElement();
+//     // function toggle classes of elements
+//     function toggleClasses(element, class1, class2) {
+//         if (element.classList.contains(class1)) {
+//             element.classList.remove(class1)
+//             element.classList.add(class2)
+//         } else {
+//             element.classList.add(class1)
+//             element.classList.remove(class2)
+//         }
+//     }
+//     // close search box
+//     closeSearchBox.onclick = () => {
+//         $('.search-box').slideUp();
+//     }
+//     // open search box
+//     openSearchBox.onclick = (e) => {
+//         e.preventDefault();
+//         $('.search-box').slideDown();
+//     }
+//     // show sidebar when click nav collapse
+//     sidebarCollapse.onclick = () => {
+//         toggleClasses(sidebar, 'show-sidebar', 'hide-sidebar');
+//     };
+//     // open and close add comment form
+//     addCommentBtn.onclick = () => {
+//         $('.add-comment__box').fadeToggle();
+//     };
+//     // show sidebar when click left btn
+//     collapseBtn.onclick = () => {
+//         toggleClasses(sidebar, 'show-sidebar', 'hide-sidebar');
+//     };
+//     // hide sidebar when click close sidebar btn
+//     closeSidebarBtn.onclick = () => {
+//         toggleClasses(sidebar, 'show-sidebar', 'hide-sidebar');
+//     };
+//     // show nav menu
+//     navCollapse.onclick = () => {
+//         toggleClasses(navMenu, 'show-sidebar', 'hide-sidebar');
+//     };
+//     // hide nav menu
+//     closeNavMenu.onclick = () => {
+//         toggleClasses(navMenu, 'show-sidebar', 'hide-sidebar');
+//     };
+//     // nicescroll Plugin
+//     $('html').niceScroll({
+//         cursorcolor: '#BA2D92',
+//         cursorwidth: '6px',
+//         zindex: 30,
+//         cursorborder:"0",
+//     });
+//     // preload of page
+//     $('.preload .loader').fadeOut(1500, function() {
+//         $('.preload').fadeOut(1000);
+//     });
+//     // general function scroll to element
+//     function scrollElement(event) {
+//         // disable prevent behavior of element
+//         event.preventDefault();
+//         // get current data scroll of this element
+//         const element = this.dataset.scroll;
+//         // get related element with thame data scroll
+//         const relatedBox = document.querySelector(`*[data-scroll-target="${element}"]`);
+//         if (relatedBox) {
+//             // scroll to current element
+//             $("html, body").animate({scrollTop: relatedBox.offsetTop}, 'slow');
+//         }
+//         // return false
+//         return false;
+//     }
+//     elementData.forEach((element) => {
+//         element.addEventListener('click', scrollElement);
+//     });
+//     /*================
+//      / Home Page /
+//     ================*/
+//     /* workFlow */
+//     const workFlow = $('.work-flow__process');
+//     if (workFlow.length) {
+//         workFlow.slick({
+//             slidesToShow: 4,
+//             slidesToScroll: 1,
+//             dots: false,
+//             arrows: false,
+//             autoplay: true,
+//             rtl : html.dir === 'rtl' ,
+//             autoplaySpeed: 3000,
+//             responsive: [
+//                 {
+//                     breakpoint: 767,
+//                     settings: {
+//                         slidesToShow: 1,
+//                         slidesToScroll: 1,
+//                     }
+//                 },
+//                 {
+//                     breakpoint: 992,
+//                     settings: {
+//                         slidesToShow: 2,
+//                         slidesToScroll: 1,
+//                     }
+//                 },
+//                 {
+//                     breakpoint: 1200,
+//                     settings: {
+//                         slidesToShow: 3,
+//                         slidesToScroll: 1,
+//                     }
+//                 },
+//             ]
+//         });
+//     }
+//     /* services */
+//     const servicesHome = $('.services-home__cards');
+//     if (servicesHome.length) {
+//         if (window.outerWidth < 992) {
+//             servicesHome.slick({
+//                 slidesToShow: 4,
+//                 slidesToScroll: 1,
+//                 dots: false,
+//                 arrows: false,
+//                 rtl : html.dir === 'rtl' ,
+//                 autoplay: true,
+//                 autoplaySpeed: 3000,
+//                 responsive: [
+//                     {
+//                         breakpoint: 767,
+//                         settings: {
+//                             slidesToShow: 1,
+//                             slidesToScroll: 1,
+//                         }
+//                     },
+//                     {
+//                         breakpoint: 992,
+//                         settings: {
+//                             slidesToShow: 2,
+//                             slidesToScroll: 1,
+//                         }
+//                     },
+//                 ]
+//             });
+//         }
+//     }
+//     /* clientsText */
+//     const clientsText = $('.testmonials__text');
+//     if (clientsText.length) {
+//         clientsText.slick({
+//             slidesToShow: 1,
+//             slidesToScroll: 1,
+//             dots: false,
+//             rtl : html.dir === 'rtl' ,
+//             arrows: false,
+//             autoplay: true,
+//             autoplaySpeed: 3000,
+//             asNavFor: '.testmonials__clients__items'
+//         });
+//     }
+//     /* clientsImgs */
+//     const clientsImgs = $('.testmonials__clients__items');
+//     if (clientsImgs.length) {
+//         clientsImgs.slick({
+//             slidesToShow: 3,
+//             slidesToScroll: 1,
+//             dots: false,
+//             arrows: false,
+//             rtl : html.dir === 'rtl' ,
+//             autoplay: true,
+//             autoplaySpeed: 3000,
+//             asNavFor: '.testmonials__text',
+//             responsive: [
+//                 {
+//                     breakpoint: 767,
+//                     settings: {
+//                         slidesToShow: 1,
+//                         slidesToScroll: 1,
+//                     }
+//                 },
+//                 {
+//                     breakpoint: 992,
+//                     settings: {
+//                         slidesToShow: 2,
+//                         slidesToScroll: 1,
+//                     }
+//                 },
+//                 {
+//                     breakpoint: 1200,
+//                     settings: {
+//                         slidesToShow: 3,
+//                         slidesToScroll: 1,
+//                     }
+//                 },
+//             ]
+//         });
+//     }
+//     const plans = $('.plans');
+//     if (plans.length) {
+//         const planControlBtn = $('.plans__heading__control a');
+//         planControlBtn.on('click', function(e) {
+//             e.preventDefault();
+//             planControlBtn.not($(this)).removeClass('active');
+//             $(this).addClass('active');
+//             $(this).attr('data-plan') === 'year' ? $('.plans__heading__control').addClass('enable') : $('.plans__heading__control').removeClass('enable');
+//             // $('.plans__cards__item__box__price span').text($(this).attr('data-plan'));
+//             $('.plans__cards__item__box__price').hide();
+//             $('.plans__cards__item__box__price.'+$(this).attr('data-plan')).show();
+//         });
+//         $('.plans__cards').slick({
+//             slidesToShow: 3,
+//             slidesToScroll: 1,
+//             dots: false,
+//             arrows: false,
+//             rtl : html.dir === 'rtl' ,
+//             // autoplay: true,
+//             autoplaySpeed: 3000,
+//             responsive: [
+//                 {
+//                     breakpoint: 767,
+//                     settings: {
+//                         slidesToShow: 1,
+//                         slidesToScroll: 1,
+//                     }
+//                 },
+//                 {
+//                     breakpoint: 992,
+//                     settings: {
+//                         slidesToShow: 2,
+//                         slidesToScroll: 1,
+//                     }
+//                 },
+//                 {
+//                     breakpoint: 1200,
+//                     settings: {
+//                         slidesToShow: 3,
+//                         slidesToScroll: 1,
+//                     }
+//                 },
+//             ]
+//         });
+//     }
+//     const blog = $('.blog');
+//     if (blog.length) {
+//         $('.blog__cards__item__box__content__btn').on('click', function() {
+//             const blogImg = $(this).parents('.blog__cards__item__box').find('img').attr('src');
+//             const blogDetail = $(this).parents('.blog__cards__item__box__content').find('.blog__cards__item__box__content__detail').text();
+//             $('.blog-modal img').attr('src', blogImg);
+//             $('.blog-modal p').text(blogDetail);
+//         });
+//         $('.blog__cards').slick({
+//             slidesToShow: 3,
+//             slidesToScroll: 1,
+//             dots: true,
+//             arrows: false,
+//             rtl : html.dir === 'rtl' ,
+//             autoplay: true,
+//             autoplaySpeed: 3000,
+//             responsive: [
+//                 {
+//                     breakpoint: 767,
+//                     settings: {
+//                         slidesToShow: 1,
+//                         slidesToScroll: 1,
+//                     }
+//                 },
+//                 {
+//                     breakpoint: 992,
+//                     settings: {
+//                         slidesToShow: 2,
+//                         slidesToScroll: 1,
+//                     }
+//                 },
+//                 {
+//                     breakpoint: 1200,
+//                     settings: {
+//                         slidesToShow: 3,
+//                         slidesToScroll: 1,
+//                     }
+//                 },
+//             ]
+//         });
+//     }
+//     const brand = $('.brand');
+//     if (brand.length) {
+//         $('.brand__cards').slick({
+//             slidesToShow: 6,
+//             slidesToScroll: 1,
+//             dots: false,
+//             arrows: false,
+//             autoplay: true,
+//             rtl : html.dir === 'rtl' ,
+//             autoplaySpeed: 3000,
+//             responsive: [
+//                 {
+//                     breakpoint: 767,
+//                     settings: {
+//                         slidesToShow: 2,
+//                         slidesToScroll: 1,
+//                     }
+//                 },
+//                 {
+//                     breakpoint: 992,
+//                     settings: {
+//                         slidesToShow: 3,
+//                         slidesToScroll: 1,
+//                     }
+//                 },
+//                 {
+//                     breakpoint: 1200,
+//                     settings: {
+//                         slidesToShow: 4,
+//                         slidesToScroll: 1,
+//                     }
+//                 },
+//             ]
+//         });
+//     }
+//     /*================
+//      / about Page /
+//     ================*/
+//     const us_best = $('.us-the-best');
+//     if (us_best.length) {
+//         $('.us-the-best__process').slick({
+//             slidesToShow: 4,
+//             slidesToScroll: 1,
+//             dots: false,
+//             arrows: false,
+//             rtl : html.dir === 'rtl' ,
+//             autoplay: true,
+//             autoplaySpeed: 3000,
+//             responsive: [
+//                 {
+//                     breakpoint: 767,
+//                     settings: {
+//                         slidesToShow: 1,
+//                         slidesToScroll: 1,
+//                     }
+//                 },
+//                 {
+//                     breakpoint: 992,
+//                     settings: {
+//                         slidesToShow: 2,
+//                         slidesToScroll: 1,
+//                     }
+//                 },
+//                 {
+//                     breakpoint: 1200,
+//                     settings: {
+//                         slidesToShow: 4,
+//                         slidesToScroll: 1,
+//                     }
+//                 },
+//             ]
+//         });
+//     }
+//     /*================
+//      / contact Page /
+//     ================*/
+//     const contactPayments = $('.contact-payments__items');
+//     if (contactPayments.length) {
+//         contactPayments.slick({
+//             slidesToShow: 3,
+//             slidesToScroll: 1,
+//             dots: false,
+//             arrows: false,
+//             rtl : html.dir === 'rtl' ,
+//             autoplay: true,
+//             autoplaySpeed: 3000,
+//             responsive: [
+//                 {
+//                     breakpoint: 767,
+//                     settings: {
+//                         slidesToShow: 1,
+//                         slidesToScroll: 1,
+//                     }
+//                 },
+//                 {
+//                     breakpoint: 992,
+//                     settings: {
+//                         slidesToShow: 2,
+//                         slidesToScroll: 1,
+//                     }
+//                 },
+//                 {
+//                     breakpoint: 1200,
+//                     settings: {
+//                         slidesToShow: 3,
+//                         slidesToScroll: 1,
+//                     }
+//                 },
+//             ]
+//         });
+//     }
+//     var getTouch = $('.get-touch__form');
+//     if (getTouch.length) {
+//         getTouch.validate({
+//             rules: {
+//                 name: {
+//                     required: true,
+//                 },
+//                 email: {
+//                     required: true,
+//                     email: true,
+//                 },
+//                 phone: {
+//                     required: true,
+//                 },
+//                 subject: {
+//                     required: true,
+//                 },
+//                 message: {
+//                     required: true
+//                 },
+//             },
+//             errorPlacement: function (error, element) {
+//                 error.appendTo(element.parent());
+//             },
+//         });
+//     }
+//     /*================
+//      / register Page /
+//     ================*/
+//     var register = $('.register-form form');
+//     register.validate({
+//         rules: {
+//             first_name: {
+//                 required: true,
+//             },
+//             last_name: {
+//                 required: true,
+//             },
+//             email: {
+//                 required: true,
+//                 email: true,
+//             },
+//             number: {
+//                 required: true,
+//             },
+//             another_number: {
+//                 required: true,
+//             },
+//             password: {
+//                 required: true
+//             },
+//             confirm_password: {
+//                 required: true
+//             },
+//         },
+//         errorPlacement: function (error, element) {
+//             error.appendTo(element.parent());
+//         },
+//     });
+//    /*******************
+//     * Profile Page *
+//     ********************/
+//    const profileUser = $('.user-profile');
+//    if (profileUser.length) {
+//         // select all user filter
+//         var userFilter = $('.user-profile__left__cat a[data-user-filter]');
+//         // edit btn
+//         $('.user-profile__right__details__right .edit-btn').click(function() {
+//             $('.user-profile__left__cat a[data-user-filter="user-edit"]').click();
+//         });
+//         $('.user-profile__right__details__right .edit-address').click(function() {
+//             $('.user-profile__left__cat a[data-user-filter="address-edit"]').click();
+//         });
+//         // add active class to current active tab
+//         userFilter.on('click', function(e) {
+//             e.preventDefault();
+//             userFilter.not($(this)).removeClass('active');
+//             $(this).addClass('active');
+//             userSet();
+//         });
+//         $('.user-profile__right__details__right .edit-btn').click(function() {
+//             $('.user-profile__left__cat a[data-user-filter="user-edit"]').click();
+//         });
+//         // function control tabs
+//         function userSet() {
+//             var userFilterLink = $('.user-profile__left__cat a.active').attr('data-user-filter');
+//             var relatedContent = $(`div[data-user="${userFilterLink}"]`);
+//             allUserContent = $(`div[data-user]`);
+//             allUserContent.not(relatedContent).addClass('d-none');
+//             relatedContent.removeClass('d-none');
+//         }
+//         userSet();
+//         var userEdit = $('.edit-user');
+//         userEdit.validate({
+//             rules: {
+//                 name: {
+//                     required: true,
+//                 },
+//                 email: {
+//                     required: true,
+//                     email: true,
+//                 },
+//                 phone: {
+//                     required: true,
+//                     number: true,
+//                 },
+//                 company: {
+//                     required: true,
+//                 },
+//                 password: {
+//                     // required: true,
+//                     minlength: 8
+//                 }
+//             },
+//             errorPlacement: function (error, element) {
+//                 error.appendTo(element.parent());
+//             },
+//             success: function (label) {
+//                 label.addClass("valid").text('success');
+//             }
+//         });
+//         var addressEdit = $('form.edit-address');
+//         addressEdit.validate({
+//             rules: {
+//                 name: {
+//                     required: true,
+//                 },
+//                 government: {
+//                     required: true,
+//                 },
+//                 area: {
+//                     required: true,
+//                 },
+//                 street: {
+//                     required: true,
+//                 },
+//                 'bulding-no': {
+//                     required: true,
+//                 },
+//                 'floor-no': {
+//                     required: true,
+//                 },
+//                 'apartment-no': {
+//                     required: true,
+//                 }
+//             },
+//             errorPlacement: function (error, element) {
+//                 error.appendTo(element.parent());
+//             },
+//             success: function (label) {
+//                 label.addClass("valid").text('success');
+//             }
+//         });
+//     }
+
+var formLoader = document.querySelector('.forgot-password .form-loader');
+
+function nextstep(step) {
+  var forms = document.querySelectorAll(".log-in_center_form"),
+      form = document.querySelector(".forgot-password_step-".concat(step));
+  forms.forEach(function (element) {
+    return element.style.display = 'none';
+  });
+  form.style.display = 'block';
+}
+
+$('.log-in_center_form_forgot-password').click(function () {
+  console.log('log-in_center_form_forgot-password', $('log-in_center_form_forgot-password'));
+  var step = $(this).data('step');
+  nextstep(step);
+});
+$('.forgotPasswordRetreat').click(function () {
+  var step = $(this).data('step');
+  forgotPasswordRetreat(step);
+});
+var user_email = null;
+$('#forgot-password_step-1').on('submit', function (e) {
+  e.preventDefault();
+  console.log('forgot-password_step-1');
+  var url = $(this).attr("action");
+  var form_data = $(this).serialize();
+  var email = $(this).find('.email')[0]; // console.log(email , email[0].value);
+  // let viewEmail = $(this).find('p');
+
+  var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  console.log(email.value.match(pattern));
+
+  if (email.value.match(pattern) === null) {
+    _error2(email, 'عذرا ، البريد الالكتروني غير صحيح');
+  } else {
+    formLoader.classList.add('show');
+    email.classList.remove('is-invalid');
+    email.classList.add('is-valid');
+    $.ajax({
+      type: 'POST',
+      url: url,
+      data: form_data,
+      headers: {
+        "x-accept-language": "ar",
+        "X-CSRF-TOKEN": csrf_token
+      },
+      dataType: 'JSON',
+      //contentType: "application/x-www-form-urlencoded",
+      success: function success(data) {
+        // here I'm adding data as a parameter which stores the response
+        formLoader.classList.remove('show');
+        toastr.success(data.message);
+        user_email = email.value;
+        email.value = null;
+        $('#usernameByCode').val(user_email);
+        nextstep(2);
+      },
+      error: function error(response) {
+        formLoader.classList.remove('show');
+
+        _error2(email, response.responseJSON.errors.username);
+      }
+    });
+  }
+});
+$('.forgot-password_step-2').on('submit', function (e) {
+  e.preventDefault();
+  var url = $(this).attr("action");
+  var form_data = $(this).serialize();
+  var codeNumber = $(this).find('.codeNumber')[0];
+
+  if (codeNumber.value.length !== 6) {
+    _error2(codeNumber, 'عذرا ، هذا الرمز غير صحيح');
+  } else {
+    codeNumber.classList.remove('is-invalid');
+    codeNumber.classList.add('is-valid');
+    formLoader.classList.add('show');
+    $.ajax({
+      type: 'POST',
+      url: url,
+      data: form_data,
+      headers: {
+        "x-accept-language": "ar",
+        "X-CSRF-TOKEN": csrf_token
+      },
+      dataType: 'JSON',
+      //contentType: "application/x-www-form-urlencoded",
+      success: function success(data) {
+        // here I'm adding data as a parameter which stores the response
+        // toastr.success(data.message)
+        formLoader.classList.remove('show');
+        codeNumber.value = null;
+        $('#tokenByReset').val(data.reset_token);
+        nextstep(3);
+      },
+      error: function error(response) {
+        formLoader.classList.remove('show');
+        console.log(codeNumber);
+
+        _error2(codeNumber, response.responseJSON.errors.code);
+      }
+    });
+  }
+});
+$('.forgot-password_step-3').on('submit', function (e) {
+  e.preventDefault();
+  var url = $(this).attr("action");
+  var form_data = $(this).serialize();
+  var password = $(this).find('.password')[0];
+  var confirmPassword = $(this).find('.confirmPassword')[0];
+
+  if (password.value.length < 8) {
+    _error2(password, 'عذرًا ، لكن يجب أن تكون كلمة المرور 8 على الأقل');
+  } else if (confirmPassword.value != password.value) {
+    password.classList.remove('is-invalid');
+    password.classList.add('is-valid');
+
+    _error2(confirmPassword, 'عذرا ، لكن كلمة المرور غير متطابقة');
+  } else {
+    password.classList.remove('is-invalid');
+    confirmPassword.classList.remove('is-invalid');
+    password.classList.add('is-valid');
+    confirmPassword.classList.add('is-valid');
+    formLoader.classList.add('show');
+    $.ajax({
+      type: 'POST',
+      url: url,
+      data: form_data,
+      headers: {
+        "x-accept-language": "ar",
+        "X-CSRF-TOKEN": csrf_token
+      },
+      dataType: 'JSON',
+      //contentType: "application/x-www-form-urlencoded",
+      success: function success(data) {
+        // here I'm adding data as a parameter which stores the response
+        toastr.success(data.message);
+        formLoader.classList.remove('show'); // nextstep(4);
+
+        password.value = null;
+        confirmPassword.value = null;
+        var forms = document.querySelectorAll(".log-in_center_form");
+        forms.forEach(function (element) {
+          return element.style.display = 'none';
+        });
+        document.querySelector('.log-in_center_form').style.display = 'block';
+        var msg = document.querySelector('.log-in_center_form_msg');
+        msg.innerHTML = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">\n                                                <strong>\u062A\u0645 \u062A\u063A\u064A\u064A\u0631 \u0643\u0644\u0645\u0629 \u0627\u0644\u0633\u0631</strong>\n                                                <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\" style=\"text-align: right;\">\n                                                    <span aria-hidden=\"true\">&times;</span>\n                                                </button>\n                                            </div>";
+      },
+      error: function error(response) {
+        formLoader.classList.remove('show');
+
+        _error2(password, response.responseJSON.errors.token);
+      }
+    });
+  }
+});
+
+function _error2(input, errorText) {
+  var wanted = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+  input.classList.add('is-invalid');
+  input.classList.remove('is-valid');
+  input.nextElementSibling.innerHTML = errorText;
+  input.focus();
+
+  if (input.value.length == 0 && wanted == true) {
+    input.nextElementSibling.innerHTML = 'هذا الحقل مطلوب';
+  }
+
+  errors = true;
+}
+
+var ResetPasswordCode = 0;
+
+var forgotPassword = function forgotPassword(step) {
+  var forms = document.querySelectorAll(".log-in_center_form"),
+      form = document.querySelector(".forgot-password_step-".concat(step)),
+      span = document.querySelector(".forgot-password_step-4 .span"),
+      errors = false,
+      ShowPassword = false,
+      commuteTime = 1000,
+      error = function error(input, errorText) {
+    var wanted = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+    input.classList.add('is-invalid');
+    input.classList.remove('is-valid');
+    input.nextElementSibling.innerHTML = errorText;
+    input.focus();
+
+    if (input.value.length == 0 && wanted == true) {
+      input.nextElementSibling.innerHTML = 'هذا الحقل مطلوب';
+    }
+
+    errors = true;
+  },
+      next = function next() {
+    forms.forEach(function (element) {
+      return element.style.display = 'none';
+    });
+
+    if (step === 4) {
+      document.querySelector('.log-in_center_form').style.display = 'block';
+      var msg = document.querySelector('.log-in_center_form_msg');
+      msg.innerHTML = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">\n                                                <strong>\u062A\u0645 \u062A\u063A\u064A\u064A\u0631 \u0643\u0644\u0645\u0629 \u0627\u0644\u0633\u0631</strong>\n                                                <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\" style=\"text-align: right;\">\n                                                    <span aria-hidden=\"true\">&times;</span>\n                                                </button>\n                                            </div>";
+    } else {
+      form.style.display = 'block';
+    }
+  };
+
+  if (step === 1) {
+    next();
+  }
+
+  if (step === 2) {
+    var stepEamil = step - 1;
+    var email = document.querySelector(".forgot-password_step-".concat(stepEamil, " .email"));
+    var viewEmail = document.querySelector(".forgot-password_step-".concat(stepEamil + 1, " p"));
+    var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+    if (email.value.match(pattern) === null) {
+      error(email, 'عذرا ، البريد الالكتروني غير صحيح');
+    } else {
+      email.classList.remove('is-invalid');
+      email.classList.add('is-valid');
+      viewEmail.innerHTML = email.value;
+      setTimeout(function () {
+        next();
+      }, commuteTime);
+    } // console.log(resetCodeURL);
+    // console.log(resetPasswordURL);
+
+
+    $.ajax({
+      type: 'post',
+      url: resetMessageURL,
+      headers: {
+        "x-accept-language": "ar",
+        "X-CSRF-TOKEN": csrf_token
+      },
+      data: {
+        'username': email.value
+      },
+      success: function success(data, status) {
+        if (data != '') {
+          ResetPasswordCode = data[1];
+        }
+      }
+    });
+  }
+
+  if (step === 3) {
+    var stepCodeNumber = step - 1;
+    var codeNumber = document.querySelector(".forgot-password_step-".concat(stepCodeNumber, " .codeNumber"));
+
+    if (codeNumber.value.length !== 6) {
+      error(codeNumber, 'عذرا ، هذا الرمز غير صحيح');
+    } else {
+      codeNumber.classList.remove('is-invalid');
+      codeNumber.classList.add('is-valid');
+      setTimeout(function () {
+        next();
+      }, commuteTime);
+    }
+  }
+
+  if (step === 4) {
+    var stepNewPassword = step - 1;
+    var password = document.querySelector(".forgot-password_step-".concat(stepNewPassword, " .password"));
+    var confirmPassword = document.querySelector(".forgot-password_step-".concat(stepNewPassword, " .confirmPassword"));
+
+    if (password.value.length < 8) {
+      error(password, 'عذرًا ، لكن يجب أن تكون كلمة المرور 8 على الأقل');
+    } else if (confirmPassword.value != password.value) {
+      password.classList.remove('is-invalid');
+      password.classList.add('is-valid');
+      error(confirmPassword, 'عذرا ، لكن كلمة المرور غير متطابقة');
+    } else {
+      password.classList.remove('is-invalid');
+      confirmPassword.classList.remove('is-invalid');
+      password.classList.add('is-valid');
+      confirmPassword.classList.add('is-valid');
+      setTimeout(function () {
+        next();
+      }, commuteTime);
+    }
+  }
+
+  form.addEventListener('click', function (e) {
+    e.preventDefault();
+  });
+}; // let forgotPasswordRetreat = (step) => {
+//     document.querySelector(`.forgot-password_step-${step}`).style.display = 'none';
+//     document.querySelector('.log-in_center_form').style.display = 'block';
+// }
+
+
+function forgotPasswordRetreat(step) {
+  document.querySelector(".forgot-password_step-".concat(step)).style.display = 'none';
+  document.querySelector('.log-in_center_form').style.display = 'block';
+} // });
+})();
+
 /******/ })()
 ;
