@@ -640,7 +640,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     if (checkData()) {
                         e.preventDefault();
                     }
-                    console.log(e);
+                    else{
+                        document.querySelector('.register_center_form .form-loader').classList.add('show');
+                    }
                 });
 
             </script>
