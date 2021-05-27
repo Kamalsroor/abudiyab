@@ -62,11 +62,11 @@
 
         <section class="home-offers content whitebg">
 
+
+            @if ($offers->count() > 1)
             <div class="home-offers_head">
                 <span class="g-title">عروضنا</span>
             </div>
-
-            @if ($offers->count() > 1)
             <div class="container-fluid offers" style="padding-top:0; display: flex;width: 80%;justify-content: center;">
                 @foreach ($offers as $offer)
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pod" url="#" number="1">

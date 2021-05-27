@@ -355,7 +355,8 @@ $(document).ready(function() {
 
     window.addEventListener("notLogin", function() {
         $('#BookingModel').modal('hide');
-        $('#loginModal').modal('toggle');
+        logInOrRegister('login');
+        // $('#loginModal').modal('toggle');
     })
 
 
@@ -1618,8 +1619,8 @@ $('.forgotPasswordRetreat').click(function() {
     let step = $(this).data('step');
     forgotPasswordRetreat(step);
 });
-var user_email = null ;
-$('#forgot-password_step-1').on('submit', function (e) {
+var user_email = null;
+$('#forgot-password_step-1').on('submit', function(e) {
     e.preventDefault();
     console.log('forgot-password_step-1');
     var url = $(this).attr("action");
@@ -1638,22 +1639,21 @@ $('#forgot-password_step-1').on('submit', function (e) {
         $.ajax({
             type: 'POST',
             url: url,
-            data: form_data ,
+            data: form_data,
             headers: {
                 "x-accept-language": "ar",
                 "X-CSRF-TOKEN": csrf_token,
             },
-            dataType : 'JSON',
+            dataType: 'JSON',
             //contentType: "application/x-www-form-urlencoded",
-            success: function (data) { // here I'm adding data as a parameter which stores the response
+            success: function(data) { // here I'm adding data as a parameter which stores the response
                 toastr.success(data.message)
                 user_email = email.value;
                 email.value = null;
                 $('#usernameByCode').val(user_email);
                 nextstep(2);
             },
-            error:function(response)
-            {
+            error: function(response) {
                 error(email, response.responseJSON.errors.username);
             }
         });
@@ -1661,7 +1661,7 @@ $('#forgot-password_step-1').on('submit', function (e) {
 });
 
 
-$('.forgot-password_step-2').on('submit', function (e) {
+$('.forgot-password_step-2').on('submit', function(e) {
     e.preventDefault();
     var url = $(this).attr("action");
     var form_data = $(this).serialize();
@@ -1675,22 +1675,21 @@ $('.forgot-password_step-2').on('submit', function (e) {
         $.ajax({
             type: 'POST',
             url: url,
-            data: form_data ,
+            data: form_data,
             headers: {
                 "x-accept-language": "ar",
                 "X-CSRF-TOKEN": csrf_token,
             },
-            dataType : 'JSON',
+            dataType: 'JSON',
             //contentType: "application/x-www-form-urlencoded",
-            success: function (data) { // here I'm adding data as a parameter which stores the response
+            success: function(data) { // here I'm adding data as a parameter which stores the response
                 // toastr.success(data.message)
-                codeNumber.value = null ;
+                codeNumber.value = null;
                 $('#tokenByReset').val(data.reset_token);
                 nextstep(3);
             },
-            error:function(response)
-            {
-            console.log(codeNumber);
+            error: function(response) {
+                console.log(codeNumber);
 
                 error(codeNumber, response.responseJSON.errors.code);
             }
@@ -1700,7 +1699,7 @@ $('.forgot-password_step-2').on('submit', function (e) {
 
 });
 
-$('.forgot-password_step-3').on('submit', function (e) {
+$('.forgot-password_step-3').on('submit', function(e) {
     e.preventDefault();
     var url = $(this).attr("action");
     var form_data = $(this).serialize();
@@ -1722,19 +1721,19 @@ $('.forgot-password_step-3').on('submit', function (e) {
         $.ajax({
             type: 'POST',
             url: url,
-            data: form_data ,
+            data: form_data,
             headers: {
                 "x-accept-language": "ar",
                 "X-CSRF-TOKEN": csrf_token,
             },
-            dataType : 'JSON',
+            dataType: 'JSON',
             //contentType: "application/x-www-form-urlencoded",
-            success: function (data) { // here I'm adding data as a parameter which stores the response
+            success: function(data) { // here I'm adding data as a parameter which stores the response
                 toastr.success(data.message)
-                // nextstep(4);
-                password.value = null ;
+                    // nextstep(4);
+                password.value = null;
 
-                confirmPassword.value = null ;
+                confirmPassword.value = null;
 
                 let forms = document.querySelectorAll(`.log-in_center_form`);
                 forms.forEach(element => element.style.display = 'none')
@@ -1748,8 +1747,7 @@ $('.forgot-password_step-3').on('submit', function (e) {
                                                 </button>
                                             </div>`;
             },
-            error:function(response)
-            {
+            error: function(response) {
                 error(password, response.responseJSON.errors.token);
             }
         });

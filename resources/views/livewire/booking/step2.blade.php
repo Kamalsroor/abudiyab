@@ -135,7 +135,7 @@
                     </div>
                 @endif
 
-                @if ($visa_buy != 0)
+                @if ($paymentType == 'visa')
                 <div class="H3-TST-D4-1">
                     <div class="H3-TST-D5-1">
                         <span> خصم سداد البطاقات الائتمانيه</span>
@@ -197,7 +197,6 @@
                             @if ($this->invalid_payment == 1)
                                 <h3 style="color: red;text-align: center;">يرجي اختيار طريق السداد</h3>
                             @endif
-
 
                     </div>
                 </div>

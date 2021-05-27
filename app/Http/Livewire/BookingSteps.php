@@ -202,14 +202,13 @@ class BookingSteps extends Component
         $this->car_price = ($this->car->price1 * $this->diff);
         $this->features_price = $features_price;
         $visa_buy = 0;
-        if ($this->visa_buy) {
+        if ($this->visa_buy || $this->paymentType == 'visa') {
         $visa_buy = $this->car_price * (Settings::get('visa_offer') / 100) ; //visa discount amount
         $this->visa_price=$visa_buy;
         }
 
-
-        $this->price = ($this->car_price - $visa_buy ) + $features_price + $this->authorization_fee ;
-        $this->total = $this->price + $this->AreaPricing - $this->membership_discount - $this->promotional_discount;
+        $this->price = ($this->car_price ) + $features_price + $this->authorization_fee ;
+        $this->total = $this->price - $visa_buy + $this->AreaPricing - $this->membership_discount - $this->promotional_discount;
         return view('livewire.booking-steps');
     }
 
