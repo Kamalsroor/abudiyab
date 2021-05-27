@@ -19,48 +19,7 @@
         <hr>
     </div>
     <div class="cono-con">
-        <div class="ways">
-            <div style="text-align: right;">
-                <p style="margin-right: 10px;">* يمكنكم السداد عن طريق</p>
-                <br>
-                @error('paymentType') <span class="error">{{ $message }}</span> @enderror
 
-            </div>
-            <div>
-                <div class="imm">
-                    <label for="visa">
-                        <img class="logo" src="{{asset('front/visa_master.jpg')}}" alt="">
-                    </label>
-                </div>
-                <input type="radio" value="visa" id="visa" name="paymentType" wire:model="paymentType">
-                <label for="visa">بطاقه اىْتمانيه</label>
-            </div>
-           @if ($visa_buy == 0)
-                <div>
-                    <div class="imm">
-                        <label for="cash">
-                            <img class="logo2" src="{{asset('front/cash-logo.png')}}" alt="">
-                        </label>
-                    </div>
-                    <input type="radio" value="cash" id="cash" name="paymentType" wire:model="paymentType">
-                    <label for="cash">نقدا</label>
-                </div>
-
-                <div class="imm">
-                    <div>
-                        <label for="points">
-                            <img class="logo3" src="{{asset('front/points.png')}}" alt="">
-                        </label>
-                    </div>
-
-                    <input type="radio" value="points" id="points" name="paymentType" wire:model="paymentType">
-                    <label for="points">النقاط</label>
-                </div>
-
-            @endif
-
-
-        </div>
         <div id="bg" class="{{ $paymentType != "visa" ? 'display-none' : '' }} bay-g ">
             <div class="inputs">
                 <div >

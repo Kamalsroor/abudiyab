@@ -1,5 +1,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap');
 #step2 {
+    .ways {
+        text-align: center;
+    }
+    .ways div {
+        display: inline-block;
+        margin: auto 2.5%;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+    }
+    .ways div:first-child {
+        display: block;
+        margin: 0;
+        color: #a91111;
+    }
+    .ways div>input[type="radio"],
+    label {
+        display: inline-block;
+        margin-top: 15px;
+    }
+    .imm .logo {
+        width: 120px;
+        height: 50px;
+    }
+    .logo3 {
+        height: 55px;
+        width: 57px;
+        display: block;
+        text-align: center;
+        margin: auto;
+        margin-bottom: -20px;
+    }
+    .logo1 {
+        width: 120px;
+        height: 36px;
+    }
+    .logo2 {
+        width: 60px;
+        height: 50px;
+    }
     .H3-TST-D1 {
         background-color: #fff;
         text-align: right;
