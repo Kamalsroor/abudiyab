@@ -165,6 +165,9 @@
                             <br>
                             @error('paymentType') <span class="error">{{ $message }}</span> @enderror
                         </div>
+                        @if ($this->invalid_payment == 1)
+                            <h3 style="color: red;text-align: center;">يرجي اختيار طريق السداد</h3>
+                        @endif
                             <div>
                                 <div class="imm">
                                     <label for="visa">
@@ -194,10 +197,6 @@
                                 <input type="radio" value="points" id="points" name="paymentType" wire:model="paymentType">
                                 <label for="points">النقاط</label>
                             </div>
-                            @if ($this->invalid_payment == 1)
-                                <h3 style="color: red;text-align: center;">يرجي اختيار طريق السداد</h3>
-                            @endif
-
 
                     </div>
                 </div>
