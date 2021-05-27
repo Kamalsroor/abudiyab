@@ -18,4 +18,7 @@ class ContractController extends Controller
         $contracts=Auth::user()->contracts();
         return view('frontend.contracts',compact('reservation','contracts'));
     }
+    public function privacyPolicy(){
+        return view('frontend.privicy_policy');
+    }
 }

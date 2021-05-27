@@ -94,6 +94,7 @@ Route::as('front.')->group(function () {
         ->writeToFile(public_path('sitemap.xml'));
     })->name('SitemapGenerator');
     Route::get('/contracts', 'Frontend\ContractController@getContracts')->name('contracts');
+    Route::get('/privacy/policy', 'Frontend\ContractController@privacyPolicy')->name('policy');
 
     Route::post('/car-sales-request', 'Frontend\PurchaseController@create')->name('purchaserequests.car-sales-request');
 
