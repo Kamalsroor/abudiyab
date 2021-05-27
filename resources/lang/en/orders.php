@@ -21,6 +21,9 @@ return [
         'save' => 'Save',
         'filter' => 'Filter',
     ],
+    'payment_statment' => [
+        'visa' => 'Discount :visa_price % ',
+    ],
     'messages' => [
         'created' => 'The order has been created successfully.',
         'updated' => 'The order has been updated successfully.',

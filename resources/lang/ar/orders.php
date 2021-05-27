@@ -45,6 +45,9 @@ return [
         'cash' => 'كاش',
         'points' => 'نقاط',
     ],
+    'payment_statment' => [
+        'visa' => '%خصم :visa_price ',
+    ],
     'attributes' => [
         'id' => 'رقم الحجز',
         'name' => 'اسم السياره',
