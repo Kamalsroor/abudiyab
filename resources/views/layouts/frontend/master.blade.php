@@ -59,7 +59,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     @endphp --}}
 
     <!-- ------------START-----loader------------ -->
-    <div class="loader">
+    <div class="loader" id="loader">
         <div class="loader_img">
             <img src="{{ asset('front/img/loader.gif') }}" alt="Loader..">
         </div>
@@ -146,7 +146,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <p class="log-in_center_form_forgot-password" data-step="1" >نسيت كلمة السر؟ </p>
                 </form>
                 <div class="forgot-password">
-
+                    <div class="form-loader">
+                        <div class="loader"></div>
+                    </div>
                     <form action="{{route('api.password.forget')}}" method="post" id="forgot-password_step-1" class="log-in_center_form forgot-password_step-1">
                         @csrf
                         <h2>رجاءا أدخل بريدك الإلكتروني</h2>
@@ -203,6 +205,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="register_center">
                 <form action="{{ route('register') }}" method="post" enctype="multipart/form-data" class="register_center_form">
                     @csrf
+                    <div class="form-loader">
+                        <div class="loader"></div>
+                    </div>
                     <h2>حساب جديد</h2>
                     <div class="register_center_form_inputs">
                         <div class="register_center_form_inputs_input">
@@ -635,7 +640,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     if (checkData()) {
                         e.preventDefault();
                     }
-                    console.log(e);
+                    else{
+                        document.querySelector('.register_center_form .form-loader').classList.add('show');
+                    }
                 });
 
             </script>
@@ -733,8 +740,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- ------------START-----SCRIPT-------LOAD------------ -->
     <script type="text/javascript">
         $(document).ready(function() {
-            $(".loader").animate({opacity: "0"}, 2000, function() {
-                $(".loader").remove();
+            $("#loader").animate({opacity: "0"}, 2000, function() {
+                $("#loader").remove();
             });
             $('body').css('overflow','auto');
         });

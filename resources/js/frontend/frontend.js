@@ -1602,6 +1602,8 @@ $(document).ready(function() {
 //         });
 
 //     }
+let formLoader = document.querySelector('.forgot-password .form-loader');
+
 function nextstep(step) {
     let forms = document.querySelectorAll(`.log-in_center_form`),
         form = document.querySelector(`.forgot-password_step-${step}`);
@@ -1634,6 +1636,7 @@ $('#forgot-password_step-1').on('submit', function(e) {
     if (email.value.match(pattern) === null) {
         error(email, 'عذرا ، البريد الالكتروني غير صحيح');
     } else {
+        formLoader.classList.add('show');
         email.classList.remove('is-invalid');
         email.classList.add('is-valid');
         $.ajax({
@@ -1647,6 +1650,8 @@ $('#forgot-password_step-1').on('submit', function(e) {
             dataType: 'JSON',
             //contentType: "application/x-www-form-urlencoded",
             success: function(data) { // here I'm adding data as a parameter which stores the response
+
+                formLoader.classList.remove('show');
                 toastr.success(data.message)
                 user_email = email.value;
                 email.value = null;
@@ -1654,6 +1659,7 @@ $('#forgot-password_step-1').on('submit', function(e) {
                 nextstep(2);
             },
             error: function(response) {
+                formLoader.classList.remove('show');
                 error(email, response.responseJSON.errors.username);
             }
         });
@@ -1672,6 +1678,7 @@ $('.forgot-password_step-2').on('submit', function(e) {
     } else {
         codeNumber.classList.remove('is-invalid');
         codeNumber.classList.add('is-valid');
+        formLoader.classList.add('show');
         $.ajax({
             type: 'POST',
             url: url,
@@ -1689,6 +1696,7 @@ $('.forgot-password_step-2').on('submit', function(e) {
                 nextstep(3);
             },
             error: function(response) {
+                formLoader.classList.remove('show');
                 console.log(codeNumber);
 
                 error(codeNumber, response.responseJSON.errors.code);
@@ -1718,6 +1726,8 @@ $('.forgot-password_step-3').on('submit', function(e) {
         confirmPassword.classList.remove('is-invalid');
         password.classList.add('is-valid');
         confirmPassword.classList.add('is-valid');
+        formLoader.classList.add('show');
+
         $.ajax({
             type: 'POST',
             url: url,
@@ -1730,7 +1740,8 @@ $('.forgot-password_step-3').on('submit', function(e) {
             //contentType: "application/x-www-form-urlencoded",
             success: function(data) { // here I'm adding data as a parameter which stores the response
                 toastr.success(data.message)
-                    // nextstep(4);
+                formLoader.classList.remove('show');
+
                 password.value = null;
 
                 confirmPassword.value = null;
@@ -1748,6 +1759,7 @@ $('.forgot-password_step-3').on('submit', function(e) {
                                             </div>`;
             },
             error: function(response) {
+                formLoader.classList.remove('show');
                 error(password, response.responseJSON.errors.token);
             }
         });
