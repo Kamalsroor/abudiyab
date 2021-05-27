@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Car;
 use Illuminate\Routing\Controller;
 use App\Http\Requests\Dashboard\CarRequest;
+use App\Models\Addition;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
@@ -39,7 +40,8 @@ class CarController extends Controller
      */
     public function create()
     {
-        return view('dashboard.cars.create');
+        $additions = Addition::get();
+        return view('dashboard.cars.create', compact('additions'));
     }
 
     /**
@@ -89,7 +91,8 @@ class CarController extends Controller
     public function show(Car $car)
     {
         $offers = $car->offers ;
-        return view('dashboard.cars.show', compact('car','offers'));
+        $additions = Addition::get()->groupBy('id')->toArray();
+        return view('dashboard.cars.show', compact('car','offers','additions'));
     }
 
     /**
@@ -100,7 +103,9 @@ class CarController extends Controller
      */
     public function edit(Car $car)
     {
-        return view('dashboard.cars.edit', compact('car'));
+        $additions = Addition::get();
+
+        return view('dashboard.cars.edit', compact('car','additions'));
     }
 
     /**

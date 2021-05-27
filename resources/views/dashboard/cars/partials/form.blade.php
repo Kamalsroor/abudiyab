@@ -141,10 +141,21 @@
             @slot('bodyClass', 'p-0')
             <table class="table table-striped table-middle">
                 <tbody>
-                <tr>
+                {{-- <tr> --}}
+                    @foreach ($additions as $addition)
+                        @if ($loop->first)
+                            <tr>
+                        @endif
 
-                    <th width="25%">{{ BsForm::checkbox('is_baby_seat')->value(1)->default('0')->checked(isset($car) ? $car->is_baby_seat : false) }}{{ BsForm::price('baby_seat_price') }}</th>
-                    <th width="25%">{{ BsForm::checkbox('is_shield')->value(1)->default('0')->checked(isset($car) ? $car->is_shield : false) }} {{ BsForm::price('shield_price') }}</th>
+                            <th width="25%">{{ BsForm::checkbox('additions['.$addition->id.'][work]')->value(1)->default('0')->checked(isset($car) && isset($car->additions[$addition->id]) ? $car->additions[$addition->id]['work'] : false)->label('تفعيل ' . $addition->name) }}
+                            {{ BsForm::number('additions['.$addition->id.'][price]')->label('سعر ' .$addition->name) }}</th>
+                        @if ($loop->iteration%4 == 0 )
+                        </tr>
+                        <tr>
+                        @endif
+
+                    @endforeach
+                    {{-- <th width="25%">{{ BsForm::checkbox('is_shield')->value(1)->default('0')->checked(isset($car) ? $car->is_shield : false) }} {{ BsForm::price('shield_price') }}</th>
                     <th width="25%">{{ BsForm::checkbox('is_insurance')->value(1)->default('0')->checked(isset($car) ? $car->is_insurance : false) }}  {{ BsForm::price('insurance_price') }}</th>
                     <th width="25%">{{ BsForm::checkbox('is_open_kilometers')->value(1)->default('0')->checked(isset($car) ? $car->is_open_kilometers : false) }}    {{ BsForm::price('open_kilometers_price') }}</th>
                 </tr>
@@ -152,7 +163,7 @@
                     <th width="25%">{{ BsForm::checkbox('is_navigation')->value(1)->default('0')->checked(isset($car) ? $car->is_navigation : false) }} {{ BsForm::price('navigation_price') }}</th>
                     <th width="25%">{{ BsForm::checkbox('is_home_delivery')->value(1)->default('0')->checked(isset($car) ? $car->is_home_delivery : false) }}  {{ BsForm::price('home_delivery_price') }}</th>
                     <th width="25%">{{ BsForm::checkbox('is_intercity')->value(1)->default('0')->checked(isset($car) ? $car->is_intercity : false) }}  {{ BsForm::price('intercity_price') }}</th>
-                </tr>
+                </tr> --}}
 
                 </tbody>
             </table>

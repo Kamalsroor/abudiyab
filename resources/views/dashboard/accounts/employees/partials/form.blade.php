@@ -44,7 +44,7 @@
 
 </div>
 
-{{-- @if(auth()->user()->isAdmin())
+@if(auth()->user()->isAdmin())
     <select2
         placeholder="@lang('roles.singular')"
         name="role"
@@ -53,7 +53,7 @@
         label="@lang('roles.singular')"
         remote-url="{{ route('api.roles.select') }}"
     ></select2>
-@endif --}}
+@endif
 
 @isset($employee)
     {{ BsForm::image('avatar')->collection('avatars')->files($employee->getMediaResource('avatars')) }}

@@ -143,35 +143,36 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="invalid-feedback"></div>
                     </div>
                     <button type="submit" class="primary-btn btn-hover btn-curved">تسجيل الدخول</button>
-                    <p class="log-in_center_form_forgot-password" onclick="forgotPassword(1);">نسيت كلمة السر؟ </p>
+                    <p class="log-in_center_form_forgot-password" data-step="1" >نسيت كلمة السر؟ </p>
                 </form>
                 <div class="forgot-password">
 
-                    <form action="" method="post" class="log-in_center_form forgot-password_step-1">
+                    <form action="{{route('api.password.forget')}}" method="post" id="forgot-password_step-1" class="log-in_center_form forgot-password_step-1">
                         @csrf
                         <h2>رجاءا أدخل بريدك الإلكتروني</h2>
                         <p>سيتم ارسال رمز تأكيد الي بريدك الإلكتروني</p>
                         <div>
-                            <label>البريد الالكتروني <span>العودة إلى <a onclick="forgotPasswordRetreat(1)">تسجيل الدخول</a></span></label>
-                            <input type="email" name="email" class="form-control email" id="restpasswordemail" autocomplete="off">
+                            <label>البريد الالكتروني <span>العودة إلى <a class="forgotPasswordRetreat" data-step="1">تسجيل الدخول</a></span></label>
+                            <input type="email" name="username" class="form-control email" id="restpasswordemail" autocomplete="off">
                             <div class="invalid-feedback"></div>
                         </div>
-                        <button type="submit" class="primary-btn btn-hover btn-curved"  onclick="forgotPassword(2);">أرسال الرمز</button>
+                        <button type="submit" class="primary-btn btn-hover btn-curved ">أرسال الرمز</button>
                     </form>
 
-                    <form action="" method="post" class="log-in_center_form forgot-password_step-2">
+                    <form action="{{route('api.password.code')}}" method="post" class="log-in_center_form forgot-password_step-2">
                         @csrf
                         <h2>تم ارسال رمز الي بريدك الالكتروني</h2>
                         <p></p>
                         <div>
-                            <label>ادخال كود <span>العودة إلى <a onclick="forgotPasswordRetreat(2)">تسجيل الدخول</a></span></label>
+                            <label>ادخال كود <span>العودة إلى <a class="forgotPasswordRetreat" data-step="2">تسجيل الدخول</a></span></label>
                             <input type="number" name="code" class="form-control codeNumber" placeholder="كود" autocomplete="off">
                             <div class="invalid-feedback"></div>
+                            <input type="hidden" name="username" id="usernameByCode">
                         </div>
-                        <button type="submit" class="primary-btn btn-hover btn-curved" onclick="forgotPassword(3);">تحقق</button>
+                        <button type="submit" class="primary-btn btn-hover btn-curved " data-step="3" >تحقق</button>
                     </form>
 
-                    <form action="" method="post" class="log-in_center_form forgot-password_step-3">
+                    <form action="{{route('api.password.reset')}}" method="post" class="log-in_center_form forgot-password_step-3">
                         @csrf
                         <h2>كلمة السر الجديدة</h2>
                         <div>
@@ -180,8 +181,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="invalid-feedback"></div>
                         </div>
                         <div>
-                            <label>تأكيد كلمة السر <span>العودة إلى <a onclick="forgotPasswordRetreat(3)">تسجيل الدخول</a></span></label>
-                            <input type="password" name="password" class="form-control confirmPassword" autocomplete="off">
+                            <input type="hidden" name="token" id="tokenByReset">
+                            <label>تأكيد كلمة السر <span>العودة إلى <a class="forgotPasswordRetreat" data-step="3">تسجيل الدخول</a></span></label>
+                            <input type="password" name="password_confirmation" class="form-control confirmPassword" autocomplete="off">
                             <div class="invalid-feedback"></div>
                         </div>
                         <button type="submit" class="primary-btn btn-hover btn-curved" onclick="forgotPassword(4);">قم بتغيير كلمة المرور</button>

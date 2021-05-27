@@ -56,6 +56,7 @@ const i18n = new VueInternationalization({
  */
 
 Vue.component('select2', require('../components/Select2Component').default);
+Vue.component('icon-input', require('../components/IconComponent').default);
 Vue.component('icon-picker', IconPicker)
 Vue.component('icons-picker', IconsPicker)
 

@@ -1601,7 +1601,178 @@ $(document).ready(function() {
 //         });
 
 //     }
+function nextstep(step) {
+    let forms = document.querySelectorAll(`.log-in_center_form`),
+        form = document.querySelector(`.forgot-password_step-${step}`);
+    forms.forEach(element => element.style.display = 'none')
+    form.style.display = 'block';
+}
 
+$('.log-in_center_form_forgot-password').click(function() {
+    console.log('log-in_center_form_forgot-password', $('log-in_center_form_forgot-password'));
+    let step = $(this).data('step');
+    nextstep(step);
+});
+
+$('.forgotPasswordRetreat').click(function() {
+    let step = $(this).data('step');
+    forgotPasswordRetreat(step);
+});
+var user_email = null ;
+$('#forgot-password_step-1').on('submit', function (e) {
+    e.preventDefault();
+    console.log('forgot-password_step-1');
+    var url = $(this).attr("action");
+    var form_data = $(this).serialize();
+
+    let email = $(this).find('.email')[0];
+    // console.log(email , email[0].value);
+    // let viewEmail = $(this).find('p');
+    let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    console.log(email.value.match(pattern));
+    if (email.value.match(pattern) === null) {
+        error(email, 'عذرا ، البريد الالكتروني غير صحيح');
+    } else {
+        email.classList.remove('is-invalid');
+        email.classList.add('is-valid');
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: form_data ,
+            headers: {
+                "x-accept-language": "ar",
+                "X-CSRF-TOKEN": csrf_token,
+            },
+            dataType : 'JSON',
+            //contentType: "application/x-www-form-urlencoded",
+            success: function (data) { // here I'm adding data as a parameter which stores the response
+                toastr.success(data.message)
+                user_email = email.value;
+                email.value = null;
+                $('#usernameByCode').val(user_email);
+                nextstep(2);
+            },
+            error:function(response)
+            {
+                error(email, response.responseJSON.errors.username);
+            }
+        });
+    }
+});
+
+
+$('.forgot-password_step-2').on('submit', function (e) {
+    e.preventDefault();
+    var url = $(this).attr("action");
+    var form_data = $(this).serialize();
+
+    let codeNumber = $(this).find('.codeNumber')[0];
+    if (codeNumber.value.length !== 6) {
+        error(codeNumber, 'عذرا ، هذا الرمز غير صحيح');
+    } else {
+        codeNumber.classList.remove('is-invalid');
+        codeNumber.classList.add('is-valid');
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: form_data ,
+            headers: {
+                "x-accept-language": "ar",
+                "X-CSRF-TOKEN": csrf_token,
+            },
+            dataType : 'JSON',
+            //contentType: "application/x-www-form-urlencoded",
+            success: function (data) { // here I'm adding data as a parameter which stores the response
+                // toastr.success(data.message)
+                codeNumber.value = null ;
+                $('#tokenByReset').val(data.reset_token);
+                nextstep(3);
+            },
+            error:function(response)
+            {
+            console.log(codeNumber);
+
+                error(codeNumber, response.responseJSON.errors.code);
+            }
+        });
+
+    }
+
+});
+
+$('.forgot-password_step-3').on('submit', function (e) {
+    e.preventDefault();
+    var url = $(this).attr("action");
+    var form_data = $(this).serialize();
+
+    let password = $(this).find('.password')[0];
+    let confirmPassword = $(this).find('.confirmPassword')[0];
+
+    if (password.value.length < 8) {
+        error(password, 'عذرًا ، لكن يجب أن تكون كلمة المرور 8 على الأقل');
+    } else if (confirmPassword.value != password.value) {
+        password.classList.remove('is-invalid');
+        password.classList.add('is-valid');
+        error(confirmPassword, 'عذرا ، لكن كلمة المرور غير متطابقة');
+    } else {
+        password.classList.remove('is-invalid');
+        confirmPassword.classList.remove('is-invalid');
+        password.classList.add('is-valid');
+        confirmPassword.classList.add('is-valid');
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: form_data ,
+            headers: {
+                "x-accept-language": "ar",
+                "X-CSRF-TOKEN": csrf_token,
+            },
+            dataType : 'JSON',
+            //contentType: "application/x-www-form-urlencoded",
+            success: function (data) { // here I'm adding data as a parameter which stores the response
+                toastr.success(data.message)
+                // nextstep(4);
+                password.value = null ;
+
+                confirmPassword.value = null ;
+
+                let forms = document.querySelectorAll(`.log-in_center_form`);
+                forms.forEach(element => element.style.display = 'none')
+
+                document.querySelector('.log-in_center_form').style.display = 'block';
+                let msg = document.querySelector('.log-in_center_form_msg');
+                msg.innerHTML = `<div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                <strong>تم تغيير كلمة السر</strong>
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="text-align: right;">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>`;
+            },
+            error:function(response)
+            {
+                error(password, response.responseJSON.errors.token);
+            }
+        });
+    }
+
+
+
+
+});
+
+
+
+
+function error(input, errorText, wanted = true) {
+    input.classList.add('is-invalid');
+    input.classList.remove('is-valid');
+    input.nextElementSibling.innerHTML = errorText;
+    input.focus();
+    if (input.value.length == 0 && wanted == true) {
+        input.nextElementSibling.innerHTML = 'هذا الحقل مطلوب';
+    }
+    errors = true;
+}
 
 
 
@@ -1624,7 +1795,6 @@ let forgotPassword = (step) => {
             errors = true;
         },
         next = () => {
-
             forms.forEach(element => element.style.display = 'none');
             if (step === 4) {
                 document.querySelector('.log-in_center_form').style.display = 'block';
@@ -1718,11 +1888,14 @@ let forgotPassword = (step) => {
     form.addEventListener('click', (e) => { e.preventDefault() });
 }
 
-let forgotPasswordRetreat = (step) => {
+// let forgotPasswordRetreat = (step) => {
+//     document.querySelector(`.forgot-password_step-${step}`).style.display = 'none';
+//     document.querySelector('.log-in_center_form').style.display = 'block';
+// }
+function forgotPasswordRetreat(step) {
     document.querySelector(`.forgot-password_step-${step}`).style.display = 'none';
     document.querySelector('.log-in_center_form').style.display = 'block';
 }
-
 
 
 

@@ -40,15 +40,14 @@ class ResetPasswordController extends Controller
 
         if (! $user) {
             throw ValidationException::withMessages([
-                'username' => [trans('auth.failed')],
+                'username' => [trans('auth.failed-password-forget')],
             ]);
         }
 
-        $resetPasswordCode = ResetPasswordCode::updateOrCreate([
+        $resetPasswordCode = ResetPasswordCode::Create( [
             'username' => $request->username,
-        ], [
-            'username' => $request->username,
-            'code' => Str::random(6),
+            // 'code' => Str::random(6),
+            'code' => rand(100000 , 999999),
         ]);
 
         try {
@@ -86,7 +85,6 @@ class ResetPasswordController extends Controller
         $resetPasswordCode = ResetPasswordCode::where('username', $request->username)
             ->where('code', $request->code)
             ->first();
-
         $user = User::where(function (Builder $query) use ($request) {
             $query->where('email', $request->username);
             $query->orWhere('phone', $request->username);
@@ -95,9 +93,7 @@ class ResetPasswordController extends Controller
         if (! $resetPasswordCode || $resetPasswordCode->isExpired() || ! $user) {
             throw ValidationException::withMessages([
                 'code' => [
-                    trans('validation.exists', [
-                        'attribute' => trans('auth.attributes.code'),
-                    ]),
+                    trans('auth.failed-code-forge')
                 ],
             ]);
         }

@@ -39,6 +39,7 @@ class Addition extends Model implements HasMedia, TranslatableContract
     protected $fillable = [
         'name',
         'type',
+        'icon',
         'mini_des',
         'des',
     ];
@@ -53,6 +54,10 @@ class Addition extends Model implements HasMedia, TranslatableContract
         'media',
     ];
 
+
+    protected $casts = [
+        'icon' => 'array',
+    ];
     /**
      * The query parameter's filter of the model.
      *
@@ -68,9 +73,9 @@ class Addition extends Model implements HasMedia, TranslatableContract
     public function registerMediaCollections(): void
     {
         $this
-            ->addMediaCollection('default');
+            ->addMediaCollection('default')
         //->useFallbackUrl('/url/to/default')
-        //->singleFile()
+        ->singleFile();
 
     }
 }

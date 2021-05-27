@@ -47,10 +47,6 @@
                     @include('livewire.booking.step3')
                     @include('livewire.booking.step4')
 
-
-
-
-
                     {{-- col-md-10 col-sm-10" --}}
 
                     @if ($currentStep != 5)

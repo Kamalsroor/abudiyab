@@ -78,7 +78,7 @@ class Car extends Model implements HasMedia, TranslatableContract , Seoable
         'is_navigation',
         'is_home_delivery',
         'is_intercity',
-
+        'additions',
     ];
 
 
@@ -108,6 +108,7 @@ class Car extends Model implements HasMedia, TranslatableContract , Seoable
         'is_navigation' => 'boolean',
         'is_home_delivery' => 'boolean',
         'is_intercity' => 'boolean',
+        'additions' => 'array',
     ];
 
     /**

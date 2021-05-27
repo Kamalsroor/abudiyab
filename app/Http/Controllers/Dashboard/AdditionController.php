@@ -50,9 +50,10 @@ class AdditionController extends Controller
      */
     public function store(AdditionRequest $request)
     {
+        // dd($request->all());
         $addition = Addition::create($request->all());
 
-        $addition->addAllMediaFromTokens();
+        $addition->addMediaFromBase64($request->img_base64)->toMediaCollection('default');
 
         flash(trans('additions.messages.created'));
 
@@ -92,7 +93,10 @@ class AdditionController extends Controller
     {
         $addition->update($request->all());
 
-        $addition->addAllMediaFromTokens();
+        // $addition->addAllMediaFromTokens();
+        if($request->img_base64){
+            $addition->addMediaFromBase64($request->img_base64)->toMediaCollection('default');
+        }
 
         flash(trans('additions.messages.updated'));
 
