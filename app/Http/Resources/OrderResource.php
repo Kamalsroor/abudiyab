@@ -3,7 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-
+use Settings;
 class OrderResource extends JsonResource
 {
     /**
@@ -21,6 +21,8 @@ class OrderResource extends JsonResource
             ];
         }
 
+        $visa_discount_price =   $this->car->price1 * ( Settings::get('visa_offer') /100);
+
         return [
             'id' => $this->id,
             'car' => new CarResource($this->whenLoaded('car')),
@@ -34,7 +36,9 @@ class OrderResource extends JsonResource
             'features_added' => $this->features_added,
             'created_at' => $this->created_at->diffForHumans(),
             'status' => $this->status,
+            'visa_amout' => $visa_discount_price,
             'status_text' => trans('orders.status.'.$this->status),
+            'payment_statment' => trans('orders.payment_statment.visa',['visa_price' => Settings::get('visa_offer')]),
         ];
     }
 }
