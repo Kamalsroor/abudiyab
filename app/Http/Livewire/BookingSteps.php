@@ -43,6 +43,7 @@ class BookingSteps extends Component
     public $authorization_fee=0;
     public $start_date=0;
     public $end_date=0;
+    public $invalid_payment=0;
     public $membership_discount=0;
     public $promotional_discount=0;
     public $featureArray=[
@@ -206,6 +207,7 @@ class BookingSteps extends Component
         $this->visa_price=$visa_buy;
         }
 
+
         $this->price = ($this->car_price - $visa_buy ) + $features_price + $this->authorization_fee ;
         $this->total = $this->price + $this->AreaPricing - $this->membership_discount - $this->promotional_discount;
         return view('livewire.booking-steps');
@@ -245,71 +247,85 @@ class BookingSteps extends Component
         // $validatedData = $this->validate([
         //     'status' => 'required',
         // ]);
-        $Custmerrequest = Custmerrequest::where('user_id',auth()->id())->where('is_confirmed','confirmed')->orderBy('created_at', 'DESC')->first();
-        $currentDate= now();
-        if(isset($Custmerrequest->id_expiry_date) && isset($Custmerrequest->driver_id_expiry_date))
+        if($this->paymentType != null)
         {
-            $idExpireDate= $Custmerrequest->id_expiry_date;
-            $driverIdExpireDate= $Custmerrequest->driver_id_expiry_date;
-        }
-        $this->order = Order::updateOrCreate([
-            'id' => $this->order ? $this->order->id : 0
-        ],[
-            'user_id' => Auth()->id(),
-            'delivery_date' => $this->end_date,
-            'reciving_date' => $this->start_date,
-            'price' => $this->total,
-            'status' => "pending",
-            'days' => $this->diff,
-            'features_added' => $this->features_added,
-            'receiving_branch_id' => $this->receiving_branch->id,
-            'delivery_branch' => $this->delivery_branch->id,
-            'visa_buy' => $this->visa_buy ? 1 : 0,
-            'car_id' => $this->car->id,
-            'car_price' => $this->car_price,
-            'membership_discount' => $this->membership_discount ,
-            'promotional_discount' => $this->promotional_discount ,
-            'authorization_fee' =>  $this->authorization_fee ,
-        ]);
-
-        if(!Auth()->check())
-        {
-            $current_url=url()->previous().'&order_id='.$this->order->id;
-            session()->push('redircitURl', $current_url);
-            $this->dispatchBrowserEvent('notLogin');
-            $this->currentStep = 2;
-        }else{
-            if(isset($idExpireDate) && isset($driverIdExpireDate))
+            $Custmerrequest = Custmerrequest::where('user_id',auth()->id())->where('is_confirmed','confirmed')->orderBy('created_at', 'DESC')->first();
+            $currentDate= now();
+            if(isset($Custmerrequest->id_expiry_date) && isset($Custmerrequest->driver_id_expiry_date))
             {
-                if($currentDate->lt($idExpireDate) && $currentDate->lt($driverIdExpireDate))
+                $idExpireDate= $Custmerrequest->id_expiry_date;
+                $driverIdExpireDate= $Custmerrequest->driver_id_expiry_date;
+            }
+            $this->order = Order::updateOrCreate([
+                'id' => $this->order ? $this->order->id : 0
+            ],[
+                'user_id' => Auth()->id(),
+                'delivery_date' => $this->end_date,
+                'reciving_date' => $this->start_date,
+                'price' => $this->total,
+                'status' => "pending",
+                'days' => $this->diff,
+                'features_added' => $this->features_added,
+                'receiving_branch_id' => $this->receiving_branch->id,
+                'delivery_branch' => $this->delivery_branch->id,
+                'visa_buy' => $this->visa_buy ? 1 : 0,
+                'car_id' => $this->car->id,
+                'car_price' => $this->car_price,
+                'membership_discount' => $this->membership_discount ,
+                'promotional_discount' => $this->promotional_discount ,
+                'authorization_fee' =>  $this->authorization_fee ,
+            ]);
+
+            if(!Auth()->check())
+            {
+                $current_url=url()->previous().'&order_id='.$this->order->id;
+                session()->push('redircitURl', $current_url);
+                $this->dispatchBrowserEvent('notLogin');
+                $this->currentStep = 2;
+            }else{
+                if(isset($idExpireDate) && isset($driverIdExpireDate))
                 {
-                    if($this->visa_buy != 0 || $this->visa_buy != false ){
-                        $this->paymentType = "visa";
-                        // $this->thirdStepSubmit();
-                        $this->currentStep = 3;
+                    if($currentDate->lt($idExpireDate) && $currentDate->lt($driverIdExpireDate))
+                    {
+                        if($this->visa_buy != 0 || $this->visa_buy != false  ){
+                            $this->paymentType = "visa";
+                            // $this->thirdStepSubmit();
+                            $this->currentStep = 3;
+                        }
+                        else{
+                            $this->currentStep = 3;
+                        }
+                        if($this->paymentType == "visa")
+                        {
+                            $this->currentStep = 3;
+                        }
+                        else{
+                            $this->currentStep = 5;
+                        }
                     }
                     else{
-                        $this->currentStep = 3;
+                        $errorData = [
+                            'title' => 'يرجي تحديث البيانات الشخصيه',
+                            'type' => 'error',
+                        ];
+                        $this->dispatchBrowserEvent('sweetalert', $errorData);
                     }
                 }
-                else{
-                    $errorData = [
-                        'title' => 'يرجي تحديث البيانات الشخصيه',
+                else
+                {
+                    $errorInformationData = [
+                        'title' => 'يرجي انتظار قبول البيانات',
                         'type' => 'error',
                     ];
-                    $this->dispatchBrowserEvent('sweetalert', $errorData);
+                    $this->dispatchBrowserEvent('sweetalert', $errorInformationData);
                 }
-            }
-            else
-            {
-                $errorInformationData = [
-                    'title' => 'يرجي انتظار قبول البيانات',
-                    'type' => 'error',
-                ];
-                $this->dispatchBrowserEvent('sweetalert', $errorInformationData);
-            }
 
+            }
         }
+        else{
+            $this->invalid_payment=1;
+        }
+
     }
 
     public function addedFeature(){
