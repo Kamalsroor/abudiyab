@@ -166,13 +166,13 @@
 
     </section>
 
-    <section class="home-linking-section wow animate__slideInUp" data-wow-offset="200" data-wow-duration="2s">{{-- animate__slideInUp data-wow-offset="200" data-wow-duration="2s" --}}
+    <section class="home-linking-section wow animate__slideInUp" data-wow-offset="200" data-wow-duration="2s">
         <div class="home-linking-section_right">
             <div class="home-linking-section_right_content" style="background-image: url({{asset('front/img/download-2.jpg')}});">
                 <div>
                     <h5>هل ترغب في</h5>
                     <h2> تأجير سيارة</h2>
-                    <p>MotorLand is nisi aliquip exa con velit esse cillum dolore fugiatal sint occaecat excepteur ipsum dolor sit amet consectetur.</p>
+                    <p>نفتخر نحن شركة أبو ذياب بتقديم أحدث وأفخم المركات العالمية لتتناسب مع جميع احتياجات عملاءنا.</p>
                     <a href="{{route('front.fleet')}}">تأجير سياره</a>
                 </div>
             </div>
@@ -182,7 +182,7 @@
                 <div>
                     <h5>هل ترغب في</h5>
                     <h2>شراء سيارة</h2>
-                    <p>MotorLand is nisi aliquip exa con velit esse cillum dolore fugiatal sint occaecat excepteur ipsum dolor sit amet consectetur.</p>
+                    <p>نمكنك من شراء السيارات المستعمله لكافه الموديلات بما يناسبك.</p>
                     <a href="{{route('front.car_sales')}}">شراء سياره</a>
                 </div>
             </div>

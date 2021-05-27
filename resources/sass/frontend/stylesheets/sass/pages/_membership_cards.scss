@@ -13,12 +13,19 @@
             max-width: 80% !important;
             padding: 10px 0;
             .card {
-                h5 {
-                    font-weight: 700;
-                }
                 width: 100%;
                 background-color: #e5e5e554;
                 border-radius: 10px;
+                h5 {
+                    font-weight: 700;
+                }
+                .btn-details {
+                    color: #345998;
+                    cursor: pointer;
+                }
+                .details {
+                    display: none;
+                }
             }
         }
     }

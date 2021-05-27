@@ -19,13 +19,64 @@
                                         <li class="text-right">خصم التسليم بين المناطق : {{$Membership->delivery_discount_regions}}%</li>
                                         <li class="text-right">النقاط المكتسبة لكل 100 ريال مدفوع : {{$Membership->ratio_points}}</li>
                                     </ul>
-                                    {{-- <div class="text-center py-2">
-                                    <a href="#"  class="primary-btn btn-hover btn-curved mt-2 p-2"><i class="fab fa-whatsapp"></i> أطلب العضوية</a>
-                                    </div> --}}
+                                    <div class="text-right py-2">
+
+                                        <p class="btn-details" onclick="_details(this)">التفاصيل</p>
+
+                                        <div class="details">
+                                            <ul class="list-unstyled">
+                                                <li>This is a list.</li>
+                                                <li>It appears completely unstyled.</li>
+                                                <li>Structurally, it's still a list.</li>
+                                                <li>However, this style only applies to immediate child elements.</li>
+                                                <li>Nested lists:
+                                                  <ul>
+                                                    <li>are unaffected by this style</li>
+                                                    <li>will still show a bullet</li>
+                                                    <li>and have appropriate left margin</li>
+                                                  </ul>
+                                                </li>
+                                                <li>This may still come in handy in some situations.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     @endforeach
+                    @push('js')
+                        <script>
+                            let _details = (btn, divDetails = btn.nextElementSibling) => {
+                                typeof divDetails === 'string' ? divDetails = document.querySelector(divDetails) : false;
+                                divDetails.style.overflow = 'hidden';
+                                if (divDetails.style.display === 'block') {
+                                    let divDetailsHeight = divDetails.offsetHeight;
+                                    let SetIntervalHden = setInterval(() => {
+                                        divDetails.style.height = `${divDetails.offsetHeight - 2}px`;
+                                        if (divDetails.offsetHeight == 0) {
+                                            divDetails.style.display = 'none';
+                                            divDetails.style.height = `${divDetailsHeight}px`;
+                                            clearInterval(SetIntervalHden);
+                                        }
+                                    }, .5);
+                                }
+                                else{
+                                    divDetails.style.display = 'block';
+                                    let divDetailsHeight = divDetails.offsetHeight;
+                                    divDetails.style.height = '0px';
+                                    console.log(new Date().toLocaleTimeString());
+                                    let SetIntervalShow = setInterval(() => {
+                                        divDetails.style.height = `${divDetails.offsetHeight + 2}px`;
+                                        if (divDetails.offsetHeight == divDetailsHeight) {
+                                            console.log(new Date().toLocaleTimeString());
+                                            console.log(divDetailsHeight);
+                                            clearInterval(SetIntervalShow);
+                                        }
+                                    }, .5);
+                                }
+                            }
+                        </script>
+                    @endpush
                 </div>
             </div>
         </section>
