@@ -22,7 +22,7 @@ return [
         'filter' => 'Filter',
     ],
     'payment_statment' => [
-        'visa' => 'Discount :visa_price % ',
+        'visa' => 'pay with visa and get extra discount ',
     ],
     'messages' => [
         'created' => 'The order has been created successfully.',

@@ -46,7 +46,7 @@ return [
         'points' => 'نقاط',
     ],
     'payment_statment' => [
-        'visa' => '%خصم :visa_price ',
+        'visa' => 'سدد بالفيزا واحصل علي خصم اضافي',
     ],
     'attributes' => [
         'id' => 'رقم الحجز',
