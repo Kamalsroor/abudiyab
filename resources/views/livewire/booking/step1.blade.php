@@ -5,7 +5,7 @@
 
 
     <div class="min-boody col-lg-8 col-md-7">
-        <div class="contract-additions visa">
+        {{-- <div class="contract-additions visa">
             <div class="row addition">
                 <div class="col-8">
                     <legend class="visa_text"> أحصل على خصم السداد بالفيزا .</legend>
@@ -14,7 +14,7 @@
                     <input type="checkbox" class="js-single" name="V" wire:model="visa_buy" value='1'>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="contract-additions" style="height: 90% !important; ">
             <fieldset>
                 <legend><span class="AdditionsTitle">إضافات أخرى</span></legend>
