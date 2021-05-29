@@ -168,15 +168,10 @@
                         @if ($this->invalid_payment == 1)
                             <h3 style="color: red;text-align: center;">يرجي اختيار طريق السداد</h3>
                         @endif
-                            <div>
-                                <div class="imm">
-                                    <label for="visa">
-                                        <img class="logo" src="{{asset('front/visa_master.jpg')}}" alt="">
-                                    </label>
-                                </div>
-                                <input type="radio" value="visa" id="visa" name="paymentType" wire:model="paymentType">
-                                <label for="visa">بطاقه اىْتمانيه</label>
-                            </div>
+                        @if ($this->showPointsError == 1)
+                            <h3 style="color: red;text-align: center;">عفوا رصيد النقاط لا يسمح لاتمام العمليه برجاء اختيار طريقه اخرى</h3>
+                        @endif
+
                             <div>
                                 <div class="imm">
                                     <label for="cash">
@@ -196,6 +191,16 @@
 
                                 <input type="radio" value="points" id="points" name="paymentType" wire:model="paymentType">
                                 <label for="points">النقاط</label>
+                            </div>
+
+                            <div>
+                                <div class="imm">
+                                    <label for="visa">
+                                        <img class="logo" src="{{asset('front/visa_master.jpg')}}" alt="">
+                                    </label>
+                                </div>
+                                <input type="radio" value="visa" id="visa" name="paymentType" wire:model="paymentType">
+                                <label for="visa">بطاقه اىْتمانيه</label>
                             </div>
 
                     </div>

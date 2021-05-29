@@ -194,7 +194,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
             </div>
         </div>
-
+        <div class="modal fade" id="BookingModel" tabindex="-1" aria-labelledby="BookingModelLabel" aria-hidden="true">
+            <livewire:booking-model/>
+        </div>
 
 
         <div class="register" style="background: url({{asset('front/img/background.jpg')}})">
