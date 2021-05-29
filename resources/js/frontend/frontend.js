@@ -1694,6 +1694,7 @@ $('.forgot-password_step-2').on('submit', function(e) {
                 codeNumber.value = null;
                 $('#tokenByReset').val(data.reset_token);
                 nextstep(3);
+                formLoader.classList.remove('show');
             },
             error: function(response) {
                 formLoader.classList.remove('show');
