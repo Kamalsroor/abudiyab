@@ -451,13 +451,18 @@ $(document).ready(function() {
 
 
     }
+    $('body').on('click', '.addToFavorite', function() {
+        console.log($(this).data('id'));
+        window.livewire.emit('addToFavorite', $(this).data('id'));
+    });
+    // const favoriteIcon = $('.addToFavorite');
+    // if (favoriteIcon.length) {
+    //     $('body').on('click', ".favoriteIcon", function() {
+    // ;
+    //     })
 
-    const favoriteIcon = $('.addToFavorite');
-    if (favoriteIcon.length) {
-        favoriteIcon.on('click', function() {
-            window.livewire.emit('addToFavorite', $(this).data('id'));
-        });
-    }
+
+    // }
 
     const branchPage = $('.branch-page');
     if (branchPage.length) {
