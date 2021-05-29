@@ -105,6 +105,11 @@ class User extends Authenticatable implements HasMedia,MustVerifyEmail,CanResetP
         'branch_id',
         'region_id',
         'branchs',
+        'code',
+        'open_date',
+        'stopflag',
+        'cust_class',
+        'ntnlty_code',
     ];
 
     /**

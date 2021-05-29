@@ -18,7 +18,7 @@
                     <x-import-excel
                             model="{{ \App\Models\Customer::class }}"
                             import="{{ \App\Imports\CustomersImport::class }}"
-                            exportResource="{{ App\Http\Resources\AdminResource ::class }}"
+                            exportResource="{{ App\Http\Resources\CustomerResource ::class }}"
                             :resource="trans('customers.plural')"></x-import-excel>
                     <x-export-excel
                             model="{{ \App\Models\Customer::class }}"
