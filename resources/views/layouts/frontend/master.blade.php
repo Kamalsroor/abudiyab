@@ -684,8 +684,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
         let BookingModelURl = "{{route('front.bookingModel')}}";
         let csrf_token = "{{ csrf_token() }}";
         function openBookingModel(id) {
-            window.livewire.emit('setCarId',id);
+            console.log('openBookingModel : ' + id);
+
+            $("#BookingModel").find('#bookingButton').attr("disabled", true);
             $('#BookingModel').modal('show');
+
+
+            console.log($("#BookingModel").find('#bookingButton'));
+            window.livewire.emit('setCarId',id);
+            setTimeout(() => {
+                $("#BookingModel").find('#bookingButton').attr("disabled", false);
+            }, 2500);
         }
         function cancel(){
             $('.fleet-popup').css('display','none');
