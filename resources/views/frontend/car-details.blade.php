@@ -112,10 +112,6 @@
                                     </div>
                                 @endforeach
                                 <!-- end .b-goods-featured-->
-
-
-
-
                             </div>
                             <!-- end .related-carousel-->
                         </div>
