@@ -660,18 +660,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- General Components -->
 
 
-
-<!-- REQUIRED SCRIPTS -->
-<!-- Scripts -->
-
-
-    {{-- <script src="{{asset('front/lnkse/jquery-3.5.1.min.js')}}"></script> --}}
-
-{{--
-    <script src="{{asset('front/lnkse/bootstrap.bundle.js')}}"></script>
-    <script src="{{asset('front/lnkse/bootstrap.js')}}"></script> --}}
-
-    {{-- <script src="{{asset('front/lnkse/main.js')}}"></script> --}}
     <img id="character" src="{{asset('images/character-1.png')}}" class="d-none d-md-block" alt="our character">
 </div>
 
