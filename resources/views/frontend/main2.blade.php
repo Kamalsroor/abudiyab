@@ -208,9 +208,7 @@
     </section>
 
 </div>
-<div class="modal fade" id="BookingModel" tabindex="-1" aria-labelledby="BookingModelLabel" aria-hidden="true">
-    <livewire:booking-model/>
-</div>
+
 <div class="mail-subscripe text-center "  style="background: url({{asset('front/img/subscription2.jpg')}});">
     <div class="subscription-overlay">
         <label for="mail-subscripe mb-5">أبق على تواصل معنا من خلال اشتراكك فى نشرتنا البريدية</label>

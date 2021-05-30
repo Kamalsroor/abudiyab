@@ -1,4 +1,4 @@
-<?php $invalidClass = $errors->{$errorBag}->has($nameWithoutBrackets) ? ' is-invalid' : ''; ?>
+<?php $invalidClass = $errors->{$errorBag}->has($name) ? ' is-invalid' : ''; ?>
 
 @if($currency)
     <div class="form-group">
@@ -15,9 +15,9 @@
                 <div class="input-group-text">{{ $currency }}</div>
             </div>
             @if($inlineValidation)
-                @if($errors->{$errorBag}->has($nameWithoutBrackets))
+                @if($errors->{$errorBag}->has($name))
                     <div class="invalid-feedback">
-                        {{ $errors->{$errorBag}->first($nameWithoutBrackets) }}
+                        {{ $errors->{$errorBag}->first($name) }}
                     </div>
                 @else
                     <small class="form-text text-muted">{{ $note }}</small>
@@ -39,9 +39,9 @@
             ], $attributes)) }}
 
         @if($inlineValidation)
-            @if($errors->{$errorBag}->has($nameWithoutBrackets))
+            @if($errors->{$errorBag}->has($name))
                 <div class="invalid-feedback">
-                    {{ $errors->{$errorBag}->first($nameWithoutBrackets) }}
+                    {{ $errors->{$errorBag}->first($name) }}
                 </div>
             @else
                 <small class="form-text text-muted">{{ $note }}</small>

@@ -77,6 +77,7 @@ class Car extends Model implements HasMedia, TranslatableContract , Seoable
         'is_open_kilometers',
         'is_navigation',
         'is_home_delivery',
+        'description',
         'is_intercity',
         'additions',
     ];

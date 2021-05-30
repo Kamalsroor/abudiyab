@@ -24,12 +24,14 @@ class CarRequest extends FormRequest
      */
     public function rules()
     {
+
         return RuleFactory::make([
             '%name%' => ['required', 'string', 'max:255'],
             'category_id' => ['required'],
-            'manufactories' => ['required'],
-            'description' => ['required'],
+            'manufactory_id' => ['required'],
+            '%description%' => ['required'],
             'code' => ['required'],
+            'price_from_2month_to_6month' => ['required'],
         ]);
     }
 

@@ -125,7 +125,7 @@
                                 <b class="mr-2"><i class="icofont icofont-cur-riyal"></i> {{$priceRangeNewEnd}}</b>
                                 <span   wire:ignore >
 
-                                    <input  id="ex2" type="text" class="span2 ex2" value=""
+                                    <input   id="ex2" type="text" class="span2 ex2" value=""
                                     data-slider-min="10"
                                     data-slider-max="3000"
                                     data-slider-step="5"
@@ -212,6 +212,7 @@
                                     data-slider-min="10"
                                     data-slider-max="3000"
                                     data-slider-step="5"
+
                                     wire:model="priceRange"
                                     data-slider-value="[{{$priceRange ?? "10,3000"}}]" />
                                 </span>
@@ -356,10 +357,15 @@
 
     window.addEventListener('changeRender', event => {
         $('#select2-dropdown').select2();
-        // $(".ex2").slider({ });
+        $(".ex2").slider({ });
         $('#select2-dropdown').on('change', function (e) {
             var data = $('#select2-dropdown').select2("val");
             @this.set('searchTerm', data);
+        });
+        $('.ex2').on('change', function(event, ui) {
+            // console.log($(this).val());
+            @this.set('priceRange', $(this).val());
+
         });
     });
 

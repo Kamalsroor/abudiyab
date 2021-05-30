@@ -26,7 +26,8 @@ class CarsController extends Controller
      */
     public function show(Car $car)
     {
-        return view('frontend.car-details', compact('car'));
+        $relatedcars=Car::inRandomOrder()->limit(3)->get();
+        return view('frontend.car-details', compact('car','relatedcars'));
     }
 
 }
