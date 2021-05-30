@@ -35,12 +35,12 @@
                                 </div>
                                 <div class="price">
                                     <h2>
-                                        <i class="icofont icofont-cur-riyal"></i>{{ $additionsCar['price']}}<span style="font-size: 12px; color: #555;">يومي</span>
+                                        <i class="icofont icofont-cur-riyal"></i>{{ $additionsCar['price']}}<span style="font-size: 12px; color: #555;">{{$additions[$key][0]['type'] =="daily" ? 'مره واحده' : "يومي"}}</span>
                                     </h2>
                                 </div>
                                 <div class="check">
                                     <div class="form-check ">
-                                        <input  class="form-check-input check1" type="checkbox" value="{{ $additionsCar['price'] }}"   wire:model="features_added.insurance_price"  >
+                                        <input  class="form-check-input check1" type="checkbox" value="{{ $additionsCar['price'] }}"  name="features_added[]"  wire:model="features_added"  >
 
 
                                         {{-- <input

@@ -228,7 +228,6 @@ class BookingSteps extends Component
         }
 
         $this->additions = Addition::get()->groupBy('id')->toArray();
-        dd($this->additions);
         $this->price = ($this->car_price ) + $features_price + $this->authorization_fee ;
         $this->total = $this->price - $visa_buy + $this->AreaPricing - $this->membership_discount - $this->promotional_discount;
         return view('livewire.booking-steps');
