@@ -8,7 +8,6 @@ use App\Http\Resources\SelectResource;
 use App\Http\Resources\CategoryResource;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Jenssegers\Agent\Agent;
 
 class CategoryController extends Controller
 {
@@ -40,8 +39,6 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $agent = new Agent();
-        dd($agent->platform() , $agent->device() ,  $agent->browser());
         $categories = Category::filter()->paginate();
         return CategoryResource::collection($categories);
     }
