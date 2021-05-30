@@ -290,17 +290,18 @@
             @include location(50%, 50%);
             &_cancel {
                 @include location(0%, 100%);
-                background-color: #1abc9c;
+                background-color: red;
                 color: #fff;
                 padding: 1px 10px 1px;
                 border-radius: 2px 0px 0 36px;
                 cursor: pointer;
                 z-index: 3;
                 i {
-                    margin-left: 3px;
+                    margin-left: 15px;
+                    margin-bottom: 15px;
                 }
                 &:hover {
-                    background-color: red;
+                    background-color: #1abc9c;
                 }
             }
             &_loader {

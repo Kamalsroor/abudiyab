@@ -1,13 +1,55 @@
 
 
 <div class="main-navbar container-fluid d-md-block d-lg-block">
+
+    <section class="inquiries-reservation" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="inquiries-reservation_center">
+            <span class="inquiries-reservation_center_cancel" onclick="document.getElementById('staticBackdrop').style.display = 'none';">
+                <i class="fas fa-times"></i>
+            </span>
+            <div class="inquiries-reservation_center_content">
+                <h2>الإستعلام عن الحجز</h2>
+                <div action="" method="post" class="inquiries-reservation_center_content_form">
+                    @csrf
+                    <div class="alert alert-success  my-2 confirmed" style="display: none" role="alert">
+                        عميلنا العزيز تم تأكيد الحجز الخاص بك
+                    </div>
+                    <div class="alert alert-warning  my-2 pending" style="display: none" role="alert">
+                        عميلنا العزيز جارى العمل على الحجز الخاص بك
+                    </div>
+                    <div class="alert alert-danger  my-2 rejected" style="display: none" role="alert">
+                        عميلنا العزيز تم رفض طلب الحجز
+                    </div>
+                    @if (Auth::check())
+                        <div class="reservation-number">
+                            <label>رقم الحجز</span></label>
+                            <input type="number" name="number" class="form-control" id="orderCode">
+                            <div class="invalid-feedback"></div>
+                        </div>
+                    @else
+                        <div class="id-number">
+                            <label>رقم الهوية</label>
+                            <input type="number" class="form-control identityNumber">
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="reservation-number">
+                            <label>رقم الحجز</span></label>
+                            <input type="number" name="number" class="form-control notfound" id="orderCode">
+                            <div class="invalid-feedback">عذرا ، لا يوجد حجز بهذا الرقم</div>
+                        </div>
+                    @endif
+                    <button class="primary-btn btn-hover btn-curved check-reservation">تنفيذ</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <div class="container-fluid mx-0">
         <div class="row">
             <div class="col-1 d-flex justify-content-center align-items-center">
                 <a class="btn " data-toggle="tooltip" data-placement="bottom" title="القائمة الرئيسية" id="hamburger-bars">
                     <i class="fas fa-bars"></i>
                 </a>
-
             </div>
 
             <div class="text-right col-md-6 col-sm-12 d-flex align-items-center justify-content-start py-2">
@@ -17,153 +59,6 @@
                 <!-- pop over------------------------------ -->
                 <!--  ---------------------------------------->
                 <a class="mx-3 open-button" id="myFormtoggeler" >تسجيل الدخول</a>
-
-                {{-- <div class="form-popup d-none" id="myForm">
-                    <form action="{{ route('login') }}"  method="post" class="form-container text-center">
-                        @csrf
-                        <!-- <h1 style="color: black;font-size: 20px;">تسجيل الدخول</h1> -->
-
-
-                        <label class="color-black" for="email"><b class="color-black">البريد الالكترونى</b></label>
-                        <input type="text" class="color-black form-control" placeholder="Enter Email"  name="email" value="{{ old('email') }}" required>
-
-
-
-                        <label class="color-black" for="psw"><b class="color-black">كلمة السر</b></label>
-                        <input type="password" class="color-black form-control" placeholder="Enter Password"  name="password" required>
-
-                        <button type="submit" class="btn">تسجيل الدخول</button>
-                        <a href="/register"  class="btn btn-warning  mt-2 mx-auto" >انشاء حساب جديد</a>
-                        <!-- <a  class="btn btn-danger cancel mt-2 mx-auto" onclick="closeForm()">خروج</a> -->
-                        <p class="mt-2" style="font-size: 12px;color:gray;">بالضغط على مواصلة او تسجيل الاشتراك أوافق على بنود و شروط و سياسة الخصوصية</p>
-
-                    </form>
-                </div> --}}
-                {{-- <div class="log-in">
-                    <div class="log-in_top">
-                        <i>+</i>
-                    </div>
-                    <div class="log-in_center">
-                        <form action="{{ route('login') }}" method="post" class="log-in_center_form">
-                            @csrf
-                            <h2>تسجيل الدخول</h2>
-                            <div class="log-in_center_form_email">
-                                <label>البريد الاركتروني<span>احتاج الى حساب? <a onclick="logInOrRegister('register')">انشاء حساب</a></span></label>
-                                <input type="email" name="email" class="form-control" required>
-                            </div>
-                            <div class="log-in_center_form_password">
-                                <label>كلمة السر<span><i class="far fa-eye"></i> اظهار</span></label>
-                                <input type="password" name="password" class="form-control" required>
-                            </div>
-                            <button type="submit" class="primary-btn btn-hover btn-curved">تسجيل الدخول</button>
-                            <a href="" class="log-in_center_form_forgot-password">نسيت كلمة السر? </a>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="register">
-                    <div class="register_top">
-                        <i>+</i>
-                    </div>
-                    <div class="register_center">
-                        <form action="{{ route('register') }}" method="post" enctype="multipart/form-data" class="register_center_form">
-                            @csrf
-                            <h2>حساب جديد</h2>
-                            <div class="register_center_form_inputs">
-                                <div class="register_center_form_inputs_input">
-                                    <label>الاسم باكامل<span>لدي حساب بالفعل? <a onclick="logInOrRegister('login')">تسجيل الدخول</a></span></label>
-                                    <input type="text" name="username" value="{{ old('username') }}" class="form-control" id="registerName">
-                                    <div class="invalid-feedback"></div>
-                                </div>
-                                <div class="register_center_form_inputs_input">
-                                    <label>البريد الاركتروني</label>
-                                    <input type="email" name="email" value="{{ old('email') }}" class="form-control" id="registerEmail">
-                                    <div class="invalid-feedback"></div>
-                                </div>
-                                <div class="register_center_form_inputs_input registerMobileNumber">
-                                    <label>رقم الجوال</label>
-                                    <input type="text" name="phone" class="form-control" value="{{ old('phone') }}" id="registerMobileNumber" oninput="numberDesign(this);" max="12">
-                                    <div class="invalid-feedback"></div>
-                                </div>
-                                <div class="register_center_form_inputs_input password One">
-                                    <label>كلمة السر<span><i class="far fa-eye"></i> اظهار</span></label>
-                                    <input type="password" name="password" class="form-control" id="registerPassword">
-                                    <div class="invalid-feedback"></div>
-                                </div>
-                                <div class="register_center_form_inputs_input password Two">
-                                    <label>تأكيد كلمة السر</label>
-                                    <input type="password" name="password_confirmation" class="form-control" id="registerConfirmPassword">
-                                    <div class="invalid-feedback"></div>
-                                </div>
-
-                                <div class="wrapper" id="identityFace">
-                                    <div class="image">
-                                        <img src="" alt="">
-                                    </div>
-                                    <div class="content">
-                                        <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                                        <div class="text">صوره الهويه</div>
-                                    </div>
-                                    <div class="cancel-btn"><i class="fas fa-times"></i></div>
-                                    <div class="file-name">صوره الهويه</div>
-                                    <p class="image-projection"></p>
-                                    <div class="div-hidden"></div>
-                                </div>
-                                <input type="file" hidden name="identityFace" id="input-identityFace">
-
-                                <div class="wrapper" id="identityBack">
-                                    <div class="image">
-                                        <img src="" alt="">
-                                    </div>
-                                    <div class="content">
-                                        <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                                        <div class="text">صوره رخصه القياده</div>
-                                    </div>
-                                    <div class="cancel-btn"><i class="fas fa-times"></i></div>
-                                    <div class="file-name">صوره رخصه القياده</div>
-                                    <p class="image-projection"></p>
-                                    <div class="div-hidden"></div>
-                                </div>
-                                <input type="file" hidden name="identityBack" id="input-identityBack">
-
-                                <div class="wrapper" id="licenceFace">
-                                    <div class="image">
-                                        <img src="" alt="">
-                                    </div>
-                                    <div class="content">
-                                        <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                                        <div class="text">صوره بطاقه العمل</div>
-                                    </div>
-                                    <div class="cancel-btn"><i class="fas fa-times"></i></div>
-                                    <div class="file-name">صوره بطاقه العمل</div>
-                                    <p class="image-projection"></p>
-                                    <div class="div-hidden"></div>
-                                </div>
-                                <input type="file" hidden name="licenceFace" id="input-licenceFace">
-
-                                <div class="wrapper" id="licenceBack">
-                                    <div class="image">
-                                        <img src="" alt="">
-                                    </div>
-                                    <div class="content">
-                                        <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                                        <div class="text">صوره اخرى</div>
-                                    </div>
-                                    <div class="cancel-btn"><i class="fas fa-times"></i></div>
-                                    <div class="file-name">صوره اخرى</div>
-                                    <p class="image-projection"></p>
-                                    <div class="div-hidden"></div>
-                                </div>
-                                <input type="file" hidden name="licenceBack" id="input-licenceBack">
-
-                            </div>
-                            <button id="formSumbit" class="primary-btn btn-hover btn-curved" >تأكيد البيانات</button>
-                        </form>
-                    </div>
-                </div> --}}
-                <!--  --------------------------------------------->
-                <!-- pop over ends------------------------------ -->
-                <!--  --------------------------------------------->
                 @endguest
                 @auth
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -186,13 +81,13 @@
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title">تم الغاء الاشتراك بنجاح</h5>
+                          <h5 class="modal-title">تم إلغاء الإشتراك بنجاح</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-danger" id='closeDelete' data-dismiss="modal">الغاء</button>
+                          <button type="button" class="btn btn-danger" id='closeDelete' data-dismiss="modal">إلغاء</button>
                         </div>
                       </div>
                     </div>
@@ -204,47 +99,12 @@
               <!-- Modal2 starts here------------------- -->
               <!--  ------------------------------------>
               <!-- Button trigger modal -->
-                <a  style="cursor: pointer;"  data-toggle="modal" data-target="#staticBackdrop">
-                    الأستعلام عن الحجز
+                <a style="cursor: pointer;" onclick="document.getElementById('staticBackdrop').style.display = 'block';">
+                    الإستعلام عن الحجز
                 </a>
 
                 <!-- Modal -->
-                <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header" class="d-flex justify-content-between">
-                            <h5 class="modal-title" id="staticBackdropLabel">أدخل الكود و رقم الهوية للأستعلام</h5>
-                            <button type="button" class="close p-0 m-0" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            @if (Auth::check())
-                            <input class="form-control my-2" type="text" id='orderCode' placeholder="أدخل الكود هنا">
-                            @else
-                            <input class="form-control my-2 identityNumber" type="text" placeholder="أدخل رقم الهوية">
-                            <input class="form-control my-2"  type="text" id='orderCode' placeholder="أدخل الكود هنا">
-                            @endif
-                                <div class="alert alert-success  my-2 confirmed" style="display: none" role="alert">
-                                    عميلنا العزيز تم تأكيد الحجز الخاص بك
-                                </div>
-                                <div class="alert alert-warning  my-2 pending" style="display: none" role="alert">
-                                    عميلنا العزيز جارى العمل على الحجز الخاص بك
-                                </div>
-                                <div class="alert alert-danger  my-2 rejected" style="display: none" role="alert">
-                                    عميلنا العزيز تم رفض طلب الحجز
-                                </div>
-                                <div class="alert alert-danger  my-2 notfound" style="display: none" role="alert">
-                                    عميلنا العزيز لا يوجد حجز بهذا الكود
-                                </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary mx-1 check-reservation">الاستعلام</button>
-                            <button type="button" class="btn btn-secondary mx-1" data-dismiss="modal">إغلاق</button>
-                        </div>
-                    </div>
-                    </div>
-                </div>
+
               <!--  ------------------------------------>
               <!-- Modal2 ends here------------------- -->
               <!--  ------------------------------------>

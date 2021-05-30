@@ -5,11 +5,78 @@
 .main-navbar {
     z-index: 400;
     position: fixed;
-    // position: absolute;
-    // background-image: get-color(primary-light-gradient);
     width: 100%;
-    // z-index: 5;
-    /* Button used to open the contact form - fixed at the bottom of the page */
+    .inquiries-reservation {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #0000003d;
+        display: none;
+        &_center {
+            &_cancel {
+                @include location(0%, 100%);
+                background-color: red;
+                color: #fff;
+                padding: 1px 10px 1px;
+                border-radius: 2px 0px 0 36px;
+                cursor: pointer;
+                z-index: 3;
+                i {
+                    margin: 8px 7px 8px 13px;
+                }
+                &:hover {
+                    background-color: #1abc9c;
+                }
+            }
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            max-width: 500px;
+            height: fit-content;
+            border-radius: 8px;
+            background-color: #e3e3e3;
+            &_content {
+                h2 {
+                    margin-bottom: 25px;
+                }
+                padding: 20px 40px;
+                text-align: center;
+                &_form {
+                    width: 100%;
+                    text-align: right;
+                    div {
+                        width: 100%;
+                        margin-bottom: 40px;
+                        label {
+                            width: 100%;
+                            font-weight: 600;
+                            font-size: 18px;
+                        }
+                        input {
+                            width: 100%;
+                            height: 48px;
+                            -moz-appearance: textfield;
+                            &::-webkit-outer-spin-button,
+                            &::-webkit-inner-spin-button {
+                                -webkit-appearance: none;
+                            }
+                        }
+                    }
+                    button {
+                        width: fit-content;
+                        margin: auto;
+                        height: 50px;
+                        padding: 20px 75px;
+                        border-radius: 30px;
+                    }
+                }
+            }
+        }
+    }
     a {
         color: get-color(light);
         &:hover {
