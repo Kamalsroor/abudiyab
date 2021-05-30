@@ -18,6 +18,7 @@
         "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",
         "fruitcake/laravel-cors": "^1.0",
+        "jenssegers/agent": "^2.6",
         "kamalsroor/crud-generator": "^1.0",
         "kamalsroor/laravel-settings": "^1.5",
         "kamalsroor/moyasarapi": "^1.0",
