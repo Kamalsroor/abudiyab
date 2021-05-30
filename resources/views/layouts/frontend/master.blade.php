@@ -133,7 +133,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <h2>تسجيل الدخول</h2>
                     <div class="log-in_center_form_msg"></div>
                     <div class="log-in_center_form_email">
-                        <label>البريد الالكتروني<span>احتاج الى حساب؟ <a onclick="logInOrRegister('register')">انشاء حساب</a></span></label>
+                        <label>البريد الالكتروني<span><a onclick="logInOrRegister('register')">إنشاء حساب جديد</a></span></label>
                         <input type="email" name="email" class="form-control" value="{{old('email')}}" id="loginEmail" required>
                         <div class="invalid-feedback"></div>
                     </div>
@@ -143,35 +143,41 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="invalid-feedback"></div>
                     </div>
                     <button type="submit" class="primary-btn btn-hover btn-curved">تسجيل الدخول</button>
-                    <p class="log-in_center_form_forgot-password" data-step="1" >نسيت كلمة السر؟ </p>
+                    <p class="log-in_center_form_forgot-password" data-step="1">نسيت كلمة السر؟ </p>
+                    <hr>
+                    <p class="primary-btn btn-hover btn-curved log-in_center_form_old-user btn-old-user" data-step="1">عميل معرف من قبل</p>
                 </form>
+
+
                 <div class="forgot-password">
                     <div class="form-loader">
                         <div class="loader"></div>
                     </div>
                     <form action="{{route('api.password.forget')}}" method="post" id="forgot-password_step-1" class="log-in_center_form forgot-password_step-1">
                         @csrf
-                        <h2>رجاءا أدخل بريدك الإلكتروني</h2>
-                        <p>سيتم ارسال رمز تأكيد الي بريدك الإلكتروني</p>
+                        <h2>برجاء إدخل بريدك الإلكتروني</h2>
+                        <p>سيتم إرسال رمز تأكيد الي بريدك الإلكتروني المسجل</p>
                         <div>
-                            <label>البريد الالكتروني <span>العودة إلى <a class="forgotPasswordRetreat" data-step="1">تسجيل الدخول</a></span></label>
-                            <input type="email" name="username" class="form-control email" id="restpasswordemail" autocomplete="off">
+                            <label>البريد الالكتروني</span></label>
+                            <input type="text" name="username" class="form-control email" id="restpasswordemail" autocomplete="off">
                             <div class="invalid-feedback"></div>
                         </div>
-                        <button type="submit" class="primary-btn btn-hover btn-curved ">أرسال الرمز</button>
+                        <button type="submit" class="primary-btn btn-hover btn-curved">أرسال الرمز</button>
+                        <a class="primary-btn btn-hover btn-curved forgotPasswordRetreat" data-step="1">العودة إلى الخلف</a>
                     </form>
 
                     <form action="{{route('api.password.code')}}" method="post" class="log-in_center_form forgot-password_step-2">
                         @csrf
-                        <h2>تم ارسال رمز الي بريدك الالكتروني</h2>
+                        <h2>تم إرسال رمز إلى بريدك الإلكتروني</h2>
                         <p></p>
                         <div>
-                            <label>ادخال كود <span>العودة إلى <a class="forgotPasswordRetreat" data-step="2">تسجيل الدخول</a></span></label>
+                            <label>إدخال كود</label>
                             <input type="number" name="code" class="form-control codeNumber" placeholder="كود" autocomplete="off">
                             <div class="invalid-feedback"></div>
                             <input type="hidden" name="username" id="usernameByCode">
                         </div>
-                        <button type="submit" class="primary-btn btn-hover btn-curved " data-step="3" >تحقق</button>
+                        <button type="submit" class="primary-btn btn-hover btn-curved" data-step="3" >تحقق</button>
+                        <a class="primary-btn btn-hover btn-curved forgotPasswordRetreat" data-step="2">العودة إلى الخلف</a>
                     </form>
 
                     <form action="{{route('api.password.reset')}}" method="post" class="log-in_center_form forgot-password_step-3">
@@ -184,14 +190,79 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </div>
                         <div>
                             <input type="hidden" name="token" id="tokenByReset">
-                            <label>تأكيد كلمة السر <span>العودة إلى <a class="forgotPasswordRetreat" data-step="3">تسجيل الدخول</a></span></label>
+                            <label>تأكيد كلمة السر</span></label>
                             <input type="password" name="password_confirmation" class="form-control confirmPassword" autocomplete="off">
                             <div class="invalid-feedback"></div>
                         </div>
                         <button type="submit" class="primary-btn btn-hover btn-curved" onclick="forgotPassword(4);">قم بتغيير كلمة المرور</button>
+                        <a class="primary-btn btn-hover btn-curved forgotPasswordRetreat" data-step="3">العودة إلى الخلف</a>
                     </form>
 
                 </div>
+
+
+                <div class="old-user">
+                    <div class="form-loader">
+                        <div class="loader"></div>
+                    </div>
+
+                    <form action="" method="post" class="log-in_center_form old-user_step-1">
+                        @csrf
+                        <h2>الرجاء إدخال رقم الجوال</h2>
+                        <p>سيتم إرسال رمز تأكيد على الجوال المسجل</p>
+                        <div class="registerMobileNumber number">
+                            <label>رقم الجوال</label>
+                            <input type="text" name="phone-number" class="form-control phone-number" autocomplete="off" oninput="numberDesign(this)" maxlength="11">
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="number">
+                            <label>رقم الهوية</label>
+                            <input type="number" name="id-number" class="form-control id-number" autocomplete="off">
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <button class="primary-btn btn-hover btn-curved btn-old-user" data-step="2">أرسال الرمز</button>
+                        <a class="primary-btn btn-hover btn-curved btn-old-user-close" data-step="1">العودة إلى الخلف</a>
+                    </form>
+
+                    <form action="" method="post" class="log-in_center_form old-user_step-2">
+                        @csrf
+                        <h2>تم إرسال الرمز إلى رقم جوالك</h2>
+                        <p></p>
+                        <div class="number">
+                            <label>ادخال كود</label>
+                            <input type="number" name="code-number" class="form-control code-number" placeholder="كود" autocomplete="off">
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <button class="primary-btn btn-hover btn-curved btn-old-user" data-step="3">تأكيد الكود</button>
+                        <a class="primary-btn btn-hover btn-curved btn-old-user-close" data-step="2">العودة إلى الخلف</a>
+                    </form>
+
+                    <form action="" method="post" class="log-in_center_form old-user_step-3">
+                        @csrf
+                        <h2>لإتمام التسجيل</h2>
+                        <h5>يرجى ملء البيانات التالية</h5>
+                        <div>
+                            <label>البريد الالكتروني</label>
+                            <input type="email" name="eamil" class="form-control email" autocomplete="off">
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div>
+                            <label>كلمة السر الجديدة <span onclick="togglePassword('.old-user_step-3 .show-password', this, [`<i class='far fa-eye-slash'></i> اخفاء`, `<i class='far fa-eye'></i> اظهار`]);" style="cursor: pointer;"><i class="far fa-eye"></i> اظهار</span></label>
+                            <input type="password" name="password" class="form-control show-password password" autocomplete="off">
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div>
+                            <label>تأكيد كلمة السر الجديدة</label>
+                            <input type="password" name="password_confirmation" class="form-control show-password confirm-password" autocomplete="off">
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <button class="primary-btn btn-hover btn-curved btn-old-user" data-step="4">موافق</button>
+                        <a class="primary-btn btn-hover btn-curved btn-old-user-close" data-step="3">العودة إلى الخلف</a>
+                    </form>
+
+                </div>
+
+
             </div>
         </div>
 
@@ -208,21 +279,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="form-loader">
                         <div class="loader"></div>
                     </div>
-                    <h2>حساب جديد</h2>
+                    <h2>إنشاء حساب جديد</h2>
                     <div class="register_center_form_inputs">
                         <div class="register_center_form_inputs_input">
-                            <label>الاسم باكامل<span>لدي حساب بالفعل؟ <a onclick="logInOrRegister('login')">تسجيل الدخول</a></span></label>
+                            <label>الاسم بالكامل</label>
                             <input type="text" name="username" value="{{old('username')}}" class="form-control" id="registerName">
                             <div class="invalid-feedback"></div>
                         </div>
                         <div class="register_center_form_inputs_input">
-                            <label>البريد الاركتروني</label>
+                            <label>البريد الالكتروني</label>
                             <input type="email" name="email" value="{{old('email')}}"  class="form-control" id="registerEmail">
                             <div class="invalid-feedback"></div>
                         </div>
                         <div class="register_center_form_inputs_input registerMobileNumber">
                             <label>رقم الجوال</label>
-                            <input type="text" name="phone" value="{{old('phone')}}" class="form-control" id="registerMobileNumber" oninput="numberDesign(this);" max="12">
+                            <input type="text" name="phone" value="{{old('phone')}}" class="form-control" id="registerMobileNumber" oninput="numberDesign(this);" max="11">
                             <div class="invalid-feedback"></div>
                         </div>
                         <div class="register_center_form_inputs_input password One">
@@ -297,7 +368,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <input type="file" hidden name="licenceBack" id="input-licenceBack">
 
                     </div>
-                    <button id="formSumbit" class="primary-btn btn-hover btn-curved" >تأكيد البيانات</button>
+                    <div class="row">
+                        <div class="primary-btn btn-hover btn-curved" onclick="logInOrRegister('login')">العودة إلى الخلف</div>
+                        <button id="formSumbit" class="primary-btn btn-hover btn-curved">تأكيد البيانات</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -460,7 +534,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 let errors = false;
                 let showInputError = (input, errorText, wanted = true) => {
                     input.classList.add('is-invalid');
-                    console.log(errorText);
+                    input.classList.remove('is-valid');
+                    input.focus();
                     input.nextElementSibling.innerHTML = errorText;
                     if (input.value.length == 0 && wanted == true) {
                         input.nextElementSibling.innerHTML = 'هذا الحقل مطلوب';
@@ -552,15 +627,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 }
                 let numberDesign = (input) => {
                     let value = input.value.match(/[0-9\ ]+$/);
-                    if (value === null && input.value != '' || input.value.length > 12) {
+                    if (value === null && input.value != '') {
                         input.value = valueMobileNumber;
                     }
                     else{
                         valueMobileNumber = input.value;
                         let currentLength = input.value.length;
-                        if(currentLength >previousLength)
+                        if(currentLength > previousLength)
                         {
-                            if(valueMobileNumber.replaceAll(' ','').length%3 ==0)
+                            if(valueMobileNumber.replaceAll(' ','').length%2 == 0 && valueMobileNumber.length <= 3)
+                            {
+                                input.value += ' ';
+                            }
+                            if(valueMobileNumber.replaceAll(' ','').length%5 == 0 && valueMobileNumber.length <= 7)
                             {
                                 input.value += ' ';
                             }
@@ -644,6 +723,119 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         document.querySelector('.register_center_form .form-loader').classList.add('show');
                     }
                 });
+
+
+                // Old User
+                let oldUser = (step) => {
+                    let forms = document.querySelectorAll('.log-in_center_form'),
+                        form = document.querySelector(`.log-in_center_form.old-user_step-${step}`),
+                        formLoader = document.querySelector('.old-user .form-loader'),
+                        errors = false,
+                        next = (Timeout = true) => {
+                            Timeout === true ? Timeout = 1000 : Timeout = 0;
+                            setTimeout(() => {
+                                forms.forEach(form =>  form.style.display = 'none');
+                                form.style.display = 'block';
+                                formLoader.classList.remove('show');
+                            }, Timeout);
+                        }
+
+                    if (step === 1) {
+                        next(false);
+                    }
+
+                    if (step === 2) {
+                        let phoneNumber = document.querySelector(`.log-in_center_form.old-user_step-1 .phone-number`),
+                            idNumber = document.querySelector(`.log-in_center_form.old-user_step-1 .id-number`),
+                            phoneNumberShow = document.querySelector('.log-in_center_form.old-user_step-2 p');
+                            phoneNumberKey = `${phoneNumber.value[0]}${phoneNumber.value[1]}`;
+                        if (phoneNumber.value.replaceAll(' ','').length != 9 || !phoneNumberKeys.includes(phoneNumberKey)) {
+                            showInputError(phoneNumber, 'عذرا ، رقم الهاتف هذه غير صحيح');
+                        }
+                        else if (idNumber.value.length !== 10) {
+                            phoneNumber.classList.remove('is-invalid');
+                            phoneNumber.classList.add('is-valid');
+                            showInputError(idNumber, 'عذرا ، رقم الهوية هذه غير صحيح');
+                        }
+                        else{
+                            idNumber.classList.remove('is-invalid');
+                            idNumber.classList.add('is-valid');
+                            formLoader.classList.add('show');
+                            phoneNumberShow.innerHTML = `+966 0${phoneNumber.value}`;
+                            next();
+                        }
+                    }
+
+                    if (step === 3) {
+                        let codeNumber = document.querySelector('.log-in_center_form.old-user_step-2 .code-number');
+                        if (codeNumber.value.length !== 6) {
+                            showInputError(codeNumber, 'عذرا ، الرمز الذي أدخلته غير صحيح');
+                        }
+                        else{
+                            codeNumber.classList.remove('is-invalid');
+                            codeNumber.classList.add('is-valid');
+                            formLoader.classList.add('show');
+                            next();
+                        }
+                    }
+
+                    if (step === 4) {
+                        let email = document.querySelector('.log-in_center_form.old-user_step-3 .email'),
+                            password = document.querySelector('.log-in_center_form.old-user_step-3 .password'),
+                            confirmPassword = document.querySelector('.log-in_center_form.old-user_step-3 .confirm-password'),
+                            step4Errors = false,
+                            pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+                        if (password.value.length < 8) {
+                            showInputError(password, 'عذرًا ، لكن يجب أن تكون كلمة المرور 8 على الأقل');
+                            step4Errors = true;
+                        }
+                        else if (confirmPassword.value != password.value) {
+                            showInputError(confirmPassword, 'عذرا ، لكن كلمة المرور غير متطابقة');
+                            password.classList.remove('is-invalid');
+                            password.classList.add('is-valid');
+                            step4Errors = true;
+                        }
+                        else{
+                            confirmPassword.classList.remove('is-invalid');
+                            confirmPassword.classList.add('is-valid');
+                        }
+
+                        if (email.value.match(pattern) === null) {
+                            showInputError(email, 'عذرا ، البريد الالكتروني هذا غير صحيح');
+                            step4Errors = true;
+                        }
+                        else{
+                            email.classList.remove('is-invalid');
+                            email.classList.add('is-valid');
+                        }
+
+                        if (!step4Errors) {
+                            next()
+                        }
+                    }
+
+                    return errors;
+                }
+                let btnsOldUser = document.querySelectorAll('.btn-old-user');
+                btnsOldUser.forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        oldUser(parseInt(btn.dataset.step));
+                    });
+                });
+
+                let oldUserClose = (step) => {
+                    document.querySelector(`.log-in_center_form.old-user_step-${step}`).style.display = 'none';
+                    document.querySelector('.log-in_center_form').style.display = 'block';
+                }
+                let btnOldUserClose = document.querySelectorAll('.btn-old-user-close');
+                btnOldUserClose.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        oldUser(oldUserClose(btn.dataset.step));
+                    });
+                });
+
 
             </script>
         @endpush
@@ -745,7 +937,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             });
             $('body').css('overflow','auto');
         });
-
     </script>
     <!-- ------------END------SCRIPT------LOAD------------ -->
 
