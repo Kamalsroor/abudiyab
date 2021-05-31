@@ -335,7 +335,7 @@ class BookingSteps extends Component
                                     // $smsPhone = "+201012316954";
 
                                     $client = new Client();
-                                    $res = $client->get('http://sms.netpowers.net/http/api.php?id=abudiyab&password=abudiyab1171&to='.$smsPhone.'&sender=ABUDIYAB&msg='.$smsText);
+                                    $res = $client->get('http://sms.netpowers.net/http/api.php?id=abudiyab&password=abudiyab1171&to='.$smsPhone.'&sender=AbuDiyab-AD&msg='.$smsText);
                                     $this->currentStep = 5;
                                 }
                                 else if($this->canBuyWithPoint==2)
@@ -359,7 +359,7 @@ class BookingSteps extends Component
                                 // $smsPhone = "+201012316954";
 
                                 $client = new Client();
-                                $res = $client->get('http://sms.netpowers.net/http/api.php?id=abudiyab&password=abudiyab1171&to='.$smsPhone.'&sender=ABUDIYAB&msg='.$smsText);
+                                $res = $client->get('http://sms.netpowers.net/http/api.php?id=abudiyab&password=abudiyab1171&to='.$smsPhone.'&sender=AbuDiyab-AD&msg='.$smsText);
                                 $this->currentStep = 5;
                             }
                         }
@@ -574,7 +574,7 @@ class BookingSteps extends Component
             // $smsPhone = "+201012316954";
 
             $client = new Client();
-            $res = $client->get('http://sms.netpowers.net/http/api.php?id=abudiyab&password=abudiyab1171&to='.$smsPhone.'&sender=ABUDIYAB&msg='.$smsText);
+            $res = $client->get('http://sms.netpowers.net/http/api.php?id=abudiyab&password=abudiyab1171&to='.$smsPhone.'&sender=AbuDiyab-AD&msg='.$smsText);
 
             $this->currentStep = 5 ;
         }else{
@@ -612,7 +612,7 @@ class BookingSteps extends Component
                 // $smsPhone = "+201012316954";
 
                 $client = new Client();
-                $res = $client->get('http://sms.netpowers.net/http/api.php?id=abudiyab&password=abudiyab1171&to='.$smsPhone.'&sender=ABUDIYAB&msg='.$smsText);
+                $res = $client->get('http://sms.netpowers.net/http/api.php?id=abudiyab&password=abudiyab1171&to='.$smsPhone.'&sender=AbuDiyab-AD&msg='.$smsText);
 
                 $this->currentStep = 5 ;
             }

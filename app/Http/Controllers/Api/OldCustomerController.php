@@ -13,45 +13,61 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Validation\ValidatesRequests;
-use App\Http\Requests\Api\ResetPasswordRequest;
-use App\Http\Requests\Api\ForgetPasswordRequest;
+use App\Http\Requests\Api\ResetOldUserRequest;
+use App\Http\Requests\Api\ForgetOldUserRequest;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Notifications\Accounts\PasswordUpdatedNotification;
 use App\Http\Requests\Api\ResetPasswordCodeRequest;
 use App\Notifications\Accounts\SendForgetPasswordCodeNotification;
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Auth;
 
-class ResetPasswordController extends Controller
+class OldCustomerController extends Controller
 {
     use AuthorizesRequests, ValidatesRequests;
 
     /**
      * Send the forget password code to the user.
      *
-     * @param \App\Http\Requests\Api\ForgetPasswordRequest $request
+     * @param \App\Http\Requests\Api\ForgetOldUserRequest $request
      * @throws \Illuminate\Validation\ValidationException
      * @return \Illuminate\Http\JsonResponse
      */
-    public function forget(ForgetPasswordRequest $request)
+    public function forget(ForgetOldUserRequest $request)
     {
+
         $user = User::where(function (Builder $query) use ($request) {
-            $query->where('email', $request->username);
-            $query->orWhere('phone', $request->username);
+            // $query->where('email', $request->id_number);
+            $query->Where('phone', $request->phone_number);
         })->first();
+
 
         if (! $user) {
             throw ValidationException::withMessages([
-                'username' => [trans('auth.failed-password-forget')],
+                'phone_number' => [trans('auth.failed-old-user-forget')],
             ]);
         }
 
         $resetPasswordCode = ResetPasswordCode::Create( [
-            'username' => $request->username,
+            'username' => $request->phone_number,
             // 'code' => Str::random(6),
             'code' => rand(100000 , 999999),
         ]);
 
         try {
-            $user->notify(new SendForgetPasswordCodeNotification($resetPasswordCode->code));
+            $smsText = trans('auth.messages.sent-old-user-code' , [
+                'code' => $resetPasswordCode->code,
+            ]) ;
+                // dd($smsText);
+            // $smsPhone = "+966554001171";
+            $smsPhone = "+966".$request->phone_number;
+            // dd($smsPhone);
+            // $smsPhone = "+201012316954";
+
+            $client = new Client();
+            $res = $client->get('http://sms.netpowers.net/http/api.php?id=abudiyab&password=abu@net0029&to='.$smsPhone.'&sender=AbuDiyab-AD&msg='.$smsText);
+
+            // $user->notify(new SendForgetPasswordCodeNotification($resetPasswordCode->code));
         } catch (\Exception $exception) {
         }
 
@@ -63,7 +79,9 @@ class ResetPasswordController extends Controller
         }
 
         return response()->json([
-            'message' => trans('auth.messages.forget-password-code-sent'),
+            'message' => trans('auth.messages.forget-old-user-code-sent' , [
+                'number' => $request->phone_number,
+            ]),
             'links' => [
                 'code' => [
                     'href' => route('api.password.code'),
@@ -89,7 +107,6 @@ class ResetPasswordController extends Controller
             $query->where('email', $request->username);
             $query->orWhere('phone', $request->username);
         })->first();
-
         if (! $resetPasswordCode || $resetPasswordCode->isExpired() || ! $user) {
             throw ValidationException::withMessages([
                 'code' => [
@@ -116,7 +133,7 @@ class ResetPasswordController extends Controller
         ]);
     }
 
-    public function reset(ResetPasswordRequest $request)
+    public function reset(ResetOldUserRequest $request)
     {
         $resetPasswordToken = ResetPasswordToken::where($request->only('token'))->first();
 
@@ -133,19 +150,33 @@ class ResetPasswordController extends Controller
         $user = $resetPasswordToken->user;
 
         $user->update([
+            'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
         try {
-            $user->notify(new PasswordUpdatedNotification());
+            $smsText = trans('auth.messages.reset-old-user-data') ;
+                // dd($smsText);
+            // $smsPhone = "+966554001171";
+            // $smsPhone = "+966556622715";
+            // $smsPhone = "+966557435335";
+            $smsPhone = "+966".$user->phone;
+            // dd($smsPhone);
+            // $smsPhone = "+201012316954";
+
+            $client = new Client();
+            $res = $client->get('http://sms.netpowers.net/http/api.php?id=abudiyab&password=abu@net0029&to='.$smsPhone.'&sender=AbuDiyab-AD&msg='.$smsText);
         } catch (\Exception $exception) {
         }
 
-        event(new Login('sanctum', $user, false));
-
         $resetPasswordToken->delete();
+        if (Auth::attempt(['email' => $user->email ,'password' => $request->password])) {
+            $attempt=true;
+        }
 
         return $user->getResource()->additional([
+            'attempt'=>$attempt,
+            'user_id'=> Auth()->id(),
             'token' => $user->createTokenForDevice(
                 $request->header('user-agent')
             ),
