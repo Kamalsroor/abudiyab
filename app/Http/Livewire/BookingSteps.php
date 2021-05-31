@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Events\sendInvoiceMailEvent;
+use App\Models\Addition;
 use App\Models\AreaPricing;
 use Livewire\Component;
 use App\Models\Car;
@@ -72,6 +73,7 @@ class BookingSteps extends Component
     public $showPointsError=0;
     public $pointsPrice=0;
     public $paymentMethod;
+    public $additions;
     protected $listeners = [
         'payment:cancelled' => 'paymentCancelled',
         'payment:complete' => 'paymentComplete',
@@ -205,6 +207,7 @@ class BookingSteps extends Component
             }
             if($value==0)
             {
+
                 unset($this->addedFeatureArray[$key]);
                 unset($this->features_added[$key]);
             }
@@ -224,6 +227,7 @@ class BookingSteps extends Component
         $this->visa_price=$visa_buy;
         }
 
+        $this->additions = Addition::get()->groupBy('id')->toArray();
         $this->price = ($this->car_price ) + $features_price + $this->authorization_fee ;
         $this->total = $this->price - $visa_buy + $this->AreaPricing - $this->membership_discount - $this->promotional_discount;
         return view('livewire.booking-steps');

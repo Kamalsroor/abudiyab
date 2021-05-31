@@ -76,15 +76,20 @@
                 </div>
 
                 <div class="H3-TST-D3" id="additions" style="display: none;">
-                    @foreach ($features_added as $key => $value)
-                        <div class="H3-TST-D4-1 H3-TST-D4-1-hover">
-                            <div class="H3-TST-D5-1">
-                                <span><span>{{$featureArray[$key]}}</span><i class="fas fa-car"></i></span>
+                    @foreach ($additions as $key => $value)
+                        @if ($loop->index <= $loop->last )
+                            <div class="H3-TST-D4-1 H3-TST-D4-1-hover">
+                                <div class="H3-TST-D5-1">
+                                    <span><span>{{$additions[$key][0]['name']}}</span><i class="fas fa-car"></i></span>
+                                </div>
+                                <div class="H3-TST-D5-1">
+                                    @if (isset($features_added[$loop->index]))
+                                        <p><span><i class="icofont icofont-cur-riyal"></i>{{$features_added[$loop->index]}} في اليوم</span></p>
+                                    @endif
+                                </div>
                             </div>
-                            <div class="H3-TST-D5-1">
-                                <p><span><i class="icofont icofont-cur-riyal"></i>{{$value}} في اليوم</span></p>
-                            </div>
-                        </div>
+                        @endif
+
                     @endforeach
                 </div>
 
