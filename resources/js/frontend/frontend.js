@@ -1615,11 +1615,23 @@ function nextstep(step) {
     forms.forEach(element => element.style.display = 'none')
     form.style.display = 'block';
 }
+function nextstepOldUser(step) {
+    let forms = document.querySelectorAll('.log-in_center_form'),
+        form = document.querySelector(`.log-in_center_form.old-user_step-${step}`);
+
+    forms.forEach(element => element.style.display = 'none')
+    form.style.display = 'block';
+}
 
 $('.log-in_center_form_forgot-password').click(function() {
     console.log('log-in_center_form_forgot-password', $('log-in_center_form_forgot-password'));
     let step = $(this).data('step');
     nextstep(step);
+});
+$('.log-in_center_form_old-user').click(function() {
+    console.log('log-in_center_form_old-user', $('log-in_center_form_old-user'));
+    let step = $(this).data('step');
+    nextstepOldUser(step);
 });
 
 $('.forgotPasswordRetreat').click(function() {
@@ -1775,7 +1787,208 @@ $('.forgot-password_step-3').on('submit', function(e) {
 
 
 });
+let phoneNumberKeys = ['50','53','54','55','56','57','58','59'];
 
+$('.log-in_center_form.old-user_step-1').on('submit', function(e) {
+    e.preventDefault();
+    // forms = document.querySelectorAll('.log-in_center_form'),
+    //     form = document.querySelector(`.log-in_center_form.old-user_step-${step}`),
+    //     formLoader = document.querySelector('.old-user .form-loader')
+
+
+    var url = $(this).attr("action");
+
+    let phoneNumber = $(this).find('.phone-number')[0];
+    let idNumber = $(this).find('.id-number')[0];
+    let phoneNumberShow = document.querySelector('.log-in_center_form.old-user_step-2 p');
+    let phoneNumberKey = `${phoneNumber.value[0]}${phoneNumber.value[1]}`;
+    if (phoneNumber.value.replaceAll(' ','').length != 9 || !phoneNumberKeys.includes(phoneNumberKey)) {
+        error(phoneNumber, 'عذرا ، رقم الهاتف هذه غير صحيح');
+    }
+    else if (idNumber.value.length !== 10) {
+        phoneNumber.classList.remove('is-invalid');
+        idNumber.classList.add('is-valid');
+        error(idNumber, 'عذرا ، رقم الهوية هذه غير صحيح');
+    }
+    else{
+        phoneNumber.value = phoneNumber.value.replaceAll(' ','');
+        setTimeout(() => {
+            idNumber.classList.remove('is-invalid');
+            idNumber.classList.add('is-valid');
+            phoneNumberShow.innerHTML = `+966 0${phoneNumber.value}`;
+            idNumber.classList.remove('is-invalid');
+            phoneNumber.classList.remove('is-invalid');
+            idNumber.classList.add('is-valid');
+            phoneNumber.classList.add('is-valid');
+            formLoader.classList.add('show');
+            var form_data = $(this).serialize();
+
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: form_data,
+                headers: {
+                    "x-accept-language": "ar",
+                    "X-CSRF-TOKEN": csrf_token,
+                },
+                dataType: 'JSON',
+                //contentType: "application/x-www-form-urlencoded",
+                success: function(data) { // here I'm adding data as a parameter which stores the response
+                    console.log(data);
+                    toastr.success(data.message)
+                    formLoader.classList.remove('show');
+                    $('#customerUsernameByCode').val(phoneNumber.value);
+                    nextstepOldUser(2);
+                },
+                error: function(response) {
+                    console.log(response);
+                    formLoader.classList.remove('show');
+                    if(response.responseJSON.errors.phone_number)
+                        error(phoneNumber, response.responseJSON.errors.phone_number);
+
+                    if(response.responseJSON.errors.id_number)
+                        error(idNumber, response.responseJSON.errors.id_number);
+                }
+            });
+        }, 500);
+    }
+
+});
+
+
+$('.log-in_center_form.old-user_step-2').on('submit', function(e) {
+    e.preventDefault();
+    // forms = document.querySelectorAll('.log-in_center_form'),
+    //     form = document.querySelector(`.log-in_center_form.old-user_step-${step}`),
+    //     formLoader = document.querySelector('.old-user .form-loader')
+
+
+    var url = $(this).attr("action");
+
+
+
+
+
+    let codeNumber = $(this).find('.codeNumber')[0];
+
+
+    if (codeNumber.value.length !== 6) {
+        error(codeNumber, 'عذرا ، هذا الرمز غير صحيح');
+    } else {
+        codeNumber.classList.remove('is-invalid');
+        codeNumber.classList.add('is-valid');
+        formLoader.classList.add('show');
+        var form_data = $(this).serialize();
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: form_data,
+            headers: {
+                "x-accept-language": "ar",
+                "X-CSRF-TOKEN": csrf_token,
+            },
+            dataType: 'JSON',
+            //contentType: "application/x-www-form-urlencoded",
+            success: function(data) { // here I'm adding data as a parameter which stores the response
+                console.log(data);
+                toastr.success(data.message)
+                $('#customerTokenByReset').val(data.reset_token);
+
+                formLoader.classList.remove('show');
+                nextstepOldUser(3);
+            },
+            error: function(response) {
+                console.log(response);
+                formLoader.classList.remove('show');
+                if(response.responseJSON.errors.username)
+                    error(codeNumber, response.responseJSON.errors.username);
+
+                if(response.responseJSON.errors.code)
+                    error(codeNumber, response.responseJSON.errors.code);
+            }
+        });
+    }
+
+
+});
+$('.log-in_center_form.old-user_step-3').on('submit', function(e) {
+    e.preventDefault();
+    // forms = document.querySelectorAll('.log-in_center_form'),
+    //     form = document.querySelector(`.log-in_center_form.old-user_step-${step}`),
+    //     formLoader = document.querySelector('.old-user .form-loader')
+
+
+    var url = $(this).attr("action");
+
+
+
+
+
+    let password = $(this).find('.password')[0];
+    let confirmPassword = $(this).find('.confirm-password')[0];
+    let email = $(this).find('.email')[0];
+    console.log(confirmPassword
+        ,email);
+    if (password.value.length < 8) {
+        error(password, 'عذرًا ، لكن يجب أن تكون كلمة المرور 8 على الأقل');
+    } else if (confirmPassword.value != password.value) {
+        password.classList.remove('is-invalid');
+        password.classList.add('is-valid');
+        error(confirmPassword, 'عذرا ، لكن كلمة المرور غير متطابقة');
+    } else {
+        password.classList.remove('is-invalid');
+        confirmPassword.classList.remove('is-invalid');
+        password.classList.add('is-valid');
+        confirmPassword.classList.add('is-valid');
+        var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+        if (email.value.match(pattern) === null) {
+            error(email, 'عذرا ، البريد الالكتروني هذا غير صحيح');
+        }
+        else{
+            email.classList.remove('is-invalid');
+            email.classList.add('is-valid');
+            var form_data = $(this).serialize();
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: form_data,
+                headers: {
+                    "x-accept-language": "ar",
+                    "X-CSRF-TOKEN": csrf_token,
+                },
+                dataType: 'JSON',
+                //contentType: "application/x-www-form-urlencoded",
+                success: function(data) { // here I'm adding data as a parameter which stores the response
+                    console.log(data);
+                    toastr.success(data.message)
+                    formLoader.classList.remove('show');
+
+                    if (data.attempt) {
+                        location.reload();
+                    }
+                },
+                error: function(response) {
+                    console.log(response);
+                    formLoader.classList.remove('show');
+                    if(response.responseJSON.errors.token)
+                        error(email, response.responseJSON.errors.token);
+
+                    if(response.responseJSON.errors.email)
+                        error(email, response.responseJSON.errors.email);
+
+                    if(response.responseJSON.errors.password)
+                        error(password, response.responseJSON.errors.password);
+                }
+            });
+        }
+
+
+    }
+
+
+
+});
 
 
 
@@ -1915,7 +2128,116 @@ function forgotPasswordRetreat(step) {
 
 
 
+// // Old User
+// let oldUser = (step) => {
+//     let forms = document.querySelectorAll('.log-in_center_form'),
+//         form = document.querySelector(`.log-in_center_form.old-user_step-${step}`),
+//         formLoader = document.querySelector('.old-user .form-loader'),
+//         errors = false,
+//         next = (Timeout = true) => {
+//             Timeout === true ? Timeout = 1000 : Timeout = 0;
+//             setTimeout(() => {
+//                 forms.forEach(form =>  form.style.display = 'none');
+//                 form.style.display = 'block';
+//                 formLoader.classList.remove('show');
+//             }, Timeout);
+//         }
 
+//     if (step === 1) {
+//         next(false);
+//     }
+
+//     if (step === 2) {
+//         let phoneNumber = document.querySelector(`.log-in_center_form.old-user_step-1 .phone-number`),
+//             idNumber = document.querySelector(`.log-in_center_form.old-user_step-1 .id-number`),
+//             phoneNumberShow = document.querySelector('.log-in_center_form.old-user_step-2 p'),
+//             phoneNumberKey = `${phoneNumber.value[0]}${phoneNumber.value[1]}`;
+//         if (phoneNumber.value.replaceAll(' ','').length != 9 || !phoneNumberKeys.includes(phoneNumberKey)) {
+//             showInputError(phoneNumber, 'عذرا ، رقم الهاتف هذه غير صحيح');
+//         }
+//         else if (idNumber.value.length !== 10) {
+//             phoneNumber.classList.remove('is-invalid');
+//             phoneNumber.classList.add('is-valid');
+//             showInputError(idNumber, 'عذرا ، رقم الهوية هذه غير صحيح');
+//         }
+//         else{
+//             idNumber.classList.remove('is-invalid');
+//             idNumber.classList.add('is-valid');
+//             formLoader.classList.add('show');
+//             phoneNumberShow.innerHTML = `+966 0${phoneNumber.value}`;
+//             next();
+//         }
+//     }
+
+//     if (step === 3) {
+//         let codeNumber = document.querySelector('.log-in_center_form.old-user_step-2 .code-number');
+//         if (codeNumber.value.length !== 6) {
+//             showInputError(codeNumber, 'عذرا ، الرمز الذي أدخلته غير صحيح');
+//         }
+//         else{
+//             codeNumber.classList.remove('is-invalid');
+//             codeNumber.classList.add('is-valid');
+//             formLoader.classList.add('show');
+//             next();
+//         }
+//     }
+
+//     if (step === 4) {
+//         let email = document.querySelector('.log-in_center_form.old-user_step-3 .email'),
+//             password = document.querySelector('.log-in_center_form.old-user_step-3 .password'),
+//             confirmPassword = document.querySelector('.log-in_center_form.old-user_step-3 .confirm-password'),
+//             step4Errors = false,
+//             pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+//         if (password.value.length < 8) {
+//             showInputError(password, 'عذرًا ، لكن يجب أن تكون كلمة المرور 8 على الأقل');
+//             step4Errors = true;
+//         }
+//         else if (confirmPassword.value != password.value) {
+//             showInputError(confirmPassword, 'عذرا ، لكن كلمة المرور غير متطابقة');
+//             password.classList.remove('is-invalid');
+//             password.classList.add('is-valid');
+//             step4Errors = true;
+//         }
+//         else{
+//             confirmPassword.classList.remove('is-invalid');
+//             confirmPassword.classList.add('is-valid');
+//         }
+
+//         if (email.value.match(pattern) === null) {
+//             showInputError(email, 'عذرا ، البريد الالكتروني هذا غير صحيح');
+//             step4Errors = true;
+//         }
+//         else{
+//             email.classList.remove('is-invalid');
+//             email.classList.add('is-valid');
+//         }
+
+//         if (!step4Errors) {
+//             next()
+//         }
+//     }
+
+//     return errors;
+// }
+// let btnsOldUser = document.querySelectorAll('.btn-old-user');
+// btnsOldUser.forEach(btn => {
+//     btn.addEventListener('click', (e) => {
+//         e.preventDefault();
+//         oldUser(parseInt(btn.dataset.step));
+//     });
+// });
+
+// let oldUserClose = (step) => {
+//     document.querySelector(`.log-in_center_form.old-user_step-${step}`).style.display = 'none';
+//     document.querySelector('.log-in_center_form').style.display = 'block';
+// }
+// let btnOldUserClose = document.querySelectorAll('.btn-old-user-close');
+// btnOldUserClose.forEach(btn => {
+//     btn.addEventListener('click', () => {
+//         oldUser(oldUserClose(btn.dataset.step));
+//     });
+// });
 
 
 

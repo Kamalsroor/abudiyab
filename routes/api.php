@@ -40,6 +40,9 @@ Route::post('/password/forget', 'ResetPasswordController@forget')->name('passwor
 Route::post('/password/code', 'ResetPasswordController@code')->name('password.code');
 Route::post('/password/reset', 'ResetPasswordController@reset')->name('password.reset');
 Route::get('/select/users', 'UserController@select')->name('users.select');
+Route::post('/customer/forget', 'OldCustomerController@forget')->name('customer.forget');
+Route::post('/customer/code', 'OldCustomerController@code')->name('customer.code');
+Route::post('/customer/reset', 'OldCustomerController@reset')->name('customer.reset');
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('verification/send', 'VerificationController@send')->name('verification.send');

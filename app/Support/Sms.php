@@ -19,7 +19,7 @@ class Sms
 
         $smsText = $body;
         $smsPhone = $phone;
-        $url = "http://sms.netpowers.net/http/api.php?id=abudiyab&password=abudiyab1171&to={$smsPhone}&sender=ABUDIYAB&msg={$smsText}";
+        $url = "http://sms.netpowers.net/http/api.php?id=abudiyab&password=abudiyab1171&to={$smsPhone}&sender=AbuDiyab-AD&msg={$smsText}";
         try {
             $client = new Client();
             $res = $client->get($url);
