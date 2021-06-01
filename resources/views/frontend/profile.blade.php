@@ -163,7 +163,7 @@
                             </tr>
                             <tr>
                                 <th class="color-black text-center" scope="row">صندوق البريد</th>
-                                <td class="color-black text-center">{{isset($user) ? $user->post_box : ""}} </td>
+                                <td class="color-black text-center">{{Auth::user()->post_box}} </td>
                             </tr>
                         </tbody>
                     </table>
