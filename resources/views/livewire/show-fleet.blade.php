@@ -149,7 +149,7 @@
                                             {{-- @if ($category->id === 3 || $category->id === 4 || $category->id === 6) --}}
                                                 <div>
                                                     <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  id="largCategory-{{$category->id}}">
-                                                    <label for="largCategory-{{$category->id}}"><img src="{{$category->getFirstMediaUrl()}}}" alt="">{{$category->name}}</label>
+                                                    <label for="largCategory-{{$category->id}}"><img src="{{ $category->getFirstMediaUrl() }}" alt="">{{$category->name}}</label>
                                                 </div>
                                             {{-- @elseif ($category->id === 5 || $category->id === 8 || $category->id === 11 || $category->id === 17)
                                                 <div>
@@ -283,7 +283,7 @@
                                             {{-- @if ($category->id === 3 || $category->id === 4 || $category->id === 6) --}}
                                                 <div>
                                                     <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  id="largCategory-{{$category->id}}">
-                                                    <label for="largCategory-{{$category->id}}"><img src="{{$category->getFirstMediaUrl()}}}" alt="">{{$category->name}}</label>
+                                                    <label for="largCategory-{{$category->id}}"><img src="{{$category->getFirstMediaUrl()}}" alt="">{{$category->name}}</label>
                                                 </div>
                                             {{-- @elseif ($category->id === 5 || $category->id === 8 || $category->id === 11 || $category->id === 17)
                                                 <div>
