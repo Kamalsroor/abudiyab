@@ -155,7 +155,7 @@ class CarController extends Controller
      */
     public function select()
     {
-        $cars = Car::filter()->paginate();
+        $cars = Car::filter()->orderBy('model')->paginate();
 
         return CarSelectResource::collection($cars);
     }
