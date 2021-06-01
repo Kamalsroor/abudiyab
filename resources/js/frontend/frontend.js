@@ -1615,6 +1615,7 @@ function nextstep(step) {
     forms.forEach(element => element.style.display = 'none')
     form.style.display = 'block';
 }
+
 function nextstepOldUser(step) {
     let forms = document.querySelectorAll('.log-in_center_form'),
         form = document.querySelector(`.log-in_center_form.old-user_step-${step}`);
@@ -1787,7 +1788,7 @@ $('.forgot-password_step-3').on('submit', function(e) {
 
 
 });
-let phoneNumberKeys = ['50','53','54','55','56','57','58','59'];
+let phoneNumberKeys = ['50', '53', '54', '55', '56', '57', '58', '59'];
 
 $('.log-in_center_form.old-user_step-1').on('submit', function(e) {
     e.preventDefault();
@@ -1802,20 +1803,18 @@ $('.log-in_center_form.old-user_step-1').on('submit', function(e) {
     let idNumber = $(this).find('.id-number')[0];
     let phoneNumberShow = document.querySelector('.log-in_center_form.old-user_step-2 p');
     let phoneNumberKey = `${phoneNumber.value[0]}${phoneNumber.value[1]}`;
-    if (phoneNumber.value.replaceAll(' ','').length != 9 || !phoneNumberKeys.includes(phoneNumberKey)) {
+    if (phoneNumber.value.replaceAll(' ', '').length != 9 || !phoneNumberKeys.includes(phoneNumberKey)) {
         error(phoneNumber, 'عذرا ، رقم الهاتف هذه غير صحيح');
-    }
-    else if (idNumber.value.length !== 10) {
+    } else if (idNumber.value.length !== 10) {
         phoneNumber.classList.remove('is-invalid');
         idNumber.classList.add('is-valid');
         error(idNumber, 'عذرا ، رقم الهوية هذه غير صحيح');
-    }
-    else{
-        phoneNumber.value = phoneNumber.value.replaceAll(' ','');
+    } else {
+        phoneNumber.value = phoneNumber.value.replaceAll(' ', '');
         setTimeout(() => {
             idNumber.classList.remove('is-invalid');
             idNumber.classList.add('is-valid');
-            phoneNumberShow.innerHTML = `+966 0${phoneNumber.value}`;
+            phoneNumberShow.innerHTML = `966 0${phoneNumber.value}`;
             idNumber.classList.remove('is-invalid');
             phoneNumber.classList.remove('is-invalid');
             idNumber.classList.add('is-valid');
@@ -1843,10 +1842,10 @@ $('.log-in_center_form.old-user_step-1').on('submit', function(e) {
                 error: function(response) {
                     console.log(response);
                     formLoader.classList.remove('show');
-                    if(response.responseJSON.errors.phone_number)
+                    if (response.responseJSON.errors.phone_number)
                         error(phoneNumber, response.responseJSON.errors.phone_number);
 
-                    if(response.responseJSON.errors.id_number)
+                    if (response.responseJSON.errors.id_number)
                         error(idNumber, response.responseJSON.errors.id_number);
                 }
             });
@@ -1900,10 +1899,10 @@ $('.log-in_center_form.old-user_step-2').on('submit', function(e) {
             error: function(response) {
                 console.log(response);
                 formLoader.classList.remove('show');
-                if(response.responseJSON.errors.username)
+                if (response.responseJSON.errors.username)
                     error(codeNumber, response.responseJSON.errors.username);
 
-                if(response.responseJSON.errors.code)
+                if (response.responseJSON.errors.code)
                     error(codeNumber, response.responseJSON.errors.code);
             }
         });
@@ -1927,8 +1926,7 @@ $('.log-in_center_form.old-user_step-3').on('submit', function(e) {
     let password = $(this).find('.password')[0];
     let confirmPassword = $(this).find('.confirm-password')[0];
     let email = $(this).find('.email')[0];
-    console.log(confirmPassword
-        ,email);
+    console.log(confirmPassword, email);
     if (password.value.length < 8) {
         error(password, 'عذرًا ، لكن يجب أن تكون كلمة المرور 8 على الأقل');
     } else if (confirmPassword.value != password.value) {
@@ -1944,8 +1942,7 @@ $('.log-in_center_form.old-user_step-3').on('submit', function(e) {
 
         if (email.value.match(pattern) === null) {
             error(email, 'عذرا ، البريد الالكتروني هذا غير صحيح');
-        }
-        else{
+        } else {
             email.classList.remove('is-invalid');
             email.classList.add('is-valid');
             var form_data = $(this).serialize();
@@ -1971,13 +1968,13 @@ $('.log-in_center_form.old-user_step-3').on('submit', function(e) {
                 error: function(response) {
                     console.log(response);
                     formLoader.classList.remove('show');
-                    if(response.responseJSON.errors.token)
+                    if (response.responseJSON.errors.token)
                         error(email, response.responseJSON.errors.token);
 
-                    if(response.responseJSON.errors.email)
+                    if (response.responseJSON.errors.email)
                         error(email, response.responseJSON.errors.email);
 
-                    if(response.responseJSON.errors.password)
+                    if (response.responseJSON.errors.password)
                         error(password, response.responseJSON.errors.password);
                 }
             });
