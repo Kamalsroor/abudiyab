@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Car;
 use Illuminate\Routing\Controller;
-use App\Http\Resources\SelectResource;
+use App\Http\Resources\CarSelectResource;
 use App\Http\Resources\CarResource;
 use App\Models\addToFavorite;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -157,7 +157,7 @@ class CarController extends Controller
     {
         $cars = Car::filter()->paginate();
 
-        return SelectResource::collection($cars);
+        return CarSelectResource::collection($cars);
     }
 
 
