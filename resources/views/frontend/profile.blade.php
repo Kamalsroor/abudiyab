@@ -60,7 +60,7 @@
                                 </tr>
                                 <tr>
                                     <td class="color-black">
-                                    100
+                                        10
                                     </td>
                                     <th class="color-black">
                                     ريال
