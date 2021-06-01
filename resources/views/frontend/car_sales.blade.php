@@ -197,7 +197,7 @@
             {
                 user_id='{{Auth()->id()}}';
             }
-            console.log(car_id);
+            console.log(car_id , localquantity , quantity);
             let price=$('.price').val();
             let localquantity=$('.quantity').val();
             if(localquantity > quantity)
