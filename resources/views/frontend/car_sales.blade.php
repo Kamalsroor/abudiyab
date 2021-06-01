@@ -197,9 +197,9 @@
             {
                 user_id='{{Auth()->id()}}';
             }
-            console.log(car_id , localquantity , quantity);
             let price=$('.price').val();
             let localquantity=$('.quantity').val();
+            console.log(car_id , localquantity , quantity);
             if(localquantity > quantity)
             {
                 $('#notenough').css('display','block');
