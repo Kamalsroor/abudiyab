@@ -70,7 +70,7 @@
                     <div class="col-md-4">
                         <aside class="l-sidebar-2">
                             <div class="b-car-info">
-                                <div class="b-car-info__price"><i class="icofont icofont-cur-riyal"></i>{{$car->price1}}<span class="b-car-info__price-msrp"> <i class="icofont icofont-cur-riyal"></i>{{$car->price2}}</span>
+                                <div class="b-car-info__price"><i class="icofont icofont-cur-riyal"></i>{{$car->price1}}<s class="b-car-info__price-msrp"> <i class="icofont icofont-cur-riyal"></i>{{$car->price2}}</s>
                                 </div>
                                 <dl class="b-car-info__desc dl-horizontal bg-grey">
                                     <dt class="b-car-info__desc-dt">{{$car->category?$car->category->name:'-'}}</dt>
