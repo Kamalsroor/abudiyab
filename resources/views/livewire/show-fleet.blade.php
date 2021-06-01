@@ -106,77 +106,120 @@
         <!-- --------------------------toggeling menue starts here -->
         <section class="fleet-filter-menu">
             <div class=" container-fluid mx-0 px-0 toggeling-menue d-none" >
-                    <div class="d-flex" >
-                        <div class="white-section">
-                            <div  class="py-2 text-center justify-content-center filter-menu-heading">
-                                <p class="m-0">الترتــيــب حـــســـب</p>
-                            </div>
-                            <select class="form-control" id="exampleFormControlSelect1" wire:model='filterPriceCategory'>
-                                    <option class="color-black" value='DESC'>السعر من الاكثر الى الأقل</option>
-                                    <option class="color-black" value='ASC'>السعر من الأقل إلى الأعلى</option>
-                                    <option class="color-black" value='modelasc'>الموديل من الأقدم إلى الأحدث</option>
-                                    <option class="color-black" value='modeldes'>الموديل من الأحدث إلى الأقدم</option>
-                            </select>
-                            <div  class="py-2 text-center justify-content-center filter-menu-heading">
-                                <p class="m-0">اختر السعر المناسب</p>
-                            </div>
-                            <div class="range-slider my-3 text-center">
-
-                                <b class="mr-2"><i class="icofont icofont-cur-riyal"></i> {{$priceRangeNewEnd}}</b>
-                                <span   wire:ignore >
-
-                                    <input   id="ex2" type="text" class="span2 ex2" value=""
-                                    data-slider-min="10"
-                                    data-slider-max="3000"
-                                    data-slider-step="5"
-                                    wire:model="priceRange"
-                                    data-slider-value="[{{$priceRange ?? "10,3000"}}]" />
-                                </span>
-                                <b class="ml-2"><i class="icofont icofont-cur-riyal"></i> {{$priceRangeNewStart}}</b>
-
-                            </div>
-
-                            <div  class="py-2 text-center mb-2 filter-menu-heading">
-                                <p class="m-0 ">نــوع الـســيــــارة</p>
-                            </div>
-
-
-                            <div class="fleet-category">
-                                @foreach( $categories as $category )
-                                    <div class="text-right categories">
-                                        <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  class="my-check" id="category-{{$category->id}}">
-                                        <label for="category-{{$category->id}}"><i class="fas fa-car"></i> {{$category->name}}</label>
+                    <div class="d-flex">
+                        <div class="fleet-lower-container">
+                            <div class="second-main-container w-100">
+                                <div class="white-section w-100">
+                                    <div  class="py-2 text-center justify-content-center filter-menu-heading">
+                                        <p class="m-0">الترتــيــب حـــســـب</p>
                                     </div>
-                                @endforeach
-                                {{-- <div class="container-fluid" >
-                                    <div class="row category-icons justify-content-center">
-                                        <div class="col-6 text-center">
-                                            <label for="suv"><i class="flaticon-car"></i>اس يو فى</label>
-                                            <input type="checkbox" id="suv">
-                                        </div>
-                                        <div class="col-6 text-center">
-                                            <label for="sedan"><i class="flaticon-car-1"></i>سيدان</label>
-                                            <input type="checkbox" id="sedan">
-                                        </div>
-                                        <div class="col-6 text-center">
-                                            <label for="family-car"><i class="flaticon-family-car"></i>عائلية</label>
-                                            <input type="checkbox" id="family-car">
-                                        </div>
-                                        <div class="col-6 text-center">
-                                            <label for="echo-car"><i class="flaticon-car-2"></i>اقتصادية</label>
-                                            <input type="checkbox" id="echo-car">
-                                        </div>
-                                        <div class="col-6 text-center">
-                                            <label for="luxury-car"><i class="flaticon-supercar"></i>فخمة</label>
-                                            <input type="checkbox" id="luxury-car">
-                                        </div>
+                                    <select class="form-control" id="exampleFormControlSelect1" wire:model='filterPriceCategory'>
+                                            <option class="color-black" value='DESC'>السعر من الاكثر الى الأقل</option>
+                                            <option class="color-black" value='ASC'>السعر من الأقل إلى الأعلى</option>
+                                            <option class="color-black" value='modelasc'>الموديل من الأقدم إلى الأحدث</option>
+                                            <option class="color-black" value='modeldes'>الموديل من الأحدث إلى الأقدم</option>
+                                    </select>
+                                    <div  class="py-2 text-center justify-content-center filter-menu-heading">
+                                        <p class="m-0">اختر السعر المناسب</p>
+                                    </div>
+                                    <div class="range-slider my-3 text-center">
+
+                                        <b class="mr-2"><i class="icofont icofont-cur-riyal"></i> {{$priceRangeNewEnd}}</b>
+                                        <span   wire:ignore >
+
+                                            <input   id="ex2" type="text" class="span2 ex2" value=""
+                                            data-slider-min="10"
+                                            data-slider-max="3000"
+                                            data-slider-step="5"
+                                            wire:model="priceRange"
+                                            data-slider-value="[{{$priceRange ?? "10,3000"}}]" />
+                                        </span>
+                                        <b class="ml-2"><i class="icofont icofont-cur-riyal"></i> {{$priceRangeNewStart}}</b>
 
                                     </div>
-                                </div> --}}
-                            </div>
 
+                                    <div  class="py-2 text-center mb-2 filter-menu-heading">
+                                        <p class="m-0 ">نــوع الـســيــــارة</p>
+                                    </div>
+
+
+                                    <div class="fleet-category px-1">
+                                        <div class="category-icons">
+                                            @foreach( $categories as $category )
+                                            @if ($category->id === 3 || $category->id === 4 || $category->id === 6)
+                                                <div>
+                                                    <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  id="largCategory-{{$category->id}}">
+                                                    <label for="largCategory-{{$category->id}}"><img src="{{ asset('front/img/car/car-2.png') }}" alt="">{{$category->name}}</label>
+                                                </div>
+                                            @elseif ($category->id === 5 || $category->id === 8 || $category->id === 11 || $category->id === 17)
+                                                <div>
+                                                    <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  id="largCategory-{{$category->id}}">
+                                                    <label for="largCategory-{{$category->id}}"><img style="width: 60px;transform: scale(1.1);margin-top: -11px;margin-bottom: 5px;" src="{{ asset('front/img/car/car-1.png') }}" alt="">{{$category->name}}</label>
+                                                </div>
+                                            @elseif ($category->id === 15 || $category->id === 19)
+                                                <div>
+                                                    <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  id="largCategory-{{$category->id}}">
+                                                    <label for="largCategory-{{$category->id}}"><img src="{{ asset('front/img/car/car.png') }}" alt="">{{$category->name}}</label>
+                                                </div>
+                                            @elseif ($category->id === 2)
+                                                <div>
+                                                    <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  id="largCategory-{{$category->id}}">
+                                                    <label for="largCategory-{{$category->id}}"><img src="{{ asset('front/img/car/car-4.png') }}" alt="">{{$category->name}}</label>
+                                                </div>
+                                            @elseif ($category->id === 1)
+                                                <div>
+                                                    <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  id="largCategory-{{$category->id}}">
+                                                    <label for="largCategory-{{$category->id}}"><img src="{{ asset('front/img/car/car-7.png') }}" alt="">{{$category->name}}</label>
+                                                </div>
+                                            @elseif ($category->id === 9)
+                                                <div>
+                                                    <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  id="largCategory-{{$category->id}}">
+                                                    <label for="largCategory-{{$category->id}}"><img src="{{ asset('front/img/car/car-5.png') }}" alt="">{{$category->name}}</label>
+                                                </div>
+                                            @elseif ($category->id === 10)
+                                                <div>
+                                                    <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  id="largCategory-{{$category->id}}">
+                                                    <label for="largCategory-{{$category->id}}"><img src="{{ asset('front/img/car/car-6.png') }}" alt="">{{$category->name}}</label>
+                                                </div>
+                                            @elseif ($category->id === 20)
+                                                <div>
+                                                    <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  id="largCategory-{{$category->id}}">
+                                                    <label for="largCategory-{{$category->id}}"><img src="{{ asset('front/img/car/car-8.png') }}" alt="">{{$category->name}}</label>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                        </div>
+                                        {{-- <div class="container-fluid" >
+                                            <div class="row category-icons justify-content-center">
+                                                <div class="col-6 text-center">
+                                                    <label for="suv"><i class="flaticon-car"></i>اس يو فى</label>
+                                                    <input type="checkbox" id="suv">
+                                                </div>
+                                                <div class="col-6 text-center">
+                                                    <label for="sedan"><i class="flaticon-car-1"></i>سيدان</label>
+                                                    <input type="checkbox" id="sedan">
+                                                </div>
+                                                <div class="col-6 text-center">
+                                                    <label for="family-car"><i class="flaticon-family-car"></i>عائلية</label>
+                                                    <input type="checkbox" id="family-car">
+                                                </div>
+                                                <div class="col-6 text-center">
+                                                    <label for="echo-car"><i class="flaticon-car-2"></i>اقتصادية</label>
+                                                    <input type="checkbox" id="echo-car">
+                                                </div>
+                                                <div class="col-6 text-center">
+                                                    <label for="luxury-car"><i class="flaticon-supercar"></i>فخمة</label>
+                                                    <input type="checkbox" id="luxury-car">
+                                                </div>
+
+                                            </div>
+                                        </div> --}}
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
-                        <div class="cancel-toggle-menue" >
+                        <div class="cancel-toggle-menue w-100">
 
                         </div>
                 </div>
@@ -237,10 +280,6 @@
                                 <div class="container-fluid">
                                     <div class="category-icons">
                                         @foreach( $categories as $category )
-                                            {{-- <div class="text-right categories">
-                                                <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  class="my-check" id="category-{{$category->id}}">
-                                                <label for="category-{{$category->id}}"><i class="fas fa-car"></i> {{$category->name}}</label>
-                                            </div> 4 6 --}}
                                             @if ($category->id === 3 || $category->id === 4 || $category->id === 6)
                                                 <div>
                                                     <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  id="largCategory-{{$category->id}}">

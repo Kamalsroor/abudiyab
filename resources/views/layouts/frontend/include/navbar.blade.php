@@ -128,9 +128,7 @@
 
             </div>
             <div class="col-md-5 col-sm-12 py-2 d-flex justify-content-end">
-
-                    <a href="{{route('front.main')}}"><img class="ml-4 nav-logo" src="{{optional(Settings::instance('logo'))->getFirstMediaUrl('logo')}}"></a>
-
+                <a href="{{route('front.main')}}"><img class="ml-4 nav-logo" src="{{optional(Settings::instance('logo'))->getFirstMediaUrl('logo')}}"></a>
             </div>
 
         </div>
@@ -156,13 +154,21 @@
         <div class="col-3 py-3 text-center"></div>
         <div class="col-3 py-3 text-center"><a class="mx-3" href="{{route('front.main')}}">الرئيسية</a></div>
         <div class="col-3 py-3 text-center"><i class="fas fa-bars" id="hamburger-bars2" ></i></div>
-        <div class="col-3 py-3 text-center" onclick="logInOrRegister('login')"><i class="fas fa-sign-in-alt"></i></div>
+        <div class="col-3 py-3 text-center" onclick="this.nextElementSibling.style.display = 'block';"><i class="fas fa-user"></i></div><!-- logInOrRegister('login') -->
+        <div class="dropdown-menu" style="top: -200%">
+            <ul>
+                <li><a class="dropdown-item mx-0 text-right pr-2" href="/profile" style="color: #000">الملف الشخصى</a></li>
+                <li><a class="dropdown-item mx-0 text-right pr-2" href="/contracts" style="color: #000">الحجوزات و العقود</a></li>
+                <li>
+                    <a href="#"onclick="event.preventDefault();document.getElementById('logoutForm').submit()" class="dropdown-item mx-0 text-right pr-2" style="color: black;">@lang('dashboard.auth.logout')</a>
+                    <form class="d-none" action="{{ route('logout') }}" method="post" id="logoutForm">
+                        @csrf
+                    </form>
+                </li>
+            </ul>
+        </div>
     </div>
-
-
 </div>
-
-
     <!-- ---------------------------------- -->
     <!-- Modal ------------------------------->
     <!-- ---------------------------------- -->
