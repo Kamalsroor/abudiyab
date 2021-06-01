@@ -32,6 +32,12 @@
     {{ BsForm::image('image') }}
 @endisset
 
+@isset($membership)
+    {{ BsForm::image('image')->files($membership->getMediaResource('profile')) }}
+@else
+    {{ BsForm::image('image') }}
+@endisset
+
 
 
 

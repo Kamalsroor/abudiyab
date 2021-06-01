@@ -72,7 +72,7 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-center align-items-end information-card">
-                        <img src="{{isset(Auth()->user()->membership) ? Auth()->user()->membership->getFirstMediaUrl(): ''}}" alt="" style="width: 90%;">
+                        <img src="{{isset(Auth()->user()->membership) ? Auth()->user()->membership->getFirstMediaUrl('profile'): ''}}" alt="" style="width: 90%;">
                         <div class="pb-2" style="width: 60%;position:absolute;font-weight: 700;text-shadow: 1px 1px 2px black;color:white;transform:translateY(-25px);">
                             <p style="    font-size: 30px;transform: translateY(-20px);" class="mb-0">{{Auth::user()->name}}</p>
                             <div style="transform: translateY(-10px);" class="d-flex justify-content-between" >
