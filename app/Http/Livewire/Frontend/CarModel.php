@@ -15,7 +15,7 @@ class CarModel extends Component
     public function mount()
     {
 
-        $showCategories = Category::orderBy('id', 'ASC')->take(4)->get();
+        $showCategories = Category::orderBy('orderBy_numper', 'ASC')->take(4)->get();
         $this->cars = Car::where('category_id' , $showCategories->first()->id)->with('category' , 'manufactory')->get();
 
     }

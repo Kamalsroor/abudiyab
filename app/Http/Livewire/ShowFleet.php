@@ -135,7 +135,7 @@ class ShowFleet extends Component
         }
 
         $this->categories = cache()->remember('categories', 2*4, function () {
-            return Category::filter()->get();
+            return Category::filter()->orderBy('orderBy_numper')->get();
         });
 
         $regionSelect=Branch::Region;

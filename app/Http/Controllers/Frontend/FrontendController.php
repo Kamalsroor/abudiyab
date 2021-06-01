@@ -28,6 +28,7 @@ use Artesaos\SEOTools\Facades\SEOMeta;
 use Cache;
 use App\Models\Subscribe;
 use Illuminate\Support\Facades\Crypt;
+// use Jenssegers\Agent\Agent;
 
 class FrontendController extends Controller
 {
@@ -43,12 +44,14 @@ class FrontendController extends Controller
      */
     public function index()
     {
-        $expire = Carbon::now()->addMinutes(10);
+        $expire = Carbon::now()->addMinutes(1);
 
-
+        // $agent = new Agent();
+        // dd($agent->platform() , $agent->device() ,  $agent->browser());
+        // $agent->is('Windows');
 
         $allCategories = Cache::remember('allCategories', $expire, function() {
-            return Category::get();
+            return Category::orderBy('orderBy_numper')->get();
         });
         // $showFirstCatInCatgories   =  Car::where('category_id' , $allCategories->first()->id)->get();
 
