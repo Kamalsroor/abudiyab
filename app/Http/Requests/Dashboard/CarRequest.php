@@ -29,7 +29,7 @@ class CarRequest extends FormRequest
             '%name%' => ['required', 'string', 'max:255'],
             'category_id' => ['required'],
             'manufactory_id' => ['required'],
-            '%description%' => ['required'],
+            '%description%' => ['sometimes','nullable','string','max:450'],
             'code' => ['required'],
             'price_from_2month_to_6month' => ['required'],
         ]);

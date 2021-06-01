@@ -2002,117 +2002,117 @@ function error(input, errorText, wanted = true) {
 
 
 
-let ResetPasswordCode = 0;
-let forgotPassword = (step) => {
-    let forms = document.querySelectorAll(`.log-in_center_form`),
-        form = document.querySelector(`.forgot-password_step-${step}`),
-        span = document.querySelector(`.forgot-password_step-4 .span`),
-        errors = false,
-        ShowPassword = false,
-        commuteTime = 1000,
-        error = (input, errorText, wanted = true) => {
-            input.classList.add('is-invalid');
-            input.classList.remove('is-valid');
-            input.nextElementSibling.innerHTML = errorText;
-            input.focus();
-            if (input.value.length == 0 && wanted == true) {
-                input.nextElementSibling.innerHTML = 'هذا الحقل مطلوب';
-            }
-            errors = true;
-        },
-        next = () => {
-            forms.forEach(element => element.style.display = 'none');
-            if (step === 4) {
-                document.querySelector('.log-in_center_form').style.display = 'block';
-                let msg = document.querySelector('.log-in_center_form_msg');
-                msg.innerHTML = `<div class="alert alert-success alert-dismissible fade show" role="alert">
-                                                <strong>تم تغيير كلمة السر</strong>
-                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="text-align: right;">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>`;
-            } else {
-                form.style.display = 'block';
-            }
-        }
+// let ResetPasswordCode = 0;
+// let forgotPassword = (step) => {
+//     let forms = document.querySelectorAll(`.log-in_center_form`),
+//         form = document.querySelector(`.forgot-password_step-${step}`),
+//         span = document.querySelector(`.forgot-password_step-4 .span`),
+//         errors = false,
+//         ShowPassword = false,
+//         commuteTime = 1000,
+//         error = (input, errorText, wanted = true) => {
+//             input.classList.add('is-invalid');
+//             input.classList.remove('is-valid');
+//             input.nextElementSibling.innerHTML = errorText;
+//             input.focus();
+//             if (input.value.length == 0 && wanted == true) {
+//                 input.nextElementSibling.innerHTML = 'هذا الحقل مطلوب';
+//             }
+//             errors = true;
+//         },
+//         next = () => {
+//             forms.forEach(element => element.style.display = 'none');
+//             if (step === 4) {
+//                 document.querySelector('.log-in_center_form').style.display = 'block';
+//                 let msg = document.querySelector('.log-in_center_form_msg');
+//                 msg.innerHTML = `<div class="alert alert-success alert-dismissible fade show" role="alert">
+//                                                 <strong>تم تغيير كلمة السر</strong>
+//                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="text-align: right;">
+//                                                     <span aria-hidden="true">&times;</span>
+//                                                 </button>
+//                                             </div>`;
+//             } else {
+//                 form.style.display = 'block';
+//             }
+//         }
 
-    if (step === 1) {
-        next();
-    }
-    if (step === 2) {
-        let stepEamil = step - 1;
-        let email = document.querySelector(`.forgot-password_step-${stepEamil} .email`);
-        let viewEmail = document.querySelector(`.forgot-password_step-${stepEamil + 1} p`);
-        let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-        if (email.value.match(pattern) === null) {
-            error(email, 'عذرا ، البريد الالكتروني غير صحيح');
-        } else {
-            email.classList.remove('is-invalid');
-            email.classList.add('is-valid');
-            viewEmail.innerHTML = email.value;
-            setTimeout(() => {
-                next();
-            }, commuteTime);
-        }
-        // console.log(resetCodeURL);
-        // console.log(resetPasswordURL);
-        $.ajax({
-            type: 'post',
-            url: resetMessageURL,
-            headers: {
-                "x-accept-language": "ar",
-                "X-CSRF-TOKEN": csrf_token,
-            },
-            data: {
-                'username': email.value
-            },
-            success: function(data, status) {
-                if (data != '') {
-                    ResetPasswordCode = data[1];
-                }
+//     if (step === 1) {
+//         next();
+//     }
+//     if (step === 2) {
+//         let stepEamil = step - 1;
+//         let email = document.querySelector(`.forgot-password_step-${stepEamil} .email`);
+//         let viewEmail = document.querySelector(`.forgot-password_step-${stepEamil + 1} p`);
+//         let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+//         if (email.value.match(pattern) === null) {
+//             error(email, 'عذرا ، البريد الالكتروني غير صحيح');
+//         } else {
+//             email.classList.remove('is-invalid');
+//             email.classList.add('is-valid');
+//             viewEmail.innerHTML = email.value;
+//             setTimeout(() => {
+//                 next();
+//             }, commuteTime);
+//         }
+//         // console.log(resetCodeURL);
+//         // console.log(resetPasswordURL);
+//         $.ajax({
+//             type: 'post',
+//             url: resetMessageURL,
+//             headers: {
+//                 "x-accept-language": "ar",
+//                 "X-CSRF-TOKEN": csrf_token,
+//             },
+//             data: {
+//                 'username': email.value
+//             },
+//             success: function(data, status) {
+//                 if (data != '') {
+//                     ResetPasswordCode = data[1];
+//                 }
 
-            }
-        });
+//             }
+//         });
 
-    }
+//     }
 
-    if (step === 3) {
-        let stepCodeNumber = step - 1;
-        let codeNumber = document.querySelector(`.forgot-password_step-${stepCodeNumber} .codeNumber`);
-        if (codeNumber.value.length !== 6) {
-            error(codeNumber, 'عذرا ، هذا الرمز غير صحيح');
-        } else {
-            codeNumber.classList.remove('is-invalid');
-            codeNumber.classList.add('is-valid');
-            setTimeout(() => {
-                next();
-            }, commuteTime);
-        }
-    }
+//     if (step === 3) {
+//         let stepCodeNumber = step - 1;
+//         let codeNumber = document.querySelector(`.forgot-password_step-${stepCodeNumber} .codeNumber`);
+//         if (codeNumber.value.length !== 6) {
+//             error(codeNumber, 'عذرا ، هذا الرمز غير صحيح');
+//         } else {
+//             codeNumber.classList.remove('is-invalid');
+//             codeNumber.classList.add('is-valid');
+//             setTimeout(() => {
+//                 next();
+//             }, commuteTime);
+//         }
+//     }
 
-    if (step === 4) {
-        let stepNewPassword = step - 1;
-        let password = document.querySelector(`.forgot-password_step-${stepNewPassword} .password`);
-        let confirmPassword = document.querySelector(`.forgot-password_step-${stepNewPassword} .confirmPassword`);
-        if (password.value.length < 8) {
-            error(password, 'عذرًا ، لكن يجب أن تكون كلمة المرور 8 على الأقل');
-        } else if (confirmPassword.value != password.value) {
-            password.classList.remove('is-invalid');
-            password.classList.add('is-valid');
-            error(confirmPassword, 'عذرا ، لكن كلمة المرور غير متطابقة');
-        } else {
-            password.classList.remove('is-invalid');
-            confirmPassword.classList.remove('is-invalid');
-            password.classList.add('is-valid');
-            confirmPassword.classList.add('is-valid');
-            setTimeout(() => {
-                next();
-            }, commuteTime);
-        }
-    }
+//     if (step === 4) {
+//         let stepNewPassword = step - 1;
+//         let password = document.querySelector(`.forgot-password_step-${stepNewPassword} .password`);
+//         let confirmPassword = document.querySelector(`.forgot-password_step-${stepNewPassword} .confirmPassword`);
+//         if (password.value.length < 8) {
+//             error(password, 'عذرًا ، لكن يجب أن تكون كلمة المرور 8 على الأقل');
+//         } else if (confirmPassword.value != password.value) {
+//             password.classList.remove('is-invalid');
+//             password.classList.add('is-valid');
+//             error(confirmPassword, 'عذرا ، لكن كلمة المرور غير متطابقة');
+//         } else {
+//             password.classList.remove('is-invalid');
+//             confirmPassword.classList.remove('is-invalid');
+//             password.classList.add('is-valid');
+//             confirmPassword.classList.add('is-valid');
+//             setTimeout(() => {
+//                 next();
+//             }, commuteTime);
+//         }
+//     }
 
-    form.addEventListener('click', (e) => { e.preventDefault() });
-}
+//     form.addEventListener('click', (e) => { e.preventDefault() });
+// }
 
 // let forgotPasswordRetreat = (step) => {
 //     document.querySelector(`.forgot-password_step-${step}`).style.display = 'none';
@@ -2122,7 +2122,14 @@ function forgotPasswordRetreat(step) {
     document.querySelector(`.forgot-password_step-${step}`).style.display = 'none';
     document.querySelector('.log-in_center_form').style.display = 'block';
 }
-
+let btnOldUserClose = document.querySelectorAll('.btn-old-user-close');
+btnOldUserClose.forEach(btn => {
+    btn.addEventListener('click', () => {
+        let forms = document.querySelectorAll(`.log-in_center_form`);
+        forms.forEach(element => element.style.display = 'none')
+        document.querySelector('.log-in_center_form').style.display = 'block';
+    });
+});
 
 
 // // Old User
@@ -2229,12 +2236,7 @@ function forgotPasswordRetreat(step) {
 //     document.querySelector(`.log-in_center_form.old-user_step-${step}`).style.display = 'none';
 //     document.querySelector('.log-in_center_form').style.display = 'block';
 // }
-// let btnOldUserClose = document.querySelectorAll('.btn-old-user-close');
-// btnOldUserClose.forEach(btn => {
-//     btn.addEventListener('click', () => {
-//         oldUser(oldUserClose(btn.dataset.step));
-//     });
-// });
+
 
 
 

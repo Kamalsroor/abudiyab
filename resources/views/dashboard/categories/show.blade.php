@@ -19,14 +19,14 @@
                         <th width="200">@lang('categories.attributes.vat')</th>
                         <td>{{ $category->vat }}</td>
                     </tr>
-                    {{-- @if($category->getFirstMedia())
+                    @if($category->getFirstMedia())
                         <tr>
                             <th width="200">@lang('categories.attributes.image')</th>
                             <td>
                                 <file-preview :media="{{ $category->getMediaResource() }}"></file-preview>
                             </td>
                         </tr>
-                    @endif --}}
+                    @endif
                     </tbody>
                 </table>
 
