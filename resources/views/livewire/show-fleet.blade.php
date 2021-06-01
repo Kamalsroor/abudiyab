@@ -146,12 +146,12 @@
                                     <div class="fleet-category px-1">
                                         <div class="category-icons">
                                             @foreach( $categories as $category )
-                                            @if ($category->id === 3 || $category->id === 4 || $category->id === 6)
+                                            {{-- @if ($category->id === 3 || $category->id === 4 || $category->id === 6) --}}
                                                 <div>
                                                     <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  id="largCategory-{{$category->id}}">
-                                                    <label for="largCategory-{{$category->id}}"><img src="{{ asset('front/img/car/car-2.png') }}" alt="">{{$category->name}}</label>
+                                                    <label for="largCategory-{{$category->id}}"><img src="{{$category->getFirstMediaUrl()}}}" alt="">{{$category->name}}</label>
                                                 </div>
-                                            @elseif ($category->id === 5 || $category->id === 8 || $category->id === 11 || $category->id === 17)
+                                            {{-- @elseif ($category->id === 5 || $category->id === 8 || $category->id === 11 || $category->id === 17)
                                                 <div>
                                                     <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  id="largCategory-{{$category->id}}">
                                                     <label for="largCategory-{{$category->id}}"><img style="width: 60px;transform: scale(1.1);margin-top: -11px;margin-bottom: 5px;" src="{{ asset('front/img/car/car-1.png') }}" alt="">{{$category->name}}</label>
@@ -186,7 +186,7 @@
                                                     <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  id="largCategory-{{$category->id}}">
                                                     <label for="largCategory-{{$category->id}}"><img src="{{ asset('front/img/car/car-8.png') }}" alt="">{{$category->name}}</label>
                                                 </div>
-                                            @endif
+                                            @endif --}}
                                         @endforeach
                                         </div>
                                         {{-- <div class="container-fluid" >
@@ -280,12 +280,12 @@
                                 <div class="container-fluid">
                                     <div class="category-icons">
                                         @foreach( $categories as $category )
-                                            @if ($category->id === 3 || $category->id === 4 || $category->id === 6)
+                                            {{-- @if ($category->id === 3 || $category->id === 4 || $category->id === 6) --}}
                                                 <div>
                                                     <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  id="largCategory-{{$category->id}}">
-                                                    <label for="largCategory-{{$category->id}}"><img src="{{ asset('front/img/car/car-2.png') }}" alt="">{{$category->name}}</label>
+                                                    <label for="largCategory-{{$category->id}}"><img src="{{$category->getFirstMediaUrl()}}}" alt="">{{$category->name}}</label>
                                                 </div>
-                                            @elseif ($category->id === 5 || $category->id === 8 || $category->id === 11 || $category->id === 17)
+                                            {{-- @elseif ($category->id === 5 || $category->id === 8 || $category->id === 11 || $category->id === 17)
                                                 <div>
                                                     <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  id="largCategory-{{$category->id}}">
                                                     <label for="largCategory-{{$category->id}}"><img style="width: 60px;transform: scale(1.1);margin-top: -11px;margin-bottom: 5px;" src="{{ asset('front/img/car/car-1.png') }}" alt="">{{$category->name}}</label>
@@ -320,7 +320,7 @@
                                                     <input type="checkbox" value="{{$category->id}}" wire:model='filterCategory' name="filterCategory[]"  id="largCategory-{{$category->id}}">
                                                     <label for="largCategory-{{$category->id}}"><img src="{{ asset('front/img/car/car-8.png') }}" alt="">{{$category->name}}</label>
                                                 </div>
-                                            @endif
+                                            @endif --}}
                                         @endforeach
                                         {{-- <div>
                                             <input type="checkbox" id="category-a">
