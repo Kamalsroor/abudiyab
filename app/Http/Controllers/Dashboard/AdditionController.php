@@ -52,9 +52,13 @@ class AdditionController extends Controller
     {
         // dd($request->all());
         $addition = Addition::create($request->all());
+        if($request->img_base64 != "" && $request->img_base64 != null){
 
-        $addition->addMediaFromBase64($request->img_base64)->toMediaCollection('default');
-
+            $addition->addMediaFromBase64($request->img_base64)
+            ->usingFileName(generateRandomString().'.png')
+            ->toMediaCollection('default');
+        }
+        // $addition->addMediaFromBase64($request->img_base64)->usingFileName('base64-image.png')->toMediaCollection('default');
         flash(trans('additions.messages.created'));
 
         return redirect()->route('dashboard.additions.show', $addition);
@@ -95,7 +99,10 @@ class AdditionController extends Controller
 
         // $addition->addAllMediaFromTokens();
         if($request->img_base64){
-            $addition->addMediaFromBase64($request->img_base64)->toMediaCollection('default');
+            // $addition->addMediaFromBase64($request->img_base64)->toMediaCollection('default');
+            $addition->addMediaFromBase64($request->img_base64)
+            ->usingFileName(generateRandomString().'.png')
+            ->toMediaCollection('default');
         }
 
         flash(trans('additions.messages.updated'));

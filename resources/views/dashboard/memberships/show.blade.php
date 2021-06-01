@@ -41,7 +41,7 @@
                     @endif
                     @if($membership->getFirstMedia('profile'))
                         <tr>
-                            <th width="200">@lang('memberships.attributes.image')</th>
+                            <th width="200">@lang('memberships.attributes.profile')</th>
                             <td>
                                 <file-preview :media="{{ $membership->getMediaResource('profile') }}"></file-preview>
                             </td>

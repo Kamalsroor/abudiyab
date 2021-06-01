@@ -31,13 +31,18 @@
 @else
     {{ BsForm::image('image') }}
 @endisset
-
+{{--
 @isset($membership)
     {{ BsForm::image('image')->files($membership->getMediaResource('profile')) }}
 @else
     {{ BsForm::image('image') }}
-@endisset
+@endisset --}}
 
+@isset($membership)
+{{ BsForm::image('profile')->collection('profile')->files($membership->getMediaResource('profile')) }}
+@else
+{{ BsForm::image('profile')->collection('profile') }}
+@endisset
 
 
 
