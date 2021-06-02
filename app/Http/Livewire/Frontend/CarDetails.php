@@ -23,7 +23,7 @@ class CarDetails extends Component
         $expire = Carbon::now()->addMinutes(10);
 
         $allCategories = Cache::remember('allCategories', $expire, function() {
-            return Category::get();
+            return Category::orderBy('orderBy_numper')->get();
         });
 
         $this->car = Cache::remember('CarDetailsCars', $expire, function() use($allCategories) {

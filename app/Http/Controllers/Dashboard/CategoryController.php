@@ -27,7 +27,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::filter()->paginate();
+        $categories = Category::filter()->orderBy('orderBy_numper')->paginate();
 
         return view('dashboard.categories.index', compact('categories'));
     }

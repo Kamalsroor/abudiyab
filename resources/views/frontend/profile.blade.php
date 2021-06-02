@@ -12,10 +12,10 @@
         <div class="container py-md-4">
             <div class="row align-items-end py-2" style="background-color: hsl(0deg 0% 94% / 53%);border-radius:30px;box-shadow: 1px 1px 5px black;">
                 <div class="col-lg-5 col-md-12  text-center justify-content-center" style="align-self: start">
-                    <div class="profile-img">
+                    <div class="profile-img d-none">
                         <img src="{{asset('front/img/5.png')}}" alt="profile-img">
                     </div>
-                    <div class="profile-img d-none" onclick="profileImg(this)">
+                    <div class="profile-img " onclick="profileImg(this)">
                         <img src="{{asset('front/img/5.png')}}" alt="profile-img">
                         <div><i class="fas fa-camera"></i></div>
                     </div>
@@ -52,7 +52,7 @@
                             <tbody>
                                 <tr>
                                     <td class="color-black">
-                                    125
+                                    {{ Auth::user()->points}}
                                     </td>
                                     <th class="color-black">
                                         رصيد النقاط
@@ -60,7 +60,7 @@
                                 </tr>
                                 <tr>
                                     <td class="color-black">
-                                    100
+                                        10
                                     </td>
                                     <th class="color-black">
                                     ريال
@@ -72,7 +72,7 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-center align-items-end information-card">
-                        <img src="{{isset(Auth()->user()->membership) ? Auth()->user()->membership->getFirstMediaUrl(): ''}}" alt="" style="width: 90%;">
+                        <img src="{{isset(Auth()->user()->membership) ? Auth()->user()->membership->getFirstMediaUrl('profile'): ''}}" alt="" style="width: 90%;">
                         <div class="pb-2" style="width: 60%;position:absolute;font-weight: 700;text-shadow: 1px 1px 2px black;color:white;transform:translateY(-25px);">
                             <p style="    font-size: 30px;transform: translateY(-20px);" class="mb-0">{{Auth::user()->name}}</p>
                             <div style="transform: translateY(-10px);" class="d-flex justify-content-between" >
@@ -163,7 +163,7 @@
                             </tr>
                             <tr>
                                 <th class="color-black text-center" scope="row">صندوق البريد</th>
-                                <td class="color-black text-center">{{isset($user) ? $user->post_box : ""}} </td>
+                                <td class="color-black text-center">{{Auth::user()->post_box}} </td>
                             </tr>
                         </tbody>
                     </table>

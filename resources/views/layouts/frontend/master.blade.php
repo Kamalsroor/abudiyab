@@ -206,44 +206,45 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="loader"></div>
                     </div>
 
-                    <form action="" method="post" class="log-in_center_form old-user_step-1">
+                    <form action="{{route('api.customer.forget')}}" method="post" class="log-in_center_form old-user_step-1">
                         @csrf
                         <h2>الرجاء إدخال رقم الجوال</h2>
                         <p>سيتم إرسال رمز تأكيد على الجوال المسجل</p>
                         <div class="registerMobileNumber number">
                             <label>رقم الجوال</label>
-                            <input type="text" name="phone-number" class="form-control phone-number" autocomplete="off" oninput="numberDesign(this)" maxlength="11">
+                            <input type="text" name="phone_number" class="form-control phone-number" autocomplete="off" oninput="numberDesign(this)" maxlength="11">
                             <div class="invalid-feedback"></div>
                         </div>
                         <div class="number">
                             <label>رقم الهوية</label>
-                            <input type="number" name="id-number" class="form-control id-number" autocomplete="off">
+                            <input type="number" name="id_number" class="form-control id-number" autocomplete="off">
                             <div class="invalid-feedback"></div>
                         </div>
                         <button class="primary-btn btn-hover btn-curved btn-old-user" data-step="2">أرسال الرمز</button>
                         <a class="primary-btn btn-hover btn-curved btn-old-user-close" data-step="1">العودة إلى الخلف</a>
                     </form>
 
-                    <form action="" method="post" class="log-in_center_form old-user_step-2">
+                    <form action="{{route('api.customer.code')}}" method="post" class="log-in_center_form old-user_step-2">
                         @csrf
                         <h2>تم إرسال الرمز إلى رقم جوالك</h2>
                         <p></p>
                         <div class="number">
                             <label>ادخال كود</label>
-                            <input type="number" name="code-number" class="form-control code-number" placeholder="كود" autocomplete="off">
+                            <input type="number" name="code" class="form-control codeNumber" placeholder="كود" autocomplete="off">
                             <div class="invalid-feedback"></div>
+                            <input type="hidden" name="username" id="customerUsernameByCode">
                         </div>
                         <button class="primary-btn btn-hover btn-curved btn-old-user" data-step="3">تأكيد الكود</button>
                         <a class="primary-btn btn-hover btn-curved btn-old-user-close" data-step="2">العودة إلى الخلف</a>
                     </form>
 
-                    <form action="" method="post" class="log-in_center_form old-user_step-3">
+                    <form action="{{route('api.customer.reset')}}" method="post" class="log-in_center_form old-user_step-3">
                         @csrf
                         <h2>لإتمام التسجيل</h2>
                         <h5>يرجى ملء البيانات التالية</h5>
                         <div>
                             <label>البريد الالكتروني</label>
-                            <input type="email" name="eamil" class="form-control email" autocomplete="off">
+                            <input type="email" name="email" class="form-control email" autocomplete="off">
                             <div class="invalid-feedback"></div>
                         </div>
                         <div>
@@ -252,6 +253,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="invalid-feedback"></div>
                         </div>
                         <div>
+                            <input type="hidden" name="token" id="customerTokenByReset">
                             <label>تأكيد كلمة السر الجديدة</label>
                             <input type="password" name="password_confirmation" class="form-control show-password confirm-password" autocomplete="off">
                             <div class="invalid-feedback"></div>
@@ -727,116 +729,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 });
 
 
-                // Old User
-                let oldUser = (step) => {
-                    let forms = document.querySelectorAll('.log-in_center_form'),
-                        form = document.querySelector(`.log-in_center_form.old-user_step-${step}`),
-                        formLoader = document.querySelector('.old-user .form-loader'),
-                        errors = false,
-                        next = (Timeout = true) => {
-                            Timeout === true ? Timeout = 1000 : Timeout = 0;
-                            setTimeout(() => {
-                                forms.forEach(form =>  form.style.display = 'none');
-                                form.style.display = 'block';
-                                formLoader.classList.remove('show');
-                            }, Timeout);
-                        }
 
-                    if (step === 1) {
-                        next(false);
-                    }
-
-                    if (step === 2) {
-                        let phoneNumber = document.querySelector(`.log-in_center_form.old-user_step-1 .phone-number`),
-                            idNumber = document.querySelector(`.log-in_center_form.old-user_step-1 .id-number`),
-                            phoneNumberShow = document.querySelector('.log-in_center_form.old-user_step-2 p');
-                            phoneNumberKey = `${phoneNumber.value[0]}${phoneNumber.value[1]}`;
-                        if (phoneNumber.value.replaceAll(' ','').length != 9 || !phoneNumberKeys.includes(phoneNumberKey)) {
-                            showInputError(phoneNumber, 'عذرا ، رقم الهاتف هذه غير صحيح');
-                        }
-                        else if (idNumber.value.length !== 10) {
-                            phoneNumber.classList.remove('is-invalid');
-                            phoneNumber.classList.add('is-valid');
-                            showInputError(idNumber, 'عذرا ، رقم الهوية هذه غير صحيح');
-                        }
-                        else{
-                            idNumber.classList.remove('is-invalid');
-                            idNumber.classList.add('is-valid');
-                            formLoader.classList.add('show');
-                            phoneNumberShow.innerHTML = `+966 0${phoneNumber.value}`;
-                            next();
-                        }
-                    }
-
-                    if (step === 3) {
-                        let codeNumber = document.querySelector('.log-in_center_form.old-user_step-2 .code-number');
-                        if (codeNumber.value.length !== 6) {
-                            showInputError(codeNumber, 'عذرا ، الرمز الذي أدخلته غير صحيح');
-                        }
-                        else{
-                            codeNumber.classList.remove('is-invalid');
-                            codeNumber.classList.add('is-valid');
-                            formLoader.classList.add('show');
-                            next();
-                        }
-                    }
-
-                    if (step === 4) {
-                        let email = document.querySelector('.log-in_center_form.old-user_step-3 .email'),
-                            password = document.querySelector('.log-in_center_form.old-user_step-3 .password'),
-                            confirmPassword = document.querySelector('.log-in_center_form.old-user_step-3 .confirm-password'),
-                            step4Errors = false,
-                            pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-
-                        if (password.value.length < 8) {
-                            showInputError(password, 'عذرًا ، لكن يجب أن تكون كلمة المرور 8 على الأقل');
-                            step4Errors = true;
-                        }
-                        else if (confirmPassword.value != password.value) {
-                            showInputError(confirmPassword, 'عذرا ، لكن كلمة المرور غير متطابقة');
-                            password.classList.remove('is-invalid');
-                            password.classList.add('is-valid');
-                            step4Errors = true;
-                        }
-                        else{
-                            confirmPassword.classList.remove('is-invalid');
-                            confirmPassword.classList.add('is-valid');
-                        }
-
-                        if (email.value.match(pattern) === null) {
-                            showInputError(email, 'عذرا ، البريد الالكتروني هذا غير صحيح');
-                            step4Errors = true;
-                        }
-                        else{
-                            email.classList.remove('is-invalid');
-                            email.classList.add('is-valid');
-                        }
-
-                        if (!step4Errors) {
-                            next()
-                        }
-                    }
-
-                    return errors;
-                }
-                let btnsOldUser = document.querySelectorAll('.btn-old-user');
-                btnsOldUser.forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        oldUser(parseInt(btn.dataset.step));
-                    });
-                });
-
-                let oldUserClose = (step) => {
-                    document.querySelector(`.log-in_center_form.old-user_step-${step}`).style.display = 'none';
-                    document.querySelector('.log-in_center_form').style.display = 'block';
-                }
-                let btnOldUserClose = document.querySelectorAll('.btn-old-user-close');
-                btnOldUserClose.forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        oldUser(oldUserClose(btn.dataset.step));
-                    });
-                });
 
 
             </script>

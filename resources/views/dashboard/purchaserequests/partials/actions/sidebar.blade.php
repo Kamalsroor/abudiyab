@@ -1,4 +1,4 @@
-@component('dashboard::components.sidebarItem')
+{{-- @component('dashboard::components.sidebarItem')
     @slot('can', ['ability' => 'viewAny', 'model' => \App\Models\Purchaserequest::class])
     @slot('url', route('dashboard.purchaserequests.index'))
     @slot('name', trans('purchaserequests.plural'))
@@ -19,4 +19,4 @@
             'active' => request()->routeIs('*purchaserequests.create'),
         ],
     ])
-@endcomponent
+@endcomponent --}}

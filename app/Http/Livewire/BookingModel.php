@@ -41,7 +41,7 @@ class BookingModel extends Component
             return Branch::get();
         });
 
-
+        // dd($this->car_id);
     }
 
     public function render()
@@ -59,6 +59,7 @@ class BookingModel extends Component
     }
     public function booking($car_id)
     {
+        // dd($car_id);
         if ($this->dervery_branch_id != null && $this->receiving_branch_id != null && $this->receivingDate != null && $this->deliveryDate != null )
          {
             $carInBranch =  CarsInStock::where('car_id',$car_id)->where('branch_id', $this->receiving_branch_id)->get();
@@ -93,6 +94,7 @@ class BookingModel extends Component
                     foreach ($car_in_stock as $value) {
                         $branche_names .= " - " . $value->branch->name;
                     }
+
                     $carNotFound['title'] = "هذه السياره متوفره فقط في فروع ". $branche_names ;
                     if($car_in_stock->count() == 0)
                     {
