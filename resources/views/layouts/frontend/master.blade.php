@@ -267,7 +267,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             </div>
         </div>
-        <div class="modal fade" id="BookingModel" tabindex="-1" aria-labelledby="BookingModelLabel" aria-hidden="true">
+        <div class="modal " id="BookingModel" tabindex="-1" aria-labelledby="BookingModelLabel" aria-hidden="true">
             <livewire:booking-model/>
         </div>
 

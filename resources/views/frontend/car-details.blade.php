@@ -25,7 +25,7 @@
                         <section class="b-car-details">
                             <div class="b-car-details__header">
                                 <div class="b-car-details__header-l">
-                                    <a href="#" class="btn btn-dark">احجز الان</a>
+                                    <a onclick="openBookingModel({{isset($car) ? $car->id : ''}})" class="btn btn-dark">احجز الان</a>
                                 </div>
                                 <div class="b-car-details__header-r">
                                     <h2 class="b-car-details__title">{{$car->name}}</h2>
