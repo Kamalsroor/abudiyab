@@ -20,8 +20,6 @@
                                 <h4 class="text-red">سبب الرفض : {{ $order->reason  }}</h4>
                                 @endif
                             <hr>
-
-
                         </div>
                       <!-- /.col -->
                     </div>
@@ -32,9 +30,9 @@
                       <div class="col-sm-4 invoice-col">
                         العميل
                         <address>
+                            @dd($order->customer)
                           <strong>{{ $order->customer ? $order->customer->name : "زائر"}}</strong><br>
                           {{$order->customer ? $order->customer->address : ""}}<br>
-                          San Francisco, CA 94107<br>
                           رقم الهاتف: {{ $order->customer ? $order->customer->phone : ""}}<br>
                           البريد الالكتروني: {{ $order->customer ? $order->customer->email : ""}}
                         </address>

@@ -44,7 +44,7 @@
 
                 </div>
                 <div class="col-4">
-                    {{ BsForm::text('nationality') }}
+                    {{ BsForm::select('nationality')->options(trans('users.countries')) }}
                 </div>
 
                 <div class="col-4">

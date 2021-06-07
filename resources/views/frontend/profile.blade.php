@@ -60,7 +60,7 @@
                                 </tr>
                                 <tr>
                                     <td class="color-black">
-                                        10
+                                        {{ Auth::user()->points / 100}}
                                     </td>
                                     <th class="color-black">
                                     ريال

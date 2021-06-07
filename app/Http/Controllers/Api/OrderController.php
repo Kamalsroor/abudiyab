@@ -227,7 +227,7 @@ class OrderController extends Controller
                 ]);
             }
             else{
-                return response()->json(['status' => false,'massage' => 'السياره غير متوفرة في هذه الفرع' ], 200);
+                return response()->json(['status' => false,'massage' => 'السياره غير متوفرة في هذا الفرع' ], 200);
             }
         }
        else{

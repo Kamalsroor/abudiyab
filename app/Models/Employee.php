@@ -56,4 +56,10 @@ class Employee extends User
     {
         return route('dashboard.employees.show', $this);
     }
+
+
+    public function branch()
+    {
+        return $this->belongsTo(Branch::class, 'branch_id');
+    }
 }

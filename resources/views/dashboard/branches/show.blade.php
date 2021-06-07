@@ -39,7 +39,6 @@
         </div>
         <div class="col-md-12">
             <livewire:cars-in-stock :branch="$branch->id" />
-
         </div>
     </div>
 </x-layout>

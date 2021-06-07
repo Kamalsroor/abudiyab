@@ -86,6 +86,7 @@ class SupervisorController extends Controller
      */
     public function edit(Supervisor $supervisor)
     {
+        // dd($supervisor->branchs);
         return view('dashboard.accounts.supervisors.edit', compact('supervisor'));
     }
 

@@ -136,7 +136,7 @@ class BookingSteps extends Component
         }
         if( $this->paymentType =="points")
         {
-            $points=(Auth()->user()->points)/100;
+            $points=(Auth()->user()->points)/3;
             if($points >= $this->total)
             {
                 $this->canBuyWithPoint=1;
@@ -267,34 +267,57 @@ class BookingSteps extends Component
         // $validatedData = $this->validate([
         //     'status' => 'required',
         // ]);
+
+        $currentDate= now();
+        $Custmerrequest = Custmerrequest::where('user_id',auth()->id())->where('is_confirmed','confirmed')->orderBy('created_at', 'DESC')->first();
+        if(isset($Custmerrequest->id_expiry_date) && isset($Custmerrequest->driver_id_expiry_date)){
+            $idExpireDate= $Custmerrequest->id_expiry_date;
+            $driverIdExpireDate= $Custmerrequest->driver_id_expiry_date;
+            if(!$currentDate->lt($idExpireDate) && !$currentDate->lt($driverIdExpireDate)){
+                $errorData = [
+                    'title' => 'يرجي تحديث البيانات الشخصيه',
+                    'type' => 'error',
+                ];
+                $this->dispatchBrowserEvent('sweetalert', $errorData);
+                return null;
+            }
+        }
+
+        if(!isset($idExpireDate) && !isset($driverIdExpireDate))
+        {
+            $errorInformationData = [
+                'title' => 'يرجي انتظار قبول البيانات',
+                'type' => 'error',
+            ];
+            $this->dispatchBrowserEvent('sweetalert', $errorInformationData);
+            return null;
+        }
+
+
+
+
         if($this->paymentType != null)
         {
-                $Custmerrequest = Custmerrequest::where('user_id',auth()->id())->where('is_confirmed','confirmed')->orderBy('created_at', 'DESC')->first();
-                $currentDate= now();
-                if(isset($Custmerrequest->id_expiry_date) && isset($Custmerrequest->driver_id_expiry_date))
-                {
-                    $idExpireDate= $Custmerrequest->id_expiry_date;
-                    $driverIdExpireDate= $Custmerrequest->driver_id_expiry_date;
-                }
-                $this->order = Order::updateOrCreate([
-                    'id' => $this->order ? $this->order->id : 0
-                ],[
-                    'user_id' => Auth()->id(),
-                    'delivery_date' => $this->end_date,
-                    'reciving_date' => $this->start_date,
-                    'price' => $this->total,
-                    'status' => "pending",
-                    'days' => $this->diff,
-                    'features_added' => $this->features_added,
-                    'receiving_branch_id' => $this->receiving_branch->id,
-                    'delivery_branch' => $this->delivery_branch->id,
-                    'visa_buy' => $this->visa_buy ? 1 : 0,
-                    'car_id' => $this->car->id,
-                    'car_price' => $this->car_price,
-                    'membership_discount' => $this->membership_discount ,
-                    'promotional_discount' => $this->promotional_discount ,
-                    'authorization_fee' =>  $this->authorization_fee ,
-                ]);
+
+            $this->order = Order::updateOrCreate([
+                'id' => $this->order ? $this->order->id : 0
+            ],[
+                'user_id' => Auth()->id(),
+                'delivery_date' => $this->end_date,
+                'reciving_date' => $this->start_date,
+                'price' => $this->total,
+                'status' => "pending",
+                'days' => $this->diff,
+                'features_added' => $this->features_added,
+                'receiving_branch_id' => $this->receiving_branch->id,
+                'delivery_branch' => $this->delivery_branch->id,
+                'visa_buy' => $this->visa_buy ? 1 : 0,
+                'car_id' => $this->car->id,
+                'car_price' => $this->car_price,
+                'membership_discount' => $this->membership_discount ,
+                'promotional_discount' => $this->promotional_discount ,
+                'authorization_fee' =>  $this->authorization_fee ,
+            ]);
 
                 if(!Auth()->check())
                 {
@@ -303,86 +326,73 @@ class BookingSteps extends Component
                     $this->dispatchBrowserEvent('notLogin');
                     $this->currentStep = 2;
                 }else{
-                    if(isset($idExpireDate) && isset($driverIdExpireDate))
+                    if($this->visa_buy != 0 || $this->visa_buy != false  ){
+                        $this->paymentType = "visa";
+                        // $this->thirdStepSubmit();
+                        $this->currentStep = 3;
+                    }
+                    else{
+                        $this->currentStep = 3;
+                    }
+
+
+                    if($this->paymentType == "visa")
                     {
-                        if($currentDate->lt($idExpireDate) && $currentDate->lt($driverIdExpireDate))
+                        $this->currentStep = 3;
+                    }
+                    else{
+                        $this->currentStep = 5;
+                    }
+
+
+
+
+                    if($this->paymentType=="points")
+                    {
+                        $remainingPoints=((Auth()->user()->points)/3 - $this->total ) *3;
+                        if($this->canBuyWithPoint == 1)
                         {
-                            if($this->visa_buy != 0 || $this->visa_buy != false  ){
-                                $this->paymentType = "visa";
-                                // $this->thirdStepSubmit();
-                                $this->currentStep = 3;
-                            }
-                            else{
-                                $this->currentStep = 3;
-                            }
-                            if($this->paymentType == "visa")
-                            {
-                                $this->currentStep = 3;
-                            }
-                            else{
-                                $this->currentStep = 5;
-                            }
-                            if($this->paymentType=="points")
-                            {
-                                $remainingPoints=((Auth()->user()->points)/100 - $this->total ) *100;
-                                if($this->canBuyWithPoint == 1)
-                                {
-                                    $this->showPointsError=0;
-                                    User::where('id', Auth()->id())
-                                            ->update(['points' => $remainingPoints]);
-                                    $this->order->update([
-                                        'payment_status' => "SUCCESS",
-                                        'payment_type' => "points",
-                                    ]);
-                                    $smsText = "- تم حجز سيارة " . $this->car->name . " من خلال موقع ابو ذياب لتأجير السيارت رقم العمليه " . $this->order->id ;
-                                    $smsPhone = "+966554001171";
-                                    // $smsPhone = "+201012316954";
+                            $this->showPointsError=0;
+                            User::where('id', Auth()->id())
+                                    ->update(['points' => $remainingPoints]);
+                            $this->order->update([
+                                'payment_status' => "SUCCESS",
+                                'payment_type' => "points",
+                            ]);
+                            $smsText = "- تم حجز سيارة " . $this->car->name . " من خلال موقع ابو ذياب لتأجير السيارت رقم العمليه " . $this->order->id ;
+                            $smsPhone = "+966554001171";
+                            // $smsPhone = "+201012316954";
 
-                                    $client = new Client();
-                                    $res = $client->get('http://sms.netpowers.net/http/api.php?id=abudiyab&password=abudiyab1171&to='.$smsPhone.'&sender=AbuDiyab-AD&msg='.$smsText);
-                                    $this->currentStep = 5;
-                                }
-                                else if($this->canBuyWithPoint==2)
-                                {
-
-                                    $this->showPointsError=1;
-                                    $this->currentStep=2;
-                                    $this->paymentMethod="points";
-
-                                }
-                            }
-                            else if($this->paymentType =="cash")
-                            {
-                                $this->order->update([
-                                    'payment_status' => "SUCCESS",
-                                    'payment_type' => "cash",
-
-                                ]);
-                                $smsText = "- تم حجز سيارة " . $this->car->name . " من خلال موقع ابو ذياب لتأجير السيارت رقم العمليه " . $this->order->id ;
-                                $smsPhone = "+966554001171";
-                                // $smsPhone = "+201012316954";
-
-                                $client = new Client();
-                                $res = $client->get('http://sms.netpowers.net/http/api.php?id=abudiyab&password=abudiyab1171&to='.$smsPhone.'&sender=AbuDiyab-AD&msg='.$smsText);
-                                $this->currentStep = 5;
-                            }
+                            $client = new Client();
+                            $res = $client->get('http://sms.netpowers.net/http/api.php?id=abudiyab&password=abudiyab1171&to='.$smsPhone.'&sender=AbuDiyab-AD&msg='.$smsText);
+                            $this->currentStep = 5;
                         }
-                        else{
-                            $errorData = [
-                                'title' => 'يرجي تحديث البيانات الشخصيه',
-                                'type' => 'error',
-                            ];
-                            $this->dispatchBrowserEvent('sweetalert', $errorData);
+                        else if($this->canBuyWithPoint==2)
+                        {
+
+                            $this->showPointsError=1;
+                            $this->currentStep=2;
+                            $this->paymentMethod="points";
+
                         }
                     }
-                    else
+                    else if($this->paymentType =="cash")
                     {
-                        $errorInformationData = [
-                            'title' => 'يرجي انتظار قبول البيانات',
-                            'type' => 'error',
-                        ];
-                        $this->dispatchBrowserEvent('sweetalert', $errorInformationData);
+                        $this->order->update([
+                            'payment_status' => "SUCCESS",
+                            'payment_type' => "cash",
+
+                        ]);
+                        $smsText = "- تم حجز سيارة " . $this->car->name . " من خلال موقع ابو ذياب لتأجير السيارت رقم العمليه " . $this->order->id ;
+                        $smsPhone = "+966554001171";
+                        // $smsPhone = "+201012316954";
+
+                        $client = new Client();
+                        $res = $client->get('http://sms.netpowers.net/http/api.php?id=abudiyab&password=abudiyab1171&to='.$smsPhone.'&sender=AbuDiyab-AD&msg='.$smsText);
+                        $this->currentStep = 5;
                     }
+
+
                 }
         }
         else{

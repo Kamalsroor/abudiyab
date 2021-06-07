@@ -23,6 +23,7 @@
             <tr>
                 <th>@lang('cars.attributes.name')</th>
                 <th>@lang('cars.attributes.code')</th>
+                <th>@lang('cars.attributes.model')</th>
                 <th>@lang('categories.singular')</th>
                 <th>@lang('manufactories.singular')</th>
                 <th style="width: 160px">العدد</th>
@@ -39,6 +40,7 @@
                     </a>
                 </td>
                 <td>{{ $car->code }}</td>
+                <td>{{ $car->model }}</td>
                 <td>{{ $car->category ? $car->category->name : "" }}</td>
                 <td>{{ $car->manufactory ? $car->manufactory->name : "" }}</td>
                 <td style="width: 160px">
