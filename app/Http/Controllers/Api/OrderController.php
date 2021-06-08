@@ -133,19 +133,19 @@ class OrderController extends Controller
             if ($carInBranch->count() > 0) {
                 $car = Car::find($request->car_id);
                 $car_additions=isset($car->additions) ? array_values(array_keys($car->additions)) : null;
-                $additionindex=0;
-                foreach($car_additions as $addition)
-                {
-                    if($car->additions[$addition]['work'] == 0)
-                    {
-
-                        unset($car_additions[$additionindex]);
-                    }
-                    $additionindex++;
-                }
 
                 if($car_additions != null)
                 {
+                    $additionindex=0;
+                    foreach($car_additions as $addition)
+                    {
+                        if($car->additions[$addition]['work'] == 0)
+                        {
+
+                            unset($car_additions[$additionindex]);
+                        }
+                        $additionindex++;
+                    }
                     $additions = Addition::whereIn('id',$car_additions)->get(['id','type','icon']);
                     $index = 0;
                     $additionsArray=$additions->toArray();
