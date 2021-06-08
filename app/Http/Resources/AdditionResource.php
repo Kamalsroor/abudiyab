@@ -26,6 +26,7 @@ class AdditionResource extends JsonResource
             'title' => $this['name'],
             'sub_title' => $this['mini_des'],
             'price' => $this['price'],
+            'img' => $this['img'],
             'daily' => $this['type'] == 'daily' ? true : false,
         ];
     }
