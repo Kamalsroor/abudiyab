@@ -40,7 +40,6 @@ class OfferController extends Controller
     public function index()
     {
         $offers = Offer::filter()->where('type','4')->paginate();
-        dd($offers);
         return OfferResource::collection($offers);
     }
 
