@@ -24,6 +24,7 @@
             <th>@lang('employees.attributes.name')</th>
             <th class="d-none d-md-table-cell">@lang('employees.attributes.email')</th>
             <th>@lang('employees.attributes.phone')</th>
+            <th>@lang('employees.attributes.branch')</th>
             <th>@lang('employees.attributes.created_at')</th>
             <th style="width: 160px">...</th>
         </tr>
@@ -46,12 +47,14 @@
                         {{ $employee->name }}
                     </a>
                 </td>
-
                 <td class="d-none d-md-table-cell">
                     {{ $employee->email }}
                 </td>
                 <td>
                     {{ $employee->phone }}
+                </td>
+                <td>
+                    {{ $employee->branch->name }}
                 </td>
                 <td>{{ $employee->created_at->format('Y-m-d') }}</td>
 

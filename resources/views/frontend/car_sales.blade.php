@@ -23,33 +23,47 @@
             </div>
             <div class="car-sales_price-suggestion_center_step-1">
                  <div class="car-sales_price-suggestion_center_step-1_text">
-                    <h4>تسجيل الدخول</h4>
-                    <p>الرجاء تسجيل الدخول للمتابعة</p>
+                    <h4>اقتراح سعر</h4>
+                    <p>الرجاء تسجيل البيانات للمتابعة</p>
                  </div>
             {{-- <form action="{{ route('login') }}"  method="post" class="form-container text-center"> --}}
                 <div class="car-sales_price-suggestion_center_step-1_form">
+                    <div class="alert alert-danger  my-2 rejected" id='notenough'  role="alert">
+
+                    </div>
                     <div class="form-row">
                       <div class="form-group col-12">
                         <div class="alert alert-danger  my-2 rejected" id='invalideCradentilas' style="display: none" role="alert">
 
                         </div>
                       </div>
+                    @if (!Auth()->check())
+
                       <div class="form-group col-12">
-                        <label for="inputEmail4">البريد الاركتروني</label>
-                        <input type="email" name="email" class="form-control" id="inputEmail4">
+                          <label for="inputEmail4">اسم المعرض</label>
+                          <input type="text" name="email"  class="form-control purchase0 invalideData" id="inputEmail4">
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="inputPassword4">رقم الهاتف</label>
+                            <input type="number" name="number"  class="form-control purchase1 invalideData" id="inputPassword4">
+                        </div>
+                    @endif
+                      <div class="form-group col-12">
+                        <label for="inputEmail4">اقتراح سعر</label>
+                        <input type="number" name="price"  class="form-control purchase2 price invalideData" id="price">
                       </div>
-                      <div class="form-group col-12">
-                        <label for="inputPassword4">كلمة السر</label>
-                        <input type="password" name="password" class="form-control" id="inputPassword4">
+                      <div class="form-group col-12 quantity">
+                        <label for="inputPassword4">الكميه</label>
+                        <input type="number" name="quantity"  class="form-control purchase3 invalideData " id="quantity">
                       </div>
                     </div>
-                    <button type="submit" class="primary-btn btn-hover btn-curved" onclick="MoveStep(2);">تسجيل الدخول</button>
+                    <button type="submit" class="primary-btn btn-hover btn-curved" onclick="sendPurchaseRequest()">ارسال طلب</button>
                 </div>
             {{-- </form> --}}
 
             </div>
 
-            <div class="car-sales_price-suggestion_center_step-2">
+            {{-- <div class="car-sales_price-suggestion_center_step-2">
                 <div class="alert alert-danger  my-2 rejected" id='notenough' style="display: none" role="alert">
 
                 </div>
@@ -60,7 +74,7 @@
                 <div class="car-sales_price-suggestion_center_step-2_button">
                     <button class="primary-btn btn-hover btn-curved" onclick="sendPurchaseRequest()">اقتراح سعر</button>
                 </div>
-            </div>
+            </div> --}}
             <div class="car-sales_price-suggestion_center_step-3">
                 <div class="car-sales_price-suggestion_center_step-3_img">
                     <img src="{{ asset('front/img/access.png') }}">
@@ -80,9 +94,10 @@
         let user_id='';
         let car_id='';
         let quantity=0;
+        var phoneNumberKeys = ['50','53','54','55','56','57','58','59'];
+
         setTimeout(function(){
                 $('.buy_car').on('click',function(){
-                console.log('sssssssss');
                 car_id=$(this).prev()[0].innerHTML;
                 quantity=$(this).prev().prev()[0].innerHTML;
                 if(quantity==1)
@@ -91,7 +106,6 @@
                 }
                 else{
                     $('.quantity').css('display', 'initial');
-
                 }
                 showPopUp();
             })
@@ -108,7 +122,6 @@
             {
                 let email=$('#inputEmail4').val();
                 let password=$('#inputPassword4').val();
-                console.log(email,password);
 
                 $.ajax({
                     type: 'post',
@@ -150,7 +163,6 @@
                     error: function(data){
                         $('#invalideCradentilas').show();
                         $('#invalideCradentilas').text(data.responseJSON.errors.username[0]);
-                        console.log(data.responseJSON.errors.username[0]);
                     }
 
                 });
@@ -178,59 +190,100 @@
             }
 
         }
-        function checkLogin(){
-            let auth="{{Auth()->check() ? 'true' : 'false'}}";
-            if(auth =='true' || isLogin==true)
-            {
-                MoveStep(2);
-            }
-            else
-            {
-                fromLogin=true;
-                MoveStep(1);
-            }
-        }
+
+
         function sendPurchaseRequest(){
             let purchaseURL="{{route('front.purchaserequests.car-sales-request')}}";
-            console.log(user_id);
-            if(!user_id)
+            let name=document.getElementById('inputEmail4');
+            let phone=document.getElementById('inputPassword4');
+            let price=document.getElementById('price').value;
+            let purchasequantity=document.getElementById('quantity').value;
+            let errors=[];
+            let errorinput=[];
+            let userPhone;
+            let auth="{{Auth()->check() ? 'true' : 'false'}}";
+            if(auth =='true')
             {
-                user_id='{{Auth()->id()}}';
-            }
-            console.log(car_id);
-            let price=$('.price').val();
-            let localquantity=$('.quantity').val();
-            if(localquantity > quantity)
-            {
-                $('#notenough').css('display','block');
-                $('#notenough').text('هذه الكميه غير متوفره');
+                userPhone="{{Auth()->user() !==null ? Auth()->user()->phone: '0' }}";
+                name='sa';
+                phone=userPhone;
             }
             else
             {
-                $.ajax({
-                        type: 'post',
-                        url: purchaseURL,
-                        headers: {
-                            "x-accept-language": "ar",
-                            "X-CSRF-TOKEN": csrf_token,
-                        },
-                        data: {
-                            'user_id': user_id,
-                            'car_id': car_id,
-                            'price': price,
-                            'quantity': localquantity,
-                        },
-                        success: function(data, status) {
-                            if(data['purchase']=='done')
-                            {
-                                MoveStep(3);
-                            }
-                        },
-                        error: function(data){
-                        }
-
-                });
+                name=name.value;
+                phone=phone.value;
+                userPhone=0;
             }
+            if(name.length == 0)
+            {
+                errors.push('<p>الاسم مطلوب</p>');
+                errorinput.push('purchase0');
+            }
+            let phoneNumberKey = `${phone[0]}${phone[1]}`;
+            if(phone.replaceAll(' ','').length != 9 || !phoneNumberKeys.includes(phoneNumberKey))
+            {
+                errors.push('<p>يجب ان يكون رقم الهاتف سعودي</p>')
+                errorinput.push('purchase1');
+
+            }
+            else if(phone.length == 0)
+            {
+                errors.push('<p>الرقم مطلوب</p>')
+                errorinput.push('purchase1');
+            }
+            if(price.length == 0)
+            {
+                errors.push('<p>السعر مطلوب</p>')
+                errorinput.push('purchase2');
+
+            }
+            if(purchasequantity.length == 0)
+            {
+                errors.push('<p>الكميه مطلوبه</p>');
+                errorinput.push('purchase3');
+            }
+            $('.invalideData').css('border','1px solid #ced4da');
+            let errorHtml=errors.toString();
+            errorHtml=errorHtml.replaceAll(',','');
+            let errordiv=document.getElementById('invalideCradentilas');
+            errordiv.innerHTML=errorHtml;
+            errordiv.style.display='block';
+            errorinput.forEach(el =>{
+                document.getElementsByClassName(el)[0].style.border= "1px solid red";
+            })
+            if(!errorHtml.length)
+            {
+                if(parseInt(purchasequantity)  >= parseInt(quantity) )
+                {
+                    errordiv.innerHTML='<p>هذه الكميه غير متوفره</p>';
+                }else{
+                    $.ajax({
+                            type: 'post',
+                            url: purchaseURL,
+                            headers: {
+                                "x-accept-language": "ar",
+                                "X-CSRF-TOKEN": csrf_token,
+                            },
+                            data: {
+                                'phone': userPhone,
+                                'car_id': car_id,
+                                'price': price,
+                                'name': name,
+                                'phone': phone,
+                                'quantity': purchasequantity,
+                            },
+                            success: function(data, status) {
+                                console.log(data);
+                                if(data['purchase']=='done')
+                                {
+                                    MoveStep(3);
+                                }
+                            }
+
+                    });
+                }
+            }
+
 
         }
 
@@ -238,7 +291,7 @@
             $('.car-sales_price-suggestion').toggleClass('price-suggestion-s');
             $('.car-sales_price-suggestion').toggleClass('price-suggestion-h');
             $('.car-sales_price-suggestion').css('display','block');
-            checkLogin();
+            MoveStep(1);
         }
     </script>
     @endpush

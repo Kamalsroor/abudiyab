@@ -9,6 +9,7 @@ use App\Models\Car;
 use App\Models\Category;
 use App\Models\CarsInStock;
 use App\Models\addToFavorite;
+use App\Models\Order;
 use Auth;
 use Carbon\Carbon;
 use DateInterval;
@@ -217,22 +218,31 @@ class ShowFleet extends Component
                             $this->dispatchBrowserEvent('notLogin');
                         }
                         else{
-                            session(['redirect' => '/booking?car_id='.$car_id.
-                            '&receiving_branch='.$this->receiving_branch_id .
-                            '&delivery_branch='.$this->dervery_branch_id .
-                            '&receiving_date='.$this->receivingDate.
-                            '&delivery_date='.$this->deliveryDate]);
-                            $modelData = [
-                                'title' => 'أو مشابهة - ماذا تعني؟',
-                                'body' => 'تلتزم شركة ابو ذياب بتوفير نفس الموديل وسنة الصنع التي قمت باختيارها وقت الحجز و في حال عدم توفر السيارة المختارة عند تنفيذ الحجز تلتزم ابو ذياب بتوفير سيارة من نفس الفئة ونفس سنة الصنع او سنة صنع اعلى، وفي حال عدم توفر سيارة من نفس الفئة يتم الترقية لفئة اعلى بدون اي تكاليف أضافية',
-                                'booking'=>1
-                            ];
-                            $this->dispatchBrowserEvent('fleetalert',$modelData);
-                            // return redirect()->to('/booking?car_id='.$car_id.
-                            //                                     '&receiving_branch='.$this->receiving_branch_id .
-                            //                                     '&delivery_branch='.$this->dervery_branch_id .
-                            //                                     '&receiving_date='.$this->receivingDate.
-                            //                                     '&delivery_date='.$this->deliveryDate  );
+                            $runindOrder=Order::where('user_id',Auth()->id())->orderBy('created_at','desc')->first();
+                            if(!isset($runindOrder) || $runindOrder->status == 'done')
+                            {
+                                session(['redirect' => '/booking?car_id='.$car_id.
+                                '&receiving_branch='.$this->receiving_branch_id .
+                                '&delivery_branch='.$this->dervery_branch_id .
+                                '&receiving_date='.$this->receivingDate.
+                                '&delivery_date='.$this->deliveryDate]);
+                                $modelData = [
+                                    'title' => 'أو مشابهة - ماذا تعني؟',
+                                    'body' => 'تلتزم شركة ابو ذياب بتوفير نفس الموديل وسنة الصنع التي قمت باختيارها وقت الحجز و في حال عدم توفر السيارة المختارة عند تنفيذ الحجز تلتزم ابو ذياب بتوفير سيارة من نفس الفئة ونفس سنة الصنع او سنة صنع اعلى، وفي حال عدم توفر سيارة من نفس الفئة يتم الترقية لفئة اعلى بدون اي تكاليف أضافية',
+                                    'booking'=>1
+                                ];
+                                $this->dispatchBrowserEvent('fleetalert',$modelData);
+                            }
+                            else{
+
+                                $modelData = [
+                                    'title' => 'غير متاح الحجز في الوقتي الحالي بسبب وجود حجز سابق تحت الإجراء
+                                    برجاء التواصل علي الرقم الموحد
+                                    920026600',
+                                    'body' => ''
+                                ];
+                                $this->dispatchBrowserEvent('fleetalert',$modelData);
+                            }
 
                         }
                     }else{

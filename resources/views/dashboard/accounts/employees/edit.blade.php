@@ -2,7 +2,6 @@
     {{ BsForm::resource('employees')->putModel($employee, route('dashboard.employees.update', $employee), ['files' => true]) }}
     @component('dashboard::components.box')
         @slot('title', trans('employees.actions.edit'))
-
         @include('dashboard.accounts.employees.partials.form')
 
         @slot('footer')

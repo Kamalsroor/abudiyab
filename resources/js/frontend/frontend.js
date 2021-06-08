@@ -1789,12 +1789,13 @@ $('.forgot-password_step-3').on('submit', function(e) {
 
 });
 let phoneNumberKeys = ['50', '53', '54', '55', '56', '57', '58', '59'];
+let OldUserformLoader = document.querySelector('.old-user .form-loader');
 
 $('.log-in_center_form.old-user_step-1').on('submit', function(e) {
     e.preventDefault();
     // forms = document.querySelectorAll('.log-in_center_form'),
     //     form = document.querySelector(`.log-in_center_form.old-user_step-${step}`),
-    //     formLoader = document.querySelector('.old-user .form-loader')
+    //     OldUserformLoader = document.querySelector('.old-user .form-loader')
 
 
     var url = $(this).attr("action");
@@ -1819,7 +1820,7 @@ $('.log-in_center_form.old-user_step-1').on('submit', function(e) {
             phoneNumber.classList.remove('is-invalid');
             idNumber.classList.add('is-valid');
             phoneNumber.classList.add('is-valid');
-            formLoader.classList.add('show');
+            OldUserformLoader.classList.add('show');
             var form_data = $(this).serialize();
 
             $.ajax({
@@ -1835,13 +1836,13 @@ $('.log-in_center_form.old-user_step-1').on('submit', function(e) {
                 success: function(data) { // here I'm adding data as a parameter which stores the response
                     console.log(data);
                     toastr.success(data.message)
-                    formLoader.classList.remove('show');
+                    OldUserformLoader.classList.remove('show');
                     $('#customerUsernameByCode').val(phoneNumber.value);
                     nextstepOldUser(2);
                 },
                 error: function(response) {
                     console.log(response);
-                    formLoader.classList.remove('show');
+                    OldUserformLoader.classList.remove('show');
                     if (response.responseJSON.errors.phone_number)
                         error(phoneNumber, response.responseJSON.errors.phone_number);
 
@@ -1859,7 +1860,7 @@ $('.log-in_center_form.old-user_step-2').on('submit', function(e) {
     e.preventDefault();
     // forms = document.querySelectorAll('.log-in_center_form'),
     //     form = document.querySelector(`.log-in_center_form.old-user_step-${step}`),
-    //     formLoader = document.querySelector('.old-user .form-loader')
+    //     OldUserformLoader = document.querySelector('.old-user .form-loader')
 
 
     var url = $(this).attr("action");
@@ -1876,7 +1877,7 @@ $('.log-in_center_form.old-user_step-2').on('submit', function(e) {
     } else {
         codeNumber.classList.remove('is-invalid');
         codeNumber.classList.add('is-valid');
-        formLoader.classList.add('show');
+        OldUserformLoader.classList.add('show');
         var form_data = $(this).serialize();
         $.ajax({
             type: 'POST',
@@ -1893,12 +1894,12 @@ $('.log-in_center_form.old-user_step-2').on('submit', function(e) {
                 toastr.success(data.message)
                 $('#customerTokenByReset').val(data.reset_token);
 
-                formLoader.classList.remove('show');
+                OldUserformLoader.classList.remove('show');
                 nextstepOldUser(3);
             },
             error: function(response) {
                 console.log(response);
-                formLoader.classList.remove('show');
+                OldUserformLoader.classList.remove('show');
                 if (response.responseJSON.errors.username)
                     error(codeNumber, response.responseJSON.errors.username);
 
@@ -1914,7 +1915,7 @@ $('.log-in_center_form.old-user_step-3').on('submit', function(e) {
     e.preventDefault();
     // forms = document.querySelectorAll('.log-in_center_form'),
     //     form = document.querySelector(`.log-in_center_form.old-user_step-${step}`),
-    //     formLoader = document.querySelector('.old-user .form-loader')
+    //     OldUserformLoader = document.querySelector('.old-user .form-loader')
 
 
     var url = $(this).attr("action");
@@ -1946,6 +1947,7 @@ $('.log-in_center_form.old-user_step-3').on('submit', function(e) {
             email.classList.remove('is-invalid');
             email.classList.add('is-valid');
             var form_data = $(this).serialize();
+            OldUserformLoader.classList.add('show');
             $.ajax({
                 type: 'POST',
                 url: url,
@@ -1959,7 +1961,7 @@ $('.log-in_center_form.old-user_step-3').on('submit', function(e) {
                 success: function(data) { // here I'm adding data as a parameter which stores the response
                     console.log(data);
                     toastr.success(data.message)
-                    formLoader.classList.remove('show');
+                    OldUserformLoader.classList.remove('show');
 
                     if (data.attempt) {
                         location.reload();
@@ -1967,7 +1969,7 @@ $('.log-in_center_form.old-user_step-3').on('submit', function(e) {
                 },
                 error: function(response) {
                     console.log(response);
-                    formLoader.classList.remove('show');
+                    OldUserformLoader.classList.remove('show');
                     if (response.responseJSON.errors.token)
                         error(email, response.responseJSON.errors.token);
 
@@ -2236,7 +2238,6 @@ btnOldUserClose.forEach(btn => {
 //     document.querySelector(`.log-in_center_form.old-user_step-${step}`).style.display = 'none';
 //     document.querySelector('.log-in_center_form').style.display = 'block';
 // }
-
 
 
 

@@ -22,8 +22,12 @@ class AdditionResource extends JsonResource
         }
 
         return [
-            'id' => $this->id,
-            'name' => $this->name,
+            'id' => $this['id'],
+            'title' => $this['name'],
+            'sub_title' => $this['mini_des'],
+            'price' => $this['price'],
+            'img' => $this['img'],
+            'daily' => $this['type'] == 'daily' ? true : false,
         ];
     }
 }

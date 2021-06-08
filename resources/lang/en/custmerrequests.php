@@ -33,6 +33,8 @@ return [
         'created_at' => 'Created At',
         'deleted_at' => 'Deleted At',
         "identityfront" => "identity front",
+        'phone' => 'custmer phone',
+
         "email"=> "email",
         "identityback" => "identity back",
         "licencefront" => "licence front",

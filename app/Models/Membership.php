@@ -74,6 +74,10 @@ class Membership extends Model implements HasMedia, TranslatableContract
             ->addMediaCollection('default');
         //->useFallbackUrl('/url/to/default')
         //->singleFile()
+        $this
+            ->addMediaCollection('profile')
+        //->useFallbackUrl('/url/to/default')
+        ->singleFile();
 
     }
 }

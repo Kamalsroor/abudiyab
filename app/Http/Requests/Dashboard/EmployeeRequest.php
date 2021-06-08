@@ -59,8 +59,8 @@ class EmployeeRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'unique:users,email,' . $this->route('supervisor')->id],
-            'phone' => ['required', 'unique:users,phone,' . $this->route('supervisor')->id],
+            'email' => ['required', 'email', 'unique:users,email,' . $this->route('employee')->id],
+            'phone' => ['required', 'unique:users,phone,' . $this->route('employee')->id],
             'password' => ['nullable', 'min:8', 'confirmed'],
             'type' => ['sometimes', 'nullable', Rule::in(array_keys(trans('users.types')))],
         ];

@@ -12,6 +12,8 @@ use Auth;
 use App\Http\Requests\Api\OrderStep1Request;
 use App\Http\Requests\Api\OrderStep2Request;
 use App\Http\Requests\Api\OrderStep3Request;
+use App\Http\Resources\AdditionResource;
+use App\Models\Addition;
 use App\Models\AreaPricing;
 use App\Models\Branch;
 use App\Payment\MasterCardPayment;
@@ -127,81 +129,43 @@ class OrderController extends Controller
         if ($request->receiving_branche != null && $request->delivery_branche != null && $request->receiving_date != null && $request->delivery_date != null )
         {
             $carInBranch =  CarsInStock::where('car_id',$request->car_id)->where('branch_id', $request->receiving_branche)->get();
+            $imgs=[];
             if ($carInBranch->count() > 0) {
                 $data = [] ;
 
                 $car = Car::find($request->car_id);
-                if ($car->is_shield) {
-                    $data[] = [
-                        'id' => "shield_price",
-                        'title' => trans('cars.features_added_title.shield_price'),
-                        'sub_title' => trans('cars.features_added.shield'),
-                        'daily' => true,
-                        'img' => "https://i.pinimg.com/originals/f3/04/f8/f304f8984a6f9cc880a5e0e913b609b2.png",
-                        'price' => $car->shield_price
-                    ];
+                $car_additions=array_values(array_keys($car->additions));
+                $additions = Addition::whereIn('id',$car_additions)->get(['id','type','icon']);
+                $index = 0;
+                $additionsArray=$additions->toArray();
+                foreach($additionsArray as $addition)
+                {
+                    unset($additionsArray[$index]['des']);
+                    $imgs[]=$additions[$index]->getFirstMediaUrl();
+                    unset($additionsArray[$index]['media']);
+                    unset($additionsArray[$index]['translations']);
+                    $additionsArray[$index]['img']=$imgs[$index];
+                    $index++;
+                    // $additionsArray[$key][0]['name'];
                 }
-                if ($car->is_insurance) {
-                    $data[] = [
-                        'id' => "insurance_price",
-                        'title' => trans('cars.features_added_title.insurance_price'),
-                        'sub_title' => trans('cars.features_added.insurance'),
-                        'daily' => true,
-                        'img' => "https://i.pinimg.com/originals/f3/04/f8/f304f8984a6f9cc880a5e0e913b609b2.png",
-                        'price' => $car->insurance_price
-                    ];
+                $index=0;
+                array_filter($additionsArray, function($addition) use($index,$car,$additionsArray){
+                    if($car->additions[$addition['id']]['work'] == 0)
+                    {
+                        return false;
+                    }
+                    else{
+                        $additionsArray[$index]['price'] = $car->additions[$addition['id']]['price'];
+                        return true;
+                    }
+                    $index++;
+                });
+                $index=0;
+                foreach($additionsArray as $addition)
+                {
+                    $additionsArray[$index]['price'] =  $car->additions[$addition['id']]['price'];
+                    $index++;
                 }
-                if ($car->is_open_kilometers) {
-                       $data[] = [
-                        'id' => "open_kilometers_price",
-                        'title' => trans('cars.features_added_title.open_kilometers_price'),
-                        'sub_title' => trans('cars.features_added.open_kilometers'),
-                        'daily' => false,
-                        'img' => "https://i.pinimg.com/originals/f3/04/f8/f304f8984a6f9cc880a5e0e913b609b2.png",
-                        'price' => $car->open_kilometers_price
-                    ];
-                }
-                if ($car->is_navigation) {
-                       $data[] = [
-                        'id' => "navigation_price",
-                        'title' => trans('cars.features_added_title.navigation_price'),
-                        'sub_title' => trans('cars.features_added.navigation'),
-                        'daily' => false,
-                        'img' => "https://i.pinimg.com/originals/f3/04/f8/f304f8984a6f9cc880a5e0e913b609b2.png",
-                        'price' => $car->navigation_price
-                    ];
-                }
-                if ($car->is_home_delivery) {
-                       $data[] = [
-                        'id' => "home_delivery_price",
-                        'title' => trans('cars.features_added_title.home_delivery_price'),
-                        'sub_title' => trans('cars.features_added.home_delivery'),
-                        'daily' => false,
-                        'img' => "https://i.pinimg.com/originals/f3/04/f8/f304f8984a6f9cc880a5e0e913b609b2.png",
-                        'price' => $car->home_delivery_price
-                    ];
-                }
-                if ($car->is_intercity) {
-                       $data[] = [
-                        'id' => "intercity_price",
-                        'title' => trans('cars.features_added_title.intercity_price'),
-                        'sub_title' => trans('cars.features_added.intercity'),
-                        'daily' => true,
-                        'img' => "https://i.pinimg.com/originals/f3/04/f8/f304f8984a6f9cc880a5e0e913b609b2.png",
-                        'price' => $car->intercity_price
-                    ];
-                }
-                if ($car->is_baby_seat) {
-                       $data[] = [
-                        'id' => "baby_seat_price",
-                        'title' => trans('cars.features_added_title.baby_seat_price'),
-                        'sub_title' => trans('cars.features_added.baby_seat'),
-                        'daily' => false,
-                        'img' => "https://i.pinimg.com/originals/f3/04/f8/f304f8984a6f9cc880a5e0e913b609b2.png",
-                        'price' => $car->baby_seat_price
-                    ];
-                }
-
                 $delivery_date = Carbon::parse($request->delivery_date);
                 $receiving_date = Carbon::parse($request->receiving_date);
                 $diffInDays = $delivery_date->diffInDays($receiving_date);
@@ -223,11 +187,11 @@ class OrderController extends Controller
                 return response()->json([
                     'status' => true,
                     'order' => new OrderResource($order),
-                    'features' => $data,
+                    'features' => AdditionResource::collection(collect($additionsArray)),
                 ]);
             }
             else{
-                return response()->json(['status' => false,'massage' => 'السياره غير متوفرة في هذه الفرع' ], 200);
+                return response()->json(['status' => false,'massage' => 'السياره غير متوفرة في هذا الفرع' ], 200);
             }
         }
        else{

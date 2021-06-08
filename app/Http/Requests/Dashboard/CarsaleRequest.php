@@ -25,9 +25,9 @@ class CarsaleRequest extends FormRequest
     {
         return [
             'car_id' => ['required', 'string', 'max:255'],
-            'couter' => ['required', 'numeric'],
-            'color_interior' => ['required', 'string'],
-            'color_exterior' => ['required', 'string'],
+            'couter' => ['sometimes','nullable', 'numeric'],
+            'color_interior' => ['sometimes','nullable', 'string'],
+            'color_exterior' => ['sometimes','nullable', 'string'],
             'quantity' => ['required', 'numeric'],
         ];
     }

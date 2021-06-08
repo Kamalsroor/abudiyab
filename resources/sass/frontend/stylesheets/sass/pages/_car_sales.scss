@@ -283,10 +283,9 @@
             background-color: #fff;
             overflow: hidden;
             width: 450px;
-            height: 380px;
+            height: fit-content;
             border-radius: 4px;
             text-align: center;
-            position: relative;
             @include location(50%, 50%);
             &_cancel {
                 @include location(0%, 100%);
@@ -323,10 +322,9 @@
                 }
             }
             &_step-1 {
-                @include location(50%, 50%);
                 width: 100%;
                 text-align: right;
-                padding: 0 15px 15px;
+                padding: 20px 15px;
                 display: none;
                 &_text {
                     text-align: center;
@@ -339,11 +337,11 @@
                         border-radius: 4px;
                         padding: 7px 40px;
                         margin: auto;
+                        margin-bottom: 20px;
                     }
                 }
             }
             &_step-2 {
-                @include location(50%, 50%);
                 width: 100%;
                 display: none;
                 padding: 0;
@@ -385,7 +383,6 @@
                 }
             }
             &_step-3 {
-                @include location(50%, 50%);
                 width: 100%;
                 display: none;
                 padding: 0px 10px 50px;

@@ -6,7 +6,14 @@
     @slot('icon', 'fas fa-th')
     @slot('tree', [
         [
-            'name' => trans('carsales.actions.list'),
+            'name' => trans('purchaserequests.plural'),
+            'url' => route('dashboard.purchaserequests.index'),
+            'can' => ['ability' => 'viewAny', 'model' => \App\Models\Purchaserequest::class],
+            'active' => request()->routeIs('*purchaserequests.index')
+            || request()->routeIs('*purchaserequests.show'),
+        ],
+        [
+            'name' => trans('carsales.plural'),
             'url' => route('dashboard.carsales.index'),
             'can' => ['ability' => 'viewAny', 'model' => \App\Models\Carsale::class],
             'active' => request()->routeIs('*carsales.index')

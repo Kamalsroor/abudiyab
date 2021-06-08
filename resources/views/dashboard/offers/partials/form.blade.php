@@ -3,7 +3,6 @@
 {{ BsForm::text('name') }}
 {{ BsForm::textarea('des')->attribute('class', 'form-control textarea')}}
 @endBsMultilangualFormTabs
-
 <div class="row">
     <div class="col-md-6">
         {{ BsForm::select('discount_type')->options(trans('offers.discount_type')) }}

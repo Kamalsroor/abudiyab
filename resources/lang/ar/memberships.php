@@ -38,6 +38,7 @@ return [
         'delivery_discount_regions' => 'خصم التسليم بين المناطق',
         'description' => 'تفاصيل العضويه',
         'image' => 'صورة العضويه',
+        'profile' => 'صورة العضويه في الصفحة الشخصيه',
         'created_at' => 'اضافة في',
         'deleted_at' => 'حذف في',
     ],

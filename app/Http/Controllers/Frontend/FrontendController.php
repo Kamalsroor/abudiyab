@@ -131,9 +131,11 @@ class FrontendController extends Controller
         $models=[];
         foreach($cars as $car)
         {
-            if(!in_array($car->car->model,$models))
-            {
-                $models[]=$car->car->model;
+            if(isset($car->car)){
+                if(!in_array($car->car->model,$models))
+                {
+                    $models[]=$car->car->model;
+                }
             }
         }
 
