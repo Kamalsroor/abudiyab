@@ -131,40 +131,53 @@ class OrderController extends Controller
             $carInBranch =  CarsInStock::where('car_id',$request->car_id)->where('branch_id', $request->receiving_branche)->get();
             $imgs=[];
             if ($carInBranch->count() > 0) {
-                $data = [] ;
-
                 $car = Car::find($request->car_id);
-                $car_additions=array_values(array_keys($car->additions));
-                $additions = Addition::whereIn('id',$car_additions)->get(['id','type','icon']);
-                $index = 0;
-                $additionsArray=$additions->toArray();
-                foreach($additionsArray as $addition)
+                $car_additions=isset($car->additions) ? array_values(array_keys($car->additions)) : null;
+                $additionindex=0;
+                foreach($car_additions as $addition)
                 {
-                    unset($additionsArray[$index]['des']);
-                    $imgs[]=$additions[$index]->getFirstMediaUrl();
-                    unset($additionsArray[$index]['media']);
-                    unset($additionsArray[$index]['translations']);
-                    $additionsArray[$index]['img']=$imgs[$index];
-                    $index++;
-                    // $additionsArray[$key][0]['name'];
-                }
-                $index=0;
-                array_filter($additionsArray, function($addition) use($index,$car,$additionsArray){
-                    if($car->additions[$addition['id']]['work'] == 0)
+                    if($car->additions[$addition]['work'] == 0)
                     {
-                        return false;
+
+                        unset($car_additions[$additionindex]);
                     }
-                    else{
-                        $additionsArray[$index]['price'] = $car->additions[$addition['id']]['price'];
-                        return true;
-                    }
-                    $index++;
-                });
-                $index=0;
-                foreach($additionsArray as $addition)
+                    $additionindex++;
+                }
+
+                if($car_additions != null)
                 {
-                    $additionsArray[$index]['price'] =  $car->additions[$addition['id']]['price'];
-                    $index++;
+                    $additions = Addition::whereIn('id',$car_additions)->get(['id','type','icon']);
+                    $index = 0;
+                    $additionsArray=$additions->toArray();
+                    foreach($additionsArray as $addition)
+                    {
+                        unset($additionsArray[$index]['des']);
+                        $imgs[]=$additions[$index]->getFirstMediaUrl();
+                        unset($additionsArray[$index]['media']);
+                        unset($additionsArray[$index]['translations']);
+                        $additionsArray[$index]['img']=$imgs[$index];
+                        $index++;
+                        // $additionsArray[$key][0]['name'];
+                    }
+                    $index=0;
+
+                    array_filter($additionsArray, function($addition) use($index,$car,$additionsArray){
+                        if($car->additions[$addition['id']]['work'] == 0)
+                        {
+                            return false;
+                        }
+                        else{
+                            $additionsArray[$index]['price'] = $car->additions[$addition['id']]['price'];
+                            return true;
+                        }
+                        $index++;
+                    });
+                    $index=0;
+                    foreach($additionsArray as $addition)
+                    {
+                        $additionsArray[$index]['price'] =  $car->additions[$addition['id']]['price'];
+                        $index++;
+                    }
                 }
                 $delivery_date = Carbon::parse($request->delivery_date);
                 $receiving_date = Carbon::parse($request->receiving_date);
@@ -187,7 +200,7 @@ class OrderController extends Controller
                 return response()->json([
                     'status' => true,
                     'order' => new OrderResource($order),
-                    'features' => AdditionResource::collection(collect($additionsArray)),
+                    'features' => isset($car->additions) ? AdditionResource::collection(collect($additionsArray)) : null,
                 ]);
             }
             else{
@@ -281,7 +294,7 @@ class OrderController extends Controller
         return response()->json([
             'status' => true,
             'promotional_discount' => $promotional_discount,
-            'total' => $total,
+            'total' => round($total),
             'diff' => $diff,
             'features_price' => $features_price,
             'price' => $price,

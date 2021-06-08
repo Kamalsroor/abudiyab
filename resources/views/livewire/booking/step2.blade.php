@@ -89,7 +89,6 @@
                                 </div>
                             @endif
                         @endif
-
                     @endforeach
                 </div>
 
@@ -102,14 +101,6 @@
                     </div>
                 </div>
 
-                <div class="H3-TST-D4-1 H3-P">
-                    <div class="H3-TST-D5-1">
-                        <span> الإجمالي</span>
-                    </div>
-                    <div class="H3-TST-D5-1">
-                        <p><span><i class="icofont icofont-cur-riyal"></i></span>{{$price}}</p>
-                    </div>
-                </div>
                 @if ($AreaPricing != 0)
                     <div class="H3-TST-D4-1">
                         <div class="H3-TST-D5-1">
@@ -120,6 +111,16 @@
                         </div>
                     </div>
                 @endif
+
+                <div class="H3-TST-D4-1 H3-P">
+                    <div class="H3-TST-D5-1">
+                        <span> الإجمالي</span>
+                    </div>
+                    <div class="H3-TST-D5-1">
+                        <p><span><i class="icofont icofont-cur-riyal"></i></span>{{$price}}</p>
+                    </div>
+                </div>
+
                 <div class="H3-TST-D4-1">
                     <div class="H3-TST-D5-1">
                         <span> خصم العضويه</span>
