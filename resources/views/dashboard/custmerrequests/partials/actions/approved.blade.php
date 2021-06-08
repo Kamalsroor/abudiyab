@@ -36,6 +36,10 @@
                 <div class="col-6">
                     <img style="width: 100%;" src="{{$custmerrequest->getFirstMediaUrl('licenceBack')}}" alt="">
                 </div>
+                <div class="col-12">
+                    <h1>{{ trans('custmerrequests.attributes.phone')}}</h1>
+                    <h3>{{ $custmerrequest->user->phone}}</h3>
+                </div>
                 <div class="col-4">
                     {{ BsForm::text('id_number') }}
                 </div>

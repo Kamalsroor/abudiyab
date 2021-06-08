@@ -48,6 +48,7 @@ return [
         'address' => 'العنوان',
         'driver_number' => 'رقم رخصه القياده',
         'user_data_confirmed' => 'تاكيد بيانات العميل',
+        'phone' => 'رقم العميل',
 
         'created_at' => 'اضافة في',
         'deleted_at' => 'حذف في',
