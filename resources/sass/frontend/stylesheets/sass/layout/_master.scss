@@ -46,6 +46,9 @@
         @include location(50%, 50%);
         max-width: 478px;
         width: 100%;
+        @media (max-width: 475px) {
+            @include location(63%, 50%);
+        }
         &_form {
             width: 100%;
             text-align: right;
@@ -57,10 +60,10 @@
             background-color: #eaeaea;
             @media (max-width: 475px) {
                 border-radius: 0px;
-                padding: 48px 40px;
+                padding: 8px 40px;
             }
             @media (max-width: 450px) {
-                padding: 48px 20px;
+                padding: 8px 20px;
             }
             h2 {
                 margin-bottom: 45px;
@@ -386,10 +389,7 @@
                 border-radius: 0px;
             }
             @media (max-width: 475px) {
-                padding: 48px 40px;
-            }
-            @media (max-width: 450px) {
-                padding: 48px 20px;
+                padding: 48px 0px;
             }
             h2 {
                 width: 100%;
