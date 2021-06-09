@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="check">
                                     <div class="form-check ">
-                                        <input  class="form-check-input check1" type="checkbox" value="{{ $additionsCar['price'] }}"  name="features_added[]"  wire:model="features_added"  >
+                                        <input  class="form-check-input check1" type="checkbox" value="{{ $additionsCar['price'] }}"  name="features_added[]"  wire:model="features_added.{{$key}}"  >
 
 
                                         {{-- <input
