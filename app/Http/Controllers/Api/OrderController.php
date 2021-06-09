@@ -16,6 +16,7 @@ use App\Http\Resources\AdditionResource;
 use App\Models\Addition;
 use App\Models\AreaPricing;
 use App\Models\Branch;
+use App\Models\Custmerrequest;
 use App\Payment\MasterCardPayment;
 use Carbon\Carbon;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -125,6 +126,53 @@ class OrderController extends Controller
      */
     public function step1(OrderStep1Request $request)
     {
+        $currentDate = now();
+        $Custmerrequest = Custmerrequest::where('user_id',auth()->id())->orderBy('created_at', 'DESC')->first();
+        if(isset($Custmerrequest)){
+            if($Custmerrequest->is_confirmed == "confirmed"){
+                if (!$currentDate->lt($Custmerrequest->id_expiry_date) && !$currentDate->lt($Custmerrequest->driver_id_expiry_date)) {
+                    return response()->json(['status' => false,'massage' => 'يرجي تحديث البطاقه الشخصيه و رخصه الفياده' ], 419);
+                }
+                 if (!$currentDate->lt($Custmerrequest->id_expiry_date)) {
+                     return response()->json(['status' => false,'massage' => 'انتهت صلاحية البطاقة ، يرجى تحديث المعلومات للحجز' ], 419);
+                 }
+                 if (!$currentDate->lt($Custmerrequest->driver_id_expiry_date)) {
+                     return response()->json(['status' => false,'massage' => 'انتهت صلاحية رخصة قيادتك ، يرجى تحديث المعلومات للحجز' ], 419);
+                 }
+             }
+             else if($Custmerrequest->is_confirmed === 'rejected') {
+                 $Custmerrequest = Custmerrequest::where('user_id',auth()->id())->where('is_confirmed' , 'confirmed')->orderBy('created_at', 'DESC')->first();
+                 if(isset($Custmerrequest))
+                 {
+                    if (!$currentDate->lt($Custmerrequest->id_expiry_date) && !$currentDate->lt($Custmerrequest->driver_id_expiry_date)) {
+                        return response()->json(['status' => false,'massage' => 'يرجي تحديث البطاقه الشخصيه و رخصه الفياده' ], 419);
+                    }
+                     if (!$currentDate->lt($Custmerrequest->id_expiry_date)) {
+                         return response()->json(['status' => false,'massage' => 'انتهت صلاحية البطاقة ، يرجى تحديث المعلومات للحجز' ], 419);
+                     }
+                     if(!$currentDate->lt($Custmerrequest->driver_id_expiry_date)) {
+                         return response()->json(['status' => false,'massage' => 'انتهت صلاحية رخصة قيادتك ، يرجى تحديث المعلومات للحجز' ], 419);
+                     }
+                 }
+                 return response()->json(['status' => false,'massage' => 'يرجى رفع صوره البطاقه الشخصيه و الرخصه' ], 419);
+             }
+             else{
+                 return response()->json(['status' => false,'massage' => 'يرجى الانتظار حتى يتم تأكيد البيانات الخاصة بك لحجزك' ], 419);
+             }
+         }
+         else{
+             return response()->json(['status' => false,'massage' => 'يرجى رفع صوره البطاقه الشخصيه و الرخصه' ], 419);
+
+         }
+
+        $order = Order::where('user_id',Auth()->id())->orderBy('created_at','desc')->first();
+        if (isset($order->status)) {
+            if ($order->status != 'done') {
+                return response()->json(['status' => false,'massage' => 'غير متاح الحجز في الوقتي الحالي بسبب وجود حجز سابق تحت الإجراء برجاء التواصل علي الرقم الموحد 920026600' ], 419);
+            }
+        }
+
+
 
         if ($request->receiving_branche != null && $request->delivery_branche != null && $request->receiving_date != null && $request->delivery_date != null )
         {
