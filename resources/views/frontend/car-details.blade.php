@@ -70,15 +70,18 @@
                     <div class="col-md-4">
                         <aside class="l-sidebar-2">
                             <div class="b-car-info">
-                                <div class="b-car-info__price"><i class="icofont icofont-cur-riyal"></i>{{$car->price1}}<s class="b-car-info__price-msrp"> <i class="icofont icofont-cur-riyal"></i>{{$car->price2}}</s>
+                                <div class="b-car-info__price">
+                                    <h4>الايجار اليومي</h4>
+                                    <i class="icofont icofont-cur-riyal"></i>{{$car->price1}}
+                                    <s class="b-car-info__price-msrp"> <i class="icofont icofont-cur-riyal"></i>{{$car->price2}}</s>
                                 </div>
                                 <dl class="b-car-info__desc dl-horizontal bg-grey">
                                     <dt class="b-car-info__desc-dt">{{$car->category?$car->category->name:'-'}}</dt>
                                     <dd class="b-car-info__desc-dd">الفئه</dd>
                                     <dt class="b-car-info__desc-dt">{{$car->model}}</dt>
-                                    <dd class="b-car-info__desc-dd">سنه</dd>
+                                    <dd class="b-car-info__desc-dd">موديل</dd>
                                     <dt class="b-car-info__desc-dt">{{$car->features}}</dt>
-                                    <dd class="b-car-info__desc-dd">انتقال</dd>
+                                    <dd class="b-car-info__desc-dd">ناقل حركه</dd>
                                     <dt class="b-car-info__desc-dt">{{$car->manufactory->name}}</dt>
                                     <dd class="b-car-info__desc-dd">الماركه</dd>
                                 </dl>
