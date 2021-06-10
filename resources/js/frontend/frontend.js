@@ -303,9 +303,9 @@ $(document).ready(function() {
     let subscribe = $('#subscribe');
     if (subscribe.length) {
         $('#subscribe').on('click', function() {
-            let subscriptionEmail = $('#mailsu').val();
-            var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
-            var validateEmail = subscriptionEmail.match(pattern);
+            let subscriptionEmail = document.getElementById('mailsu');
+            let validateEmail = validationAll(subscriptionEmail, { view: false }).email();
+            console.log(validateEmail);
             if (validateEmail) {
                 $.ajax({
                     type: 'post',
