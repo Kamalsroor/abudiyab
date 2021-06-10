@@ -30,7 +30,6 @@
                       <div class="col-sm-4 invoice-col">
                         العميل
                         <address>
-                            @dd($order->customer)
                           <strong>{{ $order->customer ? $order->customer->name : "زائر"}}</strong><br>
                           {{$order->customer ? $order->customer->address : ""}}<br>
                           رقم الهاتف: {{ $order->customer ? $order->customer->phone : ""}}<br>

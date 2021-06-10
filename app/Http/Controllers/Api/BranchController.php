@@ -206,7 +206,7 @@ class BranchController extends Controller
             ]);
         }
         else{
-            return response()->json(['status' => false,'massage' => 'لا توجد هذه السياره في الوقت الحالي' ], 422);
+            return response()->json(['status' => false,'massage' => 'عميلنا العزيز نعتذر لكم لعدم توفر السياره في الوقت الحالي يمكنكم حجز سياره اخري' ], 422);
         }
 
     }

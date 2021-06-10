@@ -134,10 +134,10 @@ class OrderController extends Controller
                     return response()->json(['status' => false,'massage' => 'يرجي تحديث البطاقه الشخصيه و رخصه الفياده' ], 419);
                 }
                  if (!$currentDate->lt($Custmerrequest->id_expiry_date)) {
-                     return response()->json(['status' => false,'massage' => 'انتهت صلاحية البطاقة ، يرجى تحديث المعلومات للحجز' ], 419);
+                     return response()->json(['status' => false,'massage' => 'يرجي تحديث البطاقه الشخصيه' ], 419);
                  }
                  if (!$currentDate->lt($Custmerrequest->driver_id_expiry_date)) {
-                     return response()->json(['status' => false,'massage' => 'انتهت صلاحية رخصة قيادتك ، يرجى تحديث المعلومات للحجز' ], 419);
+                     return response()->json(['status' => false,'massage' => 'يرجي تحديث رخصه القياده' ], 419);
                  }
              }
              else if($Custmerrequest->is_confirmed === 'rejected') {
@@ -148,16 +148,16 @@ class OrderController extends Controller
                         return response()->json(['status' => false,'massage' => 'يرجي تحديث البطاقه الشخصيه و رخصه الفياده' ], 419);
                     }
                      if (!$currentDate->lt($Custmerrequest->id_expiry_date)) {
-                         return response()->json(['status' => false,'massage' => 'انتهت صلاحية البطاقة ، يرجى تحديث المعلومات للحجز' ], 419);
+                         return response()->json(['status' => false,'massage' => 'يرجي تحديث البطاقه الشخصيه' ], 419);
                      }
                      if(!$currentDate->lt($Custmerrequest->driver_id_expiry_date)) {
-                         return response()->json(['status' => false,'massage' => 'انتهت صلاحية رخصة قيادتك ، يرجى تحديث المعلومات للحجز' ], 419);
+                         return response()->json(['status' => false,'massage' => 'يرجي تحديث رخصه القياده' ], 419);
                      }
                  }
                  return response()->json(['status' => false,'massage' => 'يرجى رفع صوره البطاقه الشخصيه و الرخصه' ], 419);
              }
              else{
-                 return response()->json(['status' => false,'massage' => 'يرجى الانتظار حتى يتم تأكيد البيانات الخاصة بك لحجزك' ], 419);
+                 return response()->json(['status' => false,'massage' => 'يرجى الانتظار حتى يتم تأكيد البيانات ' ], 419);
              }
          }
          else{
