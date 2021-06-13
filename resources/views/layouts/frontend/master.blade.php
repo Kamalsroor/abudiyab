@@ -60,8 +60,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- ------------START-----loader------------ -->
     <div class="loader" id="loader">
-        <div class="loader_img">
-            <img src="{{ asset('front/img/loader.gif') }}" alt="Loader..">
+        <div class="lds-facebook">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
     </div>
     <!-- ------------END-------loader------------ -->
@@ -144,6 +148,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </div>
                     <button type="submit" class="primary-btn btn-hover btn-curved">تسجيل الدخول</button>
                     <p class="log-in_center_form_forgot-password" data-step="1">نسيت كلمة السر؟ </p>
+                    <p class="primary-btn btn-hover btn-curved log-in_center_form_btn twitter">Twitter <i class="fab fa-twitter"></i></p>
+                    <div class="row mb-6 mx-0">
+                        <div class="col-6 px-1 mb-0">
+                            <p class="primary-btn btn-hover btn-curved log-in_center_form_btn  google"><span class="g">G</span><span class="o1">o</span><span class="o2">o</span><span class="g">g</span><span class="l">l</span><span class="e">e</span> <img src="https://www.bryan-myers.com/images/1x1/google-llc.png" alt=""></p>
+                        </div>
+                        <div class="col-6 px-1 mb-0">
+                            <p class="primary-btn btn-hover btn-curved log-in_center_form_btn col-6 apple">Apple id <i class="fab fa-apple"></i></p>
+                        </div>
+                    </div>
                     <hr>
                     <p class="primary-btn btn-hover btn-curved log-in_center_form_old-user btn-old-user" data-step="1">عميل معرف من قبل</p>
                 </form>
@@ -825,8 +838,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- ------------START-----SCRIPT-------LOAD------------ -->
     <script type="text/javascript">
         $(document).ready(function() {
-            $("#loader").animate({opacity: "0"}, 2000, function() {
-                $("#loader").remove();
+            $(".lds-facebook").animate({opacity: "0"}, 1000, function() {
+                $('#loader').addClass('active');
+                $("#loader").animate({opacity: "0"}, 3000, function() {
+                    $("#loader").remove();
+                });
             });
             $('body').css('overflow','auto');
         });
